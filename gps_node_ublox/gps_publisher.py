@@ -55,27 +55,19 @@ class MinimalPublisher(Node):
         # parsed_data.lat
         # parsed_data.lon
 
-        data = self.gps.getPvt()
-        lat = data.rlat * 180 / math.pi
-        lon = data.rlon * 180 / math.pi
-
-        # Put information into NavSatFlex msg type
+        # Put information into NavSatFix`` msg type
         self.fix.header.stamp = self.get_clock().now().to_msg()
         self.fix.header.frame_id = self.frame_id
-        self.fix.status.service = 1
-        self.fix.latitude = lat
-        self.fix.longitude = lon
-        self.fix.altitude = data.alt
+        self.fix.status.service = 1 if parsed_data.status == "A" else 0
+        self.fix.latitude = parsed_data.lat
+        self.fix.longitude = parsed_data.lon
+        self.fix.altitude = 0
         self.fix.position_covariance = [0] * 9
         self.fix.position_covariance_type = 0
 
-
         self.publisher_.publish(self.fix)
 
-        # msg = String()
-        # msg.data = f'GPS Data: Latitude: {lat}, Longitude: {lon}'
-        # self.publisher_.publish(msg)
-        # self.get_logger().info('Publishing: "%s"' % msg.data)
+
 
 def main(args=None):
     rclpy.init(args=args)
