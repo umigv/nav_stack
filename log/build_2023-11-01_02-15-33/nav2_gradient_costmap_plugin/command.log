@@ -1,4 +1,0 @@
-Invoking command in '/home/umarv/ws/build/nav2_gradient_costmap_plugin': /usr/bin/cmake --build /home/umarv/ws/build/nav2_gradient_costmap_plugin -- -j8 -l8
-Invoked command in '/home/umarv/ws/build/nav2_gradient_costmap_plugin' returned '0': /usr/bin/cmake --build /home/umarv/ws/build/nav2_gradient_costmap_plugin -- -j8 -l8
-Invoking command in '/home/umarv/ws/build/nav2_gradient_costmap_plugin': /usr/bin/cmake --install /home/umarv/ws/build/nav2_gradient_costmap_plugin
-Invoked command in '/home/umarv/ws/build/nav2_gradient_costmap_plugin' returned '0': /usr/bin/cmake --install /home/umarv/ws/build/nav2_gradient_costmap_plugin

@@ -1,6 +1,0 @@
-[31mCMake Error at cmake_install.cmake:46 (file):
-  file INSTALL cannot set permissions on
-  "/home/umarv/ws/install/sam_bot_description/share/sam_bot_description/config/fn_params":
-  Operation not permitted.
-
-[0m

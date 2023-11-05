@@ -1,4 +1,0 @@
-Invoking command in '/home/umarv/ws/build/sam_bot_description': /usr/bin/cmake --build /home/umarv/ws/build/sam_bot_description -- -j8 -l8
-Invoked command in '/home/umarv/ws/build/sam_bot_description' returned '0': /usr/bin/cmake --build /home/umarv/ws/build/sam_bot_description -- -j8 -l8
-Invoking command in '/home/umarv/ws/build/sam_bot_description': /usr/bin/cmake --install /home/umarv/ws/build/sam_bot_description
-Invoked command in '/home/umarv/ws/build/sam_bot_description' returned '0': /usr/bin/cmake --install /home/umarv/ws/build/sam_bot_description

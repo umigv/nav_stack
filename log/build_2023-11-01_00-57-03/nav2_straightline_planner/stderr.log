@@ -1,7 +1,0 @@
-[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/straight_line_planner.cpp:46:10:[m[K [01;31m[Kfatal error: [m[Knav2_util/node_utils.hpp: No such file or directory
-   46 | #include [01;31m[K"nav2_util/node_utils.hpp"[m[K
-      |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
-compilation terminated.
-gmake[2]: *** [CMakeFiles/nav2_straightline_planner_plugin.dir/build.make:76: CMakeFiles/nav2_straightline_planner_plugin.dir/src/straight_line_planner.cpp.o] Error 1
-gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/nav2_straightline_planner_plugin.dir/all] Error 2
-gmake: *** [Makefile:146: all] Error 2

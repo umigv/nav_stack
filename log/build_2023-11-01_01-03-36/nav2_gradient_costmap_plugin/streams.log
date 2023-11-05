@@ -1,2 +1,0 @@
-[0.190s] Invoking command in '/home/umarv/ws/build/nav2_gradient_costmap_plugin': /usr/bin/cmake --build /home/umarv/ws/build/nav2_gradient_costmap_plugin -- -j8 -l8
-[0.233s] [100%] Built target nav2_gradient_costmap_plugin_core

@@ -1,7 +1,0 @@
-[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:3:10:[m[K [01;31m[Kfatal error: [m[K../include/rpastar.h: No such file or directory
-    3 | #include [01;31m[K"../include/rpastar.h"[m[K
-      |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~[m[K
-compilation terminated.
-gmake[2]: *** [CMakeFiles/nav2_straightline_planner_plugin.dir/build.make:90: CMakeFiles/nav2_straightline_planner_plugin.dir/src/rpastar.cpp.o] Error 1
-gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/nav2_straightline_planner_plugin.dir/all] Error 2
-gmake: *** [Makefile:146: all] Error 2

@@ -1,9 +1,0 @@
-[0.184s] Invoking command in '/home/umarv/ws/build/nav2_straightline_planner': /usr/bin/cmake --build /home/umarv/ws/build/nav2_straightline_planner -- -j8 -l8
-[0.200s] [31mCMake Error at CMakeLists.txt:3 (ament_package):
-[0.200s]   Unknown CMake command "ament_package".
-[0.200s] 
-[0.201s] [0m
-[0.201s] -- Configuring incomplete, errors occurred!
-[0.201s] See also "/home/umarv/ws/build/nav2_straightline_planner/CMakeFiles/CMakeOutput.log".
-[0.202s] gmake: *** [Makefile:267: cmake_check_build_system] Error 1
-[0.204s] Invoked command in '/home/umarv/ws/build/nav2_straightline_planner' returned '2': /usr/bin/cmake --build /home/umarv/ws/build/nav2_straightline_planner -- -j8 -l8
