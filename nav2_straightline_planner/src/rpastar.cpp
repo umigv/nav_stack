@@ -129,7 +129,7 @@ void rpastar::search()
 void rpastar::processNode(int row, int col, Node *parent)
 {
     std::cout << " processNode\n";
-    std::cout << row;
+    std::cout << row " " << col;
     if (row < 0 || row >= cost_map.size() || col < 0 || col >= cost_map[0].size())
     {
         return;
