@@ -1,0 +1,18 @@
+[0.189s] Invoking command in '/home/umarv/ws/build/nav2_straightline_planner': /usr/bin/cmake --build /home/umarv/ws/build/nav2_straightline_planner -- -j8 -l8
+[0.220s] [35m[1mConsolidate compiler generated dependencies of target nav2_straightline_planner_plugin[0m
+[0.242s] [ 33%] [32mBuilding CXX object CMakeFiles/nav2_straightline_planner_plugin.dir/src/straight_line_planner.cpp.o[0m
+[0.242s] [ 66%] [32mBuilding CXX object CMakeFiles/nav2_straightline_planner_plugin.dir/src/rpastar.cpp.o[0m
+[0.335s] [01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:3:10:[m[K [01;31m[Kfatal error: [m[Knav2_straight_line_planner/rpastar.h: No such file or directory
+[0.336s]     3 | #include [01;31m[K"nav2_straight_line_planner/rpastar.h"[m[K
+[0.336s]       |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[0.336s] compilation terminated.
+[0.336s] gmake[2]: *** [CMakeFiles/nav2_straightline_planner_plugin.dir/build.make:90: CMakeFiles/nav2_straightline_planner_plugin.dir/src/rpastar.cpp.o] Error 1
+[0.337s] gmake[2]: *** Waiting for unfinished jobs....
+[0.476s] [01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/straight_line_planner.cpp:48:10:[m[K [01;31m[Kfatal error: [m[Knav2_straightline_planner/straight_line_planner.hpp: No such file or directory
+[0.477s]    48 | #include [01;31m[K"nav2_straightline_planner/straight_line_planner.hpp"[m[K
+[0.477s]       |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[0.477s] compilation terminated.
+[0.478s] gmake[2]: *** [CMakeFiles/nav2_straightline_planner_plugin.dir/build.make:76: CMakeFiles/nav2_straightline_planner_plugin.dir/src/straight_line_planner.cpp.o] Error 1
+[0.478s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/nav2_straightline_planner_plugin.dir/all] Error 2
+[0.479s] gmake: *** [Makefile:146: all] Error 2
+[0.481s] Invoked command in '/home/umarv/ws/build/nav2_straightline_planner' returned '2': /usr/bin/cmake --build /home/umarv/ws/build/nav2_straightline_planner -- -j8 -l8

@@ -1,0 +1,10 @@
+[0.370s] Invoking command in '/home/umarv/ws/build/nav2_straightline_planner': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/umarv/ws/install/nav2_gps_waypoint_follower_demo:/opt/ros/humble /usr/bin/cmake --build /home/umarv/ws/build/nav2_straightline_planner -- -j8 -l8
+[0.409s] [35m[1mConsolidate compiler generated dependencies of target nav2_straightline_planner_plugin[0m
+[0.436s] [ 33%] [32mBuilding CXX object CMakeFiles/nav2_straightline_planner_plugin.dir/src/straight_line_planner.cpp.o[0m
+[3.521s] In file included from [01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/straight_line_planner.cpp:49[m[K:
+[3.521s] [01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/include/nav2_straightline_planner/rpastar.h:[m[K In member function ‘[01m[Kconst bool& nav2_straightline_planner::rpastar::Node::operator==(const nav2_straightline_planner::rpastar::Node&)[m[K’:
+[3.521s] [01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/include/nav2_straightline_planner/rpastar.h:44:36:[m[K [01;35m[Kwarning: [m[Kreturning reference to temporary [[01;35m[K-Wreturn-local-addr[m[K]
+[3.521s]    44 |                 return [01;35m[Kthis->state == rhs.state[m[K;
+[3.521s]       |                        [01;35m[K~~~~~~~~~~~~^~~~~~~~~~~~[m[K
+[5.411s] [ 66%] [32m[1mLinking CXX shared library libnav2_straightline_planner_plugin.so[0m
+[5.664s] [100%] Built target nav2_straightline_planner_plugin

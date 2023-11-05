@@ -1,0 +1,178 @@
+[0.000000] (-) TimerEvent: {}
+[0.000865] (nav2_gps_waypoint_follower_demo) JobQueued: {'identifier': 'nav2_gps_waypoint_follower_demo', 'dependencies': OrderedDict()}
+[0.000954] (nav2_gradient_costmap_plugin) JobQueued: {'identifier': 'nav2_gradient_costmap_plugin', 'dependencies': OrderedDict()}
+[0.001547] (nav2_straightline_planner) JobQueued: {'identifier': 'nav2_straightline_planner', 'dependencies': OrderedDict()}
+[0.001623] (sam_bot_description) JobQueued: {'identifier': 'sam_bot_description', 'dependencies': OrderedDict()}
+[0.001640] (nav2_gps_waypoint_follower_demo) JobStarted: {'identifier': 'nav2_gps_waypoint_follower_demo'}
+[0.019459] (nav2_gradient_costmap_plugin) JobStarted: {'identifier': 'nav2_gradient_costmap_plugin'}
+[0.032773] (nav2_straightline_planner) JobStarted: {'identifier': 'nav2_straightline_planner'}
+[0.044687] (sam_bot_description) JobStarted: {'identifier': 'sam_bot_description'}
+[0.100039] (-) TimerEvent: {}
+[0.201552] (-) TimerEvent: {}
+[0.204777] (nav2_gradient_costmap_plugin) JobProgress: {'identifier': 'nav2_gradient_costmap_plugin', 'progress': 'cmake'}
+[0.206151] (nav2_gradient_costmap_plugin) JobProgress: {'identifier': 'nav2_gradient_costmap_plugin', 'progress': 'build'}
+[0.206219] (nav2_gradient_costmap_plugin) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/umarv/ws/build/nav2_gradient_costmap_plugin', '--', '-j8', '-l8'], 'cwd': '/home/umarv/ws/build/nav2_gradient_costmap_plugin', 'env': OrderedDict([('SUDO_GID', '1000'), ('MAIL', '/var/mail/root'), ('USER', 'root'), ('HOSTNAME', 'umarv-ros2'), ('HOME', '/root'), ('SUDO_UID', '1000'), ('LOGNAME', 'root'), ('TERM', 'xterm'), ('PATH', '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin'), ('DISPLAY', ':0'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SUDO_COMMAND', '/usr/bin/colcon build'), ('SHELL', '/bin/bash'), ('SUDO_USER', 'umarv'), ('LC_ALL', 'C.UTF-8'), ('PWD', '/home/umarv/ws/build/nav2_gradient_costmap_plugin'), ('COLCON', '1')]), 'shell': False}
+[0.208803] (nav2_straightline_planner) JobProgress: {'identifier': 'nav2_straightline_planner', 'progress': 'cmake'}
+[0.209129] (nav2_straightline_planner) JobProgress: {'identifier': 'nav2_straightline_planner', 'progress': 'build'}
+[0.210046] (nav2_straightline_planner) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/umarv/ws/build/nav2_straightline_planner', '--', '-j8', '-l8'], 'cwd': '/home/umarv/ws/build/nav2_straightline_planner', 'env': OrderedDict([('SUDO_GID', '1000'), ('MAIL', '/var/mail/root'), ('USER', 'root'), ('HOSTNAME', 'umarv-ros2'), ('HOME', '/root'), ('SUDO_UID', '1000'), ('LOGNAME', 'root'), ('TERM', 'xterm'), ('PATH', '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin'), ('DISPLAY', ':0'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SUDO_COMMAND', '/usr/bin/colcon build'), ('SHELL', '/bin/bash'), ('SUDO_USER', 'umarv'), ('LC_ALL', 'C.UTF-8'), ('PWD', '/home/umarv/ws/build/nav2_straightline_planner'), ('COLCON', '1')]), 'shell': False}
+[0.216856] (sam_bot_description) JobProgress: {'identifier': 'sam_bot_description', 'progress': 'cmake'}
+[0.216935] (sam_bot_description) JobProgress: {'identifier': 'sam_bot_description', 'progress': 'build'}
+[0.216995] (sam_bot_description) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/umarv/ws/build/sam_bot_description', '--', '-j8', '-l8'], 'cwd': '/home/umarv/ws/build/sam_bot_description', 'env': OrderedDict([('SUDO_GID', '1000'), ('MAIL', '/var/mail/root'), ('USER', 'root'), ('HOSTNAME', 'umarv-ros2'), ('HOME', '/root'), ('SUDO_UID', '1000'), ('LOGNAME', 'root'), ('TERM', 'xterm'), ('PATH', '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin'), ('DISPLAY', ':0'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SUDO_COMMAND', '/usr/bin/colcon build'), ('SHELL', '/bin/bash'), ('SUDO_USER', 'umarv'), ('LC_ALL', 'C.UTF-8'), ('PWD', '/home/umarv/ws/build/sam_bot_description'), ('COLCON', '1')]), 'shell': False}
+[0.237786] (sam_bot_description) CommandEnded: {'returncode': 0}
+[0.240137] (nav2_straightline_planner) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target nav2_straightline_planner_plugin\x1b[0m\n'}
+[0.252853] (nav2_gradient_costmap_plugin) StdoutLine: {'line': b'[100%] Built target nav2_gradient_costmap_plugin_core\n'}
+[0.254601] (sam_bot_description) JobProgress: {'identifier': 'sam_bot_description', 'progress': 'install'}
+[0.260632] (sam_bot_description) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/umarv/ws/build/sam_bot_description'], 'cwd': '/home/umarv/ws/build/sam_bot_description', 'env': OrderedDict([('SUDO_GID', '1000'), ('MAIL', '/var/mail/root'), ('USER', 'root'), ('HOSTNAME', 'umarv-ros2'), ('HOME', '/root'), ('SUDO_UID', '1000'), ('LOGNAME', 'root'), ('TERM', 'xterm'), ('PATH', '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin'), ('DISPLAY', ':0'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SUDO_COMMAND', '/usr/bin/colcon build'), ('SHELL', '/bin/bash'), ('SUDO_USER', 'umarv'), ('LC_ALL', 'C.UTF-8'), ('PWD', '/home/umarv/ws/build/sam_bot_description'), ('COLCON', '1')]), 'shell': False}
+[0.262616] (nav2_straightline_planner) StdoutLine: {'line': b'[ 33%] \x1b[32mBuilding CXX object CMakeFiles/nav2_straightline_planner_plugin.dir/src/straight_line_planner.cpp.o\x1b[0m\n'}
+[0.264374] (nav2_gradient_costmap_plugin) CommandEnded: {'returncode': 0}
+[0.264783] (nav2_straightline_planner) StdoutLine: {'line': b'[ 66%] \x1b[32mBuilding CXX object CMakeFiles/nav2_straightline_planner_plugin.dir/src/rpastar.cpp.o\x1b[0m\n'}
+[0.265069] (sam_bot_description) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[0.265414] (sam_bot_description) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/src\n'}
+[0.265747] (sam_bot_description) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/src/description\n'}
+[0.266041] (sam_bot_description) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/src/description/sam_bot_description.urdf\n'}
+[0.266240] (sam_bot_description) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/launch\n'}
+[0.266321] (sam_bot_description) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/launch/display.launch.py\n'}
+[0.266432] (sam_bot_description) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/rviz\n'}
+[0.266656] (sam_bot_description) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/rviz/urdf_config.rviz\n'}
+[0.266840] (sam_bot_description) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/config\n'}
+[0.266905] (sam_bot_description) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/config/nav2_params.yaml\n'}
+[0.266962] (sam_bot_description) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/config/ekf.yaml\n'}
+[0.267024] (sam_bot_description) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/world\n'}
+[0.267125] (sam_bot_description) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/world/my_world.sdf\n'}
+[0.267209] (sam_bot_description) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/ament_index/resource_index/package_run_dependencies/sam_bot_description\n'}
+[0.267285] (sam_bot_description) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/ament_index/resource_index/parent_prefix_path/sam_bot_description\n'}
+[0.267373] (sam_bot_description) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/environment/ament_prefix_path.sh\n'}
+[0.267551] (sam_bot_description) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/environment/ament_prefix_path.dsv\n'}
+[0.267754] (sam_bot_description) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/environment/path.sh\n'}
+[0.268116] (sam_bot_description) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/environment/path.dsv\n'}
+[0.268353] (sam_bot_description) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/local_setup.bash\n'}
+[0.269127] (sam_bot_description) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/local_setup.sh\n'}
+[0.269680] (sam_bot_description) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/local_setup.zsh\n'}
+[0.269852] (sam_bot_description) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/local_setup.dsv\n'}
+[0.272163] (sam_bot_description) StdoutLine: {'line': b'-- Installing: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/package.dsv\n'}
+[0.273745] (sam_bot_description) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/ament_index/resource_index/packages/sam_bot_description\n'}
+[0.274147] (sam_bot_description) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/cmake/sam_bot_descriptionConfig.cmake\n'}
+[0.275204] (sam_bot_description) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/cmake/sam_bot_descriptionConfig-version.cmake\n'}
+[0.275554] (sam_bot_description) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/package.xml\n'}
+[0.275701] (sam_bot_description) CommandEnded: {'returncode': 0}
+[0.297899] (nav2_gradient_costmap_plugin) JobProgress: {'identifier': 'nav2_gradient_costmap_plugin', 'progress': 'install'}
+[0.298291] (nav2_gradient_costmap_plugin) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/umarv/ws/build/nav2_gradient_costmap_plugin'], 'cwd': '/home/umarv/ws/build/nav2_gradient_costmap_plugin', 'env': OrderedDict([('SUDO_GID', '1000'), ('MAIL', '/var/mail/root'), ('USER', 'root'), ('HOSTNAME', 'umarv-ros2'), ('HOME', '/root'), ('SUDO_UID', '1000'), ('LOGNAME', 'root'), ('TERM', 'xterm'), ('PATH', '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin'), ('DISPLAY', ':0'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SUDO_COMMAND', '/usr/bin/colcon build'), ('SHELL', '/bin/bash'), ('SUDO_USER', 'umarv'), ('LC_ALL', 'C.UTF-8'), ('PWD', '/home/umarv/ws/build/nav2_gradient_costmap_plugin'), ('COLCON', '1')]), 'shell': False}
+[0.301714] (-) TimerEvent: {}
+[0.302439] (nav2_gradient_costmap_plugin) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[0.303190] (nav2_gradient_costmap_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/nav2_gradient_costmap_plugin/lib/libnav2_gradient_costmap_plugin_core.so\n'}
+[0.303325] (nav2_gradient_costmap_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/nav2_gradient_costmap_plugin/share/nav2_gradient_costmap_plugin/gradient_layer.xml\n'}
+[0.303827] (nav2_gradient_costmap_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/nav2_gradient_costmap_plugin/share/ament_index/resource_index/package_run_dependencies/nav2_gradient_costmap_plugin\n'}
+[0.303987] (nav2_gradient_costmap_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/nav2_gradient_costmap_plugin/share/ament_index/resource_index/parent_prefix_path/nav2_gradient_costmap_plugin\n'}
+[0.304114] (nav2_gradient_costmap_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/nav2_gradient_costmap_plugin/share/nav2_gradient_costmap_plugin/environment/ament_prefix_path.sh\n'}
+[0.304252] (nav2_gradient_costmap_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/nav2_gradient_costmap_plugin/share/nav2_gradient_costmap_plugin/environment/ament_prefix_path.dsv\n'}
+[0.304387] (nav2_gradient_costmap_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/nav2_gradient_costmap_plugin/share/nav2_gradient_costmap_plugin/environment/path.sh\n'}
+[0.304503] (nav2_gradient_costmap_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/nav2_gradient_costmap_plugin/share/nav2_gradient_costmap_plugin/environment/path.dsv\n'}
+[0.304617] (nav2_gradient_costmap_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/nav2_gradient_costmap_plugin/share/nav2_gradient_costmap_plugin/local_setup.bash\n'}
+[0.304737] (nav2_gradient_costmap_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/nav2_gradient_costmap_plugin/share/nav2_gradient_costmap_plugin/local_setup.sh\n'}
+[0.305478] (nav2_gradient_costmap_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/nav2_gradient_costmap_plugin/share/nav2_gradient_costmap_plugin/local_setup.zsh\n'}
+[0.306462] (nav2_gradient_costmap_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/nav2_gradient_costmap_plugin/share/nav2_gradient_costmap_plugin/local_setup.dsv\n'}
+[0.308731] (nav2_gradient_costmap_plugin) StdoutLine: {'line': b'-- Installing: /home/umarv/ws/install/nav2_gradient_costmap_plugin/share/nav2_gradient_costmap_plugin/package.dsv\n'}
+[0.309685] (nav2_gradient_costmap_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/nav2_gradient_costmap_plugin/share/ament_index/resource_index/packages/nav2_gradient_costmap_plugin\n'}
+[0.310404] (nav2_gradient_costmap_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/nav2_gradient_costmap_plugin/share/ament_index/resource_index/nav2_costmap_2d__pluginlib__plugin/nav2_gradient_costmap_plugin\n'}
+[0.310976] (nav2_gradient_costmap_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/nav2_gradient_costmap_plugin/share/nav2_gradient_costmap_plugin/cmake/nav2_gradient_costmap_pluginConfig.cmake\n'}
+[0.311180] (nav2_gradient_costmap_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/nav2_gradient_costmap_plugin/share/nav2_gradient_costmap_plugin/cmake/nav2_gradient_costmap_pluginConfig-version.cmake\n'}
+[0.311840] (nav2_gradient_costmap_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/nav2_gradient_costmap_plugin/share/nav2_gradient_costmap_plugin/package.xml\n'}
+[0.312034] (nav2_gradient_costmap_plugin) CommandEnded: {'returncode': 0}
+[0.367440] (sam_bot_description) JobEnded: {'identifier': 'sam_bot_description', 'rc': 0}
+[0.401931] (-) TimerEvent: {}
+[0.403762] (nav2_gradient_costmap_plugin) JobEnded: {'identifier': 'nav2_gradient_costmap_plugin', 'rc': 0}
+[0.457535] (nav2_gps_waypoint_follower_demo) Command: {'cmd': ['/usr/bin/python3', 'setup.py', 'egg_info', '--egg-base', '../../../build/nav2_gps_waypoint_follower_demo', 'build', '--build-base', '/home/umarv/ws/build/nav2_gps_waypoint_follower_demo/build', 'install', '--record', '/home/umarv/ws/build/nav2_gps_waypoint_follower_demo/install.log', '--single-version-externally-managed'], 'cwd': '/home/umarv/ws/src/navigation2_tutorials/nav2_gps_waypoint_follower_demo', 'env': {'SUDO_GID': '1000', 'MAIL': '/var/mail/root', 'USER': 'root', 'HOSTNAME': 'umarv-ros2', 'HOME': '/root', 'SUDO_UID': '1000', 'LOGNAME': 'root', 'TERM': 'xterm', 'PATH': '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin', 'DISPLAY': ':0', 'LANG': 'C.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'SUDO_COMMAND': '/usr/bin/colcon build', 'SHELL': '/bin/bash', 'SUDO_USER': 'umarv', 'LC_ALL': 'C.UTF-8', 'PWD': '/home/umarv/ws/build/nav2_gps_waypoint_follower_demo', 'COLCON': '1', 'PYTHONPATH': '/home/umarv/ws/build/nav2_gps_waypoint_follower_demo/prefix_override:/home/umarv/ws/install/nav2_gps_waypoint_follower_demo/lib/python3.10/site-packages:'}, 'shell': False}
+[0.502081] (-) TimerEvent: {}
+[0.602535] (-) TimerEvent: {}
+[0.636611] (nav2_gps_waypoint_follower_demo) StdoutLine: {'line': b'running egg_info\n'}
+[0.637580] (nav2_gps_waypoint_follower_demo) StdoutLine: {'line': b'writing ../../../build/nav2_gps_waypoint_follower_demo/nav2_gps_waypoint_follower_demo.egg-info/PKG-INFO\n'}
+[0.637900] (nav2_gps_waypoint_follower_demo) StdoutLine: {'line': b'writing dependency_links to ../../../build/nav2_gps_waypoint_follower_demo/nav2_gps_waypoint_follower_demo.egg-info/dependency_links.txt\n'}
+[0.638203] (nav2_gps_waypoint_follower_demo) StdoutLine: {'line': b'writing entry points to ../../../build/nav2_gps_waypoint_follower_demo/nav2_gps_waypoint_follower_demo.egg-info/entry_points.txt\n'}
+[0.638377] (nav2_gps_waypoint_follower_demo) StdoutLine: {'line': b'writing requirements to ../../../build/nav2_gps_waypoint_follower_demo/nav2_gps_waypoint_follower_demo.egg-info/requires.txt\n'}
+[0.638598] (nav2_gps_waypoint_follower_demo) StdoutLine: {'line': b'writing top-level names to ../../../build/nav2_gps_waypoint_follower_demo/nav2_gps_waypoint_follower_demo.egg-info/top_level.txt\n'}
+[0.640272] (nav2_gps_waypoint_follower_demo) StdoutLine: {'line': b"reading manifest file '../../../build/nav2_gps_waypoint_follower_demo/nav2_gps_waypoint_follower_demo.egg-info/SOURCES.txt'\n"}
+[0.641293] (nav2_gps_waypoint_follower_demo) StdoutLine: {'line': b"writing manifest file '../../../build/nav2_gps_waypoint_follower_demo/nav2_gps_waypoint_follower_demo.egg-info/SOURCES.txt'\n"}
+[0.641485] (nav2_gps_waypoint_follower_demo) StdoutLine: {'line': b'running build\n'}
+[0.641602] (nav2_gps_waypoint_follower_demo) StdoutLine: {'line': b'running build_py\n'}
+[0.641850] (nav2_gps_waypoint_follower_demo) StdoutLine: {'line': b'running install\n'}
+[0.642163] (nav2_gps_waypoint_follower_demo) StderrLine: {'line': b'/usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.\n'}
+[0.642299] (nav2_gps_waypoint_follower_demo) StderrLine: {'line': b'  warnings.warn(\n'}
+[0.642386] (nav2_gps_waypoint_follower_demo) StdoutLine: {'line': b'running install_lib\n'}
+[0.643332] (nav2_gps_waypoint_follower_demo) StdoutLine: {'line': b'running install_data\n'}
+[0.643840] (nav2_gps_waypoint_follower_demo) StdoutLine: {'line': b'running install_egg_info\n'}
+[0.645018] (nav2_gps_waypoint_follower_demo) StdoutLine: {'line': b"removing '/home/umarv/ws/install/nav2_gps_waypoint_follower_demo/lib/python3.10/site-packages/nav2_gps_waypoint_follower_demo-0.0.1-py3.10.egg-info' (and everything under it)\n"}
+[0.645403] (nav2_gps_waypoint_follower_demo) StdoutLine: {'line': b'Copying ../../../build/nav2_gps_waypoint_follower_demo/nav2_gps_waypoint_follower_demo.egg-info to /home/umarv/ws/install/nav2_gps_waypoint_follower_demo/lib/python3.10/site-packages/nav2_gps_waypoint_follower_demo-0.0.1-py3.10.egg-info\n'}
+[0.645921] (nav2_gps_waypoint_follower_demo) StdoutLine: {'line': b'running install_scripts\n'}
+[0.666599] (nav2_gps_waypoint_follower_demo) StdoutLine: {'line': b'Installing gps_waypoint_logger script to /home/umarv/ws/install/nav2_gps_waypoint_follower_demo/lib/nav2_gps_waypoint_follower_demo\n'}
+[0.667023] (nav2_gps_waypoint_follower_demo) StdoutLine: {'line': b'Installing interactive_waypoint_follower script to /home/umarv/ws/install/nav2_gps_waypoint_follower_demo/lib/nav2_gps_waypoint_follower_demo\n'}
+[0.667143] (nav2_gps_waypoint_follower_demo) StdoutLine: {'line': b'Installing logged_waypoint_follower script to /home/umarv/ws/install/nav2_gps_waypoint_follower_demo/lib/nav2_gps_waypoint_follower_demo\n'}
+[0.667461] (nav2_gps_waypoint_follower_demo) StdoutLine: {'line': b"writing list of installed files to '/home/umarv/ws/build/nav2_gps_waypoint_follower_demo/install.log'\n"}
+[0.697192] (nav2_gps_waypoint_follower_demo) CommandEnded: {'returncode': 0}
+[0.702845] (-) TimerEvent: {}
+[0.724208] (nav2_gps_waypoint_follower_demo) JobEnded: {'identifier': 'nav2_gps_waypoint_follower_demo', 'rc': 0}
+[0.803034] (-) TimerEvent: {}
+[0.904067] (-) TimerEvent: {}
+[1.004596] (-) TimerEvent: {}
+[1.104982] (-) TimerEvent: {}
+[1.205433] (-) TimerEvent: {}
+[1.305831] (-) TimerEvent: {}
+[1.406309] (-) TimerEvent: {}
+[1.506732] (-) TimerEvent: {}
+[1.607273] (-) TimerEvent: {}
+[1.707944] (-) TimerEvent: {}
+[1.808663] (-) TimerEvent: {}
+[1.909216] (-) TimerEvent: {}
+[2.009763] (-) TimerEvent: {}
+[2.110307] (-) TimerEvent: {}
+[2.210857] (-) TimerEvent: {}
+[2.311245] (-) TimerEvent: {}
+[2.411610] (-) TimerEvent: {}
+[2.512044] (-) TimerEvent: {}
+[2.612590] (-) TimerEvent: {}
+[2.713162] (-) TimerEvent: {}
+[2.813635] (-) TimerEvent: {}
+[2.914178] (-) TimerEvent: {}
+[3.014634] (-) TimerEvent: {}
+[3.115150] (-) TimerEvent: {}
+[3.166403] (nav2_straightline_planner) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:3\x1b[m\x1b[K:\n'}
+[3.166714] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/include/nav2_straightline_planner/rpastar.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kconst bool& nav2_straightline_planner::rpastar::Node::operator==(const nav2_straightline_planner::rpastar::Node&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.166982] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/include/nav2_straightline_planner/rpastar.h:44:36:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kreturning reference to temporary [\x1b[01;35m\x1b[K-Wreturn-local-addr\x1b[m\x1b[K]\n'}
+[3.167121] (nav2_straightline_planner) StderrLine: {'line': b'   44 |                 return \x1b[01;35m\x1b[Kthis->state == rhs.state\x1b[m\x1b[K;\n'}
+[3.167241] (nav2_straightline_planner) StderrLine: {'line': b'      |                        \x1b[01;35m\x1b[K~~~~~~~~~~~~^~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.177108] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid nav2_straightline_planner::rpastar::search()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.177324] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:112:37:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kexpected \xe2\x80\x98\x1b[01m\x1b[K;\x1b[m\x1b[K\xe2\x80\x99 before \xe2\x80\x98\x1b[01m\x1b[K}\x1b[m\x1b[K\xe2\x80\x99 token\n'}
+[3.177417] (nav2_straightline_planner) StderrLine: {'line': b'  112 |     std::cout <<"Search concluded\\n"\n'}
+[3.177505] (nav2_straightline_planner) StderrLine: {'line': b'      |                                     \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[3.177586] (nav2_straightline_planner) StderrLine: {'line': b'      |                                     \x1b[32m\x1b[K;\x1b[m\x1b[K\n'}
+[3.177672] (nav2_straightline_planner) StderrLine: {'line': b'  113 | \n'}
+[3.177746] (nav2_straightline_planner) StderrLine: {'line': b'  114 | \x1b[32m\x1b[K}\x1b[m\x1b[K\n'}
+[3.177838] (nav2_straightline_planner) StderrLine: {'line': b'      | \x1b[32m\x1b[K~\x1b[m\x1b[K                                    \n'}
+[3.190147] (nav2_straightline_planner) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/straight_line_planner.cpp:49\x1b[m\x1b[K:\n'}
+[3.190376] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/include/nav2_straightline_planner/rpastar.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kconst bool& nav2_straightline_planner::rpastar::Node::operator==(const nav2_straightline_planner::rpastar::Node&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.190471] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/include/nav2_straightline_planner/rpastar.h:44:36:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kreturning reference to temporary [\x1b[01;35m\x1b[K-Wreturn-local-addr\x1b[m\x1b[K]\n'}
+[3.190543] (nav2_straightline_planner) StderrLine: {'line': b'   44 |                 return \x1b[01;35m\x1b[Kthis->state == rhs.state\x1b[m\x1b[K;\n'}
+[3.190637] (nav2_straightline_planner) StderrLine: {'line': b'      |                        \x1b[01;35m\x1b[K~~~~~~~~~~~~^~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.215429] (-) TimerEvent: {}
+[3.315924] (-) TimerEvent: {}
+[3.416425] (-) TimerEvent: {}
+[3.517029] (-) TimerEvent: {}
+[3.617541] (-) TimerEvent: {}
+[3.718026] (-) TimerEvent: {}
+[3.818513] (-) TimerEvent: {}
+[3.918952] (-) TimerEvent: {}
+[4.019501] (-) TimerEvent: {}
+[4.119926] (-) TimerEvent: {}
+[4.220479] (-) TimerEvent: {}
+[4.321007] (-) TimerEvent: {}
+[4.421484] (-) TimerEvent: {}
+[4.521867] (-) TimerEvent: {}
+[4.622550] (-) TimerEvent: {}
+[4.668310] (nav2_straightline_planner) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/nav2_straightline_planner_plugin.dir/build.make:90: CMakeFiles/nav2_straightline_planner_plugin.dir/src/rpastar.cpp.o] Error 1\n'}
+[4.668562] (nav2_straightline_planner) StderrLine: {'line': b'gmake[2]: *** Waiting for unfinished jobs....\n'}
+[4.722697] (-) TimerEvent: {}
+[4.823291] (-) TimerEvent: {}
+[4.831928] (nav2_straightline_planner) StderrLine: {'line': b'gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/nav2_straightline_planner_plugin.dir/all] Error 2\n'}
+[4.832323] (nav2_straightline_planner) StderrLine: {'line': b'gmake: *** [Makefile:146: all] Error 2\n'}
+[4.833979] (nav2_straightline_planner) CommandEnded: {'returncode': 2}
+[4.883069] (nav2_straightline_planner) JobEnded: {'identifier': 'nav2_straightline_planner', 'rc': 2}
+[4.894386] (-) EventReactorShutdown: {}

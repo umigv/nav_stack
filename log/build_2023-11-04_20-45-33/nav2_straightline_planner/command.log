@@ -1,0 +1,4 @@
+Invoking command in '/home/umarv/ws/build/nav2_straightline_planner': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner -DCMAKE_INSTALL_PREFIX=/home/umarv/ws/install/nav2_straightline_planner
+Invoked command in '/home/umarv/ws/build/nav2_straightline_planner' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner -DCMAKE_INSTALL_PREFIX=/home/umarv/ws/install/nav2_straightline_planner
+Invoking command in '/home/umarv/ws/build/nav2_straightline_planner': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/umarv/ws/build/nav2_straightline_planner -- -j8 -l8
+Invoked command in '/home/umarv/ws/build/nav2_straightline_planner' returned '2': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/umarv/ws/build/nav2_straightline_planner -- -j8 -l8

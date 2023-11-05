@@ -1,0 +1,1207 @@
+[0.871s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build']
+[0.871s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=8, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, mixin_files=None, mixin=None, verb_parser=<colcon_mixin.mixin.mixin_argument.MixinArgumentDecorator object at 0x7f820b7ec550>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7f820bc477f0>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7f820bc477f0>>, mixin_verb=('build',))
+[0.901s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.901s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.901s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.901s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.901s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.901s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.901s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/umarv/ws'
+[0.901s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.901s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.901s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.901s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.901s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.901s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.902s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.902s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.902s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.910s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[0.910s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[0.910s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[0.910s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[0.910s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[0.910s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.910s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[0.910s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[0.910s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.910s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[0.911s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[0.911s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.911s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[0.911s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[0.911s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ignore', 'ignore_ament_install']
+[0.911s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore'
+[0.911s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore_ament_install'
+[0.911s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_pkg']
+[0.911s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_pkg'
+[0.911s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_meta']
+[0.911s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_meta'
+[0.911s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ros']
+[0.911s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ros'
+[0.911s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['cmake', 'python']
+[0.911s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'cmake'
+[0.912s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python'
+[0.912s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['python_setup_py']
+[0.912s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python_setup_py'
+[0.912s] Level 1:colcon.colcon_core.package_identification:_identify(src/build) by extensions ['ignore', 'ignore_ament_install']
+[0.912s] Level 1:colcon.colcon_core.package_identification:_identify(src/build) by extension 'ignore'
+[0.912s] Level 1:colcon.colcon_core.package_identification:_identify(src/build) by extension 'ignore_ament_install'
+[0.912s] Level 1:colcon.colcon_core.package_identification:_identify(src/build) by extensions ['colcon_pkg']
+[0.912s] Level 1:colcon.colcon_core.package_identification:_identify(src/build) by extension 'colcon_pkg'
+[0.912s] Level 1:colcon.colcon_core.package_identification:_identify(src/build) by extensions ['colcon_meta']
+[0.912s] Level 1:colcon.colcon_core.package_identification:_identify(src/build) by extension 'colcon_meta'
+[0.912s] Level 1:colcon.colcon_core.package_identification:_identify(src/build) by extensions ['ros']
+[0.912s] Level 1:colcon.colcon_core.package_identification:_identify(src/build) by extension 'ros'
+[0.912s] Level 1:colcon.colcon_core.package_identification:_identify(src/build) by extensions ['cmake', 'python']
+[0.912s] Level 1:colcon.colcon_core.package_identification:_identify(src/build) by extension 'cmake'
+[0.912s] Level 1:colcon.colcon_core.package_identification:_identify(src/build) by extension 'python'
+[0.912s] Level 1:colcon.colcon_core.package_identification:_identify(src/build) by extensions ['python_setup_py']
+[0.912s] Level 1:colcon.colcon_core.package_identification:_identify(src/build) by extension 'python_setup_py'
+[0.912s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core) by extensions ['ignore', 'ignore_ament_install']
+[0.913s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core) by extension 'ignore'
+[0.913s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core) by extension 'ignore_ament_install'
+[0.913s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core) by extensions ['colcon_pkg']
+[0.913s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core) by extension 'colcon_pkg'
+[0.913s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core) by extensions ['colcon_meta']
+[0.913s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core) by extension 'colcon_meta'
+[0.913s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core) by extensions ['ros']
+[0.913s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core) by extension 'ros'
+[0.913s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core) by extensions ['cmake', 'python']
+[0.913s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core) by extension 'cmake'
+[0.913s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core) by extension 'python'
+[0.913s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core) by extensions ['python_setup_py']
+[0.913s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core) by extension 'python_setup_py'
+[0.913s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles) by extensions ['ignore', 'ignore_ament_install']
+[0.913s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles) by extension 'ignore'
+[0.913s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles) by extension 'ignore_ament_install'
+[0.913s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles) by extensions ['colcon_pkg']
+[0.913s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles) by extension 'colcon_pkg'
+[0.913s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles) by extensions ['colcon_meta']
+[0.914s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles) by extension 'colcon_meta'
+[0.914s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles) by extensions ['ros']
+[0.914s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles) by extension 'ros'
+[0.914s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles) by extensions ['cmake', 'python']
+[0.914s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles) by extension 'cmake'
+[0.914s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles) by extension 'python'
+[0.914s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles) by extensions ['python_setup_py']
+[0.914s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles) by extension 'python_setup_py'
+[0.914s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1) by extensions ['ignore', 'ignore_ament_install']
+[0.914s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1) by extension 'ignore'
+[0.914s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1) by extension 'ignore_ament_install'
+[0.914s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1) by extensions ['colcon_pkg']
+[0.914s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1) by extension 'colcon_pkg'
+[0.914s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1) by extensions ['colcon_meta']
+[0.914s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1) by extension 'colcon_meta'
+[0.914s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1) by extensions ['ros']
+[0.914s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1) by extension 'ros'
+[0.914s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1) by extensions ['cmake', 'python']
+[0.914s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1) by extension 'cmake'
+[0.914s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1) by extension 'python'
+[0.915s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1) by extensions ['python_setup_py']
+[0.915s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1) by extension 'python_setup_py'
+[0.915s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1/CompilerIdC) by extensions ['ignore', 'ignore_ament_install']
+[0.915s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1/CompilerIdC) by extension 'ignore'
+[0.915s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1/CompilerIdC) by extension 'ignore_ament_install'
+[0.915s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1/CompilerIdC) by extensions ['colcon_pkg']
+[0.915s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1/CompilerIdC) by extension 'colcon_pkg'
+[0.915s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1/CompilerIdC) by extensions ['colcon_meta']
+[0.915s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1/CompilerIdC) by extension 'colcon_meta'
+[0.915s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1/CompilerIdC) by extensions ['ros']
+[0.915s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1/CompilerIdC) by extension 'ros'
+[0.915s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1/CompilerIdC) by extensions ['cmake', 'python']
+[0.915s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1/CompilerIdC) by extension 'cmake'
+[0.915s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1/CompilerIdC) by extension 'python'
+[0.915s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1/CompilerIdC) by extensions ['python_setup_py']
+[0.915s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1/CompilerIdC) by extension 'python_setup_py'
+[0.916s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1/CompilerIdC/tmp) by extensions ['ignore', 'ignore_ament_install']
+[0.916s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1/CompilerIdC/tmp) by extension 'ignore'
+[0.916s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1/CompilerIdC/tmp) by extension 'ignore_ament_install'
+[0.916s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1/CompilerIdC/tmp) by extensions ['colcon_pkg']
+[0.916s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1/CompilerIdC/tmp) by extension 'colcon_pkg'
+[0.916s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1/CompilerIdC/tmp) by extensions ['colcon_meta']
+[0.916s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1/CompilerIdC/tmp) by extension 'colcon_meta'
+[0.916s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1/CompilerIdC/tmp) by extensions ['ros']
+[0.916s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1/CompilerIdC/tmp) by extension 'ros'
+[0.916s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1/CompilerIdC/tmp) by extensions ['cmake', 'python']
+[0.916s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1/CompilerIdC/tmp) by extension 'cmake'
+[0.916s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1/CompilerIdC/tmp) by extension 'python'
+[0.916s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1/CompilerIdC/tmp) by extensions ['python_setup_py']
+[0.916s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1/CompilerIdC/tmp) by extension 'python_setup_py'
+[0.916s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1/CompilerIdCXX) by extensions ['ignore', 'ignore_ament_install']
+[0.916s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1/CompilerIdCXX) by extension 'ignore'
+[0.916s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1/CompilerIdCXX) by extension 'ignore_ament_install'
+[0.917s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1/CompilerIdCXX) by extensions ['colcon_pkg']
+[0.917s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1/CompilerIdCXX) by extension 'colcon_pkg'
+[0.917s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1/CompilerIdCXX) by extensions ['colcon_meta']
+[0.917s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1/CompilerIdCXX) by extension 'colcon_meta'
+[0.917s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1/CompilerIdCXX) by extensions ['ros']
+[0.917s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1/CompilerIdCXX) by extension 'ros'
+[0.917s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1/CompilerIdCXX) by extensions ['cmake', 'python']
+[0.917s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1/CompilerIdCXX) by extension 'cmake'
+[0.917s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1/CompilerIdCXX) by extension 'python'
+[0.917s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1/CompilerIdCXX) by extensions ['python_setup_py']
+[0.917s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1/CompilerIdCXX) by extension 'python_setup_py'
+[0.917s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extensions ['ignore', 'ignore_ament_install']
+[0.917s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extension 'ignore'
+[0.917s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extension 'ignore_ament_install'
+[0.917s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extensions ['colcon_pkg']
+[0.917s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extension 'colcon_pkg'
+[0.917s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extensions ['colcon_meta']
+[0.917s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extension 'colcon_meta'
+[0.918s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extensions ['ros']
+[0.918s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extension 'ros'
+[0.918s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extensions ['cmake', 'python']
+[0.918s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extension 'cmake'
+[0.918s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extension 'python'
+[0.918s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extensions ['python_setup_py']
+[0.918s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extension 'python_setup_py'
+[0.918s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/CMakeTmp) by extensions ['ignore', 'ignore_ament_install']
+[0.918s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/CMakeTmp) by extension 'ignore'
+[0.918s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/CMakeTmp) by extension 'ignore_ament_install'
+[0.918s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/CMakeTmp) by extensions ['colcon_pkg']
+[0.918s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/CMakeTmp) by extension 'colcon_pkg'
+[0.918s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/CMakeTmp) by extensions ['colcon_meta']
+[0.918s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/CMakeTmp) by extension 'colcon_meta'
+[0.918s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/CMakeTmp) by extensions ['ros']
+[0.918s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/CMakeTmp) by extension 'ros'
+[0.918s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/CMakeTmp) by extensions ['cmake', 'python']
+[0.918s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/CMakeTmp) by extension 'cmake'
+[0.918s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/CMakeTmp) by extension 'python'
+[0.919s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/CMakeTmp) by extensions ['python_setup_py']
+[0.919s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/CMakeFiles/CMakeTmp) by extension 'python_setup_py'
+[0.919s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_cppcheck) by extensions ['ignore', 'ignore_ament_install']
+[0.919s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_cppcheck) by extension 'ignore'
+[0.919s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_cppcheck) by extension 'ignore_ament_install'
+[0.919s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_cppcheck) by extensions ['colcon_pkg']
+[0.919s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_cppcheck) by extension 'colcon_pkg'
+[0.919s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_cppcheck) by extensions ['colcon_meta']
+[0.919s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_cppcheck) by extension 'colcon_meta'
+[0.919s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_cppcheck) by extensions ['ros']
+[0.919s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_cppcheck) by extension 'ros'
+[0.919s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_cppcheck) by extensions ['cmake', 'python']
+[0.919s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_cppcheck) by extension 'cmake'
+[0.919s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_cppcheck) by extension 'python'
+[0.919s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_cppcheck) by extensions ['python_setup_py']
+[0.919s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_cppcheck) by extension 'python_setup_py'
+[0.919s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_cpplint) by extensions ['ignore', 'ignore_ament_install']
+[0.920s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_cpplint) by extension 'ignore'
+[0.920s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_cpplint) by extension 'ignore_ament_install'
+[0.920s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_cpplint) by extensions ['colcon_pkg']
+[0.920s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_cpplint) by extension 'colcon_pkg'
+[0.920s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_cpplint) by extensions ['colcon_meta']
+[0.920s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_cpplint) by extension 'colcon_meta'
+[0.920s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_cpplint) by extensions ['ros']
+[0.920s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_cpplint) by extension 'ros'
+[0.920s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_cpplint) by extensions ['cmake', 'python']
+[0.920s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_cpplint) by extension 'cmake'
+[0.920s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_cpplint) by extension 'python'
+[0.920s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_cpplint) by extensions ['python_setup_py']
+[0.920s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_cpplint) by extension 'python_setup_py'
+[0.920s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_lint_cmake) by extensions ['ignore', 'ignore_ament_install']
+[0.920s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_lint_cmake) by extension 'ignore'
+[0.920s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_lint_cmake) by extension 'ignore_ament_install'
+[0.920s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_lint_cmake) by extensions ['colcon_pkg']
+[0.920s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_lint_cmake) by extension 'colcon_pkg'
+[0.921s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_lint_cmake) by extensions ['colcon_meta']
+[0.921s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_lint_cmake) by extension 'colcon_meta'
+[0.921s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_lint_cmake) by extensions ['ros']
+[0.921s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_lint_cmake) by extension 'ros'
+[0.921s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_lint_cmake) by extensions ['cmake', 'python']
+[0.921s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_lint_cmake) by extension 'cmake'
+[0.921s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_lint_cmake) by extension 'python'
+[0.921s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_lint_cmake) by extensions ['python_setup_py']
+[0.921s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_lint_cmake) by extension 'python_setup_py'
+[0.921s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_uncrustify) by extensions ['ignore', 'ignore_ament_install']
+[0.921s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_uncrustify) by extension 'ignore'
+[0.921s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_uncrustify) by extension 'ignore_ament_install'
+[0.921s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_uncrustify) by extensions ['colcon_pkg']
+[0.921s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_uncrustify) by extension 'colcon_pkg'
+[0.921s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_uncrustify) by extensions ['colcon_meta']
+[0.921s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_uncrustify) by extension 'colcon_meta'
+[0.921s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_uncrustify) by extensions ['ros']
+[0.921s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_uncrustify) by extension 'ros'
+[0.922s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_uncrustify) by extensions ['cmake', 'python']
+[0.922s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_uncrustify) by extension 'cmake'
+[0.922s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_uncrustify) by extension 'python'
+[0.922s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_uncrustify) by extensions ['python_setup_py']
+[0.922s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_uncrustify) by extension 'python_setup_py'
+[0.922s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_xmllint) by extensions ['ignore', 'ignore_ament_install']
+[0.922s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_xmllint) by extension 'ignore'
+[0.922s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_xmllint) by extension 'ignore_ament_install'
+[0.922s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_xmllint) by extensions ['colcon_pkg']
+[0.922s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_xmllint) by extension 'colcon_pkg'
+[0.922s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_xmllint) by extensions ['colcon_meta']
+[0.922s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_xmllint) by extension 'colcon_meta'
+[0.922s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_xmllint) by extensions ['ros']
+[0.922s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_xmllint) by extension 'ros'
+[0.922s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_xmllint) by extensions ['cmake', 'python']
+[0.922s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_xmllint) by extension 'cmake'
+[0.922s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_xmllint) by extension 'python'
+[0.922s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_xmllint) by extensions ['python_setup_py']
+[0.923s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_core/ament_xmllint) by extension 'python_setup_py'
+[0.923s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin) by extensions ['ignore', 'ignore_ament_install']
+[0.923s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin) by extension 'ignore'
+[0.923s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin) by extension 'ignore_ament_install'
+[0.923s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin) by extensions ['colcon_pkg']
+[0.923s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin) by extension 'colcon_pkg'
+[0.923s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin) by extensions ['colcon_meta']
+[0.923s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin) by extension 'colcon_meta'
+[0.923s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin) by extensions ['ros']
+[0.923s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin) by extension 'ros'
+[0.923s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin) by extensions ['cmake', 'python']
+[0.923s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin) by extension 'cmake'
+[0.923s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin) by extension 'python'
+[0.923s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin) by extensions ['python_setup_py']
+[0.923s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin) by extension 'python_setup_py'
+[0.923s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles) by extensions ['ignore', 'ignore_ament_install']
+[0.923s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles) by extension 'ignore'
+[0.924s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles) by extension 'ignore_ament_install'
+[0.924s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles) by extensions ['colcon_pkg']
+[0.924s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles) by extension 'colcon_pkg'
+[0.924s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles) by extensions ['colcon_meta']
+[0.924s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles) by extension 'colcon_meta'
+[0.924s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles) by extensions ['ros']
+[0.924s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles) by extension 'ros'
+[0.924s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles) by extensions ['cmake', 'python']
+[0.924s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles) by extension 'cmake'
+[0.924s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles) by extension 'python'
+[0.924s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles) by extensions ['python_setup_py']
+[0.924s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles) by extension 'python_setup_py'
+[0.924s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1) by extensions ['ignore', 'ignore_ament_install']
+[0.924s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1) by extension 'ignore'
+[0.924s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1) by extension 'ignore_ament_install'
+[0.924s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1) by extensions ['colcon_pkg']
+[0.924s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1) by extension 'colcon_pkg'
+[0.924s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1) by extensions ['colcon_meta']
+[0.924s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1) by extension 'colcon_meta'
+[0.925s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1) by extensions ['ros']
+[0.925s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1) by extension 'ros'
+[0.925s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1) by extensions ['cmake', 'python']
+[0.925s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1) by extension 'cmake'
+[0.925s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1) by extension 'python'
+[0.925s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1) by extensions ['python_setup_py']
+[0.925s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1) by extension 'python_setup_py'
+[0.925s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1/CompilerIdC) by extensions ['ignore', 'ignore_ament_install']
+[0.925s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1/CompilerIdC) by extension 'ignore'
+[0.925s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1/CompilerIdC) by extension 'ignore_ament_install'
+[0.925s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1/CompilerIdC) by extensions ['colcon_pkg']
+[0.925s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1/CompilerIdC) by extension 'colcon_pkg'
+[0.925s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1/CompilerIdC) by extensions ['colcon_meta']
+[0.925s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1/CompilerIdC) by extension 'colcon_meta'
+[0.925s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1/CompilerIdC) by extensions ['ros']
+[0.925s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1/CompilerIdC) by extension 'ros'
+[0.925s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1/CompilerIdC) by extensions ['cmake', 'python']
+[0.925s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1/CompilerIdC) by extension 'cmake'
+[0.925s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1/CompilerIdC) by extension 'python'
+[0.925s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1/CompilerIdC) by extensions ['python_setup_py']
+[0.926s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1/CompilerIdC) by extension 'python_setup_py'
+[0.926s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1/CompilerIdC/tmp) by extensions ['ignore', 'ignore_ament_install']
+[0.926s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1/CompilerIdC/tmp) by extension 'ignore'
+[0.926s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1/CompilerIdC/tmp) by extension 'ignore_ament_install'
+[0.926s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1/CompilerIdC/tmp) by extensions ['colcon_pkg']
+[0.926s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1/CompilerIdC/tmp) by extension 'colcon_pkg'
+[0.926s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1/CompilerIdC/tmp) by extensions ['colcon_meta']
+[0.926s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1/CompilerIdC/tmp) by extension 'colcon_meta'
+[0.926s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1/CompilerIdC/tmp) by extensions ['ros']
+[0.926s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1/CompilerIdC/tmp) by extension 'ros'
+[0.926s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1/CompilerIdC/tmp) by extensions ['cmake', 'python']
+[0.926s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1/CompilerIdC/tmp) by extension 'cmake'
+[0.926s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1/CompilerIdC/tmp) by extension 'python'
+[0.926s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1/CompilerIdC/tmp) by extensions ['python_setup_py']
+[0.926s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1/CompilerIdC/tmp) by extension 'python_setup_py'
+[0.927s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1/CompilerIdCXX) by extensions ['ignore', 'ignore_ament_install']
+[0.927s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1/CompilerIdCXX) by extension 'ignore'
+[0.927s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1/CompilerIdCXX) by extension 'ignore_ament_install'
+[0.927s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1/CompilerIdCXX) by extensions ['colcon_pkg']
+[0.927s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1/CompilerIdCXX) by extension 'colcon_pkg'
+[0.927s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1/CompilerIdCXX) by extensions ['colcon_meta']
+[0.927s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1/CompilerIdCXX) by extension 'colcon_meta'
+[0.927s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1/CompilerIdCXX) by extensions ['ros']
+[0.927s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1/CompilerIdCXX) by extension 'ros'
+[0.927s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1/CompilerIdCXX) by extensions ['cmake', 'python']
+[0.927s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1/CompilerIdCXX) by extension 'cmake'
+[0.927s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1/CompilerIdCXX) by extension 'python'
+[0.927s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1/CompilerIdCXX) by extensions ['python_setup_py']
+[0.927s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1/CompilerIdCXX) by extension 'python_setup_py'
+[0.927s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extensions ['ignore', 'ignore_ament_install']
+[0.927s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extension 'ignore'
+[0.927s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extension 'ignore_ament_install'
+[0.927s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extensions ['colcon_pkg']
+[0.928s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extension 'colcon_pkg'
+[0.928s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extensions ['colcon_meta']
+[0.928s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extension 'colcon_meta'
+[0.928s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extensions ['ros']
+[0.928s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extension 'ros'
+[0.928s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extensions ['cmake', 'python']
+[0.928s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extension 'cmake'
+[0.928s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extension 'python'
+[0.928s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extensions ['python_setup_py']
+[0.928s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extension 'python_setup_py'
+[0.928s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/CMakeTmp) by extensions ['ignore', 'ignore_ament_install']
+[0.928s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/CMakeTmp) by extension 'ignore'
+[0.928s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/CMakeTmp) by extension 'ignore_ament_install'
+[0.928s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/CMakeTmp) by extensions ['colcon_pkg']
+[0.928s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/CMakeTmp) by extension 'colcon_pkg'
+[0.928s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/CMakeTmp) by extensions ['colcon_meta']
+[0.928s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/CMakeTmp) by extension 'colcon_meta'
+[0.928s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/CMakeTmp) by extensions ['ros']
+[0.928s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/CMakeTmp) by extension 'ros'
+[0.928s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/CMakeTmp) by extensions ['cmake', 'python']
+[0.929s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/CMakeTmp) by extension 'cmake'
+[0.929s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/CMakeTmp) by extension 'python'
+[0.929s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/CMakeTmp) by extensions ['python_setup_py']
+[0.929s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_gradient_costmap_plugin/CMakeFiles/CMakeTmp) by extension 'python_setup_py'
+[0.929s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner) by extensions ['ignore', 'ignore_ament_install']
+[0.929s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner) by extension 'ignore'
+[0.929s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner) by extension 'ignore_ament_install'
+[0.929s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner) by extensions ['colcon_pkg']
+[0.929s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner) by extension 'colcon_pkg'
+[0.929s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner) by extensions ['colcon_meta']
+[0.929s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner) by extension 'colcon_meta'
+[0.929s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner) by extensions ['ros']
+[0.929s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner) by extension 'ros'
+[0.929s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner) by extensions ['cmake', 'python']
+[0.929s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner) by extension 'cmake'
+[0.929s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner) by extension 'python'
+[0.929s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner) by extensions ['python_setup_py']
+[0.929s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner) by extension 'python_setup_py'
+[0.929s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles) by extensions ['ignore', 'ignore_ament_install']
+[0.929s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles) by extension 'ignore'
+[0.930s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles) by extension 'ignore_ament_install'
+[0.930s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles) by extensions ['colcon_pkg']
+[0.930s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles) by extension 'colcon_pkg'
+[0.930s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles) by extensions ['colcon_meta']
+[0.930s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles) by extension 'colcon_meta'
+[0.930s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles) by extensions ['ros']
+[0.930s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles) by extension 'ros'
+[0.930s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles) by extensions ['cmake', 'python']
+[0.930s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles) by extension 'cmake'
+[0.930s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles) by extension 'python'
+[0.930s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles) by extensions ['python_setup_py']
+[0.930s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles) by extension 'python_setup_py'
+[0.930s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1) by extensions ['ignore', 'ignore_ament_install']
+[0.930s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1) by extension 'ignore'
+[0.930s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1) by extension 'ignore_ament_install'
+[0.930s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1) by extensions ['colcon_pkg']
+[0.930s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1) by extension 'colcon_pkg'
+[0.930s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1) by extensions ['colcon_meta']
+[0.930s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1) by extension 'colcon_meta'
+[0.931s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1) by extensions ['ros']
+[0.931s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1) by extension 'ros'
+[0.931s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1) by extensions ['cmake', 'python']
+[0.931s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1) by extension 'cmake'
+[0.931s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1) by extension 'python'
+[0.931s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1) by extensions ['python_setup_py']
+[0.931s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1) by extension 'python_setup_py'
+[0.931s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1/CompilerIdC) by extensions ['ignore', 'ignore_ament_install']
+[0.931s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1/CompilerIdC) by extension 'ignore'
+[0.931s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1/CompilerIdC) by extension 'ignore_ament_install'
+[0.931s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1/CompilerIdC) by extensions ['colcon_pkg']
+[0.931s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1/CompilerIdC) by extension 'colcon_pkg'
+[0.931s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1/CompilerIdC) by extensions ['colcon_meta']
+[0.931s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1/CompilerIdC) by extension 'colcon_meta'
+[0.931s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1/CompilerIdC) by extensions ['ros']
+[0.931s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1/CompilerIdC) by extension 'ros'
+[0.931s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1/CompilerIdC) by extensions ['cmake', 'python']
+[0.931s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1/CompilerIdC) by extension 'cmake'
+[0.931s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1/CompilerIdC) by extension 'python'
+[0.931s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1/CompilerIdC) by extensions ['python_setup_py']
+[0.932s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1/CompilerIdC) by extension 'python_setup_py'
+[0.932s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1/CompilerIdC/tmp) by extensions ['ignore', 'ignore_ament_install']
+[0.932s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1/CompilerIdC/tmp) by extension 'ignore'
+[0.932s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1/CompilerIdC/tmp) by extension 'ignore_ament_install'
+[0.932s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1/CompilerIdC/tmp) by extensions ['colcon_pkg']
+[0.932s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1/CompilerIdC/tmp) by extension 'colcon_pkg'
+[0.932s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1/CompilerIdC/tmp) by extensions ['colcon_meta']
+[0.932s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1/CompilerIdC/tmp) by extension 'colcon_meta'
+[0.932s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1/CompilerIdC/tmp) by extensions ['ros']
+[0.932s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1/CompilerIdC/tmp) by extension 'ros'
+[0.932s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1/CompilerIdC/tmp) by extensions ['cmake', 'python']
+[0.932s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1/CompilerIdC/tmp) by extension 'cmake'
+[0.932s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1/CompilerIdC/tmp) by extension 'python'
+[0.932s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1/CompilerIdC/tmp) by extensions ['python_setup_py']
+[0.932s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1/CompilerIdC/tmp) by extension 'python_setup_py'
+[0.932s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1/CompilerIdCXX) by extensions ['ignore', 'ignore_ament_install']
+[0.932s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1/CompilerIdCXX) by extension 'ignore'
+[0.932s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1/CompilerIdCXX) by extension 'ignore_ament_install'
+[0.933s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1/CompilerIdCXX) by extensions ['colcon_pkg']
+[0.933s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1/CompilerIdCXX) by extension 'colcon_pkg'
+[0.933s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1/CompilerIdCXX) by extensions ['colcon_meta']
+[0.933s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1/CompilerIdCXX) by extension 'colcon_meta'
+[0.933s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1/CompilerIdCXX) by extensions ['ros']
+[0.933s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1/CompilerIdCXX) by extension 'ros'
+[0.933s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1/CompilerIdCXX) by extensions ['cmake', 'python']
+[0.933s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1/CompilerIdCXX) by extension 'cmake'
+[0.933s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1/CompilerIdCXX) by extension 'python'
+[0.933s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1/CompilerIdCXX) by extensions ['python_setup_py']
+[0.933s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1/CompilerIdCXX) by extension 'python_setup_py'
+[0.933s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extensions ['ignore', 'ignore_ament_install']
+[0.933s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extension 'ignore'
+[0.933s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extension 'ignore_ament_install'
+[0.933s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extensions ['colcon_pkg']
+[0.933s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extension 'colcon_pkg'
+[0.933s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extensions ['colcon_meta']
+[0.933s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extension 'colcon_meta'
+[0.933s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extensions ['ros']
+[0.934s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extension 'ros'
+[0.934s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extensions ['cmake', 'python']
+[0.934s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extension 'cmake'
+[0.934s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extension 'python'
+[0.934s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extensions ['python_setup_py']
+[0.934s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extension 'python_setup_py'
+[0.934s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/CMakeTmp) by extensions ['ignore', 'ignore_ament_install']
+[0.934s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/CMakeTmp) by extension 'ignore'
+[0.934s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/CMakeTmp) by extension 'ignore_ament_install'
+[0.934s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/CMakeTmp) by extensions ['colcon_pkg']
+[0.934s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/CMakeTmp) by extension 'colcon_pkg'
+[0.934s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/CMakeTmp) by extensions ['colcon_meta']
+[0.934s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/CMakeTmp) by extension 'colcon_meta'
+[0.934s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/CMakeTmp) by extensions ['ros']
+[0.934s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/CMakeTmp) by extension 'ros'
+[0.934s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/CMakeTmp) by extensions ['cmake', 'python']
+[0.934s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/CMakeTmp) by extension 'cmake'
+[0.934s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/CMakeTmp) by extension 'python'
+[0.934s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/CMakeTmp) by extensions ['python_setup_py']
+[0.935s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/CMakeFiles/CMakeTmp) by extension 'python_setup_py'
+[0.935s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_copyright) by extensions ['ignore', 'ignore_ament_install']
+[0.935s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_copyright) by extension 'ignore'
+[0.935s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_copyright) by extension 'ignore_ament_install'
+[0.935s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_copyright) by extensions ['colcon_pkg']
+[0.935s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_copyright) by extension 'colcon_pkg'
+[0.935s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_copyright) by extensions ['colcon_meta']
+[0.935s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_copyright) by extension 'colcon_meta'
+[0.935s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_copyright) by extensions ['ros']
+[0.935s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_copyright) by extension 'ros'
+[0.935s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_copyright) by extensions ['cmake', 'python']
+[0.935s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_copyright) by extension 'cmake'
+[0.935s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_copyright) by extension 'python'
+[0.935s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_copyright) by extensions ['python_setup_py']
+[0.935s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_copyright) by extension 'python_setup_py'
+[0.935s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_cppcheck) by extensions ['ignore', 'ignore_ament_install']
+[0.935s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_cppcheck) by extension 'ignore'
+[0.935s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_cppcheck) by extension 'ignore_ament_install'
+[0.936s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_cppcheck) by extensions ['colcon_pkg']
+[0.936s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_cppcheck) by extension 'colcon_pkg'
+[0.936s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_cppcheck) by extensions ['colcon_meta']
+[0.936s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_cppcheck) by extension 'colcon_meta'
+[0.936s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_cppcheck) by extensions ['ros']
+[0.936s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_cppcheck) by extension 'ros'
+[0.936s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_cppcheck) by extensions ['cmake', 'python']
+[0.936s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_cppcheck) by extension 'cmake'
+[0.936s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_cppcheck) by extension 'python'
+[0.936s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_cppcheck) by extensions ['python_setup_py']
+[0.936s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_cppcheck) by extension 'python_setup_py'
+[0.936s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_cpplint) by extensions ['ignore', 'ignore_ament_install']
+[0.936s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_cpplint) by extension 'ignore'
+[0.936s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_cpplint) by extension 'ignore_ament_install'
+[0.936s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_cpplint) by extensions ['colcon_pkg']
+[0.936s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_cpplint) by extension 'colcon_pkg'
+[0.936s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_cpplint) by extensions ['colcon_meta']
+[0.936s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_cpplint) by extension 'colcon_meta'
+[0.936s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_cpplint) by extensions ['ros']
+[0.936s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_cpplint) by extension 'ros'
+[0.937s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_cpplint) by extensions ['cmake', 'python']
+[0.937s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_cpplint) by extension 'cmake'
+[0.937s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_cpplint) by extension 'python'
+[0.937s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_cpplint) by extensions ['python_setup_py']
+[0.937s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_cpplint) by extension 'python_setup_py'
+[0.937s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_lint_cmake) by extensions ['ignore', 'ignore_ament_install']
+[0.937s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_lint_cmake) by extension 'ignore'
+[0.937s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_lint_cmake) by extension 'ignore_ament_install'
+[0.937s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_lint_cmake) by extensions ['colcon_pkg']
+[0.937s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_lint_cmake) by extension 'colcon_pkg'
+[0.937s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_lint_cmake) by extensions ['colcon_meta']
+[0.937s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_lint_cmake) by extension 'colcon_meta'
+[0.937s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_lint_cmake) by extensions ['ros']
+[0.937s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_lint_cmake) by extension 'ros'
+[0.937s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_lint_cmake) by extensions ['cmake', 'python']
+[0.937s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_lint_cmake) by extension 'cmake'
+[0.937s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_lint_cmake) by extension 'python'
+[0.937s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_lint_cmake) by extensions ['python_setup_py']
+[0.937s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_lint_cmake) by extension 'python_setup_py'
+[0.938s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_uncrustify) by extensions ['ignore', 'ignore_ament_install']
+[0.938s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_uncrustify) by extension 'ignore'
+[0.938s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_uncrustify) by extension 'ignore_ament_install'
+[0.938s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_uncrustify) by extensions ['colcon_pkg']
+[0.938s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_uncrustify) by extension 'colcon_pkg'
+[0.938s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_uncrustify) by extensions ['colcon_meta']
+[0.938s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_uncrustify) by extension 'colcon_meta'
+[0.938s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_uncrustify) by extensions ['ros']
+[0.938s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_uncrustify) by extension 'ros'
+[0.938s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_uncrustify) by extensions ['cmake', 'python']
+[0.938s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_uncrustify) by extension 'cmake'
+[0.938s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_uncrustify) by extension 'python'
+[0.938s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_uncrustify) by extensions ['python_setup_py']
+[0.938s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_uncrustify) by extension 'python_setup_py'
+[0.938s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_xmllint) by extensions ['ignore', 'ignore_ament_install']
+[0.938s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_xmllint) by extension 'ignore'
+[0.938s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_xmllint) by extension 'ignore_ament_install'
+[0.938s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_xmllint) by extensions ['colcon_pkg']
+[0.938s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_xmllint) by extension 'colcon_pkg'
+[0.938s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_xmllint) by extensions ['colcon_meta']
+[0.939s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_xmllint) by extension 'colcon_meta'
+[0.939s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_xmllint) by extensions ['ros']
+[0.939s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_xmllint) by extension 'ros'
+[0.939s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_xmllint) by extensions ['cmake', 'python']
+[0.939s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_xmllint) by extension 'cmake'
+[0.939s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_xmllint) by extension 'python'
+[0.939s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_xmllint) by extensions ['python_setup_py']
+[0.939s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/nav2_straightline_planner/ament_xmllint) by extension 'python_setup_py'
+[0.939s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base) by extensions ['ignore', 'ignore_ament_install']
+[0.939s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base) by extension 'ignore'
+[0.939s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base) by extension 'ignore_ament_install'
+[0.939s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base) by extensions ['colcon_pkg']
+[0.939s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base) by extension 'colcon_pkg'
+[0.939s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base) by extensions ['colcon_meta']
+[0.939s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base) by extension 'colcon_meta'
+[0.939s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base) by extensions ['ros']
+[0.939s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base) by extension 'ros'
+[0.940s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base) by extensions ['cmake', 'python']
+[0.940s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base) by extension 'cmake'
+[0.940s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base) by extension 'python'
+[0.940s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base) by extensions ['python_setup_py']
+[0.940s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base) by extension 'python_setup_py'
+[0.940s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles) by extensions ['ignore', 'ignore_ament_install']
+[0.940s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles) by extension 'ignore'
+[0.940s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles) by extension 'ignore_ament_install'
+[0.940s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles) by extensions ['colcon_pkg']
+[0.940s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles) by extension 'colcon_pkg'
+[0.940s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles) by extensions ['colcon_meta']
+[0.940s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles) by extension 'colcon_meta'
+[0.940s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles) by extensions ['ros']
+[0.940s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles) by extension 'ros'
+[0.940s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles) by extensions ['cmake', 'python']
+[0.941s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles) by extension 'cmake'
+[0.941s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles) by extension 'python'
+[0.941s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles) by extensions ['python_setup_py']
+[0.941s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles) by extension 'python_setup_py'
+[0.941s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1) by extensions ['ignore', 'ignore_ament_install']
+[0.941s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1) by extension 'ignore'
+[0.941s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1) by extension 'ignore_ament_install'
+[0.941s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1) by extensions ['colcon_pkg']
+[0.941s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1) by extension 'colcon_pkg'
+[0.941s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1) by extensions ['colcon_meta']
+[0.941s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1) by extension 'colcon_meta'
+[0.941s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1) by extensions ['ros']
+[0.941s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1) by extension 'ros'
+[0.941s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1) by extensions ['cmake', 'python']
+[0.942s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1) by extension 'cmake'
+[0.942s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1) by extension 'python'
+[0.942s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1) by extensions ['python_setup_py']
+[0.942s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1) by extension 'python_setup_py'
+[0.942s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1/CompilerIdC) by extensions ['ignore', 'ignore_ament_install']
+[0.942s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1/CompilerIdC) by extension 'ignore'
+[0.942s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1/CompilerIdC) by extension 'ignore_ament_install'
+[0.942s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1/CompilerIdC) by extensions ['colcon_pkg']
+[0.942s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1/CompilerIdC) by extension 'colcon_pkg'
+[0.942s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1/CompilerIdC) by extensions ['colcon_meta']
+[0.943s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1/CompilerIdC) by extension 'colcon_meta'
+[0.943s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1/CompilerIdC) by extensions ['ros']
+[0.943s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1/CompilerIdC) by extension 'ros'
+[0.943s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1/CompilerIdC) by extensions ['cmake', 'python']
+[0.943s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1/CompilerIdC) by extension 'cmake'
+[0.943s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1/CompilerIdC) by extension 'python'
+[0.943s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1/CompilerIdC) by extensions ['python_setup_py']
+[0.943s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1/CompilerIdC) by extension 'python_setup_py'
+[0.943s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1/CompilerIdC/tmp) by extensions ['ignore', 'ignore_ament_install']
+[0.943s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1/CompilerIdC/tmp) by extension 'ignore'
+[0.943s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1/CompilerIdC/tmp) by extension 'ignore_ament_install'
+[0.943s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1/CompilerIdC/tmp) by extensions ['colcon_pkg']
+[0.943s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1/CompilerIdC/tmp) by extension 'colcon_pkg'
+[0.943s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1/CompilerIdC/tmp) by extensions ['colcon_meta']
+[0.944s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1/CompilerIdC/tmp) by extension 'colcon_meta'
+[0.944s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1/CompilerIdC/tmp) by extensions ['ros']
+[0.944s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1/CompilerIdC/tmp) by extension 'ros'
+[0.944s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1/CompilerIdC/tmp) by extensions ['cmake', 'python']
+[0.944s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1/CompilerIdC/tmp) by extension 'cmake'
+[0.944s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1/CompilerIdC/tmp) by extension 'python'
+[0.944s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1/CompilerIdC/tmp) by extensions ['python_setup_py']
+[0.944s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1/CompilerIdC/tmp) by extension 'python_setup_py'
+[0.944s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1/CompilerIdCXX) by extensions ['ignore', 'ignore_ament_install']
+[0.944s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1/CompilerIdCXX) by extension 'ignore'
+[0.944s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1/CompilerIdCXX) by extension 'ignore_ament_install'
+[0.944s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1/CompilerIdCXX) by extensions ['colcon_pkg']
+[0.944s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1/CompilerIdCXX) by extension 'colcon_pkg'
+[0.944s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1/CompilerIdCXX) by extensions ['colcon_meta']
+[0.944s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1/CompilerIdCXX) by extension 'colcon_meta'
+[0.944s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1/CompilerIdCXX) by extensions ['ros']
+[0.944s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1/CompilerIdCXX) by extension 'ros'
+[0.945s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1/CompilerIdCXX) by extensions ['cmake', 'python']
+[0.945s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1/CompilerIdCXX) by extension 'cmake'
+[0.945s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1/CompilerIdCXX) by extension 'python'
+[0.945s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1/CompilerIdCXX) by extensions ['python_setup_py']
+[0.945s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1/CompilerIdCXX) by extension 'python_setup_py'
+[0.945s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extensions ['ignore', 'ignore_ament_install']
+[0.945s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extension 'ignore'
+[0.945s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extension 'ignore_ament_install'
+[0.945s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extensions ['colcon_pkg']
+[0.945s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extension 'colcon_pkg'
+[0.945s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extensions ['colcon_meta']
+[0.945s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extension 'colcon_meta'
+[0.945s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extensions ['ros']
+[0.945s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extension 'ros'
+[0.945s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extensions ['cmake', 'python']
+[0.945s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extension 'cmake'
+[0.945s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extension 'python'
+[0.945s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extensions ['python_setup_py']
+[0.945s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extension 'python_setup_py'
+[0.946s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/CMakeTmp) by extensions ['ignore', 'ignore_ament_install']
+[0.946s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/CMakeTmp) by extension 'ignore'
+[0.946s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/CMakeTmp) by extension 'ignore_ament_install'
+[0.946s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/CMakeTmp) by extensions ['colcon_pkg']
+[0.946s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/CMakeTmp) by extension 'colcon_pkg'
+[0.946s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/CMakeTmp) by extensions ['colcon_meta']
+[0.946s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/CMakeTmp) by extension 'colcon_meta'
+[0.946s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/CMakeTmp) by extensions ['ros']
+[0.946s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/CMakeTmp) by extension 'ros'
+[0.946s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/CMakeTmp) by extensions ['cmake', 'python']
+[0.946s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/CMakeTmp) by extension 'cmake'
+[0.946s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/CMakeTmp) by extension 'python'
+[0.946s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/CMakeTmp) by extensions ['python_setup_py']
+[0.946s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/CMakeFiles/CMakeTmp) by extension 'python_setup_py'
+[0.946s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/ament_cppcheck) by extensions ['ignore', 'ignore_ament_install']
+[0.947s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/ament_cppcheck) by extension 'ignore'
+[0.947s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/ament_cppcheck) by extension 'ignore_ament_install'
+[0.947s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/ament_cppcheck) by extensions ['colcon_pkg']
+[0.947s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/ament_cppcheck) by extension 'colcon_pkg'
+[0.947s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/ament_cppcheck) by extensions ['colcon_meta']
+[0.947s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/ament_cppcheck) by extension 'colcon_meta'
+[0.947s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/ament_cppcheck) by extensions ['ros']
+[0.947s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/ament_cppcheck) by extension 'ros'
+[0.947s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/ament_cppcheck) by extensions ['cmake', 'python']
+[0.947s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/ament_cppcheck) by extension 'cmake'
+[0.947s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/ament_cppcheck) by extension 'python'
+[0.947s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/ament_cppcheck) by extensions ['python_setup_py']
+[0.947s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/ament_cppcheck) by extension 'python_setup_py'
+[0.947s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/ament_lint_cmake) by extensions ['ignore', 'ignore_ament_install']
+[0.947s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/ament_lint_cmake) by extension 'ignore'
+[0.947s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/ament_lint_cmake) by extension 'ignore_ament_install'
+[0.948s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/ament_lint_cmake) by extensions ['colcon_pkg']
+[0.948s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/ament_lint_cmake) by extension 'colcon_pkg'
+[0.948s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/ament_lint_cmake) by extensions ['colcon_meta']
+[0.948s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/ament_lint_cmake) by extension 'colcon_meta'
+[0.948s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/ament_lint_cmake) by extensions ['ros']
+[0.948s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/ament_lint_cmake) by extension 'ros'
+[0.948s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/ament_lint_cmake) by extensions ['cmake', 'python']
+[0.948s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/ament_lint_cmake) by extension 'cmake'
+[0.948s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/ament_lint_cmake) by extension 'python'
+[0.948s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/ament_lint_cmake) by extensions ['python_setup_py']
+[0.948s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/ament_lint_cmake) by extension 'python_setup_py'
+[0.948s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/ament_uncrustify) by extensions ['ignore', 'ignore_ament_install']
+[0.948s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/ament_uncrustify) by extension 'ignore'
+[0.948s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/ament_uncrustify) by extension 'ignore_ament_install'
+[0.948s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/ament_uncrustify) by extensions ['colcon_pkg']
+[0.948s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/ament_uncrustify) by extension 'colcon_pkg'
+[0.948s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/ament_uncrustify) by extensions ['colcon_meta']
+[0.948s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/ament_uncrustify) by extension 'colcon_meta'
+[0.948s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/ament_uncrustify) by extensions ['ros']
+[0.948s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/ament_uncrustify) by extension 'ros'
+[0.948s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/ament_uncrustify) by extensions ['cmake', 'python']
+[0.948s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/ament_uncrustify) by extension 'cmake'
+[0.949s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/ament_uncrustify) by extension 'python'
+[0.949s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/ament_uncrustify) by extensions ['python_setup_py']
+[0.949s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/ament_uncrustify) by extension 'python_setup_py'
+[0.949s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/ament_xmllint) by extensions ['ignore', 'ignore_ament_install']
+[0.949s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/ament_xmllint) by extension 'ignore'
+[0.949s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/ament_xmllint) by extension 'ignore_ament_install'
+[0.949s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/ament_xmllint) by extensions ['colcon_pkg']
+[0.949s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/ament_xmllint) by extension 'colcon_pkg'
+[0.949s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/ament_xmllint) by extensions ['colcon_meta']
+[0.949s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/ament_xmllint) by extension 'colcon_meta'
+[0.949s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/ament_xmllint) by extensions ['ros']
+[0.949s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/ament_xmllint) by extension 'ros'
+[0.949s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/ament_xmllint) by extensions ['cmake', 'python']
+[0.949s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/ament_xmllint) by extension 'cmake'
+[0.949s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/ament_xmllint) by extension 'python'
+[0.949s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/ament_xmllint) by extensions ['python_setup_py']
+[0.949s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/polygon_base/ament_xmllint) by extension 'python_setup_py'
+[0.950s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description) by extensions ['ignore', 'ignore_ament_install']
+[0.950s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description) by extension 'ignore'
+[0.950s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description) by extension 'ignore_ament_install'
+[0.950s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description) by extensions ['colcon_pkg']
+[0.950s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description) by extension 'colcon_pkg'
+[0.950s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description) by extensions ['colcon_meta']
+[0.950s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description) by extension 'colcon_meta'
+[0.950s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description) by extensions ['ros']
+[0.950s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description) by extension 'ros'
+[0.950s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description) by extensions ['cmake', 'python']
+[0.950s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description) by extension 'cmake'
+[0.950s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description) by extension 'python'
+[0.950s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description) by extensions ['python_setup_py']
+[0.950s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description) by extension 'python_setup_py'
+[0.950s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles) by extensions ['ignore', 'ignore_ament_install']
+[0.950s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles) by extension 'ignore'
+[0.950s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles) by extension 'ignore_ament_install'
+[0.951s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles) by extensions ['colcon_pkg']
+[0.951s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles) by extension 'colcon_pkg'
+[0.951s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles) by extensions ['colcon_meta']
+[0.951s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles) by extension 'colcon_meta'
+[0.951s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles) by extensions ['ros']
+[0.951s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles) by extension 'ros'
+[0.951s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles) by extensions ['cmake', 'python']
+[0.951s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles) by extension 'cmake'
+[0.951s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles) by extension 'python'
+[0.951s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles) by extensions ['python_setup_py']
+[0.951s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles) by extension 'python_setup_py'
+[0.951s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1) by extensions ['ignore', 'ignore_ament_install']
+[0.951s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1) by extension 'ignore'
+[0.951s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1) by extension 'ignore_ament_install'
+[0.951s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1) by extensions ['colcon_pkg']
+[0.951s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1) by extension 'colcon_pkg'
+[0.952s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1) by extensions ['colcon_meta']
+[0.952s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1) by extension 'colcon_meta'
+[0.952s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1) by extensions ['ros']
+[0.952s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1) by extension 'ros'
+[0.952s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1) by extensions ['cmake', 'python']
+[0.952s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1) by extension 'cmake'
+[0.952s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1) by extension 'python'
+[0.952s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1) by extensions ['python_setup_py']
+[0.952s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1) by extension 'python_setup_py'
+[0.952s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1/CompilerIdC) by extensions ['ignore', 'ignore_ament_install']
+[0.952s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1/CompilerIdC) by extension 'ignore'
+[0.952s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1/CompilerIdC) by extension 'ignore_ament_install'
+[0.952s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1/CompilerIdC) by extensions ['colcon_pkg']
+[0.952s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1/CompilerIdC) by extension 'colcon_pkg'
+[0.952s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1/CompilerIdC) by extensions ['colcon_meta']
+[0.952s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1/CompilerIdC) by extension 'colcon_meta'
+[0.952s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1/CompilerIdC) by extensions ['ros']
+[0.952s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1/CompilerIdC) by extension 'ros'
+[0.952s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1/CompilerIdC) by extensions ['cmake', 'python']
+[0.952s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1/CompilerIdC) by extension 'cmake'
+[0.953s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1/CompilerIdC) by extension 'python'
+[0.953s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1/CompilerIdC) by extensions ['python_setup_py']
+[0.953s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1/CompilerIdC) by extension 'python_setup_py'
+[0.953s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1/CompilerIdC/tmp) by extensions ['ignore', 'ignore_ament_install']
+[0.953s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1/CompilerIdC/tmp) by extension 'ignore'
+[0.953s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1/CompilerIdC/tmp) by extension 'ignore_ament_install'
+[0.953s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1/CompilerIdC/tmp) by extensions ['colcon_pkg']
+[0.953s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1/CompilerIdC/tmp) by extension 'colcon_pkg'
+[0.953s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1/CompilerIdC/tmp) by extensions ['colcon_meta']
+[0.953s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1/CompilerIdC/tmp) by extension 'colcon_meta'
+[0.953s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1/CompilerIdC/tmp) by extensions ['ros']
+[0.953s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1/CompilerIdC/tmp) by extension 'ros'
+[0.953s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1/CompilerIdC/tmp) by extensions ['cmake', 'python']
+[0.953s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1/CompilerIdC/tmp) by extension 'cmake'
+[0.953s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1/CompilerIdC/tmp) by extension 'python'
+[0.953s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1/CompilerIdC/tmp) by extensions ['python_setup_py']
+[0.953s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1/CompilerIdC/tmp) by extension 'python_setup_py'
+[0.953s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1/CompilerIdCXX) by extensions ['ignore', 'ignore_ament_install']
+[0.954s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1/CompilerIdCXX) by extension 'ignore'
+[0.954s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1/CompilerIdCXX) by extension 'ignore_ament_install'
+[0.954s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1/CompilerIdCXX) by extensions ['colcon_pkg']
+[0.954s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1/CompilerIdCXX) by extension 'colcon_pkg'
+[0.954s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1/CompilerIdCXX) by extensions ['colcon_meta']
+[0.954s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1/CompilerIdCXX) by extension 'colcon_meta'
+[0.954s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1/CompilerIdCXX) by extensions ['ros']
+[0.954s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1/CompilerIdCXX) by extension 'ros'
+[0.954s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1/CompilerIdCXX) by extensions ['cmake', 'python']
+[0.954s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1/CompilerIdCXX) by extension 'cmake'
+[0.954s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1/CompilerIdCXX) by extension 'python'
+[0.954s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1/CompilerIdCXX) by extensions ['python_setup_py']
+[0.954s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1/CompilerIdCXX) by extension 'python_setup_py'
+[0.954s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extensions ['ignore', 'ignore_ament_install']
+[0.954s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extension 'ignore'
+[0.954s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extension 'ignore_ament_install'
+[0.954s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extensions ['colcon_pkg']
+[0.954s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extension 'colcon_pkg'
+[0.955s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extensions ['colcon_meta']
+[0.955s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extension 'colcon_meta'
+[0.955s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extensions ['ros']
+[0.955s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extension 'ros'
+[0.955s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extensions ['cmake', 'python']
+[0.955s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extension 'cmake'
+[0.955s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extension 'python'
+[0.955s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extensions ['python_setup_py']
+[0.955s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/3.22.1/CompilerIdCXX/tmp) by extension 'python_setup_py'
+[0.955s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/CMakeTmp) by extensions ['ignore', 'ignore_ament_install']
+[0.955s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/CMakeTmp) by extension 'ignore'
+[0.955s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/CMakeTmp) by extension 'ignore_ament_install'
+[0.955s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/CMakeTmp) by extensions ['colcon_pkg']
+[0.955s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/CMakeTmp) by extension 'colcon_pkg'
+[0.955s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/CMakeTmp) by extensions ['colcon_meta']
+[0.955s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/CMakeTmp) by extension 'colcon_meta'
+[0.956s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/CMakeTmp) by extensions ['ros']
+[0.956s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/CMakeTmp) by extension 'ros'
+[0.956s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/CMakeTmp) by extensions ['cmake', 'python']
+[0.956s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/CMakeTmp) by extension 'cmake'
+[0.956s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/CMakeTmp) by extension 'python'
+[0.956s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/CMakeTmp) by extensions ['python_setup_py']
+[0.956s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/CMakeFiles/CMakeTmp) by extension 'python_setup_py'
+[0.956s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_copyright) by extensions ['ignore', 'ignore_ament_install']
+[0.956s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_copyright) by extension 'ignore'
+[0.956s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_copyright) by extension 'ignore_ament_install'
+[0.956s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_copyright) by extensions ['colcon_pkg']
+[0.956s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_copyright) by extension 'colcon_pkg'
+[0.956s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_copyright) by extensions ['colcon_meta']
+[0.956s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_copyright) by extension 'colcon_meta'
+[0.956s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_copyright) by extensions ['ros']
+[0.956s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_copyright) by extension 'ros'
+[0.956s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_copyright) by extensions ['cmake', 'python']
+[0.956s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_copyright) by extension 'cmake'
+[0.957s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_copyright) by extension 'python'
+[0.957s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_copyright) by extensions ['python_setup_py']
+[0.957s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_copyright) by extension 'python_setup_py'
+[0.957s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_flake8) by extensions ['ignore', 'ignore_ament_install']
+[0.957s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_flake8) by extension 'ignore'
+[0.957s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_flake8) by extension 'ignore_ament_install'
+[0.957s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_flake8) by extensions ['colcon_pkg']
+[0.957s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_flake8) by extension 'colcon_pkg'
+[0.957s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_flake8) by extensions ['colcon_meta']
+[0.957s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_flake8) by extension 'colcon_meta'
+[0.957s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_flake8) by extensions ['ros']
+[0.957s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_flake8) by extension 'ros'
+[0.957s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_flake8) by extensions ['cmake', 'python']
+[0.957s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_flake8) by extension 'cmake'
+[0.957s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_flake8) by extension 'python'
+[0.957s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_flake8) by extensions ['python_setup_py']
+[0.957s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_flake8) by extension 'python_setup_py'
+[0.957s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_lint_cmake) by extensions ['ignore', 'ignore_ament_install']
+[0.957s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_lint_cmake) by extension 'ignore'
+[0.957s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_lint_cmake) by extension 'ignore_ament_install'
+[0.958s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_lint_cmake) by extensions ['colcon_pkg']
+[0.958s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_lint_cmake) by extension 'colcon_pkg'
+[0.958s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_lint_cmake) by extensions ['colcon_meta']
+[0.958s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_lint_cmake) by extension 'colcon_meta'
+[0.958s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_lint_cmake) by extensions ['ros']
+[0.958s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_lint_cmake) by extension 'ros'
+[0.958s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_lint_cmake) by extensions ['cmake', 'python']
+[0.958s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_lint_cmake) by extension 'cmake'
+[0.958s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_lint_cmake) by extension 'python'
+[0.958s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_lint_cmake) by extensions ['python_setup_py']
+[0.958s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_lint_cmake) by extension 'python_setup_py'
+[0.958s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_pep257) by extensions ['ignore', 'ignore_ament_install']
+[0.958s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_pep257) by extension 'ignore'
+[0.958s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_pep257) by extension 'ignore_ament_install'
+[0.958s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_pep257) by extensions ['colcon_pkg']
+[0.958s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_pep257) by extension 'colcon_pkg'
+[0.958s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_pep257) by extensions ['colcon_meta']
+[0.958s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_pep257) by extension 'colcon_meta'
+[0.958s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_pep257) by extensions ['ros']
+[0.958s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_pep257) by extension 'ros'
+[0.959s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_pep257) by extensions ['cmake', 'python']
+[0.959s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_pep257) by extension 'cmake'
+[0.959s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_pep257) by extension 'python'
+[0.959s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_pep257) by extensions ['python_setup_py']
+[0.959s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_pep257) by extension 'python_setup_py'
+[0.959s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_xmllint) by extensions ['ignore', 'ignore_ament_install']
+[0.959s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_xmllint) by extension 'ignore'
+[0.959s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_xmllint) by extension 'ignore_ament_install'
+[0.959s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_xmllint) by extensions ['colcon_pkg']
+[0.959s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_xmllint) by extension 'colcon_pkg'
+[0.959s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_xmllint) by extensions ['colcon_meta']
+[0.959s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_xmllint) by extension 'colcon_meta'
+[0.959s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_xmllint) by extensions ['ros']
+[0.959s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_xmllint) by extension 'ros'
+[0.959s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_xmllint) by extensions ['cmake', 'python']
+[0.959s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_xmllint) by extension 'cmake'
+[0.959s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_xmllint) by extension 'python'
+[0.959s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_xmllint) by extensions ['python_setup_py']
+[0.959s] Level 1:colcon.colcon_core.package_identification:_identify(src/build/sam_bot_description/ament_xmllint) by extension 'python_setup_py'
+[0.959s] Level 1:colcon.colcon_core.package_identification:_identify(src/navigation2_tutorials) by extensions ['ignore', 'ignore_ament_install']
+[0.960s] Level 1:colcon.colcon_core.package_identification:_identify(src/navigation2_tutorials) by extension 'ignore'
+[0.960s] Level 1:colcon.colcon_core.package_identification:_identify(src/navigation2_tutorials) by extension 'ignore_ament_install'
+[0.960s] Level 1:colcon.colcon_core.package_identification:_identify(src/navigation2_tutorials) by extensions ['colcon_pkg']
+[0.960s] Level 1:colcon.colcon_core.package_identification:_identify(src/navigation2_tutorials) by extension 'colcon_pkg'
+[0.960s] Level 1:colcon.colcon_core.package_identification:_identify(src/navigation2_tutorials) by extensions ['colcon_meta']
+[0.960s] Level 1:colcon.colcon_core.package_identification:_identify(src/navigation2_tutorials) by extension 'colcon_meta'
+[0.960s] Level 1:colcon.colcon_core.package_identification:_identify(src/navigation2_tutorials) by extensions ['ros']
+[0.960s] Level 1:colcon.colcon_core.package_identification:_identify(src/navigation2_tutorials) by extension 'ros'
+[0.960s] Level 1:colcon.colcon_core.package_identification:_identify(src/navigation2_tutorials) by extensions ['cmake', 'python']
+[0.960s] Level 1:colcon.colcon_core.package_identification:_identify(src/navigation2_tutorials) by extension 'cmake'
+[0.960s] Level 1:colcon.colcon_core.package_identification:_identify(src/navigation2_tutorials) by extension 'python'
+[0.960s] Level 1:colcon.colcon_core.package_identification:_identify(src/navigation2_tutorials) by extensions ['python_setup_py']
+[0.960s] Level 1:colcon.colcon_core.package_identification:_identify(src/navigation2_tutorials) by extension 'python_setup_py'
+[0.960s] Level 1:colcon.colcon_core.package_identification:_identify(src/navigation2_tutorials/build) by extensions ['ignore', 'ignore_ament_install']
+[0.960s] Level 1:colcon.colcon_core.package_identification:_identify(src/navigation2_tutorials/build) by extension 'ignore'
+[0.960s] Level 1:colcon.colcon_core.package_identification:_identify(src/navigation2_tutorials/build) ignored
+[0.960s] Level 1:colcon.colcon_core.package_identification:_identify(src/navigation2_tutorials/install) by extensions ['ignore', 'ignore_ament_install']
+[0.960s] Level 1:colcon.colcon_core.package_identification:_identify(src/navigation2_tutorials/install) by extension 'ignore'
+[0.961s] Level 1:colcon.colcon_core.package_identification:_identify(src/navigation2_tutorials/install) ignored
+[0.961s] Level 1:colcon.colcon_core.package_identification:_identify(src/navigation2_tutorials/log) by extensions ['ignore', 'ignore_ament_install']
+[0.961s] Level 1:colcon.colcon_core.package_identification:_identify(src/navigation2_tutorials/log) by extension 'ignore'
+[0.961s] Level 1:colcon.colcon_core.package_identification:_identify(src/navigation2_tutorials/log) ignored
+[0.961s] Level 1:colcon.colcon_core.package_identification:_identify(src/navigation2_tutorials/nav2_gps_waypoint_follower_demo) by extensions ['ignore', 'ignore_ament_install']
+[0.961s] Level 1:colcon.colcon_core.package_identification:_identify(src/navigation2_tutorials/nav2_gps_waypoint_follower_demo) by extension 'ignore'
+[0.961s] Level 1:colcon.colcon_core.package_identification:_identify(src/navigation2_tutorials/nav2_gps_waypoint_follower_demo) by extension 'ignore_ament_install'
+[0.961s] Level 1:colcon.colcon_core.package_identification:_identify(src/navigation2_tutorials/nav2_gps_waypoint_follower_demo) by extensions ['colcon_pkg']
+[0.961s] Level 1:colcon.colcon_core.package_identification:_identify(src/navigation2_tutorials/nav2_gps_waypoint_follower_demo) by extension 'colcon_pkg'
+[0.961s] Level 1:colcon.colcon_core.package_identification:_identify(src/navigation2_tutorials/nav2_gps_waypoint_follower_demo) by extensions ['colcon_meta']
+[0.961s] Level 1:colcon.colcon_core.package_identification:_identify(src/navigation2_tutorials/nav2_gps_waypoint_follower_demo) by extension 'colcon_meta'
+[0.961s] Level 1:colcon.colcon_core.package_identification:_identify(src/navigation2_tutorials/nav2_gps_waypoint_follower_demo) by extensions ['ros']
+[0.961s] Level 1:colcon.colcon_core.package_identification:_identify(src/navigation2_tutorials/nav2_gps_waypoint_follower_demo) by extension 'ros'
+[0.964s] DEBUG:colcon.colcon_core.package_identification:Package 'src/navigation2_tutorials/nav2_gps_waypoint_follower_demo' with type 'ros.ament_python' and name 'nav2_gps_waypoint_follower_demo'
+[0.964s] Level 1:colcon.colcon_core.package_identification:_identify(src/navigation2_tutorials/nav2_gradient_costmap_plugin) by extensions ['ignore', 'ignore_ament_install']
+[0.964s] Level 1:colcon.colcon_core.package_identification:_identify(src/navigation2_tutorials/nav2_gradient_costmap_plugin) by extension 'ignore'
+[0.964s] Level 1:colcon.colcon_core.package_identification:_identify(src/navigation2_tutorials/nav2_gradient_costmap_plugin) by extension 'ignore_ament_install'
+[0.964s] Level 1:colcon.colcon_core.package_identification:_identify(src/navigation2_tutorials/nav2_gradient_costmap_plugin) by extensions ['colcon_pkg']
+[0.964s] Level 1:colcon.colcon_core.package_identification:_identify(src/navigation2_tutorials/nav2_gradient_costmap_plugin) by extension 'colcon_pkg'
+[0.964s] Level 1:colcon.colcon_core.package_identification:_identify(src/navigation2_tutorials/nav2_gradient_costmap_plugin) by extensions ['colcon_meta']
+[0.964s] Level 1:colcon.colcon_core.package_identification:_identify(src/navigation2_tutorials/nav2_gradient_costmap_plugin) by extension 'colcon_meta'
+[0.964s] Level 1:colcon.colcon_core.package_identification:_identify(src/navigation2_tutorials/nav2_gradient_costmap_plugin) by extensions ['ros']
+[0.964s] Level 1:colcon.colcon_core.package_identification:_identify(src/navigation2_tutorials/nav2_gradient_costmap_plugin) by extension 'ros'
+[0.965s] DEBUG:colcon.colcon_core.package_identification:Package 'src/navigation2_tutorials/nav2_gradient_costmap_plugin' with type 'ros.ament_cmake' and name 'nav2_gradient_costmap_plugin'
+[0.965s] Level 1:colcon.colcon_core.package_identification:_identify(src/navigation2_tutorials/nav2_straightline_planner) by extensions ['ignore', 'ignore_ament_install']
+[0.965s] Level 1:colcon.colcon_core.package_identification:_identify(src/navigation2_tutorials/nav2_straightline_planner) by extension 'ignore'
+[0.965s] Level 1:colcon.colcon_core.package_identification:_identify(src/navigation2_tutorials/nav2_straightline_planner) by extension 'ignore_ament_install'
+[0.965s] Level 1:colcon.colcon_core.package_identification:_identify(src/navigation2_tutorials/nav2_straightline_planner) by extensions ['colcon_pkg']
+[0.965s] Level 1:colcon.colcon_core.package_identification:_identify(src/navigation2_tutorials/nav2_straightline_planner) by extension 'colcon_pkg'
+[0.965s] Level 1:colcon.colcon_core.package_identification:_identify(src/navigation2_tutorials/nav2_straightline_planner) by extensions ['colcon_meta']
+[0.965s] Level 1:colcon.colcon_core.package_identification:_identify(src/navigation2_tutorials/nav2_straightline_planner) by extension 'colcon_meta'
+[0.965s] Level 1:colcon.colcon_core.package_identification:_identify(src/navigation2_tutorials/nav2_straightline_planner) by extensions ['ros']
+[0.965s] Level 1:colcon.colcon_core.package_identification:_identify(src/navigation2_tutorials/nav2_straightline_planner) by extension 'ros'
+[0.967s] DEBUG:colcon.colcon_core.package_identification:Package 'src/navigation2_tutorials/nav2_straightline_planner' with type 'ros.ament_cmake' and name 'nav2_straightline_planner'
+[0.967s] Level 1:colcon.colcon_core.package_identification:_identify(src/navigation2_tutorials/sam_bot_description) by extensions ['ignore', 'ignore_ament_install']
+[0.967s] Level 1:colcon.colcon_core.package_identification:_identify(src/navigation2_tutorials/sam_bot_description) by extension 'ignore'
+[0.967s] Level 1:colcon.colcon_core.package_identification:_identify(src/navigation2_tutorials/sam_bot_description) by extension 'ignore_ament_install'
+[0.967s] Level 1:colcon.colcon_core.package_identification:_identify(src/navigation2_tutorials/sam_bot_description) by extensions ['colcon_pkg']
+[0.967s] Level 1:colcon.colcon_core.package_identification:_identify(src/navigation2_tutorials/sam_bot_description) by extension 'colcon_pkg'
+[0.967s] Level 1:colcon.colcon_core.package_identification:_identify(src/navigation2_tutorials/sam_bot_description) by extensions ['colcon_meta']
+[0.967s] Level 1:colcon.colcon_core.package_identification:_identify(src/navigation2_tutorials/sam_bot_description) by extension 'colcon_meta'
+[0.967s] Level 1:colcon.colcon_core.package_identification:_identify(src/navigation2_tutorials/sam_bot_description) by extensions ['ros']
+[0.967s] Level 1:colcon.colcon_core.package_identification:_identify(src/navigation2_tutorials/sam_bot_description) by extension 'ros'
+[0.968s] DEBUG:colcon.colcon_core.package_identification:Package 'src/navigation2_tutorials/sam_bot_description' with type 'ros.ament_cmake' and name 'sam_bot_description'
+[0.968s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.968s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.968s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.968s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.968s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[1.017s] Level 5:colcon.colcon_core.verb:set package 'nav2_gps_waypoint_follower_demo' build argument 'cmake_args' from command line to 'None'
+[1.017s] Level 5:colcon.colcon_core.verb:set package 'nav2_gps_waypoint_follower_demo' build argument 'cmake_target' from command line to 'None'
+[1.017s] Level 5:colcon.colcon_core.verb:set package 'nav2_gps_waypoint_follower_demo' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[1.017s] Level 5:colcon.colcon_core.verb:set package 'nav2_gps_waypoint_follower_demo' build argument 'cmake_clean_cache' from command line to 'False'
+[1.017s] Level 5:colcon.colcon_core.verb:set package 'nav2_gps_waypoint_follower_demo' build argument 'cmake_clean_first' from command line to 'False'
+[1.017s] Level 5:colcon.colcon_core.verb:set package 'nav2_gps_waypoint_follower_demo' build argument 'cmake_force_configure' from command line to 'False'
+[1.017s] Level 5:colcon.colcon_core.verb:set package 'nav2_gps_waypoint_follower_demo' build argument 'ament_cmake_args' from command line to 'None'
+[1.017s] Level 5:colcon.colcon_core.verb:set package 'nav2_gps_waypoint_follower_demo' build argument 'catkin_cmake_args' from command line to 'None'
+[1.017s] Level 5:colcon.colcon_core.verb:set package 'nav2_gps_waypoint_follower_demo' build argument 'catkin_skip_building_tests' from command line to 'False'
+[1.017s] DEBUG:colcon.colcon_core.verb:Building package 'nav2_gps_waypoint_follower_demo' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/umarv/ws/build/nav2_gps_waypoint_follower_demo', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/umarv/ws/install/nav2_gps_waypoint_follower_demo', 'merge_install': False, 'path': '/home/umarv/ws/src/navigation2_tutorials/nav2_gps_waypoint_follower_demo', 'symlink_install': False, 'test_result_base': None}
+[1.025s] Level 5:colcon.colcon_core.verb:set package 'nav2_gradient_costmap_plugin' build argument 'cmake_args' from command line to 'None'
+[1.025s] Level 5:colcon.colcon_core.verb:set package 'nav2_gradient_costmap_plugin' build argument 'cmake_target' from command line to 'None'
+[1.025s] Level 5:colcon.colcon_core.verb:set package 'nav2_gradient_costmap_plugin' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[1.025s] Level 5:colcon.colcon_core.verb:set package 'nav2_gradient_costmap_plugin' build argument 'cmake_clean_cache' from command line to 'False'
+[1.025s] Level 5:colcon.colcon_core.verb:set package 'nav2_gradient_costmap_plugin' build argument 'cmake_clean_first' from command line to 'False'
+[1.025s] Level 5:colcon.colcon_core.verb:set package 'nav2_gradient_costmap_plugin' build argument 'cmake_force_configure' from command line to 'False'
+[1.025s] Level 5:colcon.colcon_core.verb:set package 'nav2_gradient_costmap_plugin' build argument 'ament_cmake_args' from command line to 'None'
+[1.025s] Level 5:colcon.colcon_core.verb:set package 'nav2_gradient_costmap_plugin' build argument 'catkin_cmake_args' from command line to 'None'
+[1.025s] Level 5:colcon.colcon_core.verb:set package 'nav2_gradient_costmap_plugin' build argument 'catkin_skip_building_tests' from command line to 'False'
+[1.025s] DEBUG:colcon.colcon_core.verb:Building package 'nav2_gradient_costmap_plugin' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/umarv/ws/build/nav2_gradient_costmap_plugin', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/umarv/ws/install/nav2_gradient_costmap_plugin', 'merge_install': False, 'path': '/home/umarv/ws/src/navigation2_tutorials/nav2_gradient_costmap_plugin', 'symlink_install': False, 'test_result_base': None}
+[1.034s] Level 5:colcon.colcon_core.verb:set package 'nav2_straightline_planner' build argument 'cmake_args' from command line to 'None'
+[1.034s] Level 5:colcon.colcon_core.verb:set package 'nav2_straightline_planner' build argument 'cmake_target' from command line to 'None'
+[1.034s] Level 5:colcon.colcon_core.verb:set package 'nav2_straightline_planner' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[1.034s] Level 5:colcon.colcon_core.verb:set package 'nav2_straightline_planner' build argument 'cmake_clean_cache' from command line to 'False'
+[1.034s] Level 5:colcon.colcon_core.verb:set package 'nav2_straightline_planner' build argument 'cmake_clean_first' from command line to 'False'
+[1.034s] Level 5:colcon.colcon_core.verb:set package 'nav2_straightline_planner' build argument 'cmake_force_configure' from command line to 'False'
+[1.034s] Level 5:colcon.colcon_core.verb:set package 'nav2_straightline_planner' build argument 'ament_cmake_args' from command line to 'None'
+[1.034s] Level 5:colcon.colcon_core.verb:set package 'nav2_straightline_planner' build argument 'catkin_cmake_args' from command line to 'None'
+[1.034s] Level 5:colcon.colcon_core.verb:set package 'nav2_straightline_planner' build argument 'catkin_skip_building_tests' from command line to 'False'
+[1.034s] DEBUG:colcon.colcon_core.verb:Building package 'nav2_straightline_planner' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/umarv/ws/build/nav2_straightline_planner', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/umarv/ws/install/nav2_straightline_planner', 'merge_install': False, 'path': '/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner', 'symlink_install': False, 'test_result_base': None}
+[1.043s] Level 5:colcon.colcon_core.verb:set package 'sam_bot_description' build argument 'cmake_args' from command line to 'None'
+[1.043s] Level 5:colcon.colcon_core.verb:set package 'sam_bot_description' build argument 'cmake_target' from command line to 'None'
+[1.043s] Level 5:colcon.colcon_core.verb:set package 'sam_bot_description' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[1.043s] Level 5:colcon.colcon_core.verb:set package 'sam_bot_description' build argument 'cmake_clean_cache' from command line to 'False'
+[1.043s] Level 5:colcon.colcon_core.verb:set package 'sam_bot_description' build argument 'cmake_clean_first' from command line to 'False'
+[1.043s] Level 5:colcon.colcon_core.verb:set package 'sam_bot_description' build argument 'cmake_force_configure' from command line to 'False'
+[1.043s] Level 5:colcon.colcon_core.verb:set package 'sam_bot_description' build argument 'ament_cmake_args' from command line to 'None'
+[1.043s] Level 5:colcon.colcon_core.verb:set package 'sam_bot_description' build argument 'catkin_cmake_args' from command line to 'None'
+[1.043s] Level 5:colcon.colcon_core.verb:set package 'sam_bot_description' build argument 'catkin_skip_building_tests' from command line to 'False'
+[1.043s] DEBUG:colcon.colcon_core.verb:Building package 'sam_bot_description' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/umarv/ws/build/sam_bot_description', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/umarv/ws/install/sam_bot_description', 'merge_install': False, 'path': '/home/umarv/ws/src/navigation2_tutorials/sam_bot_description', 'symlink_install': False, 'test_result_base': None}
+[1.051s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[1.061s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[1.061s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/umarv/ws/src/navigation2_tutorials/nav2_gps_waypoint_follower_demo' with build type 'ament_python'
+[1.061s] Level 1:colcon.colcon_core.shell:create_environment_hook('nav2_gps_waypoint_follower_demo', 'ament_prefix_path')
+[1.072s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[1.072s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/umarv/ws/install/nav2_gps_waypoint_follower_demo/share/nav2_gps_waypoint_follower_demo/hook/ament_prefix_path.ps1'
+[1.073s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/umarv/ws/install/nav2_gps_waypoint_follower_demo/share/nav2_gps_waypoint_follower_demo/hook/ament_prefix_path.dsv'
+[1.073s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/umarv/ws/install/nav2_gps_waypoint_follower_demo/share/nav2_gps_waypoint_follower_demo/hook/ament_prefix_path.sh'
+[1.083s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.083s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.114s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/umarv/ws/src/navigation2_tutorials/nav2_gradient_costmap_plugin' with build type 'ament_cmake'
+[1.114s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/umarv/ws/src/navigation2_tutorials/nav2_gradient_costmap_plugin'
+[1.124s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.124s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.155s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner' with build type 'ament_cmake'
+[1.156s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner'
+[1.167s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.167s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.197s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/umarv/ws/src/navigation2_tutorials/sam_bot_description' with build type 'ament_cmake'
+[1.197s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/umarv/ws/src/navigation2_tutorials/sam_bot_description'
+[1.207s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.207s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.423s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/umarv/ws/src/navigation2_tutorials/nav2_gps_waypoint_follower_demo'
+[1.433s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.433s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.471s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/umarv/ws/build/nav2_gradient_costmap_plugin': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/umarv/ws/install/nav2_gps_waypoint_follower_demo:/opt/ros/humble /usr/bin/cmake --build /home/umarv/ws/build/nav2_gradient_costmap_plugin -- -j8 -l8
+[1.476s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/umarv/ws/build/nav2_straightline_planner': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/umarv/ws/install/nav2_gps_waypoint_follower_demo:/opt/ros/humble /usr/bin/cmake --build /home/umarv/ws/build/nav2_straightline_planner -- -j8 -l8
+[1.482s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/umarv/ws/build/sam_bot_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/umarv/ws/install/nav2_gps_waypoint_follower_demo:/opt/ros/humble /usr/bin/cmake --build /home/umarv/ws/build/sam_bot_description -- -j8 -l8
+[1.512s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/umarv/ws/build/sam_bot_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/umarv/ws/install/nav2_gps_waypoint_follower_demo:/opt/ros/humble /usr/bin/cmake --build /home/umarv/ws/build/sam_bot_description -- -j8 -l8
+[1.541s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/umarv/ws/build/sam_bot_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/umarv/ws/install/nav2_gps_waypoint_follower_demo:/opt/ros/humble /usr/bin/cmake --install /home/umarv/ws/build/sam_bot_description
+[1.544s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/umarv/ws/build/nav2_gradient_costmap_plugin' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/umarv/ws/install/nav2_gps_waypoint_follower_demo:/opt/ros/humble /usr/bin/cmake --build /home/umarv/ws/build/nav2_gradient_costmap_plugin -- -j8 -l8
+[1.554s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(sam_bot_description)
+[1.556s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/umarv/ws/build/sam_bot_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/umarv/ws/install/nav2_gps_waypoint_follower_demo:/opt/ros/humble /usr/bin/cmake --install /home/umarv/ws/build/sam_bot_description
+[1.576s] Level 1:colcon.colcon_core.environment:checking '/home/umarv/ws/install/sam_bot_description' for CMake module files
+[1.577s] Level 1:colcon.colcon_core.environment:checking '/home/umarv/ws/install/sam_bot_description' for CMake config files
+[1.577s] Level 1:colcon.colcon_core.shell:create_environment_hook('sam_bot_description', 'cmake_prefix_path')
+[1.593s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/umarv/ws/install/sam_bot_description/share/sam_bot_description/hook/cmake_prefix_path.ps1'
+[1.593s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/umarv/ws/install/sam_bot_description/share/sam_bot_description/hook/cmake_prefix_path.dsv'
+[1.594s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/umarv/ws/install/sam_bot_description/share/sam_bot_description/hook/cmake_prefix_path.sh'
+[1.594s] Level 1:colcon.colcon_core.environment:checking '/home/umarv/ws/install/sam_bot_description/bin'
+[1.595s] Level 1:colcon.colcon_core.environment:checking '/home/umarv/ws/install/sam_bot_description/lib/pkgconfig/sam_bot_description.pc'
+[1.595s] Level 1:colcon.colcon_core.environment:checking '/home/umarv/ws/install/sam_bot_description/lib/python3.10/site-packages'
+[1.595s] Level 1:colcon.colcon_core.environment:checking '/home/umarv/ws/install/sam_bot_description/bin'
+[1.609s] INFO:colcon.colcon_core.shell:Creating package script '/home/umarv/ws/install/sam_bot_description/share/sam_bot_description/package.ps1'
+[1.610s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/umarv/ws/install/sam_bot_description/share/sam_bot_description/package.dsv'
+[1.610s] INFO:colcon.colcon_core.shell:Creating package script '/home/umarv/ws/install/sam_bot_description/share/sam_bot_description/package.sh'
+[1.611s] INFO:colcon.colcon_core.shell:Creating package script '/home/umarv/ws/install/sam_bot_description/share/sam_bot_description/package.bash'
+[1.612s] INFO:colcon.colcon_core.shell:Creating package script '/home/umarv/ws/install/sam_bot_description/share/sam_bot_description/package.zsh'
+[1.612s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/umarv/ws/install/sam_bot_description/share/colcon-core/packages/sam_bot_description)
+[1.616s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/umarv/ws/build/nav2_gradient_costmap_plugin': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/umarv/ws/install/nav2_gps_waypoint_follower_demo:/opt/ros/humble /usr/bin/cmake --install /home/umarv/ws/build/nav2_gradient_costmap_plugin
+[1.625s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(nav2_gradient_costmap_plugin)
+[1.630s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/umarv/ws/build/nav2_gradient_costmap_plugin' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/umarv/ws/install/nav2_gps_waypoint_follower_demo:/opt/ros/humble /usr/bin/cmake --install /home/umarv/ws/build/nav2_gradient_costmap_plugin
+[1.639s] Level 1:colcon.colcon_core.environment:checking '/home/umarv/ws/install/nav2_gradient_costmap_plugin' for CMake module files
+[1.639s] Level 1:colcon.colcon_core.environment:checking '/home/umarv/ws/install/nav2_gradient_costmap_plugin' for CMake config files
+[1.639s] Level 1:colcon.colcon_core.shell:create_environment_hook('nav2_gradient_costmap_plugin', 'cmake_prefix_path')
+[1.649s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/umarv/ws/install/nav2_gradient_costmap_plugin/share/nav2_gradient_costmap_plugin/hook/cmake_prefix_path.ps1'
+[1.649s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/umarv/ws/install/nav2_gradient_costmap_plugin/share/nav2_gradient_costmap_plugin/hook/cmake_prefix_path.dsv'
+[1.650s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/umarv/ws/install/nav2_gradient_costmap_plugin/share/nav2_gradient_costmap_plugin/hook/cmake_prefix_path.sh'
+[1.650s] Level 1:colcon.colcon_core.environment:checking '/home/umarv/ws/install/nav2_gradient_costmap_plugin/lib'
+[1.650s] Level 1:colcon.colcon_core.shell:create_environment_hook('nav2_gradient_costmap_plugin', 'ld_library_path_lib')
+[1.660s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/umarv/ws/install/nav2_gradient_costmap_plugin/share/nav2_gradient_costmap_plugin/hook/ld_library_path_lib.ps1'
+[1.661s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/umarv/ws/install/nav2_gradient_costmap_plugin/share/nav2_gradient_costmap_plugin/hook/ld_library_path_lib.dsv'
+[1.661s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/umarv/ws/install/nav2_gradient_costmap_plugin/share/nav2_gradient_costmap_plugin/hook/ld_library_path_lib.sh'
+[1.661s] Level 1:colcon.colcon_core.environment:checking '/home/umarv/ws/install/nav2_gradient_costmap_plugin/bin'
+[1.661s] Level 1:colcon.colcon_core.environment:checking '/home/umarv/ws/install/nav2_gradient_costmap_plugin/lib/pkgconfig/nav2_gradient_costmap_plugin.pc'
+[1.662s] Level 1:colcon.colcon_core.environment:checking '/home/umarv/ws/install/nav2_gradient_costmap_plugin/lib/python3.10/site-packages'
+[1.662s] Level 1:colcon.colcon_core.environment:checking '/home/umarv/ws/install/nav2_gradient_costmap_plugin/bin'
+[1.674s] INFO:colcon.colcon_core.shell:Creating package script '/home/umarv/ws/install/nav2_gradient_costmap_plugin/share/nav2_gradient_costmap_plugin/package.ps1'
+[1.675s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/umarv/ws/install/nav2_gradient_costmap_plugin/share/nav2_gradient_costmap_plugin/package.dsv'
+[1.675s] INFO:colcon.colcon_core.shell:Creating package script '/home/umarv/ws/install/nav2_gradient_costmap_plugin/share/nav2_gradient_costmap_plugin/package.sh'
+[1.676s] INFO:colcon.colcon_core.shell:Creating package script '/home/umarv/ws/install/nav2_gradient_costmap_plugin/share/nav2_gradient_costmap_plugin/package.bash'
+[1.676s] INFO:colcon.colcon_core.shell:Creating package script '/home/umarv/ws/install/nav2_gradient_costmap_plugin/share/nav2_gradient_costmap_plugin/package.zsh'
+[1.676s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/umarv/ws/install/nav2_gradient_costmap_plugin/share/colcon-core/packages/nav2_gradient_costmap_plugin)
+[1.688s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(sam_bot_description)
+[1.698s] Level 1:colcon.colcon_core.environment:checking '/home/umarv/ws/install/sam_bot_description' for CMake module files
+[1.699s] Level 1:colcon.colcon_core.environment:checking '/home/umarv/ws/install/sam_bot_description' for CMake config files
+[1.699s] Level 1:colcon.colcon_core.shell:create_environment_hook('sam_bot_description', 'cmake_prefix_path')
+[1.709s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/umarv/ws/install/sam_bot_description/share/sam_bot_description/hook/cmake_prefix_path.ps1'
+[1.710s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/umarv/ws/install/sam_bot_description/share/sam_bot_description/hook/cmake_prefix_path.dsv'
+[1.710s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/umarv/ws/install/sam_bot_description/share/sam_bot_description/hook/cmake_prefix_path.sh'
+[1.710s] Level 1:colcon.colcon_core.environment:checking '/home/umarv/ws/install/sam_bot_description/bin'
+[1.711s] Level 1:colcon.colcon_core.environment:checking '/home/umarv/ws/install/sam_bot_description/lib/pkgconfig/sam_bot_description.pc'
+[1.711s] Level 1:colcon.colcon_core.environment:checking '/home/umarv/ws/install/sam_bot_description/lib/python3.10/site-packages'
+[1.711s] Level 1:colcon.colcon_core.environment:checking '/home/umarv/ws/install/sam_bot_description/bin'
+[1.723s] INFO:colcon.colcon_core.shell:Creating package script '/home/umarv/ws/install/sam_bot_description/share/sam_bot_description/package.ps1'
+[1.723s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/umarv/ws/install/sam_bot_description/share/sam_bot_description/package.dsv'
+[1.724s] INFO:colcon.colcon_core.shell:Creating package script '/home/umarv/ws/install/sam_bot_description/share/sam_bot_description/package.sh'
+[1.724s] INFO:colcon.colcon_core.shell:Creating package script '/home/umarv/ws/install/sam_bot_description/share/sam_bot_description/package.bash'
+[1.724s] INFO:colcon.colcon_core.shell:Creating package script '/home/umarv/ws/install/sam_bot_description/share/sam_bot_description/package.zsh'
+[1.725s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/umarv/ws/install/sam_bot_description/share/colcon-core/packages/sam_bot_description)
+[1.747s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(nav2_gradient_costmap_plugin)
+[1.758s] Level 1:colcon.colcon_core.environment:checking '/home/umarv/ws/install/nav2_gradient_costmap_plugin' for CMake module files
+[1.759s] Level 1:colcon.colcon_core.environment:checking '/home/umarv/ws/install/nav2_gradient_costmap_plugin' for CMake config files
+[1.759s] Level 1:colcon.colcon_core.shell:create_environment_hook('nav2_gradient_costmap_plugin', 'cmake_prefix_path')
+[1.772s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/umarv/ws/install/nav2_gradient_costmap_plugin/share/nav2_gradient_costmap_plugin/hook/cmake_prefix_path.ps1'
+[1.772s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/umarv/ws/install/nav2_gradient_costmap_plugin/share/nav2_gradient_costmap_plugin/hook/cmake_prefix_path.dsv'
+[1.772s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/umarv/ws/install/nav2_gradient_costmap_plugin/share/nav2_gradient_costmap_plugin/hook/cmake_prefix_path.sh'
+[1.773s] Level 1:colcon.colcon_core.environment:checking '/home/umarv/ws/install/nav2_gradient_costmap_plugin/lib'
+[1.773s] Level 1:colcon.colcon_core.shell:create_environment_hook('nav2_gradient_costmap_plugin', 'ld_library_path_lib')
+[1.785s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/umarv/ws/install/nav2_gradient_costmap_plugin/share/nav2_gradient_costmap_plugin/hook/ld_library_path_lib.ps1'
+[1.785s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/umarv/ws/install/nav2_gradient_costmap_plugin/share/nav2_gradient_costmap_plugin/hook/ld_library_path_lib.dsv'
+[1.786s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/umarv/ws/install/nav2_gradient_costmap_plugin/share/nav2_gradient_costmap_plugin/hook/ld_library_path_lib.sh'
+[1.786s] Level 1:colcon.colcon_core.environment:checking '/home/umarv/ws/install/nav2_gradient_costmap_plugin/bin'
+[1.786s] Level 1:colcon.colcon_core.environment:checking '/home/umarv/ws/install/nav2_gradient_costmap_plugin/lib/pkgconfig/nav2_gradient_costmap_plugin.pc'
+[1.786s] Level 1:colcon.colcon_core.environment:checking '/home/umarv/ws/install/nav2_gradient_costmap_plugin/lib/python3.10/site-packages'
+[1.787s] Level 1:colcon.colcon_core.environment:checking '/home/umarv/ws/install/nav2_gradient_costmap_plugin/bin'
+[1.799s] INFO:colcon.colcon_core.shell:Creating package script '/home/umarv/ws/install/nav2_gradient_costmap_plugin/share/nav2_gradient_costmap_plugin/package.ps1'
+[1.799s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/umarv/ws/install/nav2_gradient_costmap_plugin/share/nav2_gradient_costmap_plugin/package.dsv'
+[1.800s] INFO:colcon.colcon_core.shell:Creating package script '/home/umarv/ws/install/nav2_gradient_costmap_plugin/share/nav2_gradient_costmap_plugin/package.sh'
+[1.800s] INFO:colcon.colcon_core.shell:Creating package script '/home/umarv/ws/install/nav2_gradient_costmap_plugin/share/nav2_gradient_costmap_plugin/package.bash'
+[1.800s] INFO:colcon.colcon_core.shell:Creating package script '/home/umarv/ws/install/nav2_gradient_costmap_plugin/share/nav2_gradient_costmap_plugin/package.zsh'
+[1.801s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/umarv/ws/install/nav2_gradient_costmap_plugin/share/colcon-core/packages/nav2_gradient_costmap_plugin)
+[1.805s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/umarv/ws/src/navigation2_tutorials/nav2_gps_waypoint_follower_demo': PYTHONPATH=/home/umarv/ws/build/nav2_gps_waypoint_follower_demo/prefix_override:/home/umarv/ws/install/nav2_gps_waypoint_follower_demo/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../../build/nav2_gps_waypoint_follower_demo build --build-base /home/umarv/ws/build/nav2_gps_waypoint_follower_demo/build install --record /home/umarv/ws/build/nav2_gps_waypoint_follower_demo/install.log --single-version-externally-managed
+[2.106s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/umarv/ws/src/navigation2_tutorials/nav2_gps_waypoint_follower_demo' returned '0': PYTHONPATH=/home/umarv/ws/build/nav2_gps_waypoint_follower_demo/prefix_override:/home/umarv/ws/install/nav2_gps_waypoint_follower_demo/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../../build/nav2_gps_waypoint_follower_demo build --build-base /home/umarv/ws/build/nav2_gps_waypoint_follower_demo/build install --record /home/umarv/ws/build/nav2_gps_waypoint_follower_demo/install.log --single-version-externally-managed
+[2.119s] Level 1:colcon.colcon_core.environment:checking '/home/umarv/ws/install/nav2_gps_waypoint_follower_demo' for CMake module files
+[2.120s] Level 1:colcon.colcon_core.environment:checking '/home/umarv/ws/install/nav2_gps_waypoint_follower_demo' for CMake config files
+[2.121s] Level 1:colcon.colcon_core.environment:checking '/home/umarv/ws/install/nav2_gps_waypoint_follower_demo/lib'
+[2.121s] Level 1:colcon.colcon_core.environment:checking '/home/umarv/ws/install/nav2_gps_waypoint_follower_demo/bin'
+[2.121s] Level 1:colcon.colcon_core.environment:checking '/home/umarv/ws/install/nav2_gps_waypoint_follower_demo/lib/pkgconfig/nav2_gps_waypoint_follower_demo.pc'
+[2.122s] Level 1:colcon.colcon_core.environment:checking '/home/umarv/ws/install/nav2_gps_waypoint_follower_demo/lib/python3.10/site-packages'
+[2.122s] Level 1:colcon.colcon_core.shell:create_environment_hook('nav2_gps_waypoint_follower_demo', 'pythonpath')
+[2.134s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/umarv/ws/install/nav2_gps_waypoint_follower_demo/share/nav2_gps_waypoint_follower_demo/hook/pythonpath.ps1'
+[2.135s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/umarv/ws/install/nav2_gps_waypoint_follower_demo/share/nav2_gps_waypoint_follower_demo/hook/pythonpath.dsv'
+[2.136s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/umarv/ws/install/nav2_gps_waypoint_follower_demo/share/nav2_gps_waypoint_follower_demo/hook/pythonpath.sh'
+[2.136s] Level 1:colcon.colcon_core.environment:checking '/home/umarv/ws/install/nav2_gps_waypoint_follower_demo/bin'
+[2.136s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(nav2_gps_waypoint_follower_demo)
+[2.146s] INFO:colcon.colcon_core.shell:Creating package script '/home/umarv/ws/install/nav2_gps_waypoint_follower_demo/share/nav2_gps_waypoint_follower_demo/package.ps1'
+[2.147s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/umarv/ws/install/nav2_gps_waypoint_follower_demo/share/nav2_gps_waypoint_follower_demo/package.dsv'
+[2.147s] INFO:colcon.colcon_core.shell:Creating package script '/home/umarv/ws/install/nav2_gps_waypoint_follower_demo/share/nav2_gps_waypoint_follower_demo/package.sh'
+[2.147s] INFO:colcon.colcon_core.shell:Creating package script '/home/umarv/ws/install/nav2_gps_waypoint_follower_demo/share/nav2_gps_waypoint_follower_demo/package.bash'
+[2.148s] INFO:colcon.colcon_core.shell:Creating package script '/home/umarv/ws/install/nav2_gps_waypoint_follower_demo/share/nav2_gps_waypoint_follower_demo/package.zsh'
+[2.148s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/umarv/ws/install/nav2_gps_waypoint_follower_demo/share/colcon-core/packages/nav2_gps_waypoint_follower_demo)
+[5.705s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/umarv/ws/build/nav2_straightline_planner' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/umarv/ws/install/nav2_gps_waypoint_follower_demo:/opt/ros/humble /usr/bin/cmake --build /home/umarv/ws/build/nav2_straightline_planner -- -j8 -l8
+[5.728s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/umarv/ws/build/nav2_straightline_planner': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/umarv/ws/install/nav2_gps_waypoint_follower_demo:/opt/ros/humble /usr/bin/cmake --install /home/umarv/ws/build/nav2_straightline_planner
+[5.738s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(nav2_straightline_planner)
+[5.744s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/umarv/ws/build/nav2_straightline_planner' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/umarv/ws/install/nav2_gps_waypoint_follower_demo:/opt/ros/humble /usr/bin/cmake --install /home/umarv/ws/build/nav2_straightline_planner
+[5.752s] Level 1:colcon.colcon_core.environment:checking '/home/umarv/ws/install/nav2_straightline_planner' for CMake module files
+[5.753s] Level 1:colcon.colcon_core.environment:checking '/home/umarv/ws/install/nav2_straightline_planner' for CMake config files
+[5.753s] Level 1:colcon.colcon_core.shell:create_environment_hook('nav2_straightline_planner', 'cmake_prefix_path')
+[5.762s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/umarv/ws/install/nav2_straightline_planner/share/nav2_straightline_planner/hook/cmake_prefix_path.ps1'
+[5.763s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/umarv/ws/install/nav2_straightline_planner/share/nav2_straightline_planner/hook/cmake_prefix_path.dsv'
+[5.763s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/umarv/ws/install/nav2_straightline_planner/share/nav2_straightline_planner/hook/cmake_prefix_path.sh'
+[5.763s] Level 1:colcon.colcon_core.environment:checking '/home/umarv/ws/install/nav2_straightline_planner/lib'
+[5.763s] Level 1:colcon.colcon_core.shell:create_environment_hook('nav2_straightline_planner', 'ld_library_path_lib')
+[5.772s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/umarv/ws/install/nav2_straightline_planner/share/nav2_straightline_planner/hook/ld_library_path_lib.ps1'
+[5.773s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/umarv/ws/install/nav2_straightline_planner/share/nav2_straightline_planner/hook/ld_library_path_lib.dsv'
+[5.773s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/umarv/ws/install/nav2_straightline_planner/share/nav2_straightline_planner/hook/ld_library_path_lib.sh'
+[5.773s] Level 1:colcon.colcon_core.environment:checking '/home/umarv/ws/install/nav2_straightline_planner/bin'
+[5.773s] Level 1:colcon.colcon_core.environment:checking '/home/umarv/ws/install/nav2_straightline_planner/lib/pkgconfig/nav2_straightline_planner.pc'
+[5.773s] Level 1:colcon.colcon_core.environment:checking '/home/umarv/ws/install/nav2_straightline_planner/lib/python3.10/site-packages'
+[5.774s] Level 1:colcon.colcon_core.environment:checking '/home/umarv/ws/install/nav2_straightline_planner/bin'
+[5.784s] INFO:colcon.colcon_core.shell:Creating package script '/home/umarv/ws/install/nav2_straightline_planner/share/nav2_straightline_planner/package.ps1'
+[5.784s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/umarv/ws/install/nav2_straightline_planner/share/nav2_straightline_planner/package.dsv'
+[5.785s] INFO:colcon.colcon_core.shell:Creating package script '/home/umarv/ws/install/nav2_straightline_planner/share/nav2_straightline_planner/package.sh'
+[5.785s] INFO:colcon.colcon_core.shell:Creating package script '/home/umarv/ws/install/nav2_straightline_planner/share/nav2_straightline_planner/package.bash'
+[5.786s] INFO:colcon.colcon_core.shell:Creating package script '/home/umarv/ws/install/nav2_straightline_planner/share/nav2_straightline_planner/package.zsh'
+[5.786s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/umarv/ws/install/nav2_straightline_planner/share/colcon-core/packages/nav2_straightline_planner)
+[5.818s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(nav2_straightline_planner)
+[5.831s] Level 1:colcon.colcon_core.environment:checking '/home/umarv/ws/install/nav2_straightline_planner' for CMake module files
+[5.831s] Level 1:colcon.colcon_core.environment:checking '/home/umarv/ws/install/nav2_straightline_planner' for CMake config files
+[5.831s] Level 1:colcon.colcon_core.shell:create_environment_hook('nav2_straightline_planner', 'cmake_prefix_path')
+[5.842s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/umarv/ws/install/nav2_straightline_planner/share/nav2_straightline_planner/hook/cmake_prefix_path.ps1'
+[5.842s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/umarv/ws/install/nav2_straightline_planner/share/nav2_straightline_planner/hook/cmake_prefix_path.dsv'
+[5.843s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/umarv/ws/install/nav2_straightline_planner/share/nav2_straightline_planner/hook/cmake_prefix_path.sh'
+[5.843s] Level 1:colcon.colcon_core.environment:checking '/home/umarv/ws/install/nav2_straightline_planner/lib'
+[5.843s] Level 1:colcon.colcon_core.shell:create_environment_hook('nav2_straightline_planner', 'ld_library_path_lib')
+[5.853s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/umarv/ws/install/nav2_straightline_planner/share/nav2_straightline_planner/hook/ld_library_path_lib.ps1'
+[5.853s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/umarv/ws/install/nav2_straightline_planner/share/nav2_straightline_planner/hook/ld_library_path_lib.dsv'
+[5.854s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/umarv/ws/install/nav2_straightline_planner/share/nav2_straightline_planner/hook/ld_library_path_lib.sh'
+[5.854s] Level 1:colcon.colcon_core.environment:checking '/home/umarv/ws/install/nav2_straightline_planner/bin'
+[5.854s] Level 1:colcon.colcon_core.environment:checking '/home/umarv/ws/install/nav2_straightline_planner/lib/pkgconfig/nav2_straightline_planner.pc'
+[5.855s] Level 1:colcon.colcon_core.environment:checking '/home/umarv/ws/install/nav2_straightline_planner/lib/python3.10/site-packages'
+[5.855s] Level 1:colcon.colcon_core.environment:checking '/home/umarv/ws/install/nav2_straightline_planner/bin'
+[5.864s] INFO:colcon.colcon_core.shell:Creating package script '/home/umarv/ws/install/nav2_straightline_planner/share/nav2_straightline_planner/package.ps1'
+[5.865s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/umarv/ws/install/nav2_straightline_planner/share/nav2_straightline_planner/package.dsv'
+[5.865s] INFO:colcon.colcon_core.shell:Creating package script '/home/umarv/ws/install/nav2_straightline_planner/share/nav2_straightline_planner/package.sh'
+[5.866s] INFO:colcon.colcon_core.shell:Creating package script '/home/umarv/ws/install/nav2_straightline_planner/share/nav2_straightline_planner/package.bash'
+[5.866s] INFO:colcon.colcon_core.shell:Creating package script '/home/umarv/ws/install/nav2_straightline_planner/share/nav2_straightline_planner/package.zsh'
+[5.866s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/umarv/ws/install/nav2_straightline_planner/share/colcon-core/packages/nav2_straightline_planner)
+[5.867s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[5.867s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[5.868s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[5.868s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[5.883s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.notify_send': Could not find 'notify-send'
+[5.883s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[5.883s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[5.883s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[5.885s] DEBUG:colcon.colcon_notification.desktop_notification.notify2:Failed to initialize notify2: org.freedesktop.DBus.Error.Spawn.ExecFailed: /usr/bin/dbus-launch terminated abnormally without any error message
+[5.886s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[5.900s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/umarv/ws/install/local_setup.ps1'
+[5.902s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/umarv/ws/install/_local_setup_util_ps1.py'
+[5.904s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/umarv/ws/install/setup.ps1'
+[5.920s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/umarv/ws/install/local_setup.sh'
+[5.921s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/umarv/ws/install/_local_setup_util_sh.py'
+[5.922s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/umarv/ws/install/setup.sh'
+[5.937s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/umarv/ws/install/local_setup.bash'
+[5.938s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/umarv/ws/install/setup.bash'
+[5.949s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/umarv/ws/install/local_setup.zsh'
+[5.950s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/umarv/ws/install/setup.zsh'

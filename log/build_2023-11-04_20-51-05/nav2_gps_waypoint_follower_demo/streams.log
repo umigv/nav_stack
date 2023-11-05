@@ -1,0 +1,25 @@
+[0.823s] Invoking command in '/home/umarv/ws/src/navigation2_tutorials/nav2_gps_waypoint_follower_demo': PYTHONPATH=/home/umarv/ws/build/nav2_gps_waypoint_follower_demo/prefix_override:/home/umarv/ws/install/nav2_gps_waypoint_follower_demo/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../../build/nav2_gps_waypoint_follower_demo build --build-base /home/umarv/ws/build/nav2_gps_waypoint_follower_demo/build install --record /home/umarv/ws/build/nav2_gps_waypoint_follower_demo/install.log --single-version-externally-managed
+[1.032s] running egg_info
+[1.033s] writing ../../../build/nav2_gps_waypoint_follower_demo/nav2_gps_waypoint_follower_demo.egg-info/PKG-INFO
+[1.033s] writing dependency_links to ../../../build/nav2_gps_waypoint_follower_demo/nav2_gps_waypoint_follower_demo.egg-info/dependency_links.txt
+[1.033s] writing entry points to ../../../build/nav2_gps_waypoint_follower_demo/nav2_gps_waypoint_follower_demo.egg-info/entry_points.txt
+[1.033s] writing requirements to ../../../build/nav2_gps_waypoint_follower_demo/nav2_gps_waypoint_follower_demo.egg-info/requires.txt
+[1.034s] writing top-level names to ../../../build/nav2_gps_waypoint_follower_demo/nav2_gps_waypoint_follower_demo.egg-info/top_level.txt
+[1.035s] reading manifest file '../../../build/nav2_gps_waypoint_follower_demo/nav2_gps_waypoint_follower_demo.egg-info/SOURCES.txt'
+[1.037s] writing manifest file '../../../build/nav2_gps_waypoint_follower_demo/nav2_gps_waypoint_follower_demo.egg-info/SOURCES.txt'
+[1.037s] running build
+[1.037s] running build_py
+[1.037s] running install
+[1.037s] /usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+[1.038s]   warnings.warn(
+[1.038s] running install_lib
+[1.039s] running install_data
+[1.039s] running install_egg_info
+[1.041s] removing '/home/umarv/ws/install/nav2_gps_waypoint_follower_demo/lib/python3.10/site-packages/nav2_gps_waypoint_follower_demo-0.0.1-py3.10.egg-info' (and everything under it)
+[1.041s] Copying ../../../build/nav2_gps_waypoint_follower_demo/nav2_gps_waypoint_follower_demo.egg-info to /home/umarv/ws/install/nav2_gps_waypoint_follower_demo/lib/python3.10/site-packages/nav2_gps_waypoint_follower_demo-0.0.1-py3.10.egg-info
+[1.042s] running install_scripts
+[1.059s] Installing gps_waypoint_logger script to /home/umarv/ws/install/nav2_gps_waypoint_follower_demo/lib/nav2_gps_waypoint_follower_demo
+[1.059s] Installing interactive_waypoint_follower script to /home/umarv/ws/install/nav2_gps_waypoint_follower_demo/lib/nav2_gps_waypoint_follower_demo
+[1.059s] Installing logged_waypoint_follower script to /home/umarv/ws/install/nav2_gps_waypoint_follower_demo/lib/nav2_gps_waypoint_follower_demo
+[1.059s] writing list of installed files to '/home/umarv/ws/build/nav2_gps_waypoint_follower_demo/install.log'
+[1.081s] Invoked command in '/home/umarv/ws/src/navigation2_tutorials/nav2_gps_waypoint_follower_demo' returned '0': PYTHONPATH=/home/umarv/ws/build/nav2_gps_waypoint_follower_demo/prefix_override:/home/umarv/ws/install/nav2_gps_waypoint_follower_demo/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../../build/nav2_gps_waypoint_follower_demo build --build-base /home/umarv/ws/build/nav2_gps_waypoint_follower_demo/build install --record /home/umarv/ws/build/nav2_gps_waypoint_follower_demo/install.log --single-version-externally-managed

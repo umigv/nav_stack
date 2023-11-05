@@ -1,0 +1,27 @@
+[0.183s] Invoking command in '/home/umarv/ws/build/nav2_straightline_planner': /usr/bin/cmake --build /home/umarv/ws/build/nav2_straightline_planner -- -j8 -l8
+[0.207s] [35m[1mConsolidate compiler generated dependencies of target nav2_straightline_planner_plugin[0m
+[0.231s] [ 33%] [32mBuilding CXX object CMakeFiles/nav2_straightline_planner_plugin.dir/src/straight_line_planner.cpp.o[0m
+[0.232s] [ 66%] [32mBuilding CXX object CMakeFiles/nav2_straightline_planner_plugin.dir/src/rpastar.cpp.o[0m
+[3.134s] In file included from [01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:3[m[K:
+[3.134s] [01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/include/nav2_straightline_planner/rpastar.h:[m[K In member function ‘[01m[Kconst bool& nav2_straightline_planner::rpastar::Node::operator==(const nav2_straightline_planner::rpastar::Node&)[m[K’:
+[3.134s] [01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/include/nav2_straightline_planner/rpastar.h:44:36:[m[K [01;35m[Kwarning: [m[Kreturning reference to temporary [[01;35m[K-Wreturn-local-addr[m[K]
+[3.134s]    44 |                 return [01;35m[Kthis->state == rhs.state[m[K;
+[3.135s]       |                        [01;35m[K~~~~~~~~~~~~^~~~~~~~~~~~[m[K
+[3.144s] [01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:[m[K In member function ‘[01m[Kvoid nav2_straightline_planner::rpastar::search()[m[K’:
+[3.145s] [01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:112:37:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K;[m[K’ before ‘[01m[K}[m[K’ token
+[3.145s]   112 |     std::cout <<"Search concluded\n"
+[3.145s]       |                                     [01;31m[K^[m[K
+[3.145s]       |                                     [32m[K;[m[K
+[3.145s]   113 | 
+[3.145s]   114 | [32m[K}[m[K
+[3.145s]       | [32m[K~[m[K                                    
+[3.158s] In file included from [01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/straight_line_planner.cpp:49[m[K:
+[3.158s] [01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/include/nav2_straightline_planner/rpastar.h:[m[K In member function ‘[01m[Kconst bool& nav2_straightline_planner::rpastar::Node::operator==(const nav2_straightline_planner::rpastar::Node&)[m[K’:
+[3.158s] [01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/include/nav2_straightline_planner/rpastar.h:44:36:[m[K [01;35m[Kwarning: [m[Kreturning reference to temporary [[01;35m[K-Wreturn-local-addr[m[K]
+[3.158s]    44 |                 return [01;35m[Kthis->state == rhs.state[m[K;
+[3.158s]       |                        [01;35m[K~~~~~~~~~~~~^~~~~~~~~~~~[m[K
+[4.636s] gmake[2]: *** [CMakeFiles/nav2_straightline_planner_plugin.dir/build.make:90: CMakeFiles/nav2_straightline_planner_plugin.dir/src/rpastar.cpp.o] Error 1
+[4.636s] gmake[2]: *** Waiting for unfinished jobs....
+[4.799s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/nav2_straightline_planner_plugin.dir/all] Error 2
+[4.800s] gmake: *** [Makefile:146: all] Error 2
+[4.801s] Invoked command in '/home/umarv/ws/build/nav2_straightline_planner' returned '2': /usr/bin/cmake --build /home/umarv/ws/build/nav2_straightline_planner -- -j8 -l8

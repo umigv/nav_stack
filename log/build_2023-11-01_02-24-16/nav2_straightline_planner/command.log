@@ -1,0 +1,2 @@
+Invoking command in '/home/umarv/ws/build/nav2_straightline_planner': /usr/bin/cmake --build /home/umarv/ws/build/nav2_straightline_planner -- -j8 -l8
+Invoked command in '/home/umarv/ws/build/nav2_straightline_planner' returned '2': /usr/bin/cmake --build /home/umarv/ws/build/nav2_straightline_planner -- -j8 -l8

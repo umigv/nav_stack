@@ -1,0 +1,5 @@
+In file included from [01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/straight_line_planner.cpp:49[m[K:
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/include/nav2_straightline_planner/rpastar.h:[m[K In member function ‘[01m[Kconst bool& rpastar::Node::operator==(const rpastar::Node&)[m[K’:
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/include/nav2_straightline_planner/rpastar.h:42:36:[m[K [01;35m[Kwarning: [m[Kreturning reference to temporary [[01;35m[K-Wreturn-local-addr[m[K]
+   42 |                 return [01;35m[Kthis->state == rhs.state[m[K;
+      |                        [01;35m[K~~~~~~~~~~~~^~~~~~~~~~~~[m[K

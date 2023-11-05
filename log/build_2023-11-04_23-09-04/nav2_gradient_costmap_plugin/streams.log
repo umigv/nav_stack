@@ -1,0 +1,24 @@
+[0.200s] Invoking command in '/home/umarv/ws/build/nav2_gradient_costmap_plugin': /usr/bin/cmake --build /home/umarv/ws/build/nav2_gradient_costmap_plugin -- -j8 -l8
+[0.248s] [100%] Built target nav2_gradient_costmap_plugin_core
+[0.280s] Invoked command in '/home/umarv/ws/build/nav2_gradient_costmap_plugin' returned '0': /usr/bin/cmake --build /home/umarv/ws/build/nav2_gradient_costmap_plugin -- -j8 -l8
+[0.301s] Invoking command in '/home/umarv/ws/build/nav2_gradient_costmap_plugin': /usr/bin/cmake --install /home/umarv/ws/build/nav2_gradient_costmap_plugin
+[0.327s] -- Install configuration: ""
+[0.328s] -- Up-to-date: /home/umarv/ws/install/nav2_gradient_costmap_plugin/lib/libnav2_gradient_costmap_plugin_core.so
+[0.330s] -- Up-to-date: /home/umarv/ws/install/nav2_gradient_costmap_plugin/share/nav2_gradient_costmap_plugin/gradient_layer.xml
+[0.331s] -- Up-to-date: /home/umarv/ws/install/nav2_gradient_costmap_plugin/share/ament_index/resource_index/package_run_dependencies/nav2_gradient_costmap_plugin
+[0.332s] -- Up-to-date: /home/umarv/ws/install/nav2_gradient_costmap_plugin/share/ament_index/resource_index/parent_prefix_path/nav2_gradient_costmap_plugin
+[0.333s] -- Up-to-date: /home/umarv/ws/install/nav2_gradient_costmap_plugin/share/nav2_gradient_costmap_plugin/environment/ament_prefix_path.sh
+[0.333s] -- Up-to-date: /home/umarv/ws/install/nav2_gradient_costmap_plugin/share/nav2_gradient_costmap_plugin/environment/ament_prefix_path.dsv
+[0.334s] -- Up-to-date: /home/umarv/ws/install/nav2_gradient_costmap_plugin/share/nav2_gradient_costmap_plugin/environment/path.sh
+[0.334s] -- Up-to-date: /home/umarv/ws/install/nav2_gradient_costmap_plugin/share/nav2_gradient_costmap_plugin/environment/path.dsv
+[0.335s] -- Up-to-date: /home/umarv/ws/install/nav2_gradient_costmap_plugin/share/nav2_gradient_costmap_plugin/local_setup.bash
+[0.335s] -- Up-to-date: /home/umarv/ws/install/nav2_gradient_costmap_plugin/share/nav2_gradient_costmap_plugin/local_setup.sh
+[0.335s] -- Up-to-date: /home/umarv/ws/install/nav2_gradient_costmap_plugin/share/nav2_gradient_costmap_plugin/local_setup.zsh
+[0.336s] -- Up-to-date: /home/umarv/ws/install/nav2_gradient_costmap_plugin/share/nav2_gradient_costmap_plugin/local_setup.dsv
+[0.336s] -- Installing: /home/umarv/ws/install/nav2_gradient_costmap_plugin/share/nav2_gradient_costmap_plugin/package.dsv
+[0.336s] -- Up-to-date: /home/umarv/ws/install/nav2_gradient_costmap_plugin/share/ament_index/resource_index/packages/nav2_gradient_costmap_plugin
+[0.336s] -- Up-to-date: /home/umarv/ws/install/nav2_gradient_costmap_plugin/share/ament_index/resource_index/nav2_costmap_2d__pluginlib__plugin/nav2_gradient_costmap_plugin
+[0.337s] -- Up-to-date: /home/umarv/ws/install/nav2_gradient_costmap_plugin/share/nav2_gradient_costmap_plugin/cmake/nav2_gradient_costmap_pluginConfig.cmake
+[0.338s] -- Up-to-date: /home/umarv/ws/install/nav2_gradient_costmap_plugin/share/nav2_gradient_costmap_plugin/cmake/nav2_gradient_costmap_pluginConfig-version.cmake
+[0.339s] -- Up-to-date: /home/umarv/ws/install/nav2_gradient_costmap_plugin/share/nav2_gradient_costmap_plugin/package.xml
+[0.380s] Invoked command in '/home/umarv/ws/build/nav2_gradient_costmap_plugin' returned '0': /usr/bin/cmake --install /home/umarv/ws/build/nav2_gradient_costmap_plugin

@@ -1,0 +1,35 @@
+[0.355s] Invoking command in '/home/umarv/ws/build/nav2_straightline_planner': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/umarv/ws/install/nav2_gps_waypoint_follower_demo:/opt/ros/humble /usr/bin/cmake --build /home/umarv/ws/build/nav2_straightline_planner -- -j8 -l8
+[0.372s] -- Found ament_cmake: 1.3.5 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.520s] -- Found rclcpp: 16.0.6 (/opt/ros/humble/share/rclcpp/cmake)
+[0.548s] -- Found rosidl_generator_c: 3.1.5 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.549s] -- Found rosidl_adapter: 3.1.5 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.557s] -- Found rosidl_generator_cpp: 3.1.5 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.563s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.577s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.634s] -- Found rmw_implementation_cmake: 6.1.1 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.634s] -- Found rmw_fastrtps_cpp: 6.2.4 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[0.765s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.930s] -- Found rclcpp_action: 16.0.6 (/opt/ros/humble/share/rclcpp_action/cmake)
+[1.006s] -- Found rclcpp_lifecycle: 16.0.6 (/opt/ros/humble/share/rclcpp_lifecycle/cmake)
+[1.032s] -- Found visualization_msgs: 4.2.3 (/opt/ros/humble/share/visualization_msgs/cmake)
+[1.229s] -- Found nav2_util: 1.1.12 (/opt/ros/humble/share/nav2_util/cmake)
+[1.628s] -- Found eigen3_cmake_module: 0.1.1 (/opt/ros/humble/share/eigen3_cmake_module/cmake)
+[1.630s] -- Ensuring Eigen3 include directory is part of orocos-kdl CMake target
+[1.782s] -- Found nav2_costmap_2d: 1.1.12 (/opt/ros/humble/share/nav2_costmap_2d/cmake)
+[2.374s] -- Found nav2_core: 1.1.12 (/opt/ros/humble/share/nav2_core/cmake)
+[6.099s] -- Found ament_lint_auto: 0.12.8 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[6.153s] -- Added test 'copyright' to check source files copyright and LICENSE
+[6.153s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[6.153s] -- Configured cppcheck include dirs: /home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/include
+[6.153s] -- Configured cppcheck exclude dirs and/or files: 
+[6.154s] -- Added test 'cpplint' to check C / C++ code against the Google style
+[6.154s] -- Configured cpplint exclude dirs and/or files: 
+[6.154s] -- Added test 'lint_cmake' to check CMake code style
+[6.155s] -- Added test 'uncrustify' to check C / C++ code style
+[6.155s] -- Configured uncrustify additional arguments: 
+[6.155s] -- Added test 'xmllint' to check XML markup files
+[6.156s] -- Configuring done
+[6.184s] -- Generating done
+[6.186s] -- Build files have been written to: /home/umarv/ws/build/nav2_straightline_planner
+[6.207s] [35m[1mConsolidate compiler generated dependencies of target nav2_straightline_planner_plugin[0m
+[6.222s] [100%] Built target nav2_straightline_planner_plugin

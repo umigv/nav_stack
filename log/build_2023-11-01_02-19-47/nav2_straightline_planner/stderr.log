@@ -1,0 +1,334 @@
+In file included from [01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:3[m[K:
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/include/nav2_straightline_planner/rpastar.h:[m[K In member function ‘[01m[Kconst bool& nav2_straightline_planner::rpastar::Node::operator==(const nav2_straightline_planner::rpastar::Node&)[m[K’:
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/include/nav2_straightline_planner/rpastar.h:43:36:[m[K [01;35m[Kwarning: [m[Kreturning reference to temporary [[01;35m[K-Wreturn-local-addr[m[K]
+   43 |                 return [01;35m[Kthis->state == rhs.state[m[K;
+      |                        [01;35m[K~~~~~~~~~~~~^~~~~~~~~~~~[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:[m[K At global scope:
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:14:1:[m[K [01;31m[Kerror: [m[K‘[01m[Krpastar[m[K’ does not name a type
+   14 | [01;31m[Krpastar[m[K::Node::Node(int row, int col, Node * parent) : parent(parent) {
+      | [01;31m[K^~~~~~~[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:19:1:[m[K [01;31m[Kerror: [m[K‘[01m[Krpastar[m[K’ does not name a type
+   19 | [01;31m[Krpastar[m[K::Node::Node() : parent(nullptr), state({0,0}), g_score(0) {}
+      | [01;31m[K^~~~~~~[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:19:53:[m[K [01;31m[Kerror: [m[Kexpected unqualified-id before ‘[01m[K)[m[K’ token
+   19 | rpastar::Node::Node() : parent(nullptr), state({0,0}[01;31m[K)[m[K, g_score(0) {}
+      |                                                     [01;31m[K^[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:21:6:[m[K [01;31m[Kerror: [m[K‘[01m[Krpastar[m[K’ has not been declared
+   21 | void [01;31m[Krpastar[m[K::Node::set_h(std::pair<int,int> &target_state)
+      |      [01;31m[K^~~~~~~[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:[m[K In function ‘[01m[Kvoid set_h(std::pair<int, int>&)[m[K’:
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:23:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kh_score[m[K’ was not declared in this scope
+   23 |     [01;31m[Kh_score[m[K = sqrt(pow(target_state.first - state.first, 2) + pow(target_state.second - state.second, 2));
+      |     [01;31m[K^~~~~~~[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:23:45:[m[K [01;31m[Kerror: [m[K‘[01m[Kstate[m[K’ was not declared in this scope; did you mean ‘[01m[K_xstate[m[K’?
+   23 |     h_score = sqrt(pow(target_state.first - [01;31m[Kstate[m[K.first, 2) + pow(target_state.second - state.second, 2));
+      |                                             [01;31m[K^~~~~[m[K
+      |                                             [32m[K_xstate[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:[m[K At global scope:
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:26:6:[m[K [01;31m[Kerror: [m[K‘[01m[Krpastar[m[K’ has not been declared
+   26 | void [01;31m[Krpastar[m[K::Node::set_g(float g_in)
+      |      [01;31m[K^~~~~~~[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:[m[K In function ‘[01m[Kvoid set_g(float)[m[K’:
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:28:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kg_score[m[K’ was not declared in this scope
+   28 |     [01;31m[Kg_score[m[K = g_in;
+      |     [01;31m[K^~~~~~~[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:[m[K At global scope:
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:31:6:[m[K [01;31m[Kerror: [m[K‘[01m[Krpastar[m[K’ has not been declared
+   31 | void [01;31m[Krpastar[m[K::Node::set_state(int row, int col)
+      |      [01;31m[K^~~~~~~[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:[m[K In function ‘[01m[Kvoid set_state(int, int)[m[K’:
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:33:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kstate[m[K’ was not declared in this scope; did you mean ‘[01m[K_xstate[m[K’?
+   33 |     [01;31m[Kstate[m[K.first = row;
+      |     [01;31m[K^~~~~[m[K
+      |     [32m[K_xstate[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:[m[K At global scope:
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:37:6:[m[K [01;31m[Kerror: [m[K‘[01m[Krpastar[m[K’ has not been declared
+   37 | void [01;31m[Krpastar[m[K::Node::set_parent(Node *parent_in)
+      |      [01;31m[K^~~~~~~[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:37:6:[m[K [01;31m[Kerror: [m[Kvariable or field ‘[01m[Kset_parent[m[K’ declared void
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:37:32:[m[K [01;31m[Kerror: [m[K‘[01m[KNode[m[K’ was not declared in this scope; did you mean ‘[01m[Krclcpp::Node[m[K’?
+   37 | void rpastar::Node::set_parent([01;31m[KNode[m[K *parent_in)
+      |                                [01;31m[K^~~~[m[K
+      |                                [32m[Krclcpp::Node[m[K
+In file included from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors/single_threaded_executor.hpp:28[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:22[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155[m[K,
+                 from [01m[K/opt/ros/humble/include/nav2_util/node_thread.hpp:20[m[K,
+                 from [01m[K/opt/ros/humble/include/nav2_util/lifecycle_node.hpp:22[m[K,
+                 from [01m[K/opt/ros/humble/include/nav2_costmap_2d/costmap_2d_publisher.hpp:53[m[K,
+                 from [01m[K/opt/ros/humble/include/nav2_costmap_2d/costmap_2d_ros.hpp:48[m[K,
+                 from [01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/include/nav2_straightline_planner/rpastar.h:9[m[K,
+                 from [01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:3[m[K:
+[01m[K/opt/ros/humble/include/rclcpp/rclcpp/node.hpp:77:7:[m[K [01;36m[Knote: [m[K‘[01m[Krclcpp::Node[m[K’ declared here
+   77 | class [01;36m[KNode[m[K : public std::enable_shared_from_this<Node>
+      |       [01;36m[K^~~~[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:37:38:[m[K [01;31m[Kerror: [m[K‘[01m[Kparent_in[m[K’ was not declared in this scope
+   37 | void rpastar::Node::set_parent(Node *[01;31m[Kparent_in[m[K)
+      |                                      [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:42:20:[m[K [01;31m[Kerror: [m[K‘[01m[Krpastar[m[K’ has not been declared
+   42 | std::pair<int,int> [01;31m[Krpastar[m[K::Node::get_state()
+      |                    [01;31m[K^~~~~~~[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:[m[K In function ‘[01m[Kstd::pair<int, int> get_state()[m[K’:
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:44:12:[m[K [01;31m[Kerror: [m[K‘[01m[Kstate[m[K’ was not declared in this scope; did you mean ‘[01m[K_xstate[m[K’?
+   44 |     return [01;31m[Kstate[m[K;
+      |            [01;31m[K^~~~~[m[K
+      |            [32m[K_xstate[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:[m[K At global scope:
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:47:7:[m[K [01;31m[Kerror: [m[K‘[01m[Krpastar[m[K’ has not been declared
+   47 | float [01;31m[Krpastar[m[K::Node::get_f_score() const
+      |       [01;31m[K^~~~~~~[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:47:36:[m[K [01;31m[Kerror: [m[Knon-member function ‘[01m[Kfloat get_f_score()[m[K’ cannot have cv-qualifier
+   47 | float rpastar::Node::get_f_score() [01;31m[Kconst[m[K
+      |                                    [01;31m[K^~~~~[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:[m[K In function ‘[01m[Kfloat get_f_score()[m[K’:
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:49:12:[m[K [01;31m[Kerror: [m[K‘[01m[Kg_score[m[K’ was not declared in this scope
+   49 |     return [01;31m[Kg_score[m[K + h_score;
+      |            [01;31m[K^~~~~~~[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:49:22:[m[K [01;31m[Kerror: [m[K‘[01m[Kh_score[m[K’ was not declared in this scope
+   49 |     return g_score + [01;31m[Kh_score[m[K;
+      |                      [01;31m[K^~~~~~~[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:[m[K At global scope:
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:52:6:[m[K [01;31m[Kerror: [m[K‘[01m[Krpastar[m[K’ has not been declared
+   52 | bool [01;31m[Krpastar[m[K::Node::at_target(std::pair<int,int> &target_state)
+      |      [01;31m[K^~~~~~~[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:[m[K In function ‘[01m[Kbool at_target(std::pair<int, int>&)[m[K’:
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:54:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kstate[m[K’ was not declared in this scope; did you mean ‘[01m[K_xstate[m[K’?
+   54 |     return ([01;31m[Kstate[m[K.first == target_state.first && state.second == target_state.second);
+      |             [01;31m[K^~~~~[m[K
+      |             [32m[K_xstate[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:[m[K At global scope:
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:58:1:[m[K [01;31m[Kerror: [m[K‘[01m[Krpastar[m[K’ does not name a type
+   58 | [01;31m[Krpastar[m[K::rpastar(std::pair<int,int> start_state_in, std::pair<int,int> target_state_in, nav2_costmap_2d::Costmap2D * msg) : start_state(start_state_in), target_state(target_state_in)
+      | [01;31m[K^~~~~~~[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:72:6:[m[K [01;31m[Kerror: [m[K‘[01m[Krpastar[m[K’ has not been declared
+   72 | void [01;31m[Krpastar[m[K::find_target()
+      |      [01;31m[K^~~~~~~[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:77:6:[m[K [01;31m[Kerror: [m[K‘[01m[Krpastar[m[K’ has not been declared
+   77 | bool [01;31m[Krpastar[m[K::goal_found()
+      |      [01;31m[K^~~~~~~[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:[m[K In function ‘[01m[Kbool goal_found()[m[K’:
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:79:12:[m[K [01;31m[Kerror: [m[K‘[01m[Kpath_found[m[K’ was not declared in this scope; did you mean ‘[01m[Kpathconf[m[K’?
+   79 |     return [01;31m[Kpath_found[m[K;
+      |            [01;31m[K^~~~~~~~~~[m[K
+      |            [32m[Kpathconf[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:[m[K At global scope:
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:83:6:[m[K [01;31m[Kerror: [m[K‘[01m[Krpastar[m[K’ has not been declared
+   83 | void [01;31m[Krpastar[m[K::search()
+      |      [01;31m[K^~~~~~~[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:[m[K In function ‘[01m[Kvoid search()[m[K’:
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:85:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kpath_found[m[K’ was not declared in this scope; did you mean ‘[01m[Kpathconf[m[K’?
+   85 |     [01;31m[Kpath_found[m[K = false;
+      |     [01;31m[K^~~~~~~~~~[m[K
+      |     [32m[Kpathconf[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:86:13:[m[K [01;31m[Kerror: [m[K‘[01m[KU[m[K’ was not declared in this scope
+   86 |     while (![01;31m[KU[m[K.empty())
+      |             [01;31m[K^[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:88:9:[m[K [01;31m[Kerror: [m[K‘[01m[KNode[m[K’ was not declared in this scope; did you mean ‘[01m[Krclcpp::Node[m[K’?
+   88 |         [01;31m[KNode[m[K current_node = U.top();
+      |         [01;31m[K^~~~[m[K
+      |         [32m[Krclcpp::Node[m[K
+In file included from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors/single_threaded_executor.hpp:28[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:22[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155[m[K,
+                 from [01m[K/opt/ros/humble/include/nav2_util/node_thread.hpp:20[m[K,
+                 from [01m[K/opt/ros/humble/include/nav2_util/lifecycle_node.hpp:22[m[K,
+                 from [01m[K/opt/ros/humble/include/nav2_costmap_2d/costmap_2d_publisher.hpp:53[m[K,
+                 from [01m[K/opt/ros/humble/include/nav2_costmap_2d/costmap_2d_ros.hpp:48[m[K,
+                 from [01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/include/nav2_straightline_planner/rpastar.h:9[m[K,
+                 from [01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:3[m[K:
+[01m[K/opt/ros/humble/include/rclcpp/rclcpp/node.hpp:77:7:[m[K [01;36m[Knote: [m[K‘[01m[Krclcpp::Node[m[K’ declared here
+   77 | class [01;36m[KNode[m[K : public std::enable_shared_from_this<Node>
+      |       [01;36m[K^~~~[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:91:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kopen_set[m[K’ was not declared in this scope
+   91 |         [01;31m[Kopen_set[m[K.erase(current_node.get_state());
+      |         [01;31m[K^~~~~~~~[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:91:24:[m[K [01;31m[Kerror: [m[K‘[01m[Kcurrent_node[m[K’ was not declared in this scope
+   91 |         open_set.erase([01;31m[Kcurrent_node[m[K.get_state());
+      |                        [01;31m[K^~~~~~~~~~~~[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:92:36:[m[K [01;31m[Kerror: [m[K‘[01m[Ktarget_state[m[K’ was not declared in this scope; did you mean ‘[01m[Kget_state[m[K’?
+   92 |         if (current_node.at_target([01;31m[Ktarget_state[m[K))
+      |                                    [01;31m[K^~~~~~~~~~~~[m[K
+      |                                    [32m[Kget_state[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:99:15:[m[K [01;31m[Kerror: [m[K‘[01m[Kparent_ptr[m[K’ was not declared in this scope
+   99 |         Node *[01;31m[Kparent_ptr[m[K = &graph[i][j];
+      |               [01;31m[K^~~~~~~~~~[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:99:29:[m[K [01;31m[Kerror: [m[K‘[01m[Kgraph[m[K’ was not declared in this scope; did you mean ‘[01m[Kisgraph[m[K’?
+   99 |         Node *parent_ptr = &[01;31m[Kgraph[m[K[i][j];
+      |                             [01;31m[K^~~~~[m[K
+      |                             [32m[Kisgraph[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:100:9:[m[K [01;31m[Kerror: [m[K‘[01m[KprocessNode[m[K’ was not declared in this scope
+  100 |         [01;31m[KprocessNode[m[K(i-1, j, parent_ptr); // north
+      |         [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:108:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kclosed_set[m[K’ was not declared in this scope
+  108 |         [01;31m[Kclosed_set[m[K[current_node.get_state()] = current_node.get_f_score();
+      |         [01;31m[K^~~~~~~~~~[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:[m[K At global scope:
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:113:6:[m[K [01;31m[Kerror: [m[K‘[01m[Krpastar[m[K’ has not been declared
+  113 | void [01;31m[Krpastar[m[K::processNode(int row, int col, Node *parent)
+      |      [01;31m[K^~~~~~~[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:113:45:[m[K [01;31m[Kerror: [m[K‘[01m[KNode[m[K’ has not been declared
+  113 | void rpastar::processNode(int row, int col, [01;31m[KNode[m[K *parent)
+      |                                             [01;31m[K^~~~[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:[m[K In function ‘[01m[Kvoid processNode(int, int, int*)[m[K’:
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:115:27:[m[K [01;31m[Kerror: [m[K‘[01m[Kcost_map[m[K’ was not declared in this scope
+  115 |     if (row < 0 || row >= [01;31m[Kcost_map[m[K.size() || col < 0 || col >= cost_map[0].size())
+      |                           [01;31m[K^~~~~~~~[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:119:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kcost_map[m[K’ was not declared in this scope
+  119 |     if ([01;31m[Kcost_map[m[K[row][col] > 128 && cost_map[row][col] < 254)
+      |         [01;31m[K^~~~~~~~[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:123:5:[m[K [01;31m[Kerror: [m[K‘[01m[KNode[m[K’ was not declared in this scope; did you mean ‘[01m[Krclcpp::Node[m[K’?
+  123 |     [01;31m[KNode[m[K new_node = Node(row,col,parent);
+      |     [01;31m[K^~~~[m[K
+      |     [32m[Krclcpp::Node[m[K
+In file included from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors/single_threaded_executor.hpp:28[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:22[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155[m[K,
+                 from [01m[K/opt/ros/humble/include/nav2_util/node_thread.hpp:20[m[K,
+                 from [01m[K/opt/ros/humble/include/nav2_util/lifecycle_node.hpp:22[m[K,
+                 from [01m[K/opt/ros/humble/include/nav2_costmap_2d/costmap_2d_publisher.hpp:53[m[K,
+                 from [01m[K/opt/ros/humble/include/nav2_costmap_2d/costmap_2d_ros.hpp:48[m[K,
+                 from [01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/include/nav2_straightline_planner/rpastar.h:9[m[K,
+                 from [01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:3[m[K:
+[01m[K/opt/ros/humble/include/rclcpp/rclcpp/node.hpp:77:7:[m[K [01;36m[Knote: [m[K‘[01m[Krclcpp::Node[m[K’ declared here
+   77 | class [01;36m[KNode[m[K : public std::enable_shared_from_this<Node>
+      |       [01;36m[K^~~~[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:124:5:[m[K [01;31m[Kerror: [m[K‘[01m[Knew_node[m[K’ was not declared in this scope; did you mean ‘[01m[Krmw_node_t[m[K’?
+  124 |     [01;31m[Knew_node[m[K.set_h(target_state);
+      |     [01;31m[K^~~~~~~~[m[K
+      |     [32m[Krmw_node_t[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:124:20:[m[K [01;31m[Kerror: [m[K‘[01m[Ktarget_state[m[K’ was not declared in this scope; did you mean ‘[01m[Kget_state[m[K’?
+  124 |     new_node.set_h([01;31m[Ktarget_state[m[K);
+      |                    [01;31m[K^~~~~~~~~~~~[m[K
+      |                    [32m[Kget_state[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:125:20:[m[K [01;31m[Kerror: [m[K‘[01m[Kopen_set[m[K’ was not declared in this scope; did you mean ‘[01m[Kopen_it[m[K’?
+  125 |     auto open_it = [01;31m[Kopen_set[m[K.find(new_node.get_state());
+      |                    [01;31m[K^~~~~~~~[m[K
+      |                    [32m[Kopen_it[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:132:22:[m[K [01;31m[Kerror: [m[K‘[01m[Kclosed_set[m[K’ was not declared in this scope; did you mean ‘[01m[Kclosed_it[m[K’?
+  132 |     auto closed_it = [01;31m[Kclosed_set[m[K.find(new_node.get_state());
+      |                      [01;31m[K^~~~~~~~~~[m[K
+      |                      [32m[Kclosed_it[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:139:5:[m[K [01;31m[Kerror: [m[K‘[01m[KU[m[K’ was not declared in this scope
+  139 |     [01;31m[KU[m[K.push(new_node);
+      |     [01;31m[K^[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:140:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kgraph[m[K’ was not declared in this scope; did you mean ‘[01m[Kisgraph[m[K’?
+  140 |     [01;31m[Kgraph[m[K[row][col] = new_node;
+      |     [01;31m[K^~~~~[m[K
+      |     [32m[Kisgraph[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:[m[K At global scope:
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:146:6:[m[K [01;31m[Kerror: [m[K‘[01m[Krpastar[m[K’ has not been declared
+  146 | void [01;31m[Krpastar[m[K::costMapCallback(nav2_costmap_2d::Costmap2D* msg)
+      |      [01;31m[K^~~~~~~[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:[m[K In function ‘[01m[Kvoid costMapCallback(nav2_costmap_2d::Costmap2D*)[m[K’:
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:153:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kcost_map[m[K’ was not declared in this scope
+  153 |     [01;31m[Kcost_map[m[K = std::vector<std::vector<int>>(costmap_height, std::vector<int>(costmap_width, 0));
+      |     [01;31m[K^~~~~~~~[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:154:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kgraph[m[K’ was not declared in this scope; did you mean ‘[01m[Kisgraph[m[K’?
+  154 |     [01;31m[Kgraph[m[K = std::vector<std::vector<rpastar::Node>>(costmap_height, std::vector<rpastar::Node>(costmap_width, rpastar::Node()));
+      |     [01;31m[K^~~~~[m[K
+      |     [32m[Kisgraph[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:154:37:[m[K [01;31m[Kerror: [m[K‘[01m[Krpastar[m[K’ was not declared in this scope; did you mean ‘[01m[Knav2_straightline_planner::rpastar[m[K’?
+  154 |     graph = std::vector<std::vector<[01;31m[Krpastar[m[K::Node>>(costmap_height, std::vector<rpastar::Node>(costmap_width, rpastar::Node()));
+      |                                     [01;31m[K^~~~~~~[m[K
+      |                                     [32m[Knav2_straightline_planner::rpastar[m[K
+In file included from [01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:3[m[K:
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/include/nav2_straightline_planner/rpastar.h:13:7:[m[K [01;36m[Knote: [m[K‘[01m[Knav2_straightline_planner::rpastar[m[K’ declared here
+   13 | class [01;36m[Krpastar[m[K
+      |       [01;36m[K^~~~~~~[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:154:50:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+  154 |     graph = std::vector<std::vector<rpastar::Node[01;31m[K>>[m[K(costmap_height, std::vector<rpastar::Node>(costmap_width, rpastar::Node()));
+      |                                                  [01;31m[K^~[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:154:50:[m[K [01;31m[Kerror: [m[Ktemplate argument 2 is invalid
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:154:94:[m[K [01;31m[Kerror: [m[Ktemplate argument 2 is invalid
+  154 |     graph = std::vector<std::vector<rpastar::Node>>(costmap_height, std::vector<rpastar::Node[01;31m[K>[m[K(costmap_width, rpastar::Node()));
+      |                                                                                              [01;31m[K^[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:154:127:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+  154 | vector<std::vector<rpastar::Node>>(costmap_height, std::vector<rpastar::Node>(costmap_width, rpastar::Node())[01;31m[K)[m[K;
+      |                                                                                                              [01;31m[K^[m[K
+
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:154:127:[m[K [01;31m[Kerror: [m[Ktemplate argument 2 is invalid
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:177:11:[m[K [01;31m[Kerror: [m[K‘[01m[Kstart_state[m[K’ was not declared in this scope; did you mean ‘[01m[Kset_state[m[K’?
+  177 |     graph[[01;31m[Kstart_state[m[K.first][start_state.second].set_g(0);
+      |           [01;31m[K^~~~~~~~~~~[m[K
+      |           [32m[Kset_state[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:178:56:[m[K [01;31m[Kerror: [m[K‘[01m[Ktarget_state[m[K’ was not declared in this scope; did you mean ‘[01m[Kget_state[m[K’?
+  178 |     graph[start_state.first][start_state.second].set_h([01;31m[Ktarget_state[m[K);
+      |                                                        [01;31m[K^~~~~~~~~~~~[m[K
+      |                                                        [32m[Kget_state[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:182:5:[m[K [01;31m[Kerror: [m[K‘[01m[KU[m[K’ was not declared in this scope
+  182 |     [01;31m[KU[m[K = std::priority_queue<rpastar::Node, std::vector<rpastar::Node>, customGreater>();
+      |     [01;31m[K^[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:182:85:[m[K [01;31m[Kerror: [m[Ktemplate argument 2 is invalid
+  182 |     U = std::priority_queue<rpastar::Node, std::vector<rpastar::Node>, customGreater[01;31m[K>[m[K();
+      |                                                                                     [01;31m[K^[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:182:85:[m[K [01;31m[Kerror: [m[Ktemplate argument 3 is invalid
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:184:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kopen_set[m[K’ was not declared in this scope
+  184 |     [01;31m[Kopen_set[m[K[start_state] = U.top().get_f_score();
+      |     [01;31m[K^~~~~~~~[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:[m[K At global scope:
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:194:33:[m[K [01;31m[Kerror: [m[K‘[01m[Krpastar[m[K’ has not been declared
+  194 | std::vector<std::pair<int,int>> [01;31m[Krpastar[m[K::backtracker()
+      |                                 [01;31m[K^~~~~~~[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:[m[K In function ‘[01m[Kstd::vector<std::pair<int, int> > backtracker()[m[K’:
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:196:5:[m[K [01;31m[Kerror: [m[K‘[01m[KNode[m[K’ was not declared in this scope; did you mean ‘[01m[Krclcpp::Node[m[K’?
+  196 |     [01;31m[KNode[m[K *curr_node = &graph[target_state.first][target_state.second];
+      |     [01;31m[K^~~~[m[K
+      |     [32m[Krclcpp::Node[m[K
+In file included from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors/single_threaded_executor.hpp:28[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:22[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155[m[K,
+                 from [01m[K/opt/ros/humble/include/nav2_util/node_thread.hpp:20[m[K,
+                 from [01m[K/opt/ros/humble/include/nav2_util/lifecycle_node.hpp:22[m[K,
+                 from [01m[K/opt/ros/humble/include/nav2_costmap_2d/costmap_2d_publisher.hpp:53[m[K,
+                 from [01m[K/opt/ros/humble/include/nav2_costmap_2d/costmap_2d_ros.hpp:48[m[K,
+                 from [01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/include/nav2_straightline_planner/rpastar.h:9[m[K,
+                 from [01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:3[m[K:
+[01m[K/opt/ros/humble/include/rclcpp/rclcpp/node.hpp:77:7:[m[K [01;36m[Knote: [m[K‘[01m[Krclcpp::Node[m[K’ declared here
+   77 | class [01;36m[KNode[m[K : public std::enable_shared_from_this<Node>
+      |       [01;36m[K^~~~[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:196:11:[m[K [01;31m[Kerror: [m[K‘[01m[Kcurr_node[m[K’ was not declared in this scope
+  196 |     Node *[01;31m[Kcurr_node[m[K = &graph[target_state.first][target_state.second];
+      |           [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:196:24:[m[K [01;31m[Kerror: [m[K‘[01m[Kgraph[m[K’ was not declared in this scope; did you mean ‘[01m[Kisgraph[m[K’?
+  196 |     Node *curr_node = &[01;31m[Kgraph[m[K[target_state.first][target_state.second];
+      |                        [01;31m[K^~~~~[m[K
+      |                        [32m[Kisgraph[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:196:30:[m[K [01;31m[Kerror: [m[K‘[01m[Ktarget_state[m[K’ was not declared in this scope; did you mean ‘[01m[Kget_state[m[K’?
+  196 |     Node *curr_node = &graph[[01;31m[Ktarget_state[m[K.first][target_state.second];
+      |                              [01;31m[K^~~~~~~~~~~~[m[K
+      |                              [32m[Kget_state[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:199:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kpath[m[K’ was not declared in this scope; did you mean ‘[01m[Krcpputils::fs::path[m[K’?
+  199 |         [01;31m[Kpath[m[K.push_back(curr_node->get_state());
+      |         [01;31m[K^~~~[m[K
+      |         [32m[Krcpputils::fs::path[m[K
+In file included from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/logger.hpp:25[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:23[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp_lifecycle/rclcpp_lifecycle/lifecycle_node.hpp:55[m[K,
+                 from [01m[K/opt/ros/humble/include/nav2_costmap_2d/costmap_2d_publisher.hpp:46[m[K,
+                 from [01m[K/opt/ros/humble/include/nav2_costmap_2d/costmap_2d_ros.hpp:48[m[K,
+                 from [01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/include/nav2_straightline_planner/rpastar.h:9[m[K,
+                 from [01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:3[m[K:
+[01m[K/opt/ros/humble/include/rcpputils/rcpputils/filesystem_helper.hpp:74:7:[m[K [01;36m[Knote: [m[K‘[01m[Krcpputils::fs::path[m[K’ declared here
+   74 | class [01;36m[Kpath[m[K
+      |       [01;36m[K^~~~[m[K
+[01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:203:18:[m[K [01;31m[Kerror: [m[K‘[01m[Kpath[m[K’ was not declared in this scope; did you mean ‘[01m[Krcpputils::fs::path[m[K’?
+  203 |     std::reverse([01;31m[Kpath[m[K.begin(), path.end());
+      |                  [01;31m[K^~~~[m[K
+      |                  [32m[Krcpputils::fs::path[m[K
+In file included from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/logger.hpp:25[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:23[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp_lifecycle/rclcpp_lifecycle/lifecycle_node.hpp:55[m[K,
+                 from [01m[K/opt/ros/humble/include/nav2_costmap_2d/costmap_2d_publisher.hpp:46[m[K,
+                 from [01m[K/opt/ros/humble/include/nav2_costmap_2d/costmap_2d_ros.hpp:48[m[K,
+                 from [01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/include/nav2_straightline_planner/rpastar.h:9[m[K,
+                 from [01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:3[m[K:
+[01m[K/opt/ros/humble/include/rcpputils/rcpputils/filesystem_helper.hpp:74:7:[m[K [01;36m[Knote: [m[K‘[01m[Krcpputils::fs::path[m[K’ declared here
+   74 | class [01;36m[Kpath[m[K
+      |       [01;36m[K^~~~[m[K
+gmake[2]: *** [CMakeFiles/nav2_straightline_planner_plugin.dir/build.make:90: CMakeFiles/nav2_straightline_planner_plugin.dir/src/rpastar.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/nav2_straightline_planner_plugin.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

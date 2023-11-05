@@ -1,0 +1,43 @@
+[0.319s] Invoking command in '/home/umarv/ws/build/nav2_straightline_planner': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/umarv/ws/install/nav2_gps_waypoint_follower_demo:/opt/ros/humble /usr/bin/cmake --build /home/umarv/ws/build/nav2_straightline_planner -- -j8 -l8
+[0.359s] [35m[1mConsolidate compiler generated dependencies of target nav2_straightline_planner_plugin[0m
+[0.381s] [ 33%] [32mBuilding CXX object CMakeFiles/nav2_straightline_planner_plugin.dir/src/straight_line_planner.cpp.o[0m
+[2.885s] In file included from [01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/straight_line_planner.cpp:49[m[K:
+[2.885s] [01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/include/nav2_straightline_planner/rpastar.h:[m[K In member function ‘[01m[Kconst bool& nav2_straightline_planner::rpastar::Node::operator==(const nav2_straightline_planner::rpastar::Node&)[m[K’:
+[2.885s] [01m[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/include/nav2_straightline_planner/rpastar.h:44:36:[m[K [01;35m[Kwarning: [m[Kreturning reference to temporary [[01;35m[K-Wreturn-local-addr[m[K]
+[2.885s]    44 |                 return [01;35m[Kthis->state == rhs.state[m[K;
+[2.885s]       |                        [01;35m[K~~~~~~~~~~~~^~~~~~~~~~~~[m[K
+[4.351s] [ 66%] [32m[1mLinking CXX shared library libnav2_straightline_planner_plugin.so[0m
+[4.540s] [100%] Built target nav2_straightline_planner_plugin
+[4.549s] Invoked command in '/home/umarv/ws/build/nav2_straightline_planner' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/umarv/ws/install/nav2_gps_waypoint_follower_demo:/opt/ros/humble /usr/bin/cmake --build /home/umarv/ws/build/nav2_straightline_planner -- -j8 -l8
+[4.573s] Invoking command in '/home/umarv/ws/build/nav2_straightline_planner': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/umarv/ws/install/nav2_gps_waypoint_follower_demo:/opt/ros/humble /usr/bin/cmake --install /home/umarv/ws/build/nav2_straightline_planner
+[4.578s] -- Install configuration: ""
+[4.578s] -- Up-to-date: /home/umarv/ws/install/nav2_straightline_planner/share/nav2_straightline_planner/global_planner_plugin.xml
+[4.578s] -- Installing: /home/umarv/ws/install/nav2_straightline_planner/lib/libnav2_straightline_planner_plugin.so
+[4.579s] -- Set runtime path of "/home/umarv/ws/install/nav2_straightline_planner/lib/libnav2_straightline_planner_plugin.so" to ""
+[4.580s] -- Up-to-date: /home/umarv/ws/install/nav2_straightline_planner/include/
+[4.580s] -- Up-to-date: /home/umarv/ws/install/nav2_straightline_planner/include//nav2_straightline_planner
+[4.580s] -- Up-to-date: /home/umarv/ws/install/nav2_straightline_planner/include//nav2_straightline_planner/rpastar.h
+[4.580s] -- Up-to-date: /home/umarv/ws/install/nav2_straightline_planner/include//nav2_straightline_planner/straight_line_planner.hpp
+[4.580s] -- Up-to-date: /home/umarv/ws/install/nav2_straightline_planner/share/nav2_straightline_planner/global_planner_plugin.xml
+[4.580s] -- Up-to-date: /home/umarv/ws/install/nav2_straightline_planner/share/nav2_straightline_planner/environment/library_path.sh
+[4.580s] -- Up-to-date: /home/umarv/ws/install/nav2_straightline_planner/share/nav2_straightline_planner/environment/library_path.dsv
+[4.580s] -- Up-to-date: /home/umarv/ws/install/nav2_straightline_planner/share/ament_index/resource_index/package_run_dependencies/nav2_straightline_planner
+[4.581s] -- Up-to-date: /home/umarv/ws/install/nav2_straightline_planner/share/ament_index/resource_index/parent_prefix_path/nav2_straightline_planner
+[4.581s] -- Up-to-date: /home/umarv/ws/install/nav2_straightline_planner/share/nav2_straightline_planner/environment/ament_prefix_path.sh
+[4.581s] -- Up-to-date: /home/umarv/ws/install/nav2_straightline_planner/share/nav2_straightline_planner/environment/ament_prefix_path.dsv
+[4.581s] -- Up-to-date: /home/umarv/ws/install/nav2_straightline_planner/share/nav2_straightline_planner/environment/path.sh
+[4.581s] -- Up-to-date: /home/umarv/ws/install/nav2_straightline_planner/share/nav2_straightline_planner/environment/path.dsv
+[4.581s] -- Up-to-date: /home/umarv/ws/install/nav2_straightline_planner/share/nav2_straightline_planner/local_setup.bash
+[4.581s] -- Up-to-date: /home/umarv/ws/install/nav2_straightline_planner/share/nav2_straightline_planner/local_setup.sh
+[4.581s] -- Up-to-date: /home/umarv/ws/install/nav2_straightline_planner/share/nav2_straightline_planner/local_setup.zsh
+[4.582s] -- Up-to-date: /home/umarv/ws/install/nav2_straightline_planner/share/nav2_straightline_planner/local_setup.dsv
+[4.583s] -- Installing: /home/umarv/ws/install/nav2_straightline_planner/share/nav2_straightline_planner/package.dsv
+[4.583s] -- Up-to-date: /home/umarv/ws/install/nav2_straightline_planner/share/ament_index/resource_index/packages/nav2_straightline_planner
+[4.583s] -- Up-to-date: /home/umarv/ws/install/nav2_straightline_planner/share/ament_index/resource_index/nav2_core__pluginlib__plugin/nav2_straightline_planner
+[4.584s] -- Up-to-date: /home/umarv/ws/install/nav2_straightline_planner/share/nav2_straightline_planner/cmake/ament_cmake_export_include_directories-extras.cmake
+[4.585s] -- Up-to-date: /home/umarv/ws/install/nav2_straightline_planner/share/nav2_straightline_planner/cmake/ament_cmake_export_libraries-extras.cmake
+[4.586s] -- Up-to-date: /home/umarv/ws/install/nav2_straightline_planner/share/nav2_straightline_planner/cmake/ament_cmake_export_dependencies-extras.cmake
+[4.586s] -- Up-to-date: /home/umarv/ws/install/nav2_straightline_planner/share/nav2_straightline_planner/cmake/nav2_straightline_plannerConfig.cmake
+[4.587s] -- Up-to-date: /home/umarv/ws/install/nav2_straightline_planner/share/nav2_straightline_planner/cmake/nav2_straightline_plannerConfig-version.cmake
+[4.587s] -- Up-to-date: /home/umarv/ws/install/nav2_straightline_planner/share/nav2_straightline_planner/package.xml
+[4.588s] Invoked command in '/home/umarv/ws/build/nav2_straightline_planner' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/umarv/ws/install/nav2_gps_waypoint_follower_demo:/opt/ros/humble /usr/bin/cmake --install /home/umarv/ws/build/nav2_straightline_planner

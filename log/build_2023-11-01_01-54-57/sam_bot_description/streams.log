@@ -1,0 +1,20 @@
+[0.270s] Invoking command in '/home/umarv/ws/build/sam_bot_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/umarv/ws/install/nav2_gps_waypoint_follower_demo:/opt/ros/humble /usr/bin/cmake --build /home/umarv/ws/build/sam_bot_description -- -j8 -l8
+[0.294s] Invoked command in '/home/umarv/ws/build/sam_bot_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/umarv/ws/install/nav2_gps_waypoint_follower_demo:/opt/ros/humble /usr/bin/cmake --build /home/umarv/ws/build/sam_bot_description -- -j8 -l8
+[0.318s] Invoking command in '/home/umarv/ws/build/sam_bot_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/umarv/ws/install/nav2_gps_waypoint_follower_demo:/opt/ros/humble /usr/bin/cmake --install /home/umarv/ws/build/sam_bot_description
+[0.323s] -- Install configuration: ""
+[0.323s] -- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/src
+[0.324s] -- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/src/description
+[0.324s] -- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/src/description/sam_bot_description.urdf
+[0.324s] -- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/launch
+[0.324s] -- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/launch/display.launch.py
+[0.324s] -- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/rviz
+[0.325s] -- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/rviz/urdf_config.rviz
+[0.325s] -- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/config
+[0.325s] [31mCMake Error at cmake_install.cmake:46 (file):
+[0.325s]   file INSTALL cannot set permissions on
+[0.325s]   "/home/umarv/ws/install/sam_bot_description/share/sam_bot_description/config/nav2_params.yaml":
+[0.326s]   Operation not permitted.
+[0.326s] 
+[0.326s] [0m
+[0.327s] -- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/config/nav2_params.yaml
+[0.328s] Invoked command in '/home/umarv/ws/build/sam_bot_description' returned '1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/umarv/ws/install/nav2_gps_waypoint_follower_demo:/opt/ros/humble /usr/bin/cmake --install /home/umarv/ws/build/sam_bot_description

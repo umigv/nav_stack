@@ -1,0 +1,4 @@
+[35m[1mConsolidate compiler generated dependencies of target nav2_straightline_planner_plugin[0m
+[ 33%] [32mBuilding CXX object CMakeFiles/nav2_straightline_planner_plugin.dir/src/straight_line_planner.cpp.o[0m
+[ 66%] [32m[1mLinking CXX shared library libnav2_straightline_planner_plugin.so[0m
+[100%] Built target nav2_straightline_planner_plugin

@@ -1,0 +1,29 @@
+[0.838s] Invoking command in '/home/umarv/ws/src/navigation2_tutorials/nav2_gps_waypoint_follower_demo': PYTHONPATH=/home/umarv/ws/build/nav2_gps_waypoint_follower_demo/prefix_override:/home/umarv/ws/install/nav2_gps_waypoint_follower_demo/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../../build/nav2_gps_waypoint_follower_demo build --build-base /home/umarv/ws/build/nav2_gps_waypoint_follower_demo/build install --record /home/umarv/ws/build/nav2_gps_waypoint_follower_demo/install.log --single-version-externally-managed
+[1.060s] running egg_info
+[1.060s] writing ../../../build/nav2_gps_waypoint_follower_demo/nav2_gps_waypoint_follower_demo.egg-info/PKG-INFO
+[1.060s] writing dependency_links to ../../../build/nav2_gps_waypoint_follower_demo/nav2_gps_waypoint_follower_demo.egg-info/dependency_links.txt
+[1.061s] writing entry points to ../../../build/nav2_gps_waypoint_follower_demo/nav2_gps_waypoint_follower_demo.egg-info/entry_points.txt
+[1.061s] writing requirements to ../../../build/nav2_gps_waypoint_follower_demo/nav2_gps_waypoint_follower_demo.egg-info/requires.txt
+[1.061s] writing top-level names to ../../../build/nav2_gps_waypoint_follower_demo/nav2_gps_waypoint_follower_demo.egg-info/top_level.txt
+[1.063s] reading manifest file '../../../build/nav2_gps_waypoint_follower_demo/nav2_gps_waypoint_follower_demo.egg-info/SOURCES.txt'
+[1.064s] writing manifest file '../../../build/nav2_gps_waypoint_follower_demo/nav2_gps_waypoint_follower_demo.egg-info/SOURCES.txt'
+[1.064s] running build
+[1.064s] running build_py
+[1.065s] running install
+[1.065s] /usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+[1.065s]   warnings.warn(
+[1.065s] running install_lib
+[1.066s] running install_data
+[1.067s] running install_egg_info
+[1.069s] removing '/home/umarv/ws/install/nav2_gps_waypoint_follower_demo/lib/python3.10/site-packages/nav2_gps_waypoint_follower_demo-0.0.1-py3.10.egg-info' (and everything under it)
+[1.069s] error removing /home/umarv/ws/install/nav2_gps_waypoint_follower_demo/lib/python3.10/site-packages/nav2_gps_waypoint_follower_demo-0.0.1-py3.10.egg-info: [Errno 13] Permission denied: '/home/umarv/ws/install/nav2_gps_waypoint_follower_demo/lib/python3.10/site-packages/nav2_gps_waypoint_follower_demo-0.0.1-py3.10.egg-info/top_level.txt'
+[1.069s] error removing /home/umarv/ws/install/nav2_gps_waypoint_follower_demo/lib/python3.10/site-packages/nav2_gps_waypoint_follower_demo-0.0.1-py3.10.egg-info: [Errno 13] Permission denied: '/home/umarv/ws/install/nav2_gps_waypoint_follower_demo/lib/python3.10/site-packages/nav2_gps_waypoint_follower_demo-0.0.1-py3.10.egg-info/dependency_links.txt'
+[1.069s] error removing /home/umarv/ws/install/nav2_gps_waypoint_follower_demo/lib/python3.10/site-packages/nav2_gps_waypoint_follower_demo-0.0.1-py3.10.egg-info: [Errno 13] Permission denied: '/home/umarv/ws/install/nav2_gps_waypoint_follower_demo/lib/python3.10/site-packages/nav2_gps_waypoint_follower_demo-0.0.1-py3.10.egg-info/entry_points.txt'
+[1.070s] error removing /home/umarv/ws/install/nav2_gps_waypoint_follower_demo/lib/python3.10/site-packages/nav2_gps_waypoint_follower_demo-0.0.1-py3.10.egg-info: [Errno 13] Permission denied: '/home/umarv/ws/install/nav2_gps_waypoint_follower_demo/lib/python3.10/site-packages/nav2_gps_waypoint_follower_demo-0.0.1-py3.10.egg-info/SOURCES.txt'
+[1.070s] error removing /home/umarv/ws/install/nav2_gps_waypoint_follower_demo/lib/python3.10/site-packages/nav2_gps_waypoint_follower_demo-0.0.1-py3.10.egg-info: [Errno 13] Permission denied: '/home/umarv/ws/install/nav2_gps_waypoint_follower_demo/lib/python3.10/site-packages/nav2_gps_waypoint_follower_demo-0.0.1-py3.10.egg-info/requires.txt'
+[1.070s] error removing /home/umarv/ws/install/nav2_gps_waypoint_follower_demo/lib/python3.10/site-packages/nav2_gps_waypoint_follower_demo-0.0.1-py3.10.egg-info: [Errno 13] Permission denied: '/home/umarv/ws/install/nav2_gps_waypoint_follower_demo/lib/python3.10/site-packages/nav2_gps_waypoint_follower_demo-0.0.1-py3.10.egg-info/PKG-INFO'
+[1.070s] error removing /home/umarv/ws/install/nav2_gps_waypoint_follower_demo/lib/python3.10/site-packages/nav2_gps_waypoint_follower_demo-0.0.1-py3.10.egg-info: [Errno 13] Permission denied: '/home/umarv/ws/install/nav2_gps_waypoint_follower_demo/lib/python3.10/site-packages/nav2_gps_waypoint_follower_demo-0.0.1-py3.10.egg-info/zip-safe'
+[1.070s] error removing /home/umarv/ws/install/nav2_gps_waypoint_follower_demo/lib/python3.10/site-packages/nav2_gps_waypoint_follower_demo-0.0.1-py3.10.egg-info: [Errno 39] Directory not empty: '/home/umarv/ws/install/nav2_gps_waypoint_follower_demo/lib/python3.10/site-packages/nav2_gps_waypoint_follower_demo-0.0.1-py3.10.egg-info'
+[1.070s] Copying ../../../build/nav2_gps_waypoint_follower_demo/nav2_gps_waypoint_follower_demo.egg-info to /home/umarv/ws/install/nav2_gps_waypoint_follower_demo/lib/python3.10/site-packages/nav2_gps_waypoint_follower_demo-0.0.1-py3.10.egg-info
+[1.070s] error: [Errno 13] Permission denied: '/home/umarv/ws/install/nav2_gps_waypoint_follower_demo/lib/python3.10/site-packages/nav2_gps_waypoint_follower_demo-0.0.1-py3.10.egg-info/top_level.txt'
+[1.086s] Invoked command in '/home/umarv/ws/src/navigation2_tutorials/nav2_gps_waypoint_follower_demo' returned '1': PYTHONPATH=/home/umarv/ws/build/nav2_gps_waypoint_follower_demo/prefix_override:/home/umarv/ws/install/nav2_gps_waypoint_follower_demo/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../../build/nav2_gps_waypoint_follower_demo build --build-base /home/umarv/ws/build/nav2_gps_waypoint_follower_demo/build install --record /home/umarv/ws/build/nav2_gps_waypoint_follower_demo/install.log --single-version-externally-managed

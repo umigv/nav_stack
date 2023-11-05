@@ -1,0 +1,32 @@
+[0.168s] Invoking command in '/home/umarv/ws/build/sam_bot_description': /usr/bin/cmake --build /home/umarv/ws/build/sam_bot_description -- -j8 -l8
+[0.186s] Invoked command in '/home/umarv/ws/build/sam_bot_description' returned '0': /usr/bin/cmake --build /home/umarv/ws/build/sam_bot_description -- -j8 -l8
+[0.205s] Invoking command in '/home/umarv/ws/build/sam_bot_description': /usr/bin/cmake --install /home/umarv/ws/build/sam_bot_description
+[0.209s] -- Install configuration: ""
+[0.210s] -- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/src
+[0.210s] -- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/src/description
+[0.210s] -- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/src/description/sam_bot_description.urdf
+[0.210s] -- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/launch
+[0.210s] -- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/launch/display.launch.py
+[0.210s] -- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/rviz
+[0.211s] -- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/rviz/urdf_config.rviz
+[0.211s] -- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/config
+[0.211s] -- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/config/nav2_params.yaml
+[0.211s] -- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/config/ekf.yaml
+[0.211s] -- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/world
+[0.211s] -- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/world/my_world.sdf
+[0.212s] -- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/ament_index/resource_index/package_run_dependencies/sam_bot_description
+[0.212s] -- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/ament_index/resource_index/parent_prefix_path/sam_bot_description
+[0.212s] -- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/environment/ament_prefix_path.sh
+[0.214s] -- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/environment/ament_prefix_path.dsv
+[0.217s] -- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/environment/path.sh
+[0.218s] -- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/environment/path.dsv
+[0.218s] -- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/local_setup.bash
+[0.218s] -- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/local_setup.sh
+[0.220s] -- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/local_setup.zsh
+[0.222s] -- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/local_setup.dsv
+[0.225s] -- Installing: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/package.dsv
+[0.225s] -- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/ament_index/resource_index/packages/sam_bot_description
+[0.226s] -- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/cmake/sam_bot_descriptionConfig.cmake
+[0.226s] -- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/cmake/sam_bot_descriptionConfig-version.cmake
+[0.227s] -- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/package.xml
+[0.227s] Invoked command in '/home/umarv/ws/build/sam_bot_description' returned '0': /usr/bin/cmake --install /home/umarv/ws/build/sam_bot_description

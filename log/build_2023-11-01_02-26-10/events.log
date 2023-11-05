@@ -1,0 +1,495 @@
+[0.000000] (-) TimerEvent: {}
+[0.000517] (nav2_gps_waypoint_follower_demo) JobQueued: {'identifier': 'nav2_gps_waypoint_follower_demo', 'dependencies': OrderedDict()}
+[0.000576] (nav2_gradient_costmap_plugin) JobQueued: {'identifier': 'nav2_gradient_costmap_plugin', 'dependencies': OrderedDict()}
+[0.000618] (nav2_straightline_planner) JobQueued: {'identifier': 'nav2_straightline_planner', 'dependencies': OrderedDict()}
+[0.000673] (sam_bot_description) JobQueued: {'identifier': 'sam_bot_description', 'dependencies': OrderedDict()}
+[0.000712] (nav2_gps_waypoint_follower_demo) JobStarted: {'identifier': 'nav2_gps_waypoint_follower_demo'}
+[0.018532] (nav2_gradient_costmap_plugin) JobStarted: {'identifier': 'nav2_gradient_costmap_plugin'}
+[0.029774] (nav2_straightline_planner) JobStarted: {'identifier': 'nav2_straightline_planner'}
+[0.039740] (sam_bot_description) JobStarted: {'identifier': 'sam_bot_description'}
+[0.099338] (-) TimerEvent: {}
+[0.196377] (nav2_gradient_costmap_plugin) JobProgress: {'identifier': 'nav2_gradient_costmap_plugin', 'progress': 'cmake'}
+[0.196977] (nav2_gradient_costmap_plugin) JobProgress: {'identifier': 'nav2_gradient_costmap_plugin', 'progress': 'build'}
+[0.197744] (nav2_gradient_costmap_plugin) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/umarv/ws/build/nav2_gradient_costmap_plugin', '--', '-j8', '-l8'], 'cwd': '/home/umarv/ws/build/nav2_gradient_costmap_plugin', 'env': OrderedDict([('SUDO_GID', '1000'), ('MAIL', '/var/mail/root'), ('USER', 'root'), ('HOSTNAME', 'umarv-ros2'), ('HOME', '/root'), ('SUDO_UID', '1000'), ('LOGNAME', 'root'), ('TERM', 'xterm'), ('PATH', '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin'), ('DISPLAY', ':0'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SUDO_COMMAND', '/usr/bin/colcon build'), ('SHELL', '/bin/bash'), ('SUDO_USER', 'umarv'), ('LC_ALL', 'C.UTF-8'), ('PWD', '/home/umarv/ws/build/nav2_gradient_costmap_plugin'), ('COLCON', '1')]), 'shell': False}
+[0.200159] (-) TimerEvent: {}
+[0.200401] (nav2_straightline_planner) JobProgress: {'identifier': 'nav2_straightline_planner', 'progress': 'cmake'}
+[0.201221] (nav2_straightline_planner) JobProgress: {'identifier': 'nav2_straightline_planner', 'progress': 'build'}
+[0.201966] (nav2_straightline_planner) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/umarv/ws/build/nav2_straightline_planner', '--', '-j8', '-l8'], 'cwd': '/home/umarv/ws/build/nav2_straightline_planner', 'env': OrderedDict([('SUDO_GID', '1000'), ('MAIL', '/var/mail/root'), ('USER', 'root'), ('HOSTNAME', 'umarv-ros2'), ('HOME', '/root'), ('SUDO_UID', '1000'), ('LOGNAME', 'root'), ('TERM', 'xterm'), ('PATH', '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin'), ('DISPLAY', ':0'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SUDO_COMMAND', '/usr/bin/colcon build'), ('SHELL', '/bin/bash'), ('SUDO_USER', 'umarv'), ('LC_ALL', 'C.UTF-8'), ('PWD', '/home/umarv/ws/build/nav2_straightline_planner'), ('COLCON', '1')]), 'shell': False}
+[0.207388] (sam_bot_description) JobProgress: {'identifier': 'sam_bot_description', 'progress': 'cmake'}
+[0.208090] (sam_bot_description) JobProgress: {'identifier': 'sam_bot_description', 'progress': 'build'}
+[0.208265] (sam_bot_description) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/umarv/ws/build/sam_bot_description', '--', '-j8', '-l8'], 'cwd': '/home/umarv/ws/build/sam_bot_description', 'env': OrderedDict([('SUDO_GID', '1000'), ('MAIL', '/var/mail/root'), ('USER', 'root'), ('HOSTNAME', 'umarv-ros2'), ('HOME', '/root'), ('SUDO_UID', '1000'), ('LOGNAME', 'root'), ('TERM', 'xterm'), ('PATH', '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin'), ('DISPLAY', ':0'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SUDO_COMMAND', '/usr/bin/colcon build'), ('SHELL', '/bin/bash'), ('SUDO_USER', 'umarv'), ('LC_ALL', 'C.UTF-8'), ('PWD', '/home/umarv/ws/build/sam_bot_description'), ('COLCON', '1')]), 'shell': False}
+[0.230582] (sam_bot_description) CommandEnded: {'returncode': 0}
+[0.240382] (nav2_gradient_costmap_plugin) StdoutLine: {'line': b'[100%] Built target nav2_gradient_costmap_plugin_core\n'}
+[0.241062] (nav2_straightline_planner) StdoutLine: {'line': b'[ 33%] \x1b[32mBuilding CXX object CMakeFiles/nav2_straightline_planner_plugin.dir/src/straight_line_planner.cpp.o\x1b[0m\n'}
+[0.241759] (nav2_straightline_planner) StdoutLine: {'line': b'[ 66%] \x1b[32mBuilding CXX object CMakeFiles/nav2_straightline_planner_plugin.dir/src/rpastar.cpp.o\x1b[0m\n'}
+[0.246404] (sam_bot_description) JobProgress: {'identifier': 'sam_bot_description', 'progress': 'install'}
+[0.254716] (sam_bot_description) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/umarv/ws/build/sam_bot_description'], 'cwd': '/home/umarv/ws/build/sam_bot_description', 'env': OrderedDict([('SUDO_GID', '1000'), ('MAIL', '/var/mail/root'), ('USER', 'root'), ('HOSTNAME', 'umarv-ros2'), ('HOME', '/root'), ('SUDO_UID', '1000'), ('LOGNAME', 'root'), ('TERM', 'xterm'), ('PATH', '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin'), ('DISPLAY', ':0'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SUDO_COMMAND', '/usr/bin/colcon build'), ('SHELL', '/bin/bash'), ('SUDO_USER', 'umarv'), ('LC_ALL', 'C.UTF-8'), ('PWD', '/home/umarv/ws/build/sam_bot_description'), ('COLCON', '1')]), 'shell': False}
+[0.256968] (nav2_gradient_costmap_plugin) CommandEnded: {'returncode': 0}
+[0.260174] (sam_bot_description) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[0.260525] (sam_bot_description) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/src\n'}
+[0.260815] (sam_bot_description) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/src/description\n'}
+[0.260987] (sam_bot_description) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/src/description/sam_bot_description.urdf\n'}
+[0.261118] (sam_bot_description) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/launch\n'}
+[0.261363] (sam_bot_description) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/launch/display.launch.py\n'}
+[0.261463] (sam_bot_description) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/rviz\n'}
+[0.261565] (sam_bot_description) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/rviz/urdf_config.rviz\n'}
+[0.261780] (sam_bot_description) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/config\n'}
+[0.261907] (sam_bot_description) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/config/nav2_params.yaml\n'}
+[0.262041] (sam_bot_description) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/config/ekf.yaml\n'}
+[0.262144] (sam_bot_description) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/world\n'}
+[0.262262] (sam_bot_description) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/world/my_world.sdf\n'}
+[0.262386] (sam_bot_description) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/ament_index/resource_index/package_run_dependencies/sam_bot_description\n'}
+[0.262497] (sam_bot_description) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/ament_index/resource_index/parent_prefix_path/sam_bot_description\n'}
+[0.263019] (sam_bot_description) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/environment/ament_prefix_path.sh\n'}
+[0.263631] (sam_bot_description) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/environment/ament_prefix_path.dsv\n'}
+[0.264012] (sam_bot_description) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/environment/path.sh\n'}
+[0.264122] (sam_bot_description) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/environment/path.dsv\n'}
+[0.264200] (sam_bot_description) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/local_setup.bash\n'}
+[0.264274] (sam_bot_description) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/local_setup.sh\n'}
+[0.264347] (sam_bot_description) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/local_setup.zsh\n'}
+[0.264438] (sam_bot_description) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/local_setup.dsv\n'}
+[0.264518] (sam_bot_description) StdoutLine: {'line': b'-- Installing: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/package.dsv\n'}
+[0.264594] (sam_bot_description) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/ament_index/resource_index/packages/sam_bot_description\n'}
+[0.264679] (sam_bot_description) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/cmake/sam_bot_descriptionConfig.cmake\n'}
+[0.264764] (sam_bot_description) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/cmake/sam_bot_descriptionConfig-version.cmake\n'}
+[0.264864] (sam_bot_description) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/sam_bot_description/share/sam_bot_description/package.xml\n'}
+[0.265318] (sam_bot_description) CommandEnded: {'returncode': 0}
+[0.293497] (nav2_gradient_costmap_plugin) JobProgress: {'identifier': 'nav2_gradient_costmap_plugin', 'progress': 'install'}
+[0.294685] (nav2_gradient_costmap_plugin) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/umarv/ws/build/nav2_gradient_costmap_plugin'], 'cwd': '/home/umarv/ws/build/nav2_gradient_costmap_plugin', 'env': OrderedDict([('SUDO_GID', '1000'), ('MAIL', '/var/mail/root'), ('USER', 'root'), ('HOSTNAME', 'umarv-ros2'), ('HOME', '/root'), ('SUDO_UID', '1000'), ('LOGNAME', 'root'), ('TERM', 'xterm'), ('PATH', '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin'), ('DISPLAY', ':0'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SUDO_COMMAND', '/usr/bin/colcon build'), ('SHELL', '/bin/bash'), ('SUDO_USER', 'umarv'), ('LC_ALL', 'C.UTF-8'), ('PWD', '/home/umarv/ws/build/nav2_gradient_costmap_plugin'), ('COLCON', '1')]), 'shell': False}
+[0.298975] (nav2_gradient_costmap_plugin) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[0.299328] (nav2_gradient_costmap_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/nav2_gradient_costmap_plugin/lib/libnav2_gradient_costmap_plugin_core.so\n'}
+[0.299669] (nav2_gradient_costmap_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/nav2_gradient_costmap_plugin/share/nav2_gradient_costmap_plugin/gradient_layer.xml\n'}
+[0.300088] (nav2_gradient_costmap_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/nav2_gradient_costmap_plugin/share/ament_index/resource_index/package_run_dependencies/nav2_gradient_costmap_plugin\n'}
+[0.300349] (-) TimerEvent: {}
+[0.300599] (nav2_gradient_costmap_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/nav2_gradient_costmap_plugin/share/ament_index/resource_index/parent_prefix_path/nav2_gradient_costmap_plugin\n'}
+[0.300721] (nav2_gradient_costmap_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/nav2_gradient_costmap_plugin/share/nav2_gradient_costmap_plugin/environment/ament_prefix_path.sh\n'}
+[0.300787] (nav2_gradient_costmap_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/nav2_gradient_costmap_plugin/share/nav2_gradient_costmap_plugin/environment/ament_prefix_path.dsv\n'}
+[0.300846] (nav2_gradient_costmap_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/nav2_gradient_costmap_plugin/share/nav2_gradient_costmap_plugin/environment/path.sh\n'}
+[0.300912] (nav2_gradient_costmap_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/nav2_gradient_costmap_plugin/share/nav2_gradient_costmap_plugin/environment/path.dsv\n'}
+[0.301002] (nav2_gradient_costmap_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/nav2_gradient_costmap_plugin/share/nav2_gradient_costmap_plugin/local_setup.bash\n'}
+[0.301092] (nav2_gradient_costmap_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/nav2_gradient_costmap_plugin/share/nav2_gradient_costmap_plugin/local_setup.sh\n'}
+[0.301203] (nav2_gradient_costmap_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/nav2_gradient_costmap_plugin/share/nav2_gradient_costmap_plugin/local_setup.zsh\n'}
+[0.301296] (nav2_gradient_costmap_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/nav2_gradient_costmap_plugin/share/nav2_gradient_costmap_plugin/local_setup.dsv\n'}
+[0.301379] (nav2_gradient_costmap_plugin) StdoutLine: {'line': b'-- Installing: /home/umarv/ws/install/nav2_gradient_costmap_plugin/share/nav2_gradient_costmap_plugin/package.dsv\n'}
+[0.303170] (nav2_gradient_costmap_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/nav2_gradient_costmap_plugin/share/ament_index/resource_index/packages/nav2_gradient_costmap_plugin\n'}
+[0.304266] (nav2_gradient_costmap_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/nav2_gradient_costmap_plugin/share/ament_index/resource_index/nav2_costmap_2d__pluginlib__plugin/nav2_gradient_costmap_plugin\n'}
+[0.305031] (nav2_gradient_costmap_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/nav2_gradient_costmap_plugin/share/nav2_gradient_costmap_plugin/cmake/nav2_gradient_costmap_pluginConfig.cmake\n'}
+[0.305473] (nav2_gradient_costmap_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/nav2_gradient_costmap_plugin/share/nav2_gradient_costmap_plugin/cmake/nav2_gradient_costmap_pluginConfig-version.cmake\n'}
+[0.305656] (nav2_gradient_costmap_plugin) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/install/nav2_gradient_costmap_plugin/share/nav2_gradient_costmap_plugin/package.xml\n'}
+[0.305875] (nav2_gradient_costmap_plugin) CommandEnded: {'returncode': 0}
+[0.361030] (sam_bot_description) JobEnded: {'identifier': 'sam_bot_description', 'rc': 0}
+[0.395536] (nav2_gradient_costmap_plugin) JobEnded: {'identifier': 'nav2_gradient_costmap_plugin', 'rc': 0}
+[0.400456] (-) TimerEvent: {}
+[0.452743] (nav2_gps_waypoint_follower_demo) Command: {'cmd': ['/usr/bin/python3', 'setup.py', 'egg_info', '--egg-base', '../../../build/nav2_gps_waypoint_follower_demo', 'build', '--build-base', '/home/umarv/ws/build/nav2_gps_waypoint_follower_demo/build', 'install', '--record', '/home/umarv/ws/build/nav2_gps_waypoint_follower_demo/install.log', '--single-version-externally-managed'], 'cwd': '/home/umarv/ws/src/navigation2_tutorials/nav2_gps_waypoint_follower_demo', 'env': {'SUDO_GID': '1000', 'MAIL': '/var/mail/root', 'USER': 'root', 'HOSTNAME': 'umarv-ros2', 'HOME': '/root', 'SUDO_UID': '1000', 'LOGNAME': 'root', 'TERM': 'xterm', 'PATH': '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin', 'DISPLAY': ':0', 'LANG': 'C.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'SUDO_COMMAND': '/usr/bin/colcon build', 'SHELL': '/bin/bash', 'SUDO_USER': 'umarv', 'LC_ALL': 'C.UTF-8', 'PWD': '/home/umarv/ws/build/nav2_gps_waypoint_follower_demo', 'COLCON': '1', 'PYTHONPATH': '/home/umarv/ws/build/nav2_gps_waypoint_follower_demo/prefix_override:/home/umarv/ws/install/nav2_gps_waypoint_follower_demo/lib/python3.10/site-packages:'}, 'shell': False}
+[0.500831] (-) TimerEvent: {}
+[0.601282] (-) TimerEvent: {}
+[0.644990] (nav2_gps_waypoint_follower_demo) StdoutLine: {'line': b'running egg_info\n'}
+[0.645607] (nav2_gps_waypoint_follower_demo) StdoutLine: {'line': b'writing ../../../build/nav2_gps_waypoint_follower_demo/nav2_gps_waypoint_follower_demo.egg-info/PKG-INFO\n'}
+[0.646059] (nav2_gps_waypoint_follower_demo) StdoutLine: {'line': b'writing dependency_links to ../../../build/nav2_gps_waypoint_follower_demo/nav2_gps_waypoint_follower_demo.egg-info/dependency_links.txt\n'}
+[0.646247] (nav2_gps_waypoint_follower_demo) StdoutLine: {'line': b'writing entry points to ../../../build/nav2_gps_waypoint_follower_demo/nav2_gps_waypoint_follower_demo.egg-info/entry_points.txt\n'}
+[0.646341] (nav2_gps_waypoint_follower_demo) StdoutLine: {'line': b'writing requirements to ../../../build/nav2_gps_waypoint_follower_demo/nav2_gps_waypoint_follower_demo.egg-info/requires.txt\n'}
+[0.646482] (nav2_gps_waypoint_follower_demo) StdoutLine: {'line': b'writing top-level names to ../../../build/nav2_gps_waypoint_follower_demo/nav2_gps_waypoint_follower_demo.egg-info/top_level.txt\n'}
+[0.647700] (nav2_gps_waypoint_follower_demo) StdoutLine: {'line': b"reading manifest file '../../../build/nav2_gps_waypoint_follower_demo/nav2_gps_waypoint_follower_demo.egg-info/SOURCES.txt'\n"}
+[0.648655] (nav2_gps_waypoint_follower_demo) StdoutLine: {'line': b"writing manifest file '../../../build/nav2_gps_waypoint_follower_demo/nav2_gps_waypoint_follower_demo.egg-info/SOURCES.txt'\n"}
+[0.648849] (nav2_gps_waypoint_follower_demo) StdoutLine: {'line': b'running build\n'}
+[0.648999] (nav2_gps_waypoint_follower_demo) StdoutLine: {'line': b'running build_py\n'}
+[0.649207] (nav2_gps_waypoint_follower_demo) StdoutLine: {'line': b'running install\n'}
+[0.649409] (nav2_gps_waypoint_follower_demo) StderrLine: {'line': b'/usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.\n'}
+[0.649647] (nav2_gps_waypoint_follower_demo) StderrLine: {'line': b'  warnings.warn(\n'}
+[0.649792] (nav2_gps_waypoint_follower_demo) StdoutLine: {'line': b'running install_lib\n'}
+[0.650515] (nav2_gps_waypoint_follower_demo) StdoutLine: {'line': b'running install_data\n'}
+[0.650985] (nav2_gps_waypoint_follower_demo) StdoutLine: {'line': b'running install_egg_info\n'}
+[0.652202] (nav2_gps_waypoint_follower_demo) StdoutLine: {'line': b"removing '/home/umarv/ws/install/nav2_gps_waypoint_follower_demo/lib/python3.10/site-packages/nav2_gps_waypoint_follower_demo-0.0.1-py3.10.egg-info' (and everything under it)\n"}
+[0.652526] (nav2_gps_waypoint_follower_demo) StdoutLine: {'line': b'Copying ../../../build/nav2_gps_waypoint_follower_demo/nav2_gps_waypoint_follower_demo.egg-info to /home/umarv/ws/install/nav2_gps_waypoint_follower_demo/lib/python3.10/site-packages/nav2_gps_waypoint_follower_demo-0.0.1-py3.10.egg-info\n'}
+[0.653076] (nav2_gps_waypoint_follower_demo) StdoutLine: {'line': b'running install_scripts\n'}
+[0.673999] (nav2_gps_waypoint_follower_demo) StdoutLine: {'line': b'Installing gps_waypoint_logger script to /home/umarv/ws/install/nav2_gps_waypoint_follower_demo/lib/nav2_gps_waypoint_follower_demo\n'}
+[0.674315] (nav2_gps_waypoint_follower_demo) StdoutLine: {'line': b'Installing interactive_waypoint_follower script to /home/umarv/ws/install/nav2_gps_waypoint_follower_demo/lib/nav2_gps_waypoint_follower_demo\n'}
+[0.674615] (nav2_gps_waypoint_follower_demo) StdoutLine: {'line': b'Installing logged_waypoint_follower script to /home/umarv/ws/install/nav2_gps_waypoint_follower_demo/lib/nav2_gps_waypoint_follower_demo\n'}
+[0.675205] (nav2_gps_waypoint_follower_demo) StdoutLine: {'line': b"writing list of installed files to '/home/umarv/ws/build/nav2_gps_waypoint_follower_demo/install.log'\n"}
+[0.699648] (nav2_gps_waypoint_follower_demo) CommandEnded: {'returncode': 0}
+[0.701457] (-) TimerEvent: {}
+[0.727601] (nav2_gps_waypoint_follower_demo) JobEnded: {'identifier': 'nav2_gps_waypoint_follower_demo', 'rc': 0}
+[0.801624] (-) TimerEvent: {}
+[0.901998] (-) TimerEvent: {}
+[1.002408] (-) TimerEvent: {}
+[1.102792] (-) TimerEvent: {}
+[1.203286] (-) TimerEvent: {}
+[1.303681] (-) TimerEvent: {}
+[1.404199] (-) TimerEvent: {}
+[1.504603] (-) TimerEvent: {}
+[1.605065] (-) TimerEvent: {}
+[1.705462] (-) TimerEvent: {}
+[1.805908] (-) TimerEvent: {}
+[1.906331] (-) TimerEvent: {}
+[2.006792] (-) TimerEvent: {}
+[2.107322] (-) TimerEvent: {}
+[2.207833] (-) TimerEvent: {}
+[2.308299] (-) TimerEvent: {}
+[2.408746] (-) TimerEvent: {}
+[2.509128] (-) TimerEvent: {}
+[2.609628] (-) TimerEvent: {}
+[2.710075] (-) TimerEvent: {}
+[2.810484] (-) TimerEvent: {}
+[2.910940] (-) TimerEvent: {}
+[3.011332] (-) TimerEvent: {}
+[3.111830] (-) TimerEvent: {}
+[3.212320] (-) TimerEvent: {}
+[3.232899] (nav2_straightline_planner) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/straight_line_planner.cpp:49\x1b[m\x1b[K:\n'}
+[3.233153] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/include/nav2_straightline_planner/rpastar.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kconst bool& nav2_straightline_planner::rpastar::Node::operator==(const nav2_straightline_planner::rpastar::Node&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.233245] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/include/nav2_straightline_planner/rpastar.h:43:36:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kreturning reference to temporary [\x1b[01;35m\x1b[K-Wreturn-local-addr\x1b[m\x1b[K]\n'}
+[3.233298] (nav2_straightline_planner) StderrLine: {'line': b'   43 |                 return \x1b[01;35m\x1b[Kthis->state == rhs.state\x1b[m\x1b[K;\n'}
+[3.233372] (nav2_straightline_planner) StderrLine: {'line': b'      |                        \x1b[01;35m\x1b[K~~~~~~~~~~~~^~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.261455] (nav2_straightline_planner) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:3\x1b[m\x1b[K:\n'}
+[3.261754] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/include/nav2_straightline_planner/rpastar.h:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kconst bool& nav2_straightline_planner::rpastar::Node::operator==(const nav2_straightline_planner::rpastar::Node&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.261873] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/include/nav2_straightline_planner/rpastar.h:43:36:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kreturning reference to temporary [\x1b[01;35m\x1b[K-Wreturn-local-addr\x1b[m\x1b[K]\n'}
+[3.261976] (nav2_straightline_planner) StderrLine: {'line': b'   43 |                 return \x1b[01;35m\x1b[Kthis->state == rhs.state\x1b[m\x1b[K;\n'}
+[3.262084] (nav2_straightline_planner) StderrLine: {'line': b'      |                        \x1b[01;35m\x1b[K~~~~~~~~~~~~^~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.263338] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:\x1b[m\x1b[K At global scope:\n'}
+[3.263509] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:14:1:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Krpastar\x1b[m\x1b[K\xe2\x80\x99 does not name a type\n'}
+[3.263646] (nav2_straightline_planner) StderrLine: {'line': b'   14 | \x1b[01;31m\x1b[Krpastar\x1b[m\x1b[K::Node::Node(int row, int col, Node * parent) : parent(parent) {\n'}
+[3.263731] (nav2_straightline_planner) StderrLine: {'line': b'      | \x1b[01;31m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[3.264520] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:19:1:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Krpastar\x1b[m\x1b[K\xe2\x80\x99 does not name a type\n'}
+[3.264657] (nav2_straightline_planner) StderrLine: {'line': b'   19 | \x1b[01;31m\x1b[Krpastar\x1b[m\x1b[K::Node::Node() : parent(nullptr), state({0,0}), g_score(0) {}\n'}
+[3.264743] (nav2_straightline_planner) StderrLine: {'line': b'      | \x1b[01;31m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[3.264808] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:19:53:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kexpected unqualified-id before \xe2\x80\x98\x1b[01m\x1b[K)\x1b[m\x1b[K\xe2\x80\x99 token\n'}
+[3.264873] (nav2_straightline_planner) StderrLine: {'line': b'   19 | rpastar::Node::Node() : parent(nullptr), state({0,0}\x1b[01;31m\x1b[K)\x1b[m\x1b[K, g_score(0) {}\n'}
+[3.264943] (nav2_straightline_planner) StderrLine: {'line': b'      |                                                     \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[3.265010] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:21:6:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Krpastar\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[3.265078] (nav2_straightline_planner) StderrLine: {'line': b'   21 | void \x1b[01;31m\x1b[Krpastar\x1b[m\x1b[K::Node::set_h(std::pair<int,int> &target_state)\n'}
+[3.265146] (nav2_straightline_planner) StderrLine: {'line': b'      |      \x1b[01;31m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[3.268298] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Kvoid set_h(std::pair<int, int>&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.268532] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:23:5:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kh_score\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[3.268591] (nav2_straightline_planner) StderrLine: {'line': b'   23 |     \x1b[01;31m\x1b[Kh_score\x1b[m\x1b[K = sqrt(pow(target_state.first - state.first, 2) + pow(target_state.second - state.second, 2));\n'}
+[3.268663] (nav2_straightline_planner) StderrLine: {'line': b'      |     \x1b[01;31m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[3.271341] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:23:45:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kstate\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[K_xstate\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[3.271538] (nav2_straightline_planner) StderrLine: {'line': b'   23 |     h_score = sqrt(pow(target_state.first - \x1b[01;31m\x1b[Kstate\x1b[m\x1b[K.first, 2) + pow(target_state.second - state.second, 2));\n'}
+[3.271658] (nav2_straightline_planner) StderrLine: {'line': b'      |                                             \x1b[01;31m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[3.271749] (nav2_straightline_planner) StderrLine: {'line': b'      |                                             \x1b[32m\x1b[K_xstate\x1b[m\x1b[K\n'}
+[3.271815] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:\x1b[m\x1b[K At global scope:\n'}
+[3.271875] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:26:6:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Krpastar\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[3.271941] (nav2_straightline_planner) StderrLine: {'line': b'   26 | void \x1b[01;31m\x1b[Krpastar\x1b[m\x1b[K::Node::set_g(float g_in)\n'}
+[3.272005] (nav2_straightline_planner) StderrLine: {'line': b'      |      \x1b[01;31m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[3.275544] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Kvoid set_g(float)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.275779] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:28:5:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kg_score\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[3.275861] (nav2_straightline_planner) StderrLine: {'line': b'   28 |     \x1b[01;31m\x1b[Kg_score\x1b[m\x1b[K = g_in;\n'}
+[3.275928] (nav2_straightline_planner) StderrLine: {'line': b'      |     \x1b[01;31m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[3.276042] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:\x1b[m\x1b[K At global scope:\n'}
+[3.276113] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:31:6:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Krpastar\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[3.276184] (nav2_straightline_planner) StderrLine: {'line': b'   31 | void \x1b[01;31m\x1b[Krpastar\x1b[m\x1b[K::Node::set_state(int row, int col)\n'}
+[3.276253] (nav2_straightline_planner) StderrLine: {'line': b'      |      \x1b[01;31m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[3.279043] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Kvoid set_state(int, int)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.279241] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:33:5:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kstate\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[K_xstate\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[3.279333] (nav2_straightline_planner) StderrLine: {'line': b'   33 |     \x1b[01;31m\x1b[Kstate\x1b[m\x1b[K.first = row;\n'}
+[3.279397] (nav2_straightline_planner) StderrLine: {'line': b'      |     \x1b[01;31m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[3.279468] (nav2_straightline_planner) StderrLine: {'line': b'      |     \x1b[32m\x1b[K_xstate\x1b[m\x1b[K\n'}
+[3.279535] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:\x1b[m\x1b[K At global scope:\n'}
+[3.279603] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:37:6:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Krpastar\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[3.279673] (nav2_straightline_planner) StderrLine: {'line': b'   37 | void \x1b[01;31m\x1b[Krpastar\x1b[m\x1b[K::Node::set_parent(Node *parent_in)\n'}
+[3.279729] (nav2_straightline_planner) StderrLine: {'line': b'      |      \x1b[01;31m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[3.280005] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:37:6:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kvariable or field \xe2\x80\x98\x1b[01m\x1b[Kset_parent\x1b[m\x1b[K\xe2\x80\x99 declared void\n'}
+[3.280158] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:37:32:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KNode\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Krclcpp::Node\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[3.280246] (nav2_straightline_planner) StderrLine: {'line': b'   37 | void rpastar::Node::set_parent(\x1b[01;31m\x1b[KNode\x1b[m\x1b[K *parent_in)\n'}
+[3.280292] (nav2_straightline_planner) StderrLine: {'line': b'      |                                \x1b[01;31m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[3.280355] (nav2_straightline_planner) StderrLine: {'line': b'      |                                \x1b[32m\x1b[Krclcpp::Node\x1b[m\x1b[K\n'}
+[3.280435] (nav2_straightline_planner) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors/single_threaded_executor.hpp:28\x1b[m\x1b[K,\n'}
+[3.280500] (nav2_straightline_planner) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:22\x1b[m\x1b[K,\n'}
+[3.280570] (nav2_straightline_planner) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155\x1b[m\x1b[K,\n'}
+[3.280639] (nav2_straightline_planner) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/nav2_util/node_thread.hpp:20\x1b[m\x1b[K,\n'}
+[3.280706] (nav2_straightline_planner) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/nav2_util/lifecycle_node.hpp:22\x1b[m\x1b[K,\n'}
+[3.280774] (nav2_straightline_planner) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/nav2_costmap_2d/costmap_2d_publisher.hpp:53\x1b[m\x1b[K,\n'}
+[3.280869] (nav2_straightline_planner) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/nav2_costmap_2d/costmap_2d_ros.hpp:48\x1b[m\x1b[K,\n'}
+[3.280915] (nav2_straightline_planner) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/include/nav2_straightline_planner/rpastar.h:9\x1b[m\x1b[K,\n'}
+[3.280985] (nav2_straightline_planner) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:3\x1b[m\x1b[K:\n'}
+[3.281031] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/node.hpp:77:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Krclcpp::Node\x1b[m\x1b[K\xe2\x80\x99 declared here\n'}
+[3.281076] (nav2_straightline_planner) StderrLine: {'line': b'   77 | class \x1b[01;36m\x1b[KNode\x1b[m\x1b[K : public std::enable_shared_from_this<Node>\n'}
+[3.281161] (nav2_straightline_planner) StderrLine: {'line': b'      |       \x1b[01;36m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[3.284011] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:37:38:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kparent_in\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[3.284304] (nav2_straightline_planner) StderrLine: {'line': b'   37 | void rpastar::Node::set_parent(Node *\x1b[01;31m\x1b[Kparent_in\x1b[m\x1b[K)\n'}
+[3.284446] (nav2_straightline_planner) StderrLine: {'line': b'      |                                      \x1b[01;31m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[3.284541] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:42:20:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Krpastar\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[3.284638] (nav2_straightline_planner) StderrLine: {'line': b'   42 | std::pair<int,int> \x1b[01;31m\x1b[Krpastar\x1b[m\x1b[K::Node::get_state()\n'}
+[3.284763] (nav2_straightline_planner) StderrLine: {'line': b'      |                    \x1b[01;31m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[3.287196] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Kstd::pair<int, int> get_state()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.287468] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:44:12:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kstate\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[K_xstate\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[3.287737] (nav2_straightline_planner) StderrLine: {'line': b'   44 |     return \x1b[01;31m\x1b[Kstate\x1b[m\x1b[K;\n'}
+[3.287850] (nav2_straightline_planner) StderrLine: {'line': b'      |            \x1b[01;31m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[3.287922] (nav2_straightline_planner) StderrLine: {'line': b'      |            \x1b[32m\x1b[K_xstate\x1b[m\x1b[K\n'}
+[3.287990] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:\x1b[m\x1b[K At global scope:\n'}
+[3.288060] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:47:7:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Krpastar\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[3.288130] (nav2_straightline_planner) StderrLine: {'line': b'   47 | float \x1b[01;31m\x1b[Krpastar\x1b[m\x1b[K::Node::get_f_score() const\n'}
+[3.288199] (nav2_straightline_planner) StderrLine: {'line': b'      |       \x1b[01;31m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[3.288267] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:47:36:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Knon-member function \xe2\x80\x98\x1b[01m\x1b[Kfloat get_f_score()\x1b[m\x1b[K\xe2\x80\x99 cannot have cv-qualifier\n'}
+[3.288346] (nav2_straightline_planner) StderrLine: {'line': b'   47 | float rpastar::Node::get_f_score() \x1b[01;31m\x1b[Kconst\x1b[m\x1b[K\n'}
+[3.288416] (nav2_straightline_planner) StderrLine: {'line': b'      |                                    \x1b[01;31m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[3.290953] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Kfloat get_f_score()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.291140] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:49:12:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kg_score\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[3.291233] (nav2_straightline_planner) StderrLine: {'line': b'   49 |     return \x1b[01;31m\x1b[Kg_score\x1b[m\x1b[K + h_score;\n'}
+[3.291295] (nav2_straightline_planner) StderrLine: {'line': b'      |            \x1b[01;31m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[3.294647] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:49:22:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kh_score\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[3.294857] (nav2_straightline_planner) StderrLine: {'line': b'   49 |     return g_score + \x1b[01;31m\x1b[Kh_score\x1b[m\x1b[K;\n'}
+[3.294961] (nav2_straightline_planner) StderrLine: {'line': b'      |                      \x1b[01;31m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[3.295032] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:\x1b[m\x1b[K At global scope:\n'}
+[3.295104] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:52:6:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Krpastar\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[3.295183] (nav2_straightline_planner) StderrLine: {'line': b'   52 | bool \x1b[01;31m\x1b[Krpastar\x1b[m\x1b[K::Node::at_target(std::pair<int,int> &target_state)\n'}
+[3.295294] (nav2_straightline_planner) StderrLine: {'line': b'      |      \x1b[01;31m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[3.298008] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Kbool at_target(std::pair<int, int>&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.298216] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:54:13:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kstate\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[K_xstate\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[3.298313] (nav2_straightline_planner) StderrLine: {'line': b'   54 |     return (\x1b[01;31m\x1b[Kstate\x1b[m\x1b[K.first == target_state.first && state.second == target_state.second);\n'}
+[3.298362] (nav2_straightline_planner) StderrLine: {'line': b'      |             \x1b[01;31m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[3.298428] (nav2_straightline_planner) StderrLine: {'line': b'      |             \x1b[32m\x1b[K_xstate\x1b[m\x1b[K\n'}
+[3.299272] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:\x1b[m\x1b[K At global scope:\n'}
+[3.299414] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:58:1:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Krpastar\x1b[m\x1b[K\xe2\x80\x99 does not name a type\n'}
+[3.299499] (nav2_straightline_planner) StderrLine: {'line': b'   58 | \x1b[01;31m\x1b[Krpastar\x1b[m\x1b[K::rpastar(std::pair<int,int> start_state_in, std::pair<int,int> target_state_in, nav2_costmap_2d::Costmap2D * msg) : start_state(start_state_in), target_state(target_state_in)\n'}
+[3.299552] (nav2_straightline_planner) StderrLine: {'line': b'      | \x1b[01;31m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[3.299616] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:72:6:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Krpastar\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[3.299681] (nav2_straightline_planner) StderrLine: {'line': b'   72 | void \x1b[01;31m\x1b[Krpastar\x1b[m\x1b[K::find_target()\n'}
+[3.299732] (nav2_straightline_planner) StderrLine: {'line': b'      |      \x1b[01;31m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[3.299798] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:77:6:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Krpastar\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[3.299862] (nav2_straightline_planner) StderrLine: {'line': b'   77 | bool \x1b[01;31m\x1b[Krpastar\x1b[m\x1b[K::goal_found()\n'}
+[3.299926] (nav2_straightline_planner) StderrLine: {'line': b'      |      \x1b[01;31m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[3.303149] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Kbool goal_found()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.303358] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:79:12:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kpath_found\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Kpathconf\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[3.303469] (nav2_straightline_planner) StderrLine: {'line': b'   79 |     return \x1b[01;31m\x1b[Kpath_found\x1b[m\x1b[K;\n'}
+[3.303526] (nav2_straightline_planner) StderrLine: {'line': b'      |            \x1b[01;31m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.303604] (nav2_straightline_planner) StderrLine: {'line': b'      |            \x1b[32m\x1b[Kpathconf\x1b[m\x1b[K\n'}
+[3.303673] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:\x1b[m\x1b[K At global scope:\n'}
+[3.303746] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:83:6:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Krpastar\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[3.303823] (nav2_straightline_planner) StderrLine: {'line': b'   83 | void \x1b[01;31m\x1b[Krpastar\x1b[m\x1b[K::search()\n'}
+[3.303868] (nav2_straightline_planner) StderrLine: {'line': b'      |      \x1b[01;31m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[3.307530] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Kvoid search()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.307801] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:85:5:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kpath_found\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Kpathconf\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[3.307913] (nav2_straightline_planner) StderrLine: {'line': b'   85 |     \x1b[01;31m\x1b[Kpath_found\x1b[m\x1b[K = false;\n'}
+[3.307964] (nav2_straightline_planner) StderrLine: {'line': b'      |     \x1b[01;31m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.308051] (nav2_straightline_planner) StderrLine: {'line': b'      |     \x1b[32m\x1b[Kpathconf\x1b[m\x1b[K\n'}
+[3.310539] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:86:13:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KU\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[3.310735] (nav2_straightline_planner) StderrLine: {'line': b'   86 |     while (!\x1b[01;31m\x1b[KU\x1b[m\x1b[K.empty())\n'}
+[3.310832] (nav2_straightline_planner) StderrLine: {'line': b'      |             \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[3.311275] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:88:9:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KNode\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Krclcpp::Node\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[3.311401] (nav2_straightline_planner) StderrLine: {'line': b'   88 |         \x1b[01;31m\x1b[KNode\x1b[m\x1b[K current_node = U.top();\n'}
+[3.311500] (nav2_straightline_planner) StderrLine: {'line': b'      |         \x1b[01;31m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[3.311588] (nav2_straightline_planner) StderrLine: {'line': b'      |         \x1b[32m\x1b[Krclcpp::Node\x1b[m\x1b[K\n'}
+[3.311666] (nav2_straightline_planner) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors/single_threaded_executor.hpp:28\x1b[m\x1b[K,\n'}
+[3.311748] (nav2_straightline_planner) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:22\x1b[m\x1b[K,\n'}
+[3.311798] (nav2_straightline_planner) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155\x1b[m\x1b[K,\n'}
+[3.311887] (nav2_straightline_planner) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/nav2_util/node_thread.hpp:20\x1b[m\x1b[K,\n'}
+[3.311959] (nav2_straightline_planner) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/nav2_util/lifecycle_node.hpp:22\x1b[m\x1b[K,\n'}
+[3.312031] (nav2_straightline_planner) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/nav2_costmap_2d/costmap_2d_publisher.hpp:53\x1b[m\x1b[K,\n'}
+[3.312105] (nav2_straightline_planner) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/nav2_costmap_2d/costmap_2d_ros.hpp:48\x1b[m\x1b[K,\n'}
+[3.312176] (nav2_straightline_planner) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/include/nav2_straightline_planner/rpastar.h:9\x1b[m\x1b[K,\n'}
+[3.312249] (nav2_straightline_planner) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:3\x1b[m\x1b[K:\n'}
+[3.312317] (-) TimerEvent: {}
+[3.312418] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/node.hpp:77:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Krclcpp::Node\x1b[m\x1b[K\xe2\x80\x99 declared here\n'}
+[3.312510] (nav2_straightline_planner) StderrLine: {'line': b'   77 | class \x1b[01;36m\x1b[KNode\x1b[m\x1b[K : public std::enable_shared_from_this<Node>\n'}
+[3.312582] (nav2_straightline_planner) StderrLine: {'line': b'      |       \x1b[01;36m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[3.314932] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:91:9:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kopen_set\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[3.315161] (nav2_straightline_planner) StderrLine: {'line': b'   91 |         \x1b[01;31m\x1b[Kopen_set\x1b[m\x1b[K.erase(current_node.get_state());\n'}
+[3.315287] (nav2_straightline_planner) StderrLine: {'line': b'      |         \x1b[01;31m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.319214] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:91:24:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kcurrent_node\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[3.319523] (nav2_straightline_planner) StderrLine: {'line': b'   91 |         open_set.erase(\x1b[01;31m\x1b[Kcurrent_node\x1b[m\x1b[K.get_state());\n'}
+[3.319689] (nav2_straightline_planner) StderrLine: {'line': b'      |                        \x1b[01;31m\x1b[K^~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.324581] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:92:36:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Ktarget_state\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Kget_state\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[3.324864] (nav2_straightline_planner) StderrLine: {'line': b'   92 |         if (current_node.at_target(\x1b[01;31m\x1b[Ktarget_state\x1b[m\x1b[K))\n'}
+[3.324969] (nav2_straightline_planner) StderrLine: {'line': b'      |                                    \x1b[01;31m\x1b[K^~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.325079] (nav2_straightline_planner) StderrLine: {'line': b'      |                                    \x1b[32m\x1b[Kget_state\x1b[m\x1b[K\n'}
+[3.329723] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:99:15:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kparent_ptr\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[3.329937] (nav2_straightline_planner) StderrLine: {'line': b'   99 |         Node *\x1b[01;31m\x1b[Kparent_ptr\x1b[m\x1b[K = &graph[i][j];\n'}
+[3.330010] (nav2_straightline_planner) StderrLine: {'line': b'      |               \x1b[01;31m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.332793] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:99:29:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kgraph\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Kisgraph\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[3.333007] (nav2_straightline_planner) StderrLine: {'line': b'   99 |         Node *parent_ptr = &\x1b[01;31m\x1b[Kgraph\x1b[m\x1b[K[i][j];\n'}
+[3.333081] (nav2_straightline_planner) StderrLine: {'line': b'      |                             \x1b[01;31m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[3.333151] (nav2_straightline_planner) StderrLine: {'line': b'      |                             \x1b[32m\x1b[Kisgraph\x1b[m\x1b[K\n'}
+[3.336833] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:100:9:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KprocessNode\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[3.337129] (nav2_straightline_planner) StderrLine: {'line': b'  100 |         \x1b[01;31m\x1b[KprocessNode\x1b[m\x1b[K(i-1, j, parent_ptr); // north\n'}
+[3.337245] (nav2_straightline_planner) StderrLine: {'line': b'      |         \x1b[01;31m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.341785] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:108:9:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kclosed_set\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[3.341923] (nav2_straightline_planner) StderrLine: {'line': b'  108 |         \x1b[01;31m\x1b[Kclosed_set\x1b[m\x1b[K[current_node.get_state()] = current_node.get_f_score();\n'}
+[3.342027] (nav2_straightline_planner) StderrLine: {'line': b'      |         \x1b[01;31m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.342075] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:\x1b[m\x1b[K At global scope:\n'}
+[3.342126] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:113:6:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Krpastar\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[3.342296] (nav2_straightline_planner) StderrLine: {'line': b'  113 | void \x1b[01;31m\x1b[Krpastar\x1b[m\x1b[K::processNode(int row, int col, Node *parent)\n'}
+[3.342385] (nav2_straightline_planner) StderrLine: {'line': b'      |      \x1b[01;31m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[3.342473] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:113:45:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KNode\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[3.342569] (nav2_straightline_planner) StderrLine: {'line': b'  113 | void rpastar::processNode(int row, int col, \x1b[01;31m\x1b[KNode\x1b[m\x1b[K *parent)\n'}
+[3.342641] (nav2_straightline_planner) StderrLine: {'line': b'      |                                             \x1b[01;31m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[3.345556] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Kvoid processNode(int, int, int*)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.345729] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:115:27:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kcost_map\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[3.345824] (nav2_straightline_planner) StderrLine: {'line': b'  115 |     if (row < 0 || row >= \x1b[01;31m\x1b[Kcost_map\x1b[m\x1b[K.size() || col < 0 || col >= cost_map[0].size())\n'}
+[3.345898] (nav2_straightline_planner) StderrLine: {'line': b'      |                           \x1b[01;31m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.348928] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:119:9:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kcost_map\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[3.349109] (nav2_straightline_planner) StderrLine: {'line': b'  119 |     if (\x1b[01;31m\x1b[Kcost_map\x1b[m\x1b[K[row][col] > 128 && cost_map[row][col] < 254)\n'}
+[3.349175] (nav2_straightline_planner) StderrLine: {'line': b'      |         \x1b[01;31m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.349777] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:123:5:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KNode\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Krclcpp::Node\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[3.349914] (nav2_straightline_planner) StderrLine: {'line': b'  123 |     \x1b[01;31m\x1b[KNode\x1b[m\x1b[K new_node = Node(row,col,parent);\n'}
+[3.349984] (nav2_straightline_planner) StderrLine: {'line': b'      |     \x1b[01;31m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[3.350050] (nav2_straightline_planner) StderrLine: {'line': b'      |     \x1b[32m\x1b[Krclcpp::Node\x1b[m\x1b[K\n'}
+[3.350123] (nav2_straightline_planner) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors/single_threaded_executor.hpp:28\x1b[m\x1b[K,\n'}
+[3.350198] (nav2_straightline_planner) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:22\x1b[m\x1b[K,\n'}
+[3.350246] (nav2_straightline_planner) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155\x1b[m\x1b[K,\n'}
+[3.350312] (nav2_straightline_planner) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/nav2_util/node_thread.hpp:20\x1b[m\x1b[K,\n'}
+[3.350393] (nav2_straightline_planner) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/nav2_util/lifecycle_node.hpp:22\x1b[m\x1b[K,\n'}
+[3.350440] (nav2_straightline_planner) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/nav2_costmap_2d/costmap_2d_publisher.hpp:53\x1b[m\x1b[K,\n'}
+[3.350487] (nav2_straightline_planner) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/nav2_costmap_2d/costmap_2d_ros.hpp:48\x1b[m\x1b[K,\n'}
+[3.350552] (nav2_straightline_planner) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/include/nav2_straightline_planner/rpastar.h:9\x1b[m\x1b[K,\n'}
+[3.350621] (nav2_straightline_planner) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:3\x1b[m\x1b[K:\n'}
+[3.350687] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/node.hpp:77:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Krclcpp::Node\x1b[m\x1b[K\xe2\x80\x99 declared here\n'}
+[3.350758] (nav2_straightline_planner) StderrLine: {'line': b'   77 | class \x1b[01;36m\x1b[KNode\x1b[m\x1b[K : public std::enable_shared_from_this<Node>\n'}
+[3.350803] (nav2_straightline_planner) StderrLine: {'line': b'      |       \x1b[01;36m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[3.353181] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:124:5:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Knew_node\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Krmw_node_t\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[3.353356] (nav2_straightline_planner) StderrLine: {'line': b'  124 |     \x1b[01;31m\x1b[Knew_node\x1b[m\x1b[K.set_h(target_state);\n'}
+[3.353450] (nav2_straightline_planner) StderrLine: {'line': b'      |     \x1b[01;31m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.353520] (nav2_straightline_planner) StderrLine: {'line': b'      |     \x1b[32m\x1b[Krmw_node_t\x1b[m\x1b[K\n'}
+[3.357264] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:124:20:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Ktarget_state\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Kget_state\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[3.357486] (nav2_straightline_planner) StderrLine: {'line': b'  124 |     new_node.set_h(\x1b[01;31m\x1b[Ktarget_state\x1b[m\x1b[K);\n'}
+[3.357579] (nav2_straightline_planner) StderrLine: {'line': b'      |                    \x1b[01;31m\x1b[K^~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.357662] (nav2_straightline_planner) StderrLine: {'line': b'      |                    \x1b[32m\x1b[Kget_state\x1b[m\x1b[K\n'}
+[3.360524] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:125:20:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kopen_set\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Kopen_it\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[3.360727] (nav2_straightline_planner) StderrLine: {'line': b'  125 |     auto open_it = \x1b[01;31m\x1b[Kopen_set\x1b[m\x1b[K.find(new_node.get_state());\n'}
+[3.360817] (nav2_straightline_planner) StderrLine: {'line': b'      |                    \x1b[01;31m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.360902] (nav2_straightline_planner) StderrLine: {'line': b'      |                    \x1b[32m\x1b[Kopen_it\x1b[m\x1b[K\n'}
+[3.363721] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:132:22:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kclosed_set\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Kclosed_it\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[3.363924] (nav2_straightline_planner) StderrLine: {'line': b'  132 |     auto closed_it = \x1b[01;31m\x1b[Kclosed_set\x1b[m\x1b[K.find(new_node.get_state());\n'}
+[3.364018] (nav2_straightline_planner) StderrLine: {'line': b'      |                      \x1b[01;31m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.364085] (nav2_straightline_planner) StderrLine: {'line': b'      |                      \x1b[32m\x1b[Kclosed_it\x1b[m\x1b[K\n'}
+[3.366592] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:139:5:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KU\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[3.366781] (nav2_straightline_planner) StderrLine: {'line': b'  139 |     \x1b[01;31m\x1b[KU\x1b[m\x1b[K.push(new_node);\n'}
+[3.366855] (nav2_straightline_planner) StderrLine: {'line': b'      |     \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[3.369774] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:140:5:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kgraph\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Kisgraph\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[3.369967] (nav2_straightline_planner) StderrLine: {'line': b'  140 |     \x1b[01;31m\x1b[Kgraph\x1b[m\x1b[K[row][col] = new_node;\n'}
+[3.370084] (nav2_straightline_planner) StderrLine: {'line': b'      |     \x1b[01;31m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[3.370165] (nav2_straightline_planner) StderrLine: {'line': b'      |     \x1b[32m\x1b[Kisgraph\x1b[m\x1b[K\n'}
+[3.370245] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:\x1b[m\x1b[K At global scope:\n'}
+[3.370311] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:146:6:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Krpastar\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[3.370377] (nav2_straightline_planner) StderrLine: {'line': b'  146 | void \x1b[01;31m\x1b[Krpastar\x1b[m\x1b[K::costMapCallback(nav2_costmap_2d::Costmap2D* msg)\n'}
+[3.370443] (nav2_straightline_planner) StderrLine: {'line': b'      |      \x1b[01;31m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[3.374121] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Kvoid costMapCallback(nav2_costmap_2d::Costmap2D*)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.374324] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:153:5:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kcost_map\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[3.374424] (nav2_straightline_planner) StderrLine: {'line': b'  153 |     \x1b[01;31m\x1b[Kcost_map\x1b[m\x1b[K = std::vector<std::vector<int>>(costmap_height, std::vector<int>(costmap_width, 0));\n'}
+[3.374496] (nav2_straightline_planner) StderrLine: {'line': b'      |     \x1b[01;31m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.377354] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:154:5:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kgraph\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Kisgraph\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[3.377549] (nav2_straightline_planner) StderrLine: {'line': b'  154 |     \x1b[01;31m\x1b[Kgraph\x1b[m\x1b[K = std::vector<std::vector<rpastar::Node>>(costmap_height, std::vector<rpastar::Node>(costmap_width, rpastar::Node()));\n'}
+[3.377628] (nav2_straightline_planner) StderrLine: {'line': b'      |     \x1b[01;31m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[3.377676] (nav2_straightline_planner) StderrLine: {'line': b'      |     \x1b[32m\x1b[Kisgraph\x1b[m\x1b[K\n'}
+[3.378326] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:154:37:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Krpastar\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Knav2_straightline_planner::rpastar\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[3.378452] (nav2_straightline_planner) StderrLine: {'line': b'  154 |     graph = std::vector<std::vector<\x1b[01;31m\x1b[Krpastar\x1b[m\x1b[K::Node>>(costmap_height, std::vector<rpastar::Node>(costmap_width, rpastar::Node()));\n'}
+[3.378538] (nav2_straightline_planner) StderrLine: {'line': b'      |                                     \x1b[01;31m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[3.378612] (nav2_straightline_planner) StderrLine: {'line': b'      |                                     \x1b[32m\x1b[Knav2_straightline_planner::rpastar\x1b[m\x1b[K\n'}
+[3.378682] (nav2_straightline_planner) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:3\x1b[m\x1b[K:\n'}
+[3.378751] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/include/nav2_straightline_planner/rpastar.h:13:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Knav2_straightline_planner::rpastar\x1b[m\x1b[K\xe2\x80\x99 declared here\n'}
+[3.378828] (nav2_straightline_planner) StderrLine: {'line': b'   13 | class \x1b[01;36m\x1b[Krpastar\x1b[m\x1b[K\n'}
+[3.378878] (nav2_straightline_planner) StderrLine: {'line': b'      |       \x1b[01;36m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[3.378939] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:154:50:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 1 is invalid\n'}
+[3.379013] (nav2_straightline_planner) StderrLine: {'line': b'  154 |     graph = std::vector<std::vector<rpastar::Node\x1b[01;31m\x1b[K>>\x1b[m\x1b[K(costmap_height, std::vector<rpastar::Node>(costmap_width, rpastar::Node()));\n'}
+[3.379083] (nav2_straightline_planner) StderrLine: {'line': b'      |                                                  \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[3.379130] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:154:50:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 2 is invalid\n'}
+[3.379175] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:154:94:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 2 is invalid\n'}
+[3.379239] (nav2_straightline_planner) StderrLine: {'line': b'  154 |     graph = std::vector<std::vector<rpastar::Node>>(costmap_height, std::vector<rpastar::Node\x1b[01;31m\x1b[K>\x1b[m\x1b[K(costmap_width, rpastar::Node()));\n'}
+[3.379307] (nav2_straightline_planner) StderrLine: {'line': b'      |                                                                                              \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[3.379363] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:154:127:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 1 is invalid\n'}
+[3.379407] (nav2_straightline_planner) StderrLine: {'line': b'  154 |     graph = std::vector<std::vector<rpastar::Node>>(costmap_height, std::vector<rpastar::Node>(costmap_width, rpastar::Node())\x1b[01;31m\x1b[K)\x1b[m\x1b[K;\n'}
+[3.379472] (nav2_straightline_planner) StderrLine: {'line': b'      |                                                                                                                               \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[3.379541] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:154:127:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 2 is invalid\n'}
+[3.381906] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:177:11:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kstart_state\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Kset_state\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[3.382070] (nav2_straightline_planner) StderrLine: {'line': b'  177 |     graph[\x1b[01;31m\x1b[Kstart_state\x1b[m\x1b[K.first][start_state.second].set_g(0);\n'}
+[3.382153] (nav2_straightline_planner) StderrLine: {'line': b'      |           \x1b[01;31m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.382199] (nav2_straightline_planner) StderrLine: {'line': b'      |           \x1b[32m\x1b[Kset_state\x1b[m\x1b[K\n'}
+[3.385337] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:178:56:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Ktarget_state\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Kget_state\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[3.385530] (nav2_straightline_planner) StderrLine: {'line': b'  178 |     graph[start_state.first][start_state.second].set_h(\x1b[01;31m\x1b[Ktarget_state\x1b[m\x1b[K);\n'}
+[3.385620] (nav2_straightline_planner) StderrLine: {'line': b'      |                                                        \x1b[01;31m\x1b[K^~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.385703] (nav2_straightline_planner) StderrLine: {'line': b'      |                                                        \x1b[32m\x1b[Kget_state\x1b[m\x1b[K\n'}
+[3.387823] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:182:5:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KU\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[3.387984] (nav2_straightline_planner) StderrLine: {'line': b'  182 |     \x1b[01;31m\x1b[KU\x1b[m\x1b[K = std::priority_queue<rpastar::Node, std::vector<rpastar::Node>, customGreater>();\n'}
+[3.388071] (nav2_straightline_planner) StderrLine: {'line': b'      |     \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[3.388154] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:182:85:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 2 is invalid\n'}
+[3.388238] (nav2_straightline_planner) StderrLine: {'line': b'  182 |     U = std::priority_queue<rpastar::Node, std::vector<rpastar::Node>, customGreater\x1b[01;31m\x1b[K>\x1b[m\x1b[K();\n'}
+[3.388320] (nav2_straightline_planner) StderrLine: {'line': b'      |                                                                                     \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[3.388403] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:182:85:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 3 is invalid\n'}
+[3.390940] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:184:5:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kopen_set\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[3.391186] (nav2_straightline_planner) StderrLine: {'line': b'  184 |     \x1b[01;31m\x1b[Kopen_set\x1b[m\x1b[K[start_state] = U.top().get_f_score();\n'}
+[3.391275] (nav2_straightline_planner) StderrLine: {'line': b'      |     \x1b[01;31m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[3.391358] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:\x1b[m\x1b[K At global scope:\n'}
+[3.391460] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:194:33:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Krpastar\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[3.391530] (nav2_straightline_planner) StderrLine: {'line': b'  194 | std::vector<std::pair<int,int>> \x1b[01;31m\x1b[Krpastar\x1b[m\x1b[K::backtracker()\n'}
+[3.391797] (nav2_straightline_planner) StderrLine: {'line': b'      |                                 \x1b[01;31m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[3.391916] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<std::pair<int, int> > backtracker()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.392004] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:196:5:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KNode\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Krclcpp::Node\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[3.392095] (nav2_straightline_planner) StderrLine: {'line': b'  196 |     \x1b[01;31m\x1b[KNode\x1b[m\x1b[K *curr_node = &graph[target_state.first][target_state.second];\n'}
+[3.392179] (nav2_straightline_planner) StderrLine: {'line': b'      |     \x1b[01;31m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[3.392261] (nav2_straightline_planner) StderrLine: {'line': b'      |     \x1b[32m\x1b[Krclcpp::Node\x1b[m\x1b[K\n'}
+[3.392344] (nav2_straightline_planner) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors/single_threaded_executor.hpp:28\x1b[m\x1b[K,\n'}
+[3.392427] (nav2_straightline_planner) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:22\x1b[m\x1b[K,\n'}
+[3.392509] (nav2_straightline_planner) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155\x1b[m\x1b[K,\n'}
+[3.392574] (nav2_straightline_planner) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/nav2_util/node_thread.hpp:20\x1b[m\x1b[K,\n'}
+[3.392627] (nav2_straightline_planner) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/nav2_util/lifecycle_node.hpp:22\x1b[m\x1b[K,\n'}
+[3.392684] (nav2_straightline_planner) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/nav2_costmap_2d/costmap_2d_publisher.hpp:53\x1b[m\x1b[K,\n'}
+[3.392741] (nav2_straightline_planner) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/nav2_costmap_2d/costmap_2d_ros.hpp:48\x1b[m\x1b[K,\n'}
+[3.392828] (nav2_straightline_planner) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/include/nav2_straightline_planner/rpastar.h:9\x1b[m\x1b[K,\n'}
+[3.392914] (nav2_straightline_planner) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:3\x1b[m\x1b[K:\n'}
+[3.392998] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/node.hpp:77:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Krclcpp::Node\x1b[m\x1b[K\xe2\x80\x99 declared here\n'}
+[3.393083] (nav2_straightline_planner) StderrLine: {'line': b'   77 | class \x1b[01;36m\x1b[KNode\x1b[m\x1b[K : public std::enable_shared_from_this<Node>\n'}
+[3.393167] (nav2_straightline_planner) StderrLine: {'line': b'      |       \x1b[01;36m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[3.395170] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:196:11:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kcurr_node\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[3.395315] (nav2_straightline_planner) StderrLine: {'line': b'  196 |     Node *\x1b[01;31m\x1b[Kcurr_node\x1b[m\x1b[K = &graph[target_state.first][target_state.second];\n'}
+[3.395396] (nav2_straightline_planner) StderrLine: {'line': b'      |           \x1b[01;31m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[3.397915] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:196:24:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kgraph\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Kisgraph\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[3.398051] (nav2_straightline_planner) StderrLine: {'line': b'  196 |     Node *curr_node = &\x1b[01;31m\x1b[Kgraph\x1b[m\x1b[K[target_state.first][target_state.second];\n'}
+[3.398123] (nav2_straightline_planner) StderrLine: {'line': b'      |                        \x1b[01;31m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[3.398211] (nav2_straightline_planner) StderrLine: {'line': b'      |                        \x1b[32m\x1b[Kisgraph\x1b[m\x1b[K\n'}
+[3.402202] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:196:30:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Ktarget_state\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Kget_state\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[3.402360] (nav2_straightline_planner) StderrLine: {'line': b'  196 |     Node *curr_node = &graph[\x1b[01;31m\x1b[Ktarget_state\x1b[m\x1b[K.first][target_state.second];\n'}
+[3.402410] (nav2_straightline_planner) StderrLine: {'line': b'      |                              \x1b[01;31m\x1b[K^~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.402481] (nav2_straightline_planner) StderrLine: {'line': b'      |                              \x1b[32m\x1b[Kget_state\x1b[m\x1b[K\n'}
+[3.402991] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:199:9:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kpath\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Krcpputils::fs::path\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[3.403091] (nav2_straightline_planner) StderrLine: {'line': b'  199 |         \x1b[01;31m\x1b[Kpath\x1b[m\x1b[K.push_back(curr_node->get_state());\n'}
+[3.403180] (nav2_straightline_planner) StderrLine: {'line': b'      |         \x1b[01;31m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[3.403252] (nav2_straightline_planner) StderrLine: {'line': b'      |         \x1b[32m\x1b[Krcpputils::fs::path\x1b[m\x1b[K\n'}
+[3.403299] (nav2_straightline_planner) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/logger.hpp:25\x1b[m\x1b[K,\n'}
+[3.403392] (nav2_straightline_planner) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:23\x1b[m\x1b[K,\n'}
+[3.403477] (nav2_straightline_planner) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40\x1b[m\x1b[K,\n'}
+[3.403541] (nav2_straightline_planner) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24\x1b[m\x1b[K,\n'}
+[3.403594] (nav2_straightline_planner) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp_lifecycle/rclcpp_lifecycle/lifecycle_node.hpp:55\x1b[m\x1b[K,\n'}
+[3.403829] (nav2_straightline_planner) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/nav2_costmap_2d/costmap_2d_publisher.hpp:46\x1b[m\x1b[K,\n'}
+[3.403881] (nav2_straightline_planner) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/nav2_costmap_2d/costmap_2d_ros.hpp:48\x1b[m\x1b[K,\n'}
+[3.403961] (nav2_straightline_planner) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/include/nav2_straightline_planner/rpastar.h:9\x1b[m\x1b[K,\n'}
+[3.404028] (nav2_straightline_planner) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:3\x1b[m\x1b[K:\n'}
+[3.404076] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/rcpputils/rcpputils/filesystem_helper.hpp:74:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Krcpputils::fs::path\x1b[m\x1b[K\xe2\x80\x99 declared here\n'}
+[3.404122] (nav2_straightline_planner) StderrLine: {'line': b'   74 | class \x1b[01;36m\x1b[Kpath\x1b[m\x1b[K\n'}
+[3.404185] (nav2_straightline_planner) StderrLine: {'line': b'      |       \x1b[01;36m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[3.404256] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:203:18:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kpath\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Krcpputils::fs::path\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[3.404329] (nav2_straightline_planner) StderrLine: {'line': b'  203 |     std::reverse(\x1b[01;31m\x1b[Kpath\x1b[m\x1b[K.begin(), path.end());\n'}
+[3.404405] (nav2_straightline_planner) StderrLine: {'line': b'      |                  \x1b[01;31m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[3.404490] (nav2_straightline_planner) StderrLine: {'line': b'      |                  \x1b[32m\x1b[Krcpputils::fs::path\x1b[m\x1b[K\n'}
+[3.404537] (nav2_straightline_planner) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/logger.hpp:25\x1b[m\x1b[K,\n'}
+[3.404581] (nav2_straightline_planner) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:23\x1b[m\x1b[K,\n'}
+[3.404652] (nav2_straightline_planner) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40\x1b[m\x1b[K,\n'}
+[3.404696] (nav2_straightline_planner) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24\x1b[m\x1b[K,\n'}
+[3.404804] (nav2_straightline_planner) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp_lifecycle/rclcpp_lifecycle/lifecycle_node.hpp:55\x1b[m\x1b[K,\n'}
+[3.404889] (nav2_straightline_planner) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/nav2_costmap_2d/costmap_2d_publisher.hpp:46\x1b[m\x1b[K,\n'}
+[3.404992] (nav2_straightline_planner) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/nav2_costmap_2d/costmap_2d_ros.hpp:48\x1b[m\x1b[K,\n'}
+[3.405073] (nav2_straightline_planner) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/include/nav2_straightline_planner/rpastar.h:9\x1b[m\x1b[K,\n'}
+[3.405149] (nav2_straightline_planner) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/umarv/ws/src/navigation2_tutorials/nav2_straightline_planner/src/rpastar.cpp:3\x1b[m\x1b[K:\n'}
+[3.405233] (nav2_straightline_planner) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/rcpputils/rcpputils/filesystem_helper.hpp:74:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Krcpputils::fs::path\x1b[m\x1b[K\xe2\x80\x99 declared here\n'}
+[3.405316] (nav2_straightline_planner) StderrLine: {'line': b'   74 | class \x1b[01;36m\x1b[Kpath\x1b[m\x1b[K\n'}
+[3.405393] (nav2_straightline_planner) StderrLine: {'line': b'      |       \x1b[01;36m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[3.412549] (-) TimerEvent: {}
+[3.512952] (-) TimerEvent: {}
+[3.613381] (-) TimerEvent: {}
+[3.713867] (-) TimerEvent: {}
+[3.814347] (-) TimerEvent: {}
+[3.914918] (-) TimerEvent: {}
+[4.015363] (-) TimerEvent: {}
+[4.115780] (-) TimerEvent: {}
+[4.216278] (-) TimerEvent: {}
+[4.316787] (-) TimerEvent: {}
+[4.417287] (-) TimerEvent: {}
+[4.517713] (-) TimerEvent: {}
+[4.618192] (-) TimerEvent: {}
+[4.718585] (-) TimerEvent: {}
+[4.819075] (-) TimerEvent: {}
+[4.837181] (nav2_straightline_planner) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/nav2_straightline_planner_plugin.dir/build.make:90: CMakeFiles/nav2_straightline_planner_plugin.dir/src/rpastar.cpp.o] Error 1\n'}
+[4.837454] (nav2_straightline_planner) StderrLine: {'line': b'gmake[2]: *** Waiting for unfinished jobs....\n'}
+[4.865650] (nav2_straightline_planner) StderrLine: {'line': b'gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/nav2_straightline_planner_plugin.dir/all] Error 2\n'}
+[4.865954] (nav2_straightline_planner) StderrLine: {'line': b'gmake: *** [Makefile:146: all] Error 2\n'}
+[4.867646] (nav2_straightline_planner) CommandEnded: {'returncode': 2}
+[4.914562] (nav2_straightline_planner) JobEnded: {'identifier': 'nav2_straightline_planner', 'rc': 2}
+[4.919424] (-) TimerEvent: {}
+[4.925202] (-) EventReactorShutdown: {}

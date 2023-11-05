@@ -1,0 +1,7 @@
+[31mCMake Error at CMakeLists.txt:3 (ament_package):
+  Unknown CMake command "ament_package".
+
+[0m
+-- Configuring incomplete, errors occurred!
+See also "/home/umarv/ws/build/nav2_straightline_planner/CMakeFiles/CMakeOutput.log".
+gmake: *** [Makefile:267: cmake_check_build_system] Error 1
