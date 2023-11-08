@@ -38,17 +38,17 @@ class MinimalPublisher(Node):
         # Set up message
         self.fix = NavSatFix()
         self.frame_id = 0
-
-        # Set up GPS connection
-        self.stream = Serial('/dev/ttyUSB0', 9600, timeout=3)
-        self.ubr = UBXReader(self.stream)
         
 
 
 
     def timer_callback(self):
 
-        (raw_data, parsed_data) = self.ubr.read()
+        # Set up GPS connection
+        stream = Serial('/dev/ttyACM0', 9600, timeout=3)
+        ubr = UBXReader(stream)
+
+        (raw_data, parsed_data) = ubr.read()
         print(parsed_data)
 
         # <NMEA(GNRMC, time=22:18:38, status=A, lat=52.62063, NS=N, lon=-2.16012, EW=W, spd=37.84, cog=, date=2021-03-05, mv=, mvEW=, posMode=A)>
@@ -56,14 +56,20 @@ class MinimalPublisher(Node):
         # parsed_data.lon
 
         # Put information into NavSatFix`` msg type
+        try:
+            if parsed_data.status == 'V':
+                return
+        except:
+            return
+        
         self.fix.header.stamp = self.get_clock().now().to_msg()
-        self.fix.header.frame_id = self.frame_id
-        self.fix.status.service = 1 if parsed_data.status == "A" else 0
+        self.fix.header.frame_id = str(self.frame_id)
+        self.fix.status.service = 1
         self.fix.latitude = parsed_data.lat
         self.fix.longitude = parsed_data.lon
-        self.fix.altitude = 0
-        self.fix.position_covariance = [0] * 9
-        self.fix.position_covariance_type = 0
+        self.fix.altitude = float(0)
+        self.fix.position_covariance = [0.0] * 9
+        self.fix.position_covariance_type = 0 
 
         self.publisher_.publish(self.fix)
 

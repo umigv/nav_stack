@@ -1,0 +1,18 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/umarv/ws/install/zed_interfaces/local/lib/python3.10/dist-packages",
+        "/home/umarv/ws/install/gps_node_ublox/lib/python3.10/site-packages",
+        "/home/umarv/ws/build/bno055",
+        "/home/umarv/ws/install/bno055/lib/python3.10/site-packages",
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages"
+    ],
+    "python.analysis.extraPaths": [
+        "/home/umarv/ws/install/zed_interfaces/local/lib/python3.10/dist-packages",
+        "/home/umarv/ws/install/gps_node_ublox/lib/python3.10/site-packages",
+        "/home/umarv/ws/build/bno055",
+        "/home/umarv/ws/install/bno055/lib/python3.10/site-packages",
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages"
+    ]
+}
