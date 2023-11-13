@@ -8,9 +8,12 @@
 #include <utility>
 #include <vector>
 
+#include <math.h>
 
 using std::pair;
 using std::string;
+
+const bool DEBUG = true;
 
 // Coordinate Struct
 struct Coordinate {
@@ -49,7 +52,11 @@ struct OccGridInfo {
 
 class GPSdata {
 public:
-    // TODO: Add constructor with tfBuffer once working
+    // TODO: Edit constructor with tfBuffer once working
+    GPSdata() {
+        // Read Config File
+        readConfigFile();
+    }
 
     // LATITUDE, LONGITUDE
     //  Final queue of x, y values sent to global frame
@@ -57,15 +64,16 @@ public:
     std::deque<Coordinate> GOAL_GPS;
 
     // TODO: tf transform function: NavSatFix
-    Coordinate robCurrentLocation;
+    Coordinate robCurrentLocation { 0, 0 };
 
     uint32_t indexOfCurrentGoal = 1;
     OccGridInfo mapInfo;
-    bool north = true;   // use yaml
+    bool north = false;
 
     // Read Text File of GPS Coordinates
-    void readGPSFile(string filename) {
-        double lat, lon;
+    void readGPSFile(const string& filename) {
+        double lat = NAN;
+        double lon = NAN;
         std::ifstream gpsFile(filename);
 
         if (gpsFile.is_open()) {
@@ -75,9 +83,33 @@ public:
         }
     }
 
+    // Read Config File
+    void readConfigFile() {
+        std::ifstream configFile("config.yaml");
+        string line;
+
+        // Format: isFacingNorth: true
+        // Check key and value pair with split of ": "
+        if (configFile.is_open()) {
+            while (std::getline(configFile, line)) {
+                auto split = line.find(": ");
+                string key = line.substr(0, split);
+                string value = line.substr(split + 2);
+
+                if (key == "isFacingNorth") {
+                    north = (value == "true");
+                }
+            }
+        }
+        if (DEBUG) {
+            std::cout << "isFacingNorth: " << north << '\n';
+        }
+    }
+
     // Convert to Map Coordinate
     auto gpsTransform(Coordinate original) -> Coordinate {
         // TODO: Convert to map coordinate
+        return { original.latitude, original.longitude };
     }
 
     auto goalReached(Coordinate& goalCoords) -> bool {
@@ -114,4 +146,10 @@ auto main() -> int {
     gps.readGPSFile("gps.txt");
 
     // Do Testing
+    if (DEBUG) {
+        std::cout << "GPS Coordinates: \n";
+        for (auto& coord : gps.GOAL_GPS) {
+            std::cout << coord.latitude << ", " << coord.longitude << '\n';
+        }
+    }
 }
