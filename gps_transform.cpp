@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <cmath>
 #include <deque>
 #include <filesystem>
@@ -8,21 +9,60 @@
 #include <utility>
 #include <vector>
 
-#include <math.h>
-
+using std::atan2;
+using std::cos;
 using std::pair;
+using std::sin;
+using std::sqrt;
 using std::string;
 
 const bool DEBUG = true;
 
-// Coordinate Struct
-struct Coordinate {
-    Coordinate(double lat, double lon)
+constexpr double long pi = 3.14159265358979323846;
+constexpr double long terrestrialRadius = 6372797.56085;
+constexpr double long radianDegrees = pi / 180;
+
+// Coordinate Class
+class Coordinate {
+public:
+    Coordinate(double long lat, double long lon)
         : latitude(lat)
         , longitude(lon) {}
-    double latitude;
-    double longitude;
+
+    static auto distanceBetweenPoints(Coordinate& current, Coordinate& target) -> double long {
+        double long latNew = target.latitude * radianDegrees;
+        double long latOld = current.latitude * radianDegrees;
+        double long latDiff = (target.latitude - current.latitude) * radianDegrees;
+        double long lngDiff = (target.longitude - current.longitude) * radianDegrees;
+
+        double long a
+          = sin(latDiff / 2) * sin(latDiff / 2) + cos(latNew) * cos(latOld) * sin(lngDiff / 2) * sin(lngDiff / 2);
+        double long c = 2 * atan2(sqrt(a), sqrt(1 - a));
+
+        double long distance = terrestrialRadius * c;
+
+        return distance;
+    }
+
+    double long latitude = NAN;
+    double long longitude = NAN;
 };
+
+class CoordinateMap {
+    CoordinateMap(double x, double y)
+        : x(x)
+        , y(y) {}
+    double x;
+    double y;
+
+    auto operator-(const CoordinateMap& other) const -> CoordinateMap {
+        return { this->x - other.x, this->y - other.y };
+    }
+    auto operator+(const CoordinateMap& other) const -> CoordinateMap {
+        return { this->x + other.x, this->y + other.y };
+    }
+};
+
 
 // Map Metadata Struct
 struct OccGridInfo {
@@ -59,8 +99,6 @@ public:
     }
 
     // LATITUDE, LONGITUDE
-    //  Final queue of x, y values sent to global frame
-    std::deque<Coordinate> GOAL_POINTS;   // This
     std::deque<Coordinate> GOAL_GPS;
 
     // TODO: tf transform function: NavSatFix
@@ -72,8 +110,8 @@ public:
 
     // Read Text File of GPS Coordinates
     void readGPSFile(const string& filename) {
-        double lat = NAN;
-        double lon = NAN;
+        double long lat = NAN;
+        double long lon = NAN;
         std::ifstream gpsFile(filename);
 
         if (gpsFile.is_open()) {
@@ -107,34 +145,36 @@ public:
     }
 
     // Convert to Map Coordinate
-    auto gpsTransform(Coordinate original) -> Coordinate {
-        // TODO: Convert to map coordinate
-        return { original.latitude, original.longitude };
+    auto gpsTransform(Coordinate goalPoint) -> Coordinate {
+        // TODO: Convert to map coordinate that then gets sent to the planner
+        // Can include the vector math or be done in another function
+
+        Coordinate xPoint(robCurrentLocation.latitude, goalPoint.longitude);
+        Coordinate yPoint(goalPoint.latitude, robCurrentLocation.longitude);
+
+        double long xDistance = Coordinate::distanceBetweenPoints(robCurrentLocation, xPoint);
+        double long yDistance = Coordinate::distanceBetweenPoints(robCurrentLocation, yPoint);
+
+        // Check for positive and Negative X and Y for northern hemisphere
+        if (robCurrentLocation.latitude < goalPoint.latitude) {
+            xDistance *= -1;
+        }
+        if (robCurrentLocation.longitude < goalPoint.longitude) {
+            yDistance *= -1;
+        }
+
+        if (north) {
+            xDistance *= -1;
+            yDistance *= -1;
+        }
+
+
+        return { xDistance, yDistance };
     }
 
     auto goalReached(Coordinate& goalCoords) -> bool {
-        double dist = distanceBetweenPoints(goalCoords, robCurrentLocation);
-        return dist < 3;
-    }
-
-private:
-    static auto distanceBetweenPoints(Coordinate& current, Coordinate& target) -> double {
-        // haversine formula
-        double R = 6371e3;                               // meters
-        double phi1 = current.latitude * M_PI / 180.0;   // φ, λ in radians
-        double phi2 = target.latitude * M_PI / 180.0;
-
-        double deltaPhi = (target.latitude - current.latitude) * M_PI / 180.0;
-        double deltaLambda = (target.longitude - current.longitude) * M_PI / 180.0;
-
-        double a
-          = sin(deltaPhi / 2) * sin(deltaPhi / 2) + cos(phi1) * cos(phi2) * sin(deltaLambda / 2) * sin(deltaLambda / 2);
-
-        double c = 2 * atan2(sqrt(a), sqrt(1 - a));
-
-        double d = R * c;   // in meters
-
-        return d;
+        double long dist = Coordinate::distanceBetweenPoints(goalCoords, robCurrentLocation);
+        return dist < 2;
     }
 };
 
