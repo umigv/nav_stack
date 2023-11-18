@@ -1,0 +1,8 @@
+#build
+build/*
+install/*
+log/*
+
+# dependencies
+src/velodyne_simulator/
+src/zed-ros2-wrapper/

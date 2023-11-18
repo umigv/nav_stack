@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="wheel">
+    <xacro:macro name="wheel" params="prefix mass radius width *joint_origin">
+        <link name="${prefix}_wheel">
+            <inertial>
+                <mass value="${mass}" />
+                <origin xyz="0 0 0" rpy="0 ${pi/2} ${pi/2}" />
+                <inertia
+                    ixx="${mass/12*(3*radius**2+2*width**2)}" ixy="0.0" ixz="0.0"
+                    iyy="${mass/12*(3*radius**2+2*width**2)}" iyz="0.0"
+                    izz="${mass/2*radius**2}"
+                />
+            </inertial>
+    
+            <visual>
+                <origin xyz="0 0 0" rpy="0 ${pi/2} ${pi/2}" />
+                <geometry>
+                    <cylinder radius="${radius}" length="${width}" />
+                </geometry>
+            </visual>
+    
+            <collision>
+                <origin xyz="0 0 0" rpy="0 ${pi/2} ${pi/2}" />
+                <geometry>
+                    <cylinder radius="${radius}" length="${width}" />
+                </geometry>
+            </collision>
+        </link>
+
+        <joint type="continuous" name="${prefix}_wheel_joint">
+            <xacro:insert_block name="joint_origin" />
+            <parent link="chassis" />
+            <child link="${prefix}_wheel" />
+            <axis xyz="0 1 0" rpy="0 0 0" />
+            <limit effort="1000" velocity="1000"/>
+            <dynamics damping="0.0001"/>
+        </joint>
+
+        <gazebo reference="${prefix}_wheel">
+            <material>Gazebo/Green</material>
+            <mu1 value="1.0"/>
+            <mu2 value="1.0"/>
+            <kp value="10000000.0" />
+            <kd value="1.0" />
+            <maxVel>1.0</maxVel>
+            <minDepth>0.00</minDepth>
+        </gazebo>
+    </xacro:macro>
+</robot>
