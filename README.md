@@ -41,5 +41,5 @@ This error is caused by [snap variables leaking into terminal variables](https:/
 - (If linux) Redownload VSCode from the debian package [here](https://code.visualstudio.com/download)
 - Build and run the project using an external terminal
 
-### Credits
+## Credits
 The urdf files are created by Jason Ning and Kari Naga on the sensors team, taken from the [marvin](https://github.com/umigv/marvin/tree/main/urdf) repository
