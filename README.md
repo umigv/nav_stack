@@ -40,3 +40,6 @@ This error is caused by the VSCode snap package setting GTK_PATH, which is then 
 This error is caused by [snap variables leaking into terminal variables](https://github.com/microsoft/vscode/issues/179086). There are two solutions:
 - (If linux) Redownload VSCode from the debian package [here](https://code.visualstudio.com/download)
 - Build and run the project using an external terminal
+
+### Credits
+The urdf files are created by Jason Ning and Kari Naga on the sensors team, taken from the [marvin](https://github.com/umigv/marvin/tree/main/urdf) repository
