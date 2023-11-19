@@ -49,6 +49,7 @@ public:
 };
 
 class CoordinateMap {
+    public:
     CoordinateMap(double x, double y)
         : x(x)
         , y(y) {}
@@ -92,7 +93,6 @@ struct OccGridInfo {
 
 class GPSdata {
 public:
-    // TODO: Edit constructor with tfBuffer once working
     GPSdata() {
         // Read Config File
         readConfigFile();
@@ -103,6 +103,11 @@ public:
 
     // TODO: tf transform function: NavSatFix
     Coordinate robCurrentLocation { 0, 0 };
+
+    void setRobotCurrentLocation(double long lat, double long lon) {
+        robCurrentLocation.latitude = lat;
+        robCurrentLocation.longitude = lon;
+    }
 
     uint32_t indexOfCurrentGoal = 1;
     OccGridInfo mapInfo;
@@ -156,14 +161,18 @@ public:
         double long yDistance = Coordinate::distanceBetweenPoints(robCurrentLocation, yPoint);
 
         // Check for positive and Negative X and Y for northern hemisphere
-        if (robCurrentLocation.latitude < goalPoint.latitude) {
-            xDistance *= -1;
+        if (robCurrentLocation.latitude > goalPoint.latitude) {
+            yDistance = fabs(yDistance) * -1;
+        } else {
+            yDistance = fabs(yDistance);
         }
-        if (robCurrentLocation.longitude < goalPoint.longitude) {
-            yDistance *= -1;
+        if (robCurrentLocation.longitude > goalPoint.longitude) {
+            xDistance = fabs(xDistance) * -1;
+        } else {
+            xDistance = fabs(xDistance);
         }
 
-        if (north) {
+        if (!north) {
             xDistance *= -1;
             yDistance *= -1;
         }
@@ -176,6 +185,68 @@ public:
         double long dist = Coordinate::distanceBetweenPoints(goalCoords, robCurrentLocation);
         return dist < 2;
     }
+
+    struct MapInfo {
+
+        MapInfo(float resolution, uint32_t width, uint32_t height, float origin_x, float origin_y)
+            : resolution(resolution)
+            , width(width)
+            , height(height)
+            , origin_x(origin_x)
+            , origin_y(origin_y) {}
+
+        float resolution;
+        uint32_t width;
+        uint32_t height;
+        float origin_x;
+        float origin_y;
+
+    };
+
+    // Inputs:
+    //      MapInfo: resolution, width, height, origin_x, origin_y
+    //      Goal Coordinate: x, y -- Assumed to be in meters as displacement from global frame origin
+    auto findGoalInMap(MapInfo mapInfo, CoordinateMap goalCoordinate) -> CoordinateMap {
+
+        struct Corner {
+            Corner(double xIn, double yIn) : x(xIn), y(yIn) {}
+            double x;
+            double y;
+        };
+
+        // Occupancy Grid corners
+        Corner bottomLeft = Corner(mapInfo.origin_x, mapInfo.origin_y);
+        Corner topLeft = Corner(mapInfo.origin_x, mapInfo.origin_y + (mapInfo.height * mapInfo.resolution));
+        Corner bottomRight = Corner(mapInfo.origin_x + (mapInfo.width * mapInfo.resolution), mapInfo.origin_y);
+        Corner topRight = Corner(bottomRight.x, topLeft.y);
+
+        // Goal Position in global frame
+        double goal_x = goalCoordinate.x;
+        double goal_y = goalCoordinate.y;
+
+        // Goal position inside map
+        double return_x = goalCoordinate.x; 
+        double return_y = goalCoordinate.y;
+
+        // Check if goal is outside of map
+        if (goal_x < bottomLeft.x) {
+            return_x = bottomLeft.x + 0.25;
+        } else if (goal_x > bottomRight.x) {
+            return_x = bottomRight.x - 0.25;
+        }
+
+        if (goal_y < bottomLeft.y) {
+            return_y = bottomLeft.y + 0.25;
+        } else if (goal_y > topLeft.y) {
+            return_y = topLeft.y - 0.25;
+        }
+
+        return { return_x, return_y };
+
+    }
+
+
+
 };
 
 auto main() -> int {
@@ -192,4 +263,23 @@ auto main() -> int {
             std::cout << coord.latitude << ", " << coord.longitude << '\n';
         }
     }
+
+    Coordinate robotLoc = Coordinate(42.29607847274641, -83.70659486161985);
+
+    gps.setRobotCurrentLocation(robotLoc.latitude, robotLoc.longitude);
+
+    Coordinate goalLoc = Coordinate(42.29958131982664, -83.70565689495105);
+
+    // std::cout << "First coordinate (robot location):" << robotLoc.latitude << ", " << robotLoc.longitude << '\n';
+    // std::cout << "Second coordinate (goal location):" << goalLoc.latitude << ", " << goalLoc.longitude << '\n';
+
+    // print long double robot location and goal location with printf
+    printf("First coordinate (robot location): %Lf, %Lf\n", robotLoc.latitude, robotLoc.longitude);
+    printf("Second coordinate (goal location): %Lf, %Lf\n", goalLoc.latitude, goalLoc.longitude);
+
+    Coordinate difference = gps.gpsTransform(goalLoc);
+    // std::cout << "Difference (x, y): " << difference.latitude << ", " << difference.longitude << '\n';
+    printf("Difference (x, y): %Lf, %Lf\n", difference.latitude, difference.longitude);
+
+
 }
