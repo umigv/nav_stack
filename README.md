@@ -18,7 +18,7 @@ Unified Robotics Description Format (urdf) is an XML specification used to model
 5. Run the following commands:
     ```
     colcon build
-    install/setup.bash
+    . install/setup.bash
     ros2 launch marvin_simulation display.launch.py
     ```
 A rviz window should open up with the robot, along with controllable wheels
