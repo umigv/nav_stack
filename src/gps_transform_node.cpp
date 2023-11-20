@@ -15,9 +15,9 @@
 #include <chrono>
 #include <memory>
 
+#include "gps_transform_classes.hpp"
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/string.hpp"
-#include "gps_transform_class.cpp"
 
 using namespace std::chrono_literals;
 
@@ -28,8 +28,7 @@ class GPSTransform : public rclcpp::Node {
 public:
     GPSTransform() : Node("gps_transform") {
         publisher_ = this->create_publisher<std_msgs::msg::String>("gps_goals", 10);
-        timer_ = this->create_wall_timer(1000ms,
-                                         std::bind(&GPSTransform::timer_callback, this));
+        timer_ = this->create_wall_timer(1000ms, std::bind(&GPSTransform::timer_callback, this));
     }
 
 private:
