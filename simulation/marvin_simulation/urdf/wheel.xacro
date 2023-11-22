@@ -2,21 +2,17 @@
 
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="wheel">
     <xacro:macro name="wheel" params="prefix mass radius width *joint_origin">
+        <xacro:include filename="$(find marvin_simulation)/urdf/inertia.xacro"/>
+
         <link name="${prefix}_wheel">
-            <inertial>
-                <mass value="${mass}" />
-                <origin xyz="0 0 0" rpy="0 ${pi/2} ${pi/2}" />
-                <inertia
-                    ixx="${mass/12*(3*radius**2+2*width**2)}" ixy="0.0" ixz="0.0"
-                    iyy="${mass/12*(3*radius**2+2*width**2)}" iyz="0.0"
-                    izz="${mass/2*radius**2}"
-                />
-            </inertial>
-    
+            <xacro:cylinder_inertia mass="${mass}" radius="${radius}" height="${width}">
+                <origin xyz="0 0 0" rpy="0 0 0" />
+            </xacro:cylinder_inertia>
+
             <visual>
                 <origin xyz="0 0 0" rpy="0 ${pi/2} ${pi/2}" />
                 <geometry>
-                    <cylinder radius="${radius}" length="${width}" />
+                    <cylinder radius="${radius}" length="${width}" />   
                 </geometry>
             </visual>
     
