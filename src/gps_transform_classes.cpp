@@ -9,9 +9,9 @@ using std::string;
 
 const bool DEBUG = true;
 
-constexpr double long pi = 3.14159265358979323846;
-constexpr double long terrestrialRadius = 6372797.56085;
-constexpr double long radianDegrees = pi / 180;
+constexpr double long PI = 3.14159265358979323846;
+constexpr double long TERRESTRIAL_RADIUS = 6372797.56085;
+constexpr double long RADIANS_PER_DEGREE = PI / 180;
 
 double long Coordinate::getLatitude() const {
     return latitude;
@@ -30,16 +30,16 @@ void Coordinate::setLongitude(double long longitude) {
 }
 
 double long Coordinate::distanceBetweenPoints(const Coordinate &current, const Coordinate &target) {
-    double long latNew = target.getLatitude() * radianDegrees;
-    double long latOld = current.getLatitude() * radianDegrees;
-    double long latDiff = (target.getLatitude() - current.getLatitude()) * radianDegrees;
-    double long lngDiff = (target.getLongitude() - current.getLongitude()) * radianDegrees;
+    double long latNew = target.getLatitude() * RADIANS_PER_DEGREE;
+    double long latOld = current.getLatitude() * RADIANS_PER_DEGREE;
+    double long latDiff = (target.getLatitude() - current.getLatitude()) * RADIANS_PER_DEGREE;
+    double long lngDiff = (target.getLongitude() - current.getLongitude()) * RADIANS_PER_DEGREE;
 
     double long a =
             sin(latDiff / 2) * sin(latDiff / 2) + cos(latNew) * cos(latOld) * sin(lngDiff / 2) * sin(lngDiff / 2);
     double long c = 2 * atan2(sqrt(a), sqrt(1 - a));
 
-    double long distance = terrestrialRadius * c;
+    double long distance = TERRESTRIAL_RADIUS * c;
 
     return distance;
 }
