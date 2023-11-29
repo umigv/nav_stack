@@ -13,7 +13,7 @@ find_package(std_msgs REQUIRED)
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
 
-add_executable(gps_transform src/gps_transform_node.cpp)
+add_executable(gps_transform src/gps_transform_node.cpp src/gps_transform_classes.cpp)
 ament_target_dependencies(gps_transform rclcpp std_msgs)
 
 install(TARGETS
