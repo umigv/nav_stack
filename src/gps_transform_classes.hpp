@@ -61,9 +61,9 @@ struct OccGridInfo {
     float origin_y{0};
 };
 
-class GPSdata {
+class GPSData {
 public:
-    GPSdata();
+    GPSData();
 
     void setRobotCurrentLocation(double long lat, double long lon);
 

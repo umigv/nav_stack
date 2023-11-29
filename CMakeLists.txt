@@ -17,8 +17,9 @@ add_executable(gps_transform src/gps_transform_node.cpp src/gps_transform_classe
 ament_target_dependencies(gps_transform rclcpp std_msgs)
 
 install(TARGETS
-  gps_transform
-  DESTINATION lib/${PROJECT_NAME})
+gps_transform
+DESTINATION lib/${PROJECT_NAME}
+)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
@@ -26,5 +27,15 @@ if(BUILD_TESTING)
   set(ament_cmake_cpplint_FOUND TRUE)
   ament_lint_auto_find_test_dependencies()
 endif()
+
+
+# find_package(rosidl_default_generators REQUIRED)
+# set(srv_files "srv/GoalRequestService.srv")
+
+# rosidl_generate_interfaces(${PROJECT_NAME}
+#   ${srv_files}
+# )
+# ament_export_dependencies(rosidl_default_runtime)
+
 
 ament_package()

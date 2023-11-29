@@ -18,6 +18,7 @@
 #include "gps_transform_classes.hpp"
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/string.hpp"
+#include "nav_stack/srv/GoalRequestService.hpp"
 
 using namespace std::chrono_literals;
 
@@ -25,8 +26,13 @@ using namespace std::chrono_literals;
  * member function as a callback from the timer. */
 
 class GPSTransform : public rclcpp::Node {
+
 public:
+    GPSData gpsData;
+
     GPSTransform() : Node("gps_transform") {
+
+        gpsData = GPSData();
         publisher_ = this->create_publisher<std_msgs::msg::String>("gps_goals", 10);
         timer_ = this->create_wall_timer(1000ms, std::bind(&GPSTransform::timer_callback, this));
     }

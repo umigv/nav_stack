@@ -68,16 +68,16 @@ void OccGridInfo::update(float resolutionIn, uint32_t widthIn, uint32_t heightIn
     this->origin_y = originYIN;
 }
 
-GPSdata::GPSdata() {
+GPSData::GPSData() {
     readConfigFile();
 }
 
-void GPSdata::setRobotCurrentLocation(double long lat, double long lon) {
+void GPSData::setRobotCurrentLocation(double long lat, double long lon) {
     robCurrentLocation.setLatitude(lat);
     robCurrentLocation.setLongitude(lon);
 }
 
-void GPSdata::readGPSFile(const string &filename) {
+void GPSData::readGPSFile(const string &filename) {
     double long lat = NAN;
     double long lon = NAN;
     std::ifstream gpsFile(filename);
@@ -89,7 +89,7 @@ void GPSdata::readGPSFile(const string &filename) {
     }
 }
 
-void GPSdata::readConfigFile() {
+void GPSData::readConfigFile() {
     std::ifstream configFile("config.yaml");
     string line;
 
@@ -111,7 +111,7 @@ void GPSdata::readConfigFile() {
     }
 }
 
-Coordinate GPSdata::gpsTransform(Coordinate goalPoint) const {
+Coordinate GPSData::gpsTransform(Coordinate goalPoint) const {
     // TODO: Convert to map coordinate that then gets sent to the planner
     // Can include the vector math or be done in another function
 
@@ -142,12 +142,12 @@ Coordinate GPSdata::gpsTransform(Coordinate goalPoint) const {
     return {xDistance, yDistance};
 }
 
-bool GPSdata::goalReached(Coordinate &goalCoords) const {
+bool GPSData::goalReached(Coordinate &goalCoords) const {
     double long dist = Coordinate::distanceBetweenPoints(goalCoords, robCurrentLocation);
     return dist < 2;
 }
 
-CoordinateMap GPSdata::findGoalInMap(MapInfo mapInfo, CoordinateMap goalCoordinate) const {
+CoordinateMap GPSData::findGoalInMap(MapInfo mapInfo, CoordinateMap goalCoordinate) const {
     // Occupancy Grid corners
     Corner bottomLeft = Corner(mapInfo.origin_x, mapInfo.origin_y);
     Corner topLeft = Corner(mapInfo.origin_x, mapInfo.origin_y + (mapInfo.height * mapInfo.resolution));
@@ -179,8 +179,8 @@ CoordinateMap GPSdata::findGoalInMap(MapInfo mapInfo, CoordinateMap goalCoordina
 }
 
 // int main() {
-//     // Make gpsData instance
-//     GPSdata gps;
+//     // Make GPSData instance
+//     GPSData gps;
 
 //     // Read GPS File
 //     gps.readGPSFile("gps.txt");
