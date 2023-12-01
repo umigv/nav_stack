@@ -1,0 +1,35 @@
+[0.058s] Invoking command in '/home/ryanl/Desktop/nav_stack/src/simulation/build/zed_interfaces': /usr/bin/cmake /home/ryanl/Desktop/nav_stack/src/simulation/zed-ros2-wrapper/zed-ros2-interfaces -DCMAKE_INSTALL_PREFIX=/home/ryanl/Desktop/nav_stack/src/simulation/install/zed_interfaces
+[0.107s] -- The C compiler identification is GNU 11.4.0
+[0.158s] -- The CXX compiler identification is GNU 11.4.0
+[0.164s] -- Detecting C compiler ABI info
+[0.228s] -- Detecting C compiler ABI info - done
+[0.233s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.234s] -- Detecting C compile features
+[0.234s] -- Detecting C compile features - done
+[0.236s] -- Detecting CXX compiler ABI info
+[0.310s] -- Detecting CXX compiler ABI info - done
+[0.314s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.315s] -- Detecting CXX compile features
+[0.315s] -- Detecting CXX compile features - done
+[0.316s] [0m* ROS2 distro variable not set. Trying to figure it out...[0m
+[0.316s] [0m*** WARNING *** ROS2 distro is unknown. This package could not work correctly.[0m
+[0.327s] [31mCMake Error at CMakeLists.txt:54 (find_package):
+[0.327s]   By not providing "Findament_cmake_auto.cmake" in CMAKE_MODULE_PATH this
+[0.327s]   project has asked CMake to find a package configuration file provided by
+[0.328s]   "ament_cmake_auto", but CMake did not find one.
+[0.328s] 
+[0.328s]   Could not find a package configuration file provided by "ament_cmake_auto"
+[0.328s]   with any of the following names:
+[0.328s] 
+[0.328s]     ament_cmake_autoConfig.cmake
+[0.328s]     ament_cmake_auto-config.cmake
+[0.328s] 
+[0.328s]   Add the installation prefix of "ament_cmake_auto" to CMAKE_PREFIX_PATH or
+[0.328s]   set "ament_cmake_auto_DIR" to a directory containing one of the above
+[0.328s]   files.  If "ament_cmake_auto" provides a separate development package or
+[0.328s]   SDK, be sure it has been installed.
+[0.328s] 
+[0.328s] [0m
+[0.331s] -- Configuring incomplete, errors occurred!
+[0.331s] See also "/home/ryanl/Desktop/nav_stack/src/simulation/build/zed_interfaces/CMakeFiles/CMakeOutput.log".
+[0.334s] Invoked command in '/home/ryanl/Desktop/nav_stack/src/simulation/build/zed_interfaces' returned '1': /usr/bin/cmake /home/ryanl/Desktop/nav_stack/src/simulation/zed-ros2-wrapper/zed-ros2-interfaces -DCMAKE_INSTALL_PREFIX=/home/ryanl/Desktop/nav_stack/src/simulation/install/zed_interfaces

@@ -1,0 +1,2 @@
+Invoking command in '/home/ryanl/Desktop/nav_stack/src/simulation/build/zed_interfaces': /usr/bin/cmake /home/ryanl/Desktop/nav_stack/src/simulation/zed-ros2-wrapper/zed-ros2-interfaces -DCMAKE_INSTALL_PREFIX=/home/ryanl/Desktop/nav_stack/src/simulation/install/zed_interfaces
+Invoked command in '/home/ryanl/Desktop/nav_stack/src/simulation/build/zed_interfaces' returned '1': /usr/bin/cmake /home/ryanl/Desktop/nav_stack/src/simulation/zed-ros2-wrapper/zed-ros2-interfaces -DCMAKE_INSTALL_PREFIX=/home/ryanl/Desktop/nav_stack/src/simulation/install/zed_interfaces
