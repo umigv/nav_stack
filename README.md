@@ -115,4 +115,5 @@ This error is caused by [snap variables leaking into terminal variables](https:/
 - Build and run the project using an external terminal
 
 ## Credits
-The original URDF files and the Gazebo World are created by Jason Ning and Kari Naga on the sensors team, taken from the [marvin](https://github.com/umigv/marvin/tree/main/urdf) repository
+The original URDF files and the Gazebo World are created by Jason Ning and Kari Naga on the sensors team, taken from the [marvin](https://github.com/umigv/marvin/tree/main/urdf) repository.
+Ethan Hardy for giving feedback on installation.
