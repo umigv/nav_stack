@@ -4,5 +4,5 @@ install/*
 log/*
 
 # dependencies
-src/velodyne_simulator/
-src/zed-ros2-wrapper/
+src/simulation/velodyne_simulator/
+src/simulation/zed-ros2-wrapper/

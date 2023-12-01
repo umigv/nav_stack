@@ -1,2 +1,0 @@
-Invoking command in '/home/ryanl/Desktop/nav_stack/src/simulation/build/marvin_simulation': /usr/bin/cmake /home/ryanl/Desktop/nav_stack/src/simulation/marvin_simulation -DCMAKE_INSTALL_PREFIX=/home/ryanl/Desktop/nav_stack/src/simulation/install/marvin_simulation
-Invoked command in '/home/ryanl/Desktop/nav_stack/src/simulation/build/marvin_simulation' returned '1': /usr/bin/cmake /home/ryanl/Desktop/nav_stack/src/simulation/marvin_simulation -DCMAKE_INSTALL_PREFIX=/home/ryanl/Desktop/nav_stack/src/simulation/install/marvin_simulation
