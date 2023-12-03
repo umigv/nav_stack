@@ -90,10 +90,14 @@ private:
 
 // }
 
+GPSData gpsData;
 
 
 void service_callback(const std::shared_ptr<example_interfaces::srv::Trigger::Request> request, std::shared_ptr<example_interfaces::srv::Trigger::Response> response) {
 
+    std::shared_ptr<example_interfaces::srv::Trigger::Request> a = request; // Ignore warning
+    
+    gpsData.setRobotCurrentLocation(1, 1);
     response->success = true;
     response->message = "Hi";
 
@@ -102,13 +106,14 @@ void service_callback(const std::shared_ptr<example_interfaces::srv::Trigger::Re
 
 int main(int argc, char *argv[]) {
 
+// https://get-help.robotigniteacademy.com/t/ros2-service-client-in-c-with-classes-with-node-inheritance/19647
 
     // GPSService gpsService = GPSService();
     rclcpp::init(argc, argv);
     // rclcpp::spin(std::make_shared<GPSTransform>());
     // rclcpp::shutdown();
 
-    // GPSData gpsData = GPSData();
+    gpsData = GPSData();
 
     std::shared_ptr<rclcpp::Node> node = rclcpp::Node::make_shared("gps_transform_node");
     rclcpp::Service<example_interfaces::srv::Trigger>::SharedPtr service = node->create_service<example_interfaces::srv::Trigger>("get_gps_goal", &service_callback);
