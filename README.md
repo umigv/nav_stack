@@ -5,8 +5,8 @@ This repository includes a package that allow you to simulate Marvin (UMARV's 20
 Unified Robotics Description Format (URDF) is an XML specification used to model robots. It is made up of ```links``` (bodies with kinematic and dynamic specifications) and ```joints``` (connection between links). You can imagine the model structure to be a [tree](https://en.wikipedia.org/wiki/Tree_(data_structure)) with links as nodes and joints as edges. The root, or fixed frame (in our case ```chassis```, specified in ```simulation_config.rviz```) is the core of the model. All other links are define relative to the fixed frame. You can read more about the URDF format [here](https://wiki.ros.org/urdf/XML) and [here](https://navigation.ros.org/setup_guides/urdf/setup_urdf.html#urdf-and-the-robot-state-publisher). I also recommend watching [this video](https://youtu.be/CwdbsvcpOHM?si=mOkKDYqQnHFhNE2T) as it is a good introduction to URDF.
 
 ## Package Dependencies
-- [zed-ros2-wrapper](https://github.com/stereolabs/zed-ros2-wrapper), which simulates our camera. Installation instructions below.
-- [Velodyne Simulator](https://github.com/ToyotaResearchInstitute/velodyne_simulator), which simulates our LiDAR. Installation instructions below
+- [zed-ros2-wrapper](https://github.com/stereolabs/zed-ros2-wrapper), which simulates our camera.
+- [Velodyne Simulator](https://github.com/ToyotaResearchInstitute/velodyne_simulator), which simulates our LiDAR.
 
 ## Installation Guide (umarv environment)
 ### Docker image setup
@@ -15,23 +15,16 @@ Unified Robotics Description Format (URDF) is an XML specification used to model
 2. Open the file, uncomment line 16 
 3. Connect to the docker container as usual
 
-### Install the navigation stack simulation package
+### Install the required packages
 1. ```cd``` into ```ws/src```
 2. ```git clone -b simulation https://github.com/umigv/nav_stack.git```
-
-### Install the velodyne LiDAR package
-1. ```cd``` into ```ws/src/nav_stack/src/simulation```
-2. ```git clone https://github.com/ToyotaResearchInstitute/velodyne_simulator.git```
-
-### ZED Camera Installation (requires an Nvidia GPU)
-#### Install the ZED Camera package
-1. ```cd``` into ```ws/src/nav_stack/src/simulation```
-2. ```git clone https://github.com/stereolabs/zed-ros2-wrapper.git```
-3. ```cd``` into ```ws/src/nav_stack``` (go up two levels)
-4. ```sudo apt update```
-5. ```source /opt/ros/humble/setup.bash```
-6. ```rosdep update```
-7. ```rosdep install --from-paths src --ignore-src -r -y```
+3. ```cd``` into ```ws/src/nav_stack```
+4. ```git submodule update --init --recursive```
+5. ```cd``` into ```ws/src/nav_stack``` (go up two levels)
+6. ```sudo apt update```
+7. ```source /opt/ros/humble/setup.bash```
+8. ```rosdep update```
+9. ```rosdep install --from-paths src --ignore-src -r -y```
 
 #### Install CUDA and the ZED SDK
 1. Go to [this website](https://www.stereolabs.com/developers/release/), go to SDK Downloads and download CUDA 12 -> ZED SDK for ubuntu 22 to anywhere on your windows computer
@@ -50,7 +43,7 @@ Unified Robotics Description Format (URDF) is an XML specification used to model
 ### ZED Camera removal (if no Nvidia GPU)
 1. Open marvin_new.xacro in nav_stack/src/simulation/marvin_simulation/urdf
 2. Delete everything from line 153 to 164 (everything under the ZED Camera header). This removes ZED Camera as a dependency to our model
-
+3. Delete the ```zed-ros2-wrapper``` folder in ```ws/src/nav_stack/simulation```
 
 ## Installation Guide (Linux)
 ### Install ROS2 Humble
