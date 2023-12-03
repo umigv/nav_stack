@@ -20,7 +20,7 @@ Unified Robotics Description Format (URDF) is an XML specification used to model
 2. ```git clone -b simulation https://github.com/umigv/nav_stack.git```
 3. ```cd``` into ```ws/src/nav_stack```
 4. ```git submodule update --init --recursive```
-5. ```cd``` into ```ws/src/nav_stack``` (go up two levels)
+5. ```cd``` into ```ws/src```
 6. ```sudo apt update```
 7. ```source /opt/ros/humble/setup.bash```
 8. ```rosdep update```
