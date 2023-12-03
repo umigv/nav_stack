@@ -1,6 +1,6 @@
-[submodule "src/simulation/zed-ros2-wrapper"]
-	path = src/simulation/zed-ros2-wrapper
-	url = https://github.com/stereolabs/zed-ros2-wrapper.git
-[submodule "src/simulation/velodyne_simulator"]
-	path = src/simulation/velodyne_simulator
+[submodule "simulation/velodyne_simulator"]
+	path = simulation/velodyne_simulator
 	url = https://github.com/ToyotaResearchInstitute/velodyne_simulator.git
+[submodule "simulation/zed-ros2-wrapper"]
+	path = simulation/zed-ros2-wrapper
+	url = https://github.com/stereolabs/zed-ros2-wrapper.git
