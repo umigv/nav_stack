@@ -82,7 +82,7 @@ Same process as the umarv environment installation
 Same process as the umarv environment installation
 
 ## Testing the Project
-1. ```cd``` into ```ws/nav_stack```
+1. ```cd``` into ```ws/src/nav_stack```
 2. ```source /opt/ros/humble/setup.bash```
 3. ```colcon build```
 4. ```. install/setup.bash```
