@@ -7,17 +7,18 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
+find_package(example_interfaces REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
 
-add_executable(gps_transform src/gps_transform_node.cpp src/gps_transform_classes.cpp)
-ament_target_dependencies(gps_transform rclcpp std_msgs)
+add_executable(gps_transform1 src/gps_transform_node.cpp src/gps_transform_classes.cpp)
+ament_target_dependencies(gps_transform1 rclcpp std_msgs example_interfaces)
 
 install(TARGETS
-gps_transform
+gps_transform1
 DESTINATION lib/${PROJECT_NAME}
 )
 
@@ -29,13 +30,14 @@ if(BUILD_TESTING)
 endif()
 
 
-# find_package(rosidl_default_generators REQUIRED)
-# set(srv_files "srv/GoalRequestService.srv")
+find_package(rosidl_default_generators REQUIRED)
+set(srv_files "srv/GoalRequestService.srv")
 
-# rosidl_generate_interfaces(${PROJECT_NAME}
+rosidl_generate_interfaces(${PROJECT_NAME}
 #   ${srv_files}
-# )
-# ament_export_dependencies(rosidl_default_runtime)
+  "srv/GoalRequestService.srv"
+)
+ament_export_dependencies(rosidl_default_runtime)
 
 
 ament_package()
