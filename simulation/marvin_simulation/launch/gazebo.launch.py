@@ -13,7 +13,7 @@ def generate_launch_description():
 
     # Specify the name of the package and path to xacro file within the package
     pkg_name = 'marvin_simulation'
-    file_subpath = 'urdf/marvin_new.xacro'
+    file_subpath = 'urdf/marvin.xacro'
 
 
     # Use xacro to process the file

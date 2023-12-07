@@ -63,7 +63,7 @@ ros-humble-xacro
 11. Once the ZED SDK is installed correctly, delete the installation file with ```cd ~ && rm -rf zedsdk.run```
 
 ### ZED Camera removal (if no Nvidia GPU)
-1. Open marvin_new.xacro in nav_stack/src/simulation/marvin_simulation/urdf
+1. Open marvin.xacro in nav_stack/src/simulation/marvin_simulation/urdf
 2. Delete everything from line 153 to 164 (everything under the ZED Camera header). This removes ZED Camera as a dependency to our model
 
 ## Testing the Project

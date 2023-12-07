@@ -5,7 +5,7 @@ import os
 
 def generate_launch_description():
     pkg_share = launch_ros.substitutions.FindPackageShare(package='marvin_simulation').find('marvin_simulation')
-    default_model_path = os.path.join(pkg_share, 'urdf/marvin_new.xacro')
+    default_model_path = os.path.join(pkg_share, 'urdf/marvin.xacro')
     default_rviz_config_path = os.path.join(pkg_share, 'rviz/simulation_config.rviz')
 
     robot_state_publisher_node = launch_ros.actions.Node(
