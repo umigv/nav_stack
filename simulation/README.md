@@ -19,31 +19,32 @@ Unified Robotics Description Format (URDF) is an XML specification used to model
 1. ```cd``` into ```ws/src```
 2. ```git clone -b simulation https://github.com/umigv/nav_stack.git```
 3. ```cd``` into ```ws/src/nav_stack```
-4. ```git submodule update --init --recursive```
+4. ```git submodule update --init --recursive simulation/velodyne_simulator```
 5. ```cd``` into ```ws/src```
 6. ```sudo apt update```
 7. ```source /opt/ros/humble/setup.bash```
 8. ```rosdep update```
 9. ```rosdep install --from-paths src --ignore-src -r -y```
 
+### ZED Camera Installation (If you have an Nvidia GPU)
+1. ```git submodule update --init --recursive simulation/velodyne_simulator```
+
 #### Install CUDA and the ZED SDK
-1. Go to [this website](https://www.stereolabs.com/developers/release/), go to SDK Downloads and download CUDA 12 -> ZED SDK for ubuntu 22 to anywhere on your windows computer
-2. Open a windows terminal and ```cd``` to where you downloaded the file
-3. ```docker cp ZED_SDK_Ubuntu22_cuda12.1_v4.0.8.zstd.run umarv-ros2:home/umarv```
-4. ```cd ~``` and ```ls```, you should see the file copied over
-5. ```cd /```
-6. ```export USER=umarv```
-7. ```sudo mkdir -p /etc/udev/rules.d/```
-8. ```cd ~```
-9. ```sudo chmod +x ZED_SDK_Ubuntu22_cuda12.1_v4.0.8.zstd.run```
-10. ```sudo apt install zstd```
-11. ```./ZED_SDK_Ubuntu22_cuda12.1_v4.0.8.zstd.run```
-12. Press q, then press y for everything (ZED diagnostics is optional)
+1. cd ~
+2. ```wget https://download.stereolabs.com/zedsdk/4.0/cu121/ubuntu22 -O zedsdk.run```
+3. ```cd /```
+4. ```export USER=umarv```
+5. ```sudo mkdir -p /etc/udev/rules.d/```
+6. ```cd ~```
+7. ```sudo chmod +x zedsdk.run```
+8. ```sudo apt install zstd```
+9. ```./zedsdk.run```
+10. Press q, then press y for everything (ZED diagnostics is optional)
+11. Once you make sure the ZED SDK is installed, delete the installation file with ```cd ~ && rm -rf zedsdk.run```
 
 ### ZED Camera removal (if no Nvidia GPU)
 1. Open marvin_new.xacro in nav_stack/src/simulation/marvin_simulation/urdf
 2. Delete everything from line 153 to 164 (everything under the ZED Camera header). This removes ZED Camera as a dependency to our model
-3. Delete the ```zed-ros2-wrapper``` folder in ```ws/src/nav_stack/simulation```
 
 ## Installation Guide (Linux)
 ### Install ROS2 Humble
@@ -63,28 +64,13 @@ ros-humble-joint-state-publisher-gui \
 ros-humble-xacro
 ```
 
-### Install the navigation stack simulation and Velodyne LiDAR package
-Same process as the umarv environment installation
-
-### ZED Camera installation (requires an Nvidia GPU)
-#### Install the ZED Camera package
-Same process as the umarv environment installation
-
-#### Install CUDA and the ZED SDK
-1. Go to [this website](https://www.stereolabs.com/developers/release/), go to SDK Downloads and download CUDA 12 -> ZED SDK for ubuntu 22 to anywhere
-2. ```cd``` to where you downloaded the file
-9. ```sudo chmod +x ZED_SDK_Ubuntu22_cuda12.1_v4.0.8.zstd.run```
-10. ```sudo apt install zstd```
-11. ```./ZED_SDK_Ubuntu22_cuda12.1_v4.0.8.zstd.run```
-12. Press q, then press y for everything (ZED diagnostics is optional)
-    
-### ZED Camera removal (if no Nvidia GPU)
+### Install all simulation files
 Same process as the umarv environment installation
 
 ## Testing the Project
 1. ```cd``` into ```ws/src/nav_stack```
 2. ```source /opt/ros/humble/setup.bash```
-3. ```colcon build```
+3. ```colcon build --symlink-install```
 4. ```. install/setup.bash```
 5. ```ros2 launch marvin_simulation display.launch.py```, this should open up the robot model with controllable wheels with RViz```
 6. ```ros2 launch marvin_simulation gazebo.launch.py```, this should open up the robot model with Gazebo```
@@ -108,5 +94,5 @@ This error is caused by [snap variables leaking into terminal variables](https:/
 - Build and run the project using an external terminal
 
 ## Credits
-The original URDF files and the Gazebo World are created by Jason Ning and Kari Naga on the sensors team, taken from the [marvin](https://github.com/umigv/marvin/tree/main/urdf) repository.
-Ethan Hardy for giving feedback on installation.
+Jason Ning and Kari Naga on the sensors team, who created the original URDF files and the Gazebo World in the [marvin](https://github.com/umigv/marvin/tree/main/urdf) repository.  
+Ethan Hardy for testing the package and providing feedbacks for installation.
