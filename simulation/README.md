@@ -15,7 +15,7 @@ Unified Robotics Description Format (URDF) is an XML specification used to model
 2. Open the file, uncomment line 16 
 3. Connect to the docker container as usual
 
-### Linux environment setup 
+### Linux environment setup (for native Linux distros)
 #### Install ROS2 Humble
 Follow the tutorial [here](https://docs.ros.org/en/humble/Installation/Alternatives/Ubuntu-Development-Setup.html)
 
@@ -59,8 +59,8 @@ ros-humble-xacro
 7. ```sudo chmod +x zedsdk.run```
 8. ```sudo apt install zstd```
 9. ```./zedsdk.run```
-10. Press q, then press y for everything (ZED diagnostics is optional)
-11. Once you make sure the ZED SDK is installed, delete the installation file with ```cd ~ && rm -rf zedsdk.run```
+10. Press q, then follow the installation instructions
+11. Once the ZED SDK is installed correctly, delete the installation file with ```cd ~ && rm -rf zedsdk.run```
 
 ### ZED Camera removal (if no Nvidia GPU)
 1. Open marvin_new.xacro in nav_stack/src/simulation/marvin_simulation/urdf
