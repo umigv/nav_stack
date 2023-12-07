@@ -8,29 +8,49 @@ Unified Robotics Description Format (URDF) is an XML specification used to model
 - [zed-ros2-wrapper](https://github.com/stereolabs/zed-ros2-wrapper), which simulates our camera.
 - [Velodyne Simulator](https://github.com/ToyotaResearchInstitute/velodyne_simulator), which simulates our LiDAR.
 
-## Installation Guide (umarv environment)
-### Docker image setup
+## Installation Guide 
+### Docker image setup (umarv environment)
 **WARNING - this step recreates your docker container, which resets everything except files within the ```ws``` folder. Make sure your files are within ```ws``` or backed up.**
 1. Open file explorer, find docker-compose.yml within your wsl folder
 2. Open the file, uncomment line 16 
 3. Connect to the docker container as usual
 
+### Linux environment setup 
+#### Install ROS2 Humble
+Follow the tutorial [here](https://docs.ros.org/en/humble/Installation/Alternatives/Ubuntu-Development-Setup.html)
+
+#### Install ROS2 Depedency 
+Run the following command:
+```
+sudo apt install ros-humble-rttest \
+ros-humble-rclcpp-action \
+ros-humble-gazebo-dev \
+ros-humble-gazebo-msgs \
+ros-humble-gazebo-plugins \
+ros-humble-gazebo-ros \
+ros-humble-gazebo-ros-pkgs \
+ros-humble-joint-state-publisher-gui \
+ros-humble-xacro
+```
+
 ### Install the required packages
 1. ```cd``` into ```ws/src```
-2. ```git clone -b simulation https://github.com/umigv/nav_stack.git```
-3. ```cd``` into ```ws/src/nav_stack```
-4. ```git submodule update --init --recursive simulation/velodyne_simulator```
-5. ```cd``` into ```ws/src```
-6. ```sudo apt update```
-7. ```source /opt/ros/humble/setup.bash```
-8. ```rosdep update```
-9. ```rosdep install --from-paths src --ignore-src -r -y```
+2. ```git clone -b simulation https://github.com/umigv/nav_stack.git && cd nav_stack```
+3. ```git submodule update --init --recursive simulation/velodyne_simulator```
 
-### ZED Camera Installation (If you have an Nvidia GPU)
-1. ```git submodule update --init --recursive simulation/velodyne_simulator```
+### ZED Camera Installation (requires an Nvidia GPU)
+
+#### Install the ZED Camera package
+1. ```cd``` into ```ws/src/nav_stack```
+2. ```git submodule update --init --recursive simulation/zed-ros2-wrapper```
+3. ```cd``` into ```ws```
+4. ```sudo apt update```
+5. ```source /opt/ros/humble/setup.bash```
+6. ```rosdep update```
+7. ```rosdep install --from-paths src --ignore-src -r -y```
 
 #### Install CUDA and the ZED SDK
-1. cd ~
+1. ```cd ~```
 2. ```wget https://download.stereolabs.com/zedsdk/4.0/cu121/ubuntu22 -O zedsdk.run```
 3. ```cd /```
 4. ```export USER=umarv```
@@ -45,27 +65,6 @@ Unified Robotics Description Format (URDF) is an XML specification used to model
 ### ZED Camera removal (if no Nvidia GPU)
 1. Open marvin_new.xacro in nav_stack/src/simulation/marvin_simulation/urdf
 2. Delete everything from line 153 to 164 (everything under the ZED Camera header). This removes ZED Camera as a dependency to our model
-
-## Installation Guide (Linux)
-### Install ROS2 Humble
-Follow the tutorial [here](https://docs.ros.org/en/humble/Installation/Alternatives/Ubuntu-Development-Setup.html)
-
-### Install ROS2 Depedency 
-Run the following command:
-```
-sudo apt install ros-humble-rttest \
-ros-humble-rclcpp-action \
-ros-humble-gazebo-dev \
-ros-humble-gazebo-msgs \
-ros-humble-gazebo-plugins \
-ros-humble-gazebo-ros \
-ros-humble-gazebo-ros-pkgs \
-ros-humble-joint-state-publisher-gui \
-ros-humble-xacro
-```
-
-### Install all simulation files
-Same process as the umarv environment installation
 
 ## Testing the Project
 1. ```cd``` into ```ws/src/nav_stack```
