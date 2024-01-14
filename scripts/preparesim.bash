@@ -51,6 +51,7 @@ if [ "$NVIDIA_GPU" = true ]; then
     export USER=$(id -u -n)
     sudo mkdir -p /etc/udev/rules.d/
     sudo apt install udev
+    sudo apt install python3-requests
     
     ./$ZEDSDKFILENAME
 else
