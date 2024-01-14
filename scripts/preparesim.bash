@@ -4,7 +4,7 @@ set -e
 git submodule update --init --recursive simulation/velodyne_simulator
 
 sudo apt update
-sudo apt-get install zstd ros-humble-rttest ros-humble-rclcpp-action ros-humble-gazebo-dev ros-humble-gazebo-msgs ros-humble-gazebo-plugins ros-humble-gazebo-ros ros-humble-gazebo-ros-pkgs ros-humble-joint-state-publisher-gui ros-humble-xacro
+sudo apt-get install ros-humble-rttest ros-humble-rclcpp-action ros-humble-gazebo-dev ros-humble-gazebo-msgs ros-humble-gazebo-plugins ros-humble-gazebo-ros ros-humble-gazebo-ros-pkgs ros-humble-joint-state-publisher-gui ros-humble-xacro python3-rosdep
 
 if ! [[ -f "/etc/ros/rosdep/sources.list.d/20-default.list" ]]; then
     sudo rosdep init
@@ -41,7 +41,7 @@ fi
 if [ "$NVIDIA_GPU" = true ]; then
     git submodule update --init --recursive simulation/zed-ros2-wrapper
 
-    ZEDSDKFILENAME="zedsdkubuntu22.run"
+    ZEDSDKFILENAME="zedsdk.run"
 
     if ! [[ -f $ZEDSDKFILENAME ]]; then
         wget https://download.stereolabs.com/zedsdk/4.0/cu121/ubuntu22 -O $ZEDSDKFILENAME
@@ -50,7 +50,7 @@ if [ "$NVIDIA_GPU" = true ]; then
 
     export USER=$(id -u -n)
     sudo mkdir -p /etc/udev/rules.d/
-    sudo apt-get install udev python3-requests
+    sudo apt-get install zstd python3-requests
     
     ./$ZEDSDKFILENAME
 else
