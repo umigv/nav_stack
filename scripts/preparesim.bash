@@ -47,6 +47,10 @@ if [ "$NVIDIA_GPU" = true ]; then
         wget https://download.stereolabs.com/zedsdk/4.0/cu121/ubuntu22 -O $ZEDSDKFILENAME
     fi
     chmod +x $ZEDSDKFILENAME
+
+    export USER=$(id - u -n)
+    sudo mkdir -p /etc/udev/rules.d/
+    
     ./$ZEDSDKFILENAME
 else
     # removes zed camera from model, which is only supported with nvidia gpus
