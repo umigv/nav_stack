@@ -48,7 +48,7 @@ if [ "$NVIDIA_GPU" = true ]; then
     fi
     chmod +x $ZEDSDKFILENAME
 
-    export USER=$(id - u -n)
+    export USER=$(id -u -n)
     sudo mkdir -p /etc/udev/rules.d/
     
     ./$ZEDSDKFILENAME
