@@ -49,6 +49,7 @@ if [ "$NVIDIA_GPU" = true ]; then
     chmod +x $ZEDSDKFILENAME
     ./$ZEDSDKFILENAME
 else
+    # removes zed camera from model, which is only supported with nvidia gpus
     sed -i '153,164d' simulation/marvin_simulation/urdf/marvin.xacro
 fi
 
