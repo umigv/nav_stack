@@ -19,44 +19,36 @@ rosdep install --from-paths simulation/zed-ros2-wrapper --ignore-src -r -y
 NVIDIA_GPU=false 
 
 #https://www.linuxscrew.com/bash-prompt-for-input
-if ! (sudo lshw -C display | grep -q "NVIDIA"); then
-    while true; do
+while true; do
     read -p "No NVIDIA GPU detected. Do you have an NVIDIA GPU? [Y/N]: " answer
     case $answer in
         [Yy]* ) 
-            NVIDIA_GPU=true
+            git submodule update --init --recursive simulation/zed-ros2-wrapper
+
+            ZEDSDKFILENAME="zedsdk.run"
+        
+            if ! [[ -f $ZEDSDKFILENAME ]]; then
+                wget https://download.stereolabs.com/zedsdk/4.0/cu121/ubuntu22 -O $ZEDSDKFILENAME
+            fi
+            chmod +x $ZEDSDKFILENAME
+        
+            export USER=$(id -u -n)
+            sudo mkdir -p /etc/udev/rules.d/
+            sudo apt-get install zstd python3-requests
+            
+            ./$ZEDSDKFILENAME
+            
             break
         ;;
-        [Nn]* ) 
-            NVIDIA_GPU=false
+        [Nn]* )
+            # removes zed camera from model, which is only supported with nvidia gpus
+            sed -i '153,164d' simulation/marvin_simulation/urdf/marvin.xacro
+            
             break
         ;;
         * ) echo "Answer either 'Y' or 'N'!";;
     esac
 done
-else
-    NVIDIA_GPU=true
-fi
-
-if [ "$NVIDIA_GPU" = true ]; then
-    git submodule update --init --recursive simulation/zed-ros2-wrapper
-
-    ZEDSDKFILENAME="zedsdk.run"
-
-    if ! [[ -f $ZEDSDKFILENAME ]]; then
-        wget https://download.stereolabs.com/zedsdk/4.0/cu121/ubuntu22 -O $ZEDSDKFILENAME
-    fi
-    chmod +x $ZEDSDKFILENAME
-
-    export USER=$(id -u -n)
-    sudo mkdir -p /etc/udev/rules.d/
-    sudo apt-get install zstd python3-requests
-    
-    ./$ZEDSDKFILENAME
-else
-    # removes zed camera from model, which is only supported with nvidia gpus
-    sed -i '153,164d' simulation/marvin_simulation/urdf/marvin.xacro
-fi
 
 source /opt/ros/humble/setup.bash
 colcon build
