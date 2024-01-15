@@ -38,7 +38,7 @@ while true; do
         ;;
         [Nn]* )
             # removes zed camera from model, which is only supported with nvidia gpus
-            sed -i.with_zed -zE "s/    <\!-- ZED Camera -->(.|\n)*<\/joint>\n\n\n//" simulation/marvin_simulation/urdf/marvin.xacro
+            sed -i.with_zed -zE "s/    <\!-- ZED Camera -->(.|\n)*<\!-- Sim Camera/    <\!-- Sim Camera/" simulation/marvin_simulation/urdf/marvin.xacro
             
             break
         ;;
