@@ -177,6 +177,7 @@ controller_server_rclcpp_node:
 local_costmap:
   local_costmap:
     ros__parameters:
+      unknown_cost_value: 0
       update_frequency: 5.0
       publish_frequency: 2.0
       global_frame: odom
@@ -190,8 +191,8 @@ local_costmap:
       plugins: ["voxel_layer", "inflation_layer"]
       inflation_layer:
         plugin: "nav2_costmap_2d::InflationLayer"
-        cost_scaling_factor: 3.0
-        inflation_radius: 0.55
+        cost_scaling_factor: 10.0
+        inflation_radius: 0.12
       voxel_layer:
         plugin: "nav2_costmap_2d::VoxelLayer"
         enabled: True
@@ -225,6 +226,7 @@ local_costmap:
 global_costmap:
   global_costmap:
     ros__parameters:
+      unknown_cost_value: 0
       update_frequency: 1.0
       publish_frequency: 1.0
       global_frame: map
@@ -281,9 +283,8 @@ planner_server:
     plugins: ["GridBased"]
     use_sim_time: True
     GridBased:
-      plugin: "nav2_navfn_planner/NavfnPlanner" # For Foxy and later
-      tolerance: 2.0
-      use_astar: True
+      plugin: "nav2_straightline_planner/StraightLine"
+      interpolation_resolution: 0.05
       allow_unknown: true
       
 planner_server_rclcpp_node:
