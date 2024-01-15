@@ -46,6 +46,8 @@ while true; do
     esac
 done
 
+cd ../../
+
 source /opt/ros/humble/setup.bash
 colcon build
 source install/setup.bash
