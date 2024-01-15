@@ -49,7 +49,7 @@ done
 cd ../../
 
 source /opt/ros/humble/setup.bash
-colcon build
+colcon build --symlink-install
 source install/setup.bash
 
 echo "Build successful! Please remove the zed sdk installer file if everything is working correctly!"
