@@ -24,7 +24,7 @@
 
     <!-- Chassis Inertial Constants -->
     <xacro:property name="chassis_mass" value="29.9371" />
-    <xacro:property name="com_x" value="0.0" />
+    <xacro:property name="com_x" value="${-4.0*0.0254}" />
     <xacro:property name="com_y" value="0.0" />
     <xacro:property name="com_z" value="${6.1875*0.0254}" />
 
