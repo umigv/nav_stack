@@ -215,17 +215,6 @@
 		<axis xyz="0 1 0" />
 	</joint>
 
-
-    <!-- Odom -->
-	<link name="odom" />
-
-	<joint name="odom_joint" type="fixed">
-		<origin xyz="0 0 0" rpy="0 0 0" />
-		<parent link="odom" />
-		<child link="chassis" />
-		<axis xyz="0 1 0" />
-	</joint>
-
     
     <!-- Color of bot -->
 	<gazebo reference="chassis_tower_visual">

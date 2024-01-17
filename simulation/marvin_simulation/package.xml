@@ -4,7 +4,7 @@
   <name>marvin_simulation</name>
   <version>0.0.0</version>
   <description>TODO: Package description</description>
-  <maintainer email="ryan.liao0305@gmail.com">ryanl</maintainer>
+  <maintainer email="ryan.liao0305@gmail.com">Ryan Liao</maintainer>
   <license>TODO: License declaration</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
