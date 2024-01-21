@@ -26,7 +26,7 @@
 
         <joint type="continuous" name="${prefix}_wheel_joint">
             <xacro:insert_block name="joint_origin" />
-            <parent link="chassis" />
+            <parent link="base_link" />
             <child link="${prefix}_wheel" />
             <axis xyz="0 1 0" rpy="0 0 0" />
             <limit effort="1000" velocity="1000"/>
