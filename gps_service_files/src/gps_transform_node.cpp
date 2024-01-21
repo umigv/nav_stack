@@ -105,7 +105,6 @@ void service_callback(const std::shared_ptr<example_interfaces::srv::Trigger::Re
 
 
 int main(int argc, char *argv[]) {
-
 // https://get-help.robotigniteacademy.com/t/ros2-service-client-in-c-with-classes-with-node-inheritance/19647
 
     // GPSService gpsService = GPSService();
@@ -120,6 +119,11 @@ int main(int argc, char *argv[]) {
 
     rclcpp::spin(node);
     rclcpp::shutdown();
+
+    // Test GPS DATA
+    if (DEBUG) {
+        gpsData.printGPSData();
+    }
 
     return 0;
 }

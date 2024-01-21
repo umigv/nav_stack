@@ -7,8 +7,6 @@ using std::sin;
 using std::sqrt;
 using std::string;
 
-const bool DEBUG = true;
-
 constexpr double long PI = 3.14159265358979323846;
 constexpr double long TERRESTRIAL_RADIUS = 6372797.56085;
 constexpr double long RADIANS_PER_DEGREE = PI / 180;
@@ -86,6 +84,12 @@ void GPSData::readGPSFile(const string &filename) {
         while (gpsFile >> lat >> lon) {
             GOAL_GPS.emplace_back(lat, lon);
         }
+    }
+}
+
+void GPSData::printGPSData() const {
+    for (auto &coord : GOAL_GPS) {
+        std::cout << coord.getLatitude() << ", " << coord.getLongitude() << '\n';
     }
 }
 

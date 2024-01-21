@@ -11,6 +11,8 @@
 #include <utility>
 #include <vector>
 
+const bool DEBUG = true;
+
 // Coordinate Class
 class Coordinate {
 public:
@@ -69,6 +71,7 @@ public:
 
     // Read Text File of GPS Coordinates
     void readGPSFile(const std::string &filename);
+    void printGPSData() const;
 
     // Read Config File
     void readConfigFile();
