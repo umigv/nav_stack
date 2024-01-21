@@ -26,7 +26,7 @@
     <xacro:property name="chassis_mass" value="29.9371" />
     <xacro:property name="com_x" value="${-4.0*0.0254}" />
     <xacro:property name="com_y" value="0.0" />
-    <xacro:property name="com_z" value="${6.1875*0.0254}" />
+    <xacro:property name="com_z" value="${6.1875*0.0254-chassis_z_offset}" />
 
 	<!-- Caster Constants -->
     <xacro:property name="caster_x_offset" value="${-24.625*0.0254}" />
@@ -59,21 +59,21 @@
 	<!-- Chassis -->
 	<link name="base_link">
 		<visual name="chassis_tower_visual">
-			<origin xyz="0 0 ${chassis_tower_height / 2 + chassis_z_offset}" rpy="0 0 0" />
+			<origin xyz="0 0 ${chassis_tower_height / 2}" rpy="0 0 0" />
 			<geometry>
 				<box size="${chassis_tower_length} ${chassis_width} ${chassis_tower_height}" />
 			</geometry>
 		</visual>
 
         <visual name="chassis_payload_visual">
-            <origin xyz="${chassis_tower_length / 2 + chassis_payload_length / 2} 0 ${chassis_payload_height / 2 + chassis_z_offset}" rpy="0 0 0" />
+            <origin xyz="${chassis_tower_length / 2 + chassis_payload_length / 2} 0 ${chassis_payload_height / 2}" rpy="0 0 0" />
             <geometry>
                 <box size="${chassis_payload_length} ${chassis_width} ${chassis_payload_height}" />
             </geometry>
         </visual>
 
         <visual name="chassis_electrical_visual">
-            <origin xyz="${-chassis_tower_length / 2 - chassis_electrical_length / 2} 0 ${chassis_electrical_height / 2 + chassis_z_offset}" rpy="0 0 0" />
+            <origin xyz="${-chassis_tower_length / 2 - chassis_electrical_length / 2} 0 ${chassis_electrical_height / 2}" rpy="0 0 0" />
             <geometry>
                 <box size="${chassis_electrical_length} ${chassis_width} ${chassis_electrical_height}" />
             </geometry>
@@ -82,7 +82,7 @@
         <visual name="chassis_caster_visual">
             <origin xyz="${-chassis_tower_length / 2 - chassis_electrical_length - chassis_caster_length / 2} 
                          0 
-                         ${chassis_caster_height / 2 + chassis_caster_z_offset + chassis_z_offset}" 
+                         ${chassis_caster_height / 2 + chassis_caster_z_offset}" 
                          rpy="0 0 0" />
             <geometry>
                 <box size="${chassis_caster_length} ${chassis_width} ${chassis_caster_height}" />
@@ -92,7 +92,7 @@
 		<collision name="chassis_collision">
 			<origin xyz="${chassis_tower_length / 2 + chassis_payload_length - chassis_length / 2} 
                          0 
-                         ${chassis_z_offset + chassis_tower_height / 2}" 
+                         ${chassis_tower_height / 2}" 
                     rpy="0 0 0" />
 			<geometry>
 				<box size="${chassis_length} ${chassis_width} ${chassis_tower_height}" />
@@ -104,6 +104,17 @@
 		</xacro:box_inertia>
 	</link>
 
+    <link name="base_footprint">
+        <xacro:box_inertia mass="0" length="0" width="0" height="0">
+            <origin xyz="0 0 0" rpy="0 0 0" />
+        </xacro:box_inertia>
+    </link>
+
+    <joint name="base_joint" type="fixed">
+        <origin xyz="0 0 ${-chassis_z_offset}" rpy="0 0 0" />
+        <parent link="base_link" />
+        <child link="base_footprint" />
+    </joint>
 
     <!-- Caster -->
     <link name="caster">
@@ -134,7 +145,7 @@
     </link>
 
     <joint name="caster_joint" type="fixed">
-        <origin xyz="${caster_x_offset} 0 ${caster_radius}" rpy="0 0 0" />
+        <origin xyz="${caster_x_offset} 0 ${caster_radius-chassis_z_offset}" rpy="0 0 0" />
         <parent link="base_link" />
         <child link="caster" />
     </joint>
@@ -143,10 +154,10 @@
     <!-- Wheels -->
     <xacro:include filename="$(find marvin_simulation)/urdf/wheel.xacro"/>
 	<xacro:wheel prefix="right" mass="${wheel_mass}" radius="${wheel_radius}" width="${wheel_width}">
-		<origin xyz="0 -${track_width / 2} ${wheel_radius}" rpy="0 0 0" />
+		<origin xyz="0 -${track_width / 2} ${wheel_radius-chassis_z_offset}" rpy="0 0 0" />
 	</xacro:wheel>
 	<xacro:wheel prefix="left" mass="${wheel_mass}" radius="${wheel_radius}" width="${wheel_width}">
-		<origin xyz="0 ${track_width/2} ${wheel_radius}" rpy="0 0 0" />
+		<origin xyz="0 ${track_width/2} ${wheel_radius-chassis_z_offset}" rpy="0 0 0" />
 	</xacro:wheel>
 
 
@@ -156,7 +167,7 @@
 	</xacro:zed_camera>
 
 	<joint name="zed_camera_joint" type="fixed">
-		<origin xyz="${camera_x_offset} 0 ${camera_z_offset + chassis_z_offset}" rpy="0 ${camera_angle} 0" />
+		<origin xyz="${camera_x_offset} 0 ${camera_z_offset}" rpy="0 ${camera_angle} 0" />
 		<parent link="base_link" />
 		<child link="zed_camera_link" />
 	</joint>
@@ -165,14 +176,14 @@
 	<!-- Sim Camera -->
 	<xacro:include filename="$(find marvin_simulation)/urdf/camera.xacro" />
 	<xacro:camera mass="${camera_mass}">
-		<origin xyz="${camera_x_offset} 0 ${camera_z_offset + chassis_z_offset}" rpy="0 ${camera_angle} 0" />
+		<origin xyz="${camera_x_offset} 0 ${camera_z_offset}" rpy="0 ${camera_angle} 0" />
 	</xacro:camera>
 
 
     <!-- Lidar -->
     <xacro:include filename="$(find velodyne_description)/urdf/VLP-16.urdf.xacro" />
 	<xacro:VLP-16 parent="base_link" name="velodyne" topic="/velodyne_points" hz="20" samples="440" gpu="true">
-		<origin xyz="0 0 ${chassis_z_offset + lidar_height}" rpy="0 0 0" />
+		<origin xyz="0 0 ${lidar_height}" rpy="0 0 0" />
 	</xacro:VLP-16>
 
 
@@ -198,7 +209,7 @@
 	</link>
 
 	<joint name="imu_joint" type="fixed">
-		<origin xyz="${-chassis_tower_length / 2 - chassis_electrical_length/2+0.005} 0 ${chassis_electrical_height + chassis_z_offset}" rpy="0 0 0" />
+		<origin xyz="${-chassis_tower_length / 2 - chassis_electrical_length/2+0.005} 0 ${chassis_electrical_height}" rpy="0 0 0" />
 		<parent link="base_link" />
 		<child link="imu_link" />
 		<axis xyz="0 1 0" />
