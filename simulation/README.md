@@ -26,7 +26,7 @@ In order to run the ZED camera within the simulation, an Nvidia GPU with CUDA ca
 3. ```cd nav_stack```
 
 ### Run the setup script
-1. ```./scripts/SetupEnvironment.bash```
+1. ```./scripts/SetupSimulation.bash```
 2. Follow the prompt
 
 ## Manual Installation Guide 
