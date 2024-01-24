@@ -2,6 +2,7 @@
 set -e
 
 git submodule update --init --recursive simulation/velodyne_simulator
+git submodule update --init --recursive simulation/pointcloud_to_laserscan
 
 sudo apt update
 sudo apt-get install ros-humble-rttest ros-humble-rclcpp-action ros-humble-gazebo-dev ros-humble-gazebo-msgs ros-humble-gazebo-plugins ros-humble-gazebo-ros ros-humble-gazebo-ros-pkgs ros-humble-joint-state-publisher-gui ros-humble-xacro
