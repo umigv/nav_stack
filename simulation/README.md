@@ -7,6 +7,7 @@ Unified Robotics Description Format (URDF) is an XML specification used to model
 ## Package Dependencies
 - [zed-ros2-wrapper](https://github.com/stereolabs/zed-ros2-wrapper), which simulates our camera.
 - [Velodyne Simulator](https://github.com/ToyotaResearchInstitute/velodyne_simulator), which simulates our LiDAR.
+- [pointcloud_to_laserscan](https://github.com/ros-perception/pointcloud_to_laserscan), which helps convert our LiDAR's point cloud data to laser scan which can then be used for SLAM.
 - If you are not using the official UMARV environment, you should have ROS2 installed by following the tutorial [here](https://docs.ros.org/en/humble/Installation/Alternatives/Ubuntu-Development-Setup.html)
 
 ## Requirements
@@ -51,6 +52,7 @@ ros-humble-xacro \
 2. ```git clone -b simulation https://github.com/umigv/nav_stack.git```
 3. ```cd nav_stack```
 4. ```git submodule update --init --recursive simulation/velodyne_simulator```
+5. ```git submodule update --init --recursive simulation/pointcloud_to_laserscan```
 
 ### ZED Camera Installation (requires an Nvidia GPU)
 
