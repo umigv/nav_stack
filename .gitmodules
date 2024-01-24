@@ -4,3 +4,7 @@
 [submodule "simulation/zed-ros2-wrapper"]
 	path = simulation/zed-ros2-wrapper
 	url = https://github.com/stereolabs/zed-ros2-wrapper.git
+[submodule "simulation/pointcloud_to_laserscan"]
+	path = simulation/pointcloud_to_laserscan
+	url = https://github.com/ros-perception/pointcloud_to_laserscan.git
+	branch = humble

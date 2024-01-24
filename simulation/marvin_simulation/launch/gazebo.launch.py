@@ -30,23 +30,34 @@ def generate_launch_description():
         'use_sim_time': True}] # add other parameters here if required
     )
 
-
-
     gazebo = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([os.path.join(
             get_package_share_directory('gazebo_ros'), 'launch'), '/gazebo.launch.py']),
         )
-
 
     spawn_entity = Node(package='gazebo_ros', executable='spawn_entity.py',
                     arguments=['-topic', 'robot_description',
                                 '-entity', 'marvin'],
                     output='screen')
 
-
+    pointcloud_to_laserscan = Node(package='pointcloud_to_laserscan', 
+                                   executable='pointcloud_to_laserscan_node', 
+                                   ros_arguments=[
+                                       '-p', 'target_frame:=base_footprint',
+                                       '-p', 'range_min:=0.9',
+                                       '-p', 'range_max:=100.0',
+                                       '-p', 'scan_time:=0.05',
+                                       '-p', 'angle_increment:=0.00335'
+                                   ],
+                                   remappings=[
+                                        ('/cloud_in', '/velodyne_points'),
+                                        ('/scan', '/laser_scan'),
+                                   ])
+    
     # Run the node
     return LaunchDescription([
         gazebo,
         node_robot_state_publisher,
-        spawn_entity
+        spawn_entity,
+        pointcloud_to_laserscan
     ])
