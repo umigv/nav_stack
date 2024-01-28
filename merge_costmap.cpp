@@ -3,16 +3,20 @@
 #include "nav_msgs/msg/occupancy_grid.hpp"
 
 using std::placeholders::_1;
+using OccupancyGrid = nav_msgs::msg::OccupancyGrid;
 
-class OccupancyGridSubscriber : public rclcpp::Node {
+// Subsribes to the global occupancy grid and the cv occupancy grid 
+// and merges them together to create a new global occupancy grid
+// that is then published to the global costmap
+class MergeService : public rclcpp::Node {
     public:
-        OccupancyGridSubscriber() : Node("occupancy_grid_subscriber") {
-        cv_og_subsriber_ = this->create_subscription<nav_msgs::OccupancyGrid>(
-            "/occupancy_grid", 10, std::bind(&OccupancyGridSubscriber::populate_cv_occupancy_grid, this, _1)
+        MergeService() : Node("merge_service") {
+        cv_og_subsriber_ = this->create_subscription<OccupancyGrid>(
+            "/occupancy_grid", 10, std::bind(&MergeService::populate_cv_occupancy_grid, this, _1)
         )
 
-        sensors_occupancy_grid_subsriber = this->create_subscription<nav_msgs::OccupancyGrid>(
-            "/occupancy_grid", 10, std::bind(&OccupancyGridSubscriber::populate_sensors_occupancy_grid, this, _1)
+        sensors_occupancy_grid_subsriber = this->create_subscription<nav_msgs::msg::OccupancyGrid>(
+            "/occupancy_grid", 10, std::bind(&MergeService::populate_sensors_occupancy_grid, this, _1)
         )
     }
 
@@ -21,33 +25,52 @@ class OccupancyGridSubscriber : public rclcpp::Node {
         // ------------- OCCUPANCY GRID VARIABLES -----------------
 
         // sensors occupancy grid variable
-        nav_msgs::msg::OccupancyGrid sensors_occupancy_grid;
+        OccupancyGrid sensors_occupancy_grid;
 
         // CV occupancy grid variable
-        nav_msgs::msg::OccupancyGrid cv_occupancy_grid;
+        OccupancyGrid cv_occupancy_grid;
 
         // Combined Occupancy Grid variable
-        nav_msgs::msg::OccupancyGrid combined_occupancy_grid;
+        OccupancyGrid combined_occupancy_grid;
         
 
         // ------------------------CALLBACKS -------------------------
         // populate cv occupancy grid
-        void populate_cv_occupancy_grid(const nav_msgs::msg::OccupancyGrid::SharedPtr &cv_cm)
+        void populate_cv_occupancy_grid(const OccupancyGrid &cv_cm)
         {
-            //Myabe save snsr metadata once to increase efficency - resolution, width, height, origin
+            //Maybe save snsr metadata once to increase efficency - resolution, width, height, origin
             cv_occupancy_grid.data = cv_cm->data;
             cv_occupancy_grid.info = cv_cm->info;
             cv_occupancy_grid.header = cv_cm->header; //cv_cm??
         }
 
         // populate global occupancy grid
-        void populate_sensors_occupancy_grid(const nav_msgs::msg::OccupancyGrid::SharedPtr &snsr_cm)
+        void populate_sensors_occupancy_grid(const OccupancyGrid &snsr_cm)
         {
-            //Myabe save snsr metadata once to increase efficency - resolution, width, height, origin
+            //Maybe save snsr metadata once to increase efficency - resolution, width, height, origin
             sensors_occupancy_grid.data = snsr_cm->data;
             sensors_occupancy_grid.info = snsr_cm->info;
             sensors_occupancy_grid.header = snsr_cm->header;
         }
+
+        //populate combined occupancy grid
+        void populate_combined_occupancy_grid(const OccupancyGrid &cv_cm, const OccupancyGrid &snsr_cm)
+        {
+            //Tf2 local data into global with gps
+            combined_occupancy_grid.info = snsr_cm->info;
+            combined_occupancy_grid.header = snsr_cm->header;
+        }
+
+        void tf2_local_to_global()
+        {
+            
+        }
+
+        OccupancyGrid &merge_occupancy_grids()
+        {
+
+        }
+
 }
 
 
