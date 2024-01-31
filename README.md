@@ -27,6 +27,7 @@ in addition to all lane line information.
 - *Grid Type:* Global
 - *Size:* Same as SNSR map.
 -  *Content:* Contains a history of lane lines to be merged with the SNSR Occupancy Grid.
+
 **CV Occupancy Grid**:
 - *FRAME:* 
 - *Grid Type:* Local
