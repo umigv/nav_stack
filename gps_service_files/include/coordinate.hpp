@@ -13,7 +13,6 @@
 
 const bool DEBUG = true;
 
-
 // Coordinate Class
 class Coordinate {
 public:

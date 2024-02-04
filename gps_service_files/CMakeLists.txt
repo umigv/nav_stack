@@ -17,10 +17,11 @@ find_package(geometry_msgs REQUIRED)
 # find_package(<dependency> REQUIRED)
 
 add_executable(waypoint_publisher 
+  src/main.cpp
   src/waypoint_publisher.cpp 
   src/coordinate.cpp 
   src/gps_data.cpp)
-  
+
 ament_target_dependencies(waypoint_publisher 
   rclcpp 
   std_msgs
