@@ -1,6 +1,6 @@
 from setuptools import find_packages, setup
 
-package_name = 'gps_node_ublox'
+package_name = 'gps_coord_publisher'
 
 setup(
     name=package_name,
@@ -20,7 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'gps_node = gps_node_ublox.gps_publisher:main'
+            'gps_node = gps_coord_publisher.gps_publisher:main'
         ],
     },
 )

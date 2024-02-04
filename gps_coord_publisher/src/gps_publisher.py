@@ -23,26 +23,24 @@ from serial import Serial
 from pyubx2 import UBXReader
 
 
-class MinimalPublisher(Node):
+class GPSCoordPublisher(Node):
 
     def __init__(self):
         super().__init__('gps')
 
         # Create publisher instance
-        self.publisher_ = self.create_publisher(NavSatFix, 'fix', 10)
+        self.publisher_ = self.create_publisher(NavSatFix, 'gps_coords', 10)
 
         # Set up publisher callback on a 1 second timer
         timer_period = 1  # seconds
-        self.timer = self.create_timer(timer_period, self.timer_callback)
+        self.timer = self.create_timer(timer_period, self.publish_coords_debug)
 
         # Set up message
         self.fix = NavSatFix()
         self.frame_id = 0
         
 
-
-
-    def timer_callback(self):
+    def publish_coords(self):
 
         # Set up GPS connection
         stream = Serial('/dev/ttyACM0', 9600, timeout=3)
@@ -74,13 +72,28 @@ class MinimalPublisher(Node):
         self.publisher_.publish(self.fix)
 
 
+    def publish_coords_debug(self):
+        lat = 45
+        long = 90
+        
+        self.fix.header.stamp = self.get_clock().now().to_msg()
+        self.fix.header.frame_id = str(self.frame_id)
+        self.fix.status.service = 1
+        self.fix.latitude = lat
+        self.fix.longitude = long
+        self.fix.altitude = float(0)
+        self.fix.position_covariance = [0.0] * 9
+        self.fix.position_covariance_type = 0 
+
+        self.publisher_.publish(self.fix)
+    
 
 def main(args=None):
     rclpy.init(args=args)
 
-    minimal_publisher = MinimalPublisher()
+    publisher = GPSCoordPublisher()
 
-    rclpy.spin(minimal_publisher)
+    rclpy.spin(publisher)
 
     rclpy.shutdown()
 
