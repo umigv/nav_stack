@@ -34,8 +34,9 @@ in addition to all lane line information.
 -  *Content:* Contains a history of lane lines to be merged with the SNSR Occupancy Grid.
 
 **CV Occupancy Grid**:
-- *FRAME:* 
+- *FRAME:*
 - *Grid Type:* Local
+- *Resolution:* 0.05 meters
 - *Content:* Contains lane lines.
 - *Additional Info:* Robot position within the occupancy grid. Robot can be at (0,0) or any other location
                      as long as this is specified in the message. This allows for allignment of grids.
