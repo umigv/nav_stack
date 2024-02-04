@@ -14,10 +14,15 @@ in addition to all lane line information.
 
 ### Implementation
 **GOAL:** Fetching a local(CV) and global(SNSR) occupancy grids. Utilize these two occupancy grids to create a global(NAV) that will pertain information while updating X buffer_time. This update will reflect on the global(NAV) map.
+
 **Step 1**: Implmenting a subscriber node that obtains information from local(CV) and global(SNSR) occupancy grids.
+
 **Step 2**: Create callback functions that transfer information from local(CV) and global(SNSR) occupancy grids to variablized grids.
+
 **Step 3**: Utilize tf2 based off GPS data from global(SNSR) to transform points from local(CV) and global(SNSR) to the world frame.
+
 **Step 4**: Incorporate a callback that merges local(CV) and global(SNSR) into a global(NAV) map.
+
 **Step 5**: Ensure the merge callback calls the other functions in X buffer_time.
 
 ### Interface
