@@ -10,12 +10,23 @@ find_package(ament_cmake REQUIRED)
 find_package(example_interfaces REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
+find_package(sensor_msgs REQUIRED)
+find_package(geometry_msgs REQUIRED)
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
 
-add_executable(waypoint_publisher src/waypoint_publisher.cpp src/gps_transform_classes.cpp)
-ament_target_dependencies(waypoint_publisher rclcpp std_msgs example_interfaces)
+add_executable(waypoint_publisher 
+  src/waypoint_publisher.cpp 
+  src/coordinate.cpp 
+  src/gps_data.cpp)
+  
+ament_target_dependencies(waypoint_publisher 
+  rclcpp 
+  std_msgs
+  example_interfaces 
+  sensor_msgs 
+  geometry_msgs)
 
 install(TARGETS
 waypoint_publisher
