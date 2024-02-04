@@ -56,43 +56,6 @@ private:
 */
 
 
-
-// class GPSService {
-
-//     public:
-//     GPSData gpsData;
-
-//     void service_callback(const std::shared_ptr<example_interfaces::srv::Trigger::Request> request,
-//                             std::shared_ptr<example_interfaces::srv::Trigger::Response> response) {
-
-//         response->success = true;
-//         response->message = "Hi";
-
-//     }
-
-//     GPSService() {
-
-//         rclcpp::init(argc, argv);
-//         // rclcpp::spin(std::make_shared<GPSTransform>());
-//         // rclcpp::shutdown();
-
-//         GPSData gpsData = GPSData();
-
-//         std::shared_ptr<rclcpp::Node> node = rclcpp::Node::make_shared("gps_transform_node");
-//         rclcpp::Service<example_interfaces::srv::Trigger>::SharedPtr service = node->create_service<example_interfaces::srv::Trigger>("get_gps_goal", &GPSService::service_callback);
-
-//         rclcpp::spin(node);
-//         rclcpp::shutdown();
-
-
-//     }
-
-
-// }
-
-GPSData gpsData;
-
-
 void service_callback(const std::shared_ptr<example_interfaces::srv::Trigger::Request> request, std::shared_ptr<example_interfaces::srv::Trigger::Response> response) {
 
     std::shared_ptr<example_interfaces::srv::Trigger::Request> a = request; // Ignore warning
@@ -100,7 +63,6 @@ void service_callback(const std::shared_ptr<example_interfaces::srv::Trigger::Re
     gpsData.setRobotCurrentLocation(1, 1);
     response->success = true;
     response->message = "Hi";
-
 }
 
 
@@ -112,7 +74,7 @@ int main(int argc, char *argv[]) {
     // rclcpp::spin(std::make_shared<GPSTransform>());
     // rclcpp::shutdown();
 
-    gpsData = GPSData();
+
 
     std::shared_ptr<rclcpp::Node> node = rclcpp::Node::make_shared("gps_transform_node");
     rclcpp::Service<example_interfaces::srv::Trigger>::SharedPtr service = node->create_service<example_interfaces::srv::Trigger>("get_gps_goal", &service_callback);
@@ -120,6 +82,9 @@ int main(int argc, char *argv[]) {
     rclcpp::spin(node);
     rclcpp::shutdown();
 
+    
+    GPSData gpsData;
+    
     // Test GPS DATA
     if (DEBUG) {
         gpsData.printGPSData();

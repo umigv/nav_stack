@@ -81,6 +81,8 @@ public:
 
     bool goalReached(Coordinate &goalCoords) const;
 
+    void initializeMapInfo();
+
     struct MapInfo {
         MapInfo(float resolution, uint32_t width, uint32_t height, float origin_x, float origin_y)
             : resolution(resolution), width(width), height(height), origin_x(origin_x), origin_y(origin_y) {}

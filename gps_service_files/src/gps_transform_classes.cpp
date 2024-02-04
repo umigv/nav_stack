@@ -1,4 +1,4 @@
-#include "gps_transform_classes.hpp"
+#include "../include/gps_transform_classes.hpp"
 
 using std::atan2;
 using std::cos;
@@ -180,6 +180,13 @@ CoordinateMap GPSData::findGoalInMap(MapInfo mapInfo, CoordinateMap goalCoordina
     }
 
     return {return_x, return_y};
+}
+
+void GPSData::initializeMapInfo() {
+    readConfigFile();
+    readGPSFile("gps.txt");
+
+    
 }
 
 // int main() {
