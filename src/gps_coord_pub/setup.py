@@ -1,6 +1,6 @@
 from setuptools import find_packages, setup
 
-package_name = 'gps_coord_publisher'
+package_name = 'gps_coord_pub'
 
 setup(
     name=package_name,
@@ -13,14 +13,14 @@ setup(
     ],
     install_requires=['setuptools'],
     zip_safe=True,
-    maintainer='kjdih2',
-    maintainer_email='24kjdih2@gmail.com',
+    maintainer='umarv',
+    maintainer_email='umarv@todo.todo',
     description='TODO: Package description',
-    license='TODO: License declaration',
+    license='Apache-2.0',
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'gps_node = gps_coord_publisher.gps_publisher:main'
+            'gps_coordinate_pub = gps_coord_pub.gps_coordinate_pub:main'
         ],
     },
 )

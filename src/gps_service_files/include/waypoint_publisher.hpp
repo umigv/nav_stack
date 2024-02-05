@@ -16,13 +16,11 @@ using namespace std::chrono_literals;
 class WaypointPublisher : public rclcpp::Node
 {
 public:
-	WaypointPublisher();
+  WaypointPublisher();
 
 private:
+  void waypointSubscriber(const sensor_msgs::msg::NavSatFix::SharedPtr msg);
 
-	void waypointSubscriber(const sensor_msgs::msg::NavSatFix::SharedPtr msg);
-
-	rclcpp::TimerBase::SharedPtr _timer;
-	rclcpp::Subscription<sensor_msgs::msg::NavSatFix>::SharedPtr _waypoint_subscriber;
+  rclcpp::TimerBase::SharedPtr _timer;
+  rclcpp::Subscription<sensor_msgs::msg::NavSatFix>::SharedPtr _waypoint_subscriber;
 };
-
