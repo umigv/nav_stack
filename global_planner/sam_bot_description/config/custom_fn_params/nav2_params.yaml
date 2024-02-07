@@ -51,7 +51,7 @@ bt_navigator:
   ros__parameters:
     use_sim_time: True
     global_frame: map
-    robot_base_frame: base_link
+    robot_base_frame: base_footprint
     odom_topic: /odom
     bt_loop_duration: 10
     default_server_timeout: 20
@@ -180,13 +180,15 @@ local_costmap:
       update_frequency: 5.0
       publish_frequency: 2.0
       global_frame: odom
-      robot_base_frame: base_link
+      robot_base_frame: base_footprint
       use_sim_time: True
       rolling_window: true
       width: 3
       height: 3
       resolution: 0.05
-      footprint: "[ [0.21, 0.195], [0.21, -0.195], [-0.21, -0.195], [-0.21, 0.195] ]"
+      # length: (14.25+8+8+15.25) * 0.0254/2 = 0.57785. Shift 12cm since base link isn't centered length-wise
+      # width: ((4 + 1.5) * 2 + 24) * 0.0254/2 = 0.4445
+      footprint: "[ [0.45785, 0.4445], [0.45785, -0.4445], [-0.69785, -0.4445], [-0.69785, 0.4445] ]"
       plugins: ["voxel_layer", "inflation_layer"]
       inflation_layer:
         plugin: "nav2_costmap_2d::InflationLayer"
@@ -228,12 +230,15 @@ global_costmap:
       update_frequency: 1.0
       publish_frequency: 1.0
       global_frame: map
-      robot_base_frame: base_link
+      robot_base_frame: base_footprint
       use_sim_time: True
       robot_radius: 0.3
       resolution: 0.05
       track_unknown_space: true
       plugins: ["static_layer", "obstacle_layer", "inflation_layer"]
+      # length: (14.25+8+8+15.25) * 0.0254/2 = 0.57785. Shift 12cm since base link isn't centered length-wise
+      # width: ((4 + 1.5) * 2 + 24) * 0.0254/2 = 0.4445
+      footprint: "[ [0.45785, 0.4445], [0.45785, -0.4445], [-0.69785, -0.4445], [-0.69785, 0.4445] ]"
       obstacle_layer:
         plugin: "nav2_costmap_2d::ObstacleLayer"
         enabled: True
@@ -303,7 +308,7 @@ recoveries_server:
     wait:
       plugin: "nav2_recoveries/Wait"
     global_frame: odom
-    robot_base_frame: base_link
+    robot_base_frame: base_footprint
     transform_timeout: 0.1
     use_sim_time: true
     simulate_ahead_time: 2.0
