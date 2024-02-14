@@ -4,6 +4,7 @@
 #include "tf2/exceptions.h"
 #include "tf2_ros/transform_listener.h"
 #include "tf2_ros/buffer.h"
+#include <vector>
 
 class cv_grid : public rclcpp::Node
 {
@@ -19,17 +20,24 @@ public:
             "cv_grid_in", 10, std::bind(&cv_grid::cv_grid_callback, this, _1));
     
         // Declare and acquire `target_frame` parameter
-        target_frame_ = this->declare_parameter<std::string>("base_link", "odom");
+        target_frame_ = this->declare_parameter<std::string>("target_frame", "odom");
 
         tf_buffer_ = std::make_unique<tf2_ros::Buffer>(this->get_clock());
         tf_listener_ = std::make_shared<tf2_ros::TransformListener>(*tf_buffer_);
+
+        // Origin of static lane lines grid in the global frame 
+        origin_x_ = 0;
+        origin_y_ = 0;
+
+        // Initialize static lane lines grid
+        static_grid_ = std::vector<vector<int>>(1200, std::vector<int>(800));
     }
 
 private:
     void publishGrid()
     {
         std::string fromFrameRel = target_frame_.c_str();
-        std::string toFrameRel = "turtle2";
+        std::string toFrameRel = "base_link";
         geometry_msgs::msg::TransformStamped t;
 
         // Look up for the transformation between target_frame and turtle2 frames
@@ -80,7 +88,22 @@ private:
 
     void cv_grid_callback(const nav_msgs::OccupancyGridPtr &occ_grid) 
     {
-        local_grid_ = occ_grid
+        int global_origin_x = occ_grid->info.origin.position.x;
+        int global_origin_y = occ_grid->info.origin.position.y;
+
+        int resolution = occ_grid->info.resolution;
+
+        int width = occ_grid->info.width;
+        int height = occ_grid->info.height;
+
+        int grid_origin_x = (global_origin_x - origin_x_) / resolution;
+        int grid_origin_y = (global_origin_y - origin_y_) / resolution;
+
+        for (int i = height; i > 0; i--) {
+            for (int j = 0; j < width; j++) {
+                static_grid_[grid_origin_x+j][grid_origin_y - i] = occ_grid->data[width*i + j]
+            }
+        }
     }
 
     rclcpp::Publisher<nav_msgs::msg::OccupancyGrid>::SharedPtr publisher_;
@@ -90,7 +113,9 @@ private:
     std::unique_ptr<tf2_ros::Buffer> tf_buffer_;
     std::string target_frame_;
     nav_msgs::OccupancyGrid::Ptr local_grid_;
-    nav_msgs::OccupancyGrid::Ptr static_grid_;
+    nstd::vector<std::vector<int>> static_grid_;
+    int origin_x_;
+    int origin_y_;
 };
 
 int main(int argc, char *argv[])
