@@ -56,7 +56,7 @@ class MergeService : public rclcpp::Node {
         sensors_occupancy_grid_subscriber = this->create_subscription<nav_msgs::OccupancyGrid>(
             "/occupancy_grid", 10, std::bind(&OccupancyGridSubscriber::populate_sensors_occupancy_grid, this, _1)
         )
-
+        }
     private:
         // ------------- OCCUPANCY GRID VARIABLES -----------------
 

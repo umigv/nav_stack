@@ -26,21 +26,21 @@ private:
         }
 
         // Create the OccupancyGrid message
-        auto occupancyGridMsg = std::make_shared<nav_msgs::msg::OccupancyGrid>();
-        occupancyGridMsg->header.stamp = now();
-        occupancyGridMsg->header.frame_id = "map";
-        occupancyGridMsg->info.width = width;
-        occupancyGridMsg->info.height = height;
-        occupancyGridMsg->info.resolution = 0.05;  // Replace with your desired resolution
-        occupancyGridMsg->info.origin.position.x = 0.0;
-        occupancyGridMsg->info.origin.position.y = 0.0;
-        occupancyGridMsg->info.origin.position.z = 0.0;
+        nav_msgs::msg::OccupancyGrid occupancyGridMsg;
+        occupancyGridMsg.header.stamp = now();
+        occupancyGridMsg.header.frame_id = "map";
+        occupancyGridMsg.info.width = width;
+        occupancyGridMsg.info.height = height;
+        occupancyGridMsg.info.resolution = 0.05;  // Replace with your desired resolution
+        occupancyGridMsg.info.origin.position.x = 0.0;
+        occupancyGridMsg.info.origin.position.y = 0.0;
+        occupancyGridMsg.info.origin.position.z = 0.0;
 
         // Convert the 1D grid data to 2D
-        occupancyGridMsg->data = gridData;
+        occupancyGridMsg.data = gridData;
 
         // Publish the OccupancyGrid message
-        publisher_->publish(occupancyGridMsg);
+        publisher_->publish(std::move(occupancyGridMsg));
         RCLCPP_INFO(get_logger(), "Occupancy grid published");
     }
 
@@ -53,10 +53,10 @@ private:
 class BigOccupancyGridPublisher : public rclcpp::Node
 {
 public:
-    OccupancyGridPublisher() : Node("big_occupancy_grid_publisher")
+    BigOccupancyGridPublisher() : Node("big_occupancy_grid_publisher")
     {
         publisher_ = create_publisher<nav_msgs::msg::OccupancyGrid>("occupancy_grid", 10);
-        timer_ = create_wall_timer(std::chrono::seconds(1), std::bind(&OccupancyGridPublisher::publishGrid, this));
+        timer_ = create_wall_timer(std::chrono::seconds(1), std::bind(&BigOccupancyGridPublisher::publishGrid, this));
     }
 //create another publishGrid function to publish a bigger grid
 private:
@@ -74,18 +74,18 @@ private:
         }
 
         // Create the OccupancyGrid message
-        auto occupancyGridMsg = std::make_shared<nav_msgs::msg::OccupancyGrid>();
-        occupancyGridMsg->header.stamp = now();
-        occupancyGridMsg->header.frame_id = "map";
-        occupancyGridMsg->info.width = width;
-        occupancyGridMsg->info.height = height;
-        occupancyGridMsg->info.resolution = 0.05;  // Replace with your desired resolution
-        occupancyGridMsg->info.origin.position.x = 0.0;
-        occupancyGridMsg->info.origin.position.y = 0.0;
-        occupancyGridMsg->info.origin.position.z = 0.0;
+        nav_msgs::msg::OccupancyGrid occupancyGridMsg;
+        occupancyGridMsg.header.stamp = now();
+        occupancyGridMsg.header.frame_id = "map";
+        occupancyGridMsg.info.width = width;
+        occupancyGridMsg.info.height = height;
+        occupancyGridMsg.info.resolution = 0.05;  // Replace with your desired resolution
+        occupancyGridMsg.info.origin.position.x = 0.0;
+        occupancyGridMsg.info.origin.position.y = 0.0;
+        occupancyGridMsg.info.origin.position.z = 0.0;
 
         // Convert the 1D grid data to 2D
-        occupancyGridMsg->data = gridData;
+        occupancyGridMsg.data = gridData;
 
         // Publish the OccupancyGrid message
         publisher_->publish(occupancyGridMsg);
@@ -96,21 +96,11 @@ private:
     rclcpp::TimerBase::SharedPtr timer_;
 };
 
-//create a publisher node to publish the occupancy grid
-/*class OccupancyGridPublisher : public rclcpp::Node
-{
-public:
-    OccupancyGridPublisher() : Node("occupancy_grid_publisher")
-    {
-        publisher_ = create_publisher<nav_msgs::msg::OccupancyGrid>("occupancy_grid", 10);
-        timer_ = create_wall_timer(std::chrono::seconds(1), std::bind(&OccupancyGridPublisher::publishGrid, this));
-    }
-}*/
-
 int main(int argc, char *argv[])
 {
     rclcpp::init(argc, argv);
     auto node = std::make_shared<OccupancyGridGenerator>();
+    auto bigNode = std::make_shared<BigOccupancyGridPublisher>();
     rclcpp::spin(node);
     rclcpp::shutdown();
     return 0;

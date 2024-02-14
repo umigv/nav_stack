@@ -8,7 +8,6 @@ endif()
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
-find_package(roscpp REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(nav_msgs REQUIRED)
 # uncomment the following section in order to fill in
@@ -18,14 +17,13 @@ find_package(nav_msgs REQUIRED)
 include_directories(
   include
   ${rclcpp_INCLUDE_DIRS}
-  ${roscpp_INCLUDE_DIRS}
   ${std_msgs_INCLUDE_DIRS}
   ${nav_msgs_INCLUDE_DIRS}
 )
 
-add_executable(cv-integration src/nav_stack/grid_generator.cpp)
-ament_target_dependencies(cv-integration rclcpp roscpp std_msgs nav_msgs)
-target_link_libraries(cv-integration ${rclcpp_LIBRARIES} ${roscpp_LIBRARIES} ${std_msgs_LIBRARIES} ${nav_msgs_LIBRARIES})
+add_executable(cv-integration grid_generator.cpp)
+ament_target_dependencies(cv-integration rclcpp std_msgs nav_msgs)
+target_link_libraries(cv-integration ${rclcpp_LIBRARIES} ${std_msgs_LIBRARIES} ${nav_msgs_LIBRARIES})
 
 install(TARGETS
   cv-integration
