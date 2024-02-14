@@ -1,3 +1,4 @@
+#include "rclcpp/rclcpp.hpp"
 #include "../include/gps_data.hpp"
 #include <cmath>
 #include <fstream>
@@ -14,9 +15,10 @@ void OccGridInfo::update(float resolutionIn, uint32_t widthIn, uint32_t heightIn
     this->origin_y = originYIN;
 }
 
-GPSData::GPSData()
-{
-    readConfigFile();
+GPSData::GPSData(const std::string& nodeNameIn) 
+: nodeName(nodeNameIn)
+{   
+    RCLCPP_INFO(rclcpp::get_logger(nodeName), "%s running GPSData constructor", nodeName.c_str());
 }
 
 void GPSData::setRobotCurrentLocation(double long lat, double long lon)
@@ -31,12 +33,12 @@ void GPSData::readGPSFile(const string& filename)
     double long lon = NAN;
     std::ifstream gpsFile(filename);
 
-    if (gpsFile.is_open())
+    if(!gpsFile.is_open())
+        RCLCPP_WARN(rclcpp::get_logger(nodeName), "%s could not be opened", filename.c_str());
+
+    while (gpsFile >> lat >> lon)
     {
-        while (gpsFile >> lat >> lon)
-        {
-            GOAL_GPS.emplace_back(lat, lon);
-        }
+        GOAL_GPS.emplace_back(lat, lon);
     }
 }
 
@@ -48,30 +50,31 @@ void GPSData::printGPSData() const
     }
 }
 
-void GPSData::readConfigFile()
+void GPSData::readConfigFile(const string& filename)
 {
-    std::ifstream configFile("config.yaml");
+    std::ifstream configFile(filename);
     string line;
 
     // Format: isFacingNorth: true
     // Check key and value pair with split of ": "
-    if (configFile.is_open())
-    {
-        while (std::getline(configFile, line))
-        {
-            auto split = line.find(": ");
-            string key = line.substr(0, split);
-            string value = line.substr(split + 2);
+    if (!configFile.is_open())
+        RCLCPP_WARN(rclcpp::get_logger(nodeName), "%s could not be opened", filename.c_str());
 
-            if (key == "isFacingNorth")
-            {
-                north = (value == "true");
-            }
+    while (std::getline(configFile, line))
+    {
+        auto split = line.find(": ");
+        string key = line.substr(0, split);
+        string value = line.substr(split + 2);
+
+        if (key == "isFacingNorth")
+        {
+            north = (value == "true");
         }
     }
+
     if (DEBUG)
     {
-        std::cout << "isFacingNorth: " << north << '\n';
+        RCLCPP_INFO(rclcpp::get_logger(nodeName), "isFacingNorth: %d", north);
     }
 }
 
@@ -157,10 +160,11 @@ CoordinateMap GPSData::findGoalInMap(MapInfo mapInfo, CoordinateMap goalCoordina
     return { return_x, return_y };
 }
 
-void GPSData::initializeMapInfo()
+void GPSData::initializeMapInfo(const std::string& configFilename, 
+    const std::string& waypointsFilename)
 {
-    readConfigFile();
-    readGPSFile("gps.txt");
+    readConfigFile(configFilename);
+    readGPSFile(waypointsFilename);
 }
 
 // int main() {

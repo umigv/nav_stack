@@ -27,7 +27,7 @@ struct OccGridInfo
 class GPSData
 {
 public:
-    GPSData();
+    GPSData(const std::string& nodeNameIn);
 
     void setRobotCurrentLocation(double long lat, double long lon);
 
@@ -36,14 +36,15 @@ public:
     void printGPSData() const;  
 
     // Read Config File
-    void readConfigFile();
+    void readConfigFile(const std::string& filename);
 
     // Convert to Map Coordinate
     Coordinate gpsTransform(Coordinate goalPoint) const;
 
     bool goalReached(Coordinate& goalCoords) const;
 
-    void initializeMapInfo();   
+    void initializeMapInfo(const std::string& configFilename, 
+        const std::string& waypointsFilename); 
 
     struct MapInfo
     {
@@ -82,6 +83,9 @@ private:
 
     // TODO: tf transform function: NavSatFix
     Coordinate robCurrentLocation{ 0, 0 };
+
+    // nodeName is the name of the node running this constructor; used for logging
+    std::string nodeName;
 
     uint32_t indexOfCurrentGoal = 1;
     OccGridInfo mapInfo;

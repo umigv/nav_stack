@@ -9,8 +9,6 @@
 
 using namespace std::chrono_literals;
 
-/* This example creates a subclass of Node and uses std::bind() to register a
- * member function as a callback from the timer. */
 
 class WaypointPublisher : public rclcpp::Node
 {
@@ -20,6 +18,7 @@ public:
 private:
     void waypointSubscriber(const sensor_msgs::msg::NavSatFix::SharedPtr msg);
 
+
     rclcpp::Subscription<sensor_msgs::msg::NavSatFix>::SharedPtr _waypoint_subscriber;
-    GPSData gpsData;
+    GPSData _gpsData;
 };
