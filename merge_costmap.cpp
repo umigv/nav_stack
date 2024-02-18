@@ -57,6 +57,46 @@ class MergeService : public rclcpp::Node {
             "/occupancy_grid", 10, std::bind(&OccupancyGridSubscriber::populate_sensors_occupancy_grid, this, _1)
         )
         }
+
+        OccupancyGrid merge_SLAM_and_LaneLine(const OccupancyGrid &cv_cm, const &slam_cm) {
+            /*  -1 == unknown
+                0 == non-drivable
+                1 == drivable
+            */
+
+            // the two cost maps are the same size
+            OccupancyGrid merged_grid = slam_cm;
+
+            // start merge
+            for (size_t row = 0; row < slam_cm.height; ++row) {
+                for (size_t col = 0; col < slam_cm.width; ++col) {
+                    // get the corresponding values from the 2 cost maps
+                    int slam_value = slam_cm.data[row * slam_cm.width + col];
+                    int lane_value = lane_cm.data[row * lane_cm.width + col];
+                    
+                    /*
+                    9 cases:
+                        LL = -1, SLAM = -1 -> -1
+                        LL = -1, SLAM = 0 -> 0
+                        LL = -1, SLAM = 1 -> 1
+                        LL = 0, SLAM = -1 -> 0
+                        LL = 0, SLAM = 0 -> 0
+                        LL = 0, SLAM = 1 -> 0
+                        LL = 1, SLAM = -1 -> 1
+                        LL = 1, SLAM = 0 -> 0
+                        LL = 1, SLAM = 1 -> 1
+                    */
+                    if (lane_value == -1)
+                        merged_grid.data[row * merged_grid.width + col] = slam_value;
+                    else if (slam_value == -1)
+                        merged_grid.data[row * merged_grid.width + col] = lane_value;
+                    else
+                        merged_grid.data[row * merged_grid.width + col] = lane_value & slam_value;
+                }
+            }
+
+            return merged_grid;
+        }
     private:
         // ------------- OCCUPANCY GRID VARIABLES -----------------
 
