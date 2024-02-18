@@ -82,9 +82,9 @@ Coordinate GPSData::gpsTransform(const Coordinate& goalPoint) const
     return { xDistance, yDistance };
 }
 
-bool GPSData::goalReached(const Coordinate& goalCoords) const
+bool GPSData::goalReached() const
 {
-    double long dist = Coordinate::distanceBetweenPoints(goalCoords, robCurrentLocation);
+    double long dist = Coordinate::distanceBetweenPoints(getCurrentWaypoint(), robCurrentLocation);
     return dist < 2;
 }
 
@@ -131,4 +131,10 @@ void GPSData::initializeMapInfo( const std::string& waypointsFilename, const boo
 {
     readGPSFile(waypointsFilename);
     facingNorth = facingNorthIn;
+}
+
+
+Coordinate GPSData::getCurrentWaypoint() const
+{
+    return waypoints[indexOfCurrentGoal];
 }

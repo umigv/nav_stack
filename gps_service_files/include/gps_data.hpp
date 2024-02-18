@@ -11,7 +11,6 @@ class GPSData
 public:
     GPSData(const std::string& nodeNameIn);
 
-
     /*
         Sets the current robot position in latitude and longitude
         to the values given by the function arguments.
@@ -51,7 +50,7 @@ public:
         Given a (x, y) coordinate in the map frame, checks if the
         robot is within 2 meters of the given goal coordinate.
     */
-    bool goalReached(const Coordinate& goalCoords) const;
+    bool goalReached() const;
 
     void initializeMapInfo(const std::string& configFilename, 
         const bool facingNorthIn); 
@@ -81,6 +80,11 @@ public:
     //            Goal Coordinate: x, y -- Assumed to be in meters as displacement from global
     //            frame origin
     CoordinateMap findGoalInMap(const CoordinateMap& goalCoordinate) const;
+
+    /*
+        Returns the current waypoint
+    */
+    Coordinate getCurrentWaypoint() const;
 
 private:
     // LATITUDE, LONGITUDE

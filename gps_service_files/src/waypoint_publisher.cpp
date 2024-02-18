@@ -28,5 +28,16 @@ void WaypointPublisher::waypointSubscriber(const sensor_msgs::msg::NavSatFix::Sh
 {
     RCLCPP_INFO(this->get_logger(), "Longitude: %f, latitude: %f\n", msg->longitude, msg->latitude);
     _gpsData.setRobotCurrentLocation(msg->latitude, msg->longitude);
+
+    /* TODO 
+    Check if robot has reached current waypoint
+        Convert next waypoint to a PoseStamped message
+        Publish waypoint to goal_pose topic
+    */
+
+   if(_gpsData.goalReached())
+   {
+
+   }
 }
 
