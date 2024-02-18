@@ -20,7 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'gps_coordinate_pub = gps_coord_pub.gps_coordinate_pub:main'
+            'gps_coord_pub = gps_coord_pub.gps_coord_pub:main'
         ],
     },
 )
