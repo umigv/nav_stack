@@ -9,17 +9,24 @@ from launch.substitutions import LaunchConfiguration
 def generate_launch_description():
     # waypoint_publisher configs
     waypoints_file_path_value = LaunchConfiguration('waypoints_file_path')
-    config_file_path_value = LaunchConfiguration('config_file_path')
+    facing_north_value = LaunchConfiguration('facing_north')
 
     # waypoint_publisher args
     waypoints_file_path_arg = DeclareLaunchArgument('waypoints_file_path', 
         default_value = '/home/johnrose/arv_ws/src/nav_stack/gps_service_files/config/waypoints.txt')
-    config_file_path_arg = DeclareLaunchArgument('config_file_path', 
-        default_value = '/home/johnrose/arv_ws/src/nav_stack/gps_service_files/config/config.yaml')
+    facing_north_arg = DeclareLaunchArgument('facing_north', 
+        default_value = 'True')
+
+
+   # headless_launch_arg = DeclareLaunchArgument(
+    #    name='headless',
+     #   default_value='False',
+      #  description='Show RViz and Gazebo'
+    #)
 
     args = [
         waypoints_file_path_arg, 
-        config_file_path_arg
+        facing_north_arg
     ]
 
     gps_coord_pub_node = Node(
@@ -34,7 +41,7 @@ def generate_launch_description():
         name="waypoint_publisher_node",
         parameters=[{
             "waypoints_file_path": waypoints_file_path_value, 
-            "config_file_path": config_file_path_value
+            "facing_north": facing_north_value
         }]
     )
 

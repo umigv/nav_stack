@@ -16,8 +16,8 @@ public:
     double long getLatitude() const;
     double long getLongitude() const;
 
-    void setLatitude(double long latitude);
-    void setLongitude(double long longitude);
+    void setLatitude(const double long latitude);
+    void setLongitude(const double long longitude);
 
 private:
     double long latitude;

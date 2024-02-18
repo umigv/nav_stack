@@ -4,30 +4,23 @@
 #include <fstream>
 #include <iostream>
 
-using std::string;
-
-void OccGridInfo::update(float resolutionIn, uint32_t widthIn, uint32_t heightIn, float originXIn, float originYIN)
-{
-    this->resolution = resolutionIn;
-    this->width = widthIn;
-    this->height = heightIn;
-    this->origin_x = originXIn;
-    this->origin_y = originYIN;
-}
-
 GPSData::GPSData(const std::string& nodeNameIn) 
-: nodeName(nodeNameIn)
+: robCurrentLocation{0, 0}, 
+    nodeName(nodeNameIn), 
+    indexOfCurrentGoal(0)
 {   
     RCLCPP_INFO(rclcpp::get_logger(nodeName), "%s running GPSData constructor", nodeName.c_str());
+
+    // TODO, find out actual mapInfo, get actual robot current location
 }
 
-void GPSData::setRobotCurrentLocation(double long lat, double long lon)
+void GPSData::setRobotCurrentLocation(const double long lat, const double long lon)
 {
     robCurrentLocation.setLatitude(lat);
     robCurrentLocation.setLongitude(lon);
 }
 
-void GPSData::readGPSFile(const string& filename)
+void GPSData::readGPSFile(const std::string& filename)
 {
     double long lat = NAN;
     double long lon = NAN;
@@ -38,47 +31,20 @@ void GPSData::readGPSFile(const string& filename)
 
     while (gpsFile >> lat >> lon)
     {
-        GOAL_GPS.emplace_back(lat, lon);
+        waypoints.emplace_back(lat, lon);
     }
 }
 
 void GPSData::printGPSData() const
 {
-    for (auto& coord : GOAL_GPS)
+    for (auto& coord : waypoints)
     {
-        std::cout << coord.getLatitude() << ", " << coord.getLongitude() << '\n';
+        RCLCPP_INFO(rclcpp::get_logger(nodeName), 
+            "latitude: %Lf, longitude: %Lf\n", coord.getLatitude(), coord.getLongitude());
     }
 }
 
-void GPSData::readConfigFile(const string& filename)
-{
-    std::ifstream configFile(filename);
-    string line;
-
-    // Format: isFacingNorth: true
-    // Check key and value pair with split of ": "
-    if (!configFile.is_open())
-        RCLCPP_WARN(rclcpp::get_logger(nodeName), "%s could not be opened", filename.c_str());
-
-    while (std::getline(configFile, line))
-    {
-        auto split = line.find(": ");
-        string key = line.substr(0, split);
-        string value = line.substr(split + 2);
-
-        if (key == "isFacingNorth")
-        {
-            north = (value == "true");
-        }
-    }
-
-    if (DEBUG)
-    {
-        RCLCPP_INFO(rclcpp::get_logger(nodeName), "isFacingNorth: %d", north);
-    }
-}
-
-Coordinate GPSData::gpsTransform(Coordinate goalPoint) const
+Coordinate GPSData::gpsTransform(const Coordinate& goalPoint) const
 {
     // TODO: Convert to map coordinate that then gets sent to the planner
     // Can include the vector math or be done in another function
@@ -107,7 +73,7 @@ Coordinate GPSData::gpsTransform(Coordinate goalPoint) const
         xDistance = std::abs(xDistance);
     }
 
-    if (!north)
+    if (!facingNorth)
     {
         xDistance *= -1;
         yDistance *= -1;
@@ -116,23 +82,23 @@ Coordinate GPSData::gpsTransform(Coordinate goalPoint) const
     return { xDistance, yDistance };
 }
 
-bool GPSData::goalReached(Coordinate& goalCoords) const
+bool GPSData::goalReached(const Coordinate& goalCoords) const
 {
     double long dist = Coordinate::distanceBetweenPoints(goalCoords, robCurrentLocation);
     return dist < 2;
 }
 
-CoordinateMap GPSData::findGoalInMap(MapInfo mapInfo, CoordinateMap goalCoordinate) const
+CoordinateMap GPSData::findGoalInMap(const CoordinateMap& goalCoordinate) const
 {
     // Occupancy Grid corners
-    Corner bottomLeft = Corner(mapInfo.origin_x, mapInfo.origin_y);
-    Corner topLeft = Corner(mapInfo.origin_x, mapInfo.origin_y + (mapInfo.height * mapInfo.resolution));
-    Corner bottomRight = Corner(mapInfo.origin_x + (mapInfo.width * mapInfo.resolution), mapInfo.origin_y);
+    const Corner bottomLeft = Corner(mapInfo.origin_x, mapInfo.origin_y);
+    const Corner topLeft = Corner(mapInfo.origin_x, mapInfo.origin_y + (mapInfo.height * mapInfo.resolution));
+    const Corner bottomRight = Corner(mapInfo.origin_x + (mapInfo.width * mapInfo.resolution), mapInfo.origin_y);
     // Corner topRight = Corner(bottomRight.x, topLeft.y);
 
     // Goal Position in global frame
-    double goal_x = goalCoordinate.getX();
-    double goal_y = goalCoordinate.getY();
+    const double goal_x = goalCoordinate.getX();
+    const double goal_y = goalCoordinate.getY();
 
     // Goal position inside map
     double return_x = goalCoordinate.getX();
@@ -160,43 +126,9 @@ CoordinateMap GPSData::findGoalInMap(MapInfo mapInfo, CoordinateMap goalCoordina
     return { return_x, return_y };
 }
 
-void GPSData::initializeMapInfo(const std::string& configFilename, 
-    const std::string& waypointsFilename)
+// Will eventually initialize mapInfo as well
+void GPSData::initializeMapInfo( const std::string& waypointsFilename, const bool facingNorthIn)
 {
-    readConfigFile(configFilename);
     readGPSFile(waypointsFilename);
+    facingNorth = facingNorthIn;
 }
-
-// int main() {
-//         // Make GPSData instance
-//         GPSData gps;
-
-//         // Read GPS File
-//         gps.readGPSFile("gps.txt");
-
-//         // Do Testing
-//         if (DEBUG) {
-//                 std::cout << "GPS Coordinates: \n";
-//                 for (auto& coord : gps.GOAL_GPS) {
-//                         std::cout << coord.latitude << ", " << coord.longitude << '\n';
-//                 }
-//         }
-
-//         Coordinate robotLoc = Coordinate(42.29607847274641, -83.70659486161985);
-
-//         gps.setRobotCurrentLocation(robotLoc.latitude, robotLoc.longitude);
-
-//         Coordinate goalLoc = Coordinate(42.29958131982664, -83.70565689495105);
-
-//         // std::cout << "First coordinate (robot location):" << robotLoc.latitude << ", " << robotLoc.longitude << '\n';
-//         // std::cout << "Second coordinate (goal location):" << goalLoc.latitude << ", " << goalLoc.longitude << '\n';
-
-//         // print long double robot location and goal location with printf
-//         printf("First coordinate (robot location): %Lf, %Lf\n", robotLoc.latitude, robotLoc.longitude);
-//         printf("Second coordinate (goal location): %Lf, %Lf\n", goalLoc.latitude, goalLoc.longitude);
-
-//         Coordinate difference = gps.gpsTransform(goalLoc);
-//         // std::cout << "Difference (x, y): " << difference.latitude << ", " << difference.longitude << '\n';
-//         printf("Difference (x, y): %Lf, %Lf\n", difference.latitude, difference.longitude);
-
-// }

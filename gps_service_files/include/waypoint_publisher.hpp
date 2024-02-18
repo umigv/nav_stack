@@ -7,9 +7,6 @@
 #include "geometry_msgs/msg/pose_stamped.hpp"
 #include "gps_data.hpp"
 
-using namespace std::chrono_literals;
-
-
 class WaypointPublisher : public rclcpp::Node
 {
 public:

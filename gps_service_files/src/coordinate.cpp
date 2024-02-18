@@ -22,12 +22,12 @@ double long Coordinate::getLongitude() const
     return longitude;
 }
 
-void Coordinate::setLatitude(double long latitude)
+void Coordinate::setLatitude(const double long latitude)
 {
     this->latitude = latitude;
 }
 
-void Coordinate::setLongitude(double long longitude)
+void Coordinate::setLongitude(const double long longitude)
 {
     this->longitude = longitude;
 }
