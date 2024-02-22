@@ -119,6 +119,8 @@ nav_msgs::msg::Path StraightLine::createPlan(
   global_path.header.frame_id = global_frame_;
   std::vector<geometry_msgs::msg::PoseStamped> plan;
 
+
+   
   
    if(!makePlan(start, goal, 0.5, plan)){
       // throw nav2_core::NoValidPathCouldBeFound(
@@ -132,12 +134,58 @@ nav_msgs::msg::Path StraightLine::createPlan(
   return global_path;
 
 }
+
+bool StraightLine::makePlanRamp(const geometry_msgs::msg::PoseStamped& start, const geometry_msgs::msg::PoseStamped& goal,  double tolerance, std::vector<geometry_msgs::msg::PoseStamped>& plan){
+    int pos_x = (int)((start.pose.position.x - costmap_->getOriginX()) / costmap_->getResolution());
+    int pos_y = (int)((start.pose.position.y - costmap_->getOriginY()) / costmap_->getResolution());
+
+    int goal_x = (int)((goal.pose.position.x - costmap_->getOriginX()) / costmap_->getResolution());
+    int goal_y = (int)((goal.pose.position.y - costmap_->getOriginY()) / costmap_->getResolution());
+    
+    
+    std::vector<std::pair<int,int>> path;
+    //TODO make sure this is the right way
+    int curr_x = pos_x;
+    int curr_y = pos_y;
+    while(curr_x != goal_x){
+      if(curr_x < goal_x){
+          curr_x ++;
+      }
+      else{
+          curr_x --;
+      }
+      path.push_back({curr_x, curr_y });
+    }
+
+    while(curr_y != goal_y){
+      if(curr_y < goal_y) {
+          curr_y++;
+      }
+      else{
+          curr_y --;
+
+      }
+      path.push_back({curr_x, curr_y });
+    }
+
+    std::cout << "Path found!" << std::endl;
+    generate_path(costmap_,path,plan);
+    
+    std::cout << "done with make plan\n";
+
+    return true;
+    
+}
+
 bool StraightLine::makePlan(const geometry_msgs::msg::PoseStamped& start, const geometry_msgs::msg::PoseStamped& goal,  double tolerance, std::vector<geometry_msgs::msg::PoseStamped>& plan){
 
     RCLCPP_INFO(
      node_->get_logger(), "Got a start: %.2f, %.2f, and a goal: %.2f, %.2f", start.pose.position.x, start.pose.position.y, goal.pose.position.x, goal.pose.position.y);
 
-   
+    bool inRamp = false; //TODO change the ramp var 
+    if(inRamp){
+      return makePlanRamp(start,goal,tolerance, plan);
+    }
     
     int pos_x = (int)((start.pose.position.x - costmap_->getOriginX()) / costmap_->getResolution());
     int pos_y = (int)((start.pose.position.y - costmap_->getOriginY()) / costmap_->getResolution());

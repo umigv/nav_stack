@@ -89,6 +89,10 @@ void generate_path(const nav2_costmap_2d::Costmap2D* map,
                   std::vector<geometry_msgs::msg::PoseStamped>& plan
                   ) ;
 
+
+bool makePlanRamp(const geometry_msgs::msg::PoseStamped& start, const geometry_msgs::msg::PoseStamped& goal,  
+                  double tolerance, std::vector<geometry_msgs::msg::PoseStamped>& plan);
+
 bool makePlan(const geometry_msgs::msg::PoseStamped& start,
             const geometry_msgs::msg::PoseStamped& goal,
              double tolerance,
