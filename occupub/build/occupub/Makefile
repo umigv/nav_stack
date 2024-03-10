@@ -210,6 +210,19 @@ occupub/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/occupub.dir/build.make CMakeFiles/occupub.dir/build
 .PHONY : occupub/fast
 
+#=============================================================================
+# Target rules for targets named merge_costmap_sub
+
+# Build rule for target.
+merge_costmap_sub: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 merge_costmap_sub
+.PHONY : merge_costmap_sub
+
+# fast build rule for target.
+merge_costmap_sub/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/merge_costmap_sub.dir/build.make CMakeFiles/merge_costmap_sub.dir/build
+.PHONY : merge_costmap_sub/fast
+
 src/grid_generator.o: src/grid_generator.cpp.o
 .PHONY : src/grid_generator.o
 
@@ -234,6 +247,30 @@ src/grid_generator.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/occupub.dir/build.make CMakeFiles/occupub.dir/src/grid_generator.cpp.s
 .PHONY : src/grid_generator.cpp.s
 
+src/merge_costmap.o: src/merge_costmap.cpp.o
+.PHONY : src/merge_costmap.o
+
+# target to build an object file
+src/merge_costmap.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/merge_costmap_sub.dir/build.make CMakeFiles/merge_costmap_sub.dir/src/merge_costmap.cpp.o
+.PHONY : src/merge_costmap.cpp.o
+
+src/merge_costmap.i: src/merge_costmap.cpp.i
+.PHONY : src/merge_costmap.i
+
+# target to preprocess a source file
+src/merge_costmap.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/merge_costmap_sub.dir/build.make CMakeFiles/merge_costmap_sub.dir/src/merge_costmap.cpp.i
+.PHONY : src/merge_costmap.cpp.i
+
+src/merge_costmap.s: src/merge_costmap.cpp.s
+.PHONY : src/merge_costmap.s
+
+# target to generate assembly for a file
+src/merge_costmap.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/merge_costmap_sub.dir/build.make CMakeFiles/merge_costmap_sub.dir/src/merge_costmap.cpp.s
+.PHONY : src/merge_costmap.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -249,10 +286,14 @@ help:
 	@echo "... test"
 	@echo "... occupub_uninstall"
 	@echo "... uninstall"
+	@echo "... merge_costmap_sub"
 	@echo "... occupub"
 	@echo "... src/grid_generator.o"
 	@echo "... src/grid_generator.i"
 	@echo "... src/grid_generator.s"
+	@echo "... src/merge_costmap.o"
+	@echo "... src/merge_costmap.i"
+	@echo "... src/merge_costmap.s"
 .PHONY : help
 
 

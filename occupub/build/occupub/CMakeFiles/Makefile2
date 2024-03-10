@@ -64,6 +64,7 @@ CMAKE_BINARY_DIR = /home/umarv/ws/src/nav_stack/occupub/build/occupub
 
 # The main recursive "all" target.
 all: CMakeFiles/occupub.dir/all
+all: CMakeFiles/merge_costmap_sub.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -74,6 +75,7 @@ preinstall:
 clean: CMakeFiles/uninstall.dir/clean
 clean: CMakeFiles/occupub_uninstall.dir/clean
 clean: CMakeFiles/occupub.dir/clean
+clean: CMakeFiles/merge_costmap_sub.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -135,7 +137,7 @@ CMakeFiles/occupub_uninstall.dir/clean:
 CMakeFiles/occupub.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/occupub.dir/build.make CMakeFiles/occupub.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/occupub.dir/build.make CMakeFiles/occupub.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/umarv/ws/src/nav_stack/occupub/build/occupub/CMakeFiles --progress-num=1,2 "Built target occupub"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/umarv/ws/src/nav_stack/occupub/build/occupub/CMakeFiles --progress-num=3,4 "Built target occupub"
 .PHONY : CMakeFiles/occupub.dir/all
 
 # Build rule for subdir invocation for target.
@@ -153,6 +155,32 @@ occupub: CMakeFiles/occupub.dir/rule
 CMakeFiles/occupub.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/occupub.dir/build.make CMakeFiles/occupub.dir/clean
 .PHONY : CMakeFiles/occupub.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/merge_costmap_sub.dir
+
+# All Build rule for target.
+CMakeFiles/merge_costmap_sub.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/merge_costmap_sub.dir/build.make CMakeFiles/merge_costmap_sub.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/merge_costmap_sub.dir/build.make CMakeFiles/merge_costmap_sub.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/umarv/ws/src/nav_stack/occupub/build/occupub/CMakeFiles --progress-num=1,2 "Built target merge_costmap_sub"
+.PHONY : CMakeFiles/merge_costmap_sub.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/merge_costmap_sub.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/umarv/ws/src/nav_stack/occupub/build/occupub/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/merge_costmap_sub.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/umarv/ws/src/nav_stack/occupub/build/occupub/CMakeFiles 0
+.PHONY : CMakeFiles/merge_costmap_sub.dir/rule
+
+# Convenience name for target.
+merge_costmap_sub: CMakeFiles/merge_costmap_sub.dir/rule
+.PHONY : merge_costmap_sub
+
+# clean rule for target.
+CMakeFiles/merge_costmap_sub.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/merge_costmap_sub.dir/build.make CMakeFiles/merge_costmap_sub.dir/clean
+.PHONY : CMakeFiles/merge_costmap_sub.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

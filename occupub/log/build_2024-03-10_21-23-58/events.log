@@ -1,0 +1,276 @@
+[0.000000] (-) TimerEvent: {}
+[0.001704] (occupub) JobQueued: {'identifier': 'occupub', 'dependencies': OrderedDict()}
+[0.001827] (occupub) JobStarted: {'identifier': 'occupub'}
+[0.098552] (-) TimerEvent: {}
+[0.199147] (-) TimerEvent: {}
+[0.295877] (occupub) JobProgress: {'identifier': 'occupub', 'progress': 'cmake'}
+[0.298038] (occupub) JobProgress: {'identifier': 'occupub', 'progress': 'build'}
+[0.300436] (occupub) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/umarv/ws/src/nav_stack/occupub/build/occupub', '--', '-j8', '-l8'], 'cwd': '/home/umarv/ws/src/nav_stack/occupub/build/occupub', 'env': OrderedDict([('HOSTNAME', 'umarv-ros2'), ('GIT_ASKPASS', '/home/umarv/.vscode-server/bin/019f4d1419fbc8219a181fab7892ebccf7ee29a2/extensions/git/dist/askpass.sh'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib:/usr/lib/wsl/lib'), ('BROWSER', '/home/umarv/.vscode-server/bin/019f4d1419fbc8219a181fab7892ebccf7ee29a2/bin/helpers/browser.sh'), ('HOME', '/home/umarv'), ('OLDPWD', '/home/umarv/ws/src/nav_stack'), ('TERM_PROGRAM_VERSION', '1.87.0'), ('VSCODE_IPC_HOOK_CLI', '/mnt/wslg/runtime-dir/vscode-ipc-15b5fafd-b953-45ad-8fa9-5df5756bbb78.sock'), ('ROS_PYTHON_VERSION', '3'), ('VSCODE_GIT_ASKPASS_MAIN', '/home/umarv/.vscode-server/bin/019f4d1419fbc8219a181fab7892ebccf7ee29a2/extensions/git/dist/askpass-main.js'), ('VSCODE_GIT_ASKPASS_NODE', '/home/umarv/.vscode-server/bin/019f4d1419fbc8219a181fab7892ebccf7ee29a2/node'), ('COLORTERM', 'truecolor'), ('REMOTE_CONTAINERS', 'true'), ('_colcon_cd_root', '/opt/ros/humble/'), ('WAYLAND_DISPLAY', 'wayland-0'), ('COLCON_PREFIX_PATH', '/home/umarv/ws/src/nav_stack/occupub/install'), ('ROS_DISTRO', 'humble'), ('REMOTE_CONTAINERS_IPC', '/tmp/vscode-remote-containers-ipc-74a9c0ba-6ab1-4991-9f69-b260951fda27.sock'), ('PULSE_SERVER', 'unix:/mnt/wslg/PulseServer'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm-256color'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/home/umarv/.vscode-server/bin/019f4d1419fbc8219a181fab7892ebccf7ee29a2/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('XDG_RUNTIME_DIR', '/mnt/wslg/runtime-dir'), ('REMOTE_CONTAINERS_SOCKETS', '["/tmp/.X11-unix/X1","/home/umarv/.gnupg/S.gpg-agent"]'), ('DISPLAY', ':0'), ('LANG', 'C.UTF-8'), ('LIBVA_DRIVER_NAME', 'd3d12'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/mnt/wslg/runtime-dir/vscode-git-4dcd6d337b.sock'), ('TERM_PROGRAM', 'vscode'), ('AMENT_PREFIX_PATH', '/home/umarv/ws/src/nav_stack/occupub/install/occupub:/opt/ros/humble'), ('REMOTE_CONTAINERS_DISPLAY_SOCK', '/tmp/.X11-unix/X1'), ('SHELL', '/bin/sh'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('PWD', '/home/umarv/ws/src/nav_stack/occupub/build/occupub'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/umarv/ws/src/nav_stack/occupub/install/occupub:/opt/ros/humble')]), 'shell': False}
+[0.329878] (-) TimerEvent: {}
+[0.430379] (-) TimerEvent: {}
+[0.493897] (occupub) StdoutLine: {'line': b'[ 25%] \x1b[32mBuilding CXX object CMakeFiles/merge_costmap_sub.dir/src/merge_costmap.cpp.o\x1b[0m\n'}
+[0.500493] (occupub) StdoutLine: {'line': b'[ 75%] Built target occupub\n'}
+[0.530566] (-) TimerEvent: {}
+[0.631180] (-) TimerEvent: {}
+[0.731943] (-) TimerEvent: {}
+[0.832489] (-) TimerEvent: {}
+[0.933096] (-) TimerEvent: {}
+[1.033624] (-) TimerEvent: {}
+[1.134450] (-) TimerEvent: {}
+[1.235615] (-) TimerEvent: {}
+[1.336947] (-) TimerEvent: {}
+[1.437749] (-) TimerEvent: {}
+[1.538367] (-) TimerEvent: {}
+[1.639077] (-) TimerEvent: {}
+[1.739832] (-) TimerEvent: {}
+[1.840652] (-) TimerEvent: {}
+[1.941347] (-) TimerEvent: {}
+[2.041934] (-) TimerEvent: {}
+[2.142558] (-) TimerEvent: {}
+[2.243095] (-) TimerEvent: {}
+[2.343655] (-) TimerEvent: {}
+[2.444269] (-) TimerEvent: {}
+[2.544943] (-) TimerEvent: {}
+[2.645593] (-) TimerEvent: {}
+[2.746164] (-) TimerEvent: {}
+[2.847009] (-) TimerEvent: {}
+[2.947642] (-) TimerEvent: {}
+[3.048433] (-) TimerEvent: {}
+[3.149203] (-) TimerEvent: {}
+[3.249917] (-) TimerEvent: {}
+[3.350758] (-) TimerEvent: {}
+[3.451643] (-) TimerEvent: {}
+[3.552415] (-) TimerEvent: {}
+[3.653107] (-) TimerEvent: {}
+[3.753832] (-) TimerEvent: {}
+[3.854575] (-) TimerEvent: {}
+[3.955303] (-) TimerEvent: {}
+[4.056279] (-) TimerEvent: {}
+[4.156936] (-) TimerEvent: {}
+[4.257666] (-) TimerEvent: {}
+[4.358291] (-) TimerEvent: {}
+[4.458901] (-) TimerEvent: {}
+[4.559558] (-) TimerEvent: {}
+[4.660218] (-) TimerEvent: {}
+[4.760934] (-) TimerEvent: {}
+[4.861547] (-) TimerEvent: {}
+[4.962210] (-) TimerEvent: {}
+[5.062965] (-) TimerEvent: {}
+[5.163654] (-) TimerEvent: {}
+[5.264400] (-) TimerEvent: {}
+[5.365195] (-) TimerEvent: {}
+[5.465791] (-) TimerEvent: {}
+[5.566575] (-) TimerEvent: {}
+[5.667383] (-) TimerEvent: {}
+[5.768198] (-) TimerEvent: {}
+[5.869257] (-) TimerEvent: {}
+[5.970280] (-) TimerEvent: {}
+[6.071137] (-) TimerEvent: {}
+[6.171807] (-) TimerEvent: {}
+[6.272647] (-) TimerEvent: {}
+[6.373302] (-) TimerEvent: {}
+[6.473891] (-) TimerEvent: {}
+[6.574501] (-) TimerEvent: {}
+[6.675180] (-) TimerEvent: {}
+[6.775918] (-) TimerEvent: {}
+[6.876618] (-) TimerEvent: {}
+[6.977905] (-) TimerEvent: {}
+[7.079097] (-) TimerEvent: {}
+[7.180248] (-) TimerEvent: {}
+[7.280977] (-) TimerEvent: {}
+[7.292963] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:12:11:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KTF2sub\x1b[m\x1b[K\xe2\x80\x99 does not name a type\n'}
+[7.293592] (occupub) StderrLine: {'line': b'   12 | using x = \x1b[01;31m\x1b[KTF2sub\x1b[m\x1b[K::current_x_pos;\n'}
+[7.293772] (occupub) StderrLine: {'line': b'      |           \x1b[01;31m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[7.296026] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:13:11:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KTF2sub\x1b[m\x1b[K\xe2\x80\x99 does not name a type\n'}
+[7.296461] (occupub) StderrLine: {'line': b'   13 | using y = \x1b[01;31m\x1b[KTF2sub\x1b[m\x1b[K::current_y_pos;\n'}
+[7.296567] (occupub) StderrLine: {'line': b'      |           \x1b[01;31m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[7.312781] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:34:37:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KTransformStamped\x1b[m\x1b[K\xe2\x80\x99 does not name a type; did you mean \xe2\x80\x98\x1b[01m\x1b[KTransformData\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[7.313345] (occupub) StderrLine: {'line': b'   34 |         void tf2WorldCallback(const \x1b[01;31m\x1b[KTransformStamped\x1b[m\x1b[K::SharedPtr msg)\n'}
+[7.313963] (occupub) StderrLine: {'line': b'      |                                     \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[7.314203] (occupub) StderrLine: {'line': b'      |                                     \x1b[32m\x1b[KTransformData\x1b[m\x1b[K\n'}
+[7.314305] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:34:65:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kexpected unqualified-id before \xe2\x80\x98\x1b[01m\x1b[Kmsg\x1b[m\x1b[K\xe2\x80\x99\n'}
+[7.314684] (occupub) StderrLine: {'line': b'   34 |         void tf2WorldCallback(const TransformStamped::SharedPtr \x1b[01;31m\x1b[Kmsg\x1b[m\x1b[K)\n'}
+[7.314792] (occupub) StderrLine: {'line': b'      |                                                                 \x1b[01;31m\x1b[K^~~\x1b[m\x1b[K\n'}
+[7.314877] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:34:64:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kexpected \xe2\x80\x98\x1b[01m\x1b[K)\x1b[m\x1b[K\xe2\x80\x99 before \xe2\x80\x98\x1b[01m\x1b[Kmsg\x1b[m\x1b[K\xe2\x80\x99\n'}
+[7.315054] (occupub) StderrLine: {'line': b'   34 |         void tf2WorldCallback\x1b[34m\x1b[K(\x1b[m\x1b[Kconst TransformStamped::SharedPtr\x1b[01;31m\x1b[K \x1b[m\x1b[K\x1b[32m\x1b[Kmsg\x1b[m\x1b[K)\n'}
+[7.315165] (occupub) StderrLine: {'line': b'      |                              \x1b[34m\x1b[K~\x1b[m\x1b[K                                 \x1b[01;31m\x1b[K^\x1b[m\x1b[K\x1b[32m\x1b[K~~~\x1b[m\x1b[K\n'}
+[7.315257] (occupub) StderrLine: {'line': b'      |                                                                \x1b[32m\x1b[K)\x1b[m\x1b[K\n'}
+[7.315349] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:34:55:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kexpected \xe2\x80\x98\x1b[01m\x1b[K;\x1b[m\x1b[K\xe2\x80\x99 at end of member declaration\n'}
+[7.315439] (occupub) StderrLine: {'line': b'   34 |         void tf2WorldCallback(const TransformStamped::\x1b[01;31m\x1b[KSharedPtr\x1b[m\x1b[K msg)\n'}
+[7.315531] (occupub) StderrLine: {'line': b'      |                                                       \x1b[01;31m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[7.315612] (occupub) StderrLine: {'line': b'      |                                                                \x1b[32m\x1b[K;\x1b[m\x1b[K\n'}
+[7.317512] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:34:65:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kmsg\x1b[m\x1b[K\xe2\x80\x99 does not name a type\n'}
+[7.317904] (occupub) StderrLine: {'line': b'   34 |         void tf2WorldCallback(const TransformStamped::SharedPtr \x1b[01;31m\x1b[Kmsg\x1b[m\x1b[K)\n'}
+[7.318062] (occupub) StderrLine: {'line': b'      |                                                                 \x1b[01;31m\x1b[K^~~\x1b[m\x1b[K\n'}
+[7.381144] (-) TimerEvent: {}
+[7.417025] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:\x1b[m\x1b[K In constructor \xe2\x80\x98\x1b[01m\x1b[KTF2sub::TF2sub()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[7.417439] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:27:13:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Ktf2_subscriber\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Kcount_subscribers\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[7.417591] (occupub) StderrLine: {'line': b'   27 |             \x1b[01;31m\x1b[Ktf2_subscriber\x1b[m\x1b[K = create_subscription<TransformStamped>(\n'}
+[7.417696] (occupub) StderrLine: {'line': b'      |             \x1b[01;31m\x1b[K^~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[7.417762] (occupub) StderrLine: {'line': b'      |             \x1b[32m\x1b[Kcount_subscribers\x1b[m\x1b[K\n'}
+[7.419257] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:27:50:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KTransformStamped\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Kgeometry_msgs::msg::TransformStamped\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[7.419753] (occupub) StderrLine: {'line': b'   27 |             tf2_subscriber = create_subscription<\x1b[01;31m\x1b[KTransformStamped\x1b[m\x1b[K>(\n'}
+[7.419882] (occupub) StderrLine: {'line': b'      |                                                  \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[7.420041] (occupub) StderrLine: {'line': b'      |                                                  \x1b[32m\x1b[Kgeometry_msgs::msg::TransformStamped\x1b[m\x1b[K\n'}
+[7.422177] (occupub) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/transform_stamped.hpp:7\x1b[m\x1b[K,\n'}
+[7.422653] (occupub) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/tf2/tf2/buffer_core.h:48\x1b[m\x1b[K,\n'}
+[7.422796] (occupub) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/tf2_ros/tf2_ros/transform_listener.h:40\x1b[m\x1b[K,\n'}
+[7.422901] (occupub) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:5\x1b[m\x1b[K:\n'}
+[7.423102] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/transform_stamped__struct.hpp:156:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kgeometry_msgs::msg::TransformStamped\x1b[m\x1b[K\xe2\x80\x99 declared here\n'}
+[7.423200] (occupub) StderrLine: {'line': b'  156 | using \x1b[01;36m\x1b[KTransformStamped\x1b[m\x1b[K =\n'}
+[7.423268] (occupub) StderrLine: {'line': b'      |       \x1b[01;36m\x1b[K^~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[7.451767] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:27:67:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno matching function for call to \xe2\x80\x98\x1b[01m\x1b[KTF2sub::create_subscription<<expression error> >(const char [10], int, std::_Bind_helper<false, void (TF2sub::*)(...), TF2sub*, const std::_Placeholder<1>&>::type)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[7.452201] (occupub) StderrLine: {'line': b'   27 |             tf2_subscriber = \x1b[01;31m\x1b[Kcreate_subscription<TransformStamped>(\x1b[m\x1b[K\n'}
+[7.452343] (occupub) StderrLine: {'line': b'      |                              \x1b[01;31m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^\x1b[m\x1b[K\n'}
+[7.452436] (occupub) StderrLine: {'line': b'   28 | \x1b[01;31m\x1b[K                "/tf_world", 10, std::bind(&TF2sub::tf2WorldCallback, this, std::placeholders::_1))\x1b[m\x1b[K;\n'}
+[7.452540] (occupub) StderrLine: {'line': b'      |                 \x1b[01;31m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[7.453221] (occupub) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors/single_threaded_executor.hpp:28\x1b[m\x1b[K,\n'}
+[7.453695] (occupub) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:22\x1b[m\x1b[K,\n'}
+[7.453970] (occupub) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155\x1b[m\x1b[K,\n'}
+[7.454071] (occupub) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:2\x1b[m\x1b[K:\n'}
+[7.454176] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/node.hpp:219:3:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class MessageT, class CallbackT, class AllocatorT, class SubscriptionT, class MessageMemoryStrategyT> std::shared_ptr<ROSMessageT> rclcpp::Node::create_subscription(const string&, const rclcpp::QoS&, CallbackT&&, const rclcpp::SubscriptionOptionsWithAllocator<AllocatorT>&, typename MessageMemoryStrategyT::SharedPtr)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[7.454278] (occupub) StderrLine: {'line': b'  219 |   \x1b[01;36m\x1b[Kcreate_subscription\x1b[m\x1b[K(\n'}
+[7.454703] (occupub) StderrLine: {'line': b'      |   \x1b[01;36m\x1b[K^~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[7.454871] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/node.hpp:219:3:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[7.454993] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:27:67:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktemplate argument 1 is invalid\n'}
+[7.455079] (occupub) StderrLine: {'line': b'   27 |             tf2_subscriber = \x1b[01;31m\x1b[Kcreate_subscription<TransformStamped>(\x1b[m\x1b[K\n'}
+[7.455180] (occupub) StderrLine: {'line': b'      |                              \x1b[01;31m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^\x1b[m\x1b[K\n'}
+[7.455280] (occupub) StderrLine: {'line': b'   28 | \x1b[01;31m\x1b[K                "/tf_world", 10, std::bind(&TF2sub::tf2WorldCallback, this, std::placeholders::_1))\x1b[m\x1b[K;\n'}
+[7.455435] (occupub) StderrLine: {'line': b'      |                 \x1b[01;31m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[7.455577] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:\x1b[m\x1b[K At global scope:\n'}
+[7.455704] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:14:26:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ktwo or more data types in declaration of \xe2\x80\x98\x1b[01m\x1b[Ktype name\x1b[m\x1b[K\xe2\x80\x99\n'}
+[7.456045] (occupub) StderrLine: {'line': b'   14 | using TransformStamped = \x1b[01;31m\x1b[Kgeometry_msgs\x1b[m\x1b[K::msg::TransformStamped\n'}
+[7.456757] (occupub) StderrLine: {'line': b'      |                          \x1b[01;31m\x1b[K^~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[7.457031] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:51:9:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[KISO C++ forbids declaration of \xe2\x80\x98\x1b[01m\x1b[KOccupancyGridSubscriber\x1b[m\x1b[K\xe2\x80\x99 with no type [\x1b[01;31m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-fpermissive\x07-fpermissive\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[7.457351] (occupub) StderrLine: {'line': b'   51 |         \x1b[01;31m\x1b[KOccupancyGridSubscriber\x1b[m\x1b[K() : Node("occupancy_grid_subscriber") {\n'}
+[7.457557] (occupub) StderrLine: {'line': b'      |         \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[7.457647] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:61:82:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[KISO C++ forbids declaration of \xe2\x80\x98\x1b[01m\x1b[Kslam_cm\x1b[m\x1b[K\xe2\x80\x99 with no type [\x1b[01;31m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-fpermissive\x07-fpermissive\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[7.457734] (occupub) StderrLine: {'line': b'   61 |         OccupancyGrid merge_SLAM_and_LaneLine(const OccupancyGrid &cv_cm, const &\x1b[01;31m\x1b[Kslam_cm\x1b[m\x1b[K) {\n'}
+[7.457901] (occupub) StderrLine: {'line': b'      |                                                                                  \x1b[01;31m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[7.458299] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kint MergeService::OccupancyGridSubscriber()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[7.458525] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:51:37:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Konly constructors take member initializers\n'}
+[7.458672] (occupub) StderrLine: {'line': b'   51 |         OccupancyGridSubscriber() : \x1b[01;31m\x1b[KNode\x1b[m\x1b[K("occupancy_grid_subscriber") {\n'}
+[7.458755] (occupub) StderrLine: {'line': b'      |                                     \x1b[01;31m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[7.471730] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:52:13:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kcv_og_subsriber\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Kcount_subscribers\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[7.472307] (occupub) StderrLine: {'line': b'   52 |             \x1b[01;31m\x1b[Kcv_og_subsriber\x1b[m\x1b[K = this->create_subscription<nav_msgs::OccupancyGrid>(\n'}
+[7.472489] (occupub) StderrLine: {'line': b'      |             \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[7.472594] (occupub) StderrLine: {'line': b'      |             \x1b[32m\x1b[Kcount_subscribers\x1b[m\x1b[K\n'}
+[7.474259] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:52:67:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KOccupancyGrid\x1b[m\x1b[K\xe2\x80\x99 is not a member of \xe2\x80\x98\x1b[01m\x1b[Knav_msgs\x1b[m\x1b[K\xe2\x80\x99\n'}
+[7.474638] (occupub) StderrLine: {'line': b'   52 |             cv_og_subsriber = this->create_subscription<nav_msgs::\x1b[01;31m\x1b[KOccupancyGrid\x1b[m\x1b[K>(\n'}
+[7.474957] (occupub) StderrLine: {'line': b'      |                                                                   \x1b[01;31m\x1b[K^~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[7.475704] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:52:67:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Ksuggested alternatives:\n'}
+[7.476261] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:10:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[KOccupancyGrid\x1b[m\x1b[K\xe2\x80\x99\n'}
+[7.476425] (occupub) StderrLine: {'line': b'   10 | using \x1b[01;36m\x1b[KOccupancyGrid\x1b[m\x1b[K = nav_msgs::msg::OccupancyGrid;\n'}
+[7.476491] (occupub) StderrLine: {'line': b'      |       \x1b[01;36m\x1b[K^~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[7.476562] (occupub) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/nav_msgs/nav_msgs/msg/occupancy_grid.hpp:7\x1b[m\x1b[K,\n'}
+[7.476628] (occupub) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:3\x1b[m\x1b[K:\n'}
+[7.476685] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/humble/include/nav_msgs/nav_msgs/msg/detail/occupancy_grid__struct.hpp:147:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Knav_msgs::msg::OccupancyGrid\x1b[m\x1b[K\xe2\x80\x99\n'}
+[7.476740] (occupub) StderrLine: {'line': b'  147 | using \x1b[01;36m\x1b[KOccupancyGrid\x1b[m\x1b[K =\n'}
+[7.476793] (occupub) StderrLine: {'line': b'      |       \x1b[01;36m\x1b[K^~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[7.476844] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:53:47:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KOccupancyGridSubscriber\x1b[m\x1b[K\xe2\x80\x99 is not a class, namespace, or enumeration\n'}
+[7.477531] (occupub) StderrLine: {'line': b'   53 |             "/occupancy_grid", 10, std::bind(&\x1b[01;31m\x1b[KOccupancyGridSubscriber\x1b[m\x1b[K::populate_cv_occupancy_grid, this, _1)\n'}
+[7.477811] (occupub) StderrLine: {'line': b'      |                                               \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[7.477947] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:59:9:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kno return statement in function returning non-void [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreturn-type\x07-Wreturn-type\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[7.478078] (occupub) StderrLine: {'line': b'   59 |         \x1b[01;35m\x1b[K}\x1b[m\x1b[K\n'}
+[7.478191] (occupub) StderrLine: {'line': b'      |         \x1b[01;35m\x1b[K^\x1b[m\x1b[K\n'}
+[7.478267] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[KOccupancyGrid MergeService::merge_SLAM_and_LaneLine(const OccupancyGrid&, const int&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[7.478336] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:68:41:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kconversion from \xe2\x80\x98\x1b[01m\x1b[Kconst int\x1b[m\x1b[K\xe2\x80\x99 to non-scalar type \xe2\x80\x98\x1b[01m\x1b[KOccupancyGrid\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Knav_msgs::msg::OccupancyGrid_<std::allocator<void> >\x1b[m\x1b[K\xe2\x80\x99} requested\n'}
+[7.478530] (occupub) StderrLine: {'line': b'   68 |             OccupancyGrid merged_grid = \x1b[01;31m\x1b[Kslam_cm\x1b[m\x1b[K;\n'}
+[7.478598] (occupub) StderrLine: {'line': b'      |                                         \x1b[01;31m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[7.478651] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:71:48:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Krequest for member \xe2\x80\x98\x1b[01m\x1b[Kheight\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Kslam_cm\x1b[m\x1b[K\xe2\x80\x99, which is of non-class type \xe2\x80\x98\x1b[01m\x1b[Kconst int\x1b[m\x1b[K\xe2\x80\x99\n'}
+[7.478709] (occupub) StderrLine: {'line': b'   71 |             for (size_t row = 0; row < slam_cm.\x1b[01;31m\x1b[Kheight\x1b[m\x1b[K; ++row) {\n'}
+[7.478765] (occupub) StderrLine: {'line': b'      |                                                \x1b[01;31m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[7.478917] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:72:52:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Krequest for member \xe2\x80\x98\x1b[01m\x1b[Kwidth\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Kslam_cm\x1b[m\x1b[K\xe2\x80\x99, which is of non-class type \xe2\x80\x98\x1b[01m\x1b[Kconst int\x1b[m\x1b[K\xe2\x80\x99\n'}
+[7.479063] (occupub) StderrLine: {'line': b'   72 |                 for (size_t col = 0; col < slam_cm.\x1b[01;31m\x1b[Kwidth\x1b[m\x1b[K; ++col) {\n'}
+[7.479131] (occupub) StderrLine: {'line': b'      |                                                    \x1b[01;31m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[7.479238] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:74:46:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Krequest for member \xe2\x80\x98\x1b[01m\x1b[Kdata\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Kslam_cm\x1b[m\x1b[K\xe2\x80\x99, which is of non-class type \xe2\x80\x98\x1b[01m\x1b[Kconst int\x1b[m\x1b[K\xe2\x80\x99\n'}
+[7.479319] (occupub) StderrLine: {'line': b'   74 |                     int slam_value = slam_cm.\x1b[01;31m\x1b[Kdata\x1b[m\x1b[K[row * slam_cm.width + col];\n'}
+[7.479394] (occupub) StderrLine: {'line': b'      |                                              \x1b[01;31m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[7.479468] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:74:65:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Krequest for member \xe2\x80\x98\x1b[01m\x1b[Kwidth\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Kslam_cm\x1b[m\x1b[K\xe2\x80\x99, which is of non-class type \xe2\x80\x98\x1b[01m\x1b[Kconst int\x1b[m\x1b[K\xe2\x80\x99\n'}
+[7.479571] (occupub) StderrLine: {'line': b'   74 |                     int slam_value = slam_cm.data[row * slam_cm.\x1b[01;31m\x1b[Kwidth\x1b[m\x1b[K + col];\n'}
+[7.479634] (occupub) StderrLine: {'line': b'      |                                                                 \x1b[01;31m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[7.481368] (-) TimerEvent: {}
+[7.489167] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:75:38:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Klane_cm\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[7.489610] (occupub) StderrLine: {'line': b'   75 |                     int lane_value = \x1b[01;31m\x1b[Klane_cm\x1b[m\x1b[K.data[row * lane_cm.width + col];\n'}
+[7.490092] (occupub) StderrLine: {'line': b'      |                                      \x1b[01;31m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[7.490742] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:90:60:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kusing OccupancyGrid = using OccupancyGrid = struct nav_msgs::msg::OccupancyGrid_<std::allocator<void> >\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kstruct nav_msgs::msg::OccupancyGrid_<std::allocator<void> >\x1b[m\x1b[K\xe2\x80\x99} has no member named \xe2\x80\x98\x1b[01m\x1b[Kwidth\x1b[m\x1b[K\xe2\x80\x99\n'}
+[7.492149] (occupub) StderrLine: {'line': b'   90 |                         merged_grid.data[row * merged_grid.\x1b[01;31m\x1b[Kwidth\x1b[m\x1b[K + col] = slam_value;\n'}
+[7.492443] (occupub) StderrLine: {'line': b'      |                                                            \x1b[01;31m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[7.492620] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:92:60:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kusing OccupancyGrid = using OccupancyGrid = struct nav_msgs::msg::OccupancyGrid_<std::allocator<void> >\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kstruct nav_msgs::msg::OccupancyGrid_<std::allocator<void> >\x1b[m\x1b[K\xe2\x80\x99} has no member named \xe2\x80\x98\x1b[01m\x1b[Kwidth\x1b[m\x1b[K\xe2\x80\x99\n'}
+[7.492716] (occupub) StderrLine: {'line': b'   92 |                         merged_grid.data[row * merged_grid.\x1b[01;31m\x1b[Kwidth\x1b[m\x1b[K + col] = lane_value;\n'}
+[7.492836] (occupub) StderrLine: {'line': b'      |                                                            \x1b[01;31m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[7.492934] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:94:60:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kusing OccupancyGrid = using OccupancyGrid = struct nav_msgs::msg::OccupancyGrid_<std::allocator<void> >\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kstruct nav_msgs::msg::OccupancyGrid_<std::allocator<void> >\x1b[m\x1b[K\xe2\x80\x99} has no member named \xe2\x80\x98\x1b[01m\x1b[Kwidth\x1b[m\x1b[K\xe2\x80\x99\n'}
+[7.493077] (occupub) StderrLine: {'line': b'   94 |                         merged_grid.data[row * merged_grid.\x1b[01;31m\x1b[Kwidth\x1b[m\x1b[K + col] = lane_value & slam_value;\n'}
+[7.493209] (occupub) StderrLine: {'line': b'      |                                                            \x1b[01;31m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[7.493325] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:61:68:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kcv_cm\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[7.493437] (occupub) StderrLine: {'line': b'   61 |         OccupancyGrid merge_SLAM_and_LaneLine(\x1b[01;35m\x1b[Kconst OccupancyGrid &cv_cm\x1b[m\x1b[K, const &slam_cm) {\n'}
+[7.493559] (occupub) StderrLine: {'line': b'      |                                               \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~~~^~~~~\x1b[m\x1b[K\n'}
+[7.493623] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid MergeService::populate_cv_occupancy_grid(const OccupancyGrid&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[7.493697] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:118:43:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kbase operand of \xe2\x80\x98\x1b[01m\x1b[K->\x1b[m\x1b[K\xe2\x80\x99 has non-pointer type \xe2\x80\x98\x1b[01m\x1b[Kconst OccupancyGrid\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kconst nav_msgs::msg::OccupancyGrid_<std::allocator<void> >\x1b[m\x1b[K\xe2\x80\x99}\n'}
+[7.493848] (occupub) StderrLine: {'line': b'  118 |             cv_occupancy_grid.data = cv_cm\x1b[01;31m\x1b[K->\x1b[m\x1b[Kdata;\n'}
+[7.493987] (occupub) StderrLine: {'line': b'      |                                           \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[7.494118] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:119:43:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kbase operand of \xe2\x80\x98\x1b[01m\x1b[K->\x1b[m\x1b[K\xe2\x80\x99 has non-pointer type \xe2\x80\x98\x1b[01m\x1b[Kconst OccupancyGrid\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kconst nav_msgs::msg::OccupancyGrid_<std::allocator<void> >\x1b[m\x1b[K\xe2\x80\x99}\n'}
+[7.494185] (occupub) StderrLine: {'line': b'  119 |             cv_occupancy_grid.info = cv_cm\x1b[01;31m\x1b[K->\x1b[m\x1b[Kinfo;\n'}
+[7.494238] (occupub) StderrLine: {'line': b'      |                                           \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[7.494290] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:120:45:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kbase operand of \xe2\x80\x98\x1b[01m\x1b[K->\x1b[m\x1b[K\xe2\x80\x99 has non-pointer type \xe2\x80\x98\x1b[01m\x1b[Kconst OccupancyGrid\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kconst nav_msgs::msg::OccupancyGrid_<std::allocator<void> >\x1b[m\x1b[K\xe2\x80\x99}\n'}
+[7.494346] (occupub) StderrLine: {'line': b'  120 |             cv_occupancy_grid.header = cv_cm\x1b[01;31m\x1b[K->\x1b[m\x1b[Kheader;\n'}
+[7.494422] (occupub) StderrLine: {'line': b'      |                                             \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[7.494515] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid MergeService::populate_sensors_occupancy_grid(const OccupancyGrid&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[7.494622] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:128:50:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kbase operand of \xe2\x80\x98\x1b[01m\x1b[K->\x1b[m\x1b[K\xe2\x80\x99 has non-pointer type \xe2\x80\x98\x1b[01m\x1b[Kconst OccupancyGrid\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kconst nav_msgs::msg::OccupancyGrid_<std::allocator<void> >\x1b[m\x1b[K\xe2\x80\x99}\n'}
+[7.494707] (occupub) StderrLine: {'line': b'  128 |             sensors_occupancy_grid.data = snsr_cm\x1b[01;31m\x1b[K->\x1b[m\x1b[Kdata;\n'}
+[7.494762] (occupub) StderrLine: {'line': b'      |                                                  \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[7.494843] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:129:50:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kbase operand of \xe2\x80\x98\x1b[01m\x1b[K->\x1b[m\x1b[K\xe2\x80\x99 has non-pointer type \xe2\x80\x98\x1b[01m\x1b[Kconst OccupancyGrid\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kconst nav_msgs::msg::OccupancyGrid_<std::allocator<void> >\x1b[m\x1b[K\xe2\x80\x99}\n'}
+[7.494965] (occupub) StderrLine: {'line': b'  129 |             sensors_occupancy_grid.info = snsr_cm\x1b[01;31m\x1b[K->\x1b[m\x1b[Kinfo;\n'}
+[7.495083] (occupub) StderrLine: {'line': b'      |                                                  \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[7.495166] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:130:52:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kbase operand of \xe2\x80\x98\x1b[01m\x1b[K->\x1b[m\x1b[K\xe2\x80\x99 has non-pointer type \xe2\x80\x98\x1b[01m\x1b[Kconst OccupancyGrid\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kconst nav_msgs::msg::OccupancyGrid_<std::allocator<void> >\x1b[m\x1b[K\xe2\x80\x99}\n'}
+[7.495333] (occupub) StderrLine: {'line': b'  130 |             sensors_occupancy_grid.header = snsr_cm\x1b[01;31m\x1b[K->\x1b[m\x1b[Kheader;\n'}
+[7.495500] (occupub) StderrLine: {'line': b'      |                                                    \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[7.501604] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid MergeService::global_occupancy()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[7.502037] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:150:38:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kx\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[7.502292] (occupub) StderrLine: {'line': b'  150 |                     global[i+(size_t)\x1b[01;31m\x1b[Kx\x1b[m\x1b[K][j+(size_t)y]=cv[i][j];\n'}
+[7.502475] (occupub) StderrLine: {'line': b'      |                                      \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[7.511657] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:150:51:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Ky\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Kyn\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[7.512107] (occupub) StderrLine: {'line': b'  150 |                     global[i+(size_t)x][j+(size_t)\x1b[01;31m\x1b[Ky\x1b[m\x1b[K]=cv[i][j];\n'}
+[7.512277] (occupub) StderrLine: {'line': b'      |                                                   \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[7.512380] (occupub) StderrLine: {'line': b'      |                                                   \x1b[32m\x1b[Kyn\x1b[m\x1b[K\n'}
+[7.522799] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:150:54:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kcv\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[7.523406] (occupub) StderrLine: {'line': b'  150 |                     global[i+(size_t)x][j+(size_t)y]=\x1b[01;31m\x1b[Kcv\x1b[m\x1b[K[i][j];\n'}
+[7.523687] (occupub) StderrLine: {'line': b'      |                                                      \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[7.523858] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid MergeService::publisher()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[7.524003] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:157:39:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno matching function for call to \xe2\x80\x98\x1b[01m\x1b[KMergeService::populate_cv_occupancy_grid()\x1b[m\x1b[K\xe2\x80\x99\n'}
+[7.524144] (occupub) StderrLine: {'line': b'  157 |             \x1b[01;31m\x1b[Kpopulate_cv_occupancy_grid(/*Subscribe to cv and put in here*/)\x1b[m\x1b[K;\n'}
+[7.524209] (occupub) StderrLine: {'line': b'      |             \x1b[01;31m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[7.524264] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:115:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Kvoid MergeService::populate_cv_occupancy_grid(const OccupancyGrid&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[7.524394] (occupub) StderrLine: {'line': b'  115 |         void \x1b[01;36m\x1b[Kpopulate_cv_occupancy_grid\x1b[m\x1b[K(const OccupancyGrid &cv_cm)\n'}
+[7.524489] (occupub) StderrLine: {'line': b'      |              \x1b[01;36m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[7.524560] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:115:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  candidate expects 1 argument, 0 provided\n'}
+[7.524615] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:158:44:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno matching function for call to \xe2\x80\x98\x1b[01m\x1b[KMergeService::populate_sensors_occupancy_grid()\x1b[m\x1b[K\xe2\x80\x99\n'}
+[7.524669] (occupub) StderrLine: {'line': b'  158 |             \x1b[01;31m\x1b[Kpopulate_sensors_occupancy_grid(/*Subscribe to snsr and put in here*/)\x1b[m\x1b[K;\n'}
+[7.524722] (occupub) StderrLine: {'line': b'      |             \x1b[01;31m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[7.524782] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:125:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Kvoid MergeService::populate_sensors_occupancy_grid(const OccupancyGrid&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[7.524884] (occupub) StderrLine: {'line': b'  125 |         void \x1b[01;36m\x1b[Kpopulate_sensors_occupancy_grid\x1b[m\x1b[K(const OccupancyGrid &snsr_cm)\n'}
+[7.524995] (occupub) StderrLine: {'line': b'      |              \x1b[01;36m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[7.525102] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:125:14:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  candidate expects 1 argument, 0 provided\n'}
+[7.543046] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:160:13:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kglobal_occupancy_grid_publisher\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[7.543529] (occupub) StderrLine: {'line': b'  160 |             \x1b[01;31m\x1b[Kglobal_occupancy_grid_publisher\x1b[m\x1b[K->publish(global); // TODO\n'}
+[7.543713] (occupub) StderrLine: {'line': b'      |             \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[7.581526] (-) TimerEvent: {}
+[7.682104] (-) TimerEvent: {}
+[7.782723] (-) TimerEvent: {}
+[7.883550] (-) TimerEvent: {}
+[7.984351] (-) TimerEvent: {}
+[8.085169] (-) TimerEvent: {}
+[8.185813] (-) TimerEvent: {}
+[8.286556] (-) TimerEvent: {}
+[8.387321] (-) TimerEvent: {}
+[8.487887] (-) TimerEvent: {}
+[8.588576] (-) TimerEvent: {}
+[8.689318] (-) TimerEvent: {}
+[8.757536] (occupub) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/merge_costmap_sub.dir/build.make:76: CMakeFiles/merge_costmap_sub.dir/src/merge_costmap.cpp.o] Error 1\n'}
+[8.758094] (occupub) StderrLine: {'line': b'gmake[1]: *** [CMakeFiles/Makefile2:165: CMakeFiles/merge_costmap_sub.dir/all] Error 2\n'}
+[8.758537] (occupub) StderrLine: {'line': b'gmake: *** [Makefile:146: all] Error 2\n'}
+[8.762968] (occupub) CommandEnded: {'returncode': 2}
+[8.789586] (-) TimerEvent: {}
+[8.890723] (-) TimerEvent: {}
+[8.925667] (occupub) JobEnded: {'identifier': 'occupub', 'rc': 2}
+[8.938345] (-) EventReactorShutdown: {}
