@@ -2,6 +2,7 @@
 #include "std_msgs/msg/string.hpp"
 #include "nav_msgs/msg/occupancy_grid.hpp"
 
+//Map generator for SNSR
 class OccupancyGridGenerator : public rclcpp::Node
 {
 public:
@@ -22,7 +23,7 @@ private:
         // Populate grid with random values (0 or 1)
         for (int i = 0; i < width * height; ++i)
         {
-            gridData[i] = (rand() % 2) == 0 ? 0 : 1;
+            gridData[i] = rand() % 3 == 0 ? 0 : (rand() % 2 == 1 ? 1 : -1);
         }
 
         // Create the OccupancyGrid message
@@ -102,6 +103,7 @@ int main(int argc, char *argv[])
     auto node = std::make_shared<OccupancyGridGenerator>();
     auto bigNode = std::make_shared<BigOccupancyGridPublisher>();
     rclcpp::spin(node);
+    rclcpp::spin(bigNode);
     rclcpp::shutdown();
     return 0;
 }

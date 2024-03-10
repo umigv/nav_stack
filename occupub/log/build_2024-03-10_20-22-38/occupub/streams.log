@@ -1,0 +1,22 @@
+[0.085s] Invoking command in '/home/umarv/ws/src/nav_stack/occupub/build/occupub': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/umarv/ws/src/nav_stack/occupub -DCMAKE_INSTALL_PREFIX=/home/umarv/ws/src/nav_stack/occupub/install/occupub
+[0.097s] -- Found ament_cmake: 1.3.5 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.499s] -- Found ament_lint_auto: 0.12.8 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[0.684s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[0.684s] -- Configured cppcheck include dirs: 
+[0.684s] -- Configured cppcheck exclude dirs and/or files: 
+[0.685s] -- Added test 'flake8' to check Python code syntax and style conventions
+[0.689s] -- Added test 'lint_cmake' to check CMake code style
+[0.690s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[0.696s] -- Added test 'uncrustify' to check C / C++ code style
+[0.696s] -- Configured uncrustify additional arguments: 
+[0.698s] -- Added test 'xmllint' to check XML markup files
+[0.699s] [31mCMake Error at /opt/ros/humble/share/ament_cmake_target_dependencies/cmake/ament_target_dependencies.cmake:77 (message):
+[0.699s]   ament_target_dependencies() the passed package name 'geometry_msgs' was not
+[0.699s]   found before
+[0.699s] Call Stack (most recent call first):
+[0.699s]   CMakeLists.txt:29 (ament_target_dependencies)
+[0.700s] 
+[0.700s] [0m
+[0.700s] -- Configuring incomplete, errors occurred!
+[0.700s] See also "/home/umarv/ws/src/nav_stack/occupub/build/occupub/CMakeFiles/CMakeOutput.log".
+[0.704s] Invoked command in '/home/umarv/ws/src/nav_stack/occupub/build/occupub' returned '1': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/umarv/ws/src/nav_stack/occupub -DCMAKE_INSTALL_PREFIX=/home/umarv/ws/src/nav_stack/occupub/install/occupub

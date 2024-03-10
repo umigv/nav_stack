@@ -1,0 +1,4 @@
+source;share/cv-integration/local_setup.bash
+source;share/cv-integration/local_setup.dsv
+source;share/cv-integration/local_setup.sh
+source;share/cv-integration/local_setup.zsh

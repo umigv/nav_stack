@@ -48,7 +48,7 @@ private:
         // Populate grid with random values (0 or 1)
         for (int i = 0; i < width * height; ++i)
         {
-            gridData[i] = (rand() % 2) == 0 ? 0 : 1;
+            gridData[i] = rand() % 3 == 0 ? 0 : (rand() % 2 == 0 ? 1 : -1);
         }
 
         // Create the OccupancyGrid message

@@ -8,7 +8,7 @@ class SensorsMapSubscriber(Node):
         super().__init__('sensors_map_subscriber') # TODO: FIgure out the real topic
         self.subscription = self.create_subscription(
             String,
-            'goofy_ahh_topic',
+            'cv_grid_out',
             self.callback,
             10)
         self.subscription  # prevent unused variable warning
@@ -22,7 +22,7 @@ class CVMapSubscriber(Node):
         super().__init__('cv_map_subscriber') # TODO: Figure out the real topic
         self.subscription = self.create_subscription(
             String,
-            'goofy_ahh_topic',
+            'snsr_grid_out',
             self.callback,
             10)
         self.subscription  # prevent unused variable warning

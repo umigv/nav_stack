@@ -81,9 +81,9 @@ class MergeService : public rclcpp::Node {
                         LL = -1, SLAM = 1 -> 1
                         LL = 0, SLAM = -1 -> 0
                         LL = 0, SLAM = 0 -> 0
-                        LL = 0, SLAM = 1 -> 0
+                        LL = 0, SLAM = 1 -> 1 OLD: 0
                         LL = 1, SLAM = -1 -> 1
-                        LL = 1, SLAM = 0 -> 0
+                        LL = 1, SLAM = 0 -> 1 OLD: 0
                         LL = 1, SLAM = 1 -> 1
                     */
                     if (lane_value == -1)

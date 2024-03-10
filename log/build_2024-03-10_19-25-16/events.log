@@ -1,0 +1,215 @@
+[0.000000] (-) TimerEvent: {}
+[0.001507] (cv-integration) JobQueued: {'identifier': 'cv-integration', 'dependencies': OrderedDict()}
+[0.002142] (cv-integration) JobStarted: {'identifier': 'cv-integration'}
+[0.087895] (cv-integration) JobProgress: {'identifier': 'cv-integration', 'progress': 'cmake'}
+[0.088663] (cv-integration) Command: {'cmd': ['/usr/bin/cmake', '/home/umarv/ws/src/nav_stack', '-DCMAKE_INSTALL_PREFIX=/home/umarv/ws/src/nav_stack/install/cv-integration'], 'cwd': '/home/umarv/ws/src/nav_stack/build/cv-integration', 'env': OrderedDict([('HOSTNAME', 'umarv-ros2'), ('GIT_ASKPASS', '/home/umarv/.vscode-server/bin/019f4d1419fbc8219a181fab7892ebccf7ee29a2/extensions/git/dist/askpass.sh'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib:/usr/lib/wsl/lib'), ('BROWSER', '/home/umarv/.vscode-server/bin/019f4d1419fbc8219a181fab7892ebccf7ee29a2/bin/helpers/browser.sh'), ('HOME', '/home/umarv'), ('OLDPWD', '/home/umarv/ws/src'), ('TERM_PROGRAM_VERSION', '1.87.0'), ('VSCODE_IPC_HOOK_CLI', '/mnt/wslg/runtime-dir/vscode-ipc-15b5fafd-b953-45ad-8fa9-5df5756bbb78.sock'), ('ROS_PYTHON_VERSION', '3'), ('VSCODE_GIT_ASKPASS_MAIN', '/home/umarv/.vscode-server/bin/019f4d1419fbc8219a181fab7892ebccf7ee29a2/extensions/git/dist/askpass-main.js'), ('VSCODE_GIT_ASKPASS_NODE', '/home/umarv/.vscode-server/bin/019f4d1419fbc8219a181fab7892ebccf7ee29a2/node'), ('COLORTERM', 'truecolor'), ('REMOTE_CONTAINERS', 'true'), ('_colcon_cd_root', '/opt/ros/humble/'), ('WAYLAND_DISPLAY', 'wayland-0'), ('ROS_DISTRO', 'humble'), ('REMOTE_CONTAINERS_IPC', '/tmp/vscode-remote-containers-ipc-74a9c0ba-6ab1-4991-9f69-b260951fda27.sock'), ('PULSE_SERVER', 'unix:/mnt/wslg/PulseServer'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm-256color'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/home/umarv/.vscode-server/bin/019f4d1419fbc8219a181fab7892ebccf7ee29a2/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('XDG_RUNTIME_DIR', '/mnt/wslg/runtime-dir'), ('REMOTE_CONTAINERS_SOCKETS', '["/tmp/.X11-unix/X1","/home/umarv/.gnupg/S.gpg-agent"]'), ('DISPLAY', ':0'), ('LANG', 'C.UTF-8'), ('LIBVA_DRIVER_NAME', 'd3d12'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/mnt/wslg/runtime-dir/vscode-git-4dcd6d337b.sock'), ('TERM_PROGRAM', 'vscode'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('REMOTE_CONTAINERS_DISPLAY_SOCK', '/tmp/.X11-unix/X1'), ('SHELL', '/bin/sh'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('PWD', '/home/umarv/ws/src/nav_stack/build/cv-integration'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[0.098753] (-) TimerEvent: {}
+[0.199483] (-) TimerEvent: {}
+[0.300333] (-) TimerEvent: {}
+[0.406685] (-) TimerEvent: {}
+[0.508765] (-) TimerEvent: {}
+[0.566083] (cv-integration) StdoutLine: {'line': b'-- The C compiler identification is GNU 11.4.0\n'}
+[0.609076] (-) TimerEvent: {}
+[0.710131] (-) TimerEvent: {}
+[0.806563] (cv-integration) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 11.4.0\n'}
+[0.810391] (-) TimerEvent: {}
+[0.840750] (cv-integration) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.910971] (-) TimerEvent: {}
+[0.977331] (cv-integration) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.988546] (cv-integration) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[0.989825] (cv-integration) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.991609] (cv-integration) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.998392] (cv-integration) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[1.011177] (-) TimerEvent: {}
+[1.107152] (cv-integration) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[1.111392] (-) TimerEvent: {}
+[1.116196] (cv-integration) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[1.116774] (cv-integration) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[1.117733] (cv-integration) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[1.169534] (cv-integration) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.5 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[1.211640] (-) TimerEvent: {}
+[1.312192] (-) TimerEvent: {}
+[1.412785] (-) TimerEvent: {}
+[1.482058] (cv-integration) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3.10 (found version "3.10.12") found components: Interpreter \n'}
+[1.512987] (-) TimerEvent: {}
+[1.613538] (-) TimerEvent: {}
+[1.714178] (-) TimerEvent: {}
+[1.728236] (cv-integration) StdoutLine: {'line': b'-- Found rclcpp: 16.0.6 (/opt/ros/humble/share/rclcpp/cmake)\n'}
+[1.814480] (-) TimerEvent: {}
+[1.915180] (-) TimerEvent: {}
+[1.925704] (cv-integration) StdoutLine: {'line': b'-- Found rosidl_generator_c: 3.1.5 (/opt/ros/humble/share/rosidl_generator_c/cmake)\n'}
+[1.952586] (cv-integration) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.5 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[1.979096] (cv-integration) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 3.1.5 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)\n'}
+[2.015425] (-) TimerEvent: {}
+[2.029789] (cv-integration) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[2.092850] (cv-integration) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[2.115675] (-) TimerEvent: {}
+[2.216214] (-) TimerEvent: {}
+[2.273640] (cv-integration) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 6.1.1 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)\n'}
+[2.283854] (cv-integration) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 6.2.4 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)\n'}
+[2.316405] (-) TimerEvent: {}
+[2.416932] (-) TimerEvent: {}
+[2.517697] (-) TimerEvent: {}
+[2.520089] (cv-integration) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  \n'}
+[2.571255] (cv-integration) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/humble/include  \n'}
+[2.617898] (-) TimerEvent: {}
+[2.661030] (cv-integration) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[2.717723] (cv-integration) StdoutLine: {'line': b'-- Looking for pthread.h\n'}
+[2.718160] (-) TimerEvent: {}
+[2.818756] (-) TimerEvent: {}
+[2.898359] (cv-integration) StdoutLine: {'line': b'-- Looking for pthread.h - found\n'}
+[2.899367] (cv-integration) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n'}
+[2.919253] (-) TimerEvent: {}
+[3.012207] (cv-integration) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success\n'}
+[3.013640] (cv-integration) StdoutLine: {'line': b'-- Found Threads: TRUE  \n'}
+[3.019493] (-) TimerEvent: {}
+[3.120276] (-) TimerEvent: {}
+[3.221131] (-) TimerEvent: {}
+[3.321856] (-) TimerEvent: {}
+[3.422517] (-) TimerEvent: {}
+[3.504691] (cv-integration) StdoutLine: {'line': b'-- Found nav_msgs: 4.2.3 (/opt/ros/humble/share/nav_msgs/cmake)\n'}
+[3.522747] (-) TimerEvent: {}
+[3.623279] (-) TimerEvent: {}
+[3.723890] (-) TimerEvent: {}
+[3.802297] (cv-integration) StdoutLine: {'line': b'-- Configuring done\n'}
+[3.824107] (-) TimerEvent: {}
+[3.925751] (-) TimerEvent: {}
+[4.026491] (-) TimerEvent: {}
+[4.063649] (cv-integration) StdoutLine: {'line': b'-- Generating done\n'}
+[4.066392] (cv-integration) StdoutLine: {'line': b'-- Build files have been written to: /home/umarv/ws/src/nav_stack/build/cv-integration\n'}
+[4.091184] (cv-integration) CommandEnded: {'returncode': 0}
+[4.092568] (cv-integration) JobProgress: {'identifier': 'cv-integration', 'progress': 'build'}
+[4.094454] (cv-integration) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/umarv/ws/src/nav_stack/build/cv-integration', '--', '-j8', '-l8'], 'cwd': '/home/umarv/ws/src/nav_stack/build/cv-integration', 'env': OrderedDict([('HOSTNAME', 'umarv-ros2'), ('GIT_ASKPASS', '/home/umarv/.vscode-server/bin/019f4d1419fbc8219a181fab7892ebccf7ee29a2/extensions/git/dist/askpass.sh'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib:/usr/lib/wsl/lib'), ('BROWSER', '/home/umarv/.vscode-server/bin/019f4d1419fbc8219a181fab7892ebccf7ee29a2/bin/helpers/browser.sh'), ('HOME', '/home/umarv'), ('OLDPWD', '/home/umarv/ws/src'), ('TERM_PROGRAM_VERSION', '1.87.0'), ('VSCODE_IPC_HOOK_CLI', '/mnt/wslg/runtime-dir/vscode-ipc-15b5fafd-b953-45ad-8fa9-5df5756bbb78.sock'), ('ROS_PYTHON_VERSION', '3'), ('VSCODE_GIT_ASKPASS_MAIN', '/home/umarv/.vscode-server/bin/019f4d1419fbc8219a181fab7892ebccf7ee29a2/extensions/git/dist/askpass-main.js'), ('VSCODE_GIT_ASKPASS_NODE', '/home/umarv/.vscode-server/bin/019f4d1419fbc8219a181fab7892ebccf7ee29a2/node'), ('COLORTERM', 'truecolor'), ('REMOTE_CONTAINERS', 'true'), ('_colcon_cd_root', '/opt/ros/humble/'), ('WAYLAND_DISPLAY', 'wayland-0'), ('ROS_DISTRO', 'humble'), ('REMOTE_CONTAINERS_IPC', '/tmp/vscode-remote-containers-ipc-74a9c0ba-6ab1-4991-9f69-b260951fda27.sock'), ('PULSE_SERVER', 'unix:/mnt/wslg/PulseServer'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm-256color'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/home/umarv/.vscode-server/bin/019f4d1419fbc8219a181fab7892ebccf7ee29a2/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('XDG_RUNTIME_DIR', '/mnt/wslg/runtime-dir'), ('REMOTE_CONTAINERS_SOCKETS', '["/tmp/.X11-unix/X1","/home/umarv/.gnupg/S.gpg-agent"]'), ('DISPLAY', ':0'), ('LANG', 'C.UTF-8'), ('LIBVA_DRIVER_NAME', 'd3d12'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/mnt/wslg/runtime-dir/vscode-git-4dcd6d337b.sock'), ('TERM_PROGRAM', 'vscode'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('REMOTE_CONTAINERS_DISPLAY_SOCK', '/tmp/.X11-unix/X1'), ('SHELL', '/bin/sh'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('PWD', '/home/umarv/ws/src/nav_stack/build/cv-integration'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[4.126761] (-) TimerEvent: {}
+[4.168042] (cv-integration) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/cv-integration.dir/grid_generator.cpp.o\x1b[0m\n'}
+[4.226954] (-) TimerEvent: {}
+[4.327927] (-) TimerEvent: {}
+[4.428651] (-) TimerEvent: {}
+[4.529633] (-) TimerEvent: {}
+[4.630562] (-) TimerEvent: {}
+[4.731211] (-) TimerEvent: {}
+[4.831716] (-) TimerEvent: {}
+[4.932328] (-) TimerEvent: {}
+[5.032971] (-) TimerEvent: {}
+[5.133567] (-) TimerEvent: {}
+[5.234126] (-) TimerEvent: {}
+[5.334637] (-) TimerEvent: {}
+[5.435182] (-) TimerEvent: {}
+[5.535746] (-) TimerEvent: {}
+[5.636314] (-) TimerEvent: {}
+[5.736843] (-) TimerEvent: {}
+[5.837552] (-) TimerEvent: {}
+[5.938126] (-) TimerEvent: {}
+[6.038579] (-) TimerEvent: {}
+[6.139122] (-) TimerEvent: {}
+[6.239765] (-) TimerEvent: {}
+[6.340393] (-) TimerEvent: {}
+[6.441001] (-) TimerEvent: {}
+[6.541645] (-) TimerEvent: {}
+[6.642350] (-) TimerEvent: {}
+[6.743014] (-) TimerEvent: {}
+[6.843619] (-) TimerEvent: {}
+[6.944359] (-) TimerEvent: {}
+[7.045014] (-) TimerEvent: {}
+[7.148058] (-) TimerEvent: {}
+[7.248829] (-) TimerEvent: {}
+[7.349596] (-) TimerEvent: {}
+[7.450387] (-) TimerEvent: {}
+[7.550978] (-) TimerEvent: {}
+[7.651601] (-) TimerEvent: {}
+[7.752452] (-) TimerEvent: {}
+[7.853019] (-) TimerEvent: {}
+[7.953549] (-) TimerEvent: {}
+[8.054118] (-) TimerEvent: {}
+[8.154614] (-) TimerEvent: {}
+[8.255204] (-) TimerEvent: {}
+[8.355767] (-) TimerEvent: {}
+[8.456293] (-) TimerEvent: {}
+[8.556904] (-) TimerEvent: {}
+[8.657454] (-) TimerEvent: {}
+[8.758051] (-) TimerEvent: {}
+[8.858678] (-) TimerEvent: {}
+[8.959348] (-) TimerEvent: {}
+[9.059877] (-) TimerEvent: {}
+[9.160488] (-) TimerEvent: {}
+[9.261125] (-) TimerEvent: {}
+[9.361822] (-) TimerEvent: {}
+[9.462374] (-) TimerEvent: {}
+[9.562963] (-) TimerEvent: {}
+[9.663756] (-) TimerEvent: {}
+[9.764585] (-) TimerEvent: {}
+[9.865283] (-) TimerEvent: {}
+[9.965934] (-) TimerEvent: {}
+[10.066524] (-) TimerEvent: {}
+[10.167101] (-) TimerEvent: {}
+[10.267669] (-) TimerEvent: {}
+[10.368386] (-) TimerEvent: {}
+[10.468977] (-) TimerEvent: {}
+[10.569657] (-) TimerEvent: {}
+[10.670223] (-) TimerEvent: {}
+[10.771005] (-) TimerEvent: {}
+[10.871713] (-) TimerEvent: {}
+[10.972528] (-) TimerEvent: {}
+[11.073208] (-) TimerEvent: {}
+[11.173809] (-) TimerEvent: {}
+[11.274423] (-) TimerEvent: {}
+[11.375062] (-) TimerEvent: {}
+[11.475694] (-) TimerEvent: {}
+[11.547441] (cv-integration) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable cv-integration\x1b[0m\n'}
+[11.575886] (-) TimerEvent: {}
+[11.676556] (-) TimerEvent: {}
+[11.777406] (-) TimerEvent: {}
+[11.878301] (-) TimerEvent: {}
+[11.979269] (-) TimerEvent: {}
+[12.080451] (-) TimerEvent: {}
+[12.181519] (-) TimerEvent: {}
+[12.282289] (-) TimerEvent: {}
+[12.383293] (-) TimerEvent: {}
+[12.484061] (-) TimerEvent: {}
+[12.584882] (-) TimerEvent: {}
+[12.685739] (-) TimerEvent: {}
+[12.786659] (-) TimerEvent: {}
+[12.887485] (-) TimerEvent: {}
+[12.988283] (-) TimerEvent: {}
+[13.089299] (-) TimerEvent: {}
+[13.190076] (-) TimerEvent: {}
+[13.290896] (-) TimerEvent: {}
+[13.391540] (-) TimerEvent: {}
+[13.492468] (-) TimerEvent: {}
+[13.593209] (-) TimerEvent: {}
+[13.693974] (-) TimerEvent: {}
+[13.794775] (-) TimerEvent: {}
+[13.895353] (-) TimerEvent: {}
+[13.995973] (-) TimerEvent: {}
+[14.096638] (-) TimerEvent: {}
+[14.197377] (-) TimerEvent: {}
+[14.297910] (-) TimerEvent: {}
+[14.398502] (-) TimerEvent: {}
+[14.483300] (cv-integration) StdoutLine: {'line': b'[100%] Built target cv-integration\n'}
+[14.498427] (cv-integration) CommandEnded: {'returncode': 0}
+[14.501280] (-) TimerEvent: {}
+[14.529278] (cv-integration) JobProgress: {'identifier': 'cv-integration', 'progress': 'install'}
+[14.537970] (cv-integration) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/umarv/ws/src/nav_stack/build/cv-integration'], 'cwd': '/home/umarv/ws/src/nav_stack/build/cv-integration', 'env': OrderedDict([('HOSTNAME', 'umarv-ros2'), ('GIT_ASKPASS', '/home/umarv/.vscode-server/bin/019f4d1419fbc8219a181fab7892ebccf7ee29a2/extensions/git/dist/askpass.sh'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib:/usr/lib/wsl/lib'), ('BROWSER', '/home/umarv/.vscode-server/bin/019f4d1419fbc8219a181fab7892ebccf7ee29a2/bin/helpers/browser.sh'), ('HOME', '/home/umarv'), ('OLDPWD', '/home/umarv/ws/src'), ('TERM_PROGRAM_VERSION', '1.87.0'), ('VSCODE_IPC_HOOK_CLI', '/mnt/wslg/runtime-dir/vscode-ipc-15b5fafd-b953-45ad-8fa9-5df5756bbb78.sock'), ('ROS_PYTHON_VERSION', '3'), ('VSCODE_GIT_ASKPASS_MAIN', '/home/umarv/.vscode-server/bin/019f4d1419fbc8219a181fab7892ebccf7ee29a2/extensions/git/dist/askpass-main.js'), ('VSCODE_GIT_ASKPASS_NODE', '/home/umarv/.vscode-server/bin/019f4d1419fbc8219a181fab7892ebccf7ee29a2/node'), ('COLORTERM', 'truecolor'), ('REMOTE_CONTAINERS', 'true'), ('_colcon_cd_root', '/opt/ros/humble/'), ('WAYLAND_DISPLAY', 'wayland-0'), ('ROS_DISTRO', 'humble'), ('REMOTE_CONTAINERS_IPC', '/tmp/vscode-remote-containers-ipc-74a9c0ba-6ab1-4991-9f69-b260951fda27.sock'), ('PULSE_SERVER', 'unix:/mnt/wslg/PulseServer'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm-256color'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/home/umarv/.vscode-server/bin/019f4d1419fbc8219a181fab7892ebccf7ee29a2/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('XDG_RUNTIME_DIR', '/mnt/wslg/runtime-dir'), ('REMOTE_CONTAINERS_SOCKETS', '["/tmp/.X11-unix/X1","/home/umarv/.gnupg/S.gpg-agent"]'), ('DISPLAY', ':0'), ('LANG', 'C.UTF-8'), ('LIBVA_DRIVER_NAME', 'd3d12'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/mnt/wslg/runtime-dir/vscode-git-4dcd6d337b.sock'), ('TERM_PROGRAM', 'vscode'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('REMOTE_CONTAINERS_DISPLAY_SOCK', '/tmp/.X11-unix/X1'), ('SHELL', '/bin/sh'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('PWD', '/home/umarv/ws/src/nav_stack/build/cv-integration'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[14.545176] (cv-integration) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[14.546318] (cv-integration) StdoutLine: {'line': b'-- Installing: /home/umarv/ws/src/nav_stack/install/cv-integration/lib/cv-integration/cv-integration\n'}
+[14.547814] (cv-integration) StdoutLine: {'line': b'-- Set runtime path of "/home/umarv/ws/src/nav_stack/install/cv-integration/lib/cv-integration/cv-integration" to ""\n'}
+[14.548438] (cv-integration) StdoutLine: {'line': b'-- Installing: /home/umarv/ws/src/nav_stack/install/cv-integration/share/ament_index/resource_index/package_run_dependencies/cv-integration\n'}
+[14.548835] (cv-integration) StdoutLine: {'line': b'-- Installing: /home/umarv/ws/src/nav_stack/install/cv-integration/share/ament_index/resource_index/parent_prefix_path/cv-integration\n'}
+[14.549156] (cv-integration) StdoutLine: {'line': b'-- Installing: /home/umarv/ws/src/nav_stack/install/cv-integration/share/cv-integration/environment/ament_prefix_path.sh\n'}
+[14.549493] (cv-integration) StdoutLine: {'line': b'-- Installing: /home/umarv/ws/src/nav_stack/install/cv-integration/share/cv-integration/environment/ament_prefix_path.dsv\n'}
+[14.549620] (cv-integration) StdoutLine: {'line': b'-- Installing: /home/umarv/ws/src/nav_stack/install/cv-integration/share/cv-integration/environment/path.sh\n'}
+[14.550051] (cv-integration) StdoutLine: {'line': b'-- Installing: /home/umarv/ws/src/nav_stack/install/cv-integration/share/cv-integration/environment/path.dsv\n'}
+[14.551262] (cv-integration) StdoutLine: {'line': b'-- Installing: /home/umarv/ws/src/nav_stack/install/cv-integration/share/cv-integration/local_setup.bash\n'}
+[14.551643] (cv-integration) StdoutLine: {'line': b'-- Installing: /home/umarv/ws/src/nav_stack/install/cv-integration/share/cv-integration/local_setup.sh\n'}
+[14.551910] (cv-integration) StdoutLine: {'line': b'-- Installing: /home/umarv/ws/src/nav_stack/install/cv-integration/share/cv-integration/local_setup.zsh\n'}
+[14.552002] (cv-integration) StdoutLine: {'line': b'-- Installing: /home/umarv/ws/src/nav_stack/install/cv-integration/share/cv-integration/local_setup.dsv\n'}
+[14.552105] (cv-integration) StdoutLine: {'line': b'-- Installing: /home/umarv/ws/src/nav_stack/install/cv-integration/share/cv-integration/package.dsv\n'}
+[14.553031] (cv-integration) StdoutLine: {'line': b'-- Installing: /home/umarv/ws/src/nav_stack/install/cv-integration/share/ament_index/resource_index/packages/cv-integration\n'}
+[14.553320] (cv-integration) StdoutLine: {'line': b'-- Installing: /home/umarv/ws/src/nav_stack/install/cv-integration/share/cv-integration/cmake/cv-integrationConfig.cmake\n'}
+[14.553661] (cv-integration) StdoutLine: {'line': b'-- Installing: /home/umarv/ws/src/nav_stack/install/cv-integration/share/cv-integration/cmake/cv-integrationConfig-version.cmake\n'}
+[14.553765] (cv-integration) StdoutLine: {'line': b'-- Installing: /home/umarv/ws/src/nav_stack/install/cv-integration/share/cv-integration/package.xml\n'}
+[14.555740] (cv-integration) CommandEnded: {'returncode': 0}
+[14.601532] (-) TimerEvent: {}
+[14.702085] (cv-integration) JobEnded: {'identifier': 'cv-integration', 'rc': 0}
+[14.703486] (-) TimerEvent: {}
+[14.703650] (-) EventReactorShutdown: {}

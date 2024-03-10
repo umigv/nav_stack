@@ -1,0 +1,35 @@
+[0.106s] Invoking command in '/home/umarv/ws/src/nav_stack/cv_grid/build/cv_grid': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/umarv/ws/src/nav_stack/cv_grid -DCMAKE_INSTALL_PREFIX=/home/umarv/ws/src/nav_stack/cv_grid/install/cv_grid
+[0.419s] -- The C compiler identification is GNU 11.4.0
+[0.674s] -- The CXX compiler identification is GNU 11.4.0
+[0.699s] -- Detecting C compiler ABI info
+[0.859s] -- Detecting C compiler ABI info - done
+[0.869s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.870s] -- Detecting C compile features
+[0.872s] -- Detecting C compile features - done
+[0.880s] -- Detecting CXX compiler ABI info
+[1.270s] -- Detecting CXX compiler ABI info - done
+[1.291s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[1.292s] -- Detecting CXX compile features
+[1.292s] -- Detecting CXX compile features - done
+[1.374s] -- Found ament_cmake: 1.3.5 (/opt/ros/humble/share/ament_cmake/cmake)
+[1.736s] -- Found Python3: /usr/bin/python3.10 (found version "3.10.12") found components: Interpreter 
+[1.985s] -- Found ament_lint_auto: 0.12.8 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[2.215s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[2.215s] -- Configured cppcheck include dirs: 
+[2.216s] -- Configured cppcheck exclude dirs and/or files: 
+[2.218s] -- Added test 'flake8' to check Python code syntax and style conventions
+[2.221s] -- Added test 'lint_cmake' to check CMake code style
+[2.223s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[2.231s] -- Added test 'uncrustify' to check C / C++ code style
+[2.231s] -- Configured uncrustify additional arguments: 
+[2.234s] -- Added test 'xmllint' to check XML markup files
+[2.240s] [31mCMake Error at /opt/ros/humble/share/ament_cmake_target_dependencies/cmake/ament_target_dependencies.cmake:77 (message):
+[2.240s]   ament_target_dependencies() the passed package name 'geometry_msgs' was not
+[2.240s]   found before
+[2.240s] Call Stack (most recent call first):
+[2.240s]   CMakeLists.txt:29 (ament_target_dependencies)
+[2.240s] 
+[2.240s] [0m
+[2.240s] -- Configuring incomplete, errors occurred!
+[2.240s] See also "/home/umarv/ws/src/nav_stack/cv_grid/build/cv_grid/CMakeFiles/CMakeOutput.log".
+[2.246s] Invoked command in '/home/umarv/ws/src/nav_stack/cv_grid/build/cv_grid' returned '1': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/umarv/ws/src/nav_stack/cv_grid -DCMAKE_INSTALL_PREFIX=/home/umarv/ws/src/nav_stack/cv_grid/install/cv_grid
