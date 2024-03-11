@@ -1,16 +1,20 @@
 #pragma once
 #include "Point.hpp"
-#include "rclcpp/rclcpp.hpp"
+#include <cmath>
 
-class Map{
+class MapFrame{
     public:
-    Map(const Point& origin, long double width, long double height, long double resolution){}
+    MapFrame(const Point& origin, long double width, long double height, long double resolution);
 
-    Point constrainPoint(const Point& point);
+    MapFrame(const MapFrame& rhs);
+
+    MapFrame& operator=(const MapFrame& rhs);
+
+    Point constrainPoint(const Point& point) const;
 
     private:
-    rclcpp::Subscription<sensor_msgs::msg::NavSatFix>::SharedPtr _waypoint_subscriber;
-
-    long double width;
-    long double height;
+    Point bottomLeft;
+    Point bottomRight;
+    Point topLeft;
+    Point topRight;
 };

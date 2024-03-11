@@ -23,9 +23,13 @@ public:
     static long double distanceBetween(const GPSCoordinate& current, const GPSCoordinate& target);
 
 private:
+    friend std::ostream& operator<<(std::ostream& os, const GPSCoordinate& gpsCoordinate);
+
     long double latitude;
     long double longitude;
 
     static const long double TERRESTRIAL_RADIUS_METER{6372797.56085};
     static const long double RADIANS_PER_DEGREE{3.14159265358979323846 / 180};
 };
+
+std::ostream& operator<<(std::ostream& os, const GPSCoordinate& gpsCoordinate);

@@ -1,6 +1,5 @@
 #pragma once
 #include "GPSCoordinate.hpp"
-#include <cmath>
 
 class Point{
     public:
@@ -8,14 +7,20 @@ class Point{
 
     constexpr Point(long double x, long double y) : x(x), y(y){}
 
-    constexpr Point(long double magnitude, long double theta) : x(magnitude * cos(theta)), y(magnitude * sin(theta)){}
+    Point(const Point& rhs) : x(rhs.x), y(rhs.y){}  
 
     Point(const GPSCoordinate& origin, const GPSCoordinate& destination){
         x = GPSCoordinate::distanceBetween(origin, GPSCoordinate(origin.getLatitude(), destination.getLongitude()));
         y = GPSCoordinate::distanceBetween(origin, GPSCoordinate(destination.getLatitude(), origin.getLongitude()));
-    }
 
-    Point(const Point& rhs) : x(rhs.x), y(rhs.y){}
+        if(origin.getLatitude() > destination.getLatitude()){
+            y *= -1;
+        }
+
+        if(origin.getLongitude() > destination.getLongitude()){
+            x *= -1;
+        }
+    }
 
     inline long double getX() const{
         return x;
@@ -33,7 +38,7 @@ class Point{
         this->y = y;
     }
 
-    void operator=(const Point& rhs);
+    Point& operator=(const Point& rhs);
 
     Point operator+(const Point& rhs) const;
 
@@ -60,6 +65,10 @@ class Point{
     Point rotateBy(long double theta) const;
 
     private:
+    friend std::ostream& operator<<(std::ostream& os, const Point& point);
+
     long double x{0.0};
     long double y{0.0};
 };
+
+std::ostream& operator<<(std::ostream& os, const Point& point);

@@ -14,3 +14,8 @@ long double GPSCoordinate::distanceBetween(const GPSCoordinate& current, const G
 
     return distance;
 }
+
+std::ostream& operator<<(std::ostream& os, const GPSCoordinate& gpsCoordinate){
+    os << "(" << gpsCoordinate.getLatitude() << ", " << gpsCoordinate.getLongitude() << ")";
+    return os;
+}

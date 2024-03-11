@@ -1,9 +1,12 @@
 #include "Point.hpp"
+#include <cmath>
 
-void Point::operator=(const Point& rhs) {
+Point& Point::operator=(const Point& rhs) {
     Point temp(rhs);
     std::swap(x, temp.x);
     std::swap(y, temp.y);
+
+    return *this;
 }
 
 Point Point::operator+(const Point& rhs) const {
@@ -52,4 +55,9 @@ Point Point::rotateBy(long double theta) const {
 
 Point Point::norm() const {
     return *this / magnitude();
+}
+
+std::ostream& operator<<(std::ostream& os, const Point& point) {
+    os << "(" << point.x << ", " << point.y << ")";
+    return os;
 }
