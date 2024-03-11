@@ -3,10 +3,10 @@
 const bool DEBUG = true;
 
 // Coordinate Class
-class Coordinate
+class GPSCoordinate
 {
 public:
-    Coordinate(double long lat, double long lon) 
+    GPSCoordinate(double long lat, double long lon) 
     : latitude(lat), longitude(lon)
     {
     }
