@@ -13,7 +13,7 @@ using std::placeholders::_1;
 
 class WaypointPublisher : public rclcpp::Node{
     public:
-    WaypointPublisher(std::ifstream& is, bool faceNorth = true) : Node("WaypointPublisher") : tfBuffer(), tfListener(tfBuffer){
+    WaypointPublisher() : Node("WaypointPublisher"), tfBuffer(this->get_clock()), tfListener(tfBuffer){
         mapInfoSubscriber = this->create_subscription<nav_msgs::msg::MapMetaData>("mapInfo", 10, std::bind(&WaypointPublisher::mapInfoCallback, this, _1));
         robotGPSSubscriber = this->create_subscription<sensor_msgs::msg::NavSatFix>("gps_coords", 10, std::bind(&WaypointPublisher::robotGPSCallback, this, _1));
     }
