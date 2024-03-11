@@ -1,5 +1,6 @@
 #pragma once
 #include "GPSCoordinate.hpp"
+#include "geometry_msgs/msg/pose_stamped.hpp"
 
 class Point{
     public:
@@ -63,6 +64,8 @@ class Point{
     Point norm() const;
 
     Point rotateBy(long double theta) const;
+
+    geometry_msgs::msg::PoseStamped toPoseStamped() const;
 
     private:
     friend std::ostream& operator<<(std::ostream& os, const Point& point);

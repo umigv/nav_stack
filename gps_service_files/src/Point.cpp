@@ -57,6 +57,20 @@ Point Point::norm() const {
     return *this / magnitude();
 }
 
+geometry_msgs::msg::PoseStamped Point::toPoseStamped() const{
+    geometry_msgs::msg::PoseStamped ret;
+    ret.pose.position.x = x;
+    ret.pose.position.y = y;
+    ret.pose.position.z = 0;
+    ret.pose.orientation.x = 0;
+    ret.pose.orientation.y = 0;
+    ret.pose.orientation.z = 0;
+    ret.pose.orientation.w = 1;
+
+    return ret;
+}
+
+
 std::ostream& operator<<(std::ostream& os, const Point& point) {
     os << "(" << point.x << ", " << point.y << ")";
     return os;
