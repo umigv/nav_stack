@@ -12,22 +12,33 @@ find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
+find_package(nav_msgs REQUIRED)
+find_package(tf2_ros REQUIRED)
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
 
-add_executable(waypoint_publisher 
+add_executable(waypoint_publisher
+  include/WaypointPublisher.hpp
+  include/GPSCoordinate.hpp
+  include/Point.hpp
+  include/MapFrame.hpp
+
   src/main.cpp
-  src/waypoint_publisher.cpp 
-  src/coordinate.cpp 
-  src/gps_data.cpp)
+  src/WaypointPublisher.cpp 
+  src/GPSCoordinate.cpp
+  src/Point.cpp
+  src/MapFrame.cpp 
+  )
 
 ament_target_dependencies(waypoint_publisher 
   rclcpp 
   std_msgs
   example_interfaces 
   sensor_msgs 
-  geometry_msgs)
+  geometry_msgs
+  nav_msgs
+  tf2_ros)
 
 install(TARGETS
 waypoint_publisher
