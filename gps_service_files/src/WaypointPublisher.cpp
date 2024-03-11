@@ -7,11 +7,11 @@ WaypointPublisher::WaypointPublisher() : Node("WaypointPublisher"), tfBuffer(thi
     waypointPublisher = this->create_publisher<geometry_msgs::msg::PoseStamped>("waypoint", 1000);
     waypointUpdater = this->create_wall_timer(std::chrono::milliseconds(1000), std::bind(&WaypointPublisher::updateWaypoint, this));
 
-    this->declare_parameter("waypoints_file_path", "");
-    this->declare_parameter("facing_north", true);
+    this->declare_parameter("waypoints_file", "");
+    this->declare_parameter("face_north", true);
 
-    const std::string file = this->get_parameter("waypoints_file_path").as_string();
-    faceNorth = this->get_parameter("facing_north").as_bool();
+    const std::string file = this->get_parameter("waypoints_file").as_string();
+    faceNorth = this->get_parameter("face_north").as_bool();
     readWaypoints(file);
 }
 
@@ -81,8 +81,6 @@ void WaypointPublisher::updateWaypoint(){
 
     waypointPublisher->publish(waypoint.toPoseStamped());
 }
-
-    
 
 std::ostream& operator<<(std::ostream& os, const WaypointPublisher& waypointPublisher){
     os << "Upcoming GPS Waypoints: ";
