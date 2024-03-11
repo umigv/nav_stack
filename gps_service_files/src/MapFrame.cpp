@@ -1,4 +1,4 @@
-#include "MapFrame.hpp"
+#include "../include/MapFrame.hpp"
 
 MapFrame::MapFrame(const Point& origin, long double width, long double height, long double resolution){
     const long double dx = width * resolution;

@@ -1,4 +1,4 @@
-#include "Point.hpp"
+#include "../include/Point.hpp"
 #include <cmath>
 
 Point& Point::operator=(const Point& rhs) {

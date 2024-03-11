@@ -1,5 +1,4 @@
-#include <cmath>
-#include "GPSCoordinate.hpp"
+#include "../include/GPSCoordinate.hpp"
 
 long double GPSCoordinate::distanceBetween(const GPSCoordinate& current, const GPSCoordinate& target){
     const long double latNew = target.getLatitude() * RADIANS_PER_DEGREE;

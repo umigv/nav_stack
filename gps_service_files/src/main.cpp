@@ -1,6 +1,5 @@
 #include <iostream>
-
-#include "../include/waypoint_publisher.hpp"
+#include "../include/WaypointPublisher.hpp"
 
 int main(int argc, char * argv[])
 {
