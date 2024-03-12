@@ -1,6 +1,5 @@
 #pragma once
 #include "Point.hpp"
-#include <cmath>
 
 class MapFrame{
     public:

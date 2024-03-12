@@ -10,8 +10,6 @@
 #include "tf2_ros/buffer.h"
 #include "tf2_ros/transform_listener.h"
 
-using std::placeholders::_1;
-
 class WaypointPublisher : public rclcpp::Node{
     public:
     WaypointPublisher();

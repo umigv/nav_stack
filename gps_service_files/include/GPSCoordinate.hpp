@@ -1,5 +1,5 @@
 #pragma once
-#include<iostream>
+#include <iostream>
 #include <cmath>
 
 class GPSCoordinate{
@@ -33,7 +33,6 @@ private:
 
     long double latitude;
     long double longitude;
-
     static const constexpr long double TERRESTRIAL_RADIUS_METER{6372797.56085};
     static const constexpr long double RADIANS_PER_DEGREE{M_PI / 180};
 };

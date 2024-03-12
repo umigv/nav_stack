@@ -1,5 +1,5 @@
-#include "../include/Point.hpp"
 #include <cmath>
+#include "../include/Point.hpp"
 
 Point& Point::operator=(const Point& rhs) {
     Point temp(rhs);
