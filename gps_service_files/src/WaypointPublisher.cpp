@@ -1,5 +1,7 @@
-#include "../include/WaypointPublisher.hpp"
 #include <fstream>
+#include "../include/WaypointPublisher.hpp"
+
+using std::placeholders::_1;
 
 WaypointPublisher::WaypointPublisher() : Node("WaypointPublisher"), tfBuffer(this->get_clock()), tfListener(tfBuffer){
     this->declare_parameter("waypoints_file", "waypoints.txt");
@@ -10,9 +12,9 @@ WaypointPublisher::WaypointPublisher() : Node("WaypointPublisher"), tfBuffer(thi
     kEpsilon = this->get_parameter("change_waypoint_distance").as_double();
     readWaypoints(this->get_parameter("waypoints_file").as_string());
 
-    mapInfoSubscriber = this->create_subscription<nav_msgs::msg::MapMetaData>("mapInfo", 1000, std::bind(&WaypointPublisher::mapInfoCallback, this, _1));
-    robotGPSSubscriber = this->create_subscription<sensor_msgs::msg::NavSatFix>("gps_coords", 1000, std::bind(&WaypointPublisher::robotGPSCallback, this, _1));
-    waypointPublisher = this->create_publisher<geometry_msgs::msg::PoseStamped>("waypoint", 1000);
+    mapInfoSubscriber = this->create_subscription<nav_msgs::msg::MapMetaData>("mapInfo", 10, std::bind(&WaypointPublisher::mapInfoCallback, this, _1));
+    robotGPSSubscriber = this->create_subscription<sensor_msgs::msg::NavSatFix>("gps_coords", 10, std::bind(&WaypointPublisher::robotGPSCallback, this, _1));
+    waypointPublisher = this->create_publisher<geometry_msgs::msg::PoseStamped>("waypoint", 10);
     waypointUpdater = this->create_wall_timer(std::chrono::milliseconds(1000), std::bind(&WaypointPublisher::updateWaypoint, this));
 }
 
@@ -41,12 +43,12 @@ void WaypointPublisher::readWaypoints(const std::string& file){
     }
 }
 
-void WaypointPublisher::mapInfoCallback(const nav_msgs::msg::MapMetaData::SharedPtr msg){
-    frame = MapFrame(Point(msg->origin.position.x, msg->origin.position.y), msg->width, msg->height, msg->resolution);
+void WaypointPublisher::mapInfoCallback(const nav_msgs::msg::MapMetaData::SharedPtr map){
+    frame = MapFrame(Point(map->origin.position.x, map->origin.position.y), map->width, map->height, map->resolution);
 }
 
-void WaypointPublisher::robotGPSCallback(const sensor_msgs::msg::NavSatFix::SharedPtr msg){
-    robotGPS = GPSCoordinate(msg->latitude, msg->longitude);
+void WaypointPublisher::robotGPSCallback(const sensor_msgs::msg::NavSatFix::SharedPtr gpsCoordinate){
+    robotGPS = GPSCoordinate(gpsCoordinate->latitude, gpsCoordinate->longitude);
 }
 
 Point WaypointPublisher::getRobotPosition() const{
