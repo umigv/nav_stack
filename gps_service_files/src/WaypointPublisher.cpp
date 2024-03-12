@@ -2,17 +2,18 @@
 #include <fstream>
 
 WaypointPublisher::WaypointPublisher() : Node("WaypointPublisher"), tfBuffer(this->get_clock()), tfListener(tfBuffer){
+    this->declare_parameter("waypoints_file", "waypoint.txt");
+    this->declare_parameter("face_north", true);
+    this->declare_parameter("change_waypoint_distance", 2.0);
+
+    faceNorth = this->get_parameter("face_north").as_bool();
+    kEpsilon = this->get_parameter("change_waypoint_distance").as_double();
+    readWaypoints(this->get_parameter("waypoints_file").as_string());
+
     mapInfoSubscriber = this->create_subscription<nav_msgs::msg::MapMetaData>("mapInfo", 10, std::bind(&WaypointPublisher::mapInfoCallback, this, _1));
     robotGPSSubscriber = this->create_subscription<sensor_msgs::msg::NavSatFix>("gps_coords", 10, std::bind(&WaypointPublisher::robotGPSCallback, this, _1));
     waypointPublisher = this->create_publisher<geometry_msgs::msg::PoseStamped>("waypoint", 1000);
     waypointUpdater = this->create_wall_timer(std::chrono::milliseconds(1000), std::bind(&WaypointPublisher::updateWaypoint, this));
-
-    this->declare_parameter("waypoints_file", "");
-    this->declare_parameter("face_north", true);
-
-    const std::string file = this->get_parameter("waypoints_file").as_string();
-    faceNorth = this->get_parameter("face_north").as_bool();
-    readWaypoints(file);
 }
 
 void WaypointPublisher::readWaypoints(const std::string& file){
