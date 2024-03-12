@@ -10,7 +10,7 @@ WaypointPublisher::WaypointPublisher() : Node("WaypointPublisher"), tfBuffer(thi
 
     faceNorth = this->get_parameter("face_north").as_bool();
     kEpsilon = this->get_parameter("change_waypoint_distance").as_double();
-    const char* file = this->get_parameter("waypoints_file").as_string().c_str();\
+    const char* file = this->get_parameter("waypoints_file").as_string().c_str();
     std::ifstream is(file);
     readWaypoints(is);
 
