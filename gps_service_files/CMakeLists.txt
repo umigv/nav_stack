@@ -14,9 +14,6 @@ find_package(sensor_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(nav_msgs REQUIRED)
 find_package(tf2_ros REQUIRED)
-# uncomment the following section in order to fill in
-# further dependencies manually.
-# find_package(<dependency> REQUIRED)
 
 add_executable(waypoint_publisher
   include/WaypointPublisher.hpp
@@ -29,7 +26,7 @@ add_executable(waypoint_publisher
   src/GPSCoordinate.cpp
   src/Point.cpp
   src/MapFrame.cpp 
-  )
+)
 
 ament_target_dependencies(waypoint_publisher 
   rclcpp 
@@ -38,16 +35,17 @@ ament_target_dependencies(waypoint_publisher
   sensor_msgs 
   geometry_msgs
   nav_msgs
-  tf2_ros)
+  tf2_ros
+)
 
 install(TARGETS
-waypoint_publisher
-DESTINATION lib/${PROJECT_NAME}
+  waypoint_publisher
+  DESTINATION lib/${PROJECT_NAME}
 )
 
 install(
-DIRECTORY launch
-DESTINATION share/${PROJECT_NAME}
+  DIRECTORY launch
+  DESTINATION share/${PROJECT_NAME}
 )
 
 if(BUILD_TESTING)
@@ -56,16 +54,5 @@ if(BUILD_TESTING)
   set(ament_cmake_cpplint_FOUND TRUE)
   ament_lint_auto_find_test_dependencies()
 endif()
-
-
-#find_package(rosidl_default_generators REQUIRED)
-#set(srv_files "srv/GoalRequestService.srv")
-
-#rosidl_generate_interfaces(${PROJECT_NAME}
-#   ${srv_files}
-#  "srv/GoalRequestService.srv"
-#)
-#ament_export_dependencies(rosidl_default_runtime)
-
 
 ament_package()
