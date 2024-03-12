@@ -14,8 +14,8 @@ WaypointPublisher::WaypointPublisher() : Node("WaypointPublisher"), tfBuffer(thi
 
     mapInfoSubscriber = this->create_subscription<nav_msgs::msg::MapMetaData>("mapInfo", 10, std::bind(&WaypointPublisher::mapInfoCallback, this, _1));
     robotGPSSubscriber = this->create_subscription<sensor_msgs::msg::NavSatFix>("gps_coords", 10, std::bind(&WaypointPublisher::robotGPSCallback, this, _1));
-    waypointPublisher = this->create_publisher<geometry_msgs::msg::PoseStamped>("waypoint", 10);
-    waypointUpdater = this->create_wall_timer(std::chrono::milliseconds(1000), std::bind(&WaypointPublisher::updateWaypoint, this));
+    goalPosePublisher = this->create_publisher<geometry_msgs::msg::PoseStamped>("goal_pose", 10);
+    goalPoseUpdater = this->create_wall_timer(std::chrono::milliseconds(1000), std::bind(&WaypointPublisher::updateGoalPose, this));
 }
 
 void WaypointPublisher::readWaypoints(const std::string& file){
@@ -65,24 +65,24 @@ Point WaypointPublisher::getRobotPosition() const{
     return Point(transform.transform.translation.x, transform.transform.translation.y);
 }
 
-void WaypointPublisher::updateWaypoint(){
+void WaypointPublisher::updateGoalPose(){
     if(waypoints.empty()){
         return;
     }
 
     const Point robotPosition = getRobotPosition();
-    const Point waypoint = frame.constrainPoint(robotPosition + Point(robotGPS, waypoints.front()));
+    const Point goal = frame.constrainPoint(robotPosition + Point(robotGPS, waypoints.front()));
 
     if(!faceNorth){
-        waypoint.rotateBy(M_PI);
+        goal.rotateBy(M_PI);
     }
 
-    if(robotPosition.distanceTo(waypoint) < kEpsilon){
+    if(robotPosition.distanceTo(goal) < kEpsilon){
         waypoints.pop_front();
         return;
     }
 
-    waypointPublisher->publish(waypoint.toPoseStamped());
+    goalPosePublisher->publish(goal.toPoseStamped());
 }
 
 std::ostream& operator<<(std::ostream& os, const WaypointPublisher& waypointPublisher){

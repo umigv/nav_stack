@@ -25,7 +25,7 @@ class WaypointPublisher : public rclcpp::Node{
 
     Point getRobotPosition() const;
 
-    void updateWaypoint();
+    void updateGoalPose();
 
     // Map Subscriber
     rclcpp::Subscription<nav_msgs::msg::MapMetaData>::SharedPtr mapInfoSubscriber;
@@ -40,8 +40,8 @@ class WaypointPublisher : public rclcpp::Node{
     tf2_ros::TransformListener tfListener;
 
     // Publisher
-    rclcpp::TimerBase::SharedPtr waypointUpdater;
-    rclcpp::Publisher<geometry_msgs::msg::PoseStamped>::SharedPtr waypointPublisher;
+    rclcpp::TimerBase::SharedPtr goalPoseUpdater;
+    rclcpp::Publisher<geometry_msgs::msg::PoseStamped>::SharedPtr goalPosePublisher;
 
     // Data
     std::deque<GPSCoordinate> waypoints;
