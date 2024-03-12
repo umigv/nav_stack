@@ -5,11 +5,11 @@ using std::placeholders::_1;
 
 WaypointPublisher::WaypointPublisher() : Node("WaypointPublisher"), tfBuffer(this->get_clock()), tfListener(tfBuffer){
     this->declare_parameter("face_north", true);
-    this->declare_parameter("change_waypoint_distance", 2.0);
+    this->declare_parameter("goal_tolerance", 2.0);
     this->declare_parameter("waypoints_file", "waypoints.txt");
 
     faceNorth = this->get_parameter("face_north").as_bool();
-    kEpsilon = this->get_parameter("change_waypoint_distance").as_double();
+    kEpsilon = this->get_parameter("goal_tolerance").as_double();
     const char* file = this->get_parameter("waypoints_file").as_string().c_str();
     std::ifstream is(file);
     readWaypoints(is);
