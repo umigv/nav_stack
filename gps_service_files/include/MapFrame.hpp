@@ -11,7 +11,7 @@ class MapFrame{
 
     MapFrame& operator=(const MapFrame& rhs);
 
-    Point constrainPoint(const Point& point) const;
+    Point constrainToMap(const Point& point) const;
 
     private:
     Point bottomLeft;

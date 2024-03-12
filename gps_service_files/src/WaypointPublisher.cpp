@@ -71,7 +71,7 @@ void WaypointPublisher::updateGoalPose(){
     }
 
     const Point robotPosition = getRobotPosition();
-    const Point goal = frame.constrainPoint(robotPosition + Point(robotGPS, waypoints.front()));
+    const Point goal = frame.constrainToMap(robotPosition + Point(robotGPS, waypoints.front()));
 
     if(!faceNorth){
         goal.rotateBy(M_PI);

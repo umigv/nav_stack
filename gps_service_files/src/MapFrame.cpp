@@ -27,7 +27,7 @@ MapFrame& MapFrame::operator=(const MapFrame& rhs){
     return *this;
 }
 
-Point MapFrame::constrainPoint(const Point& point) const{
+Point MapFrame::constrainToMap(const Point& point) const{
     Point ret(point);
 
     ret.setX(std::max(bottomLeft.getX() + 0.25, ret.getX()));
