@@ -2,7 +2,7 @@
 #include <fstream>
 
 WaypointPublisher::WaypointPublisher() : Node("WaypointPublisher"), tfBuffer(this->get_clock()), tfListener(tfBuffer){
-    this->declare_parameter("waypoints_file", "waypoint.txt");
+    this->declare_parameter("waypoints_file", "waypoints.txt");
     this->declare_parameter("face_north", true);
     this->declare_parameter("change_waypoint_distance", 2.0);
 
@@ -53,7 +53,7 @@ Point WaypointPublisher::getRobotPosition() const{
     geometry_msgs::msg::TransformStamped transform;
     
     try{
-        transform = tfBuffer.lookupTransform("map", "base_link", tf2::TimePointZero);
+        transform = tfBuffer.lookupTransform("base_link", "map", tf2::TimePointZero);
     }
     catch(tf2::TransformException& exception){
         RCLCPP_ERROR(this->get_logger(), "Could not get robot position: %s", exception.what());
@@ -86,7 +86,7 @@ void WaypointPublisher::updateWaypoint(){
 std::ostream& operator<<(std::ostream& os, const WaypointPublisher& waypointPublisher){
     os << "Upcoming GPS Waypoints: ";
     for(const GPSCoordinate& waypoint : waypointPublisher.waypoints){
-        os << waypoint << "\n";
+        os << waypoint << '\n';
     }
     return os;
 }
