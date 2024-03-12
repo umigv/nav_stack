@@ -4,24 +4,24 @@
 using std::placeholders::_1;
 
 WaypointPublisher::WaypointPublisher() : Node("WaypointPublisher"), tfBuffer(this->get_clock()), tfListener(tfBuffer){
-    this->declare_parameter("waypoints_file", "waypoints.txt");
     this->declare_parameter("face_north", true);
     this->declare_parameter("change_waypoint_distance", 2.0);
+    this->declare_parameter("waypoints_file", "waypoints.txt");
 
     faceNorth = this->get_parameter("face_north").as_bool();
     kEpsilon = this->get_parameter("change_waypoint_distance").as_double();
-    readWaypoints(this->get_parameter("waypoints_file").as_string());
+    const char* file = this->get_parameter("waypoints_file").as_string().c_str();\
+    std::ifstream is(file);
+    readWaypoints(is);
 
-    mapInfoSubscriber = this->create_subscription<nav_msgs::msg::MapMetaData>("mapInfo", 10, std::bind(&WaypointPublisher::mapInfoCallback, this, _1));
+    mapInfoSubscriber = this->create_subscription<nav_msgs::msg::MapMetaData>("map_info", 10, std::bind(&WaypointPublisher::mapInfoCallback, this, _1));
     robotGPSSubscriber = this->create_subscription<sensor_msgs::msg::NavSatFix>("gps_coords", 10, std::bind(&WaypointPublisher::robotGPSCallback, this, _1));
     goalPosePublisher = this->create_publisher<geometry_msgs::msg::PoseStamped>("goal_pose", 10);
     goalPoseUpdater = this->create_wall_timer(std::chrono::milliseconds(1000), std::bind(&WaypointPublisher::updateGoalPose, this));
 }
 
-void WaypointPublisher::readWaypoints(const std::string& file){
-    std::ifstream is(file.c_str());
-
-    if(!is.is_open()){
+void WaypointPublisher::readWaypoints(std::istream& is){
+    if(is.fail()){
         RCLCPP_ERROR(this->get_logger(), "Could not open waypoints file");
         return;
     }
@@ -90,5 +90,6 @@ std::ostream& operator<<(std::ostream& os, const WaypointPublisher& waypointPubl
     for(const GPSCoordinate& waypoint : waypointPublisher.waypoints){
         os << waypoint << '\n';
     }
+
     return os;
 }

@@ -17,7 +17,7 @@ class WaypointPublisher : public rclcpp::Node{
     private:
     friend std::ostream& operator<<(std::ostream& os, const WaypointPublisher& waypointPublisher);
 
-    void readWaypoints(const std::string& file);
+    void readWaypoints(std::istream& is);
 
     void mapInfoCallback(const nav_msgs::msg::MapMetaData::SharedPtr msg);
 
