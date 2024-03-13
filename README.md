@@ -10,3 +10,7 @@
 ### VMWare specific instructions:
 - The serial port for the GPS is `/dev/ttyACM0`
 - Each time you plug in the GPS, run: `sudo chmod a+rw /dev/ttyACM0`
+
+### Read rosbag files into Foxglove Studio:
+- You will need to convert the `.db3` file into a `.mcap` file
+- [Importing Your ROS 2 Data Into Foxglove Data Platform](https://foxglove.dev/blog/importing-your-ros2-data-into-foxglove-data-platform)
