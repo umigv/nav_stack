@@ -1,14 +1,6 @@
 #include <cmath>
 #include "../include/Point.hpp"
 
-Point& Point::operator=(const Point& rhs) {
-    Point temp(rhs);
-    std::swap(x, temp.x);
-    std::swap(y, temp.y);
-
-    return *this;
-}
-
 Point Point::operator+(const Point& rhs) const {
     return Point(x + rhs.x, y + rhs.y);
 }
@@ -30,7 +22,7 @@ Point Point::operator/(long double scalar) const {
 }
 
 bool Point::operator==(const Point& rhs) const {
-    return abs(x - rhs.x) < 1E-9 && abs(y - rhs.y) < 1E-9;
+    return abs(x - rhs.x) < DIFFERENCE_EPSILON && abs(y - rhs.y) < DIFFERENCE_EPSILON;
 }
 
 bool Point::operator!=(const Point& rhs) const {

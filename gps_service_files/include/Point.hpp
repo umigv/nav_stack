@@ -4,11 +4,9 @@
 
 class Point{
     public:
-    constexpr Point() = default;
+    Point() = default;
 
-    constexpr Point(long double x, long double y) : x(x), y(y){}
-
-    Point(const Point& rhs) : x(rhs.x), y(rhs.y){}  
+    Point(long double x, long double y) : x(x), y(y){}
 
     Point(const GPSCoordinate& origin, const GPSCoordinate& destination){
         x = GPSCoordinate::distanceBetween(origin, GPSCoordinate(origin.getLatitude(), destination.getLongitude()));
@@ -38,8 +36,6 @@ class Point{
     inline void setY(const long double y){
         this->y = y;
     }
-
-    Point& operator=(const Point& rhs);
 
     Point operator+(const Point& rhs) const;
 
@@ -72,6 +68,8 @@ class Point{
 
     long double x{0.0};
     long double y{0.0};
+    
+    static constexpr long double DIFFERENCE_EPSILON = 1E-9;
 };
 
 std::ostream& operator<<(std::ostream& os, const Point& point);

@@ -7,10 +7,6 @@ class MapFrame{
     
     MapFrame(const Point& origin, long double width, long double height, long double resolution);
 
-    MapFrame(const MapFrame& rhs);
-
-    MapFrame& operator=(const MapFrame& rhs);
-
     Point constrainToMap(const Point& point) const;
 
     private:
@@ -18,4 +14,6 @@ class MapFrame{
     Point bottomRight;
     Point topLeft;
     Point topRight;
+
+    static constexpr long double MAP_CONTRAINT_OFFSET = 0.25;
 };
