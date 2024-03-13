@@ -1,65 +1,244 @@
+// #include <memory>
+// #include "rclcpp/rclcpp.hpp"
+// #include "nav_msgs/msg/occupancy_grid.hpp"
+
+// #include <tf2_ros/transform_listener.h>
+// #include <geometry_msgs/msg/transform_stamped.h> >
+// #include <tf2_geometry_msgs/tf2_geometry_msgs.h>
+
+// using std::placeholders::_1;
+// using OccupancyGrid = nav_msgs::msg::OccupancyGrid;
+// // using Point = geometry_msgs::msg::Point;
+// using x = TF2sub::current_x_pos;
+// using y = TF2sub::current_y_pos;
+// using TransformStamped = geometry_msgs::msg::TransformStamped
+
+// //Subscribes to TF2 and update global position inside occupancy grid
+// class TF2sub : public rclcpp::Node
+// {
+//     public:
+//         // ------------ CURRENT LOCATION VARIABLES ------------
+//         float current_x_pos = 0.0;
+//         float current_y_pos = 0.0;
+        
+//         // Create a subscription to the "/tf_world" topic with a callback function
+//         TF2sub() : Node("tf2_world_subscriber")
+//         {
+//             tf2_subscriber = create_subscription<TransformStamped>(
+//                 "/tf_world", 10, std::bind(&TF2sub::tf2WorldCallback, this, std::placeholders::_1));
+//         }
+        
+//     private:
+//         // Callback function to process received TF2 transforms
+//         // populate global variables
+//         void tf2WorldCallback(const TransformStamped::SharedPtr msg)
+//         {
+//             // Update current position
+//             current_x_pos = msg->transform.translation.x;
+//             current_y_pos = msg->transform.translation.y;
+//         }
+//         // Subscription object for the "/tf_world" topic
+//         rclcpp::Subscription<geometry_msgs::msg::TransformStamped>::SharedPtr subscription_;
+// };
+
+// // Subsribes to the global occupancy grid and the cv occupancy grid 
+// // and merges them together to create a new global occupancy grid
+// // that is then published to the global costmap
+// class MergeService : public rclcpp::Node {
+//     public:
+//         MergeService() : Node("merge_service") {}
+
+//         OccupancyGridSubscriber() : Node("occupancy_grid_subscriber") {
+//             cv_og_subsriber = this->create_subscription<nav_msgs::OccupancyGrid>(
+//             "/occupancy_grid", 10, std::bind(&OccupancyGridSubscriber::populate_cv_occupancy_grid, this, _1)
+//         )
+
+//         sensors_occupancy_grid_subscriber = this->create_subscription<nav_msgs::OccupancyGrid>(
+//             "/occupancy_grid", 10, std::bind(&OccupancyGridSubscriber::populate_sensors_occupancy_grid, this, _1)
+//         )
+//         }
+
+//         OccupancyGrid merge_SLAM_and_LaneLine(const OccupancyGrid &cv_cm, const &slam_cm) {
+            // /*  -1 == unknown
+            //     0 == non-drivable
+            //     1 == drivable
+            // */
+
+            // // the two cost maps are the same size
+            // OccupancyGrid merged_grid = slam_cm;
+
+            // // start merge
+            // for (size_t row = 0; row < slam_cm.height; ++row) {
+            //     for (size_t col = 0; col < slam_cm.width; ++col) {
+            //         // get the corresponding values from the 2 cost maps
+            //         int slam_value = slam_cm.data[row * slam_cm.width + col];
+            //         int lane_value = lane_cm.data[row * lane_cm.width + col];
+                    
+            //         /*
+            //         9 cases:
+            //             LL = -1, SLAM = -1 -> -1
+            //             LL = -1, SLAM = 0 -> 0
+            //             LL = -1, SLAM = 1 -> 1
+            //             LL = 0, SLAM = -1 -> 0
+            //             LL = 0, SLAM = 0 -> 0
+            //             LL = 0, SLAM = 1 -> 1 OLD: 0
+            //             LL = 1, SLAM = -1 -> 1
+            //             LL = 1, SLAM = 0 -> 1 OLD: 0
+            //             LL = 1, SLAM = 1 -> 1
+            //         */
+            //         if (lane_value == -1)
+            //             merged_grid.data[row * merged_grid.width + col] = slam_value;
+            //         else if (slam_value == -1)
+            //             merged_grid.data[row * merged_grid.width + col] = lane_value;
+            //         else
+            //             merged_grid.data[row * merged_grid.width + col] = lane_value & slam_value;
+            //     }
+            // }
+
+            // return merged_grid;
+//         }
+//     private:
+//         // ------------- OCCUPANCY GRID VARIABLES -----------------
+
+//         // sensors occupancy grid variable
+//         OccupancyGrid sensors_occupancy_grid;
+
+//         // CV occupancy grid variable
+//         OccupancyGrid cv_occupancy_grid;
+
+//         // Combined Occupancy Grid variable
+//         OccupancyGrid global;
+        
+
+//         // ------------------------ CALLBACKS -------------------------
+//         // populate cv occupancy grid
+//         void populate_cv_occupancy_grid(const OccupancyGrid &cv_cm)
+//         {
+//             //Maybe save snsr metadata once to increase efficency - resolution, width, height, origin
+//             cv_occupancy_grid.data = cv_cm->data;
+//             cv_occupancy_grid.info = cv_cm->info;
+//             cv_occupancy_grid.header = cv_cm->header;
+//              //cv_cm??
+//         }
+
+//         // populate global occupancy grid
+//         void populate_sensors_occupancy_grid(const OccupancyGrid &snsr_cm)
+//         {
+//             //Maybe save snsr metadata once to increase efficency - resolution, width, height, origin
+//             sensors_occupancy_grid.data = snsr_cm->data;
+//             sensors_occupancy_grid.info = snsr_cm->info;
+//             sensors_occupancy_grid.header = snsr_cm->header;
+//         }
+
+//         // //populate combined occupancy grid
+//         // void populate_combined_occupancy_grid(const OccupancyGrid &merge_cm)
+//         // {
+//         //     global.data = merge_cm->data;
+//         //     global.info = merge_cm->info;
+//         //     global.header = merge_cm->header;
+//         // }
+
+//         //populate global occupancy grid with values from cv
+//         void global_occupancy()
+//         {
+//             global = sensors_occupancy_grid;
+            
+//             for(size_t i=0; i<=(size_t)cv_occupancy_grid.info.width; ++i)
+//             {
+//                 for(size_t j=0; j<=(size_t)cv_occupancy_grid.info.height; ++j)
+//                 {
+//                     global[i+(size_t)x][j+(size_t)y]=cv[i][j];
+//                 }
+//             }
+//         }
+
+//         void publisher()
+//         {
+//             populate_cv_occupancy_grid(/*Subscribe to cv and put in here*/);
+//             populate_sensors_occupancy_grid(/*Subscribe to snsr and put in here*/);
+//             global_occupancy();
+//             global_occupancy_grid_publisher->publish(global); // TODO
+//         }
+// };
+
+// int main(int argc, char **argv) 
+// {
+//     rclcpp::init(argc, argv);
+//     auto node = std::make_shared<MergeService>();
+//     rclcpp::spin(node);
+//     rclcpp::shutdown();
+//     return 0;
+// }
+
+
+// // subscr to global OG, make a copy of it use that to init our OG
+// // writing the transform to get robot curr position ie. tf2
+// // overlay part - taking in curr position adn begin overlay
+
+// // You need to use tf2 to get the subscriber to get the robot to transform in the world frame
+// // 
+
 #include <memory>
 #include "rclcpp/rclcpp.hpp"
 #include "nav_msgs/msg/occupancy_grid.hpp"
-
 #include <tf2_ros/transform_listener.h>
-#include <geometry_msgs/msg/transform_stamped.h> >
-#include <tf2_geometry_msgs/tf2_geometry_msgs.h>
+#include <geometry_msgs/msg/transform_stamped.hpp>  // Fix: Corrected the include statement
+#include <tf2_geometry_msgs/tf2_geometry_msgs.hpp>
 
 using std::placeholders::_1;
 using OccupancyGrid = nav_msgs::msg::OccupancyGrid;
-// using Point = geometry_msgs::msg::Point;
-using x = TF2sub::current_x_pos;
-using y = TF2sub::current_y_pos;
-using TransformStamped = geometry_msgs::msg::TransformStamped
+using TransformStamped = geometry_msgs::msg::TransformStamped;  // Fix: Added semicolon
 
-//Subscribes to TF2 and update global position inside occupancy grid
+// Forward declaration
+class TF2sub;
+
+// Subscribes to TF2 and updates global position inside the occupancy grid
 class TF2sub : public rclcpp::Node
 {
-    public:
-        // ------------ CURRENT LOCATION VARIABLES ------------
-        float current_x_pos = 0.0;
-        float current_y_pos = 0.0;
-        
-        // Create a subscription to the "/tf_world" topic with a callback function
-        TF2sub() : Node("tf2_world_subscriber")
-        {
-            tf2_subscriber = create_subscription<TransformStamped>(
-                "/tf_world", 10, std::bind(&TF2sub::tf2WorldCallback, this, std::placeholders::_1));
-        }
-        
-    private:
-        // Callback function to process received TF2 transforms
-        // populate global variables
-        void tf2WorldCallback(const TransformStamped::SharedPtr msg)
-        {
-            // Update current position
-            current_x_pos = msg->transform.translation.x;
-            current_y_pos = msg->transform.translation.y;
-        }
-        // Subscription object for the "/tf_world" topic
-        rclcpp::Subscription<geometry_msgs::msg::TransformStamped>::SharedPtr subscription_;
+public:
+    float current_x_pos = 0.0;
+    float current_y_pos = 0.0;
+
+    // Create a subscription to the "/tf_world" topic with a callback function
+    TF2sub() : Node("tf2_world_subscriber")
+    {
+        tf2_subscriber = create_subscription<TransformStamped>(
+            "/tf_world", 10, std::bind(&TF2sub::tf2WorldCallback, this, std::placeholders::_1));
+    }
+
+private:
+    rclcpp::Subscription<TransformStamped>::SharedPtr tf2_subscriber;
+
+    // Callback function to process received TF2 transforms and populate global variables
+    void tf2WorldCallback(const TransformStamped::SharedPtr msg)
+    {
+        // Update current position
+        current_x_pos = msg->transform.translation.x;
+        current_y_pos = msg->transform.translation.y;
+    }
 };
 
-// Subsribes to the global occupancy grid and the cv occupancy grid 
-// and merges them together to create a new global occupancy grid
-// that is then published to the global costmap
-class MergeService : public rclcpp::Node {
-    public:
-        MergeService() : Node("merge_service") {}
+// Subscribes to the global occupancy grid and the CV occupancy grid
+// Merges them together to create a new global occupancy grid
+// That is then published to the global costmap
+class MergeService : public rclcpp::Node
+{
+public:
+    MergeService() : Node("merge_service") {}
 
-        OccupancyGridSubscriber() : Node("occupancy_grid_subscriber") {
-            cv_og_subsriber = this->create_subscription<nav_msgs::OccupancyGrid>(
-            "/occupancy_grid", 10, std::bind(&OccupancyGridSubscriber::populate_cv_occupancy_grid, this, _1)
-        )
+    // Renamed the function to follow C++ naming conventions
+    void occupancyGridSubscriber()
+    {
+        cv_og_subscriber = create_subscription<OccupancyGrid>(
+            "/occupancy_grid", 10, std::bind(&MergeService::populateCvOccupancyGrid, this, _1));
+        
+        sensors_occupancy_grid_subscriber = create_subscription<OccupancyGrid>(
+            "/occupancy_grid", 10, std::bind(&MergeService::populateSensorsOccupancyGrid, this, _1));
+    }
 
-        sensors_occupancy_grid_subscriber = this->create_subscription<nav_msgs::OccupancyGrid>(
-            "/occupancy_grid", 10, std::bind(&OccupancyGridSubscriber::populate_sensors_occupancy_grid, this, _1)
-        )
-        }
-
-        OccupancyGrid merge_SLAM_and_LaneLine(const OccupancyGrid &cv_cm, const &slam_cm) {
-            /*  -1 == unknown
+    OccupancyGrid mergeSLAMAndLaneLine(const OccupancyGrid &cv_cm, const OccupancyGrid &slam_cm)
+    {
+         /*  -1 == unknown
                 0 == non-drivable
                 1 == drivable
             */
@@ -68,11 +247,11 @@ class MergeService : public rclcpp::Node {
             OccupancyGrid merged_grid = slam_cm;
 
             // start merge
-            for (size_t row = 0; row < slam_cm.height; ++row) {
-                for (size_t col = 0; col < slam_cm.width; ++col) {
+            for (size_t row = 0; row < slam_cm.info.height; ++row) {
+                for (size_t col = 0; col < slam_cm.info.width; ++col) {
                     // get the corresponding values from the 2 cost maps
-                    int slam_value = slam_cm.data[row * slam_cm.width + col];
-                    int lane_value = lane_cm.data[row * lane_cm.width + col];
+                    int slam_value = slam_cm.data[row * slam_cm.info.width + col];
+                    int lane_value = cv_cm.data[row * cv_cm.info.width + col];
                     
                     /*
                     9 cases:
@@ -87,93 +266,66 @@ class MergeService : public rclcpp::Node {
                         LL = 1, SLAM = 1 -> 1
                     */
                     if (lane_value == -1)
-                        merged_grid.data[row * merged_grid.width + col] = slam_value;
+                        merged_grid.data[row * merged_grid.info.width + col] = slam_value;
                     else if (slam_value == -1)
-                        merged_grid.data[row * merged_grid.width + col] = lane_value;
+                        merged_grid.data[row * merged_grid.info.width + col] = lane_value;
                     else
-                        merged_grid.data[row * merged_grid.width + col] = lane_value & slam_value;
+                        merged_grid.data[row * merged_grid.info.width + col] = lane_value & slam_value;
                 }
             }
 
             return merged_grid;
-        }
-    private:
-        // ------------- OCCUPANCY GRID VARIABLES -----------------
+    }
 
-        // sensors occupancy grid variable
-        OccupancyGrid sensors_occupancy_grid;
+    void printOccupancyGridInfo(const OccupancyGrid &grid)
+    {
+        // Print information about the received message
+        RCLCPP_INFO(get_logger(), "Received message. Height: %d, Width: %d", grid.info.height, grid.info.width);
 
-        // CV occupancy grid variable
-        OccupancyGrid cv_occupancy_grid;
-
-        // Combined Occupancy Grid variable
-        OccupancyGrid global;
-        
-
-        // ------------------------ CALLBACKS -------------------------
-        // populate cv occupancy grid
-        void populate_cv_occupancy_grid(const OccupancyGrid &cv_cm)
-        {
-            //Maybe save snsr metadata once to increase efficency - resolution, width, height, origin
-            cv_occupancy_grid.data = cv_cm->data;
-            cv_occupancy_grid.info = cv_cm->info;
-            cv_occupancy_grid.header = cv_cm->header;
-             //cv_cm??
-        }
-
-        // populate global occupancy grid
-        void populate_sensors_occupancy_grid(const OccupancyGrid &snsr_cm)
-        {
-            //Maybe save snsr metadata once to increase efficency - resolution, width, height, origin
-            sensors_occupancy_grid.data = snsr_cm->data;
-            sensors_occupancy_grid.info = snsr_cm->info;
-            sensors_occupancy_grid.header = snsr_cm->header;
-        }
-
-        // //populate combined occupancy grid
-        // void populate_combined_occupancy_grid(const OccupancyGrid &merge_cm)
-        // {
-        //     global.data = merge_cm->data;
-        //     global.info = merge_cm->info;
-        //     global.header = merge_cm->header;
-        // }
-
-        //populate global occupancy grid with values from cv
-        void global_occupancy()
-        {
-            global = sensors_occupancy_grid;
-            
-            for(size_t i=0; i<=(size_t)cv_occupancy_grid.info.width; ++i)
-            {
-                for(size_t j=0; j<=(size_t)cv_occupancy_grid.info.height; ++j)
-                {
-                    global[i+(size_t)x][j+(size_t)y]=cv[i][j];
-                }
+        // Print data values from the received message
+        for (size_t row = 0; row < grid.info.height; ++row) {
+            for (size_t col = 0; col < grid.info.width; ++col) {
+                int value = grid.data[row * grid.info.width + col];
+                RCLCPP_INFO(get_logger(), "Value at (%zu, %zu): %d", row, col, value);
             }
         }
+    }
 
-        void publisher()
-        {
-            populate_cv_occupancy_grid(/*Subscribe to cv and put in here*/);
-            populate_sensors_occupancy_grid(/*Subscribe to snsr and put in here*/);
-            global_occupancy();
-            global_occupancy_grid_publisher->publish(global); // TODO
-        }
+private:
+    rclcpp::Subscription<OccupancyGrid>::SharedPtr cv_og_subscriber;
+    rclcpp::Subscription<OccupancyGrid>::SharedPtr sensors_occupancy_grid_subscriber;
+
+    OccupancyGrid cv_occupancy_grid;
+    OccupancyGrid sensors_occupancy_grid;
+
+    void populateCvOccupancyGrid(const OccupancyGrid::SharedPtr cv_cm)
+    {
+        cv_occupancy_grid = *cv_cm;  // Dereference the shared pointer and copy data
+        // Additional logic if needed
+    }
+
+    void populateSensorsOccupancyGrid(const OccupancyGrid::SharedPtr snsr_cm)
+    {
+        sensors_occupancy_grid = *snsr_cm;  // Dereference the shared pointer and copy data
+        // Additional logic if needed
+    }
 };
 
-int main(int argc, char **argv) 
+int main(int argc, char **argv)
 {
     rclcpp::init(argc, argv);
-    auto node = std::make_shared<MergeService>();
-    rclcpp::spin(node);
+
+    // Create instances of both subscriber and publisher
+    auto tf2_subscriber = std::make_shared<TF2sub>();
+    auto merge_service = std::make_shared<MergeService>();
+
+    // Call the occupancyGridSubscriber function
+    merge_service->occupancyGridSubscriber();
+
+    // Spin both nodes
+    //rclcpp::spin(tf2_subscriber);
+    rclcpp::spin(merge_service);
+
     rclcpp::shutdown();
     return 0;
 }
-
-
-// subscr to global OG, make a copy of it use that to init our OG
-// writing the transform to get robot curr position ie. tf2
-// overlay part - taking in curr position adn begin overlay
-
-// You need to use tf2 to get the subscriber to get the robot to transform in the world frame
-// 

@@ -14,3 +14,4 @@
 /home/umarv/ws/src/nav_stack/occupub/install/occupub/share/occupub/cmake/occupubConfig-version.cmake
 /home/umarv/ws/src/nav_stack/occupub/install/occupub/share/occupub/package.xml
 /home/umarv/ws/src/nav_stack/occupub/install/occupub/lib/occupub/occupub
+/home/umarv/ws/src/nav_stack/occupub/install/occupub/lib/occupub/merge_costmap_sub

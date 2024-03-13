@@ -1,0 +1,187 @@
+[35m[1mConsolidate compiler generated dependencies of target merge_costmap_sub[0m
+[ 50%] Built target occupub
+[ 75%] [32mBuilding CXX object CMakeFiles/merge_costmap_sub.dir/src/merge_costmap.cpp.o[0m
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:6:50:[m[K [01;35m[Kwarning: [m[Kextra tokens at end of #include directive
+    6 | #include <geometry_msgs/msg/transform_stamped.h> [01;35m[K>[m[K
+      |                                                  [01;35m[K^[m[K
+In file included from [01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:7[m[K:
+[01m[K/opt/ros/humble/include/tf2_geometry_msgs/tf2_geometry_msgs/tf2_geometry_msgs.h:35:2:[m[K [01;35m[Kwarning: [m[K#warning This header is obsolete, please include tf2_geometry_msgs/tf2_geometry_msgs.hpp instead [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wcpp-Wcpp]8;;[m[K]
+   35 | #[01;35m[Kwarning[m[K This header is obsolete, please include tf2_geometry_msgs/tf2_geometry_msgs.hpp instead
+      |  [01;35m[K^~~~~~~[m[K
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:12:11:[m[K [01;31m[Kerror: [m[K‘[01m[KTF2sub[m[K’ does not name a type
+   12 | using x = [01;31m[KTF2sub[m[K::current_x_pos;
+      |           [01;31m[K^~~~~~[m[K
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:13:11:[m[K [01;31m[Kerror: [m[K‘[01m[KTF2sub[m[K’ does not name a type
+   13 | using y = [01;31m[KTF2sub[m[K::current_y_pos;
+      |           [01;31m[K^~~~~~[m[K
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:34:37:[m[K [01;31m[Kerror: [m[K‘[01m[KTransformStamped[m[K’ does not name a type; did you mean ‘[01m[KTransformData[m[K’?
+   34 |         void tf2WorldCallback(const [01;31m[KTransformStamped[m[K::SharedPtr msg)
+      |                                     [01;31m[K^~~~~~~~~~~~~~~~[m[K
+      |                                     [32m[KTransformData[m[K
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:34:65:[m[K [01;31m[Kerror: [m[Kexpected unqualified-id before ‘[01m[Kmsg[m[K’
+   34 |         void tf2WorldCallback(const TransformStamped::SharedPtr [01;31m[Kmsg[m[K)
+      |                                                                 [01;31m[K^~~[m[K
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:34:64:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K)[m[K’ before ‘[01m[Kmsg[m[K’
+   34 |         void tf2WorldCallback[34m[K([m[Kconst TransformStamped::SharedPtr[01;31m[K [m[K[32m[Kmsg[m[K)
+      |                              [34m[K~[m[K                                 [01;31m[K^[m[K[32m[K~~~[m[K
+      |                                                                [32m[K)[m[K
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:34:55:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K;[m[K’ at end of member declaration
+   34 |         void tf2WorldCallback(const TransformStamped::[01;31m[KSharedPtr[m[K msg)
+      |                                                       [01;31m[K^~~~~~~~~[m[K
+      |                                                                [32m[K;[m[K
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:34:65:[m[K [01;31m[Kerror: [m[K‘[01m[Kmsg[m[K’ does not name a type
+   34 |         void tf2WorldCallback(const TransformStamped::SharedPtr [01;31m[Kmsg[m[K)
+      |                                                                 [01;31m[K^~~[m[K
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:[m[K In constructor ‘[01m[KTF2sub::TF2sub()[m[K’:
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:27:13:[m[K [01;31m[Kerror: [m[K‘[01m[Ktf2_subscriber[m[K’ was not declared in this scope; did you mean ‘[01m[Kcount_subscribers[m[K’?
+   27 |             [01;31m[Ktf2_subscriber[m[K = create_subscription<TransformStamped>(
+      |             [01;31m[K^~~~~~~~~~~~~~[m[K
+      |             [32m[Kcount_subscribers[m[K
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:27:50:[m[K [01;31m[Kerror: [m[K‘[01m[KTransformStamped[m[K’ was not declared in this scope; did you mean ‘[01m[Kgeometry_msgs::msg::TransformStamped[m[K’?
+   27 |             tf2_subscriber = create_subscription<[01;31m[KTransformStamped[m[K>(
+      |                                                  [01;31m[K^~~~~~~~~~~~~~~~[m[K
+      |                                                  [32m[Kgeometry_msgs::msg::TransformStamped[m[K
+In file included from [01m[K/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/transform_stamped.hpp:7[m[K,
+                 from [01m[K/opt/ros/humble/include/tf2/tf2/buffer_core.h:48[m[K,
+                 from [01m[K/opt/ros/humble/include/tf2_ros/tf2_ros/transform_listener.h:40[m[K,
+                 from [01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:5[m[K:
+[01m[K/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/transform_stamped__struct.hpp:156:7:[m[K [01;36m[Knote: [m[K‘[01m[Kgeometry_msgs::msg::TransformStamped[m[K’ declared here
+  156 | using [01;36m[KTransformStamped[m[K =
+      |       [01;36m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:27:67:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[KTF2sub::create_subscription<<expression error> >(const char [10], int, std::_Bind_helper<false, void (TF2sub::*)(...), TF2sub*, const std::_Placeholder<1>&>::type)[m[K’
+   27 |             tf2_subscriber = [01;31m[Kcreate_subscription<TransformStamped>([m[K
+      |                              [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^[m[K
+   28 | [01;31m[K                "/tf_world", 10, std::bind(&TF2sub::tf2WorldCallback, this, std::placeholders::_1))[m[K;
+      |                 [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors/single_threaded_executor.hpp:28[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:22[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155[m[K,
+                 from [01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:2[m[K:
+[01m[K/opt/ros/humble/include/rclcpp/rclcpp/node.hpp:219:3:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class MessageT, class CallbackT, class AllocatorT, class SubscriptionT, class MessageMemoryStrategyT> std::shared_ptr<ROSMessageT> rclcpp::Node::create_subscription(const string&, const rclcpp::QoS&, CallbackT&&, const rclcpp::SubscriptionOptionsWithAllocator<AllocatorT>&, typename MessageMemoryStrategyT::SharedPtr)[m[K’
+  219 |   [01;36m[Kcreate_subscription[m[K(
+      |   [01;36m[K^~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/opt/ros/humble/include/rclcpp/rclcpp/node.hpp:219:3:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:27:67:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+   27 |             tf2_subscriber = [01;31m[Kcreate_subscription<TransformStamped>([m[K
+      |                              [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^[m[K
+   28 | [01;31m[K                "/tf_world", 10, std::bind(&TF2sub::tf2WorldCallback, this, std::placeholders::_1))[m[K;
+      |                 [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:[m[K At global scope:
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:14:26:[m[K [01;31m[Kerror: [m[Ktwo or more data types in declaration of ‘[01m[Ktype name[m[K’
+   14 | using TransformStamped = [01;31m[Kgeometry_msgs[m[K::msg::TransformStamped
+      |                          [01;31m[K^~~~~~~~~~~~~[m[K
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:51:9:[m[K [01;31m[Kerror: [m[KISO C++ forbids declaration of ‘[01m[KOccupancyGridSubscriber[m[K’ with no type [[01;31m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-fpermissive-fpermissive]8;;[m[K]
+   51 |         [01;31m[KOccupancyGridSubscriber[m[K() : Node("occupancy_grid_subscriber") {
+      |         [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:61:82:[m[K [01;31m[Kerror: [m[KISO C++ forbids declaration of ‘[01m[Kslam_cm[m[K’ with no type [[01;31m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-fpermissive-fpermissive]8;;[m[K]
+   61 |         OccupancyGrid merge_SLAM_and_LaneLine(const OccupancyGrid &cv_cm, const &[01;31m[Kslam_cm[m[K) {
+      |                                                                                  [01;31m[K^~~~~~~[m[K
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:[m[K In member function ‘[01m[Kint MergeService::OccupancyGridSubscriber()[m[K’:
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:51:37:[m[K [01;31m[Kerror: [m[Konly constructors take member initializers
+   51 |         OccupancyGridSubscriber() : [01;31m[KNode[m[K("occupancy_grid_subscriber") {
+      |                                     [01;31m[K^~~~[m[K
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:52:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kcv_og_subsriber[m[K’ was not declared in this scope; did you mean ‘[01m[Kcount_subscribers[m[K’?
+   52 |             [01;31m[Kcv_og_subsriber[m[K = this->create_subscription<nav_msgs::OccupancyGrid>(
+      |             [01;31m[K^~~~~~~~~~~~~~~[m[K
+      |             [32m[Kcount_subscribers[m[K
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:52:67:[m[K [01;31m[Kerror: [m[K‘[01m[KOccupancyGrid[m[K’ is not a member of ‘[01m[Knav_msgs[m[K’
+   52 |             cv_og_subsriber = this->create_subscription<nav_msgs::[01;31m[KOccupancyGrid[m[K>(
+      |                                                                   [01;31m[K^~~~~~~~~~~~~[m[K
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:52:67:[m[K [01;36m[Knote: [m[Ksuggested alternatives:
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:10:7:[m[K [01;36m[Knote: [m[K  ‘[01m[KOccupancyGrid[m[K’
+   10 | using [01;36m[KOccupancyGrid[m[K = nav_msgs::msg::OccupancyGrid;
+      |       [01;36m[K^~~~~~~~~~~~~[m[K
+In file included from [01m[K/opt/ros/humble/include/nav_msgs/nav_msgs/msg/occupancy_grid.hpp:7[m[K,
+                 from [01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:3[m[K:
+[01m[K/opt/ros/humble/include/nav_msgs/nav_msgs/msg/detail/occupancy_grid__struct.hpp:147:7:[m[K [01;36m[Knote: [m[K  ‘[01m[Knav_msgs::msg::OccupancyGrid[m[K’
+  147 | using [01;36m[KOccupancyGrid[m[K =
+      |       [01;36m[K^~~~~~~~~~~~~[m[K
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:53:47:[m[K [01;31m[Kerror: [m[K‘[01m[KOccupancyGridSubscriber[m[K’ is not a class, namespace, or enumeration
+   53 |             "/occupancy_grid", 10, std::bind(&[01;31m[KOccupancyGridSubscriber[m[K::populate_cv_occupancy_grid, this, _1)
+      |                                               [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:59:9:[m[K [01;35m[Kwarning: [m[Kno return statement in function returning non-void [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreturn-type-Wreturn-type]8;;[m[K]
+   59 |         [01;35m[K}[m[K
+      |         [01;35m[K^[m[K
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:[m[K In member function ‘[01m[KOccupancyGrid MergeService::merge_SLAM_and_LaneLine(const OccupancyGrid&, const int&)[m[K’:
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:68:41:[m[K [01;31m[Kerror: [m[Kconversion from ‘[01m[Kconst int[m[K’ to non-scalar type ‘[01m[KOccupancyGrid[m[K’ {aka ‘[01m[Knav_msgs::msg::OccupancyGrid_<std::allocator<void> >[m[K’} requested
+   68 |             OccupancyGrid merged_grid = [01;31m[Kslam_cm[m[K;
+      |                                         [01;31m[K^~~~~~~[m[K
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:71:48:[m[K [01;31m[Kerror: [m[Krequest for member ‘[01m[Kheight[m[K’ in ‘[01m[Kslam_cm[m[K’, which is of non-class type ‘[01m[Kconst int[m[K’
+   71 |             for (size_t row = 0; row < slam_cm.[01;31m[Kheight[m[K; ++row) {
+      |                                                [01;31m[K^~~~~~[m[K
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:72:52:[m[K [01;31m[Kerror: [m[Krequest for member ‘[01m[Kwidth[m[K’ in ‘[01m[Kslam_cm[m[K’, which is of non-class type ‘[01m[Kconst int[m[K’
+   72 |                 for (size_t col = 0; col < slam_cm.[01;31m[Kwidth[m[K; ++col) {
+      |                                                    [01;31m[K^~~~~[m[K
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:74:46:[m[K [01;31m[Kerror: [m[Krequest for member ‘[01m[Kdata[m[K’ in ‘[01m[Kslam_cm[m[K’, which is of non-class type ‘[01m[Kconst int[m[K’
+   74 |                     int slam_value = slam_cm.[01;31m[Kdata[m[K[row * slam_cm.width + col];
+      |                                              [01;31m[K^~~~[m[K
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:74:65:[m[K [01;31m[Kerror: [m[Krequest for member ‘[01m[Kwidth[m[K’ in ‘[01m[Kslam_cm[m[K’, which is of non-class type ‘[01m[Kconst int[m[K’
+   74 |                     int slam_value = slam_cm.data[row * slam_cm.[01;31m[Kwidth[m[K + col];
+      |                                                                 [01;31m[K^~~~~[m[K
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:75:38:[m[K [01;31m[Kerror: [m[K‘[01m[Klane_cm[m[K’ was not declared in this scope
+   75 |                     int lane_value = [01;31m[Klane_cm[m[K.data[row * lane_cm.width + col];
+      |                                      [01;31m[K^~~~~~~[m[K
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:90:60:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing OccupancyGrid = using OccupancyGrid = struct nav_msgs::msg::OccupancyGrid_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct nav_msgs::msg::OccupancyGrid_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kwidth[m[K’
+   90 |                         merged_grid.data[row * merged_grid.[01;31m[Kwidth[m[K + col] = slam_value;
+      |                                                            [01;31m[K^~~~~[m[K
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:92:60:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing OccupancyGrid = using OccupancyGrid = struct nav_msgs::msg::OccupancyGrid_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct nav_msgs::msg::OccupancyGrid_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kwidth[m[K’
+   92 |                         merged_grid.data[row * merged_grid.[01;31m[Kwidth[m[K + col] = lane_value;
+      |                                                            [01;31m[K^~~~~[m[K
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:94:60:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing OccupancyGrid = using OccupancyGrid = struct nav_msgs::msg::OccupancyGrid_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct nav_msgs::msg::OccupancyGrid_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kwidth[m[K’
+   94 |                         merged_grid.data[row * merged_grid.[01;31m[Kwidth[m[K + col] = lane_value & slam_value;
+      |                                                            [01;31m[K^~~~~[m[K
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:61:68:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kcv_cm[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+   61 |         OccupancyGrid merge_SLAM_and_LaneLine([01;35m[Kconst OccupancyGrid &cv_cm[m[K, const &slam_cm) {
+      |                                               [01;35m[K~~~~~~~~~~~~~~~~~~~~~^~~~~[m[K
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:[m[K In member function ‘[01m[Kvoid MergeService::populate_cv_occupancy_grid(const OccupancyGrid&)[m[K’:
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:118:43:[m[K [01;31m[Kerror: [m[Kbase operand of ‘[01m[K->[m[K’ has non-pointer type ‘[01m[Kconst OccupancyGrid[m[K’ {aka ‘[01m[Kconst nav_msgs::msg::OccupancyGrid_<std::allocator<void> >[m[K’}
+  118 |             cv_occupancy_grid.data = cv_cm[01;31m[K->[m[Kdata;
+      |                                           [01;31m[K^~[m[K
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:119:43:[m[K [01;31m[Kerror: [m[Kbase operand of ‘[01m[K->[m[K’ has non-pointer type ‘[01m[Kconst OccupancyGrid[m[K’ {aka ‘[01m[Kconst nav_msgs::msg::OccupancyGrid_<std::allocator<void> >[m[K’}
+  119 |             cv_occupancy_grid.info = cv_cm[01;31m[K->[m[Kinfo;
+      |                                           [01;31m[K^~[m[K
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:120:45:[m[K [01;31m[Kerror: [m[Kbase operand of ‘[01m[K->[m[K’ has non-pointer type ‘[01m[Kconst OccupancyGrid[m[K’ {aka ‘[01m[Kconst nav_msgs::msg::OccupancyGrid_<std::allocator<void> >[m[K’}
+  120 |             cv_occupancy_grid.header = cv_cm[01;31m[K->[m[Kheader;
+      |                                             [01;31m[K^~[m[K
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:[m[K In member function ‘[01m[Kvoid MergeService::populate_sensors_occupancy_grid(const OccupancyGrid&)[m[K’:
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:128:50:[m[K [01;31m[Kerror: [m[Kbase operand of ‘[01m[K->[m[K’ has non-pointer type ‘[01m[Kconst OccupancyGrid[m[K’ {aka ‘[01m[Kconst nav_msgs::msg::OccupancyGrid_<std::allocator<void> >[m[K’}
+  128 |             sensors_occupancy_grid.data = snsr_cm[01;31m[K->[m[Kdata;
+      |                                                  [01;31m[K^~[m[K
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:129:50:[m[K [01;31m[Kerror: [m[Kbase operand of ‘[01m[K->[m[K’ has non-pointer type ‘[01m[Kconst OccupancyGrid[m[K’ {aka ‘[01m[Kconst nav_msgs::msg::OccupancyGrid_<std::allocator<void> >[m[K’}
+  129 |             sensors_occupancy_grid.info = snsr_cm[01;31m[K->[m[Kinfo;
+      |                                                  [01;31m[K^~[m[K
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:130:52:[m[K [01;31m[Kerror: [m[Kbase operand of ‘[01m[K->[m[K’ has non-pointer type ‘[01m[Kconst OccupancyGrid[m[K’ {aka ‘[01m[Kconst nav_msgs::msg::OccupancyGrid_<std::allocator<void> >[m[K’}
+  130 |             sensors_occupancy_grid.header = snsr_cm[01;31m[K->[m[Kheader;
+      |                                                    [01;31m[K^~[m[K
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:[m[K In member function ‘[01m[Kvoid MergeService::global_occupancy()[m[K’:
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:150:38:[m[K [01;31m[Kerror: [m[K‘[01m[Kx[m[K’ was not declared in this scope
+  150 |                     global[i+(size_t)[01;31m[Kx[m[K][j+(size_t)y]=cv[i][j];
+      |                                      [01;31m[K^[m[K
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:150:51:[m[K [01;31m[Kerror: [m[K‘[01m[Ky[m[K’ was not declared in this scope; did you mean ‘[01m[Kyn[m[K’?
+  150 |                     global[i+(size_t)x][j+(size_t)[01;31m[Ky[m[K]=cv[i][j];
+      |                                                   [01;31m[K^[m[K
+      |                                                   [32m[Kyn[m[K
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:150:54:[m[K [01;31m[Kerror: [m[K‘[01m[Kcv[m[K’ was not declared in this scope
+  150 |                     global[i+(size_t)x][j+(size_t)y]=[01;31m[Kcv[m[K[i][j];
+      |                                                      [01;31m[K^~[m[K
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:[m[K In member function ‘[01m[Kvoid MergeService::publisher()[m[K’:
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:157:39:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[KMergeService::populate_cv_occupancy_grid()[m[K’
+  157 |             [01;31m[Kpopulate_cv_occupancy_grid(/*Subscribe to cv and put in here*/)[m[K;
+      |             [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:115:14:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kvoid MergeService::populate_cv_occupancy_grid(const OccupancyGrid&)[m[K’
+  115 |         void [01;36m[Kpopulate_cv_occupancy_grid[m[K(const OccupancyGrid &cv_cm)
+      |              [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:115:14:[m[K [01;36m[Knote: [m[K  candidate expects 1 argument, 0 provided
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:158:44:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[KMergeService::populate_sensors_occupancy_grid()[m[K’
+  158 |             [01;31m[Kpopulate_sensors_occupancy_grid(/*Subscribe to snsr and put in here*/)[m[K;
+      |             [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:125:14:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kvoid MergeService::populate_sensors_occupancy_grid(const OccupancyGrid&)[m[K’
+  125 |         void [01;36m[Kpopulate_sensors_occupancy_grid[m[K(const OccupancyGrid &snsr_cm)
+      |              [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:125:14:[m[K [01;36m[Knote: [m[K  candidate expects 1 argument, 0 provided
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:160:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kglobal_occupancy_grid_publisher[m[K’ was not declared in this scope
+  160 |             [01;31m[Kglobal_occupancy_grid_publisher[m[K->publish(global); // TODO
+      |             [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+gmake[2]: *** [CMakeFiles/merge_costmap_sub.dir/build.make:76: CMakeFiles/merge_costmap_sub.dir/src/merge_costmap.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:165: CMakeFiles/merge_costmap_sub.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

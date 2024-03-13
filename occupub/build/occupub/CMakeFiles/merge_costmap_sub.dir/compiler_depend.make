@@ -711,12 +711,129 @@ CMakeFiles/merge_costmap_sub.dir/src/merge_costmap.cpp.o: ../../src/merge_costma
   /opt/ros/humble/include/tf2_msgs/tf2_msgs/msg/detail/tf_message__struct.hpp \
   /opt/ros/humble/include/tf2_msgs/tf2_msgs/msg/detail/tf_message__builder.hpp \
   /opt/ros/humble/include/tf2_msgs/tf2_msgs/msg/detail/tf_message__traits.hpp \
-  /opt/ros/humble/include/tf2_ros/tf2_ros/qos.hpp
+  /opt/ros/humble/include/tf2_ros/tf2_ros/qos.hpp \
+  /opt/ros/humble/include/tf2_geometry_msgs/tf2_geometry_msgs/tf2_geometry_msgs.hpp \
+  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/point_stamped.hpp \
+  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/point_stamped__struct.hpp \
+  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/point_stamped__builder.hpp \
+  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/point_stamped__traits.hpp \
+  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/quaternion_stamped.hpp \
+  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/quaternion_stamped__struct.hpp \
+  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/quaternion_stamped__builder.hpp \
+  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/quaternion_stamped__traits.hpp \
+  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/transform.hpp \
+  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/transform__builder.hpp \
+  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/vector3.hpp \
+  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/vector3__builder.hpp \
+  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/vector3_stamped.hpp \
+  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/vector3_stamped__struct.hpp \
+  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/vector3_stamped__builder.hpp \
+  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/vector3_stamped__traits.hpp \
+  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/pose.hpp \
+  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/pose__builder.hpp \
+  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/point.hpp \
+  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/point__builder.hpp \
+  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/point32.hpp \
+  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/point32__struct.hpp \
+  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/point32__builder.hpp \
+  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/point32__traits.hpp \
+  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/pose_stamped.hpp \
+  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/pose_stamped__struct.hpp \
+  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/pose_stamped__builder.hpp \
+  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/pose_stamped__traits.hpp \
+  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/pose_with_covariance.hpp \
+  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/pose_with_covariance__struct.hpp \
+  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/pose_with_covariance__builder.hpp \
+  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/pose_with_covariance__traits.hpp \
+  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/pose_with_covariance_stamped.hpp \
+  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/pose_with_covariance_stamped__struct.hpp \
+  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/pose_with_covariance_stamped__builder.hpp \
+  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/pose_with_covariance_stamped__traits.hpp \
+  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/polygon_stamped.hpp \
+  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/polygon_stamped__struct.hpp \
+  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/polygon__struct.hpp \
+  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/polygon_stamped__builder.hpp \
+  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/polygon_stamped__traits.hpp \
+  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/polygon__traits.hpp \
+  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/wrench.hpp \
+  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/wrench__struct.hpp \
+  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/wrench__builder.hpp \
+  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/wrench__traits.hpp \
+  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/wrench_stamped.hpp \
+  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/wrench_stamped__struct.hpp \
+  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/wrench_stamped__builder.hpp \
+  /opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/wrench_stamped__traits.hpp \
+  /usr/include/kdl/frames.hpp \
+  /usr/include/kdl/utilities/kdl-config.h \
+  /usr/include/kdl/utilities/utility.h \
+  /usr/include/kdl/utilities/kdl-config.h \
+  /usr/include/kdl/frames.inl \
+  /opt/ros/humble/include/tf2/tf2/convert.h \
+  /opt/ros/humble/include/tf2/tf2/impl/convert.h \
+  /opt/ros/humble/include/tf2/tf2/transform_datatypes.h \
+  /opt/ros/humble/include/tf2/tf2/LinearMath/Transform.h \
+  /opt/ros/humble/include/tf2_ros/tf2_ros/buffer_interface.h
 
+
+/opt/ros/humble/include/tf2_ros/tf2_ros/buffer_interface.h:
+
+/opt/ros/humble/include/tf2/tf2/transform_datatypes.h:
+
+/opt/ros/humble/include/tf2/tf2/impl/convert.h:
+
+/opt/ros/humble/include/tf2/tf2/convert.h:
+
+/usr/include/kdl/frames.inl:
+
+/usr/include/kdl/utilities/kdl-config.h:
+
+/usr/include/kdl/frames.hpp:
+
+/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/wrench_stamped__builder.hpp:
+
+/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/wrench_stamped__struct.hpp:
+
+/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/wrench__traits.hpp:
+
+/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/wrench__struct.hpp:
+
+/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/polygon__traits.hpp:
+
+/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/polygon_stamped.hpp:
+
+/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/pose_with_covariance_stamped__struct.hpp:
+
+/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/pose_with_covariance__builder.hpp:
+
+/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/pose_stamped__builder.hpp:
+
+/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/pose_stamped.hpp:
+
+/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/point32__traits.hpp:
+
+/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/point32.hpp:
+
+/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/point__builder.hpp:
+
+/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/point.hpp:
+
+/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/pose__builder.hpp:
+
+/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/pose.hpp:
+
+/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/vector3.hpp:
+
+/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/quaternion_stamped__builder.hpp:
+
+/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/point_stamped__traits.hpp:
+
+/opt/ros/humble/include/tf2_geometry_msgs/tf2_geometry_msgs/tf2_geometry_msgs.hpp:
 
 /opt/ros/humble/include/tf2_ros/tf2_ros/qos.hpp:
 
 /opt/ros/humble/include/tf2_msgs/tf2_msgs/msg/detail/tf_message__traits.hpp:
+
+/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/transform.hpp:
 
 /opt/ros/humble/include/tf2_msgs/tf2_msgs/msg/detail/tf_message__struct.hpp:
 
@@ -724,9 +841,13 @@ CMakeFiles/merge_costmap_sub.dir/src/merge_costmap.cpp.o: ../../src/merge_costma
 
 /opt/ros/humble/include/tf2_ros/tf2_ros/visibility_control.h:
 
+/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/pose_with_covariance__traits.hpp:
+
 /opt/ros/humble/include/tf2/tf2/transform_storage.h:
 
 /opt/ros/humble/include/tf2/tf2/exceptions.h:
+
+/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/pose_stamped__struct.hpp:
 
 /opt/ros/humble/include/tf2/tf2/time.h:
 
@@ -858,6 +979,8 @@ CMakeFiles/merge_costmap_sub.dir/src/merge_costmap.cpp.o: ../../src/merge_costma
 
 /opt/ros/humble/include/rclcpp/rclcpp/node_interfaces/node_logging_interface.hpp:
 
+/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/quaternion_stamped.hpp:
+
 /opt/ros/humble/include/rclcpp/rclcpp/node_interfaces/node_clock_interface.hpp:
 
 /opt/ros/humble/include/rclcpp/rclcpp/generic_subscription.hpp:
@@ -899,6 +1022,8 @@ CMakeFiles/merge_costmap_sub.dir/src/merge_costmap.cpp.o: ../../src/merge_costma
 /opt/ros/humble/include/rclcpp/rclcpp/node.hpp:
 
 /opt/ros/humble/include/rclcpp/rclcpp/future_return_code.hpp:
+
+/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/point_stamped__struct.hpp:
 
 /opt/ros/humble/include/rclcpp/rclcpp/publisher_options.hpp:
 
@@ -958,6 +1083,8 @@ CMakeFiles/merge_costmap_sub.dir/src/merge_costmap.cpp.o: ../../src/merge_costma
 
 /usr/include/c++/11/ratio:
 
+/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/wrench_stamped.hpp:
+
 /usr/include/stdio.h:
 
 /opt/ros/humble/include/rosidl_runtime_cpp/rosidl_runtime_cpp/message_type_support_decl.hpp:
@@ -982,6 +1109,8 @@ CMakeFiles/merge_costmap_sub.dir/src/merge_costmap.cpp.o: ../../src/merge_costma
 
 /usr/include/c++/11/bits/ostream_insert.h:
 
+/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/quaternion_stamped__struct.hpp:
+
 /usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h:
 
 /usr/include/ctype.h:
@@ -991,6 +1120,8 @@ CMakeFiles/merge_costmap_sub.dir/src/merge_costmap.cpp.o: ../../src/merge_costma
 /usr/include/c++/11/cctype:
 
 /usr/include/c++/11/iomanip:
+
+/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/wrench__builder.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/locale.h:
 
@@ -1004,6 +1135,8 @@ CMakeFiles/merge_costmap_sub.dir/src/merge_costmap.cpp.o: ../../src/merge_costma
 
 /opt/ros/humble/include/rclcpp/rclcpp/detail/cpp_callback_trampoline.hpp:
 
+/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/pose_stamped__traits.hpp:
+
 /usr/include/x86_64-linux-gnu/bits/types/error_t.h:
 
 /opt/ros/humble/include/rosidl_runtime_cpp/rosidl_typesupport_cpp/service_type_support.hpp:
@@ -1011,6 +1144,8 @@ CMakeFiles/merge_costmap_sub.dir/src/merge_costmap.cpp.o: ../../src/merge_costma
 /opt/ros/humble/include/rcl_interfaces/rcl_interfaces/msg/detail/parameter_value__traits.hpp:
 
 /usr/include/c++/11/functional:
+
+/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/vector3_stamped__builder.hpp:
 
 /usr/include/asm-generic/errno-base.h:
 
@@ -1024,11 +1159,15 @@ CMakeFiles/merge_costmap_sub.dir/src/merge_costmap.cpp.o: ../../src/merge_costma
 
 /usr/include/x86_64-linux-gnu/bits/signum-arch.h:
 
+/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/polygon_stamped__builder.hpp:
+
 /opt/ros/humble/include/rmw/rmw/security_options.h:
 
 /opt/ros/humble/include/tf2/tf2/buffer_core_interface.h:
 
 /usr/include/c++/11/cerrno:
+
+/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/polygon_stamped__struct.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h:
 
@@ -1061,6 +1200,8 @@ CMakeFiles/merge_costmap_sub.dir/src/merge_costmap.cpp.o: ../../src/merge_costma
 /usr/include/c++/11/cstdio:
 
 /opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/visibility_control.h:
+
+/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/quaternion_stamped__traits.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/wordsize.h:
 
@@ -1153,6 +1294,8 @@ CMakeFiles/merge_costmap_sub.dir/src/merge_costmap.cpp.o: ../../src/merge_costma
 /usr/include/c++/11/bits/parse_numbers.h:
 
 /usr/include/c++/11/bits/shared_ptr_atomic.h:
+
+/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/wrench_stamped__traits.hpp:
 
 /opt/ros/humble/include/rmw/rmw/init.h:
 
@@ -1254,6 +1397,8 @@ CMakeFiles/merge_costmap_sub.dir/src/merge_costmap.cpp.o: ../../src/merge_costma
 
 /usr/include/c++/11/bits/stl_relops.h:
 
+/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/point32__builder.hpp:
+
 /usr/include/c++/11/bits/unique_ptr.h:
 
 /usr/include/stdc-predef.h:
@@ -1313,6 +1458,8 @@ CMakeFiles/merge_costmap_sub.dir/src/merge_costmap.cpp.o: ../../src/merge_costma
 /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h:
 
 /usr/include/x86_64-linux-gnu/sys/select.h:
+
+/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/point_stamped.hpp:
 
 /opt/ros/humble/include/rcl_interfaces/rcl_interfaces/msg/detail/floating_point_range__struct.hpp:
 
@@ -1375,6 +1522,10 @@ CMakeFiles/merge_costmap_sub.dir/src/merge_costmap.cpp.o: ../../src/merge_costma
 /usr/include/stdlib.h:
 
 /usr/include/c++/11/unordered_set:
+
+/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/polygon__struct.hpp:
+
+/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/pose_with_covariance.hpp:
 
 /usr/include/c++/11/iosfwd:
 
@@ -1450,11 +1601,15 @@ CMakeFiles/merge_costmap_sub.dir/src/merge_costmap.cpp.o: ../../src/merge_costma
 
 /usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h:
 
+/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/vector3_stamped.hpp:
+
 /opt/ros/humble/include/rclcpp/rclcpp/wait_set_policies/sequential_synchronization.hpp:
 
 /opt/ros/humble/include/rcl_yaml_param_parser/rcl_yaml_param_parser/parser.h:
 
 /usr/include/c++/11/bits/invoke.h:
+
+/usr/include/kdl/utilities/utility.h:
 
 /usr/include/x86_64-linux-gnu/bits/timex.h:
 
@@ -1526,6 +1681,8 @@ CMakeFiles/merge_costmap_sub.dir/src/merge_costmap.cpp.o: ../../src/merge_costma
 
 /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h:
 
+/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/polygon_stamped__traits.hpp:
+
 /usr/include/pthread.h:
 
 /usr/include/c++/11/bits/basic_string.h:
@@ -1560,6 +1717,8 @@ CMakeFiles/merge_costmap_sub.dir/src/merge_costmap.cpp.o: ../../src/merge_costma
 
 /usr/include/c++/11/bits/stl_pair.h:
 
+/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/pose_with_covariance_stamped__traits.hpp:
+
 /opt/ros/humble/include/rcutils/rcutils/types/uint8_array.h:
 
 /usr/include/c++/11/ext/atomicity.h:
@@ -1575,6 +1734,8 @@ CMakeFiles/merge_costmap_sub.dir/src/merge_costmap.cpp.o: ../../src/merge_costma
 /opt/ros/humble/include/rcl_interfaces/rcl_interfaces/msg/detail/parameter_type__struct.hpp:
 
 /usr/include/c++/11/bits/quoted_string.h:
+
+/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/pose_with_covariance__struct.hpp:
 
 /usr/include/c++/11/bits/std_function.h:
 
@@ -1712,6 +1873,8 @@ CMakeFiles/merge_costmap_sub.dir/src/merge_costmap.cpp.o: ../../src/merge_costma
 
 /opt/ros/humble/include/rmw/rmw/types.h:
 
+/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/pose_with_covariance_stamped__builder.hpp:
+
 /opt/ros/humble/include/rcutils/rcutils/error_handling.h:
 
 /usr/include/c++/11/stdlib.h:
@@ -1721,6 +1884,8 @@ CMakeFiles/merge_costmap_sub.dir/src/merge_costmap.cpp.o: ../../src/merge_costma
 /opt/ros/humble/include/rcutils/rcutils/snprintf.h:
 
 /opt/ros/humble/include/rcutils/rcutils/time.h:
+
+/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/point_stamped__builder.hpp:
 
 ../../src/merge_costmap.cpp:
 
@@ -1820,6 +1985,8 @@ CMakeFiles/merge_costmap_sub.dir/src/merge_costmap.cpp.o: ../../src/merge_costma
 
 /opt/ros/humble/include/rcl/rcl/node.h:
 
+/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/vector3_stamped__struct.hpp:
+
 /opt/ros/humble/include/rcl/rcl/node_options.h:
 
 /opt/ros/humble/include/rclcpp/rclcpp/experimental/subscription_intra_process_base.hpp:
@@ -1906,6 +2073,8 @@ CMakeFiles/merge_costmap_sub.dir/src/merge_costmap.cpp.o: ../../src/merge_costma
 
 /opt/ros/humble/include/rclcpp/rclcpp/expand_topic_or_service_name.hpp:
 
+/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/vector3__builder.hpp:
+
 /opt/ros/humble/include/tf2/tf2/LinearMath/Scalar.h:
 
 /usr/include/c++/11/tr1/hypergeometric.tcc:
@@ -1917,6 +2086,8 @@ CMakeFiles/merge_costmap_sub.dir/src/merge_costmap.cpp.o: ../../src/merge_costma
 /opt/ros/humble/include/rcl/rcl/arguments.h:
 
 /opt/ros/humble/include/rclcpp/rclcpp/logger.hpp:
+
+/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/wrench.hpp:
 
 /opt/ros/humble/include/tf2_msgs/tf2_msgs/msg/detail/tf_message__builder.hpp:
 
@@ -1939,6 +2110,8 @@ CMakeFiles/merge_costmap_sub.dir/src/merge_costmap.cpp.o: ../../src/merge_costma
 /opt/ros/humble/include/rmw/rmw/topic_endpoint_info.h:
 
 /opt/ros/humble/include/builtin_interfaces/builtin_interfaces/msg/duration.hpp:
+
+/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/vector3_stamped__traits.hpp:
 
 /opt/ros/humble/include/builtin_interfaces/builtin_interfaces/msg/detail/duration__struct.hpp:
 
@@ -1963,6 +2136,8 @@ CMakeFiles/merge_costmap_sub.dir/src/merge_costmap.cpp.o: ../../src/merge_costma
 /usr/include/c++/11/bits/basic_ios.h:
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/messages_members.h:
+
+/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/transform__builder.hpp:
 
 /usr/include/c++/11/cxxabi.h:
 
@@ -2054,6 +2229,8 @@ CMakeFiles/merge_costmap_sub.dir/src/merge_costmap.cpp.o: ../../src/merge_costma
 
 /opt/ros/humble/include/rclcpp/rclcpp/detail/resolve_use_intra_process.hpp:
 
+/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/pose_with_covariance_stamped.hpp:
+
 /opt/ros/humble/include/builtin_interfaces/builtin_interfaces/msg/detail/time__builder.hpp:
 
 /opt/ros/humble/include/rclcpp/rclcpp/intra_process_setting.hpp:
@@ -2115,6 +2292,8 @@ CMakeFiles/merge_costmap_sub.dir/src/merge_costmap.cpp.o: ../../src/merge_costma
 /opt/ros/humble/include/libstatistics_collector/libstatistics_collector/collector/metric_details_interface.hpp:
 
 /opt/ros/humble/include/libstatistics_collector/libstatistics_collector/topic_statistics_collector/constants.hpp:
+
+/opt/ros/humble/include/geometry_msgs/geometry_msgs/msg/detail/point32__struct.hpp:
 
 /opt/ros/humble/include/rmw/rmw/ret_types.h:
 

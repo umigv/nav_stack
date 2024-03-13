@@ -1,0 +1,28 @@
+[0.116s] Invoking command in '/home/umarv/ws/src/nav_stack/occupub/build/occupub': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/umarv/ws/src/nav_stack/occupub/build/occupub -- -j8 -l8
+[0.202s] [35m[1mConsolidate compiler generated dependencies of target merge_costmap_sub[0m
+[0.227s] [ 50%] Built target occupub
+[0.235s] [ 75%] [32mBuilding CXX object CMakeFiles/merge_costmap_sub.dir/src/merge_costmap.cpp.o[0m
+[14.940s] [100%] [32m[1mLinking CXX executable merge_costmap_sub[0m
+[15.944s] [100%] Built target merge_costmap_sub
+[15.958s] Invoked command in '/home/umarv/ws/src/nav_stack/occupub/build/occupub' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/umarv/ws/src/nav_stack/occupub/build/occupub -- -j8 -l8
+[16.006s] Invoking command in '/home/umarv/ws/src/nav_stack/occupub/build/occupub': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/umarv/ws/src/nav_stack/occupub/build/occupub
+[16.013s] -- Install configuration: ""
+[16.014s] -- Up-to-date: /home/umarv/ws/src/nav_stack/occupub/install/occupub/share/ament_index/resource_index/package_run_dependencies/occupub
+[16.014s] -- Up-to-date: /home/umarv/ws/src/nav_stack/occupub/install/occupub/share/ament_index/resource_index/parent_prefix_path/occupub
+[16.014s] -- Up-to-date: /home/umarv/ws/src/nav_stack/occupub/install/occupub/share/occupub/environment/ament_prefix_path.sh
+[16.015s] -- Up-to-date: /home/umarv/ws/src/nav_stack/occupub/install/occupub/share/occupub/environment/ament_prefix_path.dsv
+[16.015s] -- Up-to-date: /home/umarv/ws/src/nav_stack/occupub/install/occupub/share/occupub/environment/path.sh
+[16.015s] -- Up-to-date: /home/umarv/ws/src/nav_stack/occupub/install/occupub/share/occupub/environment/path.dsv
+[16.015s] -- Up-to-date: /home/umarv/ws/src/nav_stack/occupub/install/occupub/share/occupub/local_setup.bash
+[16.015s] -- Up-to-date: /home/umarv/ws/src/nav_stack/occupub/install/occupub/share/occupub/local_setup.sh
+[16.015s] -- Up-to-date: /home/umarv/ws/src/nav_stack/occupub/install/occupub/share/occupub/local_setup.zsh
+[16.015s] -- Up-to-date: /home/umarv/ws/src/nav_stack/occupub/install/occupub/share/occupub/local_setup.dsv
+[16.015s] -- Installing: /home/umarv/ws/src/nav_stack/occupub/install/occupub/share/occupub/package.dsv
+[16.016s] -- Up-to-date: /home/umarv/ws/src/nav_stack/occupub/install/occupub/share/ament_index/resource_index/packages/occupub
+[16.016s] -- Up-to-date: /home/umarv/ws/src/nav_stack/occupub/install/occupub/share/occupub/cmake/occupubConfig.cmake
+[16.016s] -- Up-to-date: /home/umarv/ws/src/nav_stack/occupub/install/occupub/share/occupub/cmake/occupubConfig-version.cmake
+[16.016s] -- Up-to-date: /home/umarv/ws/src/nav_stack/occupub/install/occupub/share/occupub/package.xml
+[16.016s] -- Up-to-date: /home/umarv/ws/src/nav_stack/occupub/install/occupub/lib/occupub/occupub
+[16.017s] -- Installing: /home/umarv/ws/src/nav_stack/occupub/install/occupub/lib/occupub/merge_costmap_sub
+[16.027s] -- Set runtime path of "/home/umarv/ws/src/nav_stack/occupub/install/occupub/lib/occupub/merge_costmap_sub" to ""
+[16.031s] Invoked command in '/home/umarv/ws/src/nav_stack/occupub/build/occupub' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/umarv/ws/src/nav_stack/occupub/build/occupub
