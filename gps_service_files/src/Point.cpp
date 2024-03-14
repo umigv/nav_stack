@@ -1,6 +1,19 @@
 #include <cmath>
 #include "../include/Point.hpp"
 
+Point::Point(const GPSCoordinate& origin, const GPSCoordinate& destination){
+    x = GPSCoordinate::distanceBetween(origin, GPSCoordinate(origin.getLatitude(), destination.getLongitude()));
+    y = GPSCoordinate::distanceBetween(origin, GPSCoordinate(destination.getLatitude(), origin.getLongitude()));
+
+    if(origin.getLatitude() > destination.getLatitude()){
+        y *= -1;
+    }
+
+    if(origin.getLongitude() > destination.getLongitude()){
+        x *= -1;
+    }
+}
+
 Point Point::operator+(const Point& rhs) const {
     return Point(x + rhs.x, y + rhs.y);
 }

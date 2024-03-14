@@ -8,18 +8,7 @@ class Point{
 
     Point(long double x, long double y) : x(x), y(y){}
 
-    Point(const GPSCoordinate& origin, const GPSCoordinate& destination){
-        x = GPSCoordinate::distanceBetween(origin, GPSCoordinate(origin.getLatitude(), destination.getLongitude()));
-        y = GPSCoordinate::distanceBetween(origin, GPSCoordinate(destination.getLatitude(), origin.getLongitude()));
-
-        if(origin.getLatitude() > destination.getLatitude()){
-            y *= -1;
-        }
-
-        if(origin.getLongitude() > destination.getLongitude()){
-            x *= -1;
-        }
-    }
+    Point(const GPSCoordinate& origin, const GPSCoordinate& destination);
 
     inline long double getX() const{
         return x;
