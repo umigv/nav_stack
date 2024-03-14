@@ -16,7 +16,7 @@ WaypointPublisher::WaypointPublisher() : Node("WaypointPublisher"), tfBuffer(thi
 
     mapInfoSubscriber = this->create_subscription<nav_msgs::msg::MapMetaData>("map_info", 10, std::bind(&WaypointPublisher::mapInfoCallback, this, _1));
     robotGPSSubscriber = this->create_subscription<sensor_msgs::msg::NavSatFix>("gps_coords", 10, std::bind(&WaypointPublisher::robotGPSCallback, this, _1));
-    goalPosePublisher = this->create_publisher<geometry_msgs::msg::PoseStamped>("goal_pose", 10);
+    goalPosePublisher = this->create_publisher<geometry_msgs::msg::PoseStamped>("goal_pub", 10);
     goalPoseUpdater = this->create_wall_timer(std::chrono::milliseconds(1000), std::bind(&WaypointPublisher::updateGoalPose, this));
 }
 
