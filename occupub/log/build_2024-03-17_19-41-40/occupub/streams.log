@@ -1,0 +1,58 @@
+[0.113s] Invoking command in '/home/umarv/ws/src/nav_stack/occupub/build/occupub': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/umarv/ws/src/nav_stack/occupub/build/occupub -- -j8 -l8
+[0.147s] -- Found ament_cmake: 1.3.5 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.344s] -- Found rclcpp: 16.0.6 (/opt/ros/humble/share/rclcpp/cmake)
+[0.383s] -- Found rosidl_generator_c: 3.1.5 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.386s] -- Found rosidl_adapter: 3.1.5 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.394s] -- Found rosidl_generator_cpp: 3.1.5 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.409s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.437s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.538s] -- Found rmw_implementation_cmake: 6.1.1 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.539s] -- Found rmw_fastrtps_cpp: 6.2.4 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[0.722s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.912s] -- Found nav_msgs: 4.2.3 (/opt/ros/humble/share/nav_msgs/cmake)
+[1.138s] -- Found tf2: 0.25.4 (/opt/ros/humble/share/tf2/cmake)
+[1.156s] -- Found tf2_ros: 0.25.4 (/opt/ros/humble/share/tf2_ros/cmake)
+[1.636s] -- Found tf2_geometry_msgs: 0.25.4 (/opt/ros/humble/share/tf2_geometry_msgs/cmake)
+[1.650s] -- Found eigen3_cmake_module: 0.1.1 (/opt/ros/humble/share/eigen3_cmake_module/cmake)
+[1.653s] -- Ensuring Eigen3 include directory is part of orocos-kdl CMake target
+[1.664s] -- Found ament_lint_auto: 0.12.8 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[1.794s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[1.795s] -- Configured cppcheck include dirs: 
+[1.795s] -- Configured cppcheck exclude dirs and/or files: 
+[1.799s] -- Added test 'flake8' to check Python code syntax and style conventions
+[1.806s] -- Added test 'lint_cmake' to check CMake code style
+[1.809s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[1.839s] -- Added test 'uncrustify' to check C / C++ code style
+[1.839s] -- Configured uncrustify additional arguments: 
+[1.846s] -- Added test 'xmllint' to check XML markup files
+[1.862s] -- Configuring done
+[1.938s] -- Generating done
+[1.950s] -- Build files have been written to: /home/umarv/ws/src/nav_stack/occupub/build/occupub
+[2.005s] [35m[1mConsolidate compiler generated dependencies of target merge_costmap_sub[0m
+[2.006s] [35m[1mConsolidate compiler generated dependencies of target occupub[0m
+[2.037s] [ 50%] [32mBuilding CXX object CMakeFiles/merge_costmap_sub.dir/src/merge_costmap.cpp.o[0m
+[2.037s] [ 75%] Built target occupub
+[21.636s] [100%] [32m[1mLinking CXX executable merge_costmap_sub[0m
+[22.912s] [100%] Built target merge_costmap_sub
+[22.927s] Invoked command in '/home/umarv/ws/src/nav_stack/occupub/build/occupub' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/umarv/ws/src/nav_stack/occupub/build/occupub -- -j8 -l8
+[22.980s] Invoking command in '/home/umarv/ws/src/nav_stack/occupub/build/occupub': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/umarv/ws/src/nav_stack/occupub/build/occupub
+[22.989s] -- Install configuration: ""
+[22.990s] -- Up-to-date: /home/umarv/ws/src/nav_stack/occupub/install/occupub/share/ament_index/resource_index/package_run_dependencies/occupub
+[22.990s] -- Installing: /home/umarv/ws/src/nav_stack/occupub/install/occupub/share/ament_index/resource_index/parent_prefix_path/occupub
+[22.991s] -- Up-to-date: /home/umarv/ws/src/nav_stack/occupub/install/occupub/share/occupub/environment/ament_prefix_path.sh
+[22.991s] -- Installing: /home/umarv/ws/src/nav_stack/occupub/install/occupub/share/occupub/environment/ament_prefix_path.dsv
+[22.991s] -- Up-to-date: /home/umarv/ws/src/nav_stack/occupub/install/occupub/share/occupub/environment/path.sh
+[22.991s] -- Installing: /home/umarv/ws/src/nav_stack/occupub/install/occupub/share/occupub/environment/path.dsv
+[22.992s] -- Up-to-date: /home/umarv/ws/src/nav_stack/occupub/install/occupub/share/occupub/local_setup.bash
+[22.992s] -- Up-to-date: /home/umarv/ws/src/nav_stack/occupub/install/occupub/share/occupub/local_setup.sh
+[22.992s] -- Up-to-date: /home/umarv/ws/src/nav_stack/occupub/install/occupub/share/occupub/local_setup.zsh
+[22.993s] -- Installing: /home/umarv/ws/src/nav_stack/occupub/install/occupub/share/occupub/local_setup.dsv
+[22.993s] -- Installing: /home/umarv/ws/src/nav_stack/occupub/install/occupub/share/occupub/package.dsv
+[22.994s] -- Up-to-date: /home/umarv/ws/src/nav_stack/occupub/install/occupub/share/ament_index/resource_index/packages/occupub
+[22.994s] -- Up-to-date: /home/umarv/ws/src/nav_stack/occupub/install/occupub/share/occupub/cmake/occupubConfig.cmake
+[22.994s] -- Up-to-date: /home/umarv/ws/src/nav_stack/occupub/install/occupub/share/occupub/cmake/occupubConfig-version.cmake
+[22.994s] -- Up-to-date: /home/umarv/ws/src/nav_stack/occupub/install/occupub/share/occupub/package.xml
+[22.994s] -- Up-to-date: /home/umarv/ws/src/nav_stack/occupub/install/occupub/lib/occupub/occupub
+[22.994s] -- Installing: /home/umarv/ws/src/nav_stack/occupub/install/occupub/lib/occupub/merge_costmap_sub
+[23.004s] -- Set runtime path of "/home/umarv/ws/src/nav_stack/occupub/install/occupub/lib/occupub/merge_costmap_sub" to ""
+[23.007s] Invoked command in '/home/umarv/ws/src/nav_stack/occupub/build/occupub' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/umarv/ws/src/nav_stack/occupub/build/occupub

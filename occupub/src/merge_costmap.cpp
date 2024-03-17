@@ -231,9 +231,11 @@ public:
     {
         cv_og_subscriber = create_subscription<OccupancyGrid>(
             "/occupancy_grid", 10, std::bind(&MergeService::populateCvOccupancyGrid, this, _1));
+            printOccupancyGridInfo(cv_occupancy_grid);
         
         sensors_occupancy_grid_subscriber = create_subscription<OccupancyGrid>(
             "/occupancy_grid", 10, std::bind(&MergeService::populateSensorsOccupancyGrid, this, _1));
+            printOccupancyGridInfo(sensors_occupancy_grid);
     }
 
     OccupancyGrid mergeSLAMAndLaneLine(const OccupancyGrid &cv_cm, const OccupancyGrid &slam_cm)

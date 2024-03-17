@@ -1,0 +1,25 @@
+[0.136s] Invoking command in '/home/umarv/ws/src/nav_stack/build/cv-integration': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/umarv/ws/src/nav_stack/build/cv-integration -- -j8 -l8
+[0.247s] [ 50%] [32mBuilding CXX object CMakeFiles/cv-integration.dir/grid_generator.cpp.o[0m
+[10.466s] [100%] [32m[1mLinking CXX executable cv-integration[0m
+[14.276s] [100%] Built target cv-integration
+[14.289s] Invoked command in '/home/umarv/ws/src/nav_stack/build/cv-integration' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/umarv/ws/src/nav_stack/build/cv-integration -- -j8 -l8
+[14.331s] Invoking command in '/home/umarv/ws/src/nav_stack/build/cv-integration': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/umarv/ws/src/nav_stack/build/cv-integration
+[14.340s] -- Install configuration: ""
+[14.342s] -- Installing: /home/umarv/ws/src/nav_stack/install/cv-integration/lib/cv-integration/cv-integration
+[14.345s] -- Set runtime path of "/home/umarv/ws/src/nav_stack/install/cv-integration/lib/cv-integration/cv-integration" to ""
+[14.345s] -- Up-to-date: /home/umarv/ws/src/nav_stack/install/cv-integration/share/ament_index/resource_index/package_run_dependencies/cv-integration
+[14.345s] -- Up-to-date: /home/umarv/ws/src/nav_stack/install/cv-integration/share/ament_index/resource_index/parent_prefix_path/cv-integration
+[14.345s] -- Up-to-date: /home/umarv/ws/src/nav_stack/install/cv-integration/share/cv-integration/environment/ament_prefix_path.sh
+[14.345s] -- Up-to-date: /home/umarv/ws/src/nav_stack/install/cv-integration/share/cv-integration/environment/ament_prefix_path.dsv
+[14.345s] -- Up-to-date: /home/umarv/ws/src/nav_stack/install/cv-integration/share/cv-integration/environment/path.sh
+[14.345s] -- Up-to-date: /home/umarv/ws/src/nav_stack/install/cv-integration/share/cv-integration/environment/path.dsv
+[14.346s] -- Up-to-date: /home/umarv/ws/src/nav_stack/install/cv-integration/share/cv-integration/local_setup.bash
+[14.346s] -- Up-to-date: /home/umarv/ws/src/nav_stack/install/cv-integration/share/cv-integration/local_setup.sh
+[14.346s] -- Up-to-date: /home/umarv/ws/src/nav_stack/install/cv-integration/share/cv-integration/local_setup.zsh
+[14.346s] -- Up-to-date: /home/umarv/ws/src/nav_stack/install/cv-integration/share/cv-integration/local_setup.dsv
+[14.346s] -- Installing: /home/umarv/ws/src/nav_stack/install/cv-integration/share/cv-integration/package.dsv
+[14.346s] -- Up-to-date: /home/umarv/ws/src/nav_stack/install/cv-integration/share/ament_index/resource_index/packages/cv-integration
+[14.347s] -- Up-to-date: /home/umarv/ws/src/nav_stack/install/cv-integration/share/cv-integration/cmake/cv-integrationConfig.cmake
+[14.348s] -- Up-to-date: /home/umarv/ws/src/nav_stack/install/cv-integration/share/cv-integration/cmake/cv-integrationConfig-version.cmake
+[14.348s] -- Up-to-date: /home/umarv/ws/src/nav_stack/install/cv-integration/share/cv-integration/package.xml
+[14.351s] Invoked command in '/home/umarv/ws/src/nav_stack/build/cv-integration' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/umarv/ws/src/nav_stack/build/cv-integration
