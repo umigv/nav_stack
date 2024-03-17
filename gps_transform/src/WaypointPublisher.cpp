@@ -53,7 +53,7 @@ void WaypointPublisher::mapInfoCallback(const nav_msgs::msg::MapMetaData::Shared
     uint32_t width = map->width; 
     uint32_t height = map->height;
     float resolution = map->resolution;
-    
+
     RCLCPP_INFO(this->get_logger(), 
         "origin: (%f, %f), width: %u, height: %u, resolution: %f", 
         xpos, ypos, width, height, resolution);
@@ -72,7 +72,7 @@ Point WaypointPublisher::getRobotPosition() const{
     geometry_msgs::msg::TransformStamped transform;
     
     try{
-        transform = tfBuffer.lookupTransform("base_link", "map", tf2::TimePointZero);
+        transform = tfBuffer.lookupTransform("base_link", "map", rclcpp::Time(0));
     }
     catch(tf2::TransformException& exception){
         RCLCPP_ERROR(this->get_logger(), "Could not get robot position: %s", exception.what());
