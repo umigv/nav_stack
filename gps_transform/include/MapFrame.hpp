@@ -5,7 +5,7 @@ class MapFrame{
     public:
     MapFrame() = default;
     
-    MapFrame(const Point& origin, long double width, long double height, long double resolution);
+    MapFrame(const Point& origin, uint32_t width, uint32_t height, long double resolution);
 
     Point constrainToMap(const Point& point) const;
 

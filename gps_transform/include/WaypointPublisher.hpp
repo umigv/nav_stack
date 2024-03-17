@@ -11,10 +11,10 @@
 #include "tf2_ros/transform_listener.h"
 
 class WaypointPublisher : public rclcpp::Node{
-    public:
+public:
     WaypointPublisher();
 
-    private:
+private:
     friend std::ostream& operator<<(std::ostream& os, const WaypointPublisher& waypointPublisher);
 
     void readWaypoints(std::istream& is);

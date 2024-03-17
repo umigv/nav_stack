@@ -1,6 +1,6 @@
 #include "../include/MapFrame.hpp"
 
-MapFrame::MapFrame(const Point& origin, long double width, long double height, long double resolution){
+MapFrame::MapFrame(const Point& origin, uint32_t width, uint32_t height, long double resolution){
     const long double dx = width * resolution;
     const long double dy = height * resolution;
 

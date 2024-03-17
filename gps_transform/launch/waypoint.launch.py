@@ -13,8 +13,8 @@ def generate_launch_description():
         description='Name of waypoints file to load'
     )
 
-    face_north_launch_arg = DeclareLaunchArgument(
-        name='face_north',
+    facing_north_launch_arg = DeclareLaunchArgument(
+        name='facing_north',
         default_value="True",
         description='Whether the map is facing north'
     )
@@ -25,12 +25,13 @@ def generate_launch_description():
         description='Tolerance for reaching goal'
     )
 
+
     # GPS Coord Publisher Node
-    gps_coord_publisher_node = Node(
-        package="gps_coord_pub",
-        executable="gps_coord_pub",
-        name="gps_coord_pub_node"
-    )
+    # gps_coord_publisher_node = Node(
+    #     package="gps_coord_pub",
+    #     executable="gps_coord_pub",
+    #     name="gps_coord_pub_node"
+    # )
 
     # Waypoint Publisher Node
     waypoint_publisher_node = Node(
@@ -39,16 +40,23 @@ def generate_launch_description():
         name="waypoint_publisher_node",
         parameters=[{
             "waypoints_file": LaunchConfiguration('waypoints_file'), 
-            "face_north": LaunchConfiguration('face_north'),
+            "facing_north": LaunchConfiguration('facing_north'),
             "goal_tolerance": LaunchConfiguration('goal_tolerance')
         }]
     )
 
-    # Launch Description
-    return LaunchDescription([
-        waypoints_file_launch_arg,
-        face_north_launch_arg,
-        goal_tolerance_launch_arg,
-        gps_coord_publisher_node, 
+    args = [
+        waypoints_file_launch_arg, 
+        facing_north_launch_arg,
+        goal_tolerance_launch_arg
+    ]
+
+    nodes = [
+        #gps_coord_publisher_node, 
         waypoint_publisher_node
-    ])
+    ]
+
+    # Launch Description
+    return LaunchDescription(
+        args + nodes
+    )  

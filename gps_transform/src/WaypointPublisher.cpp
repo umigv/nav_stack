@@ -1,4 +1,5 @@
 #include <fstream>
+#include <string>
 #include "../include/WaypointPublisher.hpp"
 
 using std::placeholders::_1;
@@ -10,11 +11,12 @@ WaypointPublisher::WaypointPublisher() : Node("WaypointPublisher"), tfBuffer(thi
 
     faceNorth = this->get_parameter("face_north").as_bool();
     kEpsilon = this->get_parameter("goal_tolerance").as_double();
-    const char* file = this->get_parameter("waypoints_file").as_string().c_str();
-    std::ifstream is(file);
+    const std::string waypoints_file_path = this->get_parameter("waypoints_file").as_string();
+    std::ifstream is(waypoints_file_path);
+    RCLCPP_INFO(this->get_logger(), waypoints_file_path.c_str());
     readWaypoints(is);
 
-    mapInfoSubscriber = this->create_subscription<nav_msgs::msg::MapMetaData>("map_info", 10, std::bind(&WaypointPublisher::mapInfoCallback, this, _1));
+    mapInfoSubscriber = this->create_subscription<nav_msgs::msg::MapMetaData>("map_metadata", 10, std::bind(&WaypointPublisher::mapInfoCallback, this, _1));
     robotGPSSubscriber = this->create_subscription<sensor_msgs::msg::NavSatFix>("gps_coords", 10, std::bind(&WaypointPublisher::robotGPSCallback, this, _1));
     goalPosePublisher = this->create_publisher<geometry_msgs::msg::PoseStamped>("goal_pub", 10);
     goalPoseUpdater = this->create_wall_timer(std::chrono::milliseconds(1000), std::bind(&WaypointPublisher::updateGoalPose, this));
@@ -28,6 +30,8 @@ void WaypointPublisher::readWaypoints(std::istream& is){
 
     GPSCoordinate waypoint;
     while(is >> waypoint){
+        RCLCPP_INFO(this->get_logger(), 
+            (std::to_string(waypoint.getLatitude()) + ", " + std::to_string(waypoint.getLongitude())).c_str());
         waypoints.emplace_back(waypoint);
     }
 
@@ -44,10 +48,23 @@ void WaypointPublisher::readWaypoints(std::istream& is){
 }
 
 void WaypointPublisher::mapInfoCallback(const nav_msgs::msg::MapMetaData::SharedPtr map){
-    frame = MapFrame(Point(map->origin.position.x, map->origin.position.y), map->width, map->height, map->resolution);
+    double xpos = map->origin.position.x;
+    double ypos = map->origin.position.y;
+    uint32_t width = map->width; 
+    uint32_t height = map->height;
+    float resolution = map->resolution;
+    
+    RCLCPP_INFO(this->get_logger(), 
+        "origin: (%f, %f), width: %u, height: %u, resolution: %f", 
+        xpos, ypos, width, height, resolution);
+        
+    frame = MapFrame(Point(xpos, ypos), width, height, resolution);
 }
 
 void WaypointPublisher::robotGPSCallback(const sensor_msgs::msg::NavSatFix::SharedPtr gpsCoordinate){
+    RCLCPP_INFO(this->get_logger(), 
+        "lat: %f, lon: %f", gpsCoordinate->latitude, gpsCoordinate->longitude);
+
     robotGPS = GPSCoordinate(gpsCoordinate->latitude, gpsCoordinate->longitude);
 }
 
