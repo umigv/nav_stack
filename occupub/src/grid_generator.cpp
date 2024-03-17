@@ -8,7 +8,7 @@ class OccupancyGridGenerator : public rclcpp::Node
 public:
     OccupancyGridGenerator() : Node("occupancy_grid_generator")
     {
-        publisher_ = create_publisher<nav_msgs::msg::OccupancyGrid>("occupancy_grid", 10);
+        publisher_ = create_publisher<nav_msgs::msg::OccupancyGrid>("cv_grid", 10);
         timer_ = create_wall_timer(std::chrono::seconds(1), std::bind(&OccupancyGridGenerator::publishGrid, this));
     }
 
@@ -23,13 +23,14 @@ private:
         // Populate grid with random values (0 or 1)
         for (int i = 0; i < width * height; ++i)
         {
-            gridData[i] = rand() % 3 == 0 ? 0 : (rand() % 2 == 0 ? 1 : -1);
+            //gridData[i] = rand() % 3 == 0 ? 0 : (rand() % 2 == 0 ? 1 : -1);
+            gridData[i] = 1;
         }
 
         // Create the OccupancyGrid message
         nav_msgs::msg::OccupancyGrid occupancyGridMsg;
         occupancyGridMsg.header.stamp = now();
-        occupancyGridMsg.header.frame_id = "map";
+        occupancyGridMsg.header.frame_id = "cv_grid";
         occupancyGridMsg.info.width = width;
         occupancyGridMsg.info.height = height;
         occupancyGridMsg.info.resolution = 0.05;  // Replace with your desired resolution
@@ -56,7 +57,7 @@ class BigOccupancyGridPublisher : public rclcpp::Node
 public:
     BigOccupancyGridPublisher() : Node("big_occupancy_grid_publisher")
     {
-        publisher_ = create_publisher<nav_msgs::msg::OccupancyGrid>("occupancy_grid", 10);
+        publisher_ = create_publisher<nav_msgs::msg::OccupancyGrid>("sen_grid", 10);
         timer_ = create_wall_timer(std::chrono::seconds(1), std::bind(&BigOccupancyGridPublisher::publishGrid, this));
     }
 //create another publishGrid function to publish a bigger grid
@@ -71,13 +72,14 @@ private:
         // Populate grid with random values (0 or 1)
         for (int i = 0; i < width * height; ++i)
         {
-            gridData[i] = (rand() % 2) == 0 ? 0 : 1;
+            //gridData[i] = (rand() % 2) == 0 ? 0 : 1;
+            gridData[i] = 0;
         }
 
         // Create the OccupancyGrid message
         nav_msgs::msg::OccupancyGrid occupancyGridMsg;
         occupancyGridMsg.header.stamp = now();
-        occupancyGridMsg.header.frame_id = "map";
+        occupancyGridMsg.header.frame_id = "sen_grid";
         occupancyGridMsg.info.width = width;
         occupancyGridMsg.info.height = height;
         occupancyGridMsg.info.resolution = 0.05;  // Replace with your desired resolution

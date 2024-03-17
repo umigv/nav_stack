@@ -1,0 +1,102 @@
+[1.410s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build']
+[1.410s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=8, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, mixin_files=None, mixin=None, verb_parser=<colcon_mixin.mixin.mixin_argument.MixinArgumentDecorator object at 0x7fdffc2e87f0>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7fdffc2e91b0>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7fdffc2e91b0>>, mixin_verb=('build',))
+[1.465s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[1.465s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[1.465s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[1.465s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[1.465s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[1.465s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[1.465s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/umarv/ws/src/nav_stack/occupub'
+[1.465s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[1.466s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[1.466s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[1.466s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[1.466s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[1.466s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[1.466s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[1.466s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[1.466s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[1.483s] DEBUG:colcon.colcon_core.package_identification:Package '.' with type 'ros.ament_cmake' and name 'occupub'
+[1.483s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[1.483s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[1.483s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[1.483s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[1.484s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[1.615s] Level 5:colcon.colcon_core.verb:set package 'occupub' build argument 'cmake_args' from command line to 'None'
+[1.615s] Level 5:colcon.colcon_core.verb:set package 'occupub' build argument 'cmake_target' from command line to 'None'
+[1.615s] Level 5:colcon.colcon_core.verb:set package 'occupub' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[1.615s] Level 5:colcon.colcon_core.verb:set package 'occupub' build argument 'cmake_clean_cache' from command line to 'False'
+[1.615s] Level 5:colcon.colcon_core.verb:set package 'occupub' build argument 'cmake_clean_first' from command line to 'False'
+[1.615s] Level 5:colcon.colcon_core.verb:set package 'occupub' build argument 'cmake_force_configure' from command line to 'False'
+[1.615s] Level 5:colcon.colcon_core.verb:set package 'occupub' build argument 'ament_cmake_args' from command line to 'None'
+[1.615s] Level 5:colcon.colcon_core.verb:set package 'occupub' build argument 'catkin_cmake_args' from command line to 'None'
+[1.616s] Level 5:colcon.colcon_core.verb:set package 'occupub' build argument 'catkin_skip_building_tests' from command line to 'False'
+[1.616s] DEBUG:colcon.colcon_core.verb:Building package 'occupub' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/umarv/ws/src/nav_stack/occupub/build/occupub', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/umarv/ws/src/nav_stack/occupub/install/occupub', 'merge_install': False, 'path': '/home/umarv/ws/src/nav_stack/occupub', 'symlink_install': False, 'test_result_base': None}
+[1.638s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[1.655s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[1.655s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/umarv/ws/src/nav_stack/occupub' with build type 'ament_cmake'
+[1.655s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/umarv/ws/src/nav_stack/occupub'
+[1.676s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[1.677s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.677s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.696s] WARNING:colcon.colcon_core.prefix_path.colcon:The path '/home/umarv/ws/src/nav_stack/merge_costmap_sub/install' in the environment variable COLCON_PREFIX_PATH doesn't exist
+[1.779s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/umarv/ws/src/nav_stack/occupub/build/occupub': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/umarv/ws/src/nav_stack/occupub/build/occupub -- -j8 -l8
+[18.761s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/umarv/ws/src/nav_stack/occupub/build/occupub' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/umarv/ws/src/nav_stack/occupub/build/occupub -- -j8 -l8
+[18.825s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/umarv/ws/src/nav_stack/occupub/build/occupub': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/umarv/ws/src/nav_stack/occupub/build/occupub
+[18.854s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(occupub)
+[18.856s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/umarv/ws/src/nav_stack/occupub/build/occupub' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/umarv/ws/src/nav_stack/occupub/build/occupub
+[18.872s] Level 1:colcon.colcon_core.environment:checking '/home/umarv/ws/src/nav_stack/occupub/install/occupub' for CMake module files
+[18.873s] Level 1:colcon.colcon_core.environment:checking '/home/umarv/ws/src/nav_stack/occupub/install/occupub' for CMake config files
+[18.873s] Level 1:colcon.colcon_core.shell:create_environment_hook('occupub', 'cmake_prefix_path')
+[18.900s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/umarv/ws/src/nav_stack/occupub/install/occupub/share/occupub/hook/cmake_prefix_path.ps1'
+[18.901s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/umarv/ws/src/nav_stack/occupub/install/occupub/share/occupub/hook/cmake_prefix_path.dsv'
+[18.902s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/umarv/ws/src/nav_stack/occupub/install/occupub/share/occupub/hook/cmake_prefix_path.sh'
+[18.904s] Level 1:colcon.colcon_core.environment:checking '/home/umarv/ws/src/nav_stack/occupub/install/occupub/lib'
+[18.905s] Level 1:colcon.colcon_core.environment:checking '/home/umarv/ws/src/nav_stack/occupub/install/occupub/bin'
+[18.905s] Level 1:colcon.colcon_core.environment:checking '/home/umarv/ws/src/nav_stack/occupub/install/occupub/lib/pkgconfig/occupub.pc'
+[18.907s] Level 1:colcon.colcon_core.environment:checking '/home/umarv/ws/src/nav_stack/occupub/install/occupub/lib/python3.10/site-packages'
+[18.907s] Level 1:colcon.colcon_core.environment:checking '/home/umarv/ws/src/nav_stack/occupub/install/occupub/bin'
+[18.924s] INFO:colcon.colcon_core.shell:Creating package script '/home/umarv/ws/src/nav_stack/occupub/install/occupub/share/occupub/package.ps1'
+[18.927s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/umarv/ws/src/nav_stack/occupub/install/occupub/share/occupub/package.dsv'
+[18.929s] INFO:colcon.colcon_core.shell:Creating package script '/home/umarv/ws/src/nav_stack/occupub/install/occupub/share/occupub/package.sh'
+[18.932s] INFO:colcon.colcon_core.shell:Creating package script '/home/umarv/ws/src/nav_stack/occupub/install/occupub/share/occupub/package.bash'
+[18.935s] INFO:colcon.colcon_core.shell:Creating package script '/home/umarv/ws/src/nav_stack/occupub/install/occupub/share/occupub/package.zsh'
+[18.937s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/umarv/ws/src/nav_stack/occupub/install/occupub/share/colcon-core/packages/occupub)
+[19.021s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(occupub)
+[19.043s] Level 1:colcon.colcon_core.environment:checking '/home/umarv/ws/src/nav_stack/occupub/install/occupub' for CMake module files
+[19.044s] Level 1:colcon.colcon_core.environment:checking '/home/umarv/ws/src/nav_stack/occupub/install/occupub' for CMake config files
+[19.045s] Level 1:colcon.colcon_core.shell:create_environment_hook('occupub', 'cmake_prefix_path')
+[19.064s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/umarv/ws/src/nav_stack/occupub/install/occupub/share/occupub/hook/cmake_prefix_path.ps1'
+[19.066s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/umarv/ws/src/nav_stack/occupub/install/occupub/share/occupub/hook/cmake_prefix_path.dsv'
+[19.068s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/umarv/ws/src/nav_stack/occupub/install/occupub/share/occupub/hook/cmake_prefix_path.sh'
+[19.069s] Level 1:colcon.colcon_core.environment:checking '/home/umarv/ws/src/nav_stack/occupub/install/occupub/lib'
+[19.070s] Level 1:colcon.colcon_core.environment:checking '/home/umarv/ws/src/nav_stack/occupub/install/occupub/bin'
+[19.070s] Level 1:colcon.colcon_core.environment:checking '/home/umarv/ws/src/nav_stack/occupub/install/occupub/lib/pkgconfig/occupub.pc'
+[19.071s] Level 1:colcon.colcon_core.environment:checking '/home/umarv/ws/src/nav_stack/occupub/install/occupub/lib/python3.10/site-packages'
+[19.072s] Level 1:colcon.colcon_core.environment:checking '/home/umarv/ws/src/nav_stack/occupub/install/occupub/bin'
+[19.093s] INFO:colcon.colcon_core.shell:Creating package script '/home/umarv/ws/src/nav_stack/occupub/install/occupub/share/occupub/package.ps1'
+[19.095s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/umarv/ws/src/nav_stack/occupub/install/occupub/share/occupub/package.dsv'
+[19.097s] INFO:colcon.colcon_core.shell:Creating package script '/home/umarv/ws/src/nav_stack/occupub/install/occupub/share/occupub/package.sh'
+[19.099s] INFO:colcon.colcon_core.shell:Creating package script '/home/umarv/ws/src/nav_stack/occupub/install/occupub/share/occupub/package.bash'
+[19.101s] INFO:colcon.colcon_core.shell:Creating package script '/home/umarv/ws/src/nav_stack/occupub/install/occupub/share/occupub/package.zsh'
+[19.104s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/umarv/ws/src/nav_stack/occupub/install/occupub/share/colcon-core/packages/occupub)
+[19.105s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[19.107s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[19.108s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[19.108s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[19.134s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.notify_send': Could not find 'notify-send'
+[19.134s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[19.134s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[19.134s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[19.141s] DEBUG:colcon.colcon_notification.desktop_notification.notify2:Failed to initialize notify2: org.freedesktop.DBus.Error.Spawn.ExecFailed: /usr/bin/dbus-launch terminated abnormally without any error message
+[19.142s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[19.162s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/umarv/ws/src/nav_stack/occupub/install/local_setup.ps1'
+[19.164s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/umarv/ws/src/nav_stack/occupub/install/_local_setup_util_ps1.py'
+[19.166s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/umarv/ws/src/nav_stack/occupub/install/setup.ps1'
+[19.221s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/umarv/ws/src/nav_stack/occupub/install/local_setup.sh'
+[19.226s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/umarv/ws/src/nav_stack/occupub/install/_local_setup_util_sh.py'
+[19.229s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/umarv/ws/src/nav_stack/occupub/install/setup.sh'
+[19.260s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/umarv/ws/src/nav_stack/occupub/install/local_setup.bash'
+[19.262s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/umarv/ws/src/nav_stack/occupub/install/setup.bash'
+[19.292s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/umarv/ws/src/nav_stack/occupub/install/local_setup.zsh'
+[19.293s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/umarv/ws/src/nav_stack/occupub/install/setup.zsh'
