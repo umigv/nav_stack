@@ -17,8 +17,8 @@ WaypointPublisher::WaypointPublisher() : Node("WaypointPublisher"), tfBuffer(thi
     readWaypoints(is);
 
     mapInfoSubscriber = this->create_subscription<nav_msgs::msg::MapMetaData>("map_metadata", 10, std::bind(&WaypointPublisher::mapInfoCallback, this, _1));
-    robotGPSSubscriber = this->create_subscription<sensor_msgs::msg::NavSatFix>("gps_coords", 10, std::bind(&WaypointPublisher::robotGPSCallback, this, _1));
-    goalPosePublisher = this->create_publisher<geometry_msgs::msg::PoseStamped>("goal_pub", 10);
+    robotGPSSubscriber = this->create_subscription<sensor_msgs::msg::NavSatFix>("gps/data", 10, std::bind(&WaypointPublisher::robotGPSCallback, this, _1));
+    goalPosePublisher = this->create_publisher<geometry_msgs::msg::PoseStamped>("goal_pose", 10);
     goalPoseUpdater = this->create_wall_timer(std::chrono::milliseconds(1000), std::bind(&WaypointPublisher::updateGoalPose, this));
 }
 
@@ -54,16 +54,13 @@ void WaypointPublisher::mapInfoCallback(const nav_msgs::msg::MapMetaData::Shared
     uint32_t height = map->height;
     float resolution = map->resolution;
 
-    RCLCPP_INFO(this->get_logger(), 
-        "origin: (%f, %f), width: %u, height: %u, resolution: %f", 
-        xpos, ypos, width, height, resolution);
+    //RCLCPP_INFO(this->get_logger(), "origin: (%f, %f), width: %u, height: %u, resolution: %f", xpos, ypos, width, height, resolution);
         
     frame = MapFrame(Point(xpos, ypos), width, height, resolution);
 }
 
 void WaypointPublisher::robotGPSCallback(const sensor_msgs::msg::NavSatFix::SharedPtr gpsCoordinate){
-    RCLCPP_INFO(this->get_logger(), 
-        "lat: %f, lon: %f", gpsCoordinate->latitude, gpsCoordinate->longitude);
+    //RCLCPP_INFO(this->get_logger(), "lat: %f, lon: %f", gpsCoordinate->latitude, gpsCoordinate->longitude);
 
     robotGPS = GPSCoordinate(gpsCoordinate->latitude, gpsCoordinate->longitude);
 }
@@ -73,17 +70,20 @@ Point WaypointPublisher::getRobotPosition() const{
     
     try{
         transform = tfBuffer.lookupTransform("base_link", "map", rclcpp::Time(0));
+
     }
     catch(tf2::TransformException& exception){
         RCLCPP_ERROR(this->get_logger(), "Could not get robot position: %s", exception.what());
         return Point();
     }
 
+    //RCLCPP_INFO(this->get_logger(), "get robot position success");
     return Point(transform.transform.translation.x, transform.transform.translation.y);
 }
 
 void WaypointPublisher::updateGoalPose(){
     if(waypoints.empty()){
+        RCLCPP_INFO(this->get_logger(), "Out of waypoints");
         return;
     }
 
@@ -94,11 +94,14 @@ void WaypointPublisher::updateGoalPose(){
         goal.rotateBy(M_PI);
     }
 
+    RCLCPP_INFO(this->get_logger(), "yeah the waypoint is cooking");
+
     if(robotPosition.distanceTo(goal) < kEpsilon){
         waypoints.pop_front();
         return;
     }
 
+    RCLCPP_INFO(this->get_logger(), "publishing");
     goalPosePublisher->publish(goal.toPoseStamped());
 }
 
