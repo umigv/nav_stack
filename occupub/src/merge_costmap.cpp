@@ -46,6 +46,10 @@ class MergeService : public rclcpp::Node
 public:
     MergeService() : Node("merge_service") {}
 
+    // create a robotPose index pair variable
+    std::pair<int, int> robotPoseCV;
+    std::pair<int, int> robotPoseSlam;
+
     // Renamed the function to follow C++ naming conventions
     void occupancyGridSubscriber()
     {
@@ -108,15 +112,7 @@ public:
                         }
                     }
                     if (lane_value == 1){
-                        if (slam_value == -1){
                             merged_grid.data[row * slam_cm.info.width + col] = 1;
-                        }
-                        else if (slam_value == 0){
-                            merged_grid.data[row * slam_cm.info.width + col] = 1;
-                        }
-                        else if (slam_value == 1){
-                            merged_grid.data[row * slam_cm.info.width + col] = 1;
-                        }
                     }
                 }
             }
@@ -151,8 +147,9 @@ private:
     {
         cv_occupancy_grid = *cv_cm;  // Dereference the shared pointer and copy data
         // Additional logic if needed
-        // Print information about the received message
-        // RCLCPP_INFO(get_logger(), "Received CV occupancy grid. Height: %d, Width: %d", cv_occupancy_grid.info.height, cv_occupancy_grid.info.width);
+        // Set a robotPose variable to the center of the grid
+        robotPoseCV = std::make_pair(cv_occupancy_grid.info.width/2, cv_occupancy_grid.info.height/2);
+
         OccupancyGrid merged_grid = mergeSLAMAndLaneLine(cv_occupancy_grid, sensors_occupancy_grid);
         printOccupancyGridInfo(merged_grid);
         // Print data values from the received message
@@ -168,8 +165,9 @@ private:
     {
         sensors_occupancy_grid = *snsr_cm;  // Dereference the shared pointer and copy data
         // Additional logic if needed
-        // Print information about the received message
-        // RCLCPP_INFO(get_logger(), "Received sensors occupancy grid. Height: %d, Width: %d", sensors_occupancy_grid.info.height, sensors_occupancy_grid.info.width);
+        // initialize the robotPose variable
+        robotPoseSlam = std::make_pair();
+
         OccupancyGrid merged_grid = mergeSLAMAndLaneLine(cv_occupancy_grid, sensors_occupancy_grid);
         printOccupancyGridInfo(merged_grid);
         // Print data values from the received message
