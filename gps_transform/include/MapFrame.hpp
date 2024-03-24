@@ -35,6 +35,8 @@ class MapFrame{
     Point bottomRight;
     Point topLeft;
     Point topRight;
+    long double width;
+    long double height;
 
     static constexpr long double MAP_CONTRAINT_OFFSET = 0.25;
 };
