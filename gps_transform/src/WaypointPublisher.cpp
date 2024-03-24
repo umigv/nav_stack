@@ -88,21 +88,24 @@ void WaypointPublisher::updateGoalPose(){
     }
 
     const Point robotPosition = getRobotPosition();
-    const Point goal = frame.constrainToMap(robotPosition + Point(robotGPS, waypoints.front()));
+    Point unconstrainedGoal = robotPosition + Point(robotGPS, waypoints.front());
 
-    if(!faceNorth){
-        goal.rotateBy(M_PI);
+    if(!faceNorth) {
+        unconstrainedGoal = unconstrainedGoal.rotateBy(M_PI);
     }
 
     RCLCPP_INFO(this->get_logger(), "yeah the waypoint is cooking");
 
-    if(robotPosition.distanceTo(goal) < kEpsilon){
+    if(robotPosition.distanceTo(unconstrainedGoal) < kEpsilon){
+        RCLCPP_INFO(this->get_logger(), "yooo next point time");
         waypoints.pop_front();
         return;
     }
 
-    RCLCPP_INFO(this->get_logger(), "publishing");
-    goalPosePublisher->publish(goal.toPoseStamped());
+    const Point constrainedGoal = frame.constrainToMap(unconstrainedGoal);
+    RCLCPP_INFO(this->get_logger(), "unconstrained goal: %Lf, %Lf", unconstrainedGoal.getX(), unconstrainedGoal.getY());
+    RCLCPP_INFO(this->get_logger(), "constrained goal: %Lf, %Lf", constrainedGoal.getX(), constrainedGoal.getY());
+    goalPosePublisher->publish(constrainedGoal.toPoseStamped());
 }
 
 std::ostream& operator<<(std::ostream& os, const WaypointPublisher& waypointPublisher){
