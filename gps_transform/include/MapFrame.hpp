@@ -38,5 +38,5 @@ class MapFrame{
     long double width;
     long double height;
 
-    static constexpr long double MAP_CONTRAINT_OFFSET = 0.25;
+    static constexpr long double MAP_CONSTRAINT_OFFSET = 0.25;
 };

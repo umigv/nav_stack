@@ -1,6 +1,8 @@
 #pragma once
+
 #include "GPSCoordinate.hpp"
 #include "geometry_msgs/msg/pose_stamped.hpp"
+#include "nav2_msgs/action/navigate_to_pose.hpp"
 
 /**
  * @brief A class to represent a 2D point. 
@@ -148,9 +150,17 @@ class Point{
     Point rotateBy(long double theta) const;
 
     /**
+     * @brief Convert the point to a goal for the navigate to pose action
+    */
+    nav2_msgs::action::NavigateToPose::Goal toNavigateToPoseGoal() const;
+
+
+    /**
      * @brief Convert the point to a PoseStamped message
     */
     geometry_msgs::msg::PoseStamped toPoseStamped() const;
+
+
 
     private:
     friend std::ostream& operator<<(std::ostream& os, const Point& point);

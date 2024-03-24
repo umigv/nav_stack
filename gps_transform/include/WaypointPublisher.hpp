@@ -1,14 +1,23 @@
 #pragma once
+
 #include <iostream>
 #include <deque>
+
 #include "Point.hpp"
 #include "MapFrame.hpp"
+
 #include "rclcpp/rclcpp.hpp"
 #include "nav_msgs/msg/occupancy_grid.hpp"
 #include "sensor_msgs/msg/nav_sat_fix.hpp"
 #include "geometry_msgs/msg/pose_stamped.hpp"
 #include "tf2_ros/buffer.h"
 #include "tf2_ros/transform_listener.h"
+#include "nav2_msgs/action/navigate_to_pose.hpp"
+#include "rclcpp_action/rclcpp_action.hpp"
+#include "rclcpp_components/register_node_macro.hpp"
+
+using NavigateToPose = nav2_msgs::action::NavigateToPose;
+using NavigateToPoseGoalHandle = rclcpp_action::ClientGoalHandle<NavigateToPose>;
 
 /**
  * @brief A class to publish read GPS waypoints as goal poses.
@@ -67,6 +76,12 @@ private:
     */
     void updateGoalPose();
 
+    void goalResponseCallBack(NavigateToPoseGoalHandle::SharedPtr future);
+
+    void feedbackCallback(NavigateToPoseGoalHandle::SharedPtr, const std::shared_ptr<const NavigateToPose::Feedback> feedback);
+
+    void resultCallback(const NavigateToPoseGoalHandle::WrappedResult & result);
+
     // Map Subscriber
     rclcpp::Subscription<nav_msgs::msg::MapMetaData>::SharedPtr mapInfoSubscriber;
     MapFrame frame;
@@ -79,9 +94,10 @@ private:
     tf2_ros::Buffer tfBuffer;
     tf2_ros::TransformListener tfListener;
 
-    // Publisher
+    // Action
     rclcpp::TimerBase::SharedPtr goalPoseUpdater;
-    rclcpp::Publisher<geometry_msgs::msg::PoseStamped>::SharedPtr goalPosePublisher;
+    rclcpp_action::Client<NavigateToPose>::SharedPtr goalPoseClient;
+    //rclcpp::Publisher<geometry_msgs::msg::PoseStamped>::SharedPtr goalPosePublisher;
 
     // Data
     std::deque<GPSCoordinate> waypoints;

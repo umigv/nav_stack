@@ -15,18 +15,18 @@ MapFrame::MapFrame(const Point& origin, uint32_t width, uint32_t height, long do
 Point MapFrame::constrainToMap(const Point& point) const{
     Point ret(point);
 
-    if(dx < 2 * MAP_CONSTRAINT_OFFSET){
+    if(width < 2 * MAP_CONSTRAINT_OFFSET){
         ret.setX(bottomLeft.getX());
     }
 
-    if(dy < 2 * MAP_CONSTRAINT_OFFSET){
+    if(height < 2 * MAP_CONSTRAINT_OFFSET){
         ret.setY(bottomLeft.getY());
     }
 
-    ret.setX(std::max(bottomLeft.getX() + MAP_CONTRAINT_OFFSET, ret.getX()));
-    ret.setY(std::max(bottomLeft.getY() + MAP_CONTRAINT_OFFSET, ret.getY()));
-    ret.setX(std::min(topRight.getX() - MAP_CONTRAINT_OFFSET, ret.getX()));
-    ret.setY(std::min(topRight.getY() - MAP_CONTRAINT_OFFSET, ret.getY()));
+    ret.setX(std::max(bottomLeft.getX() + MAP_CONSTRAINT_OFFSET, ret.getX()));
+    ret.setY(std::max(bottomLeft.getY() + MAP_CONSTRAINT_OFFSET, ret.getY()));
+    ret.setX(std::min(topRight.getX() - MAP_CONSTRAINT_OFFSET, ret.getX()));
+    ret.setY(std::min(topRight.getY() - MAP_CONSTRAINT_OFFSET, ret.getY()));
 
     return ret;
 }

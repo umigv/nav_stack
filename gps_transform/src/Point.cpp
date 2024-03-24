@@ -62,6 +62,13 @@ Point Point::norm() const {
     return *this / magnitude();
 }
 
+nav2_msgs::action::NavigateToPose::Goal Point::toNavigateToPoseGoal() const{
+    nav2_msgs::action::NavigateToPose::Goal ret;
+    ret.pose = toPoseStamped();
+
+    return ret;
+}
+
 geometry_msgs::msg::PoseStamped Point::toPoseStamped() const{
     geometry_msgs::msg::PoseStamped ret;
     ret.pose.position.x = x;

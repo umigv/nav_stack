@@ -13,7 +13,11 @@ find_package(std_msgs REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(nav_msgs REQUIRED)
+find_package(nav2_msgs REQUIRED)
 find_package(tf2_ros REQUIRED)
+find_package(rclcpp_action REQUIRED)
+find_package(rclcpp_components REQUIRED)
+
 
 add_executable(waypoint_publisher
   include/WaypointPublisher.hpp
@@ -35,7 +39,10 @@ ament_target_dependencies(waypoint_publisher
   sensor_msgs 
   geometry_msgs
   nav_msgs
+  nav2_msgs
   tf2_ros
+  rclcpp_action
+  rclcpp_components
 )
 
 install(TARGETS
