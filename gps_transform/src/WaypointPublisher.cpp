@@ -24,7 +24,7 @@ WaypointPublisher::WaypointPublisher() : Node("WaypointPublisher"), tfBuffer(thi
     robotGPSSubscriber = this->create_subscription<sensor_msgs::msg::NavSatFix>("gps/data", 10, std::bind(&WaypointPublisher::robotGPSCallback, this, _1));
     goalPoseClient = rclcpp_action::create_client<NavigateToPose>(this, "navigate_to_pose");
     //goalPosePublisher = this->create_publisher<geometry_msgs::msg::PoseStamped>("goal_pose", 10);
-    goalPoseUpdater = this->create_wall_timer(std::chrono::milliseconds(1000), std::bind(&WaypointPublisher::updateGoalPose, this));
+    goalPoseUpdater = this->create_wall_timer(std::chrono::milliseconds(10000), std::bind(&WaypointPublisher::updateGoalPose, this));
 }
 
 void WaypointPublisher::readWaypoints(std::istream& is){
@@ -142,8 +142,8 @@ void WaypointPublisher::goalResponseCallBack(NavigateToPoseGoalHandle::SharedPtr
     // for (auto number : feedback->partial_sequence) {
     //   ss << number << " ";
     // }
-    RCLCPP_INFO(this->get_logger(), "NavigateToPose feedback current pose: (%lf, %lf, %lf)", 
-        feedback->current_pose.pose.position.x, feedback->current_pose.pose.position.y, feedback->current_pose.pose.position.z);
+    //RCLCPP_INFO(this->get_logger(), "NavigateToPose feedback current pose: (%lf, %lf, %lf)", 
+        //feedback->current_pose.pose.position.x, feedback->current_pose.pose.position.y, feedback->current_pose.pose.position.z);
   }
 
   void WaypointPublisher::resultCallback(const NavigateToPoseGoalHandle::WrappedResult & result)
