@@ -16,8 +16,8 @@ private:
     void publishGrid()
     {
         // Create a sample occupancy grid (replace this with your logic to generate the grid)
-        int width = 10;
-        int height = 10;
+        int width = 8;
+        int height = 8;
         std::vector<int8_t> gridData(width * height, 0);  // initialize with zeros
 
         // Populate grid with random values (0 or 1)
@@ -65,8 +65,8 @@ private:
     void publishGrid()
     {
         // Create a sample occupancy grid (replace this with your logic to generate the grid)
-        int width = 100;
-        int height = 100;
+        int width = 20;
+        int height = 20;
         std::vector<int8_t> gridData(width * height, 0);  // initialize with zeros
 
         // Populate grid with random values (0 or 1)
