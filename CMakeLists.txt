@@ -21,6 +21,8 @@ include_directories(
   ${nav_msgs_INCLUDE_DIRS}
 )
 
+add_subdirectory(/home/brossano/umarv_ws/src/nav_stack/cv_grid)
+
 add_executable(cv-integration grid_generator.cpp)
 ament_target_dependencies(cv-integration rclcpp std_msgs nav_msgs)
 target_link_libraries(cv-integration ${rclcpp_LIBRARIES} ${std_msgs_LIBRARIES} ${nav_msgs_LIBRARIES})
