@@ -1,0 +1,132 @@
+[0.000000] (-) TimerEvent: {}
+[0.000900] (occupub) JobQueued: {'identifier': 'occupub', 'dependencies': OrderedDict()}
+[0.001022] (occupub) JobStarted: {'identifier': 'occupub'}
+[0.099342] (-) TimerEvent: {}
+[0.117799] (occupub) JobProgress: {'identifier': 'occupub', 'progress': 'cmake'}
+[0.119570] (occupub) JobProgress: {'identifier': 'occupub', 'progress': 'build'}
+[0.121674] (occupub) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/umarv/ws/src/nav_stack/occupub/build/occupub', '--', '-j8', '-l8'], 'cwd': '/home/umarv/ws/src/nav_stack/occupub/build/occupub', 'env': OrderedDict([('HOSTNAME', 'umarv-ros2'), ('GIT_ASKPASS', '/home/umarv/.vscode-server/bin/863d2581ecda6849923a2118d93a088b0745d9d6/extensions/git/dist/askpass.sh'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib:/usr/lib/wsl/lib'), ('BROWSER', '/home/umarv/.vscode-server/bin/863d2581ecda6849923a2118d93a088b0745d9d6/bin/helpers/browser.sh'), ('HOME', '/home/umarv'), ('OLDPWD', '/home/umarv/ws/src/nav_stack'), ('TERM_PROGRAM_VERSION', '1.87.2'), ('VSCODE_IPC_HOOK_CLI', '/mnt/wslg/runtime-dir/vscode-ipc-af60cbc5-6643-4a77-9ab2-618e5b135613.sock'), ('ROS_PYTHON_VERSION', '3'), ('VSCODE_GIT_ASKPASS_MAIN', '/home/umarv/.vscode-server/bin/863d2581ecda6849923a2118d93a088b0745d9d6/extensions/git/dist/askpass-main.js'), ('VSCODE_GIT_ASKPASS_NODE', '/home/umarv/.vscode-server/bin/863d2581ecda6849923a2118d93a088b0745d9d6/node'), ('COLORTERM', 'truecolor'), ('REMOTE_CONTAINERS', 'true'), ('_colcon_cd_root', '/opt/ros/humble/'), ('WAYLAND_DISPLAY', 'wayland-0'), ('COLCON_PREFIX_PATH', '/home/umarv/ws/src/nav_stack/occupub/install:/home/umarv/ws/src/nav_stack/install'), ('ROS_DISTRO', 'humble'), ('REMOTE_CONTAINERS_IPC', '/tmp/vscode-remote-containers-ipc-e3a34e51-27b5-4cc3-a518-240e5bbe0702.sock'), ('PULSE_SERVER', 'unix:/mnt/wslg/PulseServer'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm-256color'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/home/umarv/.vscode-server/bin/863d2581ecda6849923a2118d93a088b0745d9d6/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('XDG_RUNTIME_DIR', '/mnt/wslg/runtime-dir'), ('REMOTE_CONTAINERS_SOCKETS', '["/tmp/.X11-unix/X1","/home/umarv/.gnupg/S.gpg-agent"]'), ('DISPLAY', ':0'), ('LANG', 'C.UTF-8'), ('LIBVA_DRIVER_NAME', 'd3d12'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/mnt/wslg/runtime-dir/vscode-git-4dcd6d337b.sock'), ('TERM_PROGRAM', 'vscode'), ('AMENT_PREFIX_PATH', '/home/umarv/ws/src/nav_stack/install/cv-integration:/home/umarv/ws/src/nav_stack/occupub/install/occupub:/opt/ros/humble'), ('REMOTE_CONTAINERS_DISPLAY_SOCK', '/tmp/.X11-unix/X1'), ('SHELL', '/bin/sh'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('PWD', '/home/umarv/ws/src/nav_stack/occupub/build/occupub'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/umarv/ws/src/nav_stack/install/cv-integration:/home/umarv/ws/src/nav_stack/occupub/install/occupub:/opt/ros/humble')]), 'shell': False}
+[0.199587] (-) TimerEvent: {}
+[0.226645] (occupub) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target merge_costmap_sub\x1b[0m\n'}
+[0.243142] (occupub) StdoutLine: {'line': b'[ 50%] Built target occupub\n'}
+[0.264552] (occupub) StdoutLine: {'line': b'[ 75%] \x1b[32mBuilding CXX object CMakeFiles/merge_costmap_sub.dir/src/merge_costmap.cpp.o\x1b[0m\n'}
+[0.299805] (-) TimerEvent: {}
+[0.400613] (-) TimerEvent: {}
+[0.501348] (-) TimerEvent: {}
+[0.602103] (-) TimerEvent: {}
+[0.702970] (-) TimerEvent: {}
+[0.803731] (-) TimerEvent: {}
+[0.904563] (-) TimerEvent: {}
+[1.005269] (-) TimerEvent: {}
+[1.105963] (-) TimerEvent: {}
+[1.206634] (-) TimerEvent: {}
+[1.307340] (-) TimerEvent: {}
+[1.407980] (-) TimerEvent: {}
+[1.508515] (-) TimerEvent: {}
+[1.609151] (-) TimerEvent: {}
+[1.710072] (-) TimerEvent: {}
+[1.810701] (-) TimerEvent: {}
+[1.911357] (-) TimerEvent: {}
+[2.012033] (-) TimerEvent: {}
+[2.112612] (-) TimerEvent: {}
+[2.213187] (-) TimerEvent: {}
+[2.313806] (-) TimerEvent: {}
+[2.414534] (-) TimerEvent: {}
+[2.515182] (-) TimerEvent: {}
+[2.615833] (-) TimerEvent: {}
+[2.716787] (-) TimerEvent: {}
+[2.817709] (-) TimerEvent: {}
+[2.918603] (-) TimerEvent: {}
+[3.019212] (-) TimerEvent: {}
+[3.119906] (-) TimerEvent: {}
+[3.220578] (-) TimerEvent: {}
+[3.321196] (-) TimerEvent: {}
+[3.421867] (-) TimerEvent: {}
+[3.522589] (-) TimerEvent: {}
+[3.623143] (-) TimerEvent: {}
+[3.723874] (-) TimerEvent: {}
+[3.824858] (-) TimerEvent: {}
+[3.925526] (-) TimerEvent: {}
+[4.026347] (-) TimerEvent: {}
+[4.127239] (-) TimerEvent: {}
+[4.227989] (-) TimerEvent: {}
+[4.328613] (-) TimerEvent: {}
+[4.364551] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:201:2:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kexpected \xe2\x80\x98\x1b[01m\x1b[K}\x1b[m\x1b[K\xe2\x80\x99 at end of input\n'}
+[4.364989] (occupub) StderrLine: {'line': b'  201 | }\n'}
+[4.365223] (occupub) StderrLine: {'line': b'      |  \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[4.365356] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:45:1:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kto match this \xe2\x80\x98\x1b[01m\x1b[K{\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.365488] (occupub) StderrLine: {'line': b'   45 | \x1b[01;36m\x1b[K{\x1b[m\x1b[K\n'}
+[4.365598] (occupub) StderrLine: {'line': b'      | \x1b[01;36m\x1b[K^\x1b[m\x1b[K\n'}
+[4.386539] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid MergeService::occupancyGridSubscriber()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[4.386889] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:52:9:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kcv_og_subscriber\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[Kcount_subscribers\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[4.387068] (occupub) StderrLine: {'line': b'   52 |         \x1b[01;31m\x1b[Kcv_og_subscriber\x1b[m\x1b[K = create_subscription<OccupancyGrid>(\n'}
+[4.387173] (occupub) StderrLine: {'line': b'      |         \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[4.387266] (occupub) StderrLine: {'line': b'      |         \x1b[32m\x1b[Kcount_subscribers\x1b[m\x1b[K\n'}
+[4.388765] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:53:54:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KpopulateCvOccupancyGrid\x1b[m\x1b[K\xe2\x80\x99 is not a member of \xe2\x80\x98\x1b[01m\x1b[KMergeService\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.389040] (occupub) StderrLine: {'line': b'   53 |             "/cv_grid", 10, std::bind(&MergeService::\x1b[01;31m\x1b[KpopulateCvOccupancyGrid\x1b[m\x1b[K, this, _1));\n'}
+[4.389117] (occupub) StderrLine: {'line': b'      |                                                      \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[4.402567] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:55:9:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Ksensors_occupancy_grid_subscriber\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[KoccupancyGridSubscriber\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[4.402903] (occupub) StderrLine: {'line': b'   55 |         \x1b[01;31m\x1b[Ksensors_occupancy_grid_subscriber\x1b[m\x1b[K = create_subscription<OccupancyGrid>(\n'}
+[4.403018] (occupub) StderrLine: {'line': b'      |         \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[4.403441] (occupub) StderrLine: {'line': b'      |         \x1b[32m\x1b[KoccupancyGridSubscriber\x1b[m\x1b[K\n'}
+[4.403541] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:56:55:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KpopulateSensorsOccupancyGrid\x1b[m\x1b[K\xe2\x80\x99 is not a member of \xe2\x80\x98\x1b[01m\x1b[KMergeService\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.403613] (occupub) StderrLine: {'line': b'   56 |             "/sen_grid", 10, std::bind(&MergeService::\x1b[01;31m\x1b[KpopulateSensorsOccupancyGrid\x1b[m\x1b[K, this, _1));\n'}
+[4.403818] (occupub) StderrLine: {'line': b'      |                                                       \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[4.403930] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[KOccupancyGrid MergeService::mergeSLAMAndLaneLine(const OccupancyGrid&, const OccupancyGrid&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[4.404004] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:127:5:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ka function-definition is not allowed here before \xe2\x80\x98\x1b[01m\x1b[K{\x1b[m\x1b[K\xe2\x80\x99 token\n'}
+[4.404071] (occupub) StderrLine: {'line': b'  127 |     \x1b[01;31m\x1b[K{\x1b[m\x1b[K\n'}
+[4.404138] (occupub) StderrLine: {'line': b'      |     \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[4.404201] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:142:1:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kexpected primary-expression before \xe2\x80\x98\x1b[01m\x1b[Kprivate\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.404265] (occupub) StderrLine: {'line': b'  142 | \x1b[01;31m\x1b[Kprivate\x1b[m\x1b[K:\n'}
+[4.404327] (occupub) StderrLine: {'line': b'      | \x1b[01;31m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[4.428846] (-) TimerEvent: {}
+[4.467384] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:150:5:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ka function-definition is not allowed here before \xe2\x80\x98\x1b[01m\x1b[K{\x1b[m\x1b[K\xe2\x80\x99 token\n'}
+[4.467864] (occupub) StderrLine: {'line': b'  150 |     \x1b[01;31m\x1b[K{\x1b[m\x1b[K\n'}
+[4.468061] (occupub) StderrLine: {'line': b'      |     \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[4.468268] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:167:5:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Ka function-definition is not allowed here before \xe2\x80\x98\x1b[01m\x1b[K{\x1b[m\x1b[K\xe2\x80\x99 token\n'}
+[4.468426] (occupub) StderrLine: {'line': b'  167 |     \x1b[01;31m\x1b[K{\x1b[m\x1b[K\n'}
+[4.468611] (occupub) StderrLine: {'line': b'      |     \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[4.477497] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:\x1b[m\x1b[K At global scope:\n'}
+[4.477835] (occupub) StderrLine: {'line': b'\x1b[01m\x1b[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:201:2:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kexpected unqualified-id at end of input\n'}
+[4.477981] (occupub) StderrLine: {'line': b'  201 | }\n'}
+[4.478102] (occupub) StderrLine: {'line': b'      |  \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[4.529085] (-) TimerEvent: {}
+[4.629660] (-) TimerEvent: {}
+[4.730538] (-) TimerEvent: {}
+[4.831290] (-) TimerEvent: {}
+[4.932384] (-) TimerEvent: {}
+[5.033343] (-) TimerEvent: {}
+[5.134309] (-) TimerEvent: {}
+[5.234895] (-) TimerEvent: {}
+[5.335473] (-) TimerEvent: {}
+[5.436132] (-) TimerEvent: {}
+[5.536762] (-) TimerEvent: {}
+[5.637410] (-) TimerEvent: {}
+[5.738117] (-) TimerEvent: {}
+[5.839127] (-) TimerEvent: {}
+[5.939804] (-) TimerEvent: {}
+[6.040471] (-) TimerEvent: {}
+[6.141208] (-) TimerEvent: {}
+[6.241956] (-) TimerEvent: {}
+[6.342684] (-) TimerEvent: {}
+[6.443289] (-) TimerEvent: {}
+[6.543913] (-) TimerEvent: {}
+[6.644686] (-) TimerEvent: {}
+[6.745308] (-) TimerEvent: {}
+[6.846016] (-) TimerEvent: {}
+[6.946695] (-) TimerEvent: {}
+[7.047325] (-) TimerEvent: {}
+[7.147928] (-) TimerEvent: {}
+[7.248565] (-) TimerEvent: {}
+[7.349140] (-) TimerEvent: {}
+[7.449764] (-) TimerEvent: {}
+[7.550418] (-) TimerEvent: {}
+[7.650986] (-) TimerEvent: {}
+[7.751834] (-) TimerEvent: {}
+[7.852511] (-) TimerEvent: {}
+[7.921481] (occupub) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/merge_costmap_sub.dir/build.make:76: CMakeFiles/merge_costmap_sub.dir/src/merge_costmap.cpp.o] Error 1\n'}
+[7.921953] (occupub) StderrLine: {'line': b'gmake[1]: *** [CMakeFiles/Makefile2:165: CMakeFiles/merge_costmap_sub.dir/all] Error 2\n'}
+[7.922201] (occupub) StderrLine: {'line': b'gmake: *** [Makefile:146: all] Error 2\n'}
+[7.925305] (occupub) CommandEnded: {'returncode': 2}
+[7.952705] (-) TimerEvent: {}
+[8.019463] (occupub) JobEnded: {'identifier': 'occupub', 'rc': 2}
+[8.030916] (-) EventReactorShutdown: {}

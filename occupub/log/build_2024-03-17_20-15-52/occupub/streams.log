@@ -1,0 +1,13 @@
+[0.193s] Invoking command in '/home/umarv/ws/src/nav_stack/occupub/build/occupub': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/umarv/ws/src/nav_stack/occupub/build/occupub -- -j8 -l8
+[0.249s] [35m[1mConsolidate compiler generated dependencies of target merge_costmap_sub[0m
+[0.271s] [ 50%] Built target occupub
+[0.283s] [ 75%] [32mBuilding CXX object CMakeFiles/merge_costmap_sub.dir/src/merge_costmap.cpp.o[0m
+[4.147s] [01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:[m[K In member function ‘[01m[Kvoid MergeService::occupancyGridSubscriber()[m[K’:
+[4.148s] [01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:240:9:[m[K [01;31m[Kerror: [m[K‘[01m[KRCLPP_INFO[m[K’ was not declared in this scope; did you mean ‘[01m[KRCLCPP_INFO[m[K’?
+[4.148s]   240 |         [01;31m[KRCLPP_INFO[m[K(get_logger(), "Subscribed to the global and CV occupancy grids");
+[4.148s]       |         [01;31m[K^~~~~~~~~~[m[K
+[4.148s]       |         [32m[KRCLCPP_INFO[m[K
+[8.500s] gmake[2]: *** [CMakeFiles/merge_costmap_sub.dir/build.make:76: CMakeFiles/merge_costmap_sub.dir/src/merge_costmap.cpp.o] Error 1
+[8.500s] gmake[1]: *** [CMakeFiles/Makefile2:165: CMakeFiles/merge_costmap_sub.dir/all] Error 2
+[8.501s] gmake: *** [Makefile:146: all] Error 2
+[8.503s] Invoked command in '/home/umarv/ws/src/nav_stack/occupub/build/occupub' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/umarv/ws/src/nav_stack/occupub/build/occupub -- -j8 -l8

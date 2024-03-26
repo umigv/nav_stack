@@ -1,0 +1,13 @@
+[35m[1mConsolidate compiler generated dependencies of target merge_costmap_sub[0m
+[ 50%] Built target occupub
+[ 75%] [32mBuilding CXX object CMakeFiles/merge_costmap_sub.dir/src/merge_costmap.cpp.o[0m
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:[m[K In member function ‘[01m[KOccupancyGrid MergeService::mergeSLAMAndLaneLine(const OccupancyGrid&, const OccupancyGrid&)[m[K’:
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:254:38:[m[K [01;31m[Kerror: [m[K‘[01m[Klane_cm[m[K’ was not declared in this scope
+  254 |                     int lane_value = [01;31m[Klane_cm[m[K.data[row * lane_cm.info.width + col];
+      |                                      [01;31m[K^~~~~~~[m[K
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:239:61:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kcv_cm[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  239 |     OccupancyGrid mergeSLAMAndLaneLine([01;35m[Kconst OccupancyGrid &cv_cm[m[K, const OccupancyGrid &slam_cm)
+      |                                        [01;35m[K~~~~~~~~~~~~~~~~~~~~~^~~~~[m[K
+gmake[2]: *** [CMakeFiles/merge_costmap_sub.dir/build.make:76: CMakeFiles/merge_costmap_sub.dir/src/merge_costmap.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:165: CMakeFiles/merge_costmap_sub.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

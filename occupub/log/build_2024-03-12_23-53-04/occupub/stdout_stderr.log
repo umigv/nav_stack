@@ -1,0 +1,35 @@
+[35m[1mConsolidate compiler generated dependencies of target merge_costmap_sub[0m
+[ 50%] Built target occupub
+[ 75%] [32mBuilding CXX object CMakeFiles/merge_costmap_sub.dir/src/merge_costmap.cpp.o[0m
+In file included from [01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:186[m[K:
+[01m[K/opt/ros/humble/include/tf2_geometry_msgs/tf2_geometry_msgs/tf2_geometry_msgs.h:35:2:[m[K [01;35m[Kwarning: [m[K#warning This header is obsolete, please include tf2_geometry_msgs/tf2_geometry_msgs.hpp instead [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wcpp-Wcpp]8;;[m[K]
+   35 | #[01;35m[Kwarning[m[K This header is obsolete, please include tf2_geometry_msgs/tf2_geometry_msgs.hpp instead
+      |  [01;35m[K^~~~~~~[m[K
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:[m[K In member function ‘[01m[KOccupancyGrid MergeService::mergeSLAMAndLaneLine(const OccupancyGrid&, const OccupancyGrid&)[m[K’:
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:250:48:[m[K [01;31m[Kerror: [m[K‘[01m[Kconst OccupancyGrid[m[K’ {aka ‘[01m[Kconst struct nav_msgs::msg::OccupancyGrid_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kheight[m[K’
+  250 |             for (size_t row = 0; row < slam_cm.[01;31m[Kheight[m[K; ++row) {
+      |                                                [01;31m[K^~~~~~[m[K
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:251:52:[m[K [01;31m[Kerror: [m[K‘[01m[Kconst OccupancyGrid[m[K’ {aka ‘[01m[Kconst struct nav_msgs::msg::OccupancyGrid_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kwidth[m[K’
+  251 |                 for (size_t col = 0; col < slam_cm.[01;31m[Kwidth[m[K; ++col) {
+      |                                                    [01;31m[K^~~~~[m[K
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:253:65:[m[K [01;31m[Kerror: [m[K‘[01m[Kconst OccupancyGrid[m[K’ {aka ‘[01m[Kconst struct nav_msgs::msg::OccupancyGrid_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kwidth[m[K’
+  253 |                     int slam_value = slam_cm.data[row * slam_cm.[01;31m[Kwidth[m[K + col];
+      |                                                                 [01;31m[K^~~~~[m[K
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:254:38:[m[K [01;31m[Kerror: [m[K‘[01m[Klane_cm[m[K’ was not declared in this scope
+  254 |                     int lane_value = [01;31m[Klane_cm[m[K.data[row * lane_cm.width + col];
+      |                                      [01;31m[K^~~~~~~[m[K
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:269:60:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing OccupancyGrid = using OccupancyGrid = struct nav_msgs::msg::OccupancyGrid_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct nav_msgs::msg::OccupancyGrid_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kwidth[m[K’
+  269 |                         merged_grid.data[row * merged_grid.[01;31m[Kwidth[m[K + col] = slam_value;
+      |                                                            [01;31m[K^~~~~[m[K
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:271:60:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing OccupancyGrid = using OccupancyGrid = struct nav_msgs::msg::OccupancyGrid_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct nav_msgs::msg::OccupancyGrid_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kwidth[m[K’
+  271 |                         merged_grid.data[row * merged_grid.[01;31m[Kwidth[m[K + col] = lane_value;
+      |                                                            [01;31m[K^~~~~[m[K
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:273:60:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing OccupancyGrid = using OccupancyGrid = struct nav_msgs::msg::OccupancyGrid_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct nav_msgs::msg::OccupancyGrid_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kwidth[m[K’
+  273 |                         merged_grid.data[row * merged_grid.[01;31m[Kwidth[m[K + col] = lane_value & slam_value;
+      |                                                            [01;31m[K^~~~~[m[K
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:239:61:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kcv_cm[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  239 |     OccupancyGrid mergeSLAMAndLaneLine([01;35m[Kconst OccupancyGrid &cv_cm[m[K, const OccupancyGrid &slam_cm)
+      |                                        [01;35m[K~~~~~~~~~~~~~~~~~~~~~^~~~~[m[K
+gmake[2]: *** [CMakeFiles/merge_costmap_sub.dir/build.make:76: CMakeFiles/merge_costmap_sub.dir/src/merge_costmap.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:165: CMakeFiles/merge_costmap_sub.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

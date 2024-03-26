@@ -1,0 +1,9 @@
+[ 50%] Built target occupub
+[ 75%] [32mBuilding CXX object CMakeFiles/merge_costmap_sub.dir/src/merge_costmap.cpp.o[0m
+[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:6:10:[m[K [01;31m[Kfatal error: [m[Kgeometry_msgs/msg/TransformStamped.h: No such file or directory
+    6 | #include [01;31m[K<geometry_msgs/msg/TransformStamped.h>[m[K
+      |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+compilation terminated.
+gmake[2]: *** [CMakeFiles/merge_costmap_sub.dir/build.make:76: CMakeFiles/merge_costmap_sub.dir/src/merge_costmap.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:165: CMakeFiles/merge_costmap_sub.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

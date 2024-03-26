@@ -1,0 +1,179 @@
+[0.000000] (-) TimerEvent: {}
+[0.001079] (occupub) JobQueued: {'identifier': 'occupub', 'dependencies': OrderedDict()}
+[0.001442] (occupub) JobStarted: {'identifier': 'occupub'}
+[0.099655] (-) TimerEvent: {}
+[0.125806] (occupub) JobProgress: {'identifier': 'occupub', 'progress': 'cmake'}
+[0.127680] (occupub) JobProgress: {'identifier': 'occupub', 'progress': 'build'}
+[0.129114] (occupub) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/umarv/ws/src/nav_stack/occupub/build/occupub', '--', '-j8', '-l8'], 'cwd': '/home/umarv/ws/src/nav_stack/occupub/build/occupub', 'env': OrderedDict([('HOSTNAME', 'umarv-ros2'), ('GIT_ASKPASS', '/home/umarv/.vscode-server/bin/863d2581ecda6849923a2118d93a088b0745d9d6/extensions/git/dist/askpass.sh'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib:/usr/lib/wsl/lib'), ('BROWSER', '/home/umarv/.vscode-server/bin/863d2581ecda6849923a2118d93a088b0745d9d6/bin/helpers/browser.sh'), ('HOME', '/home/umarv'), ('OLDPWD', '/home/umarv/ws/src/nav_stack'), ('TERM_PROGRAM_VERSION', '1.87.2'), ('VSCODE_IPC_HOOK_CLI', '/mnt/wslg/runtime-dir/vscode-ipc-c2afe7af-2976-4b7f-be04-fc539b30775c.sock'), ('ROS_PYTHON_VERSION', '3'), ('VSCODE_GIT_ASKPASS_MAIN', '/home/umarv/.vscode-server/bin/863d2581ecda6849923a2118d93a088b0745d9d6/extensions/git/dist/askpass-main.js'), ('VSCODE_GIT_ASKPASS_NODE', '/home/umarv/.vscode-server/bin/863d2581ecda6849923a2118d93a088b0745d9d6/node'), ('COLORTERM', 'truecolor'), ('REMOTE_CONTAINERS', 'true'), ('_colcon_cd_root', '/opt/ros/humble/'), ('WAYLAND_DISPLAY', 'wayland-0'), ('COLCON_PREFIX_PATH', '/home/umarv/ws/src/nav_stack/merge_costmap_sub/install:/home/umarv/ws/install:/home/umarv/ws/src/nav_stack/occupub/install'), ('ROS_DISTRO', 'humble'), ('REMOTE_CONTAINERS_IPC', '/tmp/vscode-remote-containers-ipc-e3a34e51-27b5-4cc3-a518-240e5bbe0702.sock'), ('PULSE_SERVER', 'unix:/mnt/wslg/PulseServer'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm-256color'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/home/umarv/.vscode-server/bin/863d2581ecda6849923a2118d93a088b0745d9d6/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('XDG_RUNTIME_DIR', '/mnt/wslg/runtime-dir'), ('REMOTE_CONTAINERS_SOCKETS', '["/tmp/.X11-unix/X1","/home/umarv/.gnupg/S.gpg-agent"]'), ('DISPLAY', ':0'), ('LANG', 'C.UTF-8'), ('LIBVA_DRIVER_NAME', 'd3d12'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/mnt/wslg/runtime-dir/vscode-git-4dcd6d337b.sock'), ('TERM_PROGRAM', 'vscode'), ('AMENT_PREFIX_PATH', '/home/umarv/ws/install/cv-integration:/home/umarv/ws/src/nav_stack/occupub/install/occupub:/opt/ros/humble'), ('REMOTE_CONTAINERS_DISPLAY_SOCK', '/tmp/.X11-unix/X1'), ('SHELL', '/bin/sh'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('PWD', '/home/umarv/ws/src/nav_stack/occupub/build/occupub'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/umarv/ws/install/cv-integration:/home/umarv/ws/src/nav_stack/occupub/install/occupub:/opt/ros/humble')]), 'shell': False}
+[0.199910] (-) TimerEvent: {}
+[0.207153] (occupub) StdoutLine: {'line': b'[ 75%] \x1b[32mBuilding CXX object CMakeFiles/merge_costmap_sub.dir/src/merge_costmap.cpp.o\x1b[0m\n'}
+[0.207707] (occupub) StdoutLine: {'line': b'[ 75%] Built target occupub\n'}
+[0.300177] (-) TimerEvent: {}
+[0.400953] (-) TimerEvent: {}
+[0.501714] (-) TimerEvent: {}
+[0.602513] (-) TimerEvent: {}
+[0.703117] (-) TimerEvent: {}
+[0.803880] (-) TimerEvent: {}
+[0.904604] (-) TimerEvent: {}
+[1.005365] (-) TimerEvent: {}
+[1.106061] (-) TimerEvent: {}
+[1.207038] (-) TimerEvent: {}
+[1.308110] (-) TimerEvent: {}
+[1.408793] (-) TimerEvent: {}
+[1.509456] (-) TimerEvent: {}
+[1.610119] (-) TimerEvent: {}
+[1.710863] (-) TimerEvent: {}
+[1.811598] (-) TimerEvent: {}
+[1.912260] (-) TimerEvent: {}
+[2.013070] (-) TimerEvent: {}
+[2.113874] (-) TimerEvent: {}
+[2.214886] (-) TimerEvent: {}
+[2.315558] (-) TimerEvent: {}
+[2.416136] (-) TimerEvent: {}
+[2.516937] (-) TimerEvent: {}
+[2.617700] (-) TimerEvent: {}
+[2.718395] (-) TimerEvent: {}
+[2.819253] (-) TimerEvent: {}
+[2.920016] (-) TimerEvent: {}
+[3.020697] (-) TimerEvent: {}
+[3.121377] (-) TimerEvent: {}
+[3.222103] (-) TimerEvent: {}
+[3.322832] (-) TimerEvent: {}
+[3.423499] (-) TimerEvent: {}
+[3.524169] (-) TimerEvent: {}
+[3.624760] (-) TimerEvent: {}
+[3.725394] (-) TimerEvent: {}
+[3.826167] (-) TimerEvent: {}
+[3.926856] (-) TimerEvent: {}
+[4.027563] (-) TimerEvent: {}
+[4.128333] (-) TimerEvent: {}
+[4.229014] (-) TimerEvent: {}
+[4.329662] (-) TimerEvent: {}
+[4.430315] (-) TimerEvent: {}
+[4.530990] (-) TimerEvent: {}
+[4.634857] (-) TimerEvent: {}
+[4.735525] (-) TimerEvent: {}
+[4.836092] (-) TimerEvent: {}
+[4.936792] (-) TimerEvent: {}
+[5.037437] (-) TimerEvent: {}
+[5.138085] (-) TimerEvent: {}
+[5.238741] (-) TimerEvent: {}
+[5.339523] (-) TimerEvent: {}
+[5.440384] (-) TimerEvent: {}
+[5.541035] (-) TimerEvent: {}
+[5.641663] (-) TimerEvent: {}
+[5.742414] (-) TimerEvent: {}
+[5.843023] (-) TimerEvent: {}
+[5.943618] (-) TimerEvent: {}
+[6.044281] (-) TimerEvent: {}
+[6.145049] (-) TimerEvent: {}
+[6.245737] (-) TimerEvent: {}
+[6.346366] (-) TimerEvent: {}
+[6.446989] (-) TimerEvent: {}
+[6.547631] (-) TimerEvent: {}
+[6.648311] (-) TimerEvent: {}
+[6.749010] (-) TimerEvent: {}
+[6.849639] (-) TimerEvent: {}
+[6.950230] (-) TimerEvent: {}
+[7.050900] (-) TimerEvent: {}
+[7.151584] (-) TimerEvent: {}
+[7.252189] (-) TimerEvent: {}
+[7.352758] (-) TimerEvent: {}
+[7.453388] (-) TimerEvent: {}
+[7.554047] (-) TimerEvent: {}
+[7.654656] (-) TimerEvent: {}
+[7.755319] (-) TimerEvent: {}
+[7.856113] (-) TimerEvent: {}
+[7.956737] (-) TimerEvent: {}
+[8.057375] (-) TimerEvent: {}
+[8.157945] (-) TimerEvent: {}
+[8.258524] (-) TimerEvent: {}
+[8.359227] (-) TimerEvent: {}
+[8.459777] (-) TimerEvent: {}
+[8.560530] (-) TimerEvent: {}
+[8.661152] (-) TimerEvent: {}
+[8.761847] (-) TimerEvent: {}
+[8.862781] (-) TimerEvent: {}
+[8.963379] (-) TimerEvent: {}
+[9.064117] (-) TimerEvent: {}
+[9.164746] (-) TimerEvent: {}
+[9.265453] (-) TimerEvent: {}
+[9.365977] (-) TimerEvent: {}
+[9.466619] (-) TimerEvent: {}
+[9.567295] (-) TimerEvent: {}
+[9.667902] (-) TimerEvent: {}
+[9.768464] (-) TimerEvent: {}
+[9.869066] (-) TimerEvent: {}
+[9.969661] (-) TimerEvent: {}
+[10.070265] (-) TimerEvent: {}
+[10.170911] (-) TimerEvent: {}
+[10.271497] (-) TimerEvent: {}
+[10.372188] (-) TimerEvent: {}
+[10.472813] (-) TimerEvent: {}
+[10.573449] (-) TimerEvent: {}
+[10.674101] (-) TimerEvent: {}
+[10.774703] (-) TimerEvent: {}
+[10.875557] (-) TimerEvent: {}
+[10.976185] (-) TimerEvent: {}
+[11.077026] (-) TimerEvent: {}
+[11.177898] (-) TimerEvent: {}
+[11.278822] (-) TimerEvent: {}
+[11.379567] (-) TimerEvent: {}
+[11.480246] (-) TimerEvent: {}
+[11.580908] (-) TimerEvent: {}
+[11.681516] (-) TimerEvent: {}
+[11.782242] (-) TimerEvent: {}
+[11.882795] (-) TimerEvent: {}
+[11.983359] (-) TimerEvent: {}
+[12.083923] (-) TimerEvent: {}
+[12.184631] (-) TimerEvent: {}
+[12.285301] (-) TimerEvent: {}
+[12.386012] (-) TimerEvent: {}
+[12.496023] (-) TimerEvent: {}
+[12.596729] (-) TimerEvent: {}
+[12.697338] (-) TimerEvent: {}
+[12.798038] (-) TimerEvent: {}
+[12.898900] (-) TimerEvent: {}
+[12.999802] (-) TimerEvent: {}
+[13.100905] (-) TimerEvent: {}
+[13.140149] (occupub) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable merge_costmap_sub\x1b[0m\n'}
+[13.201149] (-) TimerEvent: {}
+[13.301951] (-) TimerEvent: {}
+[13.402898] (-) TimerEvent: {}
+[13.503982] (-) TimerEvent: {}
+[13.605020] (-) TimerEvent: {}
+[13.705876] (-) TimerEvent: {}
+[13.806814] (-) TimerEvent: {}
+[13.907535] (-) TimerEvent: {}
+[14.008204] (-) TimerEvent: {}
+[14.108868] (-) TimerEvent: {}
+[14.209468] (-) TimerEvent: {}
+[14.218536] (occupub) StdoutLine: {'line': b'[100%] Built target merge_costmap_sub\n'}
+[14.234455] (occupub) CommandEnded: {'returncode': 0}
+[14.281359] (occupub) JobProgress: {'identifier': 'occupub', 'progress': 'install'}
+[14.295223] (occupub) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/umarv/ws/src/nav_stack/occupub/build/occupub'], 'cwd': '/home/umarv/ws/src/nav_stack/occupub/build/occupub', 'env': OrderedDict([('HOSTNAME', 'umarv-ros2'), ('GIT_ASKPASS', '/home/umarv/.vscode-server/bin/863d2581ecda6849923a2118d93a088b0745d9d6/extensions/git/dist/askpass.sh'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib:/usr/lib/wsl/lib'), ('BROWSER', '/home/umarv/.vscode-server/bin/863d2581ecda6849923a2118d93a088b0745d9d6/bin/helpers/browser.sh'), ('HOME', '/home/umarv'), ('OLDPWD', '/home/umarv/ws/src/nav_stack'), ('TERM_PROGRAM_VERSION', '1.87.2'), ('VSCODE_IPC_HOOK_CLI', '/mnt/wslg/runtime-dir/vscode-ipc-c2afe7af-2976-4b7f-be04-fc539b30775c.sock'), ('ROS_PYTHON_VERSION', '3'), ('VSCODE_GIT_ASKPASS_MAIN', '/home/umarv/.vscode-server/bin/863d2581ecda6849923a2118d93a088b0745d9d6/extensions/git/dist/askpass-main.js'), ('VSCODE_GIT_ASKPASS_NODE', '/home/umarv/.vscode-server/bin/863d2581ecda6849923a2118d93a088b0745d9d6/node'), ('COLORTERM', 'truecolor'), ('REMOTE_CONTAINERS', 'true'), ('_colcon_cd_root', '/opt/ros/humble/'), ('WAYLAND_DISPLAY', 'wayland-0'), ('COLCON_PREFIX_PATH', '/home/umarv/ws/src/nav_stack/merge_costmap_sub/install:/home/umarv/ws/install:/home/umarv/ws/src/nav_stack/occupub/install'), ('ROS_DISTRO', 'humble'), ('REMOTE_CONTAINERS_IPC', '/tmp/vscode-remote-containers-ipc-e3a34e51-27b5-4cc3-a518-240e5bbe0702.sock'), ('PULSE_SERVER', 'unix:/mnt/wslg/PulseServer'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm-256color'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/home/umarv/.vscode-server/bin/863d2581ecda6849923a2118d93a088b0745d9d6/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('XDG_RUNTIME_DIR', '/mnt/wslg/runtime-dir'), ('REMOTE_CONTAINERS_SOCKETS', '["/tmp/.X11-unix/X1","/home/umarv/.gnupg/S.gpg-agent"]'), ('DISPLAY', ':0'), ('LANG', 'C.UTF-8'), ('LIBVA_DRIVER_NAME', 'd3d12'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/mnt/wslg/runtime-dir/vscode-git-4dcd6d337b.sock'), ('TERM_PROGRAM', 'vscode'), ('AMENT_PREFIX_PATH', '/home/umarv/ws/install/cv-integration:/home/umarv/ws/src/nav_stack/occupub/install/occupub:/opt/ros/humble'), ('REMOTE_CONTAINERS_DISPLAY_SOCK', '/tmp/.X11-unix/X1'), ('SHELL', '/bin/sh'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('PWD', '/home/umarv/ws/src/nav_stack/occupub/build/occupub'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/umarv/ws/install/cv-integration:/home/umarv/ws/src/nav_stack/occupub/install/occupub:/opt/ros/humble')]), 'shell': False}
+[14.305729] (occupub) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[14.306319] (occupub) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/src/nav_stack/occupub/install/occupub/share/ament_index/resource_index/package_run_dependencies/occupub\n'}
+[14.306765] (occupub) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/src/nav_stack/occupub/install/occupub/share/ament_index/resource_index/parent_prefix_path/occupub\n'}
+[14.307665] (occupub) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/src/nav_stack/occupub/install/occupub/share/occupub/environment/ament_prefix_path.sh\n'}
+[14.308311] (occupub) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/src/nav_stack/occupub/install/occupub/share/occupub/environment/ament_prefix_path.dsv\n'}
+[14.308428] (occupub) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/src/nav_stack/occupub/install/occupub/share/occupub/environment/path.sh\n'}
+[14.308506] (occupub) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/src/nav_stack/occupub/install/occupub/share/occupub/environment/path.dsv\n'}
+[14.308797] (occupub) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/src/nav_stack/occupub/install/occupub/share/occupub/local_setup.bash\n'}
+[14.309330] (occupub) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/src/nav_stack/occupub/install/occupub/share/occupub/local_setup.sh\n'}
+[14.309514] (-) TimerEvent: {}
+[14.310019] (occupub) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/src/nav_stack/occupub/install/occupub/share/occupub/local_setup.zsh\n'}
+[14.310431] (occupub) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/src/nav_stack/occupub/install/occupub/share/occupub/local_setup.dsv\n'}
+[14.310598] (occupub) StdoutLine: {'line': b'-- Installing: /home/umarv/ws/src/nav_stack/occupub/install/occupub/share/occupub/package.dsv\n'}
+[14.311109] (occupub) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/src/nav_stack/occupub/install/occupub/share/ament_index/resource_index/packages/occupub\n'}
+[14.311237] (occupub) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/src/nav_stack/occupub/install/occupub/share/occupub/cmake/occupubConfig.cmake\n'}
+[14.311299] (occupub) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/src/nav_stack/occupub/install/occupub/share/occupub/cmake/occupubConfig-version.cmake\n'}
+[14.311355] (occupub) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/src/nav_stack/occupub/install/occupub/share/occupub/package.xml\n'}
+[14.311428] (occupub) StdoutLine: {'line': b'-- Up-to-date: /home/umarv/ws/src/nav_stack/occupub/install/occupub/lib/occupub/occupub\n'}
+[14.311482] (occupub) StdoutLine: {'line': b'-- Installing: /home/umarv/ws/src/nav_stack/occupub/install/occupub/lib/occupub/merge_costmap_sub\n'}
+[14.317604] (occupub) StdoutLine: {'line': b'-- Set runtime path of "/home/umarv/ws/src/nav_stack/occupub/install/occupub/lib/occupub/merge_costmap_sub" to ""\n'}
+[14.322115] (occupub) CommandEnded: {'returncode': 0}
+[14.409737] (-) TimerEvent: {}
+[14.510313] (-) TimerEvent: {}
+[14.535640] (occupub) JobEnded: {'identifier': 'occupub', 'rc': 0}
+[14.537901] (-) EventReactorShutdown: {}
