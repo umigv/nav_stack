@@ -103,6 +103,7 @@ private:
     std::deque<GPSCoordinate> waypoints;
     long double kEpsilon{2.0};
     bool faceNorth;
+    bool mapInitialized = false;
 };
 
 /**

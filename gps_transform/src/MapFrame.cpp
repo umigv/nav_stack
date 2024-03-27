@@ -1,4 +1,5 @@
 #include "../include/MapFrame.hpp"
+#include<algorithm>
 
 MapFrame::MapFrame(const Point& origin, uint32_t width, uint32_t height, long double resolution){
     const long double dx = width * resolution;
@@ -23,10 +24,13 @@ Point MapFrame::constrainToMap(const Point& point) const{
         ret.setY(bottomLeft.getY());
     }
 
-    ret.setX(std::max(bottomLeft.getX() + MAP_CONSTRAINT_OFFSET, ret.getX()));
-    ret.setY(std::max(bottomLeft.getY() + MAP_CONSTRAINT_OFFSET, ret.getY()));
-    ret.setX(std::min(topRight.getX() - MAP_CONSTRAINT_OFFSET, ret.getX()));
-    ret.setY(std::min(topRight.getY() - MAP_CONSTRAINT_OFFSET, ret.getY()));
+    ret.setX(std::clamp(ret.getX(), bottomLeft.getX() + MAP_CONSTRAINT_OFFSET, topRight.getX() - MAP_CONSTRAINT_OFFSET));
+    ret.setY(std::clamp(ret.getY(), bottomLeft.getY() + MAP_CONSTRAINT_OFFSET, topRight.getY() - MAP_CONSTRAINT_OFFSET));
+
+    // ret.setX(std::max(bottomLeft.getX() + MAP_CONSTRAINT_OFFSET, ret.getX()));
+    // ret.setY(std::max(bottomLeft.getY() + MAP_CONSTRAINT_OFFSET, ret.getY()));
+    // ret.setX(std::min(topRight.getX() - MAP_CONSTRAINT_OFFSET, ret.getX()));
+    // ret.setY(std::min(topRight.getY() - MAP_CONSTRAINT_OFFSET, ret.getY()));
 
     return ret;
 }

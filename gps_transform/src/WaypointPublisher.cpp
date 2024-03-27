@@ -24,7 +24,9 @@ WaypointPublisher::WaypointPublisher() : Node("WaypointPublisher"), tfBuffer(thi
     robotGPSSubscriber = this->create_subscription<sensor_msgs::msg::NavSatFix>("gps/data", 10, std::bind(&WaypointPublisher::robotGPSCallback, this, _1));
     goalPoseClient = rclcpp_action::create_client<NavigateToPose>(this, "navigate_to_pose");
     //goalPosePublisher = this->create_publisher<geometry_msgs::msg::PoseStamped>("goal_pose", 10);
-    goalPoseUpdater = this->create_wall_timer(std::chrono::milliseconds(10000), std::bind(&WaypointPublisher::updateGoalPose, this));
+    goalPoseUpdater = this->create_wall_timer(std::chrono::milliseconds(1000), std::bind(&WaypointPublisher::updateGoalPose, this));
+    // rclcpp::sleep_for(std::chrono::seconds(5));
+    // updateGoalPose();
 }
 
 void WaypointPublisher::readWaypoints(std::istream& is){
@@ -59,9 +61,10 @@ void WaypointPublisher::mapInfoCallback(const nav_msgs::msg::MapMetaData::Shared
     uint32_t height = map->height;
     float resolution = map->resolution;
 
-    //RCLCPP_INFO(this->get_logger(), "origin: (%f, %f), width: %u, height: %u, resolution: %f", xpos, ypos, width, height, resolution);
+    RCLCPP_INFO(this->get_logger(), "origin: (%f, %f), width: %u, height: %u, resolution: %f", xpos, ypos, width, height, resolution);
         
     frame = MapFrame(Point(xpos, ypos), width, height, resolution);
+    mapInitialized = true;
 }
 
 void WaypointPublisher::robotGPSCallback(const sensor_msgs::msg::NavSatFix::SharedPtr gpsCoordinate){
@@ -74,7 +77,7 @@ Point WaypointPublisher::getRobotPosition() const{
     geometry_msgs::msg::TransformStamped transform;
     
     try{
-        transform = tfBuffer.lookupTransform("base_link", "map", rclcpp::Time(0));
+        transform = tfBuffer.lookupTransform("base_footprint", "map", rclcpp::Time(0));
 
     }
     catch(tf2::TransformException& exception){
@@ -87,6 +90,11 @@ Point WaypointPublisher::getRobotPosition() const{
 }
 
 void WaypointPublisher::updateGoalPose(){
+    if (!mapInitialized) {
+        RCLCPP_INFO(this->get_logger(), "Map not initialized yet, returning from update goal pose");
+        return;
+    }
+
     if(waypoints.empty()){
         RCLCPP_INFO(this->get_logger(), "Out of waypoints");
         return;
