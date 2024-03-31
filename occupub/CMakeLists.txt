@@ -18,6 +18,10 @@ find_package(tf2_geometry_msgs REQUIRED)
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
 
+# include_directories(
+#   include
+# )
+
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   # the following line skips the linter which checks for copyrights
@@ -33,29 +37,36 @@ endif()
 ament_package()
 
 add_executable(occupub src/grid_generator.cpp)
+target_include_directories(occupub PRIVATE include)
 ament_target_dependencies(
   occupub
-  std_msgs
   rclcpp
   nav_msgs
   tf2_ros
-  tf2
   geometry_msgs
-  tf2_geometry_msgs
-)
-add_executable(merge_costmap_sub src/merge_costmap.cpp)
-ament_target_dependencies(
-  merge_costmap_sub
   std_msgs
-  rclcpp
-  nav_msgs
-  tf2_ros
   tf2
-  geometry_msgs
   tf2_geometry_msgs
 )
 
+add_executable(merge_costmap_sub src/merge_costmap.cpp)
+target_include_directories(merge_costmap_sub PRIVATE include)
+ament_target_dependencies(
+  merge_costmap_sub
+  rclcpp
+  nav_msgs
+  tf2_ros
+  geometry_msgs
+  std_msgs
+  tf2
+  tf2_geometry_msgs
+)
+  
 install (TARGETS
-    occupub
     merge_costmap_sub
+    occupub
     DESTINATION lib/${PROJECT_NAME})
+
+# install(
+#   DESTINATION include/
+# )

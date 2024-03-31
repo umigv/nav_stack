@@ -24,7 +24,7 @@ public:
     
         // subscribe to local lane lines occupancy grid
         subscription_ = this->create_subscription<nav_msgs::msg::OccupancyGrid>(
-            "cv_grid_in", 10, std::bind(&cv_grid::cv_grid_callback, this, std::placeholders::_1));
+            "occupancy_grid", 10, std::bind(&cv_grid::cv_grid_callback, this, std::placeholders::_1));
     
         // Declare and acquire `target_frame` parameter
         target_frame_ = this->declare_parameter<std::string>("target_frame", "odom");
@@ -33,8 +33,8 @@ public:
         tf_listener_ = std::make_shared<tf2_ros::TransformListener>(*tf_buffer_);
 
         // Initialize sliding window lane lines grids
-        window_height_ = 5;
-        window_width_ = 5;
+        window_height_ = 200;
+        window_width_ = 200;
         curr_sliding_grid_ = std::vector<std::vector<int>>(window_height_, std::vector<int>(window_width_));
         prev_sliding_grid_ = std::vector<std::vector<int>>(window_height_, std::vector<int>(window_width_));
         
@@ -50,7 +50,7 @@ public:
 private:
     void publishGrid()
     {
-        std::vector<int8_t> gridData(window_width_ * window_height_, 0);  // initialize with zeros
+        std::vector<int8_t> gridData(window_width_ * window_height_, -1);  // initialize with unknown
 
         for (int i = 0; i < window_width_ * window_height_; ++i)
         {
@@ -99,12 +99,14 @@ private:
         return;
     }
     void cv_grid_callback(const nav_msgs::msg::OccupancyGrid::Ptr occ_grid) 
-    {        
-        curr_sliding_grid_ = std::vector<std::vector<int>>(window_height_, std::vector<int>(window_width_));        
+    {   
+        curr_sliding_grid_ = std::vector<std::vector<int>>(window_height_, std::vector<int>(window_width_, -1));        
         int resolution = occ_grid->info.resolution;
 
         double curr_pose_x, curr_pose_y;
-        get_pose(curr_pose_x, curr_pose_y);
+        curr_pose_x = prev_pose_x_ + 0;
+        curr_pose_y = prev_pose_y_ + .5;
+        // get_pose(curr_pose_x, curr_pose_y);
 
         int robot_row = window_height_/2;
         int robot_col = window_width_/2; 
@@ -129,7 +131,7 @@ private:
         {
             for (int j = 0; j < cv_width; j++)
             {
-                curr_sliding_grid_[robot_row + i][robot_col - cv_width/2 + j];
+                curr_sliding_grid_[robot_row + i][robot_col - cv_width/2 + j] = 100*occ_grid->data[i*width + j];
             }
         }
 

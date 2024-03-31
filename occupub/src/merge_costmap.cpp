@@ -1,4 +1,4 @@
-#include "/home/umarv/ws/src/nav_stack/occupub/include/occupub/merge_costmap.h"
+#include "occupub/merge_costmap.h"
 
 // Forward declaration
 class TF2sub;

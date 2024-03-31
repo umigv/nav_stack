@@ -1,8 +1,0 @@
-source;share/occupub/hook/cmake_prefix_path.ps1
-source;share/occupub/hook/cmake_prefix_path.dsv
-source;share/occupub/hook/cmake_prefix_path.sh
-source;share/occupub/local_setup.bash
-source;share/occupub/local_setup.dsv
-source;share/occupub/local_setup.ps1
-source;share/occupub/local_setup.sh
-source;share/occupub/local_setup.zsh

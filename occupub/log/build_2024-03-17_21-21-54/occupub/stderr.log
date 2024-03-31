@@ -1,4 +1,0 @@
-[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:[m[K In member function ‘[01m[Kvoid MergeService::printOccupancyGridInfo(const OccupancyGrid&)[m[K’:
-[01m[K/home/umarv/ws/src/nav_stack/occupub/src/merge_costmap.cpp:109:27:[m[K [01;35m[Kwarning: [m[Ksuggest parentheses around assignment used as truth value [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wparentheses-Wparentheses]8;;[m[K]
-  109 |                 if ([01;35m[Kvalue =1[m[K){
-      |                     [01;35m[K~~~~~~^~[m[K

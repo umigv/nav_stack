@@ -1,2 +1,0 @@
-Invoking command in '/home/umarv/ws/src/nav_stack/occupub/build/occupub': /usr/bin/cmake /home/umarv/ws/src/nav_stack/occupub -DCMAKE_INSTALL_PREFIX=/home/umarv/ws/src/nav_stack/occupub/install/occupub
-Invoked command in '/home/umarv/ws/src/nav_stack/occupub/build/occupub' returned '1': /usr/bin/cmake /home/umarv/ws/src/nav_stack/occupub -DCMAKE_INSTALL_PREFIX=/home/umarv/ws/src/nav_stack/occupub/install/occupub
