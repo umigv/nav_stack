@@ -73,7 +73,7 @@ private:
 
         // Publish the OccupancyGrid message
         publisher_->publish(occupancyGridMsg);
-        RCLCPP_INFO(get_logger(), "Occupancy grid published");
+        // RCLCPP_INFO(get_logger(), "Occupancy grid published");
     }
     void get_pose(double &pose_x, double &pose_y) {
         std::string fromFrameRel = target_frame_.c_str();
@@ -108,21 +108,24 @@ private:
         curr_pose_y = prev_pose_y_ + .5;
         // get_pose(curr_pose_x, curr_pose_y);
 
-        int robot_row = window_height_/2;
-        int robot_col = window_width_/2; 
+        // int robot_row = window_height_/2;
+        // int robot_col = window_width_/2; 
+
+        int robot_row = 0;
+        int robot_col = 0; 
 
         int trans_cols = (curr_pose_x - prev_pose_x_) / resolution;
         int trans_rows = (curr_pose_y - prev_pose_y_) / resolution;
-        for (int i = 0; i < window_width_; i++) {
-            for (int j = 0; j < window_height_; j++) {
-                int transformed_i = i + trans_rows;
-                int transformed_j = j + trans_cols;
-                if (transformed_i >= 0 && transformed_j >= 0 && transformed_i < window_height_ 
-                        && transformed_j < window_width_) {
-                    curr_sliding_grid_[transformed_i][transformed_j] = prev_sliding_grid_[i][j];
-                }
-            }
-        }
+        // for (int i = 0; i < window_width_; i++) {
+        //     for (int j = 0; j < window_height_; j++) {
+        //         int transformed_i = i + trans_rows;
+        //         int transformed_j = j + trans_cols;
+        //         if (transformed_i >= 0 && transformed_j >= 0 && transformed_i < window_height_ 
+        //                 && transformed_j < window_width_) {
+        //             curr_sliding_grid_[transformed_i][transformed_j] = prev_sliding_grid_[i][j];
+        //         }
+        //     }
+        // }
 
         int cv_width = occ_grid->info.width;
         int cv_height = occ_grid->info.height;
@@ -131,7 +134,7 @@ private:
         {
             for (int j = 0; j < cv_width; j++)
             {
-                curr_sliding_grid_[robot_row + i][robot_col - cv_width/2 + j] = 100*occ_grid->data[i*width + j];
+                curr_sliding_grid_[robot_row + i][robot_col - cv_width/2 + j] = occ_grid->data[i*cv_width + j];
             }
         }
 
