@@ -35,16 +35,17 @@ public:
         // Initialize sliding window lane lines grids
         window_height_ = 200;
         window_width_ = 200;
-        curr_sliding_grid_ = std::vector<std::vector<int>>(window_height_, std::vector<int>(window_width_));
-        prev_sliding_grid_ = std::vector<std::vector<int>>(window_height_, std::vector<int>(window_width_));
+        curr_sliding_grid_ = std::vector<std::vector<int>>(window_height_, std::vector<int>(window_width_, -1));
+        prev_sliding_grid_ = std::vector<std::vector<int>>(window_height_, std::vector<int>(window_width_, -1));
         
         // Static grid (aka total competition size)
         // int comp_width = 60 / .05 // m / (m/cell)
         // int comp_height = 60 / .05 // m / (m/cell)
 
         // static_grid_ = std::vector<std::vector<int>>(comp_height, std::vector<int>(comp_width));
-
-        get_pose(prev_pose_x_, prev_pose_y_);
+        prev_pose_x_ = 0;
+        prev_pose_y_ = 0;
+        // get_pose(prev_pose_x_, prev_pose_y_);
     }
 
 private:
@@ -111,7 +112,8 @@ private:
 
 
         curr_sliding_grid_ = std::vector<std::vector<int>>(window_height_, std::vector<int>(window_width_, -1));        
-        int resolution = occ_grid->info.resolution;
+        // int resolution = occ_grid->info.resolution;
+        double resolution = 0.05;
 
         double curr_pose_x, curr_pose_y;
         curr_pose_x = prev_pose_x_ + 0;
@@ -123,15 +125,22 @@ private:
 
         // int robot_row = 0;
         // int robot_col = 0; 
-
+        std::cout << curr_pose_x << std::endl;
+        std::cout << curr_pose_y << std::endl; 
+        std::cout << prev_pose_x_ << std::endl;
+        std::cout << prev_pose_y_ << std::endl; 
         int trans_cols = (curr_pose_x - prev_pose_x_) / resolution;
         int trans_rows = (curr_pose_y - prev_pose_y_) / resolution;
-        for (int i = 0; i < window_width_; i++) {
-            for (int j = 0; j < window_height_; j++) {
+  
+        for (int i = 0; i < window_height_; i++) {
+            for (int j = 0; j < window_width_; j++) {
+
+                // To move up in grid, need our index to be smaller.
                 int transformed_i = i + trans_rows;
                 int transformed_j = j + trans_cols;
-                if (transformed_i >= 0 && transformed_j >= 0 && transformed_i < window_height_ 
-                        && transformed_j < window_width_) {
+
+                if ((transformed_i >= 0) && (transformed_j >= 0) && (transformed_i < window_height_) 
+                        && (transformed_j < window_width_)) {
                     std::cout << "transforming\n";
                     curr_sliding_grid_[transformed_i][transformed_j] = prev_sliding_grid_[i][j];
                 }
@@ -146,7 +155,10 @@ private:
             for (int j = 0; j < cv_width; j++)
             {
                 // curr_sliding_grid_[robot_row + i][robot_col - cv_width/2 + j] = occ_grid->data[i*cv_width + j];
-                curr_sliding_grid_[robot_row + i][robot_col - cv_width/2 + j] = occ_grid->data[i*cv_width + j];
+                if (occ_grid->data[i*cv_width + j] >= 0)
+                {
+                    curr_sliding_grid_[robot_row + i][robot_col - cv_width/2 + j] = occ_grid->data[i*cv_width + j];
+                }
             }
         }
 
