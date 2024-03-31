@@ -1,10 +1,17 @@
 #include "rclcpp/rclcpp.hpp"
+#include <chrono>
+#include <functional>
+#include <memory>
+#include <string>
+
 #include "std_msgs/msg/string.hpp"
 #include "nav_msgs/msg/occupancy_grid.hpp"
 #include "tf2/exceptions.h"
 #include "tf2_ros/transform_listener.h"
 #include "tf2_ros/buffer.h"
 #include <vector>
+
+using namespace std::chrono_literals;
 
 class cv_grid : public rclcpp::Node
 {
@@ -17,7 +24,7 @@ public:
     
         // subscribe to local lane lines occupancy grid
         subscription_ = this->create_subscription<nav_msgs::msg::OccupancyGrid>(
-            "cv_grid_in", 10, std::bind(&cv_grid::cv_grid_callback, this, _1));
+            "cv_grid_in", 10, std::bind(&cv_grid::cv_grid_callback, this, std::placeholders::_1));
     
         // Declare and acquire `target_frame` parameter
         target_frame_ = this->declare_parameter<std::string>("target_frame", "odom");
@@ -51,18 +58,18 @@ private:
         }
 
         // Create the OccupancyGrid message
-        auto occupancyGridMsg = std::make_shared<nav_msgs::msg::OccupancyGrid>();
-        occupancyGridMsg->header.stamp = now();
-        occupancyGridMsg->header.frame_id = "map";
-        occupancyGridMsg->info.width = window_width_;
-        occupancyGridMsg->info.height = window_height_;
-        occupancyGridMsg->info.resolution = 0.05;  // Replace with your desired resolution
-        occupancyGridMsg->info.origin.position.x = 0.0;
-        occupancyGridMsg->info.origin.position.y = 0.0;
-        occupancyGridMsg->info.origin.position.z = 0.0;
+        auto occupancyGridMsg = nav_msgs::msg::OccupancyGrid();
+        occupancyGridMsg.header.stamp = now();
+        occupancyGridMsg.header.frame_id = "map";
+        occupancyGridMsg.info.width = window_width_;
+        occupancyGridMsg.info.height = window_height_;
+        occupancyGridMsg.info.resolution = 0.05;  // Replace with your desired resolution
+        occupancyGridMsg.info.origin.position.x = 0.0;
+        occupancyGridMsg.info.origin.position.y = 0.0;
+        occupancyGridMsg.info.origin.position.z = 0.0;
 
         // Convert the 1D grid data to 2D
-        occupancyGridMsg->data = gridData;
+        occupancyGridMsg.data = gridData;
 
         // Publish the OccupancyGrid message
         publisher_->publish(occupancyGridMsg);
@@ -91,7 +98,7 @@ private:
         
         return;
     }
-    void cv_grid_callback(const nav_msgs::msg::OccupancyGrid::Ptr &occ_grid) 
+    void cv_grid_callback(const nav_msgs::msg::OccupancyGrid::Ptr occ_grid) 
     {        
         curr_sliding_grid_ = std::vector<std::vector<int>>(window_height_, std::vector<int>(window_width_));        
         int resolution = occ_grid->info.resolution;

@@ -1,2 +1,0 @@
-Invoking command in '/home/umarv/ws/src/nav_stack/cv_grid/build/cv_grid': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake /home/umarv/ws/src/nav_stack/cv_grid -DCMAKE_INSTALL_PREFIX=/home/umarv/ws/src/nav_stack/cv_grid/install/cv_grid
-Invoked command in '/home/umarv/ws/src/nav_stack/cv_grid/build/cv_grid' returned '1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake /home/umarv/ws/src/nav_stack/cv_grid -DCMAKE_INSTALL_PREFIX=/home/umarv/ws/src/nav_stack/cv_grid/install/cv_grid
