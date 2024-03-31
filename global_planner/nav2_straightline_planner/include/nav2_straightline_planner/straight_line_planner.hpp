@@ -108,7 +108,10 @@ private:
   // node ptr
   nav2_util::LifecycleNode::SharedPtr node_;
 
+  int goals = 0;
   
+  void setGoals(int x);
+  int getGoals();
 
   // The global frame of the costmap
   std::string global_frame_, name_;
