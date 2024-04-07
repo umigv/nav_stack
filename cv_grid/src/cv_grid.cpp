@@ -11,6 +11,14 @@
 #include "tf2_ros/buffer.h"
 #include <vector>
 
+namespace CELL_CONSTS 
+{
+    constexpr unsigned int FREE_SPACE = 0;
+    constexpr unsigned int LETHAL_OBSTACLE = 1;
+    constexpr unsigned int CV_ROBOT_POS = 2;
+    constexpr int UNKOWN = -1;
+}
+
 using namespace std::chrono_literals;
 
 class cv_grid : public rclcpp::Node
@@ -117,8 +125,8 @@ private:
 
         double curr_pose_x, curr_pose_y;
         curr_pose_x = prev_pose_x_ + 0;
-        curr_pose_y = prev_pose_y_ + .5;
-        // get_pose(curr_pose_x, curr_pose_y);
+        curr_pose_y = prev_pose_y_ + 0.5;
+        // get_pose(curr_pose_x_, curr_pose_y_);
 
         int robot_row = window_height_/2;
         int robot_col = window_width_/2; 
@@ -155,9 +163,11 @@ private:
             for (int j = 0; j < cv_width; j++)
             {
                 // curr_sliding_grid_[robot_row + i][robot_col - cv_width/2 + j] = occ_grid->data[i*cv_width + j];
-                if (occ_grid->data[i*cv_width + j] >= 0)
+
+                // 
+                if (occ_grid->data[i*cv_width + j] == CELL_CONSTS::LETHAL_OBSTACLE || occ_grid->data[i*cv_width + j] == CELL_CONSTS::FREE_SPACE)
                 {
-                    curr_sliding_grid_[robot_row + i][robot_col - cv_width/2 + j] = occ_grid->data[i*cv_width + j];
+                    curr_sliding_grid_[robot_row + i][robot_col - cv_width/2 + j] = occ_grid->data[i*cv_width + j] * 100;
                 }
             }
         }
