@@ -71,6 +71,7 @@ nav2_msgs::action::NavigateToPose::Goal Point::toNavigateToPoseGoal() const{
 
 geometry_msgs::msg::PoseStamped Point::toPoseStamped() const{
     geometry_msgs::msg::PoseStamped ret;
+    ret.header.frame_id = "map";
     ret.pose.position.x = x;
     ret.pose.position.y = y;
     ret.pose.position.z = 0;

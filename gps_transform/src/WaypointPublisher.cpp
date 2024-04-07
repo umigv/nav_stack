@@ -24,7 +24,7 @@ WaypointPublisher::WaypointPublisher() : Node("WaypointPublisher"), tfBuffer(thi
     robotGPSSubscriber = this->create_subscription<sensor_msgs::msg::NavSatFix>("gps/data", 10, std::bind(&WaypointPublisher::robotGPSCallback, this, _1));
     goalPoseClient = rclcpp_action::create_client<NavigateToPose>(this, "navigate_to_pose");
     //goalPosePublisher = this->create_publisher<geometry_msgs::msg::PoseStamped>("goal_pose", 10);
-    goalPoseUpdater = this->create_wall_timer(std::chrono::milliseconds(1000), std::bind(&WaypointPublisher::updateGoalPose, this));
+    goalPoseUpdater = this->create_wall_timer(std::chrono::milliseconds(10000), std::bind(&WaypointPublisher::updateGoalPose, this));
     // rclcpp::sleep_for(std::chrono::seconds(5));
     // updateGoalPose();
 }
@@ -90,6 +90,11 @@ Point WaypointPublisher::getRobotPosition() const{
 }
 
 void WaypointPublisher::updateGoalPose(){
+    // if (navigationInProgress) {
+    //     RCLCPP_INFO(this->get_logger(), "Navigation in progress, returning from updateGoalPose");
+    //     return;
+    // }
+
     if (!mapInitialized) {
         RCLCPP_INFO(this->get_logger(), "Map not initialized yet, returning from update goal pose");
         return;
@@ -107,7 +112,7 @@ void WaypointPublisher::updateGoalPose(){
         unconstrainedGoal = unconstrainedGoal.rotateBy(M_PI);
     }
 
-    RCLCPP_INFO(this->get_logger(), "yeah the waypoint is cooking");
+    // RCLCPP_INFO(this->get_logger(), "yeah the waypoint is cooking");
 
     if(robotPosition.distanceTo(unconstrainedGoal) < kEpsilon){
         RCLCPP_INFO(this->get_logger(), "yooo next point time");
@@ -126,21 +131,32 @@ void WaypointPublisher::updateGoalPose(){
     goal_pose_client_options.feedback_callback = std::bind(&WaypointPublisher::feedbackCallback, this, _1, _2);
     goal_pose_client_options.result_callback = std::bind(&WaypointPublisher::resultCallback, this, _1);
     
-    goalPoseClient->async_send_goal(constrainedGoal.toNavigateToPoseGoal(), goal_pose_client_options);
+    nav2_msgs::action::NavigateToPose::Goal goal = constrainedGoal.toNavigateToPoseGoal();
+    // const Point testPoint(1.0, 0.0);
+    // nav2_msgs::action::NavigateToPose::Goal goal = testPoint.toNavigateToPoseGoal();
+
+
+    RCLCPP_INFO(this->get_logger(), "goal pose: (%f, %f, %f)", goal.pose.pose.position.x, goal.pose.pose.position.y, goal.pose.pose.position.z);
+    RCLCPP_INFO(this->get_logger(), "goal orientation: (%f, %f, %f, %f)", 
+        goal.pose.pose.orientation.x, goal.pose.pose.orientation.y, goal.pose.pose.orientation.z, goal.pose.pose.orientation.w);
+    RCLCPP_INFO(this->get_logger(), "goal frame id: %s", goal.pose.header.frame_id.c_str());
+
+    goalPoseClient->async_send_goal(goal, goal_pose_client_options);
 
 
     //goalPosePublisher->publish(constrainedGoal.toPoseStamped());
 }
 
 void WaypointPublisher::goalResponseCallBack(NavigateToPoseGoalHandle::SharedPtr future)
-  {
+{
     auto goal_handle = future.get();
     if (!goal_handle) {
-      RCLCPP_ERROR(this->get_logger(), "Goal was rejected by server");
+        RCLCPP_ERROR(this->get_logger(), "Goal was rejected by server");
     } else {
-      RCLCPP_INFO(this->get_logger(), "Goal accepted by server, waiting for result");
+        RCLCPP_INFO(this->get_logger(), "Goal accepted by server, waiting for result");
+        navigationInProgress = true;
     }
-  }
+}
 
   void WaypointPublisher::feedbackCallback(NavigateToPoseGoalHandle::SharedPtr, 
                                            const std::shared_ptr<const NavigateToPose::Feedback> feedback)
@@ -156,6 +172,7 @@ void WaypointPublisher::goalResponseCallBack(NavigateToPoseGoalHandle::SharedPtr
 
   void WaypointPublisher::resultCallback(const NavigateToPoseGoalHandle::WrappedResult & result)
   {
+    navigationInProgress = false;
     switch (result.code) {
       case rclcpp_action::ResultCode::SUCCEEDED:
         RCLCPP_INFO(this->get_logger(), "Goal was successful");

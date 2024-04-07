@@ -104,6 +104,7 @@ private:
     long double kEpsilon{2.0};
     bool faceNorth;
     bool mapInitialized = false;
+    bool navigationInProgress = false;
 };
 
 /**
