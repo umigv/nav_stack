@@ -23,10 +23,14 @@ WaypointPublisher::WaypointPublisher() : Node("WaypointPublisher"), tfBuffer(thi
     mapInfoSubscriber = this->create_subscription<nav_msgs::msg::MapMetaData>("map_metadata", 10, std::bind(&WaypointPublisher::mapInfoCallback, this, _1));
     robotGPSSubscriber = this->create_subscription<sensor_msgs::msg::NavSatFix>("gps/data", 10, std::bind(&WaypointPublisher::robotGPSCallback, this, _1));
     goalPoseClient = rclcpp_action::create_client<NavigateToPose>(this, "navigate_to_pose");
-    //goalPosePublisher = this->create_publisher<geometry_msgs::msg::PoseStamped>("goal_pose", 10);
-    goalPoseUpdater = this->create_wall_timer(std::chrono::milliseconds(10000), std::bind(&WaypointPublisher::updateGoalPose, this));
-    // rclcpp::sleep_for(std::chrono::seconds(5));
-    // updateGoalPose();
+
+    navigateCallbackGroup = this->create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
+    updateGoalCallbackGroup = this->create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
+
+    navigateToGoalTimer = this->create_wall_timer(std::chrono::milliseconds(10000), std::bind(&WaypointPublisher::navigateToGoal, this), 
+        navigateCallbackGroup);
+    updateGoalTimer = this->create_wall_timer(std::chrono::milliseconds(100), std::bind(&WaypointPublisher::updateCurrentGoal, this), 
+        updateGoalCallbackGroup);
 }
 
 void WaypointPublisher::readWaypoints(std::istream& is){
@@ -89,7 +93,25 @@ Point WaypointPublisher::getRobotPosition() const{
     return Point(transform.transform.translation.x, transform.transform.translation.y);
 }
 
-void WaypointPublisher::updateGoalPose(){
+Point WaypointPublisher::getUnconstrainedGoal() const {
+    const Point robotPosition = getRobotPosition();
+    Point unconstrainedGoal = robotPosition + Point(robotGPS, waypoints.front());
+
+    if(!faceNorth) {
+        unconstrainedGoal = unconstrainedGoal.rotateBy(M_PI);
+    }
+
+    return unconstrainedGoal;
+}
+
+void WaypointPublisher::updateCurrentGoal() {
+     if(getRobotPosition().distanceTo(getUnconstrainedGoal()) < kEpsilon){
+        RCLCPP_INFO(this->get_logger(), "yooo next point time");
+        waypoints.pop_front();
+    }
+}
+
+void WaypointPublisher::navigateToGoal(){
     // if (navigationInProgress) {
     //     RCLCPP_INFO(this->get_logger(), "Navigation in progress, returning from updateGoalPose");
     //     return;
@@ -105,20 +127,7 @@ void WaypointPublisher::updateGoalPose(){
         return;
     }
 
-    const Point robotPosition = getRobotPosition();
-    Point unconstrainedGoal = robotPosition + Point(robotGPS, waypoints.front());
-
-    if(!faceNorth) {
-        unconstrainedGoal = unconstrainedGoal.rotateBy(M_PI);
-    }
-
-    // RCLCPP_INFO(this->get_logger(), "yeah the waypoint is cooking");
-
-    if(robotPosition.distanceTo(unconstrainedGoal) < kEpsilon){
-        RCLCPP_INFO(this->get_logger(), "yooo next point time");
-        waypoints.pop_front();
-        return;
-    }
+    Point unconstrainedGoal = getUnconstrainedGoal();
 
     const Point constrainedGoal = frame.constrainToMap(unconstrainedGoal);
 

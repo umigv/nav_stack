@@ -72,9 +72,22 @@ private:
     Point getRobotPosition() const;
 
     /**
+     * @brief Get the current unconstrained goal
+     * 
+     * @return The current unconstrained goal
+    */
+    Point getUnconstrainedGoal() const;
+
+    /**
+     * @brief If the robot has reached its current goal, updates the current goal to
+     * the next waypoint in waypoints.txt
+    */
+    void updateCurrentGoal();
+
+    /**
      * @brief Update the goal pose based on the robot's GPS coordinates
     */
-    void updateGoalPose();
+    void navigateToGoal();
 
     void goalResponseCallBack(NavigateToPoseGoalHandle::SharedPtr future);
 
@@ -95,9 +108,13 @@ private:
     tf2_ros::TransformListener tfListener;
 
     // Action
-    rclcpp::TimerBase::SharedPtr goalPoseUpdater;
+    rclcpp::CallbackGroup::SharedPtr navigateCallbackGroup;
+    rclcpp::TimerBase::SharedPtr navigateToGoalTimer;
     rclcpp_action::Client<NavigateToPose>::SharedPtr goalPoseClient;
-    //rclcpp::Publisher<geometry_msgs::msg::PoseStamped>::SharedPtr goalPosePublisher;
+
+    // Goal update
+    rclcpp::CallbackGroup::SharedPtr updateGoalCallbackGroup;
+    rclcpp::TimerBase::SharedPtr updateGoalTimer;
 
     // Data
     std::deque<GPSCoordinate> waypoints;
