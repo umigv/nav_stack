@@ -101,6 +101,7 @@ private:
 
     // GPS Subscriber
     rclcpp::Subscription<sensor_msgs::msg::NavSatFix>::SharedPtr robotGPSSubscriber;
+    rclcpp::CallbackGroup::SharedPtr gpsCallbackGroup;
     GPSCoordinate robotGPS;
 
     // TF2

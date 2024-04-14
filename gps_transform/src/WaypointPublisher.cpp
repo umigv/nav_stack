@@ -8,7 +8,7 @@ using std::placeholders::_2;
 using nav2_msgs::action::NavigateToPose;
 using NavigateToPoseGoalHandle = rclcpp_action::ClientGoalHandle<NavigateToPose>;
 
-WaypointPublisher::WaypointPublisher() : Node("WaypointPublisher"), tfBuffer(this->get_clock()), tfListener(tfBuffer){
+WaypointPublisher::WaypointPublisher() : Node("WaypointPublisher"),  tfBuffer(this->get_clock()), tfListener(tfBuffer){
     this->declare_parameter("face_north", true);
     this->declare_parameter("goal_tolerance", 2.0);
     this->declare_parameter("waypoints_file", "waypoints.txt");
@@ -20,12 +20,19 @@ WaypointPublisher::WaypointPublisher() : Node("WaypointPublisher"), tfBuffer(thi
     RCLCPP_INFO(this->get_logger(), waypoints_file_path.c_str());
     readWaypoints(is);
 
-    mapInfoSubscriber = this->create_subscription<nav_msgs::msg::MapMetaData>("map_metadata", 10, std::bind(&WaypointPublisher::mapInfoCallback, this, _1));
-    robotGPSSubscriber = this->create_subscription<sensor_msgs::msg::NavSatFix>("gps/data", 10, std::bind(&WaypointPublisher::robotGPSCallback, this, _1));
-    goalPoseClient = rclcpp_action::create_client<NavigateToPose>(this, "navigate_to_pose");
-
     navigateCallbackGroup = this->create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
     updateGoalCallbackGroup = this->create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
+    gpsCallbackGroup = this->create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
+
+    mapInfoSubscriber = this->create_subscription<nav_msgs::msg::MapMetaData>("map_metadata", 10, std::bind(&WaypointPublisher::mapInfoCallback, this, _1));
+
+    rclcpp::SubscriptionOptions gpsSubscriberOptions;
+    gpsSubscriberOptions.callback_group = gpsCallbackGroup;
+
+    robotGPSSubscriber = this->create_subscription<sensor_msgs::msg::NavSatFix>(
+        "gps/data", 10, std::bind(&WaypointPublisher::robotGPSCallback, this, _1), gpsSubscriberOptions);
+    goalPoseClient = rclcpp_action::create_client<NavigateToPose>(this, "navigate_to_pose");
+
 
     navigateToGoalTimer = this->create_wall_timer(std::chrono::milliseconds(10000), std::bind(&WaypointPublisher::navigateToGoal, this), 
         navigateCallbackGroup);
@@ -65,14 +72,14 @@ void WaypointPublisher::mapInfoCallback(const nav_msgs::msg::MapMetaData::Shared
     uint32_t height = map->height;
     float resolution = map->resolution;
 
-    RCLCPP_INFO(this->get_logger(), "origin: (%f, %f), width: %u, height: %u, resolution: %f", xpos, ypos, width, height, resolution);
+    // RCLCPP_INFO(this->get_logger(), "origin: (%f, %f), width: %u, height: %u, resolution: %f", xpos, ypos, width, height, resolution);
         
     frame = MapFrame(Point(xpos, ypos), width, height, resolution);
     mapInitialized = true;
 }
 
 void WaypointPublisher::robotGPSCallback(const sensor_msgs::msg::NavSatFix::SharedPtr gpsCoordinate){
-    //RCLCPP_INFO(this->get_logger(), "lat: %f, lon: %f", gpsCoordinate->latitude, gpsCoordinate->longitude);
+    RCLCPP_INFO(this->get_logger(), "lat: %f, lon: %f", gpsCoordinate->latitude, gpsCoordinate->longitude);
 
     robotGPS = GPSCoordinate(gpsCoordinate->latitude, gpsCoordinate->longitude);
 }
@@ -94,8 +101,8 @@ Point WaypointPublisher::getRobotPosition() const{
 }
 
 Point WaypointPublisher::getUnconstrainedGoal() const {
-    const Point robotPosition = getRobotPosition();
-    Point unconstrainedGoal = robotPosition + Point(robotGPS, waypoints.front());
+    // const Point robotPosition = getRobotPosition();
+    Point unconstrainedGoal = getRobotPosition() + Point(robotGPS, waypoints.front());
 
     if(!faceNorth) {
         unconstrainedGoal = unconstrainedGoal.rotateBy(M_PI);
@@ -105,9 +112,19 @@ Point WaypointPublisher::getUnconstrainedGoal() const {
 }
 
 void WaypointPublisher::updateCurrentGoal() {
-     if(getRobotPosition().distanceTo(getUnconstrainedGoal()) < kEpsilon){
+    Point currPosition = getRobotPosition();
+    Point unconstrainedGoal = getUnconstrainedGoal();
+    double distanceToGoal = currPosition.distanceTo(unconstrainedGoal);
+
+    RCLCPP_INFO(this->get_logger(), "Unconstrained goal: (%Lf, %Lf)", unconstrainedGoal.getX(), unconstrainedGoal.getY());
+    RCLCPP_INFO(this->get_logger(), "Current position: (%Lf, %Lf)", currPosition.getX(), currPosition.getY());
+    RCLCPP_INFO(this->get_logger(), "Distance to goal: %lf\n", distanceToGoal);
+
+    if(distanceToGoal < kEpsilon){
         RCLCPP_INFO(this->get_logger(), "yooo next point time");
         waypoints.pop_front();
+        // We want to call this as soon as we have a new goal
+        navigateToGoal();
     }
 }
 
@@ -131,8 +148,8 @@ void WaypointPublisher::navigateToGoal(){
 
     const Point constrainedGoal = frame.constrainToMap(unconstrainedGoal);
 
-    RCLCPP_INFO(this->get_logger(), "unconstrained goal: %Lf, %Lf", unconstrainedGoal.getX(), unconstrainedGoal.getY());
-    RCLCPP_INFO(this->get_logger(), "constrained goal: %Lf, %Lf", constrainedGoal.getX(), constrainedGoal.getY());
+    // RCLCPP_INFO(this->get_logger(), "unconstrained goal: %Lf, %Lf", unconstrainedGoal.getX(), unconstrainedGoal.getY());
+    // RCLCPP_INFO(this->get_logger(), "constrained goal: %Lf, %Lf", constrainedGoal.getX(), constrainedGoal.getY());
 
     auto goal_pose_client_options = rclcpp_action::Client<NavigateToPose>::SendGoalOptions();
 
@@ -145,10 +162,10 @@ void WaypointPublisher::navigateToGoal(){
     // nav2_msgs::action::NavigateToPose::Goal goal = testPoint.toNavigateToPoseGoal();
 
 
-    RCLCPP_INFO(this->get_logger(), "goal pose: (%f, %f, %f)", goal.pose.pose.position.x, goal.pose.pose.position.y, goal.pose.pose.position.z);
-    RCLCPP_INFO(this->get_logger(), "goal orientation: (%f, %f, %f, %f)", 
-        goal.pose.pose.orientation.x, goal.pose.pose.orientation.y, goal.pose.pose.orientation.z, goal.pose.pose.orientation.w);
-    RCLCPP_INFO(this->get_logger(), "goal frame id: %s", goal.pose.header.frame_id.c_str());
+    // RCLCPP_INFO(this->get_logger(), "goal pose: (%f, %f, %f)", goal.pose.pose.position.x, goal.pose.pose.position.y, goal.pose.pose.position.z);
+    // RCLCPP_INFO(this->get_logger(), "goal orientation: (%f, %f, %f, %f)", 
+    //     goal.pose.pose.orientation.x, goal.pose.pose.orientation.y, goal.pose.pose.orientation.z, goal.pose.pose.orientation.w);
+    // RCLCPP_INFO(this->get_logger(), "goal frame id: %s", goal.pose.header.frame_id.c_str());
 
     goalPoseClient->async_send_goal(goal, goal_pose_client_options);
 
