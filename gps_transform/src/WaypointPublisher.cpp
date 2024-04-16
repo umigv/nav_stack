@@ -20,24 +20,15 @@ WaypointPublisher::WaypointPublisher() : Node("WaypointPublisher"),  tfBuffer(th
     RCLCPP_INFO(this->get_logger(), waypoints_file_path.c_str());
     readWaypoints(is);
 
-    navigateCallbackGroup = this->create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
-    updateGoalCallbackGroup = this->create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
-    gpsCallbackGroup = this->create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
-
     mapInfoSubscriber = this->create_subscription<nav_msgs::msg::MapMetaData>("map_metadata", 10, std::bind(&WaypointPublisher::mapInfoCallback, this, _1));
 
-    rclcpp::SubscriptionOptions gpsSubscriberOptions;
-    gpsSubscriberOptions.callback_group = gpsCallbackGroup;
-
     robotGPSSubscriber = this->create_subscription<sensor_msgs::msg::NavSatFix>(
-        "gps/data", 10, std::bind(&WaypointPublisher::robotGPSCallback, this, _1), gpsSubscriberOptions);
+        "gps/data", 10, std::bind(&WaypointPublisher::robotGPSCallback, this, _1));
     goalPoseClient = rclcpp_action::create_client<NavigateToPose>(this, "navigate_to_pose");
 
 
-    navigateToGoalTimer = this->create_wall_timer(std::chrono::milliseconds(10000), std::bind(&WaypointPublisher::navigateToGoal, this), 
-        navigateCallbackGroup);
-    updateGoalTimer = this->create_wall_timer(std::chrono::milliseconds(100), std::bind(&WaypointPublisher::updateCurrentGoal, this), 
-        updateGoalCallbackGroup);
+    navigateToGoalTimer = this->create_wall_timer(std::chrono::milliseconds(10000), std::bind(&WaypointPublisher::navigateToGoal, this));
+    updateGoalTimer = this->create_wall_timer(std::chrono::milliseconds(100), std::bind(&WaypointPublisher::updateCurrentGoal, this));
 }
 
 void WaypointPublisher::readWaypoints(std::istream& is){
