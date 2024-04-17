@@ -51,37 +51,36 @@ OccupancyGrid MergeService::mergeSLAMAndLaneLine(const OccupancyGrid &cv_cm, con
         1 == drivable
     */
 
-    // the two cost maps are the same size
+    // Create merged grid with the same dimensions as slam_cm
     OccupancyGrid merged_grid = slam_cm;
-    pose_x = 6;
-    pose_y = 5;
-    // pose_x=4;
-    // pose_y=4;
-    // start merge
-    pose_x -= cv_cm.info.width/2;
-    pose_y -= cv_cm.info.height/2;
 
-    for (size_t row = pose_y; row < cv_cm.info.height; ++row) {
-        for (size_t col = pose_x; col < cv_cm.info.width; ++col) {
-            // get the corresponding values from the 2 cost maps
-            auto slam_value = slam_cm.data[row * slam_cm.info.width + col];
-            auto cv_row = row - cv_cm.info.height/2;
-            auto cv_col = col - cv_cm.info.width/2;
-            auto lane_value = cv_cm.data[cv_row * cv_cm.info.width + cv_col];
-            //auto lane_value = cv_cm.data[row * cv_cm.info.width + col];
-            merged_grid.data.at(row * slam_cm.info.width + col) = merge_cell<int8_t>(slam_value, lane_value); 
+    // Define pose offsets
+    pose_x;
+    pose_y = cv_cm.info.height - pose_y;
+ 
+    // Calculate offset for merging
+    int dx = cv_cm.info.width / 2;
+    int dy = cv_cm.info.height / 2;
+
+    // Iterate through each cell in cv_cm
+    for (size_t row = 0; row < cv_cm.info.height; ++row) {
+        for (size_t col = 0; col < cv_cm.info.width; ++col) {
+            // Calculate corresponding indices in slam_cm
+            int slam_row = (row + pose_y - dy);
+            int slam_col = (col + pose_x - dx);
+
+            // Ensure the calculated indices are within bounds of slam_cm
+            if (slam_row >= 0 && slam_row < static_cast<int>(slam_cm.info.height) &&
+                slam_col >= 0 && slam_col < static_cast<int>(slam_cm.info.width)) {
+                // Get values from both grids
+                int slam_value = slam_cm.data[slam_row * slam_cm.info.width + slam_col];
+                int lane_value = cv_cm.data[row * cv_cm.info.width + col];
+
+                // Merge the values and update merged_grid
+                merged_grid.data[slam_row * slam_cm.info.width + slam_col] = merge_cell<int8_t>(slam_value, lane_value);
+            }
         }
     }
-
-    // start merge
-    // old code
-    // for (size_t row = 0; row < slam_cm.info.height; ++row) {
-    //     for (size_t col = 0; col < slam_cm.info.width; ++col) {
-    //         // get the corresponding values from the 2 cost maps
-    //         int slam_value = slam_cm.data[row * slam_cm.info.width + col];
-    //         int lane_value = cv_cm.data[row * cv_cm.info.width + col];
-    //     }
-    // }
 
     return merged_grid;
 }
