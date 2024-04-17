@@ -9,12 +9,15 @@ using nav2_msgs::action::NavigateToPose;
 using NavigateToPoseGoalHandle = rclcpp_action::ClientGoalHandle<NavigateToPose>;
 
 WaypointPublisher::WaypointPublisher() : Node("WaypointPublisher"),  tfBuffer(this->get_clock()), tfListener(tfBuffer){
-    this->declare_parameter("face_north", true);
+    this->declare_parameter("facing_north", true);
     this->declare_parameter("goal_tolerance", 2.0);
     this->declare_parameter("waypoints_file", "waypoints.txt");
 
-    faceNorth = this->get_parameter("face_north").as_bool();
+    faceNorth = this->get_parameter("facing_north").as_bool();
     kEpsilon = this->get_parameter("goal_tolerance").as_double();
+
+    RCLCPP_INFO(this->get_logger(), "Facing north: %d", faceNorth);
+
     const std::string waypoints_file_path = this->get_parameter("waypoints_file").as_string();
     std::ifstream is(waypoints_file_path);
     RCLCPP_INFO(this->get_logger(), waypoints_file_path.c_str());
@@ -70,7 +73,7 @@ void WaypointPublisher::mapInfoCallback(const nav_msgs::msg::MapMetaData::Shared
 }
 
 void WaypointPublisher::robotGPSCallback(const sensor_msgs::msg::NavSatFix::SharedPtr gpsCoordinate){
-    RCLCPP_INFO(this->get_logger(), "lat: %f, lon: %f", gpsCoordinate->latitude, gpsCoordinate->longitude);
+    // RCLCPP_INFO(this->get_logger(), "lat: %f, lon: %f", gpsCoordinate->latitude, gpsCoordinate->longitude);
 
     robotGPS = GPSCoordinate(gpsCoordinate->latitude, gpsCoordinate->longitude);
 }
@@ -103,13 +106,17 @@ Point WaypointPublisher::getUnconstrainedGoal() const {
 }
 
 void WaypointPublisher::updateCurrentGoal() {
+    if (waypoints.empty()) {
+        return;
+    }
+
     Point currPosition = getRobotPosition();
     Point unconstrainedGoal = getUnconstrainedGoal();
     double distanceToGoal = currPosition.distanceTo(unconstrainedGoal);
 
-    RCLCPP_INFO(this->get_logger(), "Unconstrained goal: (%Lf, %Lf)", unconstrainedGoal.getX(), unconstrainedGoal.getY());
-    RCLCPP_INFO(this->get_logger(), "Current position: (%Lf, %Lf)", currPosition.getX(), currPosition.getY());
-    RCLCPP_INFO(this->get_logger(), "Distance to goal: %lf\n", distanceToGoal);
+    // RCLCPP_INFO(this->get_logger(), "Unconstrained goal: (%Lf, %Lf)", unconstrainedGoal.getX(), unconstrainedGoal.getY());
+    // RCLCPP_INFO(this->get_logger(), "Current position: (%Lf, %Lf)", currPosition.getX(), currPosition.getY());
+    // RCLCPP_INFO(this->get_logger(), "Distance to goal: %lf\n", distanceToGoal);
 
     if(distanceToGoal < kEpsilon){
         RCLCPP_INFO(this->get_logger(), "yooo next point time");
