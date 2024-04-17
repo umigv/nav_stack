@@ -9,6 +9,7 @@
 #include "tf2/exceptions.h"
 #include "tf2_ros/transform_listener.h"
 #include "tf2_ros/buffer.h"
+// #include "geometry_msgs/msg/Tra"
 #include <vector>
 
 namespace CELL_CONSTS 
@@ -38,7 +39,7 @@ public:
         target_frame_ = this->declare_parameter<std::string>("target_frame", "odom");
 
         tf_buffer_ = std::make_unique<tf2_ros::Buffer>(this->get_clock());
-        tf_listener_ = std::make_shared<tf2_ros::TransformListener>(*tf_buffer_);
+        tf_listener_ = std::make_shared<tf2_ros::TransformListener>(*tf_buffer_);         
 
         // Initialize sliding window lane lines grids
         window_height_ = 200;
@@ -51,31 +52,49 @@ public:
         // int comp_height = 60 / .05 // m / (m/cell)
 
         // static_grid_ = std::vector<std::vector<int>>(comp_height, std::vector<int>(comp_width));
-        prev_pose_x_ = 0;
-        prev_pose_y_ = 0;
-        // get_pose(prev_pose_x_, prev_pose_y_);
+        first_lookup = true;
     }
 
 private:
     void publishGrid()
     {
-        std::vector<int8_t> gridData(window_width_ * window_height_, -1);  // initialize with unknown
+        // geometry_msgs::msg::TransformStamped rob_pose = get_node_options.lookupTransform('baselink', 'odom', rclcpp::Time(0));
 
+        std::vector<int8_t> gridData(window_width_ * window_height_, -1);  // initialize with unknown
+        double rob_x;
+        double rob_y;
+        geometry_msgs::msg::Quaternion quat;
+        get_pose(rob_x, rob_y, quat);
+
+        int grid_x = -1;
+        int grid_y = -1;
         for (int i = 0; i < window_width_ * window_height_; ++i)
         {
             gridData[i] = curr_sliding_grid_[i / window_width_][i % window_width_];
+            if (gridData[i] == 2) {
+                std::cout << "found robot pose." << std::endl;
+                grid_x = i % window_width_;
+                grid_y = i / window_width_;
+            }
         }
 
         // Create the OccupancyGrid message
         auto occupancyGridMsg = nav_msgs::msg::OccupancyGrid();
         occupancyGridMsg.header.stamp = now();
-        occupancyGridMsg.header.frame_id = "map";
+        occupancyGridMsg.header.frame_id = "odom";
         occupancyGridMsg.info.width = window_width_;
         occupancyGridMsg.info.height = window_height_;
         occupancyGridMsg.info.resolution = 0.05;  // Replace with your desired resolution
-        occupancyGridMsg.info.origin.position.x = 0.0;
-        occupancyGridMsg.info.origin.position.y = 0.0;
+        occupancyGridMsg.info.origin.position.x = rob_x - grid_x * occupancyGridMsg.info.resolution;
+        occupancyGridMsg.info.origin.position.y = rob_y - grid_y * occupancyGridMsg.info.resolution;
         occupancyGridMsg.info.origin.position.z = 0.0;
+        occupancyGridMsg.info.origin.orientation = quat;
+
+        // geometry_msgs::msg::Quaternion rot;
+        // rot.setRPY(0, 0, M_PI_2);
+        // occupancyGridMsg.info.origin.orientation = rot * occupancyGridMsg.info.origin.orientation;
+
+
 
         // Convert the 1D grid data to 2D
         occupancyGridMsg.data = gridData;
@@ -84,7 +103,7 @@ private:
         publisher_->publish(occupancyGridMsg);
         // RCLCPP_INFO(get_logger(), "Occupancy grid published");
     }
-    void get_pose(double &pose_x, double &pose_y) {
+    void get_pose(double &pose_x, double &pose_y, geometry_msgs::msg::Quaternion& quat) {
         std::string fromFrameRel = target_frame_.c_str();
         std::string toFrameRel = "base_link";
         geometry_msgs::msg::TransformStamped t;
@@ -93,7 +112,8 @@ private:
         // and send velocity commands for turtle2 to reach target_frame
         try {
           t = tf_buffer_->lookupTransform(
-            toFrameRel, fromFrameRel,
+            fromFrameRel,
+            toFrameRel,
             tf2::TimePointZero);
         } catch (const tf2::TransformException & ex) {
           RCLCPP_INFO(
@@ -104,11 +124,18 @@ private:
 
         pose_x = t.transform.translation.x;
         pose_y = t.transform.translation.y;
+        quat = t.transform.rotation;
         
         return;
     }
     void cv_grid_callback(const nav_msgs::msg::OccupancyGrid::Ptr occ_grid) 
     {   
+
+        if (first_lookup) {
+            geometry_msgs::msg::Quaternion quat;
+            get_pose(prev_pose_x_, prev_pose_y_, quat);
+            first_lookup = false;
+        }
         // auto occupancyGridMsg = nav_msgs::msg::OccupancyGrid();
         // occupancyGridMsg.header.stamp = now();
         // occupancyGridMsg.header.frame_id = "map";
@@ -117,7 +144,6 @@ private:
         // occupancyGridMsg.info.resolution = occ_grid->info.resolution;
         // occupancyGridMsg.data = occ_grid->data;
         // publisher_->publish(occupancyGridMsg);
-
 
         curr_sliding_grid_ = std::vector<std::vector<int>>(window_height_, std::vector<int>(window_width_, -1));        
         // int resolution = occ_grid->info.resolution;
@@ -201,6 +227,7 @@ private:
     int window_width_;
     double prev_pose_x_;
     double prev_pose_y_;
+    bool first_lookup;
 
 };
 
