@@ -125,10 +125,10 @@ private:
 
         // int robot_row = 0;
         // int robot_col = 0; 
-        std::cout << curr_pose_x << std::endl;
-        std::cout << curr_pose_y << std::endl; 
-        std::cout << prev_pose_x_ << std::endl;
-        std::cout << prev_pose_y_ << std::endl; 
+        // std::cout << curr_pose_x << std::endl;
+        // std::cout << curr_pose_y << std::endl; 
+        // std::cout << prev_pose_x_ << std::endl;
+        // std::cout << prev_pose_y_ << std::endl; 
         int trans_cols = (curr_pose_x - prev_pose_x_) / resolution;
         int trans_rows = (curr_pose_y - prev_pose_y_) / resolution;
   
@@ -141,7 +141,6 @@ private:
 
                 if ((transformed_i >= 0) && (transformed_j >= 0) && (transformed_i < window_height_) 
                         && (transformed_j < window_width_)) {
-                    std::cout << "transforming\n";
                     curr_sliding_grid_[transformed_i][transformed_j] = prev_sliding_grid_[i][j];
                 }
             }
@@ -154,12 +153,24 @@ private:
         {
             for (int j = 0; j < cv_width; j++)
             {
+                int val = occ_grid->data[i*cv_width + j];
+                // std::cout << val << " ";
                 // curr_sliding_grid_[robot_row + i][robot_col - cv_width/2 + j] = occ_grid->data[i*cv_width + j];
-                if (occ_grid->data[i*cv_width + j] >= 0)
+                if (val == 0)
                 {
-                    curr_sliding_grid_[robot_row + i][robot_col - cv_width/2 + j] = occ_grid->data[i*cv_width + j];
+                    val = 100;
+                }
+                else if (val == 1)
+                {
+                    val = 0;
+                }
+
+                if (val >= 0)
+                {
+                    curr_sliding_grid_[robot_row + i][robot_col - cv_width/2 + j] = val;
                 }
             }
+            // std::cout << std::endl;
         }
 
         prev_sliding_grid_ = curr_sliding_grid_;
