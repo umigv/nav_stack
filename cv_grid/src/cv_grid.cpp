@@ -88,7 +88,7 @@ private:
         occupancyGridMsg.info.origin.position.x = rob_x - grid_x * occupancyGridMsg.info.resolution;
         occupancyGridMsg.info.origin.position.y = rob_y - grid_y * occupancyGridMsg.info.resolution;
         occupancyGridMsg.info.origin.position.z = 0.0;
-        occupancyGridMsg.info.origin.orientation = quat;
+        // occupancyGridMsg.info.origin.orientation = quat;
 
         // geometry_msgs::msg::Quaternion rot;
         // rot.setRPY(0, 0, M_PI_2);
@@ -130,9 +130,8 @@ private:
     }
     void cv_grid_callback(const nav_msgs::msg::OccupancyGrid::Ptr occ_grid) 
     {   
-
+        geometry_msgs::msg::Quaternion quat;
         if (first_lookup) {
-            geometry_msgs::msg::Quaternion quat;
             get_pose(prev_pose_x_, prev_pose_y_, quat);
             first_lookup = false;
         }
@@ -150,9 +149,9 @@ private:
         double resolution = 0.05;
 
         double curr_pose_x, curr_pose_y;
-        curr_pose_x = prev_pose_x_ + 0;
-        curr_pose_y = prev_pose_y_ + 0.5;
-        // get_pose(curr_pose_x_, curr_pose_y_);
+        // curr_pose_x = prev_pose_x_ + 0;
+        // curr_pose_y = prev_pose_y_ + 0.5;
+        get_pose(curr_pose_x, curr_pose_y, quat);
 
         int robot_row = window_height_/2;
         int robot_col = window_width_/2; 
@@ -170,11 +169,25 @@ private:
             for (int j = 0; j < window_width_; j++) {
 
                 // To move up in grid, need our index to be smaller.
-                int transformed_i = i + trans_rows;
-                int transformed_j = j + trans_cols;
+                
+                // TODO Convert to actual code
+                // theta = quat_to_euler(q)
+                // xy_homo = [i j 1]
+                // trans_mat = [[cos(theta) -sin(theta) trans_cols],
+                //             [sin(theta) cos(theta) trans_rows],
+                //             [    0           0         1]]
+                // trans_xy = xy_homo * trans_mat //matrix multiply
+                // xy_homo = xy_homo/xy_homo[2]
+
+
+                int transformed_i = i - trans_rows;
+                int transformed_j = j - trans_cols;
 
                 if ((transformed_i >= 0) && (transformed_j >= 0) && (transformed_i < window_height_) 
                         && (transformed_j < window_width_)) {
+                        if (prev_sliding_grid_[i][j] == 2) {
+                            prev_sliding_grid_[i][j] = 0;
+                        }
                     curr_sliding_grid_[transformed_i][transformed_j] = prev_sliding_grid_[i][j];
                 }
             }
@@ -187,14 +200,14 @@ private:
         {
             for (int j = 0; j < cv_width; j++)
             {
-                int val = occ_grid->data[i*cv_width + j];
+                int val = occ_grid->data[(cv_height - i - 1)*cv_width + (cv_width - j - 1)];
                 // std::cout << val << " ";
                 // curr_sliding_grid_[robot_row + i][robot_col - cv_width/2 + j] = occ_grid->data[i*cv_width + j];
-                if (val == 0)
+                if (val == 1)
                 {
                     val = 100;
                 }
-                else if (val == 1)
+                else if (val == 0)
                 {
                     val = 0;
                 }
