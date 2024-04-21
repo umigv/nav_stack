@@ -30,8 +30,8 @@ WaypointPublisher::WaypointPublisher() : Node("WaypointPublisher"),  tfBuffer(th
     goalPoseClient = rclcpp_action::create_client<NavigateToPose>(this, "navigate_to_pose");
 
 
-    navigateToGoalTimer = this->create_wall_timer(std::chrono::milliseconds(10000), std::bind(&WaypointPublisher::navigateToGoal, this));
-    updateGoalTimer = this->create_wall_timer(std::chrono::milliseconds(100), std::bind(&WaypointPublisher::updateCurrentGoal, this));
+    navigateToGoalTimer = this->create_wall_timer(std::chrono::milliseconds(1000), std::bind(&WaypointPublisher::navigateToGoal, this));
+    // updateGoalTimer = this->create_wall_timer(std::chrono::milliseconds(100), std::bind(&WaypointPublisher::getRobotPosition, this));
 }
 
 void WaypointPublisher::readWaypoints(std::istream& is){
@@ -42,8 +42,8 @@ void WaypointPublisher::readWaypoints(std::istream& is){
 
     GPSCoordinate waypoint;
     while(is >> waypoint){
-        RCLCPP_INFO(this->get_logger(), 
-            (std::to_string(waypoint.getLatitude()) + ", " + std::to_string(waypoint.getLongitude())).c_str());
+        // RCLCPP_INFO(this->get_logger(), 
+        //     (std::to_string(waypoint.getLatitude()) + ", " + std::to_string(waypoint.getLongitude())).c_str());
         waypoints.emplace_back(waypoint);
     }
 
@@ -56,6 +56,12 @@ void WaypointPublisher::readWaypoints(std::istream& is){
 
     if(!faceNorth){
         std::reverse(waypoints.begin(), waypoints.end());
+    }
+
+    // Print finalized list of waypoints
+    RCLCPP_INFO(this->get_logger(), "Waypoints: ");
+    for (GPSCoordinate waypoint : waypoints) {
+        RCLCPP_INFO(this->get_logger(), "(%Lf, %Lf)", waypoint.getLatitude(), waypoint.getLongitude());
     }
 }
 
@@ -82,7 +88,7 @@ Point WaypointPublisher::getRobotPosition() const{
     geometry_msgs::msg::TransformStamped transform;
     
     try{
-        transform = tfBuffer.lookupTransform("base_footprint", "map", rclcpp::Time(0));
+        transform = tfBuffer.lookupTransform("base_link", "odom", rclcpp::Time(0));
 
     }
     catch(tf2::TransformException& exception){
@@ -90,12 +96,11 @@ Point WaypointPublisher::getRobotPosition() const{
         return Point();
     }
 
-    //RCLCPP_INFO(this->get_logger(), "get robot position success");
+    RCLCPP_INFO(this->get_logger(), "Robot pose: (%f, %f)", transform.transform.translation.x, transform.transform.translation.y);
     return Point(transform.transform.translation.x, transform.transform.translation.y);
 }
 
 Point WaypointPublisher::getUnconstrainedGoal() const {
-    // const Point robotPosition = getRobotPosition();
     Point unconstrainedGoal = getRobotPosition() + Point(robotGPS, waypoints.front());
 
     if(!faceNorth) {
@@ -105,24 +110,26 @@ Point WaypointPublisher::getUnconstrainedGoal() const {
     return unconstrainedGoal;
 }
 
-void WaypointPublisher::updateCurrentGoal() {
+void WaypointPublisher::updateCurrentGoal(const Point& currPosition) {
     if (waypoints.empty()) {
         return;
     }
 
-    Point currPosition = getRobotPosition();
     Point unconstrainedGoal = getUnconstrainedGoal();
     double distanceToGoal = currPosition.distanceTo(unconstrainedGoal);
 
-    // RCLCPP_INFO(this->get_logger(), "Unconstrained goal: (%Lf, %Lf)", unconstrainedGoal.getX(), unconstrainedGoal.getY());
-    // RCLCPP_INFO(this->get_logger(), "Current position: (%Lf, %Lf)", currPosition.getX(), currPosition.getY());
-    // RCLCPP_INFO(this->get_logger(), "Distance to goal: %lf\n", distanceToGoal);
+    RCLCPP_INFO(this->get_logger(), "Unconstrained goal: (%Lf, %Lf)", unconstrainedGoal.getX(), unconstrainedGoal.getY());
+    RCLCPP_INFO(this->get_logger(), "Distance to goal: %lf\n", distanceToGoal);
 
     if(distanceToGoal < kEpsilon){
-        RCLCPP_INFO(this->get_logger(), "yooo next point time");
+        RCLCPP_INFO(this->get_logger(), "Reached current waypoint");
         waypoints.pop_front();
-        // We want to call this as soon as we have a new goal
-        navigateToGoal();
+        if (!waypoints.empty()) {
+            RCLCPP_INFO(this->get_logger(), "Next waypoint: (%Lf, %Lf)", waypoints.front().getLatitude(), waypoints.front().getLongitude());
+        }
+    }
+    else {
+        RCLCPP_INFO(this->get_logger(), "Did not reach current waypoint, retrying navigation");
     }
 }
 
@@ -133,9 +140,13 @@ void WaypointPublisher::navigateToGoal(){
     // }
 
     if (!mapInitialized) {
-        RCLCPP_INFO(this->get_logger(), "Map not initialized yet, returning from update goal pose");
+        RCLCPP_INFO(this->get_logger(), "Map not initialized yet, returning from navigateToGoal");
         return;
     }
+
+    // When the map is initialized, we can cancel the timer; navigateToGoal() will be called from 
+    // the resultFeedback callback of the NavigateToPose action
+    navigateToGoalTimer->cancel();
 
     if(waypoints.empty()){
         RCLCPP_INFO(this->get_logger(), "Out of waypoints");
@@ -143,11 +154,9 @@ void WaypointPublisher::navigateToGoal(){
     }
 
     Point unconstrainedGoal = getUnconstrainedGoal();
-
     const Point constrainedGoal = frame.constrainToMap(unconstrainedGoal);
 
-    // RCLCPP_INFO(this->get_logger(), "unconstrained goal: %Lf, %Lf", unconstrainedGoal.getX(), unconstrainedGoal.getY());
-    // RCLCPP_INFO(this->get_logger(), "constrained goal: %Lf, %Lf", constrainedGoal.getX(), constrainedGoal.getY());
+    RCLCPP_INFO(this->get_logger(), "Unconstrained goal: %Lf, %Lf", unconstrainedGoal.getX(), unconstrainedGoal.getY());
 
     auto goal_pose_client_options = rclcpp_action::Client<NavigateToPose>::SendGoalOptions();
 
@@ -156,19 +165,11 @@ void WaypointPublisher::navigateToGoal(){
     goal_pose_client_options.result_callback = std::bind(&WaypointPublisher::resultCallback, this, _1);
     
     nav2_msgs::action::NavigateToPose::Goal goal = constrainedGoal.toNavigateToPoseGoal();
-    // const Point testPoint(1.0, 0.0);
-    // nav2_msgs::action::NavigateToPose::Goal goal = testPoint.toNavigateToPoseGoal();
 
-
-    // RCLCPP_INFO(this->get_logger(), "goal pose: (%f, %f, %f)", goal.pose.pose.position.x, goal.pose.pose.position.y, goal.pose.pose.position.z);
-    // RCLCPP_INFO(this->get_logger(), "goal orientation: (%f, %f, %f, %f)", 
-    //     goal.pose.pose.orientation.x, goal.pose.pose.orientation.y, goal.pose.pose.orientation.z, goal.pose.pose.orientation.w);
-    // RCLCPP_INFO(this->get_logger(), "goal frame id: %s", goal.pose.header.frame_id.c_str());
+    RCLCPP_INFO(this->get_logger(), "Calling NavigateToPose with goal pose: (%f, %f, %f)", 
+        goal.pose.pose.position.x, goal.pose.pose.position.y, goal.pose.pose.position.z);
 
     goalPoseClient->async_send_goal(goal, goal_pose_client_options);
-
-
-    //goalPosePublisher->publish(constrainedGoal.toPoseStamped());
 }
 
 void WaypointPublisher::goalResponseCallBack(NavigateToPoseGoalHandle::SharedPtr future)
@@ -185,11 +186,6 @@ void WaypointPublisher::goalResponseCallBack(NavigateToPoseGoalHandle::SharedPtr
   void WaypointPublisher::feedbackCallback(NavigateToPoseGoalHandle::SharedPtr, 
                                            const std::shared_ptr<const NavigateToPose::Feedback> feedback)
   {
-    // std::stringstream ss;
-    // ss << "Next number in sequence received: ";
-    // for (auto number : feedback->partial_sequence) {
-    //   ss << number << " ";
-    // }
     //RCLCPP_INFO(this->get_logger(), "NavigateToPose feedback current pose: (%lf, %lf, %lf)", 
         //feedback->current_pose.pose.position.x, feedback->current_pose.pose.position.y, feedback->current_pose.pose.position.z);
   }
@@ -197,20 +193,35 @@ void WaypointPublisher::goalResponseCallBack(NavigateToPoseGoalHandle::SharedPtr
   void WaypointPublisher::resultCallback(const NavigateToPoseGoalHandle::WrappedResult & result)
   {
     navigationInProgress = false;
+    
+
     switch (result.code) {
-      case rclcpp_action::ResultCode::SUCCEEDED:
-        RCLCPP_INFO(this->get_logger(), "Goal was successful");
-        break;
-      case rclcpp_action::ResultCode::ABORTED:
-        RCLCPP_ERROR(this->get_logger(), "Goal was aborted");
-        return;
-      case rclcpp_action::ResultCode::CANCELED:
-        RCLCPP_ERROR(this->get_logger(), "Goal was canceled");
-        return;
-      default:
-        RCLCPP_ERROR(this->get_logger(), "Unknown result code");
-        return;
+        case rclcpp_action::ResultCode::SUCCEEDED: 
+        {
+            RCLCPP_INFO(this->get_logger(), "Goal was successful");
+            Point robotPose = getRobotPosition();
+            RCLCPP_INFO(this->get_logger(), "Current robot pose: (%Lf, %Lf)", robotPose.getX(), robotPose.getY());
+            RCLCPP_INFO(this->get_logger(), "Current GPS location: (%Lf, %Lf)", robotGPS.getLatitude(), robotGPS.getLongitude());
+            RCLCPP_INFO(this->get_logger(), "Current waypoint: (%Lf, %Lf)", waypoints.front().getLatitude(), waypoints.front().getLongitude());
+
+            updateCurrentGoal(robotPose);            
+            navigateToGoal();
+            return;
+        }
+        case rclcpp_action::ResultCode::ABORTED:
+            RCLCPP_ERROR(this->get_logger(), "Goal was aborted");
+            break;
+        case rclcpp_action::ResultCode::CANCELED:
+            RCLCPP_ERROR(this->get_logger(), "Goal was canceled");
+            break;
+        default:
+            RCLCPP_ERROR(this->get_logger(), "Unknown result code");
+            break;
     }
+
+    // If we've gotten here, the goal must have failed
+    RCLCPP_ERROR(this->get_logger(), "Goal failed, retrying navigation");
+    navigateToGoal();
   }
 
 std::ostream& operator<<(std::ostream& os, const WaypointPublisher& waypointPublisher){

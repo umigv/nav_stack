@@ -82,7 +82,7 @@ private:
      * @brief If the robot has reached its current goal, updates the current goal to
      * the next waypoint in waypoints.txt
     */
-    void updateCurrentGoal();
+    void updateCurrentGoal(const Point& currPosition);
 
     /**
      * @brief Update the goal pose based on the robot's GPS coordinates
