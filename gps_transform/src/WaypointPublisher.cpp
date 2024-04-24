@@ -23,10 +23,15 @@ WaypointPublisher::WaypointPublisher() : Node("WaypointPublisher"),  tfBuffer(th
     RCLCPP_INFO(this->get_logger(), waypoints_file_path.c_str());
     readWaypoints(is);
 
-    mapInfoSubscriber = this->create_subscription<nav_msgs::msg::MapMetaData>("map_metadata", 10, std::bind(&WaypointPublisher::mapInfoCallback, this, _1));
+    mapInfoSubscriber = this->create_subscription<nav_msgs::msg::MapMetaData>(
+        "map_metadata", 10, std::bind(&WaypointPublisher::mapInfoCallback, this, _1));
 
     robotGPSSubscriber = this->create_subscription<sensor_msgs::msg::NavSatFix>(
         "gps/data", 10, std::bind(&WaypointPublisher::robotGPSCallback, this, _1));
+
+    robotPoseSubscriber = this->create_subscription<nav_msgs::msg::Odometry>(
+        "odom", 10, std::bind(&WaypointPublisher::robotPoseCallback, this, _1));
+
     goalPoseClient = rclcpp_action::create_client<NavigateToPose>(this, "navigate_to_pose");
 
 
@@ -84,24 +89,31 @@ void WaypointPublisher::robotGPSCallback(const sensor_msgs::msg::NavSatFix::Shar
     robotGPS = GPSCoordinate(gpsCoordinate->latitude, gpsCoordinate->longitude);
 }
 
-Point WaypointPublisher::getRobotPosition() const{
-    geometry_msgs::msg::TransformStamped transform;
-    
-    try{
-        transform = tfBuffer.lookupTransform("base_link", "odom", rclcpp::Time(0));
-
-    }
-    catch(tf2::TransformException& exception){
-        RCLCPP_ERROR(this->get_logger(), "Could not get robot position: %s", exception.what());
-        return Point();
-    }
-
-    RCLCPP_INFO(this->get_logger(), "Robot pose: (%f, %f)", transform.transform.translation.x, transform.transform.translation.y);
-    return Point(transform.transform.translation.x, transform.transform.translation.y);
+void WaypointPublisher::robotPoseCallback(const nav_msgs::msg::Odometry::SharedPtr robotOdom) {
+    geometry_msgs::msg::Point pose = robotOdom->pose.pose.position;
+    // RCLCPP_INFO(this->get_logger(), "Current robot pose: (%f, %f, %f)", pose.x, pose.y, pose.z);
+    robotPose = Point(pose.x, pose.y);
 }
 
+// Point WaypointPublisher::getRobotPosition() const{
+//     geometry_msgs::msg::TransformStamped transform;
+    
+//     try{
+//         transform = tfBuffer.lookupTransform("base_link", "odom", rclcpp::Time(0));
+
+//     }
+//     catch(tf2::TransformException& exception){
+//         RCLCPP_ERROR(this->get_logger(), "Could not get robot position: %s", exception.what());
+//         return Point();
+//     }
+
+//     RCLCPP_INFO(this->get_logger(), "Robot pose: (%f, %f)", transform.transform.translation.x, transform.transform.translation.y);
+//     return Point(transform.transform.translation.x, transform.transform.translation.y);
+// }
+
 Point WaypointPublisher::getUnconstrainedGoal() const {
-    Point unconstrainedGoal = getRobotPosition() + Point(robotGPS, waypoints.front());
+    // Point unconstrainedGoal = robotPose + Point(robotGPS, waypoints.front());
+    Point unconstrainedGoal = Point(GPSCoordinate(0, 0), waypoints.front());
 
     if(!faceNorth) {
         unconstrainedGoal = unconstrainedGoal.rotateBy(M_PI);
@@ -119,7 +131,7 @@ void WaypointPublisher::updateCurrentGoal(const Point& currPosition) {
     double distanceToGoal = currPosition.distanceTo(unconstrainedGoal);
 
     RCLCPP_INFO(this->get_logger(), "Unconstrained goal: (%Lf, %Lf)", unconstrainedGoal.getX(), unconstrainedGoal.getY());
-    RCLCPP_INFO(this->get_logger(), "Distance to goal: %lf\n", distanceToGoal);
+    RCLCPP_INFO(this->get_logger(), "Distance to goal: %lf", distanceToGoal);
 
     if(distanceToGoal < kEpsilon){
         RCLCPP_INFO(this->get_logger(), "Reached current waypoint");
@@ -168,6 +180,7 @@ void WaypointPublisher::navigateToGoal(){
 
     RCLCPP_INFO(this->get_logger(), "Calling NavigateToPose with goal pose: (%f, %f, %f)", 
         goal.pose.pose.position.x, goal.pose.pose.position.y, goal.pose.pose.position.z);
+    RCLCPP_INFO(this->get_logger(), "-------------------------------------------------------------");
 
     goalPoseClient->async_send_goal(goal, goal_pose_client_options);
 }
@@ -199,7 +212,6 @@ void WaypointPublisher::goalResponseCallBack(NavigateToPoseGoalHandle::SharedPtr
         case rclcpp_action::ResultCode::SUCCEEDED: 
         {
             RCLCPP_INFO(this->get_logger(), "Goal was successful");
-            Point robotPose = getRobotPosition();
             RCLCPP_INFO(this->get_logger(), "Current robot pose: (%Lf, %Lf)", robotPose.getX(), robotPose.getY());
             RCLCPP_INFO(this->get_logger(), "Current GPS location: (%Lf, %Lf)", robotGPS.getLatitude(), robotGPS.getLongitude());
             RCLCPP_INFO(this->get_logger(), "Current waypoint: (%Lf, %Lf)", waypoints.front().getLatitude(), waypoints.front().getLongitude());

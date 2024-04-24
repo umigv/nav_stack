@@ -8,6 +8,7 @@
 
 #include "rclcpp/rclcpp.hpp"
 #include "nav_msgs/msg/occupancy_grid.hpp"
+#include "nav_msgs/msg/odometry.hpp"
 #include "sensor_msgs/msg/nav_sat_fix.hpp"
 #include "geometry_msgs/msg/pose_stamped.hpp"
 #include "tf2_ros/buffer.h"
@@ -53,16 +54,18 @@ private:
     /**
      * @brief Callback for the map metadata subscriber
      * 
-     * @param msg The map metadata message
+     * @param map The map metadata message
     */
-    void mapInfoCallback(const nav_msgs::msg::MapMetaData::SharedPtr msg);
+    void mapInfoCallback(const nav_msgs::msg::MapMetaData::SharedPtr map);
 
     /**
      * @brief Callback for the robot GPS subscriber
      * 
-     * @param msg The robot GPS message
+     * @param gpsCoordinate The robot GPS message
     */
-    void robotGPSCallback(const sensor_msgs::msg::NavSatFix::SharedPtr msg);
+    void robotGPSCallback(const sensor_msgs::msg::NavSatFix::SharedPtr gpsCoordinate);
+
+    void robotPoseCallback(const nav_msgs::msg::Odometry::SharedPtr robotOdom);
 
     /**
      * @brief Get the robot's position in the map frame
@@ -103,6 +106,10 @@ private:
     rclcpp::Subscription<sensor_msgs::msg::NavSatFix>::SharedPtr robotGPSSubscriber;
     rclcpp::CallbackGroup::SharedPtr gpsCallbackGroup;
     GPSCoordinate robotGPS;
+
+    // Odom subscriber
+    rclcpp::Subscription<nav_msgs::msg::Odometry>::SharedPtr robotPoseSubscriber;
+    Point robotPose;
 
     // TF2
     tf2_ros::Buffer tfBuffer;
