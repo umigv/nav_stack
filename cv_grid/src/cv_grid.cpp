@@ -10,6 +10,8 @@
 #include "tf2_ros/transform_listener.h"
 #include "tf2_ros/buffer.h"
 // #include "geometry_msgs/msg/Tra"
+#include "geometry_msgs/msg/point_stamped.hpp"
+#include "geometry_msgs/msg/transform_stamped.hpp"
 #include <vector>
 
 namespace CELL_CONSTS 
@@ -39,23 +41,66 @@ public:
         target_frame_ = this->declare_parameter<std::string>("target_frame", "odom");
 
         tf_buffer_ = std::make_unique<tf2_ros::Buffer>(this->get_clock());
-        tf_listener_ = std::make_shared<tf2_ros::TransformListener>(*tf_buffer_);         
+        tf_listener_ = std::make_shared<tf2_ros::TransformListener>(*tf_buffer_);       
+        broadcaster_ = std::make_shared<tf2_ros::TransformBroadcaster>(node);
+          
 
         // Initialize sliding window lane lines grids
         window_height_ = 200;
         window_width_ = 200;
         curr_sliding_grid_ = std::vector<std::vector<int>>(window_height_, std::vector<int>(window_width_, -1));
         prev_sliding_grid_ = std::vector<std::vector<int>>(window_height_, std::vector<int>(window_width_, -1));
-        
-        // Static grid (aka total competition size)
-        // int comp_width = 60 / .05 // m / (m/cell)
-        // int comp_height = 60 / .05 // m / (m/cell)
-
-        // static_grid_ = std::vector<std::vector<int>>(comp_height, std::vector<int>(comp_width));
         first_lookup = true;
     }
 
 private:
+    /*
+        This will be called in the grid publisher.
+
+        Need to create and publish the transform for the window grid.
+    */
+    void window_grid_transform_publisher() 
+    {
+        geometry_msgs::msg::TransformStamped transform;
+        transform.header.frame_id = "odom";
+        transform.child_frame_id = "cv_grid";
+        double rob_x;
+        double rob_y;
+        geometry_msgs::msg::Quaternion quat;
+        get_pose(rob_x, rob_y, quat);
+
+        // The current robot x coordinate in odom - the robot x coordinate in the grid * the grid resolution.
+        transform.transform.translation.x = rob_x - grid_x * occupancyGridMsg.info.resolution;
+        transform.transform.translation.y = rob_y - grid_y * occupancyGridMsg.info.resolution;
+        transform.transform.translation.z = 0.0;
+        transform.transform.rotation.w = 1.0;
+
+        transform.header.stamp = node->now();
+        broadcaster->sendTransform(transform);
+        RCLCPP_INFO(node->get_logger(), "Transform published");
+    }
+
+    /*
+        This will be called in the grid callback.
+
+        Creates a transform between baselink and incoming grid.
+    */
+    void cv_view_transform_publisher(const int grid_x, const int grid_y) 
+    {
+        geometry_msgs::msg::TransformStamped transform;
+        transform.header.frame_id = "base_link";
+        transform.child_frame_id = "computer_vision_view";
+        // The current robot x coordinate in odom - the robot x coordinate in the grid * the grid resolution.
+        transform.transform.translation.x = grid_x * occupancyGridMsg.info.resolution;
+        transform.transform.translation.y = grid_y * occupancyGridMsg.info.resolution;
+        transform.transform.translation.z = 0.0;
+        transform.transform.rotation.w = 1.0;
+
+        transform.header.stamp = node->now();
+        broadcaster->sendTransform(transform);
+        RCLCPP_INFO(node->get_logger(), "Transform published");
+    }
+
     void publishGrid()
     {
         // geometry_msgs::msg::TransformStamped rob_pose = get_node_options.lookupTransform('baselink', 'odom', rclcpp::Time(0));
@@ -78,6 +123,8 @@ private:
             }
         }
 
+        window_grid_transform_publisher();
+
         // Create the OccupancyGrid message
         auto occupancyGridMsg = nav_msgs::msg::OccupancyGrid();
         occupancyGridMsg.header.stamp = now();
@@ -88,21 +135,14 @@ private:
         occupancyGridMsg.info.origin.position.x = rob_x - grid_x * occupancyGridMsg.info.resolution;
         occupancyGridMsg.info.origin.position.y = rob_y - grid_y * occupancyGridMsg.info.resolution;
         occupancyGridMsg.info.origin.position.z = 0.0;
-        // occupancyGridMsg.info.origin.orientation = quat;
-
-        // geometry_msgs::msg::Quaternion rot;
-        // rot.setRPY(0, 0, M_PI_2);
-        // occupancyGridMsg.info.origin.orientation = rot * occupancyGridMsg.info.origin.orientation;
-
-
 
         // Convert the 1D grid data to 2D
         occupancyGridMsg.data = gridData;
 
         // Publish the OccupancyGrid message
         publisher_->publish(occupancyGridMsg);
-        // RCLCPP_INFO(get_logger(), "Occupancy grid published");
     }
+
     void get_pose(double &pose_x, double &pose_y, geometry_msgs::msg::Quaternion& quat) {
         std::string fromFrameRel = target_frame_.c_str();
         std::string toFrameRel = "base_link";
@@ -128,6 +168,16 @@ private:
         
         return;
     }
+
+    /*
+        When merging the maps:
+
+        The current_sliding_grid will be in the same orientation as the odom frame. This does not change.
+
+        The incoming occupancy grid, occ_grid, will be orientated in the same way as baselink.
+
+        We will need to transform the orientation of cells in the incoming occupancy grid to those of cells in the current_sliding_grid.
+    */
     void cv_grid_callback(const nav_msgs::msg::OccupancyGrid::Ptr occ_grid) 
     {   
         geometry_msgs::msg::Quaternion quat;
@@ -135,50 +185,21 @@ private:
             get_pose(prev_pose_x_, prev_pose_y_, quat);
             first_lookup = false;
         }
-        // auto occupancyGridMsg = nav_msgs::msg::OccupancyGrid();
-        // occupancyGridMsg.header.stamp = now();
-        // occupancyGridMsg.header.frame_id = "map";
-        // occupancyGridMsg.info.width = occ_grid->info.width;
-        // occupancyGridMsg.info.height = occ_grid->info.height;
-        // occupancyGridMsg.info.resolution = occ_grid->info.resolution;
-        // occupancyGridMsg.data = occ_grid->data;
-        // publisher_->publish(occupancyGridMsg);
 
         curr_sliding_grid_ = std::vector<std::vector<int>>(window_height_, std::vector<int>(window_width_, -1));        
-        // int resolution = occ_grid->info.resolution;
         double resolution = 0.05;
 
         double curr_pose_x, curr_pose_y;
-        // curr_pose_x = prev_pose_x_ + 0;
-        // curr_pose_y = prev_pose_y_ + 0.5;
         get_pose(curr_pose_x, curr_pose_y, quat);
 
         int robot_row = window_height_/2;
         int robot_col = window_width_/2; 
 
-        // int robot_row = 0;
-        // int robot_col = 0; 
-        // std::cout << curr_pose_x << std::endl;
-        // std::cout << curr_pose_y << std::endl; 
-        // std::cout << prev_pose_x_ << std::endl;
-        // std::cout << prev_pose_y_ << std::endl; 
         int trans_cols = (curr_pose_x - prev_pose_x_) / resolution;
         int trans_rows = (curr_pose_y - prev_pose_y_) / resolution;
   
         for (int i = 0; i < window_height_; i++) {
             for (int j = 0; j < window_width_; j++) {
-
-                // To move up in grid, need our index to be smaller.
-                
-                // TODO Convert to actual code
-                // theta = quat_to_euler(q)
-                // xy_homo = [i j 1]
-                // trans_mat = [[cos(theta) -sin(theta) trans_cols],
-                //             [sin(theta) cos(theta) trans_rows],
-                //             [    0           0         1]]
-                // trans_xy = xy_homo * trans_mat //matrix multiply
-                // xy_homo = xy_homo/xy_homo[2]
-
 
                 int transformed_i = i - trans_rows;
                 int transformed_j = j - trans_cols;
@@ -193,6 +214,26 @@ private:
             }
         }
 
+        // Need to find where the 2 is in the occ_grid.
+        int grid_x = -1;
+        int grid_y = -1;
+        for (int i = 0; i < cv_height; i++) 
+        {
+            for (int j = 0; j < cv_width; j++)
+            {
+                if (occ_grid->data[(cv_height - i - 1)*cv_width + (cv_width - j - 1)] == 2) {
+                    grid_x = cv_width - j - 1;
+                    grid_y = cv_height - i - 1;
+                    break;                
+                } 
+            }
+            if (grid_x != -1) {
+                break;
+            }
+        }
+
+        cv_view_transform_publisher(grid_x, grid_y);
+
         int cv_width = occ_grid->info.width;
         int cv_height = occ_grid->info.height;
 
@@ -201,8 +242,6 @@ private:
             for (int j = 0; j < cv_width; j++)
             {
                 int val = occ_grid->data[(cv_height - i - 1)*cv_width + (cv_width - j - 1)];
-                // std::cout << val << " ";
-                // curr_sliding_grid_[robot_row + i][robot_col - cv_width/2 + j] = occ_grid->data[i*cv_width + j];
                 if (val == 1)
                 {
                     val = 100;
@@ -221,14 +260,63 @@ private:
         }
 
         prev_sliding_grid_ = curr_sliding_grid_;
-
         prev_pose_x_ =  curr_pose_x;
         prev_pose_y_ =  curr_pose_y;
-
     }
+
+    geometry_msgs::msg::PointStamped cv_view_to_cv_grid(const geometry_msgs::msg::PointStamped& coord) 
+    {
+        geometry_msgs::msg::PointStamped transformed_point;
+        try
+        {
+            geometry_msgs::msg::TransformStamped transform = tf_buffer_->lookupTransform("cv_grid", "computer_vision_view", rclcpp::Time(0));
+            tf2::doTransform(input_point, transformed_point, transform);
+            transformed_point.header.frame_id = target_frame;
+            transformed_point.header.stamp = node_->now();
+        }
+        catch (const tf2::TransformException& ex)
+        {
+            RCLCPP_ERROR(node_->get_logger(), "Failed to transform point: %s", ex.what());
+            // Handle the exception appropriately
+        }
+        return transformed_point;
+    }
+
+    geometry_msgs::msg::TransformStamped get_cv_grid_origin() 
+    {
+        geometry_msgs::msg::TransformStamped transformed_point;
+        geometry_msgs::msg::TransformStamped input_point;
+        input_point.translation.x = 0;
+        input_point.translation.y = 0;
+        input_point.translation.z = 0;
+        input_point.quaternion.x = 0;
+        input_point.quaternion.y = 0;
+        input_point.quaternion.z = 0;
+        input_point.quaternion.w = 1.0;
+
+        try
+        {
+            geometry_msgs::msg::TransformStamped transform = tf_buffer_->lookupTransform("odom", "cv_grid", rclcpp::Time(0));
+            tf2::doTransform(input_point, transformed_point, transform);
+            transformed_point.header.frame_id = target_frame;
+            transformed_point.header.stamp = node_->now();
+        }
+        catch (const tf2::TransformException& ex)
+        {
+            RCLCPP_ERROR(node_->get_logger(), "Failed to transform point: %s", ex.what());
+            // Handle the exception appropriately
+        }
+
+        geometry_msgs::msg::Pose transformed_position;
+        transformed_position.
+
+        return transformed_point;
+    }
+
 
     rclcpp::Publisher<nav_msgs::msg::OccupancyGrid>::SharedPtr publisher_;
     rclcpp::Subscription<nav_msgs::msg::OccupancyGrid>::SharedPtr subscription_;
+    std::shared_ptr<tf2_ros::TransformBroadcaster> broadcaster_;
     rclcpp::TimerBase::SharedPtr timer_;
     std::shared_ptr<tf2_ros::TransformListener> tf_listener_{nullptr};
     std::unique_ptr<tf2_ros::Buffer> tf_buffer_;
