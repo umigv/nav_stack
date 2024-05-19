@@ -25,6 +25,23 @@ private:
     // Functions
 
     /*
+        Publishes the occupancy grid that combines the incomming Computer Vision occupancy grid,
+        with the merged lane line occupancy built and maintained by cv_grid.
+    */
+    void publishGrid();
+    
+    /*
+        When merging the maps:
+            The current_sliding_grid will be in the same orientation as the odom frame. This does not change.
+
+            The incoming occupancy grid, occ_grid, will be orientated in the same way as baselink.
+
+            We will need to transform the orientation of cells in the incoming occupancy grid to those 
+            of cells in the current_sliding_grid.
+    */
+    void cv_grid_callback(const nav_msgs::msg::OccupancyGrid::ConstSharedPtr occ_grid);
+    
+    /*
         This will be called in the grid publisher.
 
         Need to create and publish the transform for the window grid.
@@ -36,40 +53,23 @@ private:
 
         Creates a transform between baselink and incoming grid.
     */
-    void cv_view_transform_publisher(const int grid_x_in, const int grid_y_in);
+    void cv_view_transform_publisher();
     
     /*
-        Publishes the occupancy grid that combines the incomming Computer Vision occupancy grid,
-        with the merged lane line occupancy built and maintained by cv_grid.
+        Returns the transform from the computer vision occupancy grid view to the cv_grid (the one outputted by this node).
     */
-    void publishGrid();
+    geometry_msgs::msg::Point cv_view_to_cv_grid(const geometry_msgs::msg::Point& coord);
+
+    /*
+        Returns the origin of the cv_grid in the odom frame.
+    */
+    geometry_msgs::msg::PoseStamped get_cv_grid_origin();
 
     /*
         Returns the robot's position in the target_frame_. Default is "odom" therefore returns baselink 
         to odom.
     */
     void get_pose(double &pose_x, double &pose_y, geometry_msgs::msg::Quaternion& quat);
-
-    /*
-        When merging the maps:
-            The current_sliding_grid will be in the same orientation as the odom frame. This does not change.
-
-            The incoming occupancy grid, occ_grid, will be orientated in the same way as baselink.
-
-            We will need to transform the orientation of cells in the incoming occupancy grid to those 
-            of cells in the current_sliding_grid.
-    */
-    void cv_grid_callback(const nav_msgs::msg::OccupancyGrid::ConstSharedPtr occ_grid);
-
-    /*
-        Returns the transform from the computer vision occupancy grid view to the cv_grid (the one outputted by this node).
-    */
-    geometry_msgs::msg::PointStamped cv_view_to_cv_grid(const geometry_msgs::msg::PointStamped& coord);
-
-    /*
-        Returns the origin of the cv_grid in the odom frame.
-    */
-    geometry_msgs::msg::PoseStamped get_cv_grid_origin();
 
     // Variables
     rclcpp::Publisher<nav_msgs::msg::OccupancyGrid>::SharedPtr publisher_;
