@@ -75,6 +75,7 @@ private:
     rclcpp::Publisher<nav_msgs::msg::OccupancyGrid>::SharedPtr publisher_;
     rclcpp::Subscription<nav_msgs::msg::OccupancyGrid>::SharedPtr subscription_;
     std::shared_ptr<tf2_ros::TransformBroadcaster> broadcaster_;
+    std::shared_ptr<tf2_ros::TransformBroadcaster> cv_view_broadcaster_;
     rclcpp::TimerBase::SharedPtr timer_;
     std::shared_ptr<tf2_ros::TransformListener> tf_listener_{nullptr};
     std::unique_ptr<tf2_ros::Buffer> tf_buffer_;
@@ -82,12 +83,13 @@ private:
     std::vector<std::vector<int>> curr_sliding_grid_;
     std::vector<std::vector<int>> prev_sliding_grid_;
     std::vector<std::vector<int>> static_grid_;
+    int grid_x_ = -1;
+    int grid_y_ = -1;
+    bool use_sim_time_;
     int window_height_;
     int window_width_;
     double prev_pose_x_;
     double prev_pose_y_;
     bool first_lookup_;
-    int grid_x_ = -1;
-    int grid_y_ = -1;
-    const double RESOLUTION = 0.05;
+    double resolution_;
 };

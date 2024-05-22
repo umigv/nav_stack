@@ -50,8 +50,18 @@ ament_target_dependencies(
   tf2_geometry_msgs
 )
 
+add_executable(cv_view_transform_publisher src/cv_view_transform_publisher.cpp)
+ament_target_dependencies(
+  cv_view_transform_publisher
+  rclcpp
+  tf2
+  tf2_ros
+  tf2_geometry_msgs
+)
+
 install(TARGETS
   cv_grid
+  cv_view_transform_publisher
   DESTINATION lib/${PROJECT_NAME}
 )
 
