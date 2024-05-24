@@ -1,8 +1,10 @@
 #include "rclcpp/rclcpp.hpp"
 #include "geometry_msgs/msg/transform_stamped.hpp"
+#include "geometry_msgs/msg/pose_stamped.hpp"
 #include "tf2_ros/transform_broadcaster.h"
 #include "tf2_ros/buffer.h"
 #include "nav_msgs/msg/occupancy_grid.hpp"
+#include "tf2_ros/transform_listener.h"
 
 
 
@@ -15,12 +17,17 @@ public:
         cv_view_broadcaster_ = std::make_shared<tf2_ros::TransformBroadcaster>(this);
         // timer_ = create_wall_timer(std::chrono::milliseconds(100), std::bind(&cv_view_transform_publisher::publish, this));
         subscription_ = this->create_subscription<nav_msgs::msg::OccupancyGrid>("occupancy_grid", 10, std::bind(&cv_view_transform_publisher::cv_grid_callback, this, std::placeholders::_1));
+        publisher_ = this->create_publisher<nav_msgs::msg::OccupancyGrid>("computer_vision_view_grid", 10);
+        tf_buffer_ = std::make_unique<tf2_ros::Buffer>(this->get_clock());
+        tf_listener_ = std::make_shared<tf2_ros::TransformListener>(*tf_buffer_);      
     }
 private:
     std::shared_ptr<tf2_ros::TransformBroadcaster> cv_view_broadcaster_;
     rclcpp::TimerBase::SharedPtr timer_;
     rclcpp::Subscription<nav_msgs::msg::OccupancyGrid>::SharedPtr subscription_;
-
+    rclcpp::Publisher<nav_msgs::msg::OccupancyGrid>::SharedPtr publisher_;
+    std::unique_ptr<tf2_ros::Buffer> tf_buffer_;
+    std::shared_ptr<tf2_ros::TransformListener> tf_listener_{nullptr};
     double resolution_;
 
     void publish(int grid_x, int grid_y) {
@@ -65,6 +72,54 @@ private:
         }
 
         publish(grid_x, grid_y);
+        publishGrid(occ_grid);
+    }
+
+    void publishGrid(const nav_msgs::msg::OccupancyGrid::ConstSharedPtr occ_grid) {
+        nav_msgs::msg::OccupancyGrid cv_view_grid;
+        cv_view_grid.data = occ_grid->data;
+        cv_view_grid.info = occ_grid->info;
+        cv_view_grid.header.stamp = this->get_clock()->now();
+        cv_view_grid.header.frame_id = "odom";
+        // cv_view_grid.info.origin.position.x = 0;
+        // cv_view_grid.info.origin.position.y = 0;
+        // cv_view_grid.info.origin.position.z = 0;
+
+        // // Orientation
+        // cv_view_grid.info.origin.orientation.w = 1;
+        // cv_view_grid.info.origin.orientation.x = 0;
+        // cv_view_grid.info.origin.orientation.y = 0;
+        // cv_view_grid.info.origin.orientation.z = 0;
+        cv_view_grid.info.origin = get_cv_grid_origin().pose;
+        publisher_->publish(cv_view_grid);
+    }
+
+    geometry_msgs::msg::PoseStamped get_cv_grid_origin() {
+        geometry_msgs::msg::PoseStamped transformed_point;
+        geometry_msgs::msg::PoseStamped input_point;
+        input_point.pose.position.x = 0;
+        input_point.pose.position.y = 0;
+        input_point.pose.position.z = 0;
+        input_point.pose.orientation.x = 0;
+        input_point.pose.orientation.y = 0;
+        input_point.pose.orientation.z = 0;
+        input_point.pose.orientation.w = 1.0;
+        bool transform_found = false;
+        while(!transform_found) {
+            try {
+                geometry_msgs::msg::TransformStamped transform = tf_buffer_->lookupTransform("odom", "computer_vision_view", rclcpp::Time(0));
+                tf2::doTransform(input_point, transformed_point, transform);
+                transformed_point.header.frame_id = "odom";
+                transformed_point.header.stamp = this->now();
+                transform_found = true;
+                RCLCPP_INFO(this->get_logger(), "cv_grid to computer_vision_view transform found.");
+            }
+            catch (const tf2::TransformException& ex) {
+                RCLCPP_ERROR(this->get_logger(), "Failed to transform point: %s", ex.what());
+                // Handle the exception appropriately
+            }
+        }
+        return transformed_point;
     }
 
 };

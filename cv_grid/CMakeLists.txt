@@ -54,6 +54,7 @@ add_executable(cv_view_transform_publisher src/cv_view_transform_publisher.cpp)
 ament_target_dependencies(
   cv_view_transform_publisher
   rclcpp
+  geometry_msgs
   tf2
   tf2_ros
   tf2_geometry_msgs
@@ -64,6 +65,7 @@ add_executable(cv_grid_transform_publisher src/cv_grid_transform_publisher.cpp)
 ament_target_dependencies(
   cv_grid_transform_publisher
   rclcpp
+  geometry_msgs
   tf2
   tf2_ros
   tf2_geometry_msgs

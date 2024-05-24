@@ -32,7 +32,7 @@ cv_grid::cv_grid() :
     this->get_parameter("Resolution", resolution_);
 
     // publish piece of global lane lines occupancy grid
-    publisher_ = this->create_publisher<nav_msgs::msg::OccupancyGrid>("cv_grid_out", 10);
+    publisher_ = this->create_publisher<nav_msgs::msg::OccupancyGrid>("computer_vision_view_grid", 10);
     timer_ = create_wall_timer(std::chrono::seconds(1), std::bind(&cv_grid::publishGrid, this));
 
     // subscribe to local lane lines occupancy grid
@@ -171,7 +171,9 @@ void cv_grid::cv_grid_callback(const nav_msgs::msg::OccupancyGrid::ConstSharedPt
             camera_view.y = i;
             camera_view.x = j;
             camera_view.z = 0;
-            geometry_msgs::msg::Point cv_grid_location = cv_view_to_cv_grid(camera_view, new_iteration);
+            // geometry_msgs::msg::Point cv_grid_location = cv_view_to_cv_grid(camera_view, new_iteration);
+            // RCLCPP_WARN_STREAM(this->get_logger(), "camera view:", camera_view);
+            // RCLCPP_WARN(this->get_logger(), "grid location:", cv_grid_location);
             int val = occ_grid->data[(cv_height - i - 1)*cv_width + (cv_width - j - 1)];
             if (val == 1) {
                 val = 100;
@@ -181,8 +183,8 @@ void cv_grid::cv_grid_callback(const nav_msgs::msg::OccupancyGrid::ConstSharedPt
             }
 
             if (val >= 0) {
-                // curr_sliding_grid_[robot_row + i][robot_col - cv_width/2 + j] = val;
-                curr_sliding_grid_[cv_grid_location.y][cv_grid_location.x] = val;
+                curr_sliding_grid_[robot_row + i][robot_col - cv_width/2 + j] = val;
+                // curr_sliding_grid_[cv_grid_location.y][cv_grid_location.x] = val;
             }
         }
         // std::cout << std::endl;
@@ -239,6 +241,8 @@ geometry_msgs::msg::Point cv_grid::cv_view_to_cv_grid(const geometry_msgs::msg::
             // Handle the exception appropriately
         }
     }
+
+    tf2::doTransform(coord, transformed_point, transform);
     return transformed_point;
 }
 
