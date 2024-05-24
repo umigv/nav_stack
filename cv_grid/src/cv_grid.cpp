@@ -33,7 +33,7 @@ cv_grid::cv_grid() :
 
     // publish piece of global lane lines occupancy grid
     publisher_ = this->create_publisher<nav_msgs::msg::OccupancyGrid>("cv_grid_out", 10);
-    timer_ = create_wall_timer(std::chrono::milliseconds(100), std::bind(&cv_grid::publishGrid, this));
+    timer_ = create_wall_timer(std::chrono::seconds(1), std::bind(&cv_grid::publishGrid, this));
 
     // subscribe to local lane lines occupancy grid
     subscription_ = this->create_subscription<nav_msgs::msg::OccupancyGrid>(
@@ -53,8 +53,11 @@ cv_grid::cv_grid() :
     prev_sliding_grid_ = std::vector<std::vector<int>>(window_height_, std::vector<int>(window_width_, -1));
     first_lookup_ = true;
 
+    RCLCPP_WARN(this->get_logger(), "Grid Size %li", curr_sliding_grid_.size());
+    RCLCPP_WARN(this->get_logger(), "Grid Size %li", prev_sliding_grid_.size());
+
     // Need to publish an incorrect transform for initialization.
-    window_grid_transform_publisher();
+    // window_grid_transform_publisher();
 }
 
 
@@ -69,19 +72,21 @@ void cv_grid::publishGrid() {
     get_pose(rob_x, rob_y, quat);
 
     for (int i = 0; i < window_width_ * window_height_; ++i) {
+        grid_lock_.lock();
         gridData[i] = curr_sliding_grid_[i / window_width_][i % window_width_];
         if (gridData[i] == 2) {
             // std::cout << "found robot pose." << std::endl;
             grid_x_ = i % window_width_;
             grid_y_ = i / window_width_;
         }
+        grid_lock_.unlock();
     }
 
-    window_grid_transform_publisher();
+    // window_grid_transform_publisher();
 
     // Create the OccupancyGrid message
     auto occupancyGridMsg = nav_msgs::msg::OccupancyGrid();
-    occupancyGridMsg.header.stamp = now();
+    occupancyGridMsg.header.stamp = this->get_clock()->now();
     occupancyGridMsg.header.frame_id = "odom";
     occupancyGridMsg.info.width = window_width_;
     occupancyGridMsg.info.height = window_height_;
@@ -119,6 +124,7 @@ void cv_grid::cv_grid_callback(const nav_msgs::msg::OccupancyGrid::ConstSharedPt
     // This allows the cv_grid "window" to always contain data around the robot position.
     int trans_cols = (curr_pose_x - prev_pose_x_) / resolution_;
     int trans_rows = (curr_pose_y - prev_pose_y_) / resolution_;
+    grid_lock_.lock();
     for (int i = 0; i < window_height_; i++) {
         for (int j = 0; j < window_width_; j++) {
 
@@ -152,12 +158,12 @@ void cv_grid::cv_grid_callback(const nav_msgs::msg::OccupancyGrid::ConstSharedPt
             break;
         }
     }
-    window_grid_transform_publisher();
+    // window_grid_transform_publisher();
     // cv_view_transform_publisher();
 
     int robot_row = window_height_/2;
     int robot_col = window_width_/2; 
-
+    bool new_iteration = true;
 
     for (int i = 0; i < cv_height; i++) {
         for (int j = 0; j < cv_width; j++) {
@@ -165,7 +171,7 @@ void cv_grid::cv_grid_callback(const nav_msgs::msg::OccupancyGrid::ConstSharedPt
             camera_view.y = i;
             camera_view.x = j;
             camera_view.z = 0;
-            geometry_msgs::msg::Point cv_grid_location = cv_view_to_cv_grid(camera_view);
+            geometry_msgs::msg::Point cv_grid_location = cv_view_to_cv_grid(camera_view, new_iteration);
             int val = occ_grid->data[(cv_height - i - 1)*cv_width + (cv_width - j - 1)];
             if (val == 1) {
                 val = 100;
@@ -183,63 +189,53 @@ void cv_grid::cv_grid_callback(const nav_msgs::msg::OccupancyGrid::ConstSharedPt
     }
 
     prev_sliding_grid_ = curr_sliding_grid_;
+    grid_lock_.unlock();
+
     prev_pose_x_ =  curr_pose_x;
     prev_pose_y_ =  curr_pose_y;
 }
 
-void cv_grid::window_grid_transform_publisher() {
-    geometry_msgs::msg::TransformStamped transform;
-    transform.header.frame_id = "odom";
-    transform.child_frame_id = "cv_grid";
-    double rob_x;
-    double rob_y;
-    geometry_msgs::msg::Quaternion quat;
-    get_pose(rob_x, rob_y, quat);
 
-    // The current robot x coordinate in odom - the robot x coordinate in the grid * the grid resolution_.
-    transform.transform.translation.x = rob_x - grid_x_ * resolution_;
-    transform.transform.translation.y = rob_y - grid_y_ * resolution_;
-    transform.transform.translation.z = 0.0;
-    transform.transform.rotation.w = 1.0;
 
-    transform.header.stamp = this->get_clock()->now();
-    broadcaster_->sendTransform(transform);
-    RCLCPP_INFO(this->get_logger(), "Cv Grid Transform published");
-}
+// void cv_grid::cv_view_transform_publisher() {
+//     geometry_msgs::msg::TransformStamped transform;
+//     transform.header.frame_id = "base_link";
+//     transform.child_frame_id = "computer_vision_view";
+//     // The current robot x coordinate in odom - the robot x coordinate in the grid * the grid resolution_.
+//     // transform.transform.translation.x = grid_x_in * resolution_;
+//     // transform.transform.translation.y = grid_y_in * resolution_;
+//     transform.transform.translation.x = 0.0;
+//     transform.transform.translation.y = 0.0;
+//     transform.transform.translation.z = 0.0;
+//     transform.transform.rotation.w = 1.0;
 
-void cv_grid::cv_view_transform_publisher() {
-    geometry_msgs::msg::TransformStamped transform;
-    transform.header.frame_id = "base_link";
-    transform.child_frame_id = "computer_vision_view";
-    // The current robot x coordinate in odom - the robot x coordinate in the grid * the grid resolution_.
-    // transform.transform.translation.x = grid_x_in * resolution_;
-    // transform.transform.translation.y = grid_y_in * resolution_;
-    transform.transform.translation.x = 0.0;
-    transform.transform.translation.y = 0.0;
-    transform.transform.translation.z = 0.0;
-    transform.transform.rotation.w = 1.0;
+//     transform.header.stamp = this->get_clock()->now();
+//     cv_view_broadcaster_->sendTransform(transform);
+//     RCLCPP_INFO(this->get_logger(), "Computer Vision View Transform published");
+// }
 
-    transform.header.stamp = this->get_clock()->now();
-    cv_view_broadcaster_->sendTransform(transform);
-    RCLCPP_INFO(this->get_logger(), "Computer Vision View Transform published");
-}
-
-geometry_msgs::msg::Point cv_grid::cv_view_to_cv_grid(const geometry_msgs::msg::Point& coord) {
+geometry_msgs::msg::Point cv_grid::cv_view_to_cv_grid(const geometry_msgs::msg::Point& coord, bool &new_iteration) {
     geometry_msgs::msg::Point transformed_point;
     bool transform_found = false;
+    static geometry_msgs::msg::TransformStamped transform;
+    if (!new_iteration) {
+        tf2::doTransform(coord, transformed_point, transform);
+        new_iteration = false;
+        return transformed_point;
+    }
+
     while(!transform_found) {
         try
         {
-            geometry_msgs::msg::TransformStamped transform = tf_buffer_->lookupTransform("cv_grid", "computer_vision_view", tf2::TimePointZero);
-            tf2::doTransform(coord, transformed_point, transform);
+            transform = tf_buffer_->lookupTransform("cv_grid", "computer_vision_view", tf2::TimePointZero);
             // transformed_point.header.frame_id = "cv_grid";
             // transformed_point.header.stamp = this->now();
             transform_found = true;
-            RCLCPP_INFO(this->get_logger(), "cv_grid to computer_vision_view transform found.");
+            // RCLCPP_INFO(this->get_logger(), "cv_grid to computer_vision_view transform found.");
         }
         catch (const tf2::TransformException& ex)
         {
-            // RCLCPP_ERROR(this->get_logger(), "Failed to transform point: %s", ex.what());
+            RCLCPP_ERROR(this->get_logger(), "Failed to transform point: %s", ex.what());
             // Handle the exception appropriately
         }
     }

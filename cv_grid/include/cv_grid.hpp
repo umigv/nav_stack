@@ -7,6 +7,7 @@
 #include "tf2_ros/transform_broadcaster.h"
 #include "tf2_ros/buffer.h"
 #include "tf2_geometry_msgs/tf2_geometry_msgs.hpp"
+#include <mutex>
 
 namespace CELL_CONSTS 
 {
@@ -46,19 +47,19 @@ private:
 
         Need to create and publish the transform for the window grid.
     */
-    void window_grid_transform_publisher();
+    // void window_grid_transform_publisher();
 
     /*
         This will be called in the grid callback.
 
         Creates a transform between baselink and incoming grid.
     */
-    void cv_view_transform_publisher();
+    // void cv_view_transform_publisher();
     
     /*
         Returns the transform from the computer vision occupancy grid view to the cv_grid (the one outputted by this node).
     */
-    geometry_msgs::msg::Point cv_view_to_cv_grid(const geometry_msgs::msg::Point& coord);
+    geometry_msgs::msg::Point cv_view_to_cv_grid(const geometry_msgs::msg::Point& coord, bool &new_iteration);
 
     /*
         Returns the origin of the cv_grid in the odom frame.
@@ -83,6 +84,7 @@ private:
     std::vector<std::vector<int>> curr_sliding_grid_;
     std::vector<std::vector<int>> prev_sliding_grid_;
     std::vector<std::vector<int>> static_grid_;
+    std::mutex grid_lock_;
     int grid_x_ = -1;
     int grid_y_ = -1;
     bool use_sim_time_;
