@@ -10,7 +10,7 @@
 #include "tf2_ros/transform_listener.h"
 #include "tf2_geometry_msgs/tf2_geometry_msgs.hpp"
 
-
+#include <utility>
 
 
 class cv_view_transform_publisher : public rclcpp::Node {
@@ -42,10 +42,16 @@ private:
         // The current robot x coordinate in odom - the robot x coordinate in the grid * the grid resolution_.
         // transform.transform.translation.x = grid_x_in * resolution_;
         // transform.transform.translation.y = grid_y_in * resolution_;
-        transform.transform.translation.x = -grid_x * resolution_;
-        transform.transform.translation.y = grid_y * resolution_;
+        transform.transform.translation.y = grid_x * resolution_;
+        transform.transform.translation.x = grid_y * resolution_;
         transform.transform.translation.z = 0.0;
-        transform.transform.rotation.w = 1.0;
+        transform.transform.rotation.x = 0.707;
+        transform.transform.rotation.y = -0.707;
+        transform.transform.rotation.z = 0;
+        transform.transform.rotation.w = 0;
+
+        // transform.transform.rotation.z = 0.707;
+
 
         transform.header.stamp = this->get_clock()->now();
         cv_view_broadcaster_->sendTransform(transform);
@@ -59,25 +65,30 @@ private:
     void cv_grid_callback(const nav_msgs::msg::OccupancyGrid::ConstSharedPtr occ_grid) {
         int cv_width = occ_grid->info.width;
         int cv_height = occ_grid->info.height;
-        int grid_x = -1;
-        int grid_y = -1;
+        // int grid_x = -1;
+        // int grid_y = -1;
+        static std::pair<int, int> rob_location(0, 0);
 
-        // Need to find where the 2 is in the occ_grid.
-        for (int i = 0; i < cv_height; i++) {
-            for (int j = 0; j < cv_width; j++) {
-                if (occ_grid->data[(cv_height - i - 1)*cv_width + (cv_width - j - 1)] == 2) {
-                    grid_x = cv_width - j - 1;
-                    grid_y = cv_height - i - 1;
-                    break;                
-                } 
-            }
-            if (grid_x != -1) {
-                break;
+        if (occ_grid->data[rob_location.first * cv_width + rob_location.second] != 2) {
+            // Need to find where the 2 is in the occ_grid.
+            bool found = false;
+            for (int i = 0; i < cv_height; i++) {
+                for (int j = 0; j < cv_width; j++) {
+                    if (occ_grid->data[(cv_height - i - 1)*cv_width + (cv_width - j - 1)] == 2) {
+                        rob_location.first = cv_width - j - 1;
+                        rob_location.second = cv_height - i - 1;
+                        found = true;
+                        break;                
+                    } 
+                }
+                if (found) {
+                    break;
+                }
             }
         }
-
-        publish(grid_x, grid_y);
+        publish(rob_location.first, rob_location.second);
         publishGrid(occ_grid);
+        RCLCPP_INFO(this->get_logger(), "Publishing computer_vision_view_grid");
     }
 
     void publishGrid(const nav_msgs::msg::OccupancyGrid::ConstSharedPtr occ_grid) {

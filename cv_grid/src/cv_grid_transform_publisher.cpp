@@ -9,15 +9,18 @@
 
 class cv_view_transform_publisher : public rclcpp::Node {
 public:
-    cv_view_transform_publisher() : Node("cv_view_transform_publisher") {
+    cv_view_transform_publisher() : Node("cv_view_transform_publisher"), window_height_(200), window_width_(200) {
         resolution_ = 0.05;
         bool use_sim_time = false;
         this->get_parameter("use_sim_time", use_sim_time);
+        this->get_parameter("Height", window_height_);
+        this->get_parameter("Width", window_width_);
         cv_grid_broadcaster_ = std::make_shared<tf2_ros::TransformBroadcaster>(this);
         // timer_ = create_wall_timer(std::chrono::milliseconds(100), std::bind(&cv_view_transform_publisher::publish, this));
         subscription_ = this->create_subscription<nav_msgs::msg::OccupancyGrid>("occupancy_grid", 10, std::bind(&cv_view_transform_publisher::cv_grid_callback, this, std::placeholders::_1));
         tf_buffer_ = std::make_unique<tf2_ros::Buffer>(this->get_clock());
-        tf_listener_ = std::make_shared<tf2_ros::TransformListener>(*tf_buffer_);       
+        tf_listener_ = std::make_shared<tf2_ros::TransformListener>(*tf_buffer_);
+        RCLCPP_INFO(this->get_logger(), "Height %li", window_height_);   
     }
 private:
     std::shared_ptr<tf2_ros::TransformBroadcaster> cv_grid_broadcaster_;
@@ -25,6 +28,8 @@ private:
     rclcpp::Subscription<nav_msgs::msg::OccupancyGrid>::SharedPtr subscription_;
     std::unique_ptr<tf2_ros::Buffer> tf_buffer_;
     std::shared_ptr<tf2_ros::TransformListener> tf_listener_{nullptr};
+    int window_height_;
+    int window_width_;
 
     double resolution_;
 
@@ -38,8 +43,8 @@ private:
         get_pose(rob_x, rob_y, quat);
 
         // The current robot x coordinate in odom - the robot x coordinate in the grid * the grid resolution_.
-        transform.transform.translation.x = rob_x - grid_x * resolution_;
-        transform.transform.translation.y = rob_y - grid_y * resolution_;
+        transform.transform.translation.x = rob_x - window_width_ * 0.5 * resolution_;
+        transform.transform.translation.y = rob_y - window_height_ * 0.5 * resolution_;
         transform.transform.translation.z = 0.0;
         transform.transform.rotation.w = 1.0;
 

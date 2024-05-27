@@ -32,7 +32,7 @@ cv_grid::cv_grid() :
     this->get_parameter("Resolution", resolution_);
 
     // publish piece of global lane lines occupancy grid
-    publisher_ = this->create_publisher<nav_msgs::msg::OccupancyGrid>("computer_vision_view_grid", 10);
+    publisher_ = this->create_publisher<nav_msgs::msg::OccupancyGrid>("cv_grid", 10);
     timer_ = create_wall_timer(std::chrono::seconds(1), std::bind(&cv_grid::publishGrid, this));
 
     // subscribe to local lane lines occupancy grid
