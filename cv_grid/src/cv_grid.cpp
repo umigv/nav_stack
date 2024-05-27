@@ -14,17 +14,17 @@ using namespace std::chrono_literals;
 
 cv_grid::cv_grid() : 
     Node("cv_grid"), 
-    grid_x_(0), 
-    grid_y_(0), 
+    grid_x_(-1), 
+    grid_y_(-1), 
     use_sim_time_(false), 
     window_height_(200), 
     window_width_(200),
     resolution_(0.05) 
     {
     // this->declare_parameter("use_sim_time", rclcpp::ParameterValue(false));
-    this->declare_parameter("Height", rclcpp::ParameterValue(200));
-    this->declare_parameter("Width", rclcpp::ParameterValue(200));
-    this->declare_parameter("Resolution", rclcpp::ParameterValue(0.05));
+    // this->declare_parameter("Height", rclcpp::ParameterValue(200));
+    // this->declare_parameter("Width", rclcpp::ParameterValue(200));
+    // this->declare_parameter("Resolution", rclcpp::ParameterValue(0.05));
 
     this->get_parameter("use_sim_time", use_sim_time_);
     this->get_parameter("Height", window_height_);
@@ -66,21 +66,21 @@ void cv_grid::publishGrid() {
     // geometry_msgs::msg::TransformStamped rob_pose = get_node_options.lookupTransform('baselink', 'odom', rclcpp::Time(0));
 
     std::vector<int8_t> gridData(window_width_ * window_height_, -1);  // initialize with unknown
-    double rob_x;
-    double rob_y;
-    geometry_msgs::msg::Quaternion quat;
-    get_pose(rob_x, rob_y, quat);
+    // double rob_x;
+    // double rob_y;
+    // geometry_msgs::msg::Quaternion quat;
+    // get_pose(rob_x, rob_y, quat);
 
+    grid_lock_.lock();
     for (int i = 0; i < window_width_ * window_height_; ++i) {
-        grid_lock_.lock();
         gridData[i] = curr_sliding_grid_[i / window_width_][i % window_width_];
-        if (gridData[i] == 2) {
+        // if (gridData[i] == 2) {
             // std::cout << "found robot pose." << std::endl;
-            grid_x_ = i % window_width_;
-            grid_y_ = i / window_width_;
-        }
-        grid_lock_.unlock();
+            // grid_x_ = i % window_width_;
+            // grid_y_ = i / window_width_;
+        // }
     }
+    grid_lock_.unlock();
 
     // window_grid_transform_publisher();
 
@@ -161,19 +161,31 @@ void cv_grid::cv_grid_callback(const nav_msgs::msg::OccupancyGrid::ConstSharedPt
     // window_grid_transform_publisher();
     // cv_view_transform_publisher();
 
-    int robot_row = window_height_/2;
-    int robot_col = window_width_/2; 
+    // int robot_row = window_height_/2;
+    // int robot_col = window_width_/2; 
     bool new_iteration = true;
-
+    // bool tmp = true;
+    static int iteration = 0;
+    if (iteration % 10000 == 0) {
+        RCLCPP_INFO(this->get_logger(), "2 x:%i", grid_x_);
+        RCLCPP_INFO(this->get_logger(), "2 y:%i", grid_y_);
+    }
     for (int i = 0; i < cv_height; i++) {
         for (int j = 0; j < cv_width; j++) {
             geometry_msgs::msg::Point camera_view;
-            camera_view.y = i;
-            camera_view.x = j;
+            camera_view.y = cv_height - i - 1;
+            camera_view.x = cv_width - j - 1;
             camera_view.z = 0;
-            // geometry_msgs::msg::Point cv_grid_location = cv_view_to_cv_grid(camera_view, new_iteration);
+            geometry_msgs::msg::Point cv_grid_location = cv_view_to_cv_grid(camera_view, new_iteration);
             // RCLCPP_WARN_STREAM(this->get_logger(), "camera view:", camera_view);
             // RCLCPP_WARN(this->get_logger(), "grid location:", cv_grid_location);
+            if (iteration % 10000 == 0) {
+                RCLCPP_INFO(this->get_logger(), "x:%f", cv_grid_location.x);
+                RCLCPP_INFO(this->get_logger(), "y:%f", cv_grid_location.y);
+                iteration = 0;
+            }
+            // RCLCPP_INFO(this->get_logger(), "z:",cv_grid_location.z);
+
             int val = occ_grid->data[(cv_height - i - 1)*cv_width + (cv_width - j - 1)];
             if (val == 1) {
                 val = 100;
@@ -181,13 +193,34 @@ void cv_grid::cv_grid_callback(const nav_msgs::msg::OccupancyGrid::ConstSharedPt
             else if (val == 0) {
                 val = 0;
             }
+            // if (iteration % 5000 == 0) {
+            //     RCLCPP_INFO(this->get_logger(), "val %i", val);
+            // }
+            if (camera_view.x == 0 && camera_view.y == 0) { val = 100;} 
+            // val = 100;
 
             if (val >= 0) {
-                curr_sliding_grid_[robot_row + i][robot_col - cv_width/2 + j] = val;
-                // curr_sliding_grid_[cv_grid_location.y][cv_grid_location.x] = val;
+                // // curr_sliding_grid_[robot_row + i][robot_col - cv_width/2 + j] = val;
+                int x = static_cast<int>(cv_grid_location.x /*+ window_width_ / 2 - grid_x_*/);
+                int y = static_cast<int>(cv_grid_location.y /*+ window_height_ / 2 - grid_y_*/);
+
+                if (iteration % 10000 == 0) {
+                    RCLCPP_INFO(this->get_logger(), "x grid:%i", x);
+                    RCLCPP_INFO(this->get_logger(), "y grid:%i", y);
+                    iteration = 0;
+                }
+
+                if ((y < window_height_ && y >= 0) && (x < window_width_ && x >= 0)) {                    
+                    if (iteration % 10000 == 0) {
+                        RCLCPP_INFO(this->get_logger(), "assiging val%i", val);
+                        iteration = 0;
+                    }
+                    curr_sliding_grid_[y][x] = val;
+                }
             }
         }
         // std::cout << std::endl;
+        iteration++;
     }
 
     prev_sliding_grid_ = curr_sliding_grid_;
@@ -222,7 +255,9 @@ geometry_msgs::msg::Point cv_grid::cv_view_to_cv_grid(const geometry_msgs::msg::
     static geometry_msgs::msg::TransformStamped transform;
     if (!new_iteration) {
         tf2::doTransform(coord, transformed_point, transform);
-        new_iteration = false;
+        transformed_point.x += transform.transform.translation.x / resolution_;
+        transformed_point.y += transform.transform.translation.y / resolution_;
+
         return transformed_point;
     }
 
@@ -234,6 +269,7 @@ geometry_msgs::msg::Point cv_grid::cv_view_to_cv_grid(const geometry_msgs::msg::
             // transformed_point.header.stamp = this->now();
             transform_found = true;
             // RCLCPP_INFO(this->get_logger(), "cv_grid to computer_vision_view transform found.");
+            // RCLCPP_INFO(this->get_logger(), "cv_grid to computer_vision_view transform found.");
         }
         catch (const tf2::TransformException& ex)
         {
@@ -242,7 +278,10 @@ geometry_msgs::msg::Point cv_grid::cv_view_to_cv_grid(const geometry_msgs::msg::
         }
     }
 
+    new_iteration = false;
     tf2::doTransform(coord, transformed_point, transform);
+    transformed_point.x += transform.transform.translation.x / resolution_;
+    transformed_point.y += transform.transform.translation.y / resolution_;
     return transformed_point;
 }
 
@@ -264,7 +303,6 @@ geometry_msgs::msg::PoseStamped cv_grid::get_cv_grid_origin() {
             transformed_point.header.frame_id = "odom";
             transformed_point.header.stamp = this->now();
             transform_found = true;
-            RCLCPP_INFO(this->get_logger(), "cv_grid to computer_vision_view transform found.");
         }
         catch (const tf2::TransformException& ex) {
             // RCLCPP_ERROR(this->get_logger(), "Failed to transform point: %s", ex.what());

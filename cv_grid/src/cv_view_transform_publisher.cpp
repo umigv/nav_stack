@@ -11,19 +11,19 @@
 #include "tf2_geometry_msgs/tf2_geometry_msgs.hpp"
 
 #include <utility>
-
+#include <chrono>
 
 class cv_view_transform_publisher : public rclcpp::Node {
 public:
     cv_view_transform_publisher() : Node("cv_view_transform_publisher") {
         resolution_ = 0.05;
-        bool use_sim_time = false;
+        bool use_sim_time = true;
         this->get_parameter("use_sim_time", use_sim_time);
         cv_view_broadcaster_ = std::make_shared<tf2_ros::TransformBroadcaster>(this);
         // timer_ = create_wall_timer(std::chrono::milliseconds(100), std::bind(&cv_view_transform_publisher::publish, this));
         subscription_ = this->create_subscription<nav_msgs::msg::OccupancyGrid>("occupancy_grid", 10, std::bind(&cv_view_transform_publisher::cv_grid_callback, this, std::placeholders::_1));
         publisher_ = this->create_publisher<nav_msgs::msg::OccupancyGrid>("computer_vision_view_grid", 10);
-        tf_buffer_ = std::make_unique<tf2_ros::Buffer>(this->get_clock());
+        tf_buffer_ = std::make_unique<tf2_ros::Buffer>(this->get_clock(), tf2::durationFromSec(5));
         tf_listener_ = std::make_shared<tf2_ros::TransformListener>(*tf_buffer_);      
     }
 private:
@@ -55,14 +55,11 @@ private:
 
         transform.header.stamp = this->get_clock()->now();
         cv_view_broadcaster_->sendTransform(transform);
-        static int i = 0;
-        if (i == 1000000) {
-            RCLCPP_INFO(this->get_logger(), "Computer Vision View Transform published");
-            i = 0;
-        }
+        RCLCPP_INFO(this->get_logger(), "Computer Vision View Transform published");
     }
 
     void cv_grid_callback(const nav_msgs::msg::OccupancyGrid::ConstSharedPtr occ_grid) {
+        RCLCPP_INFO(this->get_logger(), "Entering Callback computer_vision_view_grid");
         int cv_width = occ_grid->info.width;
         int cv_height = occ_grid->info.height;
         // int grid_x = -1;
@@ -131,7 +128,8 @@ private:
                 // RCLCPP_INFO(this->get_logger(), "cv_grid to computer_vision_view transform found.");
             }
             catch (const tf2::TransformException& ex) {
-                // RCLCPP_ERROR(this->get_logger(), "Failed to transform point: %s", ex.what());
+                RCLCPP_ERROR(this->get_logger(), "Failed to transform point: %s", ex.what());
+                rclcpp::sleep_for(std::chrono::seconds(2));
                 // Handle the exception appropriately
             }
         }

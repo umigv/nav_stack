@@ -5,22 +5,25 @@
 #include "tf2_ros/transform_listener.h"
 #include "nav_msgs/msg/occupancy_grid.hpp"
 
+#include <utility>
 
 
 class cv_view_transform_publisher : public rclcpp::Node {
 public:
     cv_view_transform_publisher() : Node("cv_view_transform_publisher"), window_height_(200), window_width_(200) {
         resolution_ = 0.05;
-        bool use_sim_time = false;
+        bool use_sim_time = true;
         this->get_parameter("use_sim_time", use_sim_time);
         this->get_parameter("Height", window_height_);
         this->get_parameter("Width", window_width_);
-        cv_grid_broadcaster_ = std::make_shared<tf2_ros::TransformBroadcaster>(this);
-        // timer_ = create_wall_timer(std::chrono::milliseconds(100), std::bind(&cv_view_transform_publisher::publish, this));
-        subscription_ = this->create_subscription<nav_msgs::msg::OccupancyGrid>("occupancy_grid", 10, std::bind(&cv_view_transform_publisher::cv_grid_callback, this, std::placeholders::_1));
         tf_buffer_ = std::make_unique<tf2_ros::Buffer>(this->get_clock());
         tf_listener_ = std::make_shared<tf2_ros::TransformListener>(*tf_buffer_);
-        RCLCPP_INFO(this->get_logger(), "Height %li", window_height_);   
+
+        cv_grid_broadcaster_ = std::make_shared<tf2_ros::TransformBroadcaster>(this);
+        timer_ = create_wall_timer(std::chrono::seconds(1), std::bind(&cv_view_transform_publisher::publish, this));
+        
+        // subscription_ = this->create_subscription<nav_msgs::msg::OccupancyGrid>("occupancy_grid", 10, std::bind(&cv_view_transform_publisher::cv_grid_callback, this, std::placeholders::_1));
+        RCLCPP_INFO(this->get_logger(), "Height %i", window_height_);   
     }
 private:
     std::shared_ptr<tf2_ros::TransformBroadcaster> cv_grid_broadcaster_;
@@ -33,7 +36,7 @@ private:
 
     double resolution_;
 
-    void publish(int grid_x, int grid_y) {
+    void publish() {
         geometry_msgs::msg::TransformStamped transform;
         transform.header.frame_id = "odom";
         transform.child_frame_id = "cv_grid";
@@ -44,37 +47,49 @@ private:
 
         // The current robot x coordinate in odom - the robot x coordinate in the grid * the grid resolution_.
         transform.transform.translation.x = rob_x - window_width_ * 0.5 * resolution_;
-        transform.transform.translation.y = rob_y - window_height_ * 0.5 * resolution_;
-        transform.transform.translation.z = 0.0;
-        transform.transform.rotation.w = 1.0;
+        transform.transform.translation.y = rob_y + window_height_ * 0.5 * resolution_;
+        transform.transform.rotation.x = 1.0;
+        transform.transform.rotation.y = 0;
+        // transform.transform.rotation.z = 0.707;
+        // transform.transform.rotation.w = -0.707;
+        transform.transform.rotation.z = 0.0;
+        transform.transform.rotation.w = 0.0;
+
+
 
         transform.header.stamp = this->get_clock()->now();
         cv_grid_broadcaster_->sendTransform(transform);
         RCLCPP_INFO(this->get_logger(), "Cv Grid Transform published");
     }
 
-    void cv_grid_callback(const nav_msgs::msg::OccupancyGrid::ConstSharedPtr occ_grid) {
-        int cv_width = occ_grid->info.width;
-        int cv_height = occ_grid->info.height;
-        int grid_x = -1;
-        int grid_y = -1;
+    // void cv_grid_callback(const nav_msgs::msg::OccupancyGrid::ConstSharedPtr occ_grid) {
+        // int cv_width = occ_grid->info.width;
+        // int cv_height = occ_grid->info.height;
+        // int grid_x = -1;
+        // int grid_y = -1;
+        // static std::pair<int, int> rob_location(0, 0);
 
-        // Need to find where the 2 is in the occ_grid.
-        for (int i = 0; i < cv_height; i++) {
-            for (int j = 0; j < cv_width; j++) {
-                if (occ_grid->data[(cv_height - i - 1)*cv_width + (cv_width - j - 1)] == 2) {
-                    grid_x = cv_width - j - 1;
-                    grid_y = cv_height - i - 1;
-                    break;                
-                } 
-            }
-            if (grid_x != -1) {
-                break;
-            }
-        }
+        // if (occ_grid->data[rob_location.first * cv_width + rob_location.second] != 2) {
+        //      // Need to find where the 2 is in the occ_grid.
+        //     bool found = false;
+        //     for (int i = 0; i < cv_height; i++) {
+        //         for (int j = 0; j < cv_width; j++) {
+        //             if (occ_grid->data[(cv_height - i - 1)*cv_width + (cv_width - j - 1)] == 2) {
+        //                 rob_location.first = cv_width - j - 1;
+        //                 rob_location.second = cv_height - i - 1;
+        //                 found = true;
+        //                 break;                
+        //             } 
+        //         }
+        //         if (found) {
+        //             break;
+        //         }
+        //     }
+        // }
 
-        publish(grid_x, grid_y);
-    }
+        // publish(grid_x, grid_y);
+        // publish();
+    // }
 
 void get_pose(double &pose_x, double &pose_y, geometry_msgs::msg::Quaternion& quat) {
     std::string fromFrameRel = "odom";
