@@ -81,9 +81,10 @@ void get_pose(double &pose_x, double &pose_y, geometry_msgs::msg::Quaternion& qu
     try {
         t = tf_buffer_->lookupTransform("odom", "base_link", tf2::TimePointZero);
     } catch (const tf2::TransformException & ex) {
-        RCLCPP_INFO(
-        this->get_logger(), "Could not transform %s to %s: %s",
-        toFrameRel.c_str(), fromFrameRel.c_str(), ex.what());
+        // RCLCPP_INFO(
+        // this->get_logger(), "Could not transform %s to %s: %s",
+        // toFrameRel.c_str(), fromFrameRel.c_str(), ex.what());
+        // rclcpp::sleep(0.1);
         return;
     }
 

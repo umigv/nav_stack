@@ -237,7 +237,7 @@ geometry_msgs::msg::Point cv_grid::cv_view_to_cv_grid(const geometry_msgs::msg::
         }
         catch (const tf2::TransformException& ex)
         {
-            RCLCPP_ERROR(this->get_logger(), "Failed to transform point: %s", ex.what());
+            // RCLCPP_ERROR(this->get_logger(), "Failed to transform point: %s", ex.what());
             // Handle the exception appropriately
         }
     }
@@ -267,7 +267,7 @@ geometry_msgs::msg::PoseStamped cv_grid::get_cv_grid_origin() {
             RCLCPP_INFO(this->get_logger(), "cv_grid to computer_vision_view transform found.");
         }
         catch (const tf2::TransformException& ex) {
-            RCLCPP_ERROR(this->get_logger(), "Failed to transform point: %s", ex.what());
+            // RCLCPP_ERROR(this->get_logger(), "Failed to transform point: %s", ex.what());
             // Handle the exception appropriately
         }
     }
