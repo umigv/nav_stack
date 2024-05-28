@@ -9,14 +9,6 @@
 #include "tf2_geometry_msgs/tf2_geometry_msgs.hpp"
 #include <mutex>
 
-namespace CELL_CONSTS 
-{
-    constexpr unsigned int FREE_SPACE = 0;
-    constexpr unsigned int LETHAL_OBSTACLE = 1;
-    constexpr unsigned int CV_ROBOT_POS = 2;
-    constexpr int UNKOWN = -1;
-}
-
 class cv_grid : public rclcpp::Node
 {
 public:
@@ -43,20 +35,6 @@ private:
     void cv_grid_callback(const nav_msgs::msg::OccupancyGrid::ConstSharedPtr occ_grid);
     
     /*
-        This will be called in the grid publisher.
-
-        Need to create and publish the transform for the window grid.
-    */
-    // void window_grid_transform_publisher();
-
-    /*
-        This will be called in the grid callback.
-
-        Creates a transform between baselink and incoming grid.
-    */
-    // void cv_view_transform_publisher();
-    
-    /*
         Returns the transform from the computer vision occupancy grid view to the cv_grid (the one outputted by this node).
     */
     geometry_msgs::msg::Point cv_view_to_cv_grid(const geometry_msgs::msg::Point& coord, bool &new_iteration);
@@ -75,15 +53,15 @@ private:
     // Variables
     rclcpp::Publisher<nav_msgs::msg::OccupancyGrid>::SharedPtr publisher_;
     rclcpp::Subscription<nav_msgs::msg::OccupancyGrid>::SharedPtr subscription_;
-    std::shared_ptr<tf2_ros::TransformBroadcaster> broadcaster_;
-    std::shared_ptr<tf2_ros::TransformBroadcaster> cv_view_broadcaster_;
+    // std::shared_ptr<tf2_ros::TransformBroadcaster> broadcaster_;
+    // std::shared_ptr<tf2_ros::TransformBroadcaster> cv_view_broadcaster_;
     rclcpp::TimerBase::SharedPtr timer_;
     std::shared_ptr<tf2_ros::TransformListener> tf_listener_{nullptr};
     std::unique_ptr<tf2_ros::Buffer> tf_buffer_;
     std::string target_frame_;
     std::vector<std::vector<int>> curr_sliding_grid_;
     std::vector<std::vector<int>> prev_sliding_grid_;
-    std::vector<std::vector<int>> static_grid_;
+    // std::vector<std::vector<int>> static_grid_;
     std::mutex grid_lock_;
     int grid_x_ = -1;
     int grid_y_ = -1;
@@ -94,4 +72,5 @@ private:
     double prev_pose_y_;
     bool first_lookup_;
     double resolution_;
+    bool debug_;
 };

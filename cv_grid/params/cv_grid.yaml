@@ -19,6 +19,7 @@ cv_grid_transform_publisher:
     # Resoultion of occupancy grid in square meters.
     Resolution: 0.05
     use_sim_time: true
+    debug: false
 
 cv_view_transform_publisher:
   ros__parameters:
@@ -28,3 +29,4 @@ cv_view_transform_publisher:
     # Resoultion of occupancy grid in square meters.
     Resolution: 0.05
     use_sim_time: true
+    show_debug_grid: false
