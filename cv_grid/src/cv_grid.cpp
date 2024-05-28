@@ -128,7 +128,7 @@ void cv_grid::cv_grid_callback(const nav_msgs::msg::OccupancyGrid::ConstSharedPt
     for (int i = 0; i < window_height_; i++) {
         for (int j = 0; j < window_width_; j++) {
 
-            int transformed_i = i - trans_rows;
+            int transformed_i = i + trans_rows;
             int transformed_j = j - trans_cols;
 
             if ((transformed_i >= 0) && (transformed_j >= 0) && (transformed_i < window_height_) 
@@ -145,19 +145,19 @@ void cv_grid::cv_grid_callback(const nav_msgs::msg::OccupancyGrid::ConstSharedPt
     int cv_height = occ_grid->info.height;
 
 
-    // Need to find where the 2 is in the occ_grid.
-    for (int i = 0; i < cv_height; i++) {
-        for (int j = 0; j < cv_width; j++) {
-            if (occ_grid->data[(cv_height - i - 1)*cv_width + (cv_width - j - 1)] == 2) {
-                grid_x_ = cv_width - j - 1;
-                grid_y_ = cv_height - i - 1;
-                break;                
-            } 
-        }
-        if (grid_x_ != -1) {
-            break;
-        }
-    }
+    // // Need to find where the 2 is in the occ_grid.
+    // for (int i = 0; i < cv_height; i++) {
+    //     for (int j = 0; j < cv_width; j++) {
+    //         if (occ_grid->data[(cv_height - i - 1)*cv_width + (cv_width - j - 1)] == 2) {
+    //             grid_x_ = cv_width - j - 1;
+    //             grid_y_ = cv_height - i - 1;
+    //             break;                
+    //         } 
+    //     }
+    //     if (grid_x_ != -1) {
+    //         break;
+    //     }
+    // }
     // window_grid_transform_publisher();
     // cv_view_transform_publisher();
 
