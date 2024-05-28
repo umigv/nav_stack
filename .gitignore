@@ -1,3 +1,7 @@
-build/
-install/
-log/
+# ROS2 Build
+install/*
+build/*
+log/*
+
+# Development
+.vscode/*
