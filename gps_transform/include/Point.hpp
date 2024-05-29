@@ -152,13 +152,13 @@ class Point{
     /**
      * @brief Convert the point to a goal for the navigate to pose action
     */
-    nav2_msgs::action::NavigateToPose::Goal toNavigateToPoseGoal() const;
+    nav2_msgs::action::NavigateToPose::Goal toNavigateToPoseGoal(const std::string& frame_id) const;
 
 
     /**
      * @brief Convert the point to a PoseStamped message
     */
-    geometry_msgs::msg::PoseStamped toPoseStamped() const;
+    geometry_msgs::msg::PoseStamped toPoseStamped(const std::string& frame_id) const;
 
 
 

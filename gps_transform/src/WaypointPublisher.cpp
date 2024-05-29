@@ -176,7 +176,7 @@ void WaypointPublisher::navigateToGoal(){
     goal_pose_client_options.feedback_callback = std::bind(&WaypointPublisher::feedbackCallback, this, _1, _2);
     goal_pose_client_options.result_callback = std::bind(&WaypointPublisher::resultCallback, this, _1);
     
-    nav2_msgs::action::NavigateToPose::Goal goal = constrainedGoal.toNavigateToPoseGoal();
+    nav2_msgs::action::NavigateToPose::Goal goal = constrainedGoal.toNavigateToPoseGoal("map");
 
     RCLCPP_INFO(this->get_logger(), "Calling NavigateToPose with goal pose: (%f, %f, %f)", 
         goal.pose.pose.position.x, goal.pose.pose.position.y, goal.pose.pose.position.z);

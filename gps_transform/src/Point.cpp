@@ -62,16 +62,16 @@ Point Point::norm() const {
     return *this / magnitude();
 }
 
-nav2_msgs::action::NavigateToPose::Goal Point::toNavigateToPoseGoal() const{
+nav2_msgs::action::NavigateToPose::Goal Point::toNavigateToPoseGoal(const std::string& frame_id) const{
     nav2_msgs::action::NavigateToPose::Goal ret;
-    ret.pose = toPoseStamped();
+    ret.pose = toPoseStamped(frame_id);
 
     return ret;
 }
 
-geometry_msgs::msg::PoseStamped Point::toPoseStamped() const{
+geometry_msgs::msg::PoseStamped Point::toPoseStamped(const std::string& frame_id) const{
     geometry_msgs::msg::PoseStamped ret;
-    ret.header.frame_id = "map";
+    ret.header.frame_id = frame_id;
     ret.pose.position.x = x;
     ret.pose.position.y = y;
     ret.pose.position.z = 0;
