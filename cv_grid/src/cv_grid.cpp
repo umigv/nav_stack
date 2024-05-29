@@ -19,8 +19,13 @@ cv_grid::cv_grid() :
     this->declare_parameter("Width", 200);
     this->declare_parameter("Resolution", 0.05);
     this->declare_parameter("debug", false);
+    std::string grid_topic = "";
+    this->declare_parameter("grid_topic", "");
+    std::string output_topic = "";
+    this->declare_parameter("output_topic", "");
 
-
+    this->get_parameter("output_topic", output_topic);
+    this->get_parameter("grid_topic", grid_topic);
     this->get_parameter("use_sim_time", use_sim_time_);
     this->get_parameter("Height", window_height_);
     this->get_parameter("Width", window_width_);
@@ -28,12 +33,12 @@ cv_grid::cv_grid() :
     this->get_parameter("debug", debug_);
 
     // publish piece of global lane lines occupancy grid
-    publisher_ = this->create_publisher<nav_msgs::msg::OccupancyGrid>("cv_grid", 10);
+    publisher_ = this->create_publisher<nav_msgs::msg::OccupancyGrid>(output_topic, 10);
     timer_ = create_wall_timer(std::chrono::seconds(1), std::bind(&cv_grid::publishGrid, this));
 
     // subscribe to local lane lines occupancy grid
     subscription_ = this->create_subscription<nav_msgs::msg::OccupancyGrid>(
-        "occupancy_grid", 10, std::bind(&cv_grid::cv_grid_callback, this, std::placeholders::_1));
+        grid_topic, 10, std::bind(&cv_grid::cv_grid_callback, this, std::placeholders::_1));
 
     // Declare and acquire `target_frame` parameter
     target_frame_ = this->declare_parameter<std::string>("target_frame", "odom");

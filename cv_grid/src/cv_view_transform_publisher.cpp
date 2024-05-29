@@ -19,13 +19,16 @@ public:
         bool use_sim_time = true;
         this->declare_parameter("show_debug_grid", false);
         this->declare_parameter("Resolution", 0.05);
-    
+        std::string grid_topic = "";
+        this->declare_parameter("grid_topic", "");
+
+        this->get_parameter("grid_topic", grid_topic);
         this->get_parameter("use_sim_time", use_sim_time);
         this->get_parameter("show_debug_grid", debug_);
         this->get_parameter("Resolution", resolution_);
         
         cv_view_broadcaster_ = std::make_shared<tf2_ros::TransformBroadcaster>(this);
-        subscription_ = this->create_subscription<nav_msgs::msg::OccupancyGrid>("occupancy_grid", 10, std::bind(&cv_view_transform_publisher::cv_grid_callback, this, std::placeholders::_1));
+        subscription_ = this->create_subscription<nav_msgs::msg::OccupancyGrid>(grid_topic, 10, std::bind(&cv_view_transform_publisher::cv_grid_callback, this, std::placeholders::_1));
         
         if (debug_) {
             publisher_ = this->create_publisher<nav_msgs::msg::OccupancyGrid>("computer_vision_view_grid", 10);

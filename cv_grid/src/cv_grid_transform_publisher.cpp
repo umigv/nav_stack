@@ -17,7 +17,6 @@ public:
         this->declare_parameter("Width", 200);
         this->declare_parameter("Resolution", 0.05);
 
-
         this->get_parameter("use_sim_time", use_sim_time);
         this->get_parameter("Height", window_height_);
         this->get_parameter("Width", window_width_);

@@ -22,6 +22,9 @@ def generate_launch_description():
             parameters=[
                 param_file_path
             ]
+            # remappings=[
+            #     ('/cv_grid', '/occupancy_grid')
+            # ]
         ),
         Node(
             package='cv_grid',
