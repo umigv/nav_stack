@@ -126,10 +126,12 @@ private:
 
     // Data
     std::deque<GPSCoordinate> waypoints;
+    GPSCoordinate initialCoordinate;
     long double kEpsilon{2.0};
     bool faceNorth;
     bool mapInitialized = false;
     bool navigationInProgress = false;
+    bool initialCoordinateRecorded = false;
 };
 
 /**

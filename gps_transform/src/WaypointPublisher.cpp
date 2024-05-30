@@ -85,8 +85,10 @@ void WaypointPublisher::mapInfoCallback(const nav_msgs::msg::MapMetaData::Shared
 
 void WaypointPublisher::robotGPSCallback(const sensor_msgs::msg::NavSatFix::SharedPtr gpsCoordinate){
     // RCLCPP_INFO(this->get_logger(), "lat: %f, lon: %f", gpsCoordinate->latitude, gpsCoordinate->longitude);
-
     robotGPS = GPSCoordinate(gpsCoordinate->latitude, gpsCoordinate->longitude);
+    if (!initialCoordinateRecorded) {
+        initialCoordinate = robotGPS;
+    }
 }
 
 void WaypointPublisher::robotPoseCallback(const nav_msgs::msg::Odometry::SharedPtr robotOdom) {
@@ -113,7 +115,7 @@ void WaypointPublisher::robotPoseCallback(const nav_msgs::msg::Odometry::SharedP
 
 Point WaypointPublisher::getUnconstrainedGoal() const {
     // Point unconstrainedGoal = robotPose + Point(robotGPS, waypoints.front());
-    Point unconstrainedGoal = Point(GPSCoordinate(0, 0), waypoints.front());
+    Point unconstrainedGoal = Point(initialCoordinate, waypoints.front());
 
     if(!faceNorth) {
         unconstrainedGoal = unconstrainedGoal.rotateBy(M_PI);
