@@ -88,6 +88,7 @@ void WaypointPublisher::robotGPSCallback(const sensor_msgs::msg::NavSatFix::Shar
     robotGPS = GPSCoordinate(gpsCoordinate->latitude, gpsCoordinate->longitude);
     if (!initialCoordinateRecorded) {
         initialCoordinate = robotGPS;
+        initialCoordinateRecorded = true;
     }
 }
 
