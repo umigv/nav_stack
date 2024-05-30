@@ -1,0 +1,6 @@
+isFacingNorth: true
+
+# Robot distance to goal threshold,
+# if robot is less then this distance away,
+# in meters return true in goalReached function.
+goalDistanceThreshold: 2.0
