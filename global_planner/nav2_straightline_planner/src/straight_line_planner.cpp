@@ -52,6 +52,15 @@
 namespace nav2_straightline_planner
 {
 
+
+int StraightLine::getGoals(){
+  return StraightLine::goals;
+}
+
+void StraightLine::setGoals(int x){
+  StraightLine::goals = x;
+  return;
+}
 void StraightLine::configure(
   const rclcpp_lifecycle::LifecycleNode::WeakPtr & parent,
   std::string name, std::shared_ptr<tf2_ros::Buffer> tf,
@@ -63,6 +72,15 @@ void StraightLine::configure(
   tf_ = tf;
   costmap_ = costmap_ros->getCostmap();
   std::cout << " costmap created\n";
+    std::cout << " costmap created\n";
+
+  std::cout << " costmap created\n";
+
+  std::cout << " costmap created\n";
+
+  std::cout << " costmap created\n";
+
+
   global_frame_ = costmap_ros->getGlobalFrameID();
 
   // Parameter initialization

@@ -34,4 +34,10 @@ def generate_launch_description():
             name='teleop_twist_joy_node', parameters=[config_filepath],
             remappings={('/cmd_vel', launch.substitutions.LaunchConfiguration('joy_vel'))},
             ),
+<<<<<<< HEAD
     ])
+
+    
+=======
+    ])
+>>>>>>> main
