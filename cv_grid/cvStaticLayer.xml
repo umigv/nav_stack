@@ -1,0 +1,4 @@
+<library path="lib/libcvStaticLayer.so">
+  <class type="nav2_cv_static_layer::cvStaticLayer" base_class_type="nav2_costmap_2d::StaticLayer" name="cvStaticLayer"></class>
+  <name>cvStaticLayer</name>
+</library>

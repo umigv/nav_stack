@@ -259,6 +259,16 @@ void cv_grid::get_pose(double &pose_x, double &pose_y, geometry_msgs::msg::Quate
     return;
 }
 
+// void cvStaticLayer::updateBounds(double origin_x, double origin_y, double origin_yaw,
+//                               double* min_x, double* min_y, double* max_x, double* max_y) {
+    
+// }
+
+// void cvStaticLayer::updateCosts(nav2_costmap_2d::Costmap2D& master_grid, int min_i, int min_j, int max_i, int max_j) {
+//     return;
+// }
+
+
 int main(int argc, char *argv[]) {
     rclcpp::init(argc, argv);
     rclcpp::spin(std::make_shared<cv_grid>());

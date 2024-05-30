@@ -8,15 +8,24 @@
 #include "tf2_ros/buffer.h"
 #include "tf2_geometry_msgs/tf2_geometry_msgs.hpp"
 #include <mutex>
-// #include <nav2_costmap_2d/layer.hpp>
-// #include <nav2_costmap_2d/layered_costmap.hpp>
-// #include <nav2_costmap_2d/static_layer.hpp>
-// #include <pluginlib/class_list_macros.hpp>
+#include <nav2_costmap_2d/layer.hpp>
+#include <nav2_costmap_2d/layered_costmap.hpp>
+#include <nav2_costmap_2d/static_layer.hpp>
+#include <pluginlib/class_list_macros.hpp>
+namespace nav2_cv_static_layer {
 
-class cv_grid : public rclcpp::Node
-{
+class cvStaticLayer : public nav2_costmap_2d::StaticLayer {
 public:
-    cv_grid();
+    cvStaticLayer();
+
+    virtual void onInitialize() override;
+
+    virtual void updateBounds(double origin_x, double origin_y, double origin_yaw,
+                              double* min_x, double* min_y, double* max_x, double* max_y) override;
+
+    virtual void updateCosts(nav2_costmap_2d::Costmap2D& master_grid, int min_i, int min_j, int max_i, int max_j) override;
+
+    virtual void reset();
 
 private:
     // Functions
@@ -25,7 +34,7 @@ private:
         Publishes the occupancy grid that combines the incomming Computer Vision occupancy grid,
         with the merged lane line occupancy built and maintained by cv_grid.
     */
-    void publishGrid();
+    // void publishGrid();
     
     /*
         When merging the maps:
@@ -77,17 +86,7 @@ private:
     bool first_lookup_;
     double resolution_;
     bool debug_;
-    friend class cvStaticLayer;
+    std::shared_ptr<rclcpp_lifecycle::LifecycleNode> node;
 };
 
-// class cvStaticLayer : public nav2_costmap_2d::StaticLayer {
-//     public:
-//         cvStaticLayer() {}
-
-//         virtual void updateBounds(double origin_x, double origin_y, double origin_yaw,
-//                               double* min_x, double* min_y, double* max_x, double* max_y);
-
-//         virtual void updateCosts(nav2_costmap_2d::Costmap2D& master_grid, int min_i, int min_j, int max_i, int max_j);
-// };
-
-// PLUGINLIB_EXPORT_CLASS(cvStaticLayer, nav2_costmap_2d::Layer);
+}

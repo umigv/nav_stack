@@ -19,6 +19,8 @@ find_package(geometry_msgs REQUIRED)
 find_package(tf2 REQUIRED)
 find_package(tf2_ros REQUIRED)
 find_package(tf2_geometry_msgs REQUIRED)
+find_package(nav2_costmap_2d REQUIRED)
+find_package(pluginlib REQUIRED)
 
 # uncomment the following section in order to fill in
 # further dependencies manually.
@@ -38,17 +40,17 @@ endif()
 
 ament_package()
 
-add_executable(cv_grid src/cv_grid.cpp)
-ament_target_dependencies(
-  cv_grid
-  geometry_msgs
-  std_msgs
-  nav_msgs
-  rclcpp
-  tf2
-  tf2_ros
-  tf2_geometry_msgs
-)
+# add_executable(cv_grid src/cv_grid.cpp)
+# ament_target_dependencies(
+#   cv_grid
+#   geometry_msgs
+#   std_msgs
+#   nav_msgs
+#   rclcpp
+#   tf2
+#   tf2_ros
+#   tf2_geometry_msgs
+# )
 
 add_executable(cv_view_transform_publisher src/cv_view_transform_publisher.cpp)
 ament_target_dependencies(
@@ -59,7 +61,11 @@ ament_target_dependencies(
   tf2_ros
   tf2_geometry_msgs
   nav_msgs
+  nav2_costmap_2d
+  pluginlib
 )
+
+# pluginlib_export_plugin_description_file(nav2_costmap_2d cvStaticLayer.xml)
 
 add_executable(cv_grid_transform_publisher src/cv_grid_transform_publisher.cpp)
 ament_target_dependencies(
@@ -73,7 +79,7 @@ ament_target_dependencies(
 )
 
 install(TARGETS
-  cv_grid
+  # cv_grid
   cv_view_transform_publisher
   cv_grid_transform_publisher
   DESTINATION lib/${PROJECT_NAME}
@@ -87,4 +93,27 @@ install(
 install(
   DIRECTORY launch params
   DESTINATION share/${PROJECT_NAME}
+)
+
+# Plugin code:
+add_library(cvStaticLayer SHARED
+  src/cvStaticLayer.cpp
+)
+
+ament_target_dependencies(cvStaticLayer
+  nav2_costmap_2d
+  pluginlib
+  rclcpp
+  nav_msgs
+  geometry_msgs
+  std_msgs
+  tf2
+  tf2_ros
+  tf2_geometry_msgs
+)
+
+pluginlib_export_plugin_description_file(nav2_costmap_2d cvStaticLayer.xml)
+
+install(TARGETS cvStaticLayer
+  LIBRARY DESTINATION lib
 )

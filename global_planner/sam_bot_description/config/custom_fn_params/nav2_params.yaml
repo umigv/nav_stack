@@ -235,7 +235,7 @@ global_costmap:
       robot_radius: 0.3
       resolution: 0.05
       track_unknown_space: true
-      plugins: ["static_layer", "obstacle_layer", "inflation_layer"]
+      plugins: ["static_layer", "obstacle_layer", "inflation_layer", "cvStaticLayer"]
       # length: (14.25+8+8+15.25) * 0.0254/2 = 0.57785. Shift 12cm since base link isn't centered length-wise
       # width: ((4 + 1.5) * 2 + 24) * 0.0254/2 = 0.4445
       footprint: "[ [0.45785, 0.4445], [0.45785, -0.4445], [-0.69785, -0.4445], [-0.69785, 0.4445] ]"
@@ -253,6 +253,9 @@ global_costmap:
           raytrace_min_range: 0.0
           obstacle_max_range: 2.5
           obstacle_min_range: 0.0
+      cvStaticLayer:
+        plugin: "nav2_cv_static_layer::cvStaticLayer"
+        enable: True
       static_layer:
         plugin: "nav2_costmap_2d::StaticLayer"
         map_subscribe_transient_local: True
