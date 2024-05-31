@@ -265,7 +265,7 @@ global_costmap:
         map_subscribe_transient_local: False
         # global_frame: odom
         map_topic: "/cv_grid"
-        # footprint_clearing_enabled: True
+        footprint_clearing_enabled: True
         enabled: True
         subscribe_to_updates: True
         # lethal_cost_threshold: 1
@@ -327,7 +327,7 @@ recoveries_server:
     global_frame: odom
     robot_base_frame: base_footprint
     transform_timeout: 0.1
-    use_sim_time: true
+    use_sim_time: True
     simulate_ahead_time: 2.0
     max_rotational_vel: 1.0
     min_rotational_vel: 0.4
