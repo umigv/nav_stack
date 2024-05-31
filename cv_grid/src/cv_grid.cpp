@@ -23,6 +23,16 @@ cv_grid::cv_grid() :
     this->declare_parameter("grid_topic", "");
     std::string output_topic = "";
     this->declare_parameter("output_topic", "");
+    this->declare_parameter("x", 0.0);
+    this->declare_parameter("y", 0.0);
+    this->declare_parameter("z", 0.0);
+    this->declare_parameter("w", 0.0);
+
+
+    this->get_parameter("x", orientatation_.x);
+    this->get_parameter("y", orientatation_.y);
+    this->get_parameter("z", orientatation_.z);
+    this->get_parameter("w", orientatation_.w);
 
     this->get_parameter("output_topic", output_topic);
     this->get_parameter("grid_topic", grid_topic);
@@ -63,6 +73,7 @@ void cv_grid::publishGrid() {
     grid_lock_.lock();
     for (int i = 0; i < window_width_ * window_height_; ++i) {
         gridData[i] = curr_sliding_grid_[i / window_width_][i % window_width_];
+        // gridData[i] = 100;
     }
     grid_lock_.unlock();
 
@@ -73,7 +84,41 @@ void cv_grid::publishGrid() {
     occupancyGridMsg.info.width = window_width_;
     occupancyGridMsg.info.height = window_height_;
     occupancyGridMsg.info.resolution = resolution_;  // Replace with your desired resolution_
-    occupancyGridMsg.info.origin = get_cv_grid_origin().pose;
+    tf2::Quaternion rotation;
+    rotation.setX(1.0);
+    rotation.setY(0);
+    rotation.setZ(0);
+    rotation.setW(0);
+    geometry_msgs::msg::PoseStamped origin = get_cv_grid_origin();
+    tf2::Quaternion original;
+    original.setX(origin.pose.orientation.x);
+    original.setY(origin.pose.orientation.y);
+    original.setZ(origin.pose.orientation.z);
+    original.setW(origin.pose.orientation.w);
+
+    RCLCPP_INFO(this->get_logger(), "Quaternions: %f, %f, %f, %f", original.getX(), original.getY(), original.getZ(), original.getW());
+    tf2::Quaternion orientation = rotation * original;
+    orientation.normalize();
+    RCLCPP_INFO(this->get_logger(), "Multiplying Quaternions.");
+    RCLCPP_INFO(this->get_logger(), "Quaternions: %f, %f, %f, %f", orientation.getX(), orientation.getY(), orientation.getZ(), orientation.getW());
+    occupancyGridMsg.info.origin = origin.pose;
+    // occupancyGridMsg.info.origin.orientation.x = orientation.getX();
+    // occupancyGridMsg.info.origin.orientation.y = orientation.getY();
+    // occupancyGridMsg.info.origin.orientation.z = orientation.getZ();
+    // occupancyGridMsg.info.origin.orientation.w = orientation.getW();
+
+    // occupancyGridMsg.info.origin.orientation.x = -0.707;
+    // occupancyGridMsg.info.origin.orientation.y = 0;
+    // occupancyGridMsg.info.origin.orientation.z = 0.707;
+    // occupancyGridMsg.info.origin.orientation.w = 0;
+    // occupancyGridMsg.info.origin.orientation = rotation * occupancyGridMsg.info.origin.set__orientation();
+
+    occupancyGridMsg.info.origin.orientation.x = orientatation_.x;
+    occupancyGridMsg.info.origin.orientation.y = orientatation_.y;
+    occupancyGridMsg.info.origin.orientation.z = orientatation_.z;
+    occupancyGridMsg.info.origin.orientation.w = orientatation_.w;
+
+
 
     // Convert the 1D grid data to 2D
     occupancyGridMsg.data = gridData;
@@ -105,7 +150,7 @@ void cv_grid::cv_grid_callback(const nav_msgs::msg::OccupancyGrid::ConstSharedPt
     for (int i = 0; i < window_height_; i++) {
         for (int j = 0; j < window_width_; j++) {
 
-            int transformed_i = i + trans_rows;
+            int transformed_i = i - trans_rows;
             int transformed_j = j - trans_cols;
 
             if ((transformed_i >= 0) && (transformed_j >= 0) && (transformed_i < window_height_) 
@@ -151,7 +196,6 @@ void cv_grid::cv_grid_callback(const nav_msgs::msg::OccupancyGrid::ConstSharedPt
             if (val >= 0) {
                 int x = static_cast<int>(cv_grid_location.x);
                 int y = static_cast<int>(cv_grid_location.y);
-
                 if (debug_ && iteration % 10000 == 0) {
                     RCLCPP_INFO(this->get_logger(), "x grid:%i", x);
                     RCLCPP_INFO(this->get_logger(), "y grid:%i", y);

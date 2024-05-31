@@ -13,6 +13,10 @@ cv_grid:
     grid_topic: "cv_view"
     output_topic: "cv_grid"
     # output_topic: "map"
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
 
 cvStaticLayer:
   ros__parameters:

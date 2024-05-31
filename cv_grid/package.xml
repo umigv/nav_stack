@@ -26,6 +26,6 @@
 
   <export>
     <build_type>ament_cmake</build_type>
-    <costmap_2d plugin="${prefix}/cvStaticLayer.xml" />
+    <costmap_2d plugin="src/nav_stack/cv_grid/cvStaticLayer.xml" />
   </export>
 </package>

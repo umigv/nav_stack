@@ -9,6 +9,7 @@
 #include "std_msgs/msg/string.hpp"
 #include "tf2/exceptions.h"
 #include <vector>
+#include "pluginlib/class_list_macros.hpp"
 
 using namespace std::chrono_literals;
 namespace nav2_cv_static_layer {
@@ -124,6 +125,9 @@ void cvStaticLayer::reset() {
     return;
 }
 
+bool isClearable() {
+    return false;
+}
 
 // void cvStaticLayer::publishGrid() {
 //     std::vector<int8_t> gridData(window_width_ * window_height_, -1);  // initialize with unknown
@@ -345,4 +349,4 @@ void cvStaticLayer::get_pose(double &pose_x, double &pose_y, geometry_msgs::msg:
 // }
 }
 
-PLUGINLIB_EXPORT_CLASS(nav2_cv_static_layer::cvStaticLayer, nav2_costmap_2d::StaticLayer);
+PLUGINLIB_EXPORT_CLASS(nav2_cv_static_layer::cvStaticLayer, nav2_costmap_2d::Layer)

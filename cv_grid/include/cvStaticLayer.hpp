@@ -11,7 +11,6 @@
 #include <nav2_costmap_2d/layer.hpp>
 #include <nav2_costmap_2d/layered_costmap.hpp>
 #include <nav2_costmap_2d/static_layer.hpp>
-#include <pluginlib/class_list_macros.hpp>
 namespace nav2_cv_static_layer {
 
 class cvStaticLayer : public nav2_costmap_2d::StaticLayer {
@@ -25,8 +24,9 @@ public:
 
     virtual void updateCosts(nav2_costmap_2d::Costmap2D& master_grid, int min_i, int min_j, int max_i, int max_j) override;
 
-    virtual void reset();
+    virtual void reset() override;
 
+    virtual bool isClearable() override;
 private:
     // Functions
 

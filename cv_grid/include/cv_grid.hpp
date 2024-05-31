@@ -78,6 +78,7 @@ private:
     double resolution_;
     bool debug_;
     friend class cvStaticLayer;
+    geometry_msgs::msg::Quaternion orientatation_;
 };
 
 // class cvStaticLayer : public nav2_costmap_2d::StaticLayer {

@@ -50,12 +50,12 @@ private:
         get_pose(rob_x, rob_y, quat);
 
         // The current robot x coordinate in odom - the robot x coordinate in the grid * the grid resolution_.
-        transform.transform.translation.x = rob_x - window_width_ * 0.5 * resolution_;
-        transform.transform.translation.y = rob_y + window_height_ * 0.5 * resolution_;
-        transform.transform.rotation.x = 1.0;
+        transform.transform.translation.x = (rob_x - window_width_ * 0.5 * resolution_);
+        transform.transform.translation.y = (rob_y - window_height_ * 0.5 * resolution_);
+        transform.transform.rotation.x = 0;
         transform.transform.rotation.y = 0;
         transform.transform.rotation.z = 0.0;
-        transform.transform.rotation.w = 0.0;
+        transform.transform.rotation.w = 1.0;
         transform.header.stamp = this->get_clock()->now();
         cv_grid_broadcaster_->sendTransform(transform);
         RCLCPP_INFO(this->get_logger(), "Cv Grid Transform published");
