@@ -13,7 +13,7 @@ def generate_launch_description():
 
 
     planner_directory = get_package_share_directory("sam_bot_description")
-    params_file = os.path.join(planner_directory, 'config', 'teleop_confids', 'umarv2.config.yaml')
+    params_file = os.path.join(planner_directory, 'config', 'teleop_configs', 'umarv.config.yaml')
 
     return launch.LaunchDescription([
         launch.actions.DeclareLaunchArgument('joy_vel', default_value='cmd_vel'),

@@ -27,7 +27,7 @@ WaypointPublisher::WaypointPublisher() : Node("WaypointPublisher"),  tfBuffer(th
         "map_metadata", 10, std::bind(&WaypointPublisher::mapInfoCallback, this, _1));
 
     robotGPSSubscriber = this->create_subscription<sensor_msgs::msg::NavSatFix>(
-        "gps/data", 10, std::bind(&WaypointPublisher::robotGPSCallback, this, _1));
+        "gps_coords", 10, std::bind(&WaypointPublisher::robotGPSCallback, this, _1));
 
     robotPoseSubscriber = this->create_subscription<nav_msgs::msg::Odometry>(
         "odom", 10, std::bind(&WaypointPublisher::robotPoseCallback, this, _1));
@@ -84,7 +84,7 @@ void WaypointPublisher::mapInfoCallback(const nav_msgs::msg::MapMetaData::Shared
 }
 
 void WaypointPublisher::robotGPSCallback(const sensor_msgs::msg::NavSatFix::SharedPtr gpsCoordinate){
-    // RCLCPP_INFO(this->get_logger(), "lat: %f, lon: %f", gpsCoordinate->latitude, gpsCoordinate->longitude);
+    RCLCPP_INFO(this->get_logger(), "lat: %f, lon: %f", gpsCoordinate->latitude, gpsCoordinate->longitude);
     robotGPS = GPSCoordinate(gpsCoordinate->latitude, gpsCoordinate->longitude);
     if (!initialCoordinateRecorded) {
         initialCoordinate = robotGPS;
@@ -155,7 +155,7 @@ void WaypointPublisher::navigateToGoal(){
     // }
 
     if (!mapInitialized) {
-        RCLCPP_INFO(this->get_logger(), "Map not initialized yet, returning from navigateToGoal");
+        // RCLCPP_INFO(this->get_logger(), "Map not initialized yet, returning from navigateToGoal");
         return;
     }
 

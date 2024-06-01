@@ -18,7 +18,7 @@ class GPSCoordPublisher(Node):
 
         # Set up publisher callback on a 1 second timer
         timer_period = 1  # seconds
-        self.timer = self.create_timer(timer_period, self.publish_coords_debug)
+        self.timer = self.create_timer(timer_period, self.publish_coords)
 
         # Set up message
         self.fix = NavSatFix()

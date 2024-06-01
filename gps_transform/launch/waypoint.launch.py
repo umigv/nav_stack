@@ -27,11 +27,11 @@ def generate_launch_description():
 
 
     # GPS Coord Publisher Node
-    # gps_coord_publisher_node = Node(
-    #     package="gps_coord_pub",
-    #     executable="gps_coord_pub",
-    #     name="gps_coord_pub_node"
-    # )
+    gps_coord_publisher_node = Node(
+        package="gps_coord_pub",
+        executable="gps_coord_pub",
+        name="gps_coord_pub_node"
+    )
 
     # Waypoint Publisher Node
     waypoint_publisher_node = Node(
@@ -52,7 +52,7 @@ def generate_launch_description():
     ]
 
     nodes = [
-        #gps_coord_publisher_node, 
+        gps_coord_publisher_node, 
         waypoint_publisher_node
     ]
 
