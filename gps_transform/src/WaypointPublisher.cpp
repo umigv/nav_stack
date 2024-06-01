@@ -84,7 +84,7 @@ void WaypointPublisher::mapInfoCallback(const nav_msgs::msg::MapMetaData::Shared
 }
 
 void WaypointPublisher::robotGPSCallback(const sensor_msgs::msg::NavSatFix::SharedPtr gpsCoordinate){
-    RCLCPP_INFO(this->get_logger(), "lat: %f, lon: %f", gpsCoordinate->latitude, gpsCoordinate->longitude);
+    // RCLCPP_INFO(this->get_logger(), "lat: %f, lon: %f", gpsCoordinate->latitude, gpsCoordinate->longitude);
     robotGPS = GPSCoordinate(gpsCoordinate->latitude, gpsCoordinate->longitude);
     if (!initialCoordinateRecorded) {
         initialCoordinate = robotGPS;
@@ -155,7 +155,7 @@ void WaypointPublisher::navigateToGoal(){
     // }
 
     if (!mapInitialized) {
-        // RCLCPP_INFO(this->get_logger(), "Map not initialized yet, returning from navigateToGoal");
+        RCLCPP_INFO(this->get_logger(), "Map not initialized yet, returning from navigateToGoal");
         return;
     }
 

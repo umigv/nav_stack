@@ -10,9 +10,9 @@ teleop_twist_joy_node:
     axis_angular:
       yaw: 3
     scale_angular:
-      yaw: 20.0
+      yaw: 10.0 # was 20
     scale_angular_turbo:
-      yaw: 40.0
+      yaw: 20.0 # was 40
 
     enable_button: 6 # L2 shoulder button
     enable_turbo_button: 4  # L1 shoulder button

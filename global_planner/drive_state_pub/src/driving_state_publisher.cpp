@@ -21,7 +21,7 @@ public:
 
 private:
     void joyCallback(const sensor_msgs::msg::Joy::SharedPtr msg) {
-        size_t button = 1; // map this to the button you want here: https://index.ros.org/p/joy/ 
+        size_t button = 0; // map this to the button you want here: https://index.ros.org/p/joy/ 
                 //  1 is triangle
 
         if (msg->buttons.size() > button)  { 
@@ -30,7 +30,7 @@ private:
                 sticky = true;
                 if(count_ == 1)
                     count_ = 0;
-                if(count_ == 0)
+                else if(count_ == 0)
                     count_ = 1;
             }
 
