@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<library path="lib/libnav2_cv_static_layer">
+    <class name="nav2_cv_static_layer::cvStaticLayer" type="nav2_cv_static_layer::cvStaticLayer" base_class_type="nav2_costmap_2d::Layer">
+        <description>Custom static costmap layer using OpenCV</description>
+    </class>
+</library>

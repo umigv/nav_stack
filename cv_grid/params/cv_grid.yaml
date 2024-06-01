@@ -1,0 +1,53 @@
+/**:
+  ros__parameters:
+    use_sim_time: true
+
+cv_grid:
+  ros__parameters:
+    # Width and Height of the occupancy grid sent by CV in meters.
+    Height: 300
+    Width: 300
+    # Resoultion of occupancy grid in square meters.
+    Resolution: 0.05
+    use_sim_time: true
+    grid_topic: "cv_view"
+    output_topic: "cv_grid"
+    # output_topic: "map"
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+
+cvStaticLayer:
+  ros__parameters:
+    # Width and Height of the occupancy grid sent by CV in meters.
+    Height: 200
+    Width: 200
+    # Resoultion of occupancy grid in square meters.
+    Resolution: 0.05
+    use_sim_time: true
+    grid_topic: "cv_view"
+    output_topic: "cv_grid"
+    # output_topic: "map"
+
+
+cv_grid_transform_publisher:
+  ros__parameters:
+    # Width and Height of the occupancy grid sent by CV in meters.
+    Height: 300
+    Width: 300
+    # Resoultion of occupancy grid in square meters.
+    Resolution: 0.05
+    use_sim_time: true
+    debug: false
+
+cv_view_transform_publisher:
+  ros__parameters:
+    # Width and Height of the occupancy grid sent by CV in meters.
+    Height: 300
+    Width: 300
+    # Resoultion of occupancy grid in square meters.
+    Resolution: 0.05
+    use_sim_time: true
+    show_debug_grid: false
+    grid_topic: "cv_view"
