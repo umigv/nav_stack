@@ -16,7 +16,7 @@ def generate_launch_description():
     params_file = os.path.join(planner_directory, 'config', 'teleop_confids', 'umarv2.config.yaml')
 
     return launch.LaunchDescription([
-        launch.actions.DeclareLaunchArgument('joy_vel', default_value='cmd_vel'),
+        launch.actions.DeclareLaunchArgument('joy_vel', default_value='joy_cmd_vel'),
         launch.actions.DeclareLaunchArgument('joy_config', default_value='ps3'),
         launch.actions.DeclareLaunchArgument('joy_dev', default_value='/dev/input/js0'),
         launch.actions.DeclareLaunchArgument('config_filepath', default_value=[
@@ -34,10 +34,6 @@ def generate_launch_description():
             name='teleop_twist_joy_node', parameters=[config_filepath],
             remappings={('/cmd_vel', launch.substitutions.LaunchConfiguration('joy_vel'))},
             ),
-<<<<<<< HEAD
     ])
 
     
-=======
-    ])
->>>>>>> main
