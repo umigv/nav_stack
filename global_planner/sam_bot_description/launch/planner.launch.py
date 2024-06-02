@@ -27,7 +27,7 @@ def generate_launch_description():
         PythonLaunchDescriptionSource(os.path.join(nav2_directory, 'launch', 'bringup_launch.py')),
         launch_arguments={
             'slam': 'True',
-            'use_sim_time': 'True',
+            'use_sim_time': 'False',
             'params_file': params_file,
             'map': "",
         }.items(),
