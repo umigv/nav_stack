@@ -10,12 +10,15 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(sensor_msgs REQUIRED)
+find_package(geometry_msgs REQUIRED)
+
 
 add_executable(driving_state_publisher src/driving_state_publisher.cpp)
 ament_target_dependencies(driving_state_publisher 
                           rclcpp
                           std_msgs 
-                          sensor_msgs)
+                          sensor_msgs
+                          geometry_msgs)
 
 install(TARGETS
   driving_state_publisher
