@@ -67,5 +67,23 @@
         "cinttypes": "cpp",
         "typeindex": "cpp",
         "typeinfo": "cpp"
-    }
+    },
+    "python.autoComplete.extraPaths": [
+        "/home/umarv/ros2_ws/install/stamper/lib/python3.10/site-packages",
+        "/home/umarv/ros2_ws/install/robot_localization/local/lib/python3.10/dist-packages",
+        "/home/umarv/ros2_ws/install/gps_coord_pub/lib/python3.10/site-packages",
+        "/home/umarv/ros2_ws/install/drivable_area/lib/python3.10/site-packages",
+        "/home/umarv/ros2_ws/install/bno055/lib/python3.10/site-packages",
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages"
+    ],
+    "python.analysis.extraPaths": [
+        "/home/umarv/ros2_ws/install/stamper/lib/python3.10/site-packages",
+        "/home/umarv/ros2_ws/install/robot_localization/local/lib/python3.10/dist-packages",
+        "/home/umarv/ros2_ws/install/gps_coord_pub/lib/python3.10/site-packages",
+        "/home/umarv/ros2_ws/install/drivable_area/lib/python3.10/site-packages",
+        "/home/umarv/ros2_ws/install/bno055/lib/python3.10/site-packages",
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages"
+    ]
 }
