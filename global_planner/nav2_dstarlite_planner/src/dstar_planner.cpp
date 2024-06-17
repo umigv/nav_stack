@@ -180,7 +180,7 @@ nav_msgs::msg::Path Dstar_planner::createPlan(
     //std::cout << "createPlan end" << std::endl;
 
   return global_path;
-}  // namespace nav2_straightline_planner
+}  // namespace nav2_arvstar_planner
 
 }
 #include "pluginlib/class_list_macros.hpp"
