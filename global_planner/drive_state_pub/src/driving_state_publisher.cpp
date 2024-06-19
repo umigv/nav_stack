@@ -27,14 +27,14 @@ public:
 
 private:
     void teleop_callback(geometry_msgs::msg::Twist::SharedPtr tele_vel) {
-        std::cout << " teleop call bacl " << count_ << std::endl;
+        //std::cout << " teleop call bacl " << count_ << std::endl;
         if (count_ == 0) {
             merged_pub_->publish(*tele_vel);
         }
     }
 
     void planner_callback(geometry_msgs::msg::Twist::SharedPtr plan_vel) {
-                std::cout << " planner call bacl " << count_ << std::endl;
+           //     std::cout << " planner call bacl " << count_ << std::endl;
 
         if (count_ == 1) {
             merged_pub_->publish(*plan_vel);
@@ -59,7 +59,7 @@ private:
                 sticky = false;
             }
 
-        RCLCPP_INFO(this->get_logger(), "Received joy button value: %d", count_);
+       RCLCPP_INFO(this->get_logger(), "Received joy button value: %d", count_);
         }
         else {
         RCLCPP_WARN(this->get_logger(), "Joy message not found");
@@ -72,7 +72,7 @@ private:
     void publishMessage() {
         auto message = std_msgs::msg::Int32();
         message.data = count_;
-        RCLCPP_INFO(this->get_logger(), "Publishing: %d", message.data);
+      //  RCLCPP_INFO(this->get_logger(), "Publishing: %d", message.data);
         publisher_->publish(message);
       
     }

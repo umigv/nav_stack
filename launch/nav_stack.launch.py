@@ -6,7 +6,7 @@ from launch.actions import IncludeLaunchDescription
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 
 def generate_launch_description():
-    planner_directory = get_package_share_directory("sam_bot_description")
+    planner_directory = get_package_share_directory("marvin_bot_description")
     cv_grid_directory = get_package_share_directory("cv_grid")
     gps_directory = get_package_share_directory("gps_transform")
 

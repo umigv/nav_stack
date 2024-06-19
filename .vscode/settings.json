@@ -85,5 +85,6 @@
         "/home/umarv/ros2_ws/install/bno055/lib/python3.10/site-packages",
         "/opt/ros/humble/lib/python3.10/site-packages",
         "/opt/ros/humble/local/lib/python3.10/dist-packages"
-    ]
+    ],
+    "cmake.sourceDirectory": "/home/maaz/ws/src/nav_stack/global_planner/sam_bot_description"
 }
