@@ -14,28 +14,28 @@ def generate_launch_description():
     planner = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(os.path.join(planner_directory, 'launch', 'planner.launch.py')),
         launch_arguments={
-            'use_sim_time': 'False'
+            'use_sim_time': 'True',
         }.items()        
     )
 
     teleop = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(os.path.join(planner_directory, 'launch', 'teleop_launch.py')),
         launch_arguments={
-            'use_sim_time': 'False'
+            'use_sim_time': 'True',
         }.items()        
     )
 
     cv_grid = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(os.path.join(cv_grid_directory, 'launch', 'cv_grid.launch.py')),
         launch_arguments={
-            'use_sim_time': 'False'
+            'use_sim_time': 'True',
         }.items()
     )
 
     gps = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(os.path.join(gps_directory, 'launch', 'waypoint.launch.py')),
         launch_arguments={
-            'use_sim_time': 'False'
+            'use_sim_time': 'True',
         }.items()
     )
     

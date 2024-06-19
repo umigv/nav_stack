@@ -15,7 +15,7 @@ using namespace std::chrono_literals;
 namespace nav2_cv_static_layer {
 
 // cvStaticLayer::cvStaticLayer() : 
-//     Node("cvStaticLayer"), grid_x_(-1), grid_y_(-1), use_sim_time_(false),
+//     Node("cvStaticLayer"), grid_x_(-1), grid_y_(-1), use_sim_time_(true),
 //     window_height_(200), window_width_(200), resolution_(0.05) {
 //     this->declare_parameter("Height", 200);
 //     this->declare_parameter("Width", 200);
