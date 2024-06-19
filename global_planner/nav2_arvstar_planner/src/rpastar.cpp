@@ -90,7 +90,7 @@ void rpastar::search()
     while (!U.empty())
     {
         Node current_node = U.top();
-        std::cout << "Searching node" << current_node.get_state().first << ", " << current_node.get_state().second << std::endl;
+     //   std::cout << "Searching node" << current_node.get_state().first << ", " << current_node.get_state().second << std::endl;
         U.pop();
         open_set.erase(current_node.get_state());
         if (current_node.at_target(target_state))
@@ -129,8 +129,8 @@ void rpastar::search()
 
 void rpastar::processNode(int row, int col, Node *parent)
 {
-    std::cout << " processNode\n";
-    std::cout << row << " " << col;
+    // std::cout << " processNode\n";
+    // std::cout << row << " " << col;
     if (row < 0 || row >= cost_map.size() || col < 0 || col >= cost_map[0].size())
     {
         return;
@@ -196,22 +196,22 @@ void rpastar::costMapCallback(nav2_costmap_2d::Costmap2D* msg)
         }
     }
 
-    std::ofstream ofs;
-    ofs.open("map2.txt", std::ofstream::out | std::ofstream::trunc);
-    ofs.close();
+    // std::ofstream ofs;
+    // ofs.open("map2.txt", std::ofstream::out | std::ofstream::trunc);
+    // ofs.close();
 
-    std::ofstream myfile;
-    myfile.open ("map2.txt");
+    // std::ofstream myfile;
+    // myfile.open ("map2.txt");
 
-      for(int i = 0; i < costmap_height; i++){
-        for(int j = 0; j < costmap_width; j++){
+    //   for(int i = 0; i < costmap_height; i++){
+    //     for(int j = 0; j < costmap_width; j++){
             
-            myfile << cost_map[i][j] << " ";
+    //         myfile << cost_map[i][j] << " ";
            
-        }
-         myfile << "\n ";
-     }
-     myfile.close();
+    //     }
+    //      myfile << "\n ";
+    //  }
+    //  myfile.close();
     // Fill out the needed "start" position member variable using info from the costmap origin message
     //start_state = {costmap_height/2,costmap_width/2};
     graph[start_state.first][start_state.second].set_g(0); 

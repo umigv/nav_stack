@@ -72,13 +72,7 @@ void ArvStar::configure(
   tf_ = tf;
   costmap_ = costmap_ros->getCostmap();
   std::cout << " costmap created\n";
-    std::cout << " costmap created\n";
 
-  std::cout << " costmap created\n";
-
-  std::cout << " costmap created\n";
-
-  std::cout << " costmap created\n";
 
 
   global_frame_ = costmap_ros->getGlobalFrameID();
