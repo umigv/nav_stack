@@ -81,7 +81,7 @@ private:
 
   // Indicates that the entire gradient should be recalculated next time.
   bool need_recalculation_;
-
+  double yaw;
   // Size of gradient in cells
   int GRADIENT_SIZE = 20;
   // Step of increasing cost per one cell in gradient
