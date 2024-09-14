@@ -1,6 +1,9 @@
 # nav_stack
 Clone this repo into src directory. 
 
+
+If your looking for the nav/sensors onboarding go here instead: https://github.com/umigv/nav-onboarding-2024
+
 # Link to current projects 
 https://docs.google.com/document/d/10k_sBHWKxRfVZ4LImK5-UW2cgy3Yt_E14yCGoBRWqZw/edit?usp=sharing
 
