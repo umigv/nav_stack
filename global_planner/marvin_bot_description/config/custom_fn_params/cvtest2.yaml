@@ -250,10 +250,13 @@ global_costmap:
       robot_radius: 0.3
       resolution: 0.05
       track_unknown_space: true
-      plugins: ["static_layer", "obstacle_layer", "inflation_layer"]
+      plugins: ["static_layer2"]
       # length: (14.25+8+8+15.25) * 0.0254/2 = 0.57785. Shift 12cm since base link isn't centered length-wise
       # width: ((4 + 1.5) * 2 + 24) * 0.0254/2 = 0.4445
       footprint: "[ [0.45785, 0.4445], [0.45785, -0.4445], [-0.69785, -0.4445], [-0.69785, 0.4445] ]"
+      cvStaticLayer:
+        plugin: "nav2_laneline_costmap_plugin/LanelineLayer" 
+        enable: True
       obstacle_layer:
         plugin: "nav2_costmap_2d::ObstacleLayer"
         enabled: True
@@ -271,6 +274,11 @@ global_costmap:
       static_layer:
         plugin: "nav2_costmap_2d::StaticLayer"
         map_subscribe_transient_local: True
+      static_layer2:
+        plugin: "nav2_costmap_2d::StaticLayer"
+        map_topic: "/cv_grid" 
+        subscribe_to_updates: True
+        map_subscribe_transient_local: False
       inflation_layer:
         plugin: "nav2_costmap_2d::InflationLayer"
         cost_scaling_factor: 3.0

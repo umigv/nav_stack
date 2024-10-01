@@ -10,6 +10,8 @@ def generate_launch_description():
     planner_directory = get_package_share_directory("marvin_bot_description")
     params_file = os.path.join(planner_directory, 'config', 'custom_fn_params', 'nav2_fn_params.yaml')
     # params_file = "/home/maaz/ws/src/nav_stack/global_planner/marvin_bot_description/config/smac/smac_params.yaml"
+    params_file = "/home/maaz/ws/src/nav_stack/global_planner/marvin_bot_description/config/custom_fn_params/cvtest2.yaml"
+ 
     nav2_directory = get_package_share_directory("nav2_bringup")
     rviz_config = os.path.join(nav2_directory, 'rviz', 'nav2_default_view.rviz')
     
