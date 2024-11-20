@@ -1,7 +1,3 @@
-/**:
-  ros__parameters:
-    use_sim_time: False
-
 cv_grid:
   ros__parameters:
     # Width and Height of the occupancy grid sent by CV in meters.
@@ -9,7 +5,6 @@ cv_grid:
     Width: 300
     # Resoultion of occupancy grid in square meters.
     Resolution: 0.05
-    use_sim_time: False
     grid_topic: "cv_view"
     output_topic: "cv_grid"
     # output_topic: "map"
@@ -25,11 +20,9 @@ cvStaticLayer:
     Width: 200
     # Resoultion of occupancy grid in square meters.
     Resolution: 0.05
-    use_sim_time: False
     grid_topic: "cv_view"
     output_topic: "cv_grid"
     # output_topic: "map"
-
 
 cv_grid_transform_publisher:
   ros__parameters:
@@ -38,7 +31,6 @@ cv_grid_transform_publisher:
     Width: 300
     # Resoultion of occupancy grid in square meters.
     Resolution: 0.05
-    use_sim_time: False
     debug: false
 
 cv_view_transform_publisher:
@@ -48,6 +40,5 @@ cv_view_transform_publisher:
     Width: 300
     # Resoultion of occupancy grid in square meters.
     Resolution: 0.05
-    use_sim_time: False
     show_debug_grid: false
     grid_topic: "cv_view"

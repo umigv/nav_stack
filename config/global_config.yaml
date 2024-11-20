@@ -1,0 +1,2 @@
+global_parameters:
+  use_sim_time: True
