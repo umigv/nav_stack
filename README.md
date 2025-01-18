@@ -3,6 +3,8 @@ Clone this repo into src directory.
 
 
 If your looking for the nav/sensors onboarding go here instead: https://github.com/umigv/nav-onboarding-2024
+# Follow the installtion here to get dependinces:
+https://docs.nav2.org/getting_started/index.html
 
 # Link to current projects 
 https://docs.google.com/document/d/10k_sBHWKxRfVZ4LImK5-UW2cgy3Yt_E14yCGoBRWqZw/edit?usp=sharing
