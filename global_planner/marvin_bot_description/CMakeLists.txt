@@ -30,6 +30,7 @@ install(
 # Install Python executables
 install(PROGRAMS
   scripts/hello.py
+  scripts/save_cv_frame.py
   scripts/nav_to_pose.py
   scripts/robot_navigator.py
   scripts/cancel_nav.py
