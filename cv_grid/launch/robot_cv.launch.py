@@ -34,11 +34,14 @@ def generate_launch_description():
             executable='drivable_area_test',
             name='drivable_area',
             output='screen',
-            parameters=[
-                {'use_sim_time' : True}
-            ],
             remappings=[
                 ('/occupancy_grid', "/cv_view")
             ]
+        ),
+        Node(
+            package='drivable_area',
+            executable='drivable_area_test_publisher',
+            name='drivable_area_test_publisher',
+            output='screen',
         )
     ])
