@@ -12,24 +12,28 @@ public:
 private:
     void mapCallback(const nav_msgs::msg::OccupancyGrid::SharedPtr msg) {
         auto inflated_grid = *msg;
-        inflateObstacles(inflated_grid, 3);
+        inflateObstacles(inflated_grid, 15, 0.75);
         pub_->publish(inflated_grid);
     }
 
-    void inflateObstacles(nav_msgs::msg::OccupancyGrid &grid, int radius) {
+    void inflateObstacles(nav_msgs::msg::OccupancyGrid &grid, int radius, double decrease_factor) {
         int width = grid.info.width;
         int height = grid.info.height;
+
         std::vector<int8_t> new_data = grid.data;
 
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
-                if (grid.data[y * width + x] > 50) {
+                if (grid.data[y * width + x] > 50) { 
                     for (int dy = -radius; dy <= radius; dy++) {
                         for (int dx = -radius; dx <= radius; dx++) {
+                            
+                            int real_radius = std::sqrt(std::abs(dx) + std::abs(dy));
+                            int new_value = int(grid.data[y * width + x])  * (std::pow(decrease_factor,real_radius)); 
                             int nx = x + dx;
                             int ny = y + dy;
                             if (nx >= 0 && ny >= 0 && nx < width && ny < height) {
-                                new_data[ny * width + nx] = std::max(new_data[ny * width + nx], int8_t(100));
+                                new_data[ny * width + nx] = std::max(new_data[ny * width + nx], int8_t(new_value));
                             }
                         }
                     }

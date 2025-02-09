@@ -18,41 +18,41 @@ public:
             std::bind(&OccupancyGridSaver::occupancy_grid_callback, this, std::placeholders::_1));
     }
 
-    double OccupancyGridSaver::get_angle_difference(double angle1, double angle2)
-    {
-        double diff = fmod(angle1 - angle2, 2 * M_PI);
-        if (diff > M_PI)
-        {
-            diff -= 2 * M_PI;
-        }
-        else if (diff < -M_PI)
-        {
-            diff += 2 * M_PI;
-        }
-        return diff;
-    }
+    // double OccupancyGridSaver::get_angle_difference(double angle1, double angle2)
+    // {
+    //     double diff = fmod(angle1 - angle2, 2 * M_PI);
+    //     if (diff > M_PI)
+    //     {
+    //         diff -= 2 * M_PI;
+    //     }
+    //     else if (diff < -M_PI)
+    //     {
+    //         diff += 2 * M_PI;
+    //     }
+    //     return diff;
+    // }
 
 
 private:
 
     void goal_finder(const nav_msgs::msg::OccupancyGrid::SharedPtr msg){
-        if (position.first == 0 && position.second == 0)  // Position is None
-        {
-            return;
-        }
+        // if (position.first == 0 && position.second == 0)  // Position is None
+        // {
+        //     return;
+        // }
         
         
-        std::pair<int, int> robot_pose = {23,77}
-        std::vector<int8_t> grid_data = msg->data;
-        std::pair<int, int> temp_best_pos = robot_pose; //TODO ask CV is this right
-        double best_pos_cost = -1000;
+        // std::pair<int, int> robot_pose = {23,77}
+        // std::vector<int8_t> grid_data = msg->data;
+        // std::pair<int, int> temp_best_pos = robot_pose; //TODO ask CV is this right
+        // double best_pos_cost = -1000;
 
-        std::set<std::pair<int, int>> frontier;
-	    frontier.insert(robot_pose);
-	    std::unordered_set<int> visted;
+        // std::set<std::pair<int, int>> frontier;
+	    // frontier.insert(robot_pose);
+	    // std::unordered_set<int> visted;
 
 
-        
+        return ;
 
 
 
