@@ -14,7 +14,7 @@ public:
         : Node("occupancy_grid_saver"), saved(false)
     {
         subscription_ = this->create_subscription<nav_msgs::msg::OccupancyGrid>(
-            "/cv_view", 10,
+            "/inflated_occ", 10,
             std::bind(&OccupancyGridSaver::occupancy_grid_callback, this, std::placeholders::_1));
     }
 
@@ -68,7 +68,7 @@ private:
             RCLCPP_INFO(this->get_logger(), "Received an OccupancyGrid message. Saving data...");
 
             // Save data to a file
-            std::ofstream file("occupancy_grid_data.txt");
+            std::ofstream file("inflated_pic_occupancy_grid_data.txt");
             if (file.is_open())
             {
                 file << "Width: " << msg->info.width << ", Height: " << msg->info.height << "\n";
