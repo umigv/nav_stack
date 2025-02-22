@@ -18,6 +18,7 @@ find_package(rosidl_default_generators REQUIRED)
 
 rosidl_generate_interfaces(${PROJECT_NAME}
   "srv/InflationGrid.srv"
+  "srv/GoalSelection.srv"
   DEPENDENCIES nav_msgs
 
  )

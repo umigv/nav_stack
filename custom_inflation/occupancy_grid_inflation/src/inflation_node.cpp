@@ -24,25 +24,37 @@ private:
         auto inflated_grid = *msg;
         inflateObstacles(inflated_grid, 15, 0.75);
         pub_->publish(inflated_grid);
+        std::cout << "got map update"    << std::endl;
         latest_grid_ = msg;
+
+
     }
+
+
 
     void handleInflationRequest(
         const std::shared_ptr<map_interfaces::srv::InflationGrid::Request> request,
         std::shared_ptr<map_interfaces::srv::InflationGrid::Response> response) 
-    {
+    {   
+        std::cout << "Received service request" << std::endl;
         if (!latest_grid_) {
             RCLCPP_WARN(this->get_logger(), "No occupancy grid received yet!");
+            response->occupancy_grid = nav_msgs::msg::OccupancyGrid();
+            response->robot_pose_x = -1;
+            response->robot_pose_y = -1;
             return;
         }
 
         auto inflated_grid = *latest_grid_;  
-        inflateObstacles(inflated_grid, 15, 0.75);  // Inflate obstacles
-        pub_->publish(inflated_grid);  // Publish inflated map
+        inflateObstacles(inflated_grid, 16, 0.80);  // Inflate obstacles
+        // pub_->publish(inflated_grid);  // Publish inflated map
 
         response->occupancy_grid = inflated_grid;
-        response->robot_pose_x = 50;  // Placeholder values
-        response->robot_pose_y = 50;
+        response->robot_pose_x = 55;  // Placeholder values
+        response->robot_pose_y = 78;
+        // response_promise.set_value(response);
+        std::cout << "Received service given" << std::endl;
+        return;
     }
 
 

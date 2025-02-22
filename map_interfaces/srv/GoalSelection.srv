@@ -1,0 +1,6 @@
+---
+nav_msgs/OccupancyGrid occupancy_grid
+int32 robot_pose_x
+int32 robot_pose_y
+int32 goal_x
+int32 goal_y
