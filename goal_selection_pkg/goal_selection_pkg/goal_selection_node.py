@@ -1,15 +1,14 @@
 import rclpy
 from rclpy.node import Node
-from map_interfaces.srv import InflationGrid  # Service to request occupancy grid
-import numpy as np
-import numpy as np
-import random
-import time
 from rclpy.action import ActionClient
-from nav_msgs.msg import OccupancyGrid
-from infra_interfaces.action import NavigateToGoal # IN THE CASE WHERE YOU GET AN ERROR, OPEN IN VSCODE, QUICK FIX 
+from rclpy.qos import QoSProfile, ReliabilityPolicy, HistoryPolicy
+from nav_msgs.msg import Odometry
+from map_interfaces.srv import InflationGrid
+from infra_interfaces.action import NavigateToGoal
 from infra_interfaces.msg import CellCoordinateMsg
 from geometry_msgs.msg import Pose
+import numpy as np
+import time
 from goal_selection_pkg.goal_selection_algo import *
 
 
@@ -19,6 +18,17 @@ class GoalSelectionService(Node):
     def __init__(self):
         print("Goal Selection Node INIT")
         super().__init__('goal_selection_node')
+
+        # Subscriber to /odom topic
+        qos_profile = QoSProfile(
+            reliability=ReliabilityPolicy.BEST_EFFORT,
+            history=HistoryPolicy.KEEP_LAST,
+            depth=10
+        )
+        self.odom_sub = self.create_subscription(Odometry, '/odom', self.odom_callback, qos_profile)
+        self.current_orientation = None
+
+
         # self.srv = self.create_service(GoalSelection, 'goal_selection_service', self.goal_selection_callback)
         self.cli = self.create_client(InflationGrid, 'inflation_grid_service')
         self.action_client = ActionClient(self, NavigateToGoal, 'navigate_to_goal')
@@ -31,6 +41,11 @@ class GoalSelectionService(Node):
         print("Goal Selection Node INIT Completed")
         # time.sleep(1)
         # print("make the request")
+
+    def odom_callback(self, msg):
+        self.current_orientation = msg.pose.pose.orientation
+        self.get_logger().info(f"Current orientation: {self.current_orientation}")
+
 
     def send_goal(self, starting_pose, new_goal, my_occgrid):
         """ Sends a goal to the NavigateToGoal action and waits for the result or feedback condition """
@@ -70,6 +85,7 @@ class GoalSelectionService(Node):
             self.get_logger().info("Robot is within 1.0 of starting position, stopping...")
             self.action_client.cancel_goal_async(self.goal_handle)
 
+    
     def send_request(self):
 
         return self.cli.call_async(self.req)
@@ -81,6 +97,7 @@ class GoalSelectionService(Node):
         robot_pose_x, robot_pose_y = grid_msg.robot_pose_x, grid_msg.robot_pose_y
         matrix = np.array(grid_msg.occupancy_grid.data).reshape((grid_msg.occupancy_grid.info.height, grid_msg.occupancy_grid.info.width))
         matrix = np.fliplr(matrix)
+        matrix = np.flipud(matrix)
         # start_bfs = (47, 78)
         # robot_pose = (55, 78)
         start_bfs_factor = 8 # we don't want to start the search from the robot's position (because its in unknown space) 
@@ -109,19 +126,19 @@ class GoalSelectionService(Node):
 
 
         # Directions: Vertical, Horizontal, Diagonal
-        # directions = [(-1, 0),   # Up
-        #               (-1, -1),  # Up-left (diagonal)
-        #               (-1, 1),   # Up-right (diagonal)
-        #               (0, -1),   # Left
-        #               (0, 1),
-        #               (1,0),
-        #               (1,1),
-        #               (1,-1)]  
+        directions = [(-1, 0),   # Up
+                      (-1, -1),  # Up-left (diagonal)
+                      (-1, 1),   # Up-right (diagonal)
+                      (0, -1),   # Left
+                      (0, 1),
+                      (1,0),
+                      (1,1),
+                      (1,-1)]  
 
-        directions = [(-1, -1),  # Up-left (diagonal)
-                    (-1, 1),
-                    (1,1),
-                    (1,-1)]   # Right
+        # directions = [(-1, -1),  # Up-left (diagonal)
+        #             (-1, 1),
+        #             (1,1),
+        #             (1,-1)]   # Right
 
 
         start_bfs = (robot_pose_x - start_bfs_factor, robot_pose_y)  # Example offset for BFS start()

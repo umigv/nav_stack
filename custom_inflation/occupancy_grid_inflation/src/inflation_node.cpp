@@ -6,7 +6,7 @@ class OccupancyGridInflation : public rclcpp::Node {
 public:
     OccupancyGridInflation() : Node("occupancy_grid_inflation") {
         sub_ = this->create_subscription<nav_msgs::msg::OccupancyGrid>(
-            "/test_occ", 10, std::bind(&OccupancyGridInflation::mapCallback, this, std::placeholders::_1));
+            "/occupancy_grid", 10, std::bind(&OccupancyGridInflation::mapCallback, this, std::placeholders::_1));
         pub_ = this->create_publisher<nav_msgs::msg::OccupancyGrid>("/inflated_occ", 10);
 
         srv_ = this->create_service<map_interfaces::srv::InflationGrid>(
@@ -22,9 +22,9 @@ private:
     nav_msgs::msg::OccupancyGrid::SharedPtr latest_grid_;  // Store the latest received grid
     void mapCallback(const nav_msgs::msg::OccupancyGrid::SharedPtr msg) {
         auto inflated_grid = *msg;
-        inflateObstacles(inflated_grid, 15, 0.75);
-        pub_->publish(inflated_grid);
-        std::cout << "got map update"    << std::endl;
+        // inflateObstacles(inflated_grid, 17, 0.75);
+        // pub_->publish(inflated_grid);
+        // std::cout << "got map update"    << std::endl;
         latest_grid_ = msg;
 
 
@@ -46,7 +46,7 @@ private:
         }
 
         auto inflated_grid = *latest_grid_;  
-        inflateObstacles(inflated_grid, 16, 0.80);  // Inflate obstacles
+        inflateObstacles(inflated_grid, 25, 0.80);  // Inflate obstacles
         // pub_->publish(inflated_grid);  // Publish inflated map
 
         response->occupancy_grid = inflated_grid;
@@ -74,7 +74,7 @@ private:
                             int new_value = int(grid.data[y * width + x])  * (std::pow(decrease_factor,real_radius)); 
                             int nx = x + dx;
                             int ny = y + dy;
-                            if (nx >= 0 && ny >= 0 && nx < width && ny < height) {
+                            if (nx >= 0 && ny >= 0 && nx < width && ny < height && grid.data[ny * width + nx] != -1) {
                                 new_data[ny * width + nx] = std::max(new_data[ny * width + nx], int8_t(new_value));
                             }
                         }

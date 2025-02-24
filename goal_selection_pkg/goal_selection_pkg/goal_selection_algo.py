@@ -52,7 +52,7 @@ def get_angle_to_goal_pentaly(canidate_node, real_robot_pos, orientation, desire
 #TODO combine first 3 args into a tuple
 
 def calculate_cost(real_rob_pose, orientation ,desire_heading, start, current, rows, cols, matrix, using_angle): 
-    edge_penalty_factor=.2
+    edge_penalty_factor=.025
     distance_weight=.5
     min_distance=2
     start_penalty_factor=100
@@ -67,8 +67,8 @@ def calculate_cost(real_rob_pose, orientation ,desire_heading, start, current, r
     y_current, x_current = current
     
     # Euclidean distance
-    euclidean_distance = (math.sqrt((x_current - x_start)**2 + (y_current - y_start)**2))
     # euclidean_distance = (math.sqrt((x_current - x_start)**2 + (y_current - y_start)**2))
+    euclidean_distance = (3 * ((y_current - y_start) ** 2))
 
     # Ensure the distance is not zero when current == start
     if euclidean_distance == 0:
@@ -111,7 +111,7 @@ def bfs_with_cost(robot_pose, matrix, start_bfs, directions, current_gps=0, goal
 
     min_cell_cost = float('inf')
     best_cell = None
-
+    visualize_cost_map(matrix)
     goal_cost_matrx = np.zeros_like(matrix, dtype=np.float64) + 100.0
 
     where_visted = np.zeros_like(matrix)
@@ -140,9 +140,13 @@ def bfs_with_cost(robot_pose, matrix, start_bfs, directions, current_gps=0, goal
                 visited.add((ny, nx))
     # visualize_cost_map(where_visted)
     # visualize_cost_map(goal_cost_matrx)
-    print(best_cell)
+    
+    print("BEST CELL", best_cell)
+    print("BEST COST", min_cell_cost)
+
     visualize_matrix_with_goal(goal_cost_matrx,robot_pose, best_cell) # fav print
     print("Number of cells visited: ", num_visted)
+    visualize_cost_map(goal_cost_matrx)
     # max_value = np.max(goal_cost_matrx)
     # min_value = np.min(goal_cost_matrx)
 
