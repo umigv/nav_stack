@@ -132,12 +132,18 @@ def bfs_with_cost(robot_pose, matrix, start_bfs, directions, current_gps=0, goal
         if cost < min_cell_cost: 
             min_cell_cost = cost
             best_cell = (y, x)
-        # Explore neighbors
+        # Explore neighbors 
         for dy, dx in directions:
             ny, nx = y + dy, x + dx
-            if 0 <= ny < rows and 0 <= nx < cols and matrix[ny,nx] >= 0 and matrix[ny, nx] < 100 and (ny, nx) not in visited:
-                queue.append((ny, nx))
-                visited.add((ny, nx))
+            notNearTop = 2 <= ny < rows 
+            notOutOfBounds = 0 <= ny < rows and 0 <= nx < cols
+            vaild_pixel = matrix[ny, nx] < 100 and matrix[ny, nx] > -1 
+            if notNearTop and notOutOfBounds and vaild_pixel and (ny, nx) not in visited:
+                # Check all 8 surrounding pixels
+                if all(0 <= ny + dy < rows and 0 <= nx + dx < cols and -1 < matrix[ny + dy, nx + dx] < 100 
+                    for dy in [-1, 0, 1] for dx in [-1, 0, 1] if (dy, dx) != (0, 0)):
+                    queue.append((ny, nx))
+                    visited.add((ny, nx))
     # visualize_cost_map(where_visted)
     # visualize_cost_map(goal_cost_matrx)
     
@@ -146,7 +152,7 @@ def bfs_with_cost(robot_pose, matrix, start_bfs, directions, current_gps=0, goal
 
     visualize_matrix_with_goal(goal_cost_matrx,robot_pose, best_cell) # fav print
     print("Number of cells visited: ", num_visted)
-    visualize_cost_map(goal_cost_matrx)
+    visualize_cost_map(where_visted)
     # max_value = np.max(goal_cost_matrx)
     # min_value = np.min(goal_cost_matrx)
 

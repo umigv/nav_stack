@@ -96,7 +96,6 @@ class GoalSelectionService(Node):
 
         robot_pose_x, robot_pose_y = grid_msg.robot_pose_x, grid_msg.robot_pose_y
         matrix = np.array(grid_msg.occupancy_grid.data).reshape((grid_msg.occupancy_grid.info.height, grid_msg.occupancy_grid.info.width))
-        matrix = np.fliplr(matrix)
         matrix = np.flipud(matrix)
         # start_bfs = (47, 78)
         # robot_pose = (55, 78)
@@ -118,10 +117,9 @@ class GoalSelectionService(Node):
         # if you think about it, the robot_pose is in unknown space from CV's perspective
         # So if we bfs from the robot_pose, the algo won't work 
         # (you won't add any neighbors to the queue in the first iteration)
-        # Buuuuuut if we do angle calculations from the start_bfs, we could get skewed results
-        # So now you need 
+        # Buuuuuut if we do angle calculations from the start_bfs, we could get skewed results 
         # Sincelry,
-        # Maaz , self documenting code since 2004
+        # Maaz 
 
 
 
@@ -144,12 +142,7 @@ class GoalSelectionService(Node):
         start_bfs = (robot_pose_x - start_bfs_factor, robot_pose_y)  # Example offset for BFS start()
         min_cost_cell, min_cost  = bfs_with_cost((robot_pose_x, robot_pose_y), matrix, start_bfs, directions, using_angle=node_using_angle)
         print("Cell with Minimum Cost: ", min_cost_cell, "Minimum Cost: ", min_cost)
-        # response.occupancy_grid = grid_msg.occupancy_grid
-        # response.robot_pose_x = robot_pose_x
-        # response.robot_pose_y = robot_pose_y
-        # response.goal_x = min_cost_cell[1]
-        # response.goal_y = min_cost_cell[0]
-        
+
         return (robot_pose_x, robot_pose_y), min_cost_cell, grid_msg.occupancy_grid
 
 
@@ -181,7 +174,6 @@ def main():
             
                 time.sleep(3)  
 
-            print("LEFT IF LOOP")
             time.sleep(10)
     except KeyboardInterrupt:
         print("Shutting down...")
