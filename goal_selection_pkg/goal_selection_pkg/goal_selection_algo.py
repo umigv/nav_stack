@@ -32,7 +32,7 @@ def find_desired_heading( cur_gps, goal_gps, orientation):
     # desired_heading_global = math.atan2(west_m, north_m)
     desired_heading_x = math.cos(orientation) * west_m + math.sin(orientation) * north_m
     desired_heading_y = -math.sin(orientation) * west_m + math.cos(orientation) * north_m
-    desired_heading_global = math.atan2(desired_heading_y, desired_heading_x) - math.pi
+    desired_heading_global = math.atan2(desired_heading_y, desired_heading_x) # - math.pi
     return desired_heading_global
 
 def get_angle_to_goal_pentaly(canidate_node, real_robot_pos, orientation, desired_heading_global):
@@ -58,6 +58,13 @@ def calculate_cost(real_rob_pose, orientation ,desire_heading, start, current, r
     start_penalty_factor=100
     angle_pen_weight = 0.5
     obs_factor = 1.5
+
+    edge_penalty_factor=0
+    distance_weight=0
+    min_distance=2
+    start_penalty_factor=100
+    angle_pen_weight = 1000
+    obs_factor = 1
     
     angle_pen = 0
     if using_angle:
@@ -104,6 +111,12 @@ def bfs_with_cost(robot_pose, matrix, start_bfs, directions, current_gps=0, goal
     goal_gps = (42.6679277, -83.2193276) # TODO get this from publisher
     robot_orientation = math.radians(270) #TODO get this from sensors
 
+    # upper floor test  
+    current_gps = (42.29464338650299,-83.70948627128159) # TODO get this from sensors
+    goal_gps = (42.29464338650299,-83.70939437630648) # TODO get this from publisher
+    robot_orientation = math.radians(69) #TODO get this from sensors
+    using_angle = True
+
     rows, cols = matrix.shape
     visited = set()
     queue = deque([start_bfs])
@@ -140,10 +153,10 @@ def bfs_with_cost(robot_pose, matrix, start_bfs, directions, current_gps=0, goal
             vaild_pixel = matrix[ny, nx] < 100 and matrix[ny, nx] > -1 
             if notNearTop and notOutOfBounds and vaild_pixel and (ny, nx) not in visited:
                 # Check all 8 surrounding pixels
-                if all(0 <= ny + dy < rows and 0 <= nx + dx < cols and -1 < matrix[ny + dy, nx + dx] < 100 
-                    for dy in [-1, 0, 1] for dx in [-1, 0, 1] if (dy, dx) != (0, 0)):
-                    queue.append((ny, nx))
-                    visited.add((ny, nx))
+                # if all(0 <= ny + dy < rows and 0 <= nx + dx < cols and -1 < matrix[ny + dy, nx + dx] < 100 
+                #     for dy in [-1, 0, 1] for dx in [-1, 0, 1] if (dy, dx) != (0, 0)):
+                queue.append((ny, nx))
+                visited.add((ny, nx))
     # visualize_cost_map(where_visted)
     # visualize_cost_map(goal_cost_matrx)
     
