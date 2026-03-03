@@ -34,30 +34,39 @@ If a higher-priority source stops publishing, control falls back to the next sou
 
 
 ## sensors.launch.py
-Launches hardware sensor drivers and static TF transforms.
+Launches sensor drivers and static TF transforms. Supports a `simulation` mode that replaces real hardware with 
+simulators.
 
 ```
-ros2 launch nav_bringup sensors.launch.py
+ros2 launch nav_bringup sensors.launch.py [simulation:=true]
 ```
 
-### Published Topics
-- `imu/raw` (`sensor_msgs/Imu`) - Raw IMU data
-- `gps/raw` (`sensor_msgs/NavSatFix`) - Raw GPS fix
+### Parameters
+- `simulation`: Launch sensor and occupancy grid simulators instead of real hardware drivers, default `false`
+
+### Published Topics (Hardware)
+- `imu/raw` (`sensor_msgs/Imu`) - Raw IMU data from VectorNav
+- `gps/raw` (`sensor_msgs/NavSatFix`) - Raw GPS fix from GPS receiver
+
+### Published Topics (Simulation)
+- `imu/raw` (`sensor_msgs/Imu`) - Simulated IMU with Gaussian noise
+- `gps/raw` (`sensor_msgs/NavSatFix`) - Simulated GPS with noise and OU drift
+- `enc_vel/raw` (`geometry_msgs/TwistWithCovarianceStamped`) - Simulated encoder velocity with noise and OU drift
+- `odom/ground_truth` (`nav_msgs/Odometry`) - Noiseless true pose in `map` frame
+(`child_frame_id = base_link_ground_truth`)
 
 ### Broadcasted TF Frames
 - `base_link` → `imu_link`
 - `base_link` → `gps_link`
+- `map` → `base_link_ground_truth` (simulation mode only) - Noiseless true robot pose
 
 
 ## navigation.launch.py
 Launches the navigation stack.
 
 ```
-ros2 launch nav_bringup navigation.launch.py [simulation:=true]
+ros2 launch nav_bringup navigation.launch.py
 ```
-
-### Parameters
-- `simulation`: Launch point simulator instead of real sensors, default `false`
 
 
 ## teleop.launch.py
