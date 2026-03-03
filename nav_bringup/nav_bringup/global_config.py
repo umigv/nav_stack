@@ -5,3 +5,12 @@ FRAMES = {
     "odom_frame": "odom",
     "map_frame": "map",
 }
+
+# GPS origin in WGS84 degrees. All map-frame coordinates are relative to this point.
+GPS_ORIGIN = {
+    "latitude": 42.294621,
+    "longitude": -83.708112,
+}
+
+# Magnetic declination at the deployment site (radians, west-negative).
+MAGNETIC_DECLINATION_RADIANS = -0.1269
