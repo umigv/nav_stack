@@ -12,7 +12,6 @@
   <exec_depend>vectornav</exec_depend>
   <exec_depend>gps_publisher</exec_depend>
   <exec_depend>tf2_ros</exec_depend>
-  <exec_depend>point_simulator</exec_depend>
   <exec_depend>goal_selection</exec_depend>
   <exec_depend>occupancy_grid_transform</exec_depend>
   <exec_depend>path_tracking</exec_depend>
