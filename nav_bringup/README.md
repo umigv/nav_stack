@@ -63,6 +63,51 @@ ros2 launch nav_bringup sensors.launch.py [simulation:=true]
 - `map` → `base_link_ground_truth` (simulation mode only) - Noiseless true robot pose
 
 
+## gps_origin_calculator.launch.py
+One-shot utility that collects GPS samples and prints the median lat/lon datum. Run this before localization to
+determine the value for `GPS_ORIGIN` in `global_config.py`. The node shuts itself down automatically when enough
+samples are collected.
+
+```
+ros2 launch nav_bringup gps_origin_calculator.launch.py
+```
+
+### Subscribed Topics
+- `gps/raw` (`sensor_msgs/NavSatFix`) - Raw GPS fix
+
+### Workflow
+1. Run this launch file with the robot stationary
+2. Copy the printed `lat=..., lon=...` values into `GPS_ORIGIN` in `nav_bringup/global_config.py`
+3. Launch localization normally
+
+
+## localization.launch.py
+Launches localization
+
+```
+ros2 launch nav_bringup localization.launch.py [use_enc_odom:=true]
+```
+
+### Parameters
+- `use_enc_odom`: Use encoder odometry integration instead of EKF for local odometry, default `false`
+
+### Subscribed Topics
+- `imu/raw` (`sensor_msgs/Imu`) - Raw IMU data
+- `gps/raw` (`sensor_msgs/NavSatFix`) - Raw GPS fix
+- `enc_vel/raw` (`geometry_msgs/TwistWithCovarianceStamped`) - Encoder velocity
+
+### Published Topics
+- `odom/local` (`nav_msgs/Odometry`) - Local odometry in the odom frame
+- `odom/global` (`nav_msgs/Odometry`) - Global odometry in the map frame
+
+### Broadcasted TF Frames
+- `odom` → `base_link`
+- `map` → `odom`
+
+### Services
+- `fromLL` (`robot_localization/FromLL`) - Converts GPS latitude/longitude to a map-frame point
+
+
 ## navigation.launch.py
 Launches the navigation stack.
 
