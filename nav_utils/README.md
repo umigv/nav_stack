@@ -56,16 +56,44 @@ class Planner(Node):
 ```
 
 ## nav_utils.geometry
-2D geometry helpers for ROS2 message types.
+2D geometry types and helpers for ROS 2.
 
-| Function | Description |
+### `Rotation2d`
+Wraps a yaw angle in radians. Angle is automatically wrapped to `[-π, π]` and `cos`/`sin` are cached on construction.
+
+| Method | Description |
 |---|---|
-| `point_is_close(a, b)` | True if two points are within 1cm on all axes |
-| `distance(a, b)` | 2D Euclidean distance between two points (z ignored) |
-| `rotate_by_yaw(point, angle)` | Rotate a point about +Z by an angle in radians |
-| `get_yaw_radians_from_quaternion(q)` | Extract yaw in radians from a ROS quaternion |
-| `make_quaternion_from_yaw(yaw)` | Construct a pure-yaw ROS quaternion |
-| `make_pose(x, y, yaw)` | Construct a 2D `Pose` from position and heading |
+| `rotate_by(rotation)` on `Point2d` | Rotate a point forward by this rotation |
+| `__neg__` | Negate the rotation |
+| `__add__`, `__sub__` | Compose rotations by adding/subtracting angles |
+| `__mul__(scalar)`, `__rmul__(scalar)`, `__truediv__(scalar)` | Scale the angle by a scalar |
+| `cos`, `sin` | Cached cosine and sine of the angle |
+| `to_ros()` | Convert to `geometry_msgs/Quaternion` |
+| `from_ros(q)` | Construct from a `geometry_msgs/Quaternion` |
+
+### `Point2d`
+2D point with arithmetic operators and ROS interop.
+
+| Method | Description |
+|---|---|
+| `__add__`, `__sub__` | Point addition and subtraction |
+| `__mul__`, `__rmul__`, `__truediv__` | Scalar multiplication and division |
+| `__neg__` | Negate both components |
+| `rotate_by(rotation)` | Rotate by a `Rotation2d` |
+| `mag()` | Euclidean magnitude |
+| `distance(other)` | Distance to another `Point2d` |
+| `to_ros()` | Convert to `geometry_msgs/Point` |
+| `from_ros(point)` | Construct from a `geometry_msgs/Point` |
+
+### `Pose2d`
+2D pose (position + rotation) with world/local frame transforms and ROS interop.
+
+| Method | Description |
+|---|---|
+| `to_local(world)` | Transform a world-frame `Point2d` into this pose's local frame |
+| `from_local(local)` | Transform a local-frame `Point2d` back into world frame |
+| `to_ros()` | Convert to `geometry_msgs/Pose` |
+| `from_ros(pose)` | Construct from a `geometry_msgs/Pose` |
 
 ## nav_utils.world_occupancy_grid
 This class provides a world-coordinate view of a discrete, robot-centric occupancy grid. 

@@ -8,7 +8,7 @@ from typing import ClassVar
 from geometry_msgs.msg import Point
 from nav_msgs.msg import OccupancyGrid
 
-from nav_utils.geometry import get_yaw_radians_from_quaternion, rotate_by_yaw
+from nav_utils.geometry import Point2d, Pose2d
 
 
 @dataclass(frozen=True)
@@ -59,11 +59,11 @@ class WorldOccupancyGrid:
 
     Attributes:
         _occupancy_grid: The occupancy grid.
-        _yaw: Cached yaw (radians about +Z) extracted from `_pose.orientation`.
+        _origin: Pose2d representing the origin of the occupancy grid in world coordinates.
     """
 
     _occupancy_grid: OccupancyGrid
-    _yaw: float
+    _origin: Pose2d
 
     def __init__(self, grid: OccupancyGrid) -> None:
         """
@@ -78,7 +78,7 @@ class WorldOccupancyGrid:
             grid: Occupancy grid message.
         """
         self._occupancy_grid = grid
-        self._yaw = get_yaw_radians_from_quaternion(self._occupancy_grid.info.origin.orientation)
+        self._origin = Pose2d.from_ros(self._occupancy_grid.info.origin)
 
     def state(self, point: Point) -> CellState:
         """
@@ -208,18 +208,8 @@ class WorldOccupancyGrid:
         Returns:
             (grid_x, grid_y) integer indices corresponding to the grid cell containing the point.
         """
-        grid = rotate_by_yaw(
-            Point(
-                x=world.x - self._occupancy_grid.info.origin.position.x,
-                y=world.y - self._occupancy_grid.info.origin.position.y,
-                z=0.0,
-            ),
-            -self._yaw,
-        )
-
-        return math.floor(grid.x / self._occupancy_grid.info.resolution), math.floor(
-            grid.y / self._occupancy_grid.info.resolution
-        )
+        grid = self._origin.to_local(Point2d.from_ros(world)) / self._occupancy_grid.info.resolution
+        return math.floor(grid.x), math.floor(grid.y)
 
     def _grid_index_center_to_world(self, grid_x: int, grid_y: int) -> Point:
         """
@@ -235,16 +225,5 @@ class WorldOccupancyGrid:
         Returns:
             World-coordinate point at the center of the specified grid cell.
         """
-        grid = Point(
-            x=(grid_x + 0.5) * self._occupancy_grid.info.resolution,
-            y=(grid_y + 0.5) * self._occupancy_grid.info.resolution,
-            z=0.0,
-        )
-
-        rotated = rotate_by_yaw(grid, self._yaw)
-
-        return Point(
-            x=rotated.x + self._occupancy_grid.info.origin.position.x,
-            y=rotated.y + self._occupancy_grid.info.origin.position.y,
-            z=0.0,
-        )
+        grid = Point2d(x=grid_x + 0.5, y=grid_y + 0.5) * self._occupancy_grid.info.resolution
+        return self._origin.from_local(grid).to_ros()

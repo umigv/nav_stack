@@ -20,6 +20,57 @@ WS_ROOT="$(cd -- "${REPO_ROOT}/../.." && pwd)"
 echo "==> Repo root:      $REPO_ROOT"
 echo "==> Workspace root: $WS_ROOT"
 
+ONLY_PKGS=()
+IGNORE_PKGS=()
+
+usage() {
+  cat <<EOF
+Usage: $(basename "$0") [--only pkg1 pkg2 ...] [--ignore pkg1 pkg2 ...]
+
+Options:
+  --only     Test only the specified packages
+  --ignore   Test all discovered packages except the specified ones
+
+Examples:
+  $0
+  $0 --only nav_utils path_tracking
+  $0 --ignore sensor_simulator
+EOF
+  exit 1
+}
+
+# ---- parse args ----
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --only)
+      shift
+      while [[ $# -gt 0 && "$1" != --* ]]; do
+        ONLY_PKGS+=("$1")
+        shift
+      done
+      ;;
+    --ignore)
+      shift
+      while [[ $# -gt 0 && "$1" != --* ]]; do
+        IGNORE_PKGS+=("$1")
+        shift
+      done
+      ;;
+    -h|--help)
+      usage
+      ;;
+    *)
+      echo "Unknown argument: $1"
+      usage
+      ;;
+  esac
+done
+
+if [[ "${#ONLY_PKGS[@]}" -gt 0 && "${#IGNORE_PKGS[@]}" -gt 0 ]]; then
+  echo "ERROR: --only and --ignore are mutually exclusive"
+  exit 1
+fi
+
 cd "$WS_ROOT"
 
 if [[ -f "$WS_ROOT/install/setup.bash" ]]; then
@@ -33,14 +84,38 @@ else
 fi
 
 echo "==> Discovering packages under repo root"
-mapfile -t PKGS < <(colcon list --base-paths "$REPO_ROOT" --names-only)
+mapfile -t ALL_PKGS < <(colcon list --base-paths "$REPO_ROOT" --names-only)
 
-if [[ "${#PKGS[@]}" -eq 0 ]]; then
+if [[ "${#ALL_PKGS[@]}" -eq 0 ]]; then
   echo "ERROR: No colcon packages found under $REPO_ROOT"
   exit 1
 fi
 
-echo "==> colcon test (${#PKGS[@]} packages from repo)"
+# ---- filter packages ----
+if [[ "${#ONLY_PKGS[@]}" -gt 0 ]]; then
+  PKGS=("${ONLY_PKGS[@]}")
+elif [[ "${#IGNORE_PKGS[@]}" -gt 0 ]]; then
+  PKGS=()
+  for pkg in "${ALL_PKGS[@]}"; do
+    skip=false
+    for ignore in "${IGNORE_PKGS[@]}"; do
+      if [[ "$pkg" == "$ignore" ]]; then
+        skip=true
+        break
+      fi
+    done
+    $skip || PKGS+=("$pkg")
+  done
+else
+  PKGS=("${ALL_PKGS[@]}")
+fi
+
+if [[ "${#PKGS[@]}" -eq 0 ]]; then
+  echo "ERROR: No packages left to test after filtering"
+  exit 1
+fi
+
+echo "==> colcon test (${#PKGS[@]} packages)"
 colcon test --packages-select "${PKGS[@]}" --event-handlers console_direct+
 
 echo "==> colcon test-result (verbose)"

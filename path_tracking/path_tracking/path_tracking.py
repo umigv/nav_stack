@@ -1,53 +1,18 @@
 from __future__ import annotations
 
 import math
-from dataclasses import dataclass
 
 import nav_utils.config
 import numpy as np
 import rclpy
-from geometry_msgs.msg import Point, Pose, PoseStamped, Quaternion, Twist, Vector3
+from geometry_msgs.msg import Pose, PoseStamped, Quaternion, Twist, Vector3
 from nav_msgs.msg import Odometry, Path
-from nav_utils.geometry import get_yaw_radians_from_quaternion
+from nav_utils.geometry import Point2d, Pose2d
 from rclpy.node import Node
 from scipy.interpolate import splev, splprep
 from std_msgs.msg import Header
 
 from .path_tracking_config import PathTrackingConfig
-
-
-@dataclass
-class Point2d:
-    x: float
-    y: float
-
-    def __add__(self, other: Point2d) -> Point2d:
-        return Point2d(x=self.x + other.x, y=self.y + other.y)
-
-    def __sub__(self, other: Point2d) -> Point2d:
-        return Point2d(x=self.x - other.x, y=self.y - other.y)
-
-    def __mul__(self, scalar: float) -> Point2d:
-        return Point2d(x=self.x * scalar, y=self.y * scalar)
-
-    def rotate_by(self, angle: float) -> Point2d:
-        c, s = math.cos(angle), math.sin(angle)
-        return Point2d(x=c * self.x - s * self.y, y=s * self.x + c * self.y)
-
-    def mag(self) -> float:
-        return math.hypot(self.x, self.y)
-
-    def to_ros(self) -> Point:
-        return Point(x=self.x, y=self.y, z=0.0)
-
-
-@dataclass
-class Pose2d:
-    point: Point2d
-    yaw: float
-
-    def to_local(self, point: Point2d) -> Point2d:
-        return (point - self.point).rotate_by(-self.yaw)
 
 
 class PathTracking(Node):
@@ -79,9 +44,7 @@ class PathTracking(Node):
             )
             return
 
-        position = msg.pose.pose.position
-        orientation = msg.pose.pose.orientation
-        self.pose = Pose2d(point=Point2d(x=position.x, y=position.y), yaw=get_yaw_radians_from_quaternion(orientation))
+        self.pose = Pose2d.from_ros(msg.pose.pose)
         self.current_speed = math.hypot(msg.twist.twist.linear.x, msg.twist.twist.linear.y)
 
     def path_callback(self, path_msg: Path) -> None:
