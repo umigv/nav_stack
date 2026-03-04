@@ -1,0 +1,87 @@
+# EKF and navsat_transform parameter reference:
+# https://github.com/cra-ros-pkg/robot_localization/tree/humble-devel/params
+
+ekf_local:
+  ros__parameters:
+    frequency: 100.0
+    sensor_timeout: 0.1                   # If a sensor times out, the node will use kinematics to predict readings
+    two_d_mode: true                      # We assume that the robot moves in 2d
+    publish_tf: true                      # Publishes the odom -> base_link tf
+    print_diagnostics: true               # See /diagnostics
+    debug: false                          # Writes (LOTS of) debug info to a file
+
+    twist0: enc_vel/raw
+    twist0_config: [false, false, false,  # x, y, z
+                    false, false, false,  # roll, pitch, yaw
+                    true,  true,  false,  # vx (fused), vy (fused), vz
+                    false, false, true,   # vroll, vpitch, vyaw (fused)
+                    false, false, false]  # accx, accy, accz
+    twist0_queue_size: 10
+    twist0_nodelay: true                  # Process immediately for lower latency
+    twist0_differential: false            # Setting differential for twist measurements have no effect
+    twist0_relative: false                # Velocity is not relative to initial sensor reading
+
+    imu0: imu/raw
+    imu0_config: [false, false, false,    # x, y, z
+                  false, false, false,    # roll, pitch, yaw (yaw is false so that odom is local to start position)
+                  false, false, false,    # vx, vy, vz 
+                  false, false, true,     # vroll, vpitch, vyaw (fused)
+                  false, false, false]    # accx, accy, accz
+    imu0_queue_size: 10
+    imu0_nodelay: true                    # Process immediately for lower latency
+    imu0_differential: false              # Setting differential for twist measurements have no effect
+    imu0_relative: false                  # Velocity is not relative to initial sensor reading
+
+navsat_transform:
+  ros__parameters:
+    frequency: 10.0
+    delay: 0.0
+    yaw_offset: 0.0                       # The IMU should output in true ENU
+    magnetic_declination_radians: 0.0     # The IMU should output in true ENU
+    zero_altitude: true                   # We assume the robot moves in 2d
+    broadcast_utm_transform: false
+    publish_filtered_gps: false
+    use_odometry_yaw: false               # We pass the IMU directly, so we don't need to extract yaw from odom
+    wait_for_datum: true                  # Really means "use provided datum". We provide datum in config
+
+ekf_global:
+  ros__parameters:
+    frequency: 30.0
+    sensor_timeout: 0.5                   # If a sensor times out, the node will use kinematics to predict readings
+    two_d_mode: true                      # We assume that the robot moves in 2d
+    publish_tf: true                      # Publishes the map -> odom tf
+    print_diagnostics: true               # See /diagnostics
+    debug: false                          # Writes (LOTS of) debug info to a file
+
+    twist0: enc_vel/raw
+    twist0_config: [false, false, false,  # x, y, z
+                    false, false, false,  # roll, pitch, yaw
+                    true,  true,  false,  # vx (fused), vy (fused), vz
+                    false, false, true,   # vroll, vpitch, vyaw (fused)
+                    false, false, false]  # accx, accy, accz
+    twist0_queue_size: 10
+    twist0_nodelay: true                  # Process immediately for lower latency
+    twist0_differential: false            # Setting differential for twist measurements have no effect
+    twist0_relative: false                # Velocity is not relative to initial sensor reading
+
+    imu0: imu/raw
+    imu0_config: [false, false, false,    # x, y, z
+                  false, false, true,     # roll, pitch, yaw (fused)
+                  false, false, false,    # vx, vy, vz
+                  false, false, true,     # vroll, vpitch, vyaw (fused)
+                  false, false, false]    # accx, accy, accz
+    imu0_queue_size: 10
+    imu0_nodelay: true                    # Process immediately for lower latency
+    imu0_differential: false              # Yaw is used for absolute orientation
+    imu0_relative: false                  # Velocity is not relative to initial sensor reading
+
+    odom0: odom/gps
+    odom0_config: [true,  true,  false,   # x (fused), y (fused), z
+                   false, false, false,   # roll, pitch, yaw
+                   false, false, false,   # vx, vy, vz
+                   false, false, false,   # vroll, vpitch, vyaw
+                   false, false, false]   # accx, accy, accz
+    odom0_queue_size: 10
+    odom0_nodelay: true                   # Process immediately for lower latency
+    odom0_differential: false             # The x / y reading is absolute
+    odom0_relative: false                 # The x / y reading is absolute to map origin

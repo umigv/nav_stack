@@ -16,8 +16,6 @@ sensor_simulator:
 
     gps:
       # u-blox F9P (no RTK corrections), open-sky parking lot
-      origin_latitude_deg: 0.0       # REQUIRED: WGS84 latitude of map origin
-      origin_longitude_deg: 0.0      # REQUIRED: WGS84 longitude of map origin
       noise_std_m: 0.3               # per-fix white noise
       drift_std_m: 0.5               # OU drift (multipath, ionospheric) - total RMS ~0.58 m
-      drift_time_constant_s: 120.0    # GPS drift varies over ~1 min timescales
+      drift_time_constant_s: 120.0   # GPS drift varies over ~1 min timescales

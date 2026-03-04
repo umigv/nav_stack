@@ -66,6 +66,33 @@ ros2 launch nav_bringup sensors.launch.py [simulation:=true]
 - `map` → `base_link_ground_truth` (simulation mode only) - Noiseless true robot pose
 
 
+## localization.launch.py
+Launches localization
+
+```
+ros2 launch nav_bringup localization.launch.py [use_enc_odom:=true]
+```
+
+### Parameters
+- `use_enc_odom`: Use encoder odometry integration instead of EKF for local odometry, default `false`
+
+### Subscribed Topics
+- `imu/raw` (`sensor_msgs/Imu`) - Raw IMU data
+- `gps/raw` (`sensor_msgs/NavSatFix`) - Raw GPS fix
+- `enc_vel/raw` (`geometry_msgs/TwistWithCovarianceStamped`) - Encoder velocity
+
+### Published Topics
+- `odom/local` (`nav_msgs/Odometry`) - Local odometry in the odom frame
+- `odom/global` (`nav_msgs/Odometry`) - Global odometry in the map frame
+
+### Broadcasted TF Frames
+- `odom` → `base_link`
+- `map` → `odom`
+
+### Services
+- `fromLL` (`robot_localization/FromLL`) - Converts GPS latitude/longitude to a map-frame point
+
+
 ## navigation.launch.py
 Launches the navigation stack.
 
