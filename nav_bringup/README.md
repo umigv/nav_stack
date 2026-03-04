@@ -57,6 +57,8 @@ ros2 launch nav_bringup sensors.launch.py [simulation:=true]
 - `enc_vel/raw` (`geometry_msgs/TwistWithCovarianceStamped`) - Simulated encoder velocity with noise and OU drift
 - `odom/ground_truth` (`nav_msgs/Odometry`) - Noiseless true pose in `map` frame
 (`child_frame_id = base_link_ground_truth`)
+- `occ_grid` (`nav_msgs/OccupancyGrid`) - Robot-centric occupancy grid from static obstacle map
+- `occupancy_grid/ground_truth` (`nav_msgs/OccupancyGrid`) - Full static obstacle map (latched)
 
 ### Broadcasted TF Frames
 - `base_link` → `imu_link`
