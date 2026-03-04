@@ -15,6 +15,7 @@ def generate_launch_description() -> LaunchDescription:
     gps_params = PathJoinSubstitution([bringup_share, "config", "gps.yaml"])
     sensor_simulator_params = PathJoinSubstitution([bringup_share, "config", "sensor_simulator.yaml"])
     simulation = LaunchConfiguration("simulation")
+    map_file = PathJoinSubstitution([bringup_share, "config", "map.json"])
 
     vectornav = Node(
         package="vectornav",
@@ -74,6 +75,26 @@ def generate_launch_description() -> LaunchDescription:
         ],
     )
 
+    occupancy_grid_simulator = Node(
+        package="occupancy_grid_simulator",
+        executable="occupancy_grid_simulator",
+        name="occupancy_grid_simulator",
+        output="screen",
+        condition=IfCondition(simulation),
+        parameters=[
+            {
+                "map_file_path": map_file,
+                "map_frame_id": FRAMES["map_frame"],
+                "ground_truth_base_frame_id": FRAMES["ground_truth_base_frame"],
+            }
+        ],
+        remappings=[
+            ("odom", "odom/ground_truth"),
+            ("occupancy_grid", "occ_grid"),
+            ("occupancy_grid/ground_truth", "occupancy_grid/ground_truth"),
+        ],
+    )
+
     # fmt: off
     tf_base_to_imu = Node(
         package="tf2_ros",
@@ -122,6 +143,7 @@ def generate_launch_description() -> LaunchDescription:
             vectornav,
             gps,
             sensor_simulator,
+            occupancy_grid_simulator,
             tf_base_to_imu,
             tf_base_to_gps,
         ]
