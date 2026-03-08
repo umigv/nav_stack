@@ -42,6 +42,7 @@ python3 -m pip install -U pip
 python3 -m pip install -e "$REPO_ROOT[tooling]"
 
 log "Installing ROS deps via rosdep"
+rosdep update
 rosdep install --from-paths "$REPO_ROOT" --ignore-src -r -y
 
 log "Adding $USER to dialout group (USB/serial device access)"
