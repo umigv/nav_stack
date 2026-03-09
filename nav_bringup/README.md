@@ -4,11 +4,14 @@ in `nav_bringup/global_config.py`.
 
 
 ## core.launch.py
-Launches core functionalities used across the rest of the launch files
+Launches core functionalities used across the rest of the launch files.
 
 ```
 ros2 launch nav_bringup core.launch.py
 ```
+
+### Foxglove Bridge
+Foxglove bridge is always started on `ws://localhost:8765`. Connect Foxglove Studio to this address to visualize the robot.
 
 ### Subscribed Topics
 - `teleop_cmd_vel` (`geometry_msgs/Twist`) - Joystick velocity
