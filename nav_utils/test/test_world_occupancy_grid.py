@@ -2,8 +2,12 @@ import math
 
 from geometry_msgs.msg import Point
 from nav_msgs.msg import MapMetaData, OccupancyGrid
-from nav_utils.geometry import make_pose, point_is_close
+from nav_utils.geometry import Point2d, Pose2d, Rotation2d
 from nav_utils.world_occupancy_grid import WorldOccupancyGrid
+
+
+def point_is_close(a: Point, b: Point, tol: float = 0.001) -> bool:
+    return abs(a.x - b.x) < tol and abs(a.y - b.y) < tol and abs(a.z - b.z) < tol
 
 
 def make_occupancy_grid() -> OccupancyGrid:
@@ -12,7 +16,7 @@ def make_occupancy_grid() -> OccupancyGrid:
             resolution=0.5,
             width=6,
             height=6,
-            origin=make_pose(x=2.269615242270663, y=1.0009618943233418, yaw=math.pi / 6),
+            origin=Pose2d(Point2d(x=2.269615242270663, y=1.0009618943233418), Rotation2d(math.pi / 6)).to_ros(),
         ),
         data=[0] * 36,
     )
@@ -28,8 +32,8 @@ def test_world_to_grid_index():
 def test_grid_index_center_to_world():
     grid = WorldOccupancyGrid(make_occupancy_grid())
 
-    assert point_is_close(grid._grid_index_center_to_world(2, 0), Point(x=3.2271, y=1.8425, z=0.0))
-    assert point_is_close(grid._grid_index_center_to_world(2, -1), Point(x=3.4771, y=1.4095, z=0.0))
+    assert point_is_close(grid._grid_index_center_to_world(2, 0, Point), Point(x=3.2271, y=1.8425, z=0.0))
+    assert point_is_close(grid._grid_index_center_to_world(2, -1, Point), Point(x=3.4771, y=1.4095, z=0.0))
 
 
 def test_state():
@@ -80,12 +84,14 @@ def test_neighbors():
 def test_all_in_bound():
     grid = WorldOccupancyGrid(
         OccupancyGrid(
-            info=MapMetaData(resolution=2.0, width=2, height=2, origin=make_pose(x=0.0, y=0.0, yaw=0.0)),
+            info=MapMetaData(
+                resolution=2.0, width=2, height=2, origin=Pose2d(Point2d(x=0.0, y=0.0), Rotation2d(0.0)).to_ros()
+            ),
             data=[0] * 4,
         )
     )
 
-    points = list(grid.in_bound_points())
+    points = list(grid.in_bound_points(Point))
     expected = [
         Point(x=1.0, y=1.0, z=0.0),
         Point(x=3.0, y=1.0, z=0.0),
@@ -114,7 +120,7 @@ def test_hash_key_unique_indices():
 
     keys = []
     for ix, iy in indices:
-        world = grid._grid_index_center_to_world(ix, iy)
+        world = grid._grid_index_center_to_world(ix, iy, Point)
         assert grid._world_to_grid_index(world) == (ix, iy)
         keys.append(grid.hash_key(world))
 
