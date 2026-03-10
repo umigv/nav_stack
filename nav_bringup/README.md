@@ -10,6 +10,9 @@ Launches core functionalities used across the rest of the launch files.
 ros2 launch nav_bringup core.launch.py
 ```
 
+### Robot State Publisher
+Loads `marvin_description/urdf/marvin.xacro` and publishes TF transforms for all robot links.
+
 ### Foxglove Bridge
 Foxglove bridge is always started on `ws://localhost:8765`. Connect Foxglove Studio to this address to visualize the robot.
 
@@ -19,12 +22,16 @@ Foxglove bridge is always started on `ws://localhost:8765`. Connect Foxglove Stu
 - `nav_cmd_vel` (`geometry_msgs/Twist`) - Nav velocity
 
 ### Published Topics
+- `robot_description` (`std_msgs/String`) - URDF robot description
 - `cmd_vel` (`geometry_msgs/Twist`) - Multiplexed output velocity
 - `state` (`std_msgs/msg/String`) - State (`normal`, `ramp` or `recovery`)
 
 ### Services
 - `state/set_recovery` (`std_srvs/SetBool`) - Set whether we are in recovery mode
 - `state/set_ramp` (`std_srvs/SetBool`) - Set whether we are in ramp mode
+
+### Broadcasted TF Frames
+See `marvin_description` for the full list of published frames.
 
 ### Velocity Multiplexing
 | Priority | Topic | Source | Timeout |
@@ -37,8 +44,7 @@ If a higher-priority source stops publishing, control falls back to the next sou
 
 
 ## sensors.launch.py
-Launches sensor drivers and static TF transforms. Supports a `simulation` mode that replaces real hardware with 
-simulators.
+Launches sensor drivers. Supports a `simulation` mode that replaces real hardware with simulators.
 
 ```
 ros2 launch nav_bringup sensors.launch.py [simulation:=true]
@@ -61,8 +67,6 @@ ros2 launch nav_bringup sensors.launch.py [simulation:=true]
 - `occupancy_grid/ground_truth` (`nav_msgs/OccupancyGrid`) - Full static obstacle map (latched)
 
 ### Broadcasted TF Frames
-- `base_link` → `imu_link`
-- `base_link` → `gps_link`
 - `map` → `base_link_ground_truth` (simulation mode only) - Noiseless true robot pose
 
 

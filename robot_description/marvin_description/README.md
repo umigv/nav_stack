@@ -1,0 +1,35 @@
+# marvin_description
+URDF description for the Marvin robot. Publishes TF transforms for all robot links via `robot_state_publisher`.
+
+## Launch
+```
+ros2 launch marvin_description display.launch.py
+```
+
+Opens RViz with the robot model and `joint_state_publisher_gui` for interactive joint control.
+
+## Xacro Args
+Frame names default to match `nav_bringup/global_config.py`. Override only if changing `global_config.py` as well.
+
+| Arg | Default | Description |
+|---|---|---|
+| `base_frame_id` | `base_link` | Root link name |
+| `imu_name` | `imu` | IMU name prefix — produces `{imu_name}_link` |
+| `gps_name` | `gps` | GPS antenna name prefix — produces `{gps_name}_link` |
+| `zed_name` | `zed` | Camera name prefix — produces `{zed_name}_link` |
+
+## Published TF Frames
+| Frame | Description |
+|---|---|
+| `base_link` | Robot ground frame, between drive wheels |
+| `chassis_link` | Main chassis body |
+| `right_wheel_link` | Right drive wheel |
+| `left_wheel_link` | Left drive wheel |
+| `caster_link` | Front caster wheel |
+| `zed_base_link` | Camera mount point (bottom center of ZED 2i) |
+| `zed_link` | Camera body center |
+| `zed_optical_link` | Camera optical frame (Z forward, X right, Y down) |
+| `imu_base_link` | VN-300 mount point (bottom center of housing) |
+| `imu_link` | VN-300 body center (IMU measurement frame) |
+| `gps_base_link` | ANN-MB ARP (Antenna Reference Point) |
+| `gps_link` | ANN-MB L1 phase center (GPS measurement frame) |
