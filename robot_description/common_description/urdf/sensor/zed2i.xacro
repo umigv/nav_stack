@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+
+<!-- Brief: Stereolabs ZED 2i stereo depth camera -->
+<!-- Dimensions: 175.3 x 30.3 x 43.1 mm -->
+<!-- Mass: 230g -->
+<!-- Mounting Location: Bottom center of the camera body -->
+<!-- Joint Type: fixed -->
+<!-- Param name: name of the camera. Topics will start with /{name} -->
+<!-- Param parent: name of the parent link, defaulted to base_link -->
+<!-- Param joint_origin: location of the camera relative to parent link -->
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="zed2i">
+    <xacro:macro name="zed2i" params="name parent:=base_link *joint_origin">
+        <!-- Includes -->
+        <xacro:include filename="$(find common_description)/urdf/physics/inertia.xacro"/>
+
+
+        <!-- ZED 2i dimensions -->
+        <xacro:property name="zed2i_mass" value="0.230"/>
+        <xacro:property name="zed2i_length" value="0.04310"/>
+        <xacro:property name="zed2i_width" value="0.17530"/>
+        <xacro:property name="zed2i_height" value="0.03030"/>
+
+
+        <!-- Base link -->
+        <link name="${name}_base_link" />
+
+        <joint name="${name}_base_joint" type="fixed">
+            <xacro:insert_block name="joint_origin" />
+            <parent link="${parent}" />
+            <child link="${name}_base_link" />
+        </joint>
+
+
+        <!-- Camera link -->
+        <link name="${name}_link">
+            <xacro:box_inertia mass="${zed2i_mass}" length="${zed2i_length}" width="${zed2i_width}" height="${zed2i_height}">
+                <origin xyz="0 0 0" rpy="0 0 0" />
+            </xacro:box_inertia>
+
+            <visual>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <geometry>
+                    <box size="${zed2i_length} ${zed2i_width} ${zed2i_height}"/>
+                </geometry>
+            </visual>
+
+            <collision>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <geometry>
+                    <box size="${zed2i_length} ${zed2i_width} ${zed2i_height}"/>
+                </geometry>
+            </collision>
+        </link>
+
+        <joint name="${name}_joint" type="fixed">
+            <origin xyz="0 0 ${zed2i_height/2}" rpy="0 0 0"/>
+            <parent link="${name}_base_link" />
+            <child link="${name}_link" />
+        </joint>
+
+
+        <!-- Optical link (ROS convention: Z forward, X right, Y down) -->
+        <link name="${name}_optical_link" />
+
+        <joint name="${name}_optical_joint" type="fixed">
+            <origin xyz="0 0 0" rpy="${-pi/2} 0 ${-pi/2}"/>
+            <parent link="${name}_link" />
+            <child link="${name}_optical_link" />
+        </joint>
+    </xacro:macro>
+</robot>

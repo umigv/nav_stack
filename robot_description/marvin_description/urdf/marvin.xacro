@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+
+<robot name="marvin" xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <!-- Includes -->
+    <xacro:include filename="$(find marvin_description)/urdf/constants.xacro"/>
+
+    <!-- Base_link -->
+    <link name="base_link" />
+
+
+    <!-- Chassis -->
+    <xacro:include filename="$(find marvin_description)/urdf/chassis.xacro"/>
+
+
+    <!-- Caster -->
+    <xacro:include filename="$(find common_description)/urdf/wheel/caster.xacro"/>
+    <xacro:caster name="caster" mass="${caster_mass}" radius="${caster_radius}">
+        <origin xyz="${caster_x_offset} 0 ${caster_radius}" rpy="0 0 0" />
+    </xacro:caster>
+
+
+    <!-- Wheels -->
+    <xacro:include filename="$(find common_description)/urdf/wheel/wheel.xacro"/>
+    <xacro:wheel name="right_wheel" mass="${wheel_mass}" radius="${wheel_radius}" width="${wheel_width}">
+        <origin xyz="0 -${track_width / 2} ${wheel_radius}" rpy="0 0 0" />
+    </xacro:wheel>
+    <xacro:wheel name="left_wheel" mass="${wheel_mass}" radius="${wheel_radius}" width="${wheel_width}">
+        <origin xyz="0 ${track_width/2} ${wheel_radius}" rpy="0 0 0" />
+    </xacro:wheel>
+
+
+    <!-- Camera -->
+    <xacro:include filename="$(find common_description)/urdf/sensor/zed2i.xacro" />
+    <xacro:zed2i name="zed" parent="base_link">
+        <origin xyz="${camera_x_offset} 0 ${camera_z_offset}" rpy="0 ${camera_angle} 0" />
+    </xacro:zed2i>
+
+
+    <!-- IMU -->
+    <xacro:include filename="$(find common_description)/urdf/sensor/vn300.xacro" />
+    <xacro:vn300 name="imu" parent="base_link">
+        <origin xyz="${imu_x_offset} ${imu_y_offset} ${imu_z_offset}" rpy="0 0 ${imu_yaw}" />
+    </xacro:vn300>
+
+
+    <!-- GPS -->
+    <xacro:include filename="$(find common_description)/urdf/sensor/ann_mb.xacro" />
+    <xacro:ann_mb name="gps" parent="base_link">
+        <origin xyz="${gps_x_offset} ${gps_y_offset} ${gps_z_offset}" rpy="0 0 0" />
+    </xacro:ann_mb>
+</robot>

@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+
+<!-- Brief: A caster wheel with zero friction -->
+<!-- Shape, Collision, Inertia: Sphere with relevant collision and constant inertia -->
+<!-- Mounting Location: center of the sphere -->
+<!-- Joint Type: fixed -->
+<!-- Param name: the name of the caster -->
+<!-- Param mass: mass of the caster -->
+<!-- Param radius: radius of the caster -->
+<!-- Param parent: name of the parent link, defaulted to base_link -->
+<!-- Param joint_origin: location of the caster relative to parent link -->
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="caster">
+    <xacro:macro name="caster" params="name mass radius parent:=base_link *joint_origin">
+        <!-- Includes -->
+        <xacro:include filename="$(find common_description)/urdf/physics/inertia.xacro"/>
+
+
+        <!-- Caster link -->
+        <link name="${name}_link">
+            <xacro:sphere_inertia mass="${mass}" radius="${radius}">
+                <origin xyz="0 0 0" rpy="0 0 0" />
+            </xacro:sphere_inertia>
+
+            <visual>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <sphere radius="${radius}" />
+                </geometry>
+            </visual>
+
+            <collision>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <sphere radius="${radius}"/>
+                </geometry>
+                <surface>
+                    <friction>
+                        <ode>
+                            <mu>0.0</mu>
+                            <mu2>0.0</mu2>
+                        </ode>
+                    </friction>
+                </surface>
+            </collision>
+        </link>
+
+        <joint name="${name}_joint" type="fixed">
+            <xacro:insert_block name="joint_origin" />
+            <parent link="${parent}" />
+            <child link="${name}_link" />
+        </joint>
+    </xacro:macro>
+</robot>

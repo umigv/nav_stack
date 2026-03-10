@@ -1,6 +1,7 @@
 from launch import LaunchDescription
-from launch.substitutions import PathJoinSubstitution
+from launch.substitutions import Command, PathJoinSubstitution
 from launch_ros.actions import Node
+from launch_ros.parameter_descriptions import ParameterValue
 from launch_ros.substitutions import FindPackageShare
 
 
@@ -8,8 +9,18 @@ def generate_launch_description() -> LaunchDescription:
     bringup_share = FindPackageShare("nav_bringup")
     twist_mux_params = PathJoinSubstitution([bringup_share, "config", "twist_mux.yaml"])
 
+    urdf = PathJoinSubstitution([FindPackageShare("marvin_description"), "urdf", "marvin.xacro"])
+    robot_description = ParameterValue(Command(["xacro ", urdf]), value_type=str)
+
     return LaunchDescription(
         [
+            Node(
+                package="robot_state_publisher",
+                executable="robot_state_publisher",
+                name="robot_state_publisher",
+                output="screen",
+                parameters=[{"robot_description": robot_description}],
+            ),
             Node(
                 package="state_machine",
                 executable="state_machine",

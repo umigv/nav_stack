@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+
+<!-- Brief: VectorNav VN-300 Rugged Dual GNSS/INS -->
+<!-- Dimensions: 45 x 44 x 11 mm (length x width x height) -->
+<!-- Mass: 30g -->
+<!-- Mounting Location: Bottom center of housing -->
+<!-- Joint Type: fixed -->
+<!-- Note: GNSS antennas (ports A and B) connect to external antennas modeled separately -->
+<!-- Param name: name of the sensor -->
+<!-- Param parent: name of the parent link, defaulted to base_link -->
+<!-- Param joint_origin: location of bottom center of housing relative to parent link -->
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="vn300">
+    <xacro:macro name="vn300" params="name parent:=base_link *joint_origin">
+        <!-- Includes -->
+        <xacro:include filename="$(find common_description)/urdf/physics/inertia.xacro"/>
+
+
+        <!-- VN-300 Rugged dimensions -->
+        <xacro:property name="vn300_mass" value="0.030"/>
+        <xacro:property name="vn300_length" value="0.0450"/>
+        <xacro:property name="vn300_width" value="0.0440"/>
+        <xacro:property name="vn300_height" value="0.0110"/>
+
+
+        <!-- Base link -->
+        <link name="${name}_base_link" />
+
+        <joint name="${name}_base_joint" type="fixed">
+            <xacro:insert_block name="joint_origin" />
+            <parent link="${parent}" />
+            <child link="${name}_base_link" />
+        </joint>
+
+
+        <!-- IMU link -->
+        <link name="${name}_link">
+            <xacro:box_inertia mass="${vn300_mass}" length="${vn300_length}" width="${vn300_width}" height="${vn300_height}">
+                <origin xyz="0 0 0" rpy="0 0 0" />
+            </xacro:box_inertia>
+
+            <visual>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <box size="${vn300_length} ${vn300_width} ${vn300_height}" />
+                </geometry>
+            </visual>
+
+            <collision>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <box size="${vn300_length} ${vn300_width} ${vn300_height}" />
+                </geometry>
+            </collision>
+        </link>
+
+        <joint name="${name}_joint" type="fixed">
+            <origin xyz="0 0 ${vn300_height / 2}" rpy="0 0 0" />
+            <parent link="${name}_base_link" />
+            <child link="${name}_link" />
+        </joint>
+    </xacro:macro>
+</robot>
