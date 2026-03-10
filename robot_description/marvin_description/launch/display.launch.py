@@ -6,7 +6,9 @@ from launch_ros.substitutions import FindPackageShare
 
 
 def generate_launch_description() -> LaunchDescription:
-    urdf = PathJoinSubstitution([FindPackageShare("marvin_description"), "urdf", "marvin.xacro"])
+    pkg = FindPackageShare("marvin_description")
+    urdf = PathJoinSubstitution([pkg, "urdf", "marvin.xacro"])
+    rviz_config = PathJoinSubstitution([pkg, "rviz", "display.rviz"])
     robot_description = ParameterValue(Command(["xacro ", urdf]), value_type=str)
 
     return LaunchDescription(
@@ -29,6 +31,7 @@ def generate_launch_description() -> LaunchDescription:
                 executable="rviz2",
                 name="rviz2",
                 output="screen",
+                arguments=["-d", rviz_config],
             ),
         ]
     )

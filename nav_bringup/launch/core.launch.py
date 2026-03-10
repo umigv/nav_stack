@@ -3,6 +3,7 @@ from launch.substitutions import Command, PathJoinSubstitution
 from launch_ros.actions import Node
 from launch_ros.parameter_descriptions import ParameterValue
 from launch_ros.substitutions import FindPackageShare
+from nav_bringup.global_config import FRAMES
 
 
 def generate_launch_description() -> LaunchDescription:
@@ -10,7 +11,18 @@ def generate_launch_description() -> LaunchDescription:
     twist_mux_params = PathJoinSubstitution([bringup_share, "config", "twist_mux.yaml"])
 
     urdf = PathJoinSubstitution([FindPackageShare("marvin_description"), "urdf", "marvin.xacro"])
-    robot_description = ParameterValue(Command(["xacro ", urdf]), value_type=str)
+    # fmt: off
+    robot_description = ParameterValue(
+        Command(
+            [
+                "xacro ", urdf,
+                " base_frame_id:=", FRAMES["base_frame"],
+                " imu_name:=", FRAMES["imu_frame"].removesuffix("_link"),
+                " gps_name:=", FRAMES["gps_frame"].removesuffix("_link"),
+            ]
+        ), value_type=str,
+    )
+    # fmt: on
 
     return LaunchDescription(
         [
@@ -20,6 +32,12 @@ def generate_launch_description() -> LaunchDescription:
                 name="robot_state_publisher",
                 output="screen",
                 parameters=[{"robot_description": robot_description}],
+            ),
+            Node(
+                package="joint_state_publisher",
+                executable="joint_state_publisher",
+                name="joint_state_publisher",
+                output="screen",
             ),
             Node(
                 package="state_machine",

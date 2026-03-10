@@ -1,11 +1,17 @@
 <?xml version="1.0"?>
 
 <robot name="marvin" xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <!-- Args -->
+    <xacro:arg name="base_frame_id" default="base_link"/>
+    <xacro:arg name="imu_name" default="imu"/>
+    <xacro:arg name="gps_name" default="gps"/>
+    <xacro:arg name="zed_name" default="zed"/>
+
     <!-- Includes -->
     <xacro:include filename="$(find marvin_description)/urdf/constants.xacro"/>
 
-    <!-- Base_link -->
-    <link name="base_link" />
+    <!-- Base link -->
+    <link name="$(arg base_frame_id)" />
 
 
     <!-- Chassis -->
@@ -31,21 +37,21 @@
 
     <!-- Camera -->
     <xacro:include filename="$(find common_description)/urdf/sensor/zed2i.xacro" />
-    <xacro:zed2i name="zed" parent="base_link">
+    <xacro:zed2i name="$(arg zed_name)" parent="$(arg base_frame_id)">
         <origin xyz="${camera_x_offset} 0 ${camera_z_offset}" rpy="0 ${camera_angle} 0" />
     </xacro:zed2i>
 
 
     <!-- IMU -->
     <xacro:include filename="$(find common_description)/urdf/sensor/vn300.xacro" />
-    <xacro:vn300 name="imu" parent="base_link">
+    <xacro:vn300 name="$(arg imu_name)" parent="$(arg base_frame_id)">
         <origin xyz="${imu_x_offset} ${imu_y_offset} ${imu_z_offset}" rpy="0 0 ${imu_yaw}" />
     </xacro:vn300>
 
 
     <!-- GPS -->
     <xacro:include filename="$(find common_description)/urdf/sensor/ann_mb.xacro" />
-    <xacro:ann_mb name="gps" parent="base_link">
+    <xacro:ann_mb name="$(arg gps_name)" parent="$(arg base_frame_id)">
         <origin xyz="${gps_x_offset} ${gps_y_offset} ${gps_z_offset}" rpy="0 0 0" />
     </xacro:ann_mb>
 </robot>

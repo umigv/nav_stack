@@ -14,6 +14,7 @@ setup(
         ("share/" + package_name, ["package.xml"]),
         (str(Path("share") / package_name / "urdf"), glob("urdf/*")),
         (str(Path("share") / package_name / "launch"), glob("launch/*")),
+        (str(Path("share") / package_name / "rviz"), glob("rviz/*")),
     ],
     install_requires=["setuptools"],
     zip_safe=True,

@@ -55,7 +55,7 @@
 
     <joint name="chassis_joint" type="fixed">
         <origin xyz="0 0 ${chassis_z_offset}" rpy="0 0 0" />
-        <parent link="base_link" />
+        <parent link="$(arg base_frame_id)" />
         <child link="chassis_link" />
     </joint>
 </robot>
