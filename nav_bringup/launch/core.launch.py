@@ -33,5 +33,22 @@ def generate_launch_description() -> LaunchDescription:
                     ("cmd_vel_out", "cmd_vel"),
                 ],
             ),
+            Node(
+                package="foxglove_bridge",
+                executable="foxglove_bridge",
+                name="foxglove_bridge",
+                output="screen",
+                parameters=[
+                    {"port": 8765},
+                    {"address": "0.0.0.0"},
+                    {"tls": False},
+                    {"topic_whitelist": [".*"]},
+                    {"param_whitelist": [".*"]},
+                    {"service_whitelist": [".*"]},
+                    {"send_buffer_limit": 10000000},
+                    {"use_sim_time": False},
+                    {"num_threads": 4},
+                ],
+            ),
         ]
     )
