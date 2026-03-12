@@ -30,8 +30,8 @@ The `occupancy_grid/ground_truth` topic uses a non-default QoS profile:
 | History | `KEEP_LAST` (depth 1) | Only the most recent message is retained |
 
 Subscribers to `occupancy_grid/ground_truth` **must use a compatible QoS** (`RELIABLE` + `TRANSIENT_LOCAL`) or they will
-not receive the latched message on connect. A subscriber with default QoS (`BEST_EFFORT` or `VOLATILE`) will silently 
-receive nothing.
+not receive the latched message on connect. A subscriber with default QoS (`BEST_EFFORT` or `VOLATILE`) will silently
+receive nothing. In code, use `nav_utils.qos.LATCHED`. In RViz, set the topic's **Durability Policy** to `Transient Local`.
 
 ## Grid Conventions
 Follows the standard [`nav_msgs/OccupancyGrid`](https://docs.ros2.org/foxy/api/nav_msgs/msg/OccupancyGrid.html) 

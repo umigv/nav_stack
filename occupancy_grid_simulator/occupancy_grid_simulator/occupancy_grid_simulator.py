@@ -4,6 +4,7 @@ import json
 import math
 
 import nav_utils.config
+import nav_utils.qos
 import numpy as np
 import rclpy
 from nav_msgs.msg import MapMetaData, OccupancyGrid, Odometry
@@ -28,12 +29,7 @@ class OccupancyGridSimulator(Node):
         self.ground_truth_publisher = self.create_publisher(
             OccupancyGrid,
             "occupancy_grid/ground_truth",
-            qos_profile=rclpy.qos.QoSProfile(
-                history=rclpy.qos.HistoryPolicy.KEEP_LAST,
-                depth=1,
-                reliability=rclpy.qos.ReliabilityPolicy.RELIABLE,
-                durability=rclpy.qos.DurabilityPolicy.TRANSIENT_LOCAL,
-            ),
+            qos_profile=nav_utils.qos.LATCHED,
         )
 
         self.robot_pose: Pose2d | None = None
