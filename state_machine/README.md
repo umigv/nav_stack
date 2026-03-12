@@ -25,7 +25,8 @@ The `state` topic uses a non-default QoS profile:
 | History | `KEEP_LAST` (depth 1) | Only the most recent message is retained |
 
 Subscribers to `state` **must use a compatible QoS** (`RELIABLE` + `TRANSIENT_LOCAL`) or they will not receive the
-latched message on connect. A subscriber with default QoS (`BEST_EFFORT` or `VOLATILE`) will silently receive nothing.
+latched message on connect. A subscriber with default QoS (`BEST_EFFORT` or `VOLATILE`) will silently receive nothing. 
+In code, use `nav_utils.qos.LATCHED`. In RViz, set the topic's **Durability Policy** to `Transient Local`.
 
 ## Services
 - `state/set_ramp` (`std_srvs/SetBool`) - Enable or disable ramp mode

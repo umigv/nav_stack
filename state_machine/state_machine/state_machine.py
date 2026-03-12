@@ -1,13 +1,8 @@
 from enum import Enum
 
+import nav_utils.qos
 import rclpy
 from rclpy.node import Node
-from rclpy.qos import (
-    QoSDurabilityPolicy,
-    QoSHistoryPolicy,
-    QoSProfile,
-    QoSReliabilityPolicy,
-)
 from std_msgs.msg import String
 from std_srvs.srv import SetBool
 
@@ -22,16 +17,7 @@ class StateMachine(Node):
     def __init__(self) -> None:
         super().__init__("state_machine")
 
-        self.publisher = self.create_publisher(
-            String,
-            "state",
-            QoSProfile(
-                history=QoSHistoryPolicy.KEEP_LAST,
-                depth=1,
-                reliability=QoSReliabilityPolicy.RELIABLE,
-                durability=QoSDurabilityPolicy.TRANSIENT_LOCAL,
-            ),
-        )
+        self.publisher = self.create_publisher(String, "state", nav_utils.qos.LATCHED)
 
         self.last_state: State | None = None
 
