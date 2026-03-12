@@ -1,9 +1,10 @@
+import pathlib
 from dataclasses import dataclass
 
 
 @dataclass(frozen=True)
 class OccupancyGridSimulatorConfig:
-    map_file_path: str
+    map_file_path: pathlib.Path
     width_m: float = 5.0
     height_m: float = 5.0
     offset_x_m: float = 0.0
