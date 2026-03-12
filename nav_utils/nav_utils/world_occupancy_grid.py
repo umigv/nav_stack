@@ -214,7 +214,7 @@ class WorldOccupancyGrid:
             (grid_x, grid_y) integer indices corresponding to the grid cell containing the point.
         """
         p2d = Point2d.from_ros(world) if isinstance(world, Point) else world
-        grid = self._origin.to_local(p2d) / self._occupancy_grid.info.resolution
+        grid = self._origin.world_to_local(p2d) / self._occupancy_grid.info.resolution
         return math.floor(grid.x), math.floor(grid.y)
 
     def _grid_index_center_to_world(self, grid_x: int, grid_y: int, point_type: type[PointT]) -> PointT:
@@ -233,5 +233,5 @@ class WorldOccupancyGrid:
             World-coordinate point at the center of the specified grid cell.
         """
         grid = Point2d(x=grid_x + 0.5, y=grid_y + 0.5) * self._occupancy_grid.info.resolution
-        p2d = self._origin.from_local(grid)
+        p2d = self._origin.local_to_world(grid)
         return p2d.to_ros() if point_type is Point else p2d

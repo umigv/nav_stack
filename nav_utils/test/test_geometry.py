@@ -145,32 +145,32 @@ def test_point2d_ros_round_trip():
 # --- Pose2d ---
 
 
-def test_pose2d_to_local_at_origin():
+def test_pose2d_world_to_local_at_origin():
     pose = Pose2d(Point2d(0.0, 0.0), Rotation2d(0.0))
-    local = pose.to_local(Point2d(3.0, 4.0))
+    local = pose.world_to_local(Point2d(3.0, 4.0))
     assert abs(local.x - 3.0) < 1e-9
     assert abs(local.y - 4.0) < 1e-9
 
 
-def test_pose2d_to_local_translation_only():
+def test_pose2d_world_to_local_translation_only():
     pose = Pose2d(Point2d(1.0, 2.0), Rotation2d(0.0))
-    local = pose.to_local(Point2d(4.0, 6.0))
+    local = pose.world_to_local(Point2d(4.0, 6.0))
     assert abs(local.x - 3.0) < 1e-9
     assert abs(local.y - 4.0) < 1e-9
 
 
-def test_pose2d_to_local_rotation_only():
+def test_pose2d_world_to_local_rotation_only():
     pose = Pose2d(Point2d(0.0, 0.0), Rotation2d(math.pi / 2))
-    local = pose.to_local(Point2d(1.0, 0.0))
+    local = pose.world_to_local(Point2d(1.0, 0.0))
     assert abs(local.x - 0.0) < 1e-9
     assert abs(local.y - (-1.0)) < 1e-9
 
 
-def test_pose2d_from_local_round_trip():
+def test_pose2d_local_to_world_round_trip():
     pose = Pose2d(Point2d(2.0, -1.0), Rotation2d(math.pi / 6))
     world = Point2d(5.0, 3.0)
-    assert abs(pose.from_local(pose.to_local(world)).x - world.x) < 1e-9
-    assert abs(pose.from_local(pose.to_local(world)).y - world.y) < 1e-9
+    assert abs(pose.local_to_world(pose.world_to_local(world)).x - world.x) < 1e-9
+    assert abs(pose.local_to_world(pose.world_to_local(world)).y - world.y) < 1e-9
 
 
 def test_pose2d_ros_round_trip():

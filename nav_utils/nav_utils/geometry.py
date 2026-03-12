@@ -185,27 +185,27 @@ class Pose2d:
     point: Point2d
     rotation: Rotation2d
 
-    def to_local(self, world: Point2d) -> Point2d:
+    def world_to_local(self, world_point: Point2d) -> Point2d:
         """Transform a world-frame point into this pose's local frame.
 
         Args:
-            world: Point in the world frame.
+            world_point: Point in the world frame.
 
         Returns:
             Point expressed in this pose's local frame.
         """
-        return (world - self.point).rotate_by(-self.rotation)
+        return (world_point - self.point).rotate_by(-self.rotation)
 
-    def from_local(self, local: Point2d) -> Point2d:
+    def local_to_world(self, local_point: Point2d) -> Point2d:
         """Transform a local-frame point back into the world frame.
 
         Args:
-            local: Point in this pose's local frame.
+            local_point: Point in this pose's local frame.
 
         Returns:
             Point expressed in the world frame.
         """
-        return local.rotate_by(self.rotation) + self.point
+        return local_point.rotate_by(self.rotation) + self.point
 
     def to_ros(self) -> Pose:
         """Convert to a ROS Pose.

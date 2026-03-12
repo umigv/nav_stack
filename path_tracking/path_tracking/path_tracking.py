@@ -104,8 +104,8 @@ class PathTracking(Node):
 
         assert self.pose is not None
         for i in range(start, end):
-            local1 = self.pose.to_local(self.smoothed_path_points[i])
-            local2 = self.pose.to_local(self.smoothed_path_points[i + 1])
+            local1 = self.pose.world_to_local(self.smoothed_path_points[i])
+            local2 = self.pose.world_to_local(self.smoothed_path_points[i + 1])
 
             if local1.x < -0.05 and local2.x < -0.05:
                 self.path_cursor = i + 1
@@ -123,7 +123,7 @@ class PathTracking(Node):
     def find_forward_point(self, lookahead_distance: float) -> Point2d | None:
         assert self.pose is not None
         for j in range(self.path_cursor, len(self.smoothed_path_points)):
-            local = self.pose.to_local(self.smoothed_path_points[j])
+            local = self.pose.world_to_local(self.smoothed_path_points[j])
             if local.x > -0.1 and local.mag() >= lookahead_distance:
                 self.path_cursor = j
                 self.get_logger().warn(f"Lookahead intersection not found, chasing forward point at index {j}")

@@ -90,8 +90,8 @@ Wraps a yaw angle in radians. Angle is automatically wrapped to `[-π, π]` and 
 
 | Method | Description |
 |---|---|
-| `to_local(world)` | Transform a world-frame `Point2d` into this pose's local frame |
-| `from_local(local)` | Transform a local-frame `Point2d` back into world frame |
+| `world_to_local(world_point)` | Transform a world-frame `Point2d` into this pose's local frame |
+| `local_to_world(local_point)` | Transform a local-frame `Point2d` back into world frame |
 | `to_ros()` | Convert to `geometry_msgs/Pose` |
 | `from_ros(pose)` | Construct from a `geometry_msgs/Pose` |
 
