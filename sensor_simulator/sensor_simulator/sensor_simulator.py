@@ -4,7 +4,6 @@ import random
 import nav_utils.config
 import rclpy
 from geometry_msgs.msg import (
-    Point,
     Pose,
     PoseWithCovariance,
     Transform,
@@ -15,7 +14,7 @@ from geometry_msgs.msg import (
     Vector3,
 )
 from nav_msgs.msg import Odometry
-from nav_utils.geometry import get_yaw_radians_from_quaternion, make_quaternion_from_yaw, rotate_by_yaw
+from nav_utils.geometry import Point2d, Rotation2d
 from pyproj import Transformer
 from rclpy.duration import Duration
 from rclpy.node import Node
@@ -56,9 +55,8 @@ class SensorSimulator(Node):
         self.gps_publisher = self.create_publisher(NavSatFix, "gps", 10)
         self.ground_truth_publisher = self.create_publisher(Odometry, "odom/ground_truth", 10)
 
-        self.x: float = 0.0
-        self.y: float = 0.0
-        self.yaw: float = self.config.imu.initial_yaw_rad
+        self.position = Point2d(x=0.0, y=0.0)
+        self.rotation = Rotation2d(self.config.imu.initial_yaw_rad)
         self.cmd_vel = Twist()
         self.last_cmd_time = self.get_clock().now()
 
@@ -79,10 +77,9 @@ class SensorSimulator(Node):
         if (now - self.last_cmd_time) > Duration(seconds=self.config.cmd_vel_timeout_s):
             self.cmd_vel = Twist()
 
-        self.x += self.cmd_vel.linear.x * self.config.high_rate_update_period_s * math.cos(self.yaw)
-        self.y += self.cmd_vel.linear.x * self.config.high_rate_update_period_s * math.sin(self.yaw)
-        self.yaw += self.cmd_vel.angular.z * self.config.high_rate_update_period_s
-        self.yaw = (self.yaw + math.pi) % (2 * math.pi) - math.pi  # wrap to [-pi, pi]
+        dt = self.config.high_rate_update_period_s
+        self.position += Point2d(x=self.cmd_vel.linear.x * dt, y=0.0).rotate_by(self.rotation)
+        self.rotation = Rotation2d(self.rotation.angle + self.cmd_vel.angular.z * dt)
 
         self.publish_ground_truth()
         self.publish_enc_vel()
@@ -99,8 +96,8 @@ class SensorSimulator(Node):
                 header=Header(stamp=stamp, frame_id=self.config.map_frame_id),
                 child_frame_id=self.config.ground_truth_base_frame_id,
                 transform=Transform(
-                    translation=Vector3(x=self.x, y=self.y, z=0.0),
-                    rotation=make_quaternion_from_yaw(self.yaw),
+                    translation=Vector3(x=self.position.x, y=self.position.y, z=0.0),
+                    rotation=self.rotation.to_ros(),
                 ),
             )
         )
@@ -111,8 +108,8 @@ class SensorSimulator(Node):
                 child_frame_id=self.config.ground_truth_base_frame_id,
                 pose=PoseWithCovariance(
                     pose=Pose(
-                        position=Point(x=self.x, y=self.y, z=0.0),
-                        orientation=make_quaternion_from_yaw(self.yaw),
+                        position=self.position.to_ros(),
+                        orientation=self.rotation.to_ros(),
                     )
                 ),
                 twist=TwistWithCovariance(twist=self.cmd_vel),
@@ -161,7 +158,7 @@ class SensorSimulator(Node):
 
     def publish_imu(self) -> None:
         try:
-            yaw_offset = get_yaw_radians_from_quaternion(
+            rotation_offset = Rotation2d.from_ros(
                 self.tf_buffer.lookup_transform(
                     self.config.base_frame_id, self.config.imu_frame_id, self.get_clock().now()
                 ).transform.rotation
@@ -172,8 +169,8 @@ class SensorSimulator(Node):
             )
             return
 
-        imu_yaw = self.yaw + yaw_offset
-        measurement_yaw = imu_yaw + random.gauss(0.0, self.config.imu.yaw_noise_std_rad)
+        imu_rotation = self.rotation + rotation_offset
+        measurement_yaw = imu_rotation.angle + random.gauss(0.0, self.config.imu.yaw_noise_std_rad)
         measurement_wz = self.cmd_vel.angular.z + random.gauss(0.0, self.config.imu.wz_noise_std_radps)
 
         orientation_var = self.config.imu.yaw_noise_std_rad**2
@@ -201,7 +198,7 @@ class SensorSimulator(Node):
         self.imu_publisher.publish(
             Imu(
                 header=Header(stamp=self.get_clock().now().to_msg(), frame_id=self.config.imu_frame_id),
-                orientation=make_quaternion_from_yaw(measurement_yaw),
+                orientation=Rotation2d(measurement_yaw).to_ros(),
                 orientation_covariance=orientation_cov,
                 angular_velocity=Vector3(z=measurement_wz),
                 angular_velocity_covariance=angular_velocity_cov,
@@ -214,9 +211,9 @@ class SensorSimulator(Node):
             tf = self.tf_buffer.lookup_transform(
                 self.config.base_frame_id, self.config.gps_frame_id, self.get_clock().now()
             )
-            transform = Point(x=tf.transform.translation.x, y=tf.transform.translation.y)
-            rotated = rotate_by_yaw(transform, self.yaw)
-            gps_position = Point(x=self.x + rotated.x, y=self.y + rotated.y)
+            gps_position = self.position + Point2d(
+                x=tf.transform.translation.x, y=tf.transform.translation.y
+            ).rotate_by(self.rotation)
         except TransformException as e:
             self.get_logger().warn(
                 f"TF {self.config.base_frame_id}->{self.config.gps_frame_id} unavailable, skipping publishing GPS: {e}"

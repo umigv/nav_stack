@@ -1,53 +1,18 @@
 from __future__ import annotations
 
 import math
-from dataclasses import dataclass
 
 import nav_utils.config
 import numpy as np
 import rclpy
-from geometry_msgs.msg import Point, Pose, PoseStamped, Quaternion, Twist, Vector3
+from geometry_msgs.msg import Pose, PoseStamped, Quaternion, Twist, Vector3
 from nav_msgs.msg import Odometry, Path
-from nav_utils.geometry import get_yaw_radians_from_quaternion
+from nav_utils.geometry import Point2d, Pose2d
 from rclpy.node import Node
 from scipy.interpolate import splev, splprep
 from std_msgs.msg import Header
 
 from .path_tracking_config import PathTrackingConfig
-
-
-@dataclass
-class Point2d:
-    x: float
-    y: float
-
-    def __add__(self, other: Point2d) -> Point2d:
-        return Point2d(x=self.x + other.x, y=self.y + other.y)
-
-    def __sub__(self, other: Point2d) -> Point2d:
-        return Point2d(x=self.x - other.x, y=self.y - other.y)
-
-    def __mul__(self, scalar: float) -> Point2d:
-        return Point2d(x=self.x * scalar, y=self.y * scalar)
-
-    def rotate_by(self, angle: float) -> Point2d:
-        c, s = math.cos(angle), math.sin(angle)
-        return Point2d(x=c * self.x - s * self.y, y=s * self.x + c * self.y)
-
-    def mag(self) -> float:
-        return math.hypot(self.x, self.y)
-
-    def to_ros(self) -> Point:
-        return Point(x=self.x, y=self.y, z=0.0)
-
-
-@dataclass
-class Pose2d:
-    point: Point2d
-    yaw: float
-
-    def to_local(self, point: Point2d) -> Point2d:
-        return (point - self.point).rotate_by(-self.yaw)
 
 
 class PathTracking(Node):
@@ -79,9 +44,7 @@ class PathTracking(Node):
             )
             return
 
-        position = msg.pose.pose.position
-        orientation = msg.pose.pose.orientation
-        self.pose = Pose2d(point=Point2d(x=position.x, y=position.y), yaw=get_yaw_radians_from_quaternion(orientation))
+        self.pose = Pose2d.from_ros(msg.pose.pose)
         self.current_speed = math.hypot(msg.twist.twist.linear.x, msg.twist.twist.linear.y)
 
     def path_callback(self, path_msg: Path) -> None:
@@ -141,8 +104,8 @@ class PathTracking(Node):
 
         assert self.pose is not None
         for i in range(start, end):
-            local1 = self.pose.to_local(self.smoothed_path_points[i])
-            local2 = self.pose.to_local(self.smoothed_path_points[i + 1])
+            local1 = self.pose.world_to_local(self.smoothed_path_points[i])
+            local2 = self.pose.world_to_local(self.smoothed_path_points[i + 1])
 
             if local1.x < -0.05 and local2.x < -0.05:
                 self.path_cursor = i + 1
@@ -160,7 +123,7 @@ class PathTracking(Node):
     def find_forward_point(self, lookahead_distance: float) -> Point2d | None:
         assert self.pose is not None
         for j in range(self.path_cursor, len(self.smoothed_path_points)):
-            local = self.pose.to_local(self.smoothed_path_points[j])
+            local = self.pose.world_to_local(self.smoothed_path_points[j])
             if local.x > -0.1 and local.mag() >= lookahead_distance:
                 self.path_cursor = j
                 self.get_logger().warn(f"Lookahead intersection not found, chasing forward point at index {j}")

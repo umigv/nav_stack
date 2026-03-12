@@ -1,145 +1,181 @@
 import math
 
-from geometry_msgs.msg import Point
-from nav_utils.geometry import (
-    distance,
-    get_yaw_radians_from_quaternion,
-    make_pose,
-    make_quaternion_from_yaw,
-    point_is_close,
-    rotate_by_yaw,
-)
+from nav_utils.geometry import Point2d, Pose2d, Rotation2d
+
+# --- Rotation2d ---
 
 
-def test_point_is_close_exact_same():
-    p1 = Point(x=1.0, y=2.0, z=3.0)
-    p2 = Point(x=1.0, y=2.0, z=3.0)
-    assert point_is_close(p1, p2)
+def test_rotation2d_wraps_above_pi():
+    r = Rotation2d(math.pi + 0.1)
+    assert abs(r.angle - (-math.pi + 0.1)) < 1e-9
 
 
-def test_point_is_close_within_tolerance():
-    p1 = Point(x=1.0, y=2.0, z=3.0)
-    p2 = Point(x=1.005, y=1.995, z=3.009)
-    assert point_is_close(p1, p2)
+def test_rotation2d_wraps_below_neg_pi():
+    r = Rotation2d(-math.pi - 0.1)
+    assert abs(r.angle - (math.pi - 0.1)) < 1e-9
 
 
-def test_point_is_close_outside_tolerance():
-    p1 = Point(x=1.0, y=2.0, z=3.0)
-    p2 = Point(x=1.02, y=2.0, z=3.0)
-    assert not point_is_close(p1, p2)
+def test_rotation2d_caches_cos_sin():
+    r = Rotation2d(math.pi / 3)
+    assert abs(r._cos - math.cos(math.pi / 3)) < 1e-12
+    assert abs(r._sin - math.sin(math.pi / 3)) < 1e-12
 
 
-def test_make_quaternion_from_yaw_zero():
-    q = make_quaternion_from_yaw(0.0)
-    assert q.x == 0.0
-    assert q.y == 0.0
+def test_rotation2d_neg():
+    r = Rotation2d(math.pi / 4)
+    assert abs((-r).angle + math.pi / 4) < 1e-9
+
+
+def test_rotation2d_add():
+    a = Rotation2d(math.pi / 4)
+    b = Rotation2d(math.pi / 4)
+    assert abs((a + b).angle - math.pi / 2) < 1e-9
+
+
+def test_rotation2d_sub():
+    a = Rotation2d(math.pi / 2)
+    b = Rotation2d(math.pi / 4)
+    assert abs((a - b).angle - math.pi / 4) < 1e-9
+
+
+def test_rotation2d_mul_scalar():
+    r = Rotation2d(math.pi / 4)
+    assert abs((r * 2.0).angle - math.pi / 2) < 1e-9
+
+
+def test_rotation2d_rmul_scalar():
+    r = Rotation2d(math.pi / 4)
+    assert abs((2.0 * r).angle - math.pi / 2) < 1e-9
+
+
+def test_rotation2d_div_scalar():
+    r = Rotation2d(math.pi / 2)
+    assert abs((r / 2.0).angle - math.pi / 4) < 1e-9
+
+
+def test_rotation2d_to_ros_zero():
+    q = Rotation2d(0.0).to_ros()
     assert abs(q.z - 0.0) < 1e-12
     assert abs(q.w - 1.0) < 1e-12
 
 
-def test_make_quaternion_from_yaw_positive():
-    yaw = math.pi / 2
-    q = make_quaternion_from_yaw(yaw)
-    assert abs(q.z - math.sin(yaw / 2.0)) < 1e-12
-    assert abs(q.w - math.cos(yaw / 2.0)) < 1e-12
-
-
-def test_make_quaternion_from_yaw_negative():
-    yaw = -math.pi / 3
-    q = make_quaternion_from_yaw(yaw)
-    assert abs(q.z - math.sin(yaw / 2.0)) < 1e-12
-    assert abs(q.w - math.cos(yaw / 2.0)) < 1e-12
-
-
-def test_make_quaternion_is_unit_length():
-    yaw = 1.789
-    q = make_quaternion_from_yaw(yaw)
-    norm = math.sqrt(q.x * q.x + q.y * q.y + q.z * q.z + q.w * q.w)
+def test_rotation2d_to_ros_unit_quaternion():
+    q = Rotation2d(1.234).to_ros()
+    norm = math.sqrt(q.x**2 + q.y**2 + q.z**2 + q.w**2)
     assert abs(norm - 1.0) < 1e-12
 
 
-def test_make_quaternion_round_trip_yaw():
-    yaw_true = -2.1
-    q = make_quaternion_from_yaw(yaw_true)
-    yaw = get_yaw_radians_from_quaternion(q)
-    assert abs(yaw - yaw_true) < 1e-6
+def test_rotation2d_from_ros_round_trip():
+    r = Rotation2d(math.pi / 3)
+    assert abs(Rotation2d.from_ros(r.to_ros()).angle - r.angle) < 1e-6
 
 
-def test_get_yaw_radians_from_quaternion_zero():
-    q = make_quaternion_from_yaw(0.0)
-    yaw = get_yaw_radians_from_quaternion(q)
-    assert abs(yaw - 0.0) < 1e-6
+def test_rotation2d_from_ros_round_trip_negative():
+    r = Rotation2d(-2.1)
+    assert abs(Rotation2d.from_ros(r.to_ros()).angle - r.angle) < 1e-6
 
 
-def test_get_yaw_radians_from_quaternion_positive():
-    yaw_true = math.pi / 2
-    q = make_quaternion_from_yaw(yaw_true)
-    yaw = get_yaw_radians_from_quaternion(q)
-    assert abs(yaw - yaw_true) < 1e-6
+# --- Point2d ---
 
 
-def test_get_yaw_radians_from_quaternion_negative():
-    yaw_true = -math.pi / 4
-    q = make_quaternion_from_yaw(yaw_true)
-    yaw = get_yaw_radians_from_quaternion(q)
-    assert abs(yaw - yaw_true) < 1e-6
+def test_point2d_neg():
+    p = Point2d(x=1.0, y=-2.0)
+    assert -p == Point2d(x=-1.0, y=2.0)
 
 
-def test_rotate_zero_angle():
-    p = Point(x=1.0, y=2.0, z=0.0)
-    r = rotate_by_yaw(p, 0.0)
-
-    assert abs(r.x - 1.0) < 1e-6
-    assert abs(r.y - 2.0) < 1e-6
-    assert r.z == 0.0
+def test_point2d_add():
+    assert Point2d(1.0, 2.0) + Point2d(3.0, 4.0) == Point2d(4.0, 6.0)
 
 
-def test_rotate_90_degrees():
-    p = Point(x=1.0, y=0.0, z=0.0)
-    r = rotate_by_yaw(p, math.pi / 2)
-
-    assert abs(r.x - 0.0) < 1e-6
-    assert abs(r.y - 1.0) < 1e-6
+def test_point2d_sub():
+    assert Point2d(3.0, 4.0) - Point2d(1.0, 1.0) == Point2d(2.0, 3.0)
 
 
-def test_rotate_preserves_distance_from_origin():
-    p = Point(x=3.0, y=4.0, z=0.0)
-    r = rotate_by_yaw(p, 1.2345)
-
-    d1 = math.sqrt(p.x**2 + p.y**2)
-    d2 = math.sqrt(r.x**2 + r.y**2)
-
-    assert abs(d1 - d2) < 1e-6
+def test_point2d_mul():
+    assert Point2d(2.0, 3.0) * 2.0 == Point2d(4.0, 6.0)
 
 
-def test_distance_same_point():
-    p = Point(x=1.0, y=2.0, z=0.0)
-    assert distance(p, p) == 0.0
+def test_point2d_rmul():
+    assert 2.0 * Point2d(2.0, 3.0) == Point2d(4.0, 6.0)
 
 
-def test_distance_simple():
-    p1 = Point(x=0.0, y=0.0, z=0.0)
-    p2 = Point(x=3.0, y=4.0, z=0.0)
-
-    assert abs(distance(p1, p2) - 5.0) < 1e-6
+def test_point2d_div():
+    assert Point2d(4.0, 6.0) / 2.0 == Point2d(2.0, 3.0)
 
 
-def test_distance_symmetric():
-    p1 = Point(x=1.0, y=2.0, z=0.0)
-    p2 = Point(x=-3.0, y=4.0, z=0.0)
-
-    assert abs(distance(p1, p2) - distance(p2, p1)) < 1e-6
-
-
-def test_make_pose_sets_position_and_zero_z():
-    pose = make_pose(1.25, -3.5, 0.0)
-    assert abs(pose.position.x - 1.25) < 1e-12
-    assert abs(pose.position.y + 3.5) < 1e-12
-    assert pose.position.z == 0.0
+def test_point2d_rotate_by_zero():
+    p = Point2d(x=1.0, y=2.0)
+    r = p.rotate_by(Rotation2d(0.0))
+    assert abs(r.x - 1.0) < 1e-9
+    assert abs(r.y - 2.0) < 1e-9
 
 
-def test_make_pose_orientation_matches_yaw():
-    yaw_true = 1.234
-    pose = make_pose(0.0, 0.0, yaw_true)
-    yaw = get_yaw_radians_from_quaternion(pose.orientation)
-    assert abs(yaw - yaw_true) < 1e-6
+def test_point2d_rotate_by_90():
+    p = Point2d(x=1.0, y=0.0)
+    r = p.rotate_by(Rotation2d(math.pi / 2))
+    assert abs(r.x - 0.0) < 1e-9
+    assert abs(r.y - 1.0) < 1e-9
+
+
+def test_point2d_rotate_preserves_magnitude():
+    p = Point2d(x=3.0, y=4.0)
+    r = p.rotate_by(Rotation2d(1.2345))
+    assert abs(p.mag() - r.mag()) < 1e-9
+
+
+def test_point2d_mag():
+    assert abs(Point2d(x=3.0, y=4.0).mag() - 5.0) < 1e-12
+
+
+def test_point2d_distance():
+    assert abs(Point2d(0.0, 0.0).distance(Point2d(3.0, 4.0)) - 5.0) < 1e-12
+
+
+def test_point2d_distance_symmetric():
+    a = Point2d(1.0, 2.0)
+    b = Point2d(-3.0, 4.0)
+    assert abs(a.distance(b) - b.distance(a)) < 1e-12
+
+
+def test_point2d_ros_round_trip():
+    p = Point2d(x=1.5, y=-2.5)
+    assert Point2d.from_ros(p.to_ros()) == p
+
+
+# --- Pose2d ---
+
+
+def test_pose2d_world_to_local_at_origin():
+    pose = Pose2d(Point2d(0.0, 0.0), Rotation2d(0.0))
+    local = pose.world_to_local(Point2d(3.0, 4.0))
+    assert abs(local.x - 3.0) < 1e-9
+    assert abs(local.y - 4.0) < 1e-9
+
+
+def test_pose2d_world_to_local_translation_only():
+    pose = Pose2d(Point2d(1.0, 2.0), Rotation2d(0.0))
+    local = pose.world_to_local(Point2d(4.0, 6.0))
+    assert abs(local.x - 3.0) < 1e-9
+    assert abs(local.y - 4.0) < 1e-9
+
+
+def test_pose2d_world_to_local_rotation_only():
+    pose = Pose2d(Point2d(0.0, 0.0), Rotation2d(math.pi / 2))
+    local = pose.world_to_local(Point2d(1.0, 0.0))
+    assert abs(local.x - 0.0) < 1e-9
+    assert abs(local.y - (-1.0)) < 1e-9
+
+
+def test_pose2d_local_to_world_round_trip():
+    pose = Pose2d(Point2d(2.0, -1.0), Rotation2d(math.pi / 6))
+    world = Point2d(5.0, 3.0)
+    assert abs(pose.local_to_world(pose.world_to_local(world)).x - world.x) < 1e-9
+    assert abs(pose.local_to_world(pose.world_to_local(world)).y - world.y) < 1e-9
+
+
+def test_pose2d_ros_round_trip():
+    pose = Pose2d(Point2d(1.0, -2.0), Rotation2d(math.pi / 4))
+    restored = Pose2d.from_ros(pose.to_ros())
+    assert abs(restored.point.x - pose.point.x) < 1e-6
+    assert abs(restored.point.y - pose.point.y) < 1e-6
+    assert abs(restored.rotation.angle - pose.rotation.angle) < 1e-6
