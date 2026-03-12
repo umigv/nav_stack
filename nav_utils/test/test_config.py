@@ -1,4 +1,5 @@
 from dataclasses import dataclass, field
+from pathlib import Path
 
 import pytest
 from nav_utils.config import load
@@ -107,3 +108,70 @@ def test_load_nested_dataclass():
     assert config.rate == 42
     assert config.inner.gain == 1.25
     assert config.inner.name == "abc"
+
+
+def test_load_bytes():
+    @dataclass
+    class Config:
+        data: bytes
+
+    node = MockNode(initial={"data": b"\x01\x02\x03"})
+    config = load(node, Config)
+
+    assert config.data == b"\x01\x02\x03"
+
+
+def test_load_list():
+    @dataclass
+    class Config:
+        ids: list[int]
+
+    node = MockNode(initial={"ids": [10, 20, 30]})
+    config = load(node, Config)
+
+    assert config.ids == [10, 20, 30]
+
+
+def test_load_path_required():
+    @dataclass
+    class Config:
+        log_dir: Path
+
+    node = MockNode(initial={"log_dir": "/tmp/logs"})
+    config = load(node, Config)
+
+    assert config.log_dir == Path("/tmp/logs")
+    assert isinstance(config.log_dir, Path)
+
+
+def test_load_path_default():
+    @dataclass
+    class Config:
+        log_dir: Path = Path("/var/log")
+
+    node = MockNode(initial={})
+    config = load(node, Config)
+
+    assert config.log_dir == Path("/var/log")
+    assert isinstance(config.log_dir, Path)
+
+
+def test_load_path_default_overridden():
+    @dataclass
+    class Config:
+        log_dir: Path = Path("/var/log")
+
+    node = MockNode(initial={"log_dir": "/tmp/override"})
+    config = load(node, Config)
+
+    assert config.log_dir == Path("/tmp/override")
+
+
+def test_load_unsupported_type_raises():
+    @dataclass
+    class Config:
+        value: tuple
+
+    node = MockNode(initial={})
+    with pytest.raises(TypeError, match=r"unsupported type"):
+        load(node, Config)
