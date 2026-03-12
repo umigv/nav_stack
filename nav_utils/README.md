@@ -9,10 +9,15 @@ parameter key. The field’s default value (if provided) is used as the paramete
 
 Mapping rules:
 - Each dataclass field name corresponds to a ROS 2 parameter key.
-- If the field has a default value (or default_factory), the parameter is optional and the default is used when the key 
+- If the field has a default value (or default_factory), the parameter is optional and the default is used when the key
 is not supplied in YAML.
 - If the field has no default, the parameter is required; `load()` will raise if it is missing / unset.
 - Nested dataclasses are supported and map to nested parameter dictionaries.
+
+Supported field types:
+- Primitives: `bool`, `int`, `float`, `str`, `bytes`
+- Arrays: `list[bool]`, `list[int]`, `list[float]`, `list[str]`
+- `pathlib.Path` (declared as a string parameter, coerced to `Path` on load)
 
 For example, you can create the following config dataclass:
 ```py
@@ -20,14 +25,14 @@ from dataclasses import dataclass, field
 
 @dataclass
 class Weights:
-    heading: float = 1.0
     clearance: float
+    heading: float = 1.0
 
 @dataclass
 class PlannerConfig:
-    max_iters: int = 10_000
-    timeout_s: float
     weights: Weights
+    timeout_s: float
+    max_iters: int = 10_000
 ```
 
 Which would map to a ROS2 config yaml structure like this:
