@@ -115,8 +115,22 @@ ros2 launch nav_bringup localization.launch.py [use_enc_odom:=true]
 Launches the navigation stack.
 
 ```
-ros2 launch nav_bringup navigation.launch.py
+ros2 launch nav_bringup navigation.launch.py [course:=<course>]
 ```
+
+### Parameters
+- `course`: Course profile in `courses/` to load waypoints from, default `default`
+
+### Subscribed Topics
+- `occupancy_grid/raw` (`nav_msgs/OccupancyGrid`) - Raw occupancy grid from CV
+- `odom/local` (`nav_msgs/Odometry`) - Odometry from localization
+
+### Published Topics
+- `nav_cmd_vel` (`geometry_msgs/Twist`) - Velocity command consumed by twist_mux
+
+### Service Clients
+- `fromLL` (`robot_localization/FromLL`) - Converts GPS coordinates to map-frame points; called at startup by 
+autonav_goal_selection
 
 
 ## teleop.launch.py

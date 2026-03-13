@@ -28,7 +28,7 @@ Run each of these commands in separate terminals:
 ros2 launch nav_bringup base.launch.py [simulation:=true] [use_enc_odom:=true] [course:=<course>]
 ros2 launch nav_bringup teleop.launch.py controller:=<ps4/xbox> # teleop
 # and / or
-ros2 launch nav_bringup navigation.launch.py # autonav
+ros2 launch nav_bringup navigation.launch.py [course:=<course>] # autonav
 ```
 
 ## Visualization
