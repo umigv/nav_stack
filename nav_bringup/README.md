@@ -141,11 +141,25 @@ ros2 launch nav_bringup localization.launch.py mode:=<mode> [course:=<course>]
 Launches the navigation stack.
 
 ```
-ros2 launch nav_bringup navigation.launch.py mode:=<mode>
+ros2 launch nav_bringup navigation.launch.py mode:=<mode> [course:=<course>]
 ```
 
 ### Parameters
 - `mode`: Operation mode (required)
+- `course`: Course profile in `courses/` to load waypoints from, default `default` (required for autonav, autonav_sim)
+
+### Subscribed Topics
+- `goal` (`geometry_msgs/PointStamped`) - Goal for path planning (`self_drive`, `self_drive_sim`, `nav_test` only)
+- `occupancy_grid/raw` (`nav_msgs/OccupancyGrid`) - Raw occupancy grid from CV
+- `odom/local` (`nav_msgs/Odometry`) - Odometry from localization
+
+### Published Topics
+- `goal` (`geometry_msgs/PointStamped`) - Goal for path planning (`autonav`, `autonav_sim` only)
+- `gps_waypoint` (`geometry_msgs/PointStamped`) - Current GPS waypoint target (`autonav`, `autonav_sim` only)
+- `nav_cmd_vel` (`geometry_msgs/Twist`) - Velocity command consumed by twist_mux
+
+### Service Clients
+- `fromLL` (`robot_localization/FromLL`) - Converts GPS coordinates to map-frame points; called at startup by autonav_goal_selection (`autonav`, `autonav_sim` only)
 
 
 ## teleop.launch.py

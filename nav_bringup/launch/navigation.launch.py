@@ -4,12 +4,13 @@ from launch import LaunchDescription, LaunchDescriptionEntity
 from launch.actions import DeclareLaunchArgument, OpaqueFunction
 from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
-from nav_bringup.launch_utils import MODES, Mode, format_mode_description, load_frames
+from nav_bringup.launch_utils import MODES, Mode, bringup_share, format_mode_description, load_frames
 
 
 def launch_setup(context, *args, **kwargs) -> list[LaunchDescriptionEntity]:
     frames = load_frames()
     mode: Mode = LaunchConfiguration("mode").perform(context)
+    course = LaunchConfiguration("course").perform(context)
 
     occupancy_grid_transform_node = Node(
         package="occupancy_grid_transform",
@@ -20,7 +21,7 @@ def launch_setup(context, *args, **kwargs) -> list[LaunchDescriptionEntity]:
         ],
         remappings=[
             ("occupancy_grid", "occupancy_grid/raw"),
-            ("transformed_occupancy_grid", "inflated_occupancy_grid"),
+            ("transformed_occupancy_grid", "occupancy_grid"),
         ],
     )
 
@@ -40,29 +41,50 @@ def launch_setup(context, *args, **kwargs) -> list[LaunchDescriptionEntity]:
         ],
     )
 
-    goal_selection_node = Node(
-        package="goal_selection",
-        executable="goal_selection",
-        name="goal_selection",
+    autonav_goal_selection_node = Node(
+        package="autonav_goal_selection",
+        executable="autonav_goal_selection",
+        name="autonav_goal_selection",
+        parameters=[
+            {"waypoints_file_path": f"{bringup_share()}/courses/{course}/gps.json"},
+            {"map_frame_id": frames["map_frame"]},
+            {"world_frame_id": frames["odom_frame"]},
+        ],
         remappings=[
+            ("occupancy_grid", "occupancy_grid"),
             ("odom", "odom/local"),
-            ("gps_coords", "gps/raw"),
-            ("inflated_occupancy_grid", "inflated_occupancy_grid"),
+            ("fromLL", "fromLL"),
+            ("goal", "goal"),
+            ("gps_waypoint", "gps_waypoint"),
+        ],
+    )
+
+    path_planning_node = Node(
+        package="path_planning",
+        executable="path_planning",
+        name="path_planning",
+        parameters=[
+            {"frame_id": frames["odom_frame"]},
+        ],
+        remappings=[
+            ("occupancy_grid", "occupancy_grid"),
+            ("odom", "odom/local"),
+            ("goal", "goal"),
             ("path", "path"),
         ],
     )
 
     match mode:
         case "autonav":
-            return [occupancy_grid_transform_node, path_tracking_node, goal_selection_node]
+            return [occupancy_grid_transform_node, path_tracking_node, path_planning_node, autonav_goal_selection_node]
         case "autonav_sim":
-            return [occupancy_grid_transform_node, path_tracking_node, goal_selection_node]
+            return [occupancy_grid_transform_node, path_tracking_node, path_planning_node, autonav_goal_selection_node]
         case "self_drive":
-            return [occupancy_grid_transform_node, path_tracking_node]
+            return [occupancy_grid_transform_node, path_tracking_node, path_planning_node]
         case "self_drive_sim":
-            return [occupancy_grid_transform_node, path_tracking_node]
+            return [occupancy_grid_transform_node, path_tracking_node, path_planning_node]
         case "nav_test":
-            return [occupancy_grid_transform_node, path_tracking_node]
+            return [occupancy_grid_transform_node, path_tracking_node, path_planning_node]
         case _:
             assert_never(mode)  # type: ignore[unreachable]
 
@@ -75,13 +97,18 @@ def generate_launch_description() -> LaunchDescription:
                 choices=MODES,
                 description=format_mode_description(
                     {
-                        "autonav": "occupancy grid transform + path tracking + goal selection",
-                        "autonav_sim": "occupancy grid transform + path tracking + goal selection",
-                        "self_drive": "occupancy grid transform + path tracking",
-                        "self_drive_sim": "occupancy grid transform + path tracking",
-                        "nav_test": "occupancy grid transform + path tracking",
+                        "autonav": "occupancy grid transform + path planning + path tracking + autonav goal selection",
+                        "autonav_sim": "occupancy grid transform + path planning + path tracking + autonav goal selection",
+                        "self_drive": "occupancy grid transform + path planning + path tracking",
+                        "self_drive_sim": "occupancy grid transform + path planning + path tracking",
+                        "nav_test": "occupancy grid transform + path planning + path tracking",
                     }
                 ),
+            ),
+            DeclareLaunchArgument(
+                "course",
+                default_value="default",
+                description="Course profile in courses/ to load waypoints from (required for autonav, autonav_sim)",
             ),
             OpaqueFunction(function=launch_setup),
         ]
