@@ -93,12 +93,13 @@ def launch_setup(context, *args, **kwargs) -> list[LaunchDescriptionEntity]:
                 {
                     "map_file_path": map_file,
                     "map_frame_id": frames["map_frame"],
+                    "base_frame_id": frames["base_frame"],
                     "ground_truth_base_frame_id": frames["ground_truth_base_frame"],
                 }
             ],
             remappings=[
                 ("odom", "odom/ground_truth"),
-                ("occupancy_grid", "occ_grid"),
+                ("occupancy_grid", "occupancy_grid/raw"),
                 ("occupancy_grid/ground_truth", "occupancy_grid/ground_truth"),
             ],
         ),
