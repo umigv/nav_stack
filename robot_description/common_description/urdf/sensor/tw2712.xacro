@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+
+<!-- Brief: Calian TW2712 single-band GNSS antenna -->
+<!-- Dimensions: 57.0mm diameter x 15.0mm height (cylindrical) -->
+<!-- Mass: 110g (excluding cable) -->
+<!-- Mounting Location: ARP (Antenna Reference Point) at bottom center of housing -->
+<!-- Phase Center Offset from ARP: not published in datasheet — set to 0, update if calibration data available -->
+<!-- Joint Type: fixed -->
+<!-- Param name: name of the antenna -->
+<!-- Param parent: name of the parent link, defaulted to base_link -->
+<!-- Param joint_origin: location of ARP relative to parent link -->
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="calian_tw2712">
+    <xacro:macro name="calian_tw2712" params="name parent:=base_link *joint_origin">
+        <!-- Includes -->
+        <xacro:include filename="$(find common_description)/urdf/physics/inertia.xacro"/>
+
+
+        <!-- TW2712 dimensions -->
+        <xacro:property name="tw2712_mass" value="0.110"/>
+        <xacro:property name="tw2712_radius" value="0.0285"/>
+        <xacro:property name="tw2712_height" value="0.0150"/>
+        <xacro:property name="tw2712_phase_center_z" value="0.0"/>
+
+
+        <!-- Base link -->
+        <link name="${name}_base_link">
+            <xacro:cylinder_inertia mass="${tw2712_mass}" radius="${tw2712_radius}" height="${tw2712_height}">
+                <origin xyz="0 0 ${tw2712_height / 2}" rpy="0 0 0" />
+            </xacro:cylinder_inertia>
+
+            <visual>
+                <origin xyz="0 0 ${tw2712_height / 2}" rpy="0 0 0" />
+                <geometry>
+                    <cylinder radius="${tw2712_radius}" length="${tw2712_height}" />
+                </geometry>
+            </visual>
+
+            <collision>
+                <origin xyz="0 0 ${tw2712_height / 2}" rpy="0 0 0" />
+                <geometry>
+                    <cylinder radius="${tw2712_radius}" length="${tw2712_height}" />
+                </geometry>
+            </collision>
+        </link>
+
+        <joint name="${name}_base_joint" type="fixed">
+            <xacro:insert_block name="joint_origin" />
+            <parent link="${parent}" />
+            <child link="${name}_base_link" />
+        </joint>
+
+
+        <!-- GPS link (L1 band phase center) -->
+        <link name="${name}_link" />
+
+        <joint name="${name}_joint" type="fixed">
+            <origin xyz="0 0 ${tw2712_phase_center_z}" rpy="0 0 0" />
+            <parent link="${name}_base_link" />
+            <child link="${name}_link" />
+        </joint>
+    </xacro:macro>
+</robot>
