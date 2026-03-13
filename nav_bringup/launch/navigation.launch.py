@@ -1,9 +1,17 @@
+from pathlib import Path
+
+import yaml
+from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
 from launch_ros.actions import Node
-from nav_bringup.global_config import FRAMES
 
 
 def generate_launch_description() -> LaunchDescription:
+    bringup_share_dir = Path(get_package_share_directory("nav_bringup"))
+
+    with open(bringup_share_dir / "config" / "frames.yaml") as f:
+        frames = yaml.safe_load(f)
+
     return LaunchDescription(
         [
             Node(
@@ -11,7 +19,7 @@ def generate_launch_description() -> LaunchDescription:
                 executable="occupancy_grid_transform",
                 name="occupancy_grid_transform",
                 parameters=[
-                    {"frame_id": FRAMES["odom_frame"]},
+                    {"frame_id": frames["odom_frame"]},
                 ],
                 remappings=[
                     ("occupancy_grid", "occ_grid"),
@@ -34,8 +42,8 @@ def generate_launch_description() -> LaunchDescription:
                 executable="path_tracking",
                 name="path_tracking",
                 parameters=[
-                    {"base_frame_id": FRAMES["base_frame"]},
-                    {"odom_frame_id": FRAMES["odom_frame"]},
+                    {"base_frame_id": frames["base_frame"]},
+                    {"odom_frame_id": frames["odom_frame"]},
                 ],
                 remappings=[
                     ("odom", "odom/local"),
