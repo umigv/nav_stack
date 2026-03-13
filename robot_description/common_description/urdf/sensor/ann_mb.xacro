@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+
+<!-- Brief: u-blox ANN-MB GNSS antenna -->
+<!-- Dimensions: 82.0 x 60.0 x 22.5 mm (length x width x height) -->
+<!-- Mass: 173g (including cable) -->
+<!-- Mounting Location: ARP (Antenna Reference Point) at bottom center of housing -->
+<!-- Phase Center Offset from ARP: L1 = 8.9mm up, L2 = 7.6mm up, horizontal < 5mm -->
+<!-- Joint Type: fixed -->
+<!-- Param name: name of the antenna -->
+<!-- Param parent: name of the parent link, defaulted to base_link -->
+<!-- Param joint_origin: location of ARP relative to parent link -->
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="ann_mb">
+    <xacro:macro name="ann_mb" params="name parent:=base_link *joint_origin">
+        <!-- Includes -->
+        <xacro:include filename="$(find common_description)/urdf/physics/inertia.xacro"/>
+
+
+        <!-- ANN-MB dimensions -->
+        <xacro:property name="ann_mb_mass" value="0.173"/>
+        <xacro:property name="ann_mb_length" value="0.0820"/>
+        <xacro:property name="ann_mb_width" value="0.0600"/>
+        <xacro:property name="ann_mb_height" value="0.0225"/>
+        <xacro:property name="ann_mb_phase_center_z" value="0.0089"/>
+
+
+        <!-- Base link -->
+        <link name="${name}_base_link">
+            <xacro:box_inertia mass="${ann_mb_mass}" length="${ann_mb_length}" width="${ann_mb_width}" height="${ann_mb_height}">
+                <origin xyz="0 0 ${ann_mb_height / 2}" rpy="0 0 0" />
+            </xacro:box_inertia>
+
+            <visual>
+                <origin xyz="0 0 ${ann_mb_height / 2}" rpy="0 0 0" />
+                <geometry>
+                    <box size="${ann_mb_length} ${ann_mb_width} ${ann_mb_height}" />
+                </geometry>
+            </visual>
+
+            <collision>
+                <origin xyz="0 0 ${ann_mb_height / 2}" rpy="0 0 0" />
+                <geometry>
+                    <box size="${ann_mb_length} ${ann_mb_width} ${ann_mb_height}" />
+                </geometry>
+            </collision>
+        </link>
+
+        <joint name="${name}_base_joint" type="fixed">
+            <xacro:insert_block name="joint_origin" />
+            <parent link="${parent}" />
+            <child link="${name}_base_link" />
+        </joint>
+
+
+        <!-- GPS link (L1 band phase center) -->
+        <link name="${name}_link" />
+
+        <joint name="${name}_joint" type="fixed">
+            <origin xyz="0 0 ${ann_mb_phase_center_z}" rpy="0 0 0" />
+            <parent link="${name}_base_link" />
+            <child link="${name}_link" />
+        </joint>
+    </xacro:macro>
+</robot>

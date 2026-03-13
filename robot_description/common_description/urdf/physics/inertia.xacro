@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="inertia">
+    <!-- Brief: Inertial property of a constant density box -->
+    <!-- Param mass: mass of the link -->
+    <!-- Param length: length of the link -->
+    <!-- Param width: width of the link -->
+    <!-- Param height: height of the object -->
+    <!-- Param origin: location of the inertia relative to the link's origin -->
+    <xacro:macro name="box_inertia" params="mass length width height *origin">
+        <inertial>
+            <xacro:insert_block name="origin" />
+            <mass value="${mass}"/>
+            <inertia ixx="${(mass/12) * (height**2 + width**2)}" ixy="0.0" ixz="0.0"
+                    iyy="${(mass/12) * (height**2 + length**2)}" iyz="0.0"
+                    izz="${(mass/12) * (length**2 + width**2)}"/>
+        </inertial>
+    </xacro:macro>
+
+
+    <!-- Brief: Inertial property of a constant density cylinder -->
+    <!-- Param mass: mass of the link -->
+    <!-- Param radius: radius of the link -->
+    <!-- Param height: height of the link -->
+    <!-- Param origin: location of the inertia relative to the link's origin -->
+    <xacro:macro name="cylinder_inertia" params="mass radius height *origin">
+        <inertial>
+            <xacro:insert_block name="origin" />
+            <mass value="${mass}"/>
+            <inertia ixx="${(mass/12) * (3*radius**2 + height**2)}" ixy = "0" ixz = "0"
+                    iyy="${(mass/2) * (radius**2)}" iyz = "0"
+                    izz="${(mass/12) * (3*radius**2 + height**2)}"/>
+        </inertial>
+    </xacro:macro>
+
+
+    <!-- Brief: Inertial property of a constant density sphere -->
+    <!-- Param mass: mass of the link -->
+    <!-- Param radius: radius of the link -->
+    <!-- Param origin: location of the inertia relative to the link's origin -->
+    <xacro:macro name="sphere_inertia" params="mass radius *origin">
+        <inertial>
+            <xacro:insert_block name="origin" />
+            <mass value="${mass}"/>
+            <inertia ixx="${(2/5) * mass * radius**2}" ixy="0.0" ixz="0.0"
+                    iyy="${(2/5) * mass * radius**2}" iyz="0.0"
+                    izz="${(2/5) * mass * radius**2}"/>
+        </inertial>
+    </xacro:macro>
+</robot>
