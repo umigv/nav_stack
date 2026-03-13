@@ -36,6 +36,7 @@ class EncOdomPublisher(Node):
         self.rotation = Rotation2d(angle=0.0)
         self.prev_time: Time | None = None
 
+        # Row-major 6x6 covariance [x, y, z, roll, pitch, yaw]
         self.pose_covariance = [0.0] * 36
         self.pose_covariance[0] = self.config.pose_x_variance_m2
         self.pose_covariance[7] = self.config.pose_y_variance_m2
