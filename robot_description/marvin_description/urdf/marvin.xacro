@@ -38,14 +38,14 @@
     <!-- Camera -->
     <xacro:include filename="$(find common_description)/urdf/sensor/zed2i.xacro" />
     <xacro:zed2i name="$(arg zed_name)" parent="$(arg base_frame_id)">
-        <origin xyz="${camera_x_offset} 0 ${camera_z_offset}" rpy="0 ${camera_angle} 0" />
+        <origin xyz="${camera_x_offset} ${camera_y_offset} ${camera_z_offset}" rpy="0 ${camera_pitch_offset} 0" />
     </xacro:zed2i>
 
 
     <!-- IMU -->
     <xacro:include filename="$(find common_description)/urdf/sensor/vn300.xacro" />
     <xacro:vn300 name="$(arg imu_name)" parent="$(arg base_frame_id)">
-        <origin xyz="${imu_x_offset} ${imu_y_offset} ${imu_z_offset}" rpy="0 0 ${imu_yaw}" />
+        <origin xyz="${imu_x_offset} ${imu_y_offset} ${imu_z_offset}" rpy="0 0 ${imu_yaw_offset}" />
     </xacro:vn300>
 
 
