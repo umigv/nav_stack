@@ -18,15 +18,15 @@ def launch_setup(context, *args, **kwargs) -> list[LaunchDescriptionEntity]:
     with open(bringup_share_dir / "config" / "frames.yaml") as f:
         frames = yaml.safe_load(f)
 
-    field = LaunchConfiguration("field").perform(context)
-    with open(bringup_share_dir / "fields" / field / "gps.json") as f:
+    course = LaunchConfiguration("course").perform(context)
+    with open(bringup_share_dir / "courses" / course / "gps.json") as f:
         gps_file = json.load(f)
 
     imu_params = PathJoinSubstitution([bringup_share, "config", "sensors", "imu.yaml"])
     gps_params = PathJoinSubstitution([bringup_share, "config", "sensors", "gps.yaml"])
     sensor_simulator_params = PathJoinSubstitution([bringup_share, "config", "sensors", "sensor_simulator.yaml"])
     simulation = LaunchConfiguration("simulation")
-    map_file = PathJoinSubstitution([bringup_share, "fields", field, "map.json"])
+    map_file = PathJoinSubstitution([bringup_share, "courses", course, "map.json"])
 
     return [
         Node(
@@ -114,9 +114,9 @@ def generate_launch_description() -> LaunchDescription:
                 description="Launch sensor simulator instead of real hardware drivers",
             ),
             DeclareLaunchArgument(
-                "field",
+                "course",
                 default_value="default",
-                description="Field profile in fields/ to load map and GPS datum from",
+                description="Course profile in courses/ to load map and GPS datum from",
             ),
             OpaqueFunction(function=launch_setup),
         ]

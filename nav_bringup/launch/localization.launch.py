@@ -18,8 +18,8 @@ def launch_setup(context, *args, **kwargs) -> list[LaunchDescriptionEntity]:
     with open(bringup_share_dir / "config" / "frames.yaml") as f:
         frames = yaml.safe_load(f)
 
-    field = LaunchConfiguration("field").perform(context)
-    with open(bringup_share_dir / "fields" / field / "gps.json") as f:
+    course = LaunchConfiguration("course").perform(context)
+    with open(bringup_share_dir / "courses" / course / "gps.json") as f:
         gps_file = json.load(f)
 
     localization_params = PathJoinSubstitution([bringup_share, "config", "localization", "localization.yaml"])
@@ -97,9 +97,9 @@ def generate_launch_description() -> LaunchDescription:
     return LaunchDescription(
         [
             DeclareLaunchArgument(
-                "field",
+                "course",
                 default_value="default",
-                description="Field profile in fields/ to load GPS datum from",
+                description="Course profile in courses/ to load GPS datum from",
             ),
             DeclareLaunchArgument(
                 "use_enc_odom",

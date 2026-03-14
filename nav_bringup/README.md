@@ -1,18 +1,18 @@
 # nav_bringup
-Launch files and configuration for the navigation stack. See the root README for configuration and field data setup.
+Launch files and configuration for the navigation stack. See the root README for configuration and course data setup.
 
 
 ## base.launch.py
 Launches the base stack required for all operation modes: core, sensors, and localization.
 
 ```
-ros2 launch nav_bringup base.launch.py [simulation:=true] [use_enc_odom:=true] [field:=<field>]
+ros2 launch nav_bringup base.launch.py [simulation:=true] [use_enc_odom:=true] [course:=<course>]
 ```
 
 ### Parameters
 - `simulation`: Pass through to `sensors.launch.py`, default `false`
 - `use_enc_odom`: Pass through to `localization.launch.py`, default `false`
-- `field`: Pass through to `sensors.launch.py` and `localization.launch.py`, default `default`
+- `course`: Pass through to `sensors.launch.py` and `localization.launch.py`, default `default`
 
 
 ## core.launch.py
@@ -64,7 +64,7 @@ ros2 launch nav_bringup sensors.launch.py [simulation:=true]
 
 ### Parameters
 - `simulation`: Launch sensor and occupancy grid simulators instead of real hardware drivers, default `false`
-- `field`: Field profile in `fields/` to load map and GPS datum from, default `default`
+- `course`: Course profile in `courses/` to load map and GPS datum from, default `default`
 
 ### Published Topics (Hardware)
 - `imu/raw` (`sensor_msgs/Imu`) - Raw IMU data from VectorNav
@@ -92,7 +92,7 @@ ros2 launch nav_bringup localization.launch.py [use_enc_odom:=true]
 
 ### Parameters
 - `use_enc_odom`: Use encoder odometry integration instead of EKF for local odometry, default `false`
-- `field`: Field profile in `fields/` to load GPS datum from, default `default`
+- `course`: Course profile in `courses/` to load GPS datum from, default `default`
 
 ### Subscribed Topics
 - `imu/raw` (`sensor_msgs/Imu`) - Raw IMU data

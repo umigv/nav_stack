@@ -15,17 +15,17 @@ You can install all dependencies by running
 
 ## Configuration
 Frame IDs and node parameters are defined in `nav_bringup/config/`. 
-To configure a new field, add a subfolder under `nav_bringup/fields/` containing:
+To configure a new course, add a subfolder under `nav_bringup/courses/` containing:
 - `gps.json` — GPS datum and waypoints
 - `map.json` — simulation obstacle map
 
-Fields can be generated using the [course creation tool](https://github.com/umigv/course_creation_tool). The `default` 
-field is used when no `field` argument is provided.
+Courses can be generated using the [course creation tool](https://github.com/umigv/course_creation_tool). The `default` 
+course is used when no `course` argument is provided.
 
 ## Running the stack
 Run each of these commands in separate terminals:
 ```bash
-ros2 launch nav_bringup base.launch.py [simulation:=true] [use_enc_odom:=true] [field:=<field>]
+ros2 launch nav_bringup base.launch.py [simulation:=true] [use_enc_odom:=true] [course:=<course>]
 ros2 launch nav_bringup teleop.launch.py controller:=<ps4/xbox> # teleop
 # and / or
 ros2 launch nav_bringup navigation.launch.py # autonav

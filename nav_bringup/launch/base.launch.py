@@ -21,9 +21,9 @@ def generate_launch_description() -> LaunchDescription:
                 description="Replace ekf_local with encoder odometry integration",
             ),
             DeclareLaunchArgument(
-                "field",
+                "course",
                 default_value="default",
-                description="Field profile in fields/ to load map and GPS datum from",
+                description="Course profile in courses/ to load map and GPS datum from",
             ),
             IncludeLaunchDescription(
                 PythonLaunchDescriptionSource(PathJoinSubstitution([bringup_share, "launch", "core.launch.py"])),
@@ -32,7 +32,7 @@ def generate_launch_description() -> LaunchDescription:
                 PythonLaunchDescriptionSource(PathJoinSubstitution([bringup_share, "launch", "sensors.launch.py"])),
                 launch_arguments=[
                     ("simulation", LaunchConfiguration("simulation")),
-                    ("field", LaunchConfiguration("field")),
+                    ("course", LaunchConfiguration("course")),
                 ],
             ),
             IncludeLaunchDescription(
@@ -41,7 +41,7 @@ def generate_launch_description() -> LaunchDescription:
                 ),
                 launch_arguments=[
                     ("use_enc_odom", LaunchConfiguration("use_enc_odom")),
-                    ("field", LaunchConfiguration("field")),
+                    ("course", LaunchConfiguration("course")),
                 ],
             ),
         ]

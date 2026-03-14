@@ -15,7 +15,7 @@ setup(
         ("share/" + package_name, ["package.xml"]),
         (str(Path("share") / package_name / "launch"), glob("launch/*")),
         *[(str(share / path.parent), [str(path)]) for path in Path("config").rglob("*") if path.is_file()],
-        *[(str(share / path.parent), [str(path)]) for path in Path("fields").rglob("*") if path.is_file()],
+        *[(str(share / path.parent), [str(path)]) for path in Path("courses").rglob("*") if path.is_file()],
     ],
     install_requires=["setuptools"],
     zip_safe=True,
