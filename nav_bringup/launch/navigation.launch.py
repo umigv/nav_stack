@@ -22,7 +22,7 @@ def generate_launch_description() -> LaunchDescription:
                     {"frame_id": frames["odom_frame"]},
                 ],
                 remappings=[
-                    ("occupancy_grid", "occ_grid"),
+                    ("occupancy_grid", "occupancy_grid/raw"),
                     ("transformed_occupancy_grid", "inflated_occupancy_grid"),
                 ],
             ),

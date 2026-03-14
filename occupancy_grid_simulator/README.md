@@ -18,7 +18,7 @@ The map file is a JSON file with the following structure:
 - `odom` (`nav_msgs/Odometry`) - Robot pose in the map frame
 
 ## Published Topics
-- `occupancy_grid` (`nav_msgs/OccupancyGrid`) - Robot-centric occupancy grid in `base_link` frame, published 
+- `occupancy_grid` (`nav_msgs/OccupancyGrid`) - Robot-centric occupancy grid stamped in `base_frame_id`, published 
 periodically
 - `occupancy_grid/ground_truth` (`nav_msgs/OccupancyGrid`) - Full static obstacle map in `map` frame
 
@@ -53,5 +53,6 @@ forward so the grid extends mostly in front of the robot).
 | `offset_x_m` | `float` | `0.0` | X offset of the grid origin from the robot (m) |
 | `offset_y_m` | `float` | `-2.5` | Y offset of the grid origin from the robot (m) |
 | `map_frame_id` | `str` | `map` | TF frame ID for the map frame |
-| `ground_truth_base_frame_id` | `str` | `base_link_ground_truth` | TF frame ID for the true robot pose. The grid is generated and published in this frame. |
+| `base_frame_id` | `str` | `base_link` | TF frame ID stamped on the published occupancy grid, matching what a real perception stack would use |
+| `ground_truth_base_frame_id` | `str` | `base_link_ground_truth` | TF frame ID for the true robot pose, used to generate grid cell positions |
 | `publish_period_s` | `float` | `0.03` | Publish period for the robot-centric occupancy grid (s) |

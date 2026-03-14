@@ -117,7 +117,7 @@ class OccupancyGridSimulator(Node):
 
         self.occupancy_grid_publisher.publish(
             OccupancyGrid(
-                header=Header(stamp=self.get_clock().now().to_msg(), frame_id=self.config.ground_truth_base_frame_id),
+                header=Header(stamp=self.get_clock().now().to_msg(), frame_id=self.config.base_frame_id),
                 info=MapMetaData(
                     resolution=self.resolution_m,
                     width=self.width_cells,
