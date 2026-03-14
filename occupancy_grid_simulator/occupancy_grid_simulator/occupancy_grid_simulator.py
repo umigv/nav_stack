@@ -102,17 +102,18 @@ class OccupancyGridSimulator(Node):
 
         grid = np.full((self.height_cells, self.width_cells), self.FREE, dtype=np.int8)
 
-        for row in range(self.height_cells):
-            for col in range(self.width_cells):
-                local = Point2d(
-                    x=self.config.offset_x_m + (col + 0.5) * self.resolution_m,
-                    y=self.config.offset_y_m + (row + 0.5) * self.resolution_m,
-                )
-                world = self.robot_pose.local_to_world(local)
-                ox = math.floor(world.x / self.resolution_m)
-                oy = math.floor(world.y / self.resolution_m)
-                if (ox, oy) in self.obstacle_cells:
-                    grid[row, col] = self.OCCUPIED
+        if len(self.obstacle_cells) != 0:
+            for row in range(self.height_cells):
+                for col in range(self.width_cells):
+                    local = Point2d(
+                        x=self.config.offset_x_m + (col + 0.5) * self.resolution_m,
+                        y=self.config.offset_y_m + (row + 0.5) * self.resolution_m,
+                    )
+                    world = self.robot_pose.local_to_world(local)
+                    ox = math.floor(world.x / self.resolution_m)
+                    oy = math.floor(world.y / self.resolution_m)
+                    if (ox, oy) in self.obstacle_cells:
+                        grid[row, col] = self.OCCUPIED
 
         self.occupancy_grid_publisher.publish(
             OccupancyGrid(

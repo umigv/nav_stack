@@ -1,9 +1,11 @@
+from pathlib import Path
+
+import yaml
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription, LaunchDescriptionEntity
 from launch.actions import DeclareLaunchArgument, OpaqueFunction
 from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
 from launch_ros.actions import Node
-from nav_bringup.global_config import FRAMES
 
 CONTROLLERS = ("ps4", "xbox")
 
@@ -11,7 +13,10 @@ CONTROLLERS = ("ps4", "xbox")
 def launch_setup(context, *args, **kwargs) -> list[LaunchDescriptionEntity]:
     bringup_share = get_package_share_directory("nav_bringup")
     controller = LaunchConfiguration("controller").perform(context).strip().lower()
-    teleop_params = PathJoinSubstitution([bringup_share, "config", f"teleop_{controller}.yaml"])
+    teleop_params = PathJoinSubstitution([bringup_share, "config", "teleop", f"teleop_{controller}.yaml"])
+
+    with open(Path(bringup_share) / "config" / "frames.yaml") as f:
+        frames = yaml.safe_load(f)
 
     return [
         Node(
@@ -30,7 +35,7 @@ def launch_setup(context, *args, **kwargs) -> list[LaunchDescriptionEntity]:
             output="screen",
             parameters=[
                 teleop_params,
-                {"frame": FRAMES["base_frame"]},
+                {"frame": frames["base_frame"]},
             ],
             remappings=[
                 ("cmd_vel", "teleop_cmd_vel"),

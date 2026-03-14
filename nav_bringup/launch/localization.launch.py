@@ -1,95 +1,111 @@
-from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument
+import json
+from pathlib import Path
+
+import yaml
+from ament_index_python.packages import get_package_share_directory
+from launch import LaunchDescription, LaunchDescriptionEntity
+from launch.actions import DeclareLaunchArgument, OpaqueFunction
 from launch.conditions import IfCondition, UnlessCondition
 from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
 from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
-from nav_bringup.global_config import FRAMES, GPS_ORIGIN
+
+
+def launch_setup(context, *args, **kwargs) -> list[LaunchDescriptionEntity]:
+    bringup_share_dir = Path(get_package_share_directory("nav_bringup"))
+    bringup_share = FindPackageShare("nav_bringup")
+
+    with open(bringup_share_dir / "config" / "frames.yaml") as f:
+        frames = yaml.safe_load(f)
+
+    course = LaunchConfiguration("course").perform(context)
+    with open(bringup_share_dir / "courses" / course / "gps.json") as f:
+        gps_file = json.load(f)
+
+    localization_params = PathJoinSubstitution([bringup_share, "config", "localization", "localization.yaml"])
+    use_enc_odom = LaunchConfiguration("use_enc_odom")
+
+    return [
+        Node(
+            package="robot_localization",
+            executable="ekf_node",
+            name="ekf_local",
+            output="screen",
+            condition=UnlessCondition(use_enc_odom),
+            parameters=[
+                localization_params,
+                {"map_frame": frames["map_frame"]},
+                {"odom_frame": frames["odom_frame"]},
+                {"base_link_frame": frames["base_frame"]},
+                {"world_frame": frames["odom_frame"]},
+            ],
+            remappings=[
+                ("odometry/filtered", "odom/local"),
+            ],
+        ),
+        Node(
+            package="localization",
+            executable="enc_odom_publisher",
+            name="enc_odom_publisher",
+            output="screen",
+            condition=IfCondition(use_enc_odom),
+            parameters=[
+                {"odom_frame_id": frames["odom_frame"]},
+                {"base_frame_id": frames["base_frame"]},
+            ],
+            remappings=[
+                ("enc_vel", "enc_vel/raw"),
+                ("odom", "odom/local"),
+            ],
+        ),
+        Node(
+            package="robot_localization",
+            executable="navsat_transform_node",
+            name="navsat_transform",
+            output="screen",
+            parameters=[
+                localization_params,
+                {"datum": [gps_file["datum"]["latitude"], gps_file["datum"]["longitude"], 0.0]},
+            ],
+            remappings=[
+                ("imu", "imu/raw"),
+                ("gps/fix", "gps/raw"),
+                ("odometry/filtered", "odom/global"),
+                ("odometry/gps", "odom/gps"),
+            ],
+        ),
+        Node(
+            package="robot_localization",
+            executable="ekf_node",
+            name="ekf_global",
+            output="screen",
+            parameters=[
+                localization_params,
+                {"map_frame": frames["map_frame"]},
+                {"odom_frame": frames["odom_frame"]},
+                {"base_link_frame": frames["base_frame"]},
+                {"world_frame": frames["map_frame"]},
+            ],
+            remappings=[
+                ("odometry/filtered", "odom/global"),
+            ],
+        ),
+    ]
 
 
 def generate_launch_description() -> LaunchDescription:
-    bringup_share = FindPackageShare("nav_bringup")
-    localization_params = PathJoinSubstitution([bringup_share, "config", "localization.yaml"])
-    use_enc_odom = LaunchConfiguration("use_enc_odom")
-
-    ekf_local = Node(
-        package="robot_localization",
-        executable="ekf_node",
-        name="ekf_local",
-        output="screen",
-        condition=UnlessCondition(use_enc_odom),
-        parameters=[
-            localization_params,
-            {"map_frame": FRAMES["map_frame"]},
-            {"odom_frame": FRAMES["odom_frame"]},
-            {"base_link_frame": FRAMES["base_frame"]},
-            {"world_frame": FRAMES["odom_frame"]},
-        ],
-        remappings=[
-            ("odometry/filtered", "odom/local"),
-        ],
-    )
-
-    enc_odom = Node(
-        package="localization",
-        executable="enc_odom_publisher",
-        name="enc_odom_publisher",
-        output="screen",
-        condition=IfCondition(use_enc_odom),
-        parameters=[
-            {"odom_frame_id": FRAMES["odom_frame"]},
-            {"base_frame_id": FRAMES["base_frame"]},
-        ],
-        remappings=[
-            ("enc_vel", "enc_vel/raw"),
-            ("odom", "odom/local"),
-        ],
-    )
-
-    navsat = Node(
-        package="robot_localization",
-        executable="navsat_transform_node",
-        name="navsat_transform",
-        output="screen",
-        parameters=[
-            localization_params,
-            {"datum": [GPS_ORIGIN["latitude"], GPS_ORIGIN["longitude"], 0.0]},
-        ],
-        remappings=[
-            ("imu", "imu/raw"),
-            ("gps/fix", "gps/raw"),
-            ("odometry/filtered", "odom/global"),
-            ("odometry/gps", "odom/gps"),
-        ],
-    )
-
-    ekf_global = Node(
-        package="robot_localization",
-        executable="ekf_node",
-        name="ekf_global",
-        output="screen",
-        parameters=[
-            localization_params,
-            {"map_frame": FRAMES["map_frame"]},
-            {"odom_frame": FRAMES["odom_frame"]},
-            {"base_link_frame": FRAMES["base_frame"]},
-            {"world_frame": FRAMES["map_frame"]},
-        ],
-        remappings=[
-            ("odometry/filtered", "odom/global"),
-        ],
-    )
-
     return LaunchDescription(
         [
+            DeclareLaunchArgument(
+                "course",
+                default_value="default",
+                description="Course profile in courses/ to load GPS datum from",
+            ),
             DeclareLaunchArgument(
                 "use_enc_odom",
                 default_value="false",
                 description="Replace ekf_local with encoder odometry integration",
             ),
-            ekf_local,
-            enc_odom,
-            navsat,
-            ekf_global,
+            OpaqueFunction(function=launch_setup),
         ]
     )
