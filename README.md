@@ -5,6 +5,7 @@ When building, make sure you include `--symlink-install`. Otherwise, when contro
 will take you to a copy of the dependency, instead of the actual source file. For example:
 ```bash
 colcon build --symlink-install
+source install/setup.bash
 ```
 
 ## Dependencies
@@ -26,9 +27,13 @@ course is used when no `course` argument is provided.
 Run each of these commands in separate terminals:
 ```bash
 ros2 launch nav_bringup base.launch.py [simulation:=true] [use_enc_odom:=true] [course:=<course>]
+```
+```bash
 ros2 launch nav_bringup teleop.launch.py controller:=<ps4/xbox> # teleop
-# and / or
-ros2 launch nav_bringup navigation.launch.py # autonav
+```
+and / or
+```bash
+ros2 launch nav_bringup navigation.launch.py [course:=<course>] # autonav
 ```
 
 ## Visualization
