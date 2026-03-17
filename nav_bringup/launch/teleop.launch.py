@@ -1,22 +1,16 @@
-from pathlib import Path
-
-import yaml
-from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription, LaunchDescriptionEntity
 from launch.actions import DeclareLaunchArgument, OpaqueFunction
-from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
+from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
+from nav_bringup.launch_utils import bringup_share, load_frames
 
 CONTROLLERS = ("ps4", "xbox")
 
 
 def launch_setup(context, *args, **kwargs) -> list[LaunchDescriptionEntity]:
-    bringup_share = get_package_share_directory("nav_bringup")
+    frames = load_frames()
     controller = LaunchConfiguration("controller").perform(context).strip().lower()
-    teleop_params = PathJoinSubstitution([bringup_share, "config", "teleop", f"teleop_{controller}.yaml"])
-
-    with open(Path(bringup_share) / "config" / "frames.yaml") as f:
-        frames = yaml.safe_load(f)
+    teleop_params = f"{bringup_share()}/config/teleop/teleop_{controller}.yaml"
 
     return [
         Node(

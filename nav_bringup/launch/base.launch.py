@@ -11,19 +11,14 @@ def generate_launch_description() -> LaunchDescription:
     return LaunchDescription(
         [
             DeclareLaunchArgument(
-                "simulation",
-                default_value="false",
-                description="Launch sensor simulator instead of real hardware drivers",
-            ),
-            DeclareLaunchArgument(
-                "use_enc_odom",
-                default_value="false",
-                description="Replace ekf_local with encoder odometry integration",
+                "mode",
+                choices=["autonav", "autonav_sim", "self_drive", "self_drive_sim", "nav_test"],
+                description="autonav/autonav_sim: full GPS stack; self_drive/self_drive_sim: EKF local only; nav_test: enc_odom only",
             ),
             DeclareLaunchArgument(
                 "course",
                 default_value="default",
-                description="Course profile in courses/ to load map and GPS datum from",
+                description="Course profile in courses/ to load map and GPS datum from (required for autonav, autonav_sim, self_drive_sim)",
             ),
             IncludeLaunchDescription(
                 PythonLaunchDescriptionSource(PathJoinSubstitution([bringup_share, "launch", "core.launch.py"])),
@@ -31,7 +26,7 @@ def generate_launch_description() -> LaunchDescription:
             IncludeLaunchDescription(
                 PythonLaunchDescriptionSource(PathJoinSubstitution([bringup_share, "launch", "sensors.launch.py"])),
                 launch_arguments=[
-                    ("simulation", LaunchConfiguration("simulation")),
+                    ("mode", LaunchConfiguration("mode")),
                     ("course", LaunchConfiguration("course")),
                 ],
             ),
@@ -40,7 +35,7 @@ def generate_launch_description() -> LaunchDescription:
                     PathJoinSubstitution([bringup_share, "launch", "localization.launch.py"])
                 ),
                 launch_arguments=[
-                    ("use_enc_odom", LaunchConfiguration("use_enc_odom")),
+                    ("mode", LaunchConfiguration("mode")),
                     ("course", LaunchConfiguration("course")),
                 ],
             ),
