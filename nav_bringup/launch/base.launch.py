@@ -3,6 +3,7 @@ from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
 from launch_ros.substitutions import FindPackageShare
+from nav_bringup.launch_utils import MODES
 
 
 def generate_launch_description() -> LaunchDescription:
@@ -12,13 +13,13 @@ def generate_launch_description() -> LaunchDescription:
         [
             DeclareLaunchArgument(
                 "mode",
-                choices=["autonav", "autonav_sim", "self_drive", "self_drive_sim", "nav_test"],
-                description="autonav/autonav_sim: full GPS stack; self_drive/self_drive_sim: EKF local only; nav_test: enc_odom only",
+                choices=MODES,
+                description="Operation mode, passed through to sensors.launch.py and localization.launch.py",
             ),
             DeclareLaunchArgument(
                 "course",
                 default_value="default",
-                description="Course profile in courses/ to load map and GPS datum from (required for autonav, autonav_sim, self_drive_sim)",
+                description="Course profile, passed through to sensors.launch.py and localization.launch.py (required for autonav, autonav_sim, self_drive_sim)",
             ),
             IncludeLaunchDescription(
                 PythonLaunchDescriptionSource(PathJoinSubstitution([bringup_share, "launch", "core.launch.py"])),

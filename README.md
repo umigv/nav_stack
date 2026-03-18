@@ -24,26 +24,13 @@ ros2 launch nav_bringup teleop.launch.py controller:=<ps4/xbox>
 ```
 and / or
 ```bash
-ros2 launch nav_bringup navigation.launch.py mode:=<mode> [course:=<course>]
+ros2 launch nav_bringup navigation.launch.py mode:=<mode>
 ```
 
-### Modes
-| Mode | Sensors | `odom`→`base_link` | `map`→`odom` | /goal source | `course` required |
-|---|---|---|---|---|---|
-| `autonav` | hardware | EKF | EKF | autonav_goal_selection | yes |
-| `autonav_sim` | simulated | EKF | EKF | autonav_goal_selection | yes |
-| `self_drive` | hardware | EKF | identity | CV | no |
-| `self_drive_sim` | simulated | EKF | identity | CV | yes |
-| `nav_test` | none | enc_odom | identity | manual | no |
+### Mode and Course Configuration
+See [nav_bringup/README.md](src/nav_infrastructure_simple/nav_bringup/README.md) for mode and course configuration 
+details.
 
-### Configuration
-Frame IDs and node parameters are defined in `nav_bringup/config/`. 
-To configure a new course, add a subfolder under `nav_bringup/courses/` containing:
-- `gps.json` — GPS datum and waypoints
-- `map.json` — simulation obstacle map
-
-Courses can be generated using the [course creation tool](https://github.com/umigv/course_creation_tool). The `default`
-course is used when no `course` argument is provided. See `nav_bringup/courses/default/` for the expected schema.
 
 ## Visualization
 You can either 

@@ -1,15 +1,25 @@
 # nav_bringup
-Launch files and configuration for the navigation stack. See the root README for configuration and course data setup.
+Launch files and configuration for the navigation stack.
 
 
 ## Modes
 | Mode | Sensors | `odom`→`base_link` | `map`→`odom` | /goal source | `course` required |
 |---|---|---|---|---|---|
-| `autonav` | hardware | EKF | EKF | autonav_goal_selection | yes |
+| `autonav` | IMU + GPS | EKF | EKF | autonav_goal_selection | yes |
 | `autonav_sim` | simulated | EKF | EKF | autonav_goal_selection | yes |
-| `self_drive` | hardware | EKF | identity | CV | no |
+| `self_drive` | IMU | EKF | identity | CV | no |
 | `self_drive_sim` | simulated | EKF | identity | CV | yes |
 | `nav_test` | none | enc_odom | identity | manual | no |
+
+
+### Course Configuration
+Frame IDs and node parameters are defined in `nav_bringup/config/`. 
+To configure a new course, add a subfolder under `nav_bringup/courses/` containing:
+- `gps.json` — GPS datum and waypoints
+- `map.json` — simulation obstacle map
+
+Courses can be generated using the [course creation tool](https://github.com/umigv/course_creation_tool). The `default`
+course is used when no `course` argument is provided. See `nav_bringup/courses/default/` for the expected schema.
 
 
 ## base.launch.py
@@ -20,8 +30,9 @@ ros2 launch nav_bringup base.launch.py mode:=<mode> [course:=<course>]
 ```
 
 ### Parameters
-- `mode`: Operation mode (required)
-- `course`: Pass through to `sensors.launch.py` and `localization.launch.py`, default `default`
+- `mode`: Operation mode, passed through to sensors.launch.py and localization.launch.py (required)
+- `course`: Course profile, passed through to sensors.launch.py and localization.launch.py, default `default` (required 
+for `autonav`, `autonav_sim`, `self_drive_sim`)
 
 
 ## core.launch.py
@@ -35,7 +46,8 @@ ros2 launch nav_bringup core.launch.py
 Loads `marvin_description/urdf/marvin.xacro` and publishes TF transforms for all robot links.
 
 ### Foxglove Bridge
-Foxglove bridge is always started on `ws://localhost:8765`. Connect Foxglove Studio to this address to visualize the robot.
+Foxglove bridge is always started on `ws://localhost:8765`. Connect Foxglove Studio to this address to visualize the 
+robot.
 
 ### Subscribed Topics
 - `teleop_cmd_vel` (`geometry_msgs/Twist`) - Joystick velocity
@@ -73,18 +85,19 @@ ros2 launch nav_bringup sensors.launch.py mode:=<mode> [course:=<course>]
 
 ### Parameters
 - `mode`: Operation mode (required)
-- `course`: Course profile in `courses/` to load map and GPS datum from, default `default`
+- `course`: Course profile in `courses/` to load map and GPS datum from, default `default` (required for `autonav_sim`, 
+`self_drive_sim`)
 
 ### Published Topics (Hardware)
-- `imu/raw` (`sensor_msgs/Imu`) - Raw IMU data from VectorNav (autonav,  self_drive only)
-- `gps/raw` (`sensor_msgs/NavSatFix`) - Raw GPS fix from GPS receiver (autonav,  self_drive only)
+- `imu/raw` (`sensor_msgs/Imu`) - Raw IMU data from VectorNav (`autonav`, `self_drive`)
+- `gps/raw` (`sensor_msgs/NavSatFix`) - Raw GPS fix from GPS receiver (`autonav` only)
 
 ### Subscribed Topics (Simulation)
 - `cmd_vel` (`geometry_msgs/Twist`) - Velocity the robot is commanded to move in
 
 ### Published Topics (Simulation)
 - `imu/raw` (`sensor_msgs/Imu`) - Simulated IMU with Gaussian noise
-- `gps/raw` (`sensor_msgs/NavSatFix`) - Simulated GPS with noise and OU drift 
+- `gps/raw` (`sensor_msgs/NavSatFix`) - Simulated GPS with noise and OU drift
 - `enc_vel/raw` (`geometry_msgs/TwistWithCovarianceStamped`) - Simulated encoder velocity with noise and OU drift
 - `odom/ground_truth` (`nav_msgs/Odometry`) - Noiseless true pose in `map` frame
 (`child_frame_id = base_link_ground_truth`)
@@ -104,7 +117,8 @@ ros2 launch nav_bringup localization.launch.py mode:=<mode> [course:=<course>]
 
 ### Parameters
 - `mode`: Operation mode (required)
-- `course`: Course profile in `courses/` to load GPS datum from, default `default`
+- `course`: Course profile in `courses/` to load GPS datum from, default `default` (required for `autonav`, 
+`autonav_sim`)
 
 ### Subscribed Topics
 - `imu/raw` (`sensor_msgs/Imu`) - Raw IMU data (autonav*, self_drive* only)
@@ -143,7 +157,6 @@ ros2 launch nav_bringup teleop.launch.py controller:=<controller>
 
 ### Parameters
 - `controller`: Controller profile (`xbox` or `ps4`), required
-- `joystick_dev`: Joystick device path, default `/dev/input/js0`
 
 ### Controller Mappings
 For both Xbox and PS4:

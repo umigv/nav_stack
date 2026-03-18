@@ -1,7 +1,19 @@
 import json
+from typing import Literal, get_args
 
 import yaml
 from ament_index_python.packages import get_package_share_directory
+
+Mode = Literal["autonav", "autonav_sim", "self_drive", "self_drive_sim", "nav_test"]
+MODES: list[Mode] = list(get_args(Mode))
+
+
+def format_mode_description(descriptions: dict[Mode, str]) -> str:
+    if missing := set(MODES) - descriptions.keys():
+        raise ValueError(f"format_mode_description: missing modes: {missing}")
+    mode_pad = max(len(m) for m in MODES) + 2  # +2 for ": "
+    lines = [f"{mode}:{' ' * (mode_pad - len(mode) - 1)}{descriptions[mode]}" for mode in MODES]
+    return "\n        ".join(lines) + "\n        "
 
 
 def bringup_share() -> str:
