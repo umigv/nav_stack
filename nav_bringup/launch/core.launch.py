@@ -1,24 +1,16 @@
-from pathlib import Path
-
-import yaml
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
-from launch.substitutions import Command, PathJoinSubstitution
+from launch.substitutions import Command
 from launch_ros.actions import Node
 from launch_ros.parameter_descriptions import ParameterValue
-from launch_ros.substitutions import FindPackageShare
+from nav_bringup.launch_utils import bringup_share, load_frames
 
 
 def generate_launch_description() -> LaunchDescription:
-    bringup_share_dir = Path(get_package_share_directory("nav_bringup"))
-    bringup_share = FindPackageShare("nav_bringup")
+    frames = load_frames()
+    twist_mux_params = f"{bringup_share()}/config/core/twist_mux.yaml"
+    urdf = f"{get_package_share_directory('marvin_description')}/urdf/marvin.xacro"
 
-    with open(bringup_share_dir / "config" / "frames.yaml") as f:
-        frames = yaml.safe_load(f)
-
-    twist_mux_params = PathJoinSubstitution([bringup_share, "config", "core", "twist_mux.yaml"])
-
-    urdf = PathJoinSubstitution([FindPackageShare("marvin_description"), "urdf", "marvin.xacro"])
     # fmt: off
     robot_description = ParameterValue(
         Command(

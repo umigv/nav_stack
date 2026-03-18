@@ -1,18 +1,38 @@
 # nav_bringup
-Launch files and configuration for the navigation stack. See the root README for configuration and course data setup.
+Launch files and configuration for the navigation stack.
+
+
+## Modes
+| Mode | Sensors | `odom`→`base_link` | `map`→`odom` | /goal source | `course` required |
+|---|---|---|---|---|---|
+| `autonav` | IMU + GPS | EKF | EKF | autonav_goal_selection | yes |
+| `autonav_sim` | simulated | EKF | EKF | autonav_goal_selection | yes |
+| `self_drive` | IMU | EKF | identity | CV | no |
+| `self_drive_sim` | simulated | EKF | identity | CV | yes |
+| `nav_test` | none | enc_odom | identity | manual | no |
+
+
+### Course Configuration
+Frame IDs and node parameters are defined in `nav_bringup/config/`. 
+To configure a new course, add a subfolder under `nav_bringup/courses/` containing:
+- `gps.json` — GPS datum and waypoints
+- `map.json` — simulation obstacle map
+
+Courses can be generated using the [course creation tool](https://github.com/umigv/course_creation_tool). The `default`
+course is used when no `course` argument is provided. See `nav_bringup/courses/default/` for the expected schema.
 
 
 ## base.launch.py
 Launches the base stack required for all operation modes: core, sensors, and localization.
 
 ```
-ros2 launch nav_bringup base.launch.py [simulation:=true] [use_enc_odom:=true] [course:=<course>]
+ros2 launch nav_bringup base.launch.py mode:=<mode> [course:=<course>]
 ```
 
 ### Parameters
-- `simulation`: Pass through to `sensors.launch.py`, default `false`
-- `use_enc_odom`: Pass through to `localization.launch.py`, default `false`
-- `course`: Pass through to `sensors.launch.py` and `localization.launch.py`, default `default`
+- `mode`: Operation mode, passed through to sensors.launch.py and localization.launch.py (required)
+- `course`: Course profile, passed through to sensors.launch.py and localization.launch.py, default `default` (required 
+for `autonav`, `autonav_sim`, `self_drive_sim`)
 
 
 ## core.launch.py
@@ -26,7 +46,8 @@ ros2 launch nav_bringup core.launch.py
 Loads `marvin_description/urdf/marvin.xacro` and publishes TF transforms for all robot links.
 
 ### Foxglove Bridge
-Foxglove bridge is always started on `ws://localhost:8765`. Connect Foxglove Studio to this address to visualize the robot.
+Foxglove bridge is always started on `ws://localhost:8765`. Connect Foxglove Studio to this address to visualize the 
+robot.
 
 ### Subscribed Topics
 - `teleop_cmd_vel` (`geometry_msgs/Twist`) - Joystick velocity
@@ -56,19 +77,23 @@ If a higher-priority source stops publishing, control falls back to the next sou
 
 
 ## sensors.launch.py
-Launches sensor drivers. Supports a `simulation` mode that replaces real hardware with simulators.
+Launches sensor drivers
 
 ```
-ros2 launch nav_bringup sensors.launch.py [simulation:=true]
+ros2 launch nav_bringup sensors.launch.py mode:=<mode> [course:=<course>]
 ```
 
 ### Parameters
-- `simulation`: Launch sensor and occupancy grid simulators instead of real hardware drivers, default `false`
-- `course`: Course profile in `courses/` to load map and GPS datum from, default `default`
+- `mode`: Operation mode (required)
+- `course`: Course profile in `courses/` to load map and GPS datum from, default `default` (required for `autonav_sim`, 
+`self_drive_sim`)
 
 ### Published Topics (Hardware)
-- `imu/raw` (`sensor_msgs/Imu`) - Raw IMU data from VectorNav
-- `gps/raw` (`sensor_msgs/NavSatFix`) - Raw GPS fix from GPS receiver
+- `imu/raw` (`sensor_msgs/Imu`) - Raw IMU data from VectorNav (`autonav`, `self_drive`)
+- `gps/raw` (`sensor_msgs/NavSatFix`) - Raw GPS fix from GPS receiver (`autonav` only)
+
+### Subscribed Topics (Simulation)
+- `cmd_vel` (`geometry_msgs/Twist`) - Velocity the robot is commanded to move in
 
 ### Published Topics (Simulation)
 - `imu/raw` (`sensor_msgs/Imu`) - Simulated IMU with Gaussian noise
@@ -79,44 +104,48 @@ ros2 launch nav_bringup sensors.launch.py [simulation:=true]
 - `occupancy_grid/raw` (`nav_msgs/OccupancyGrid`) - Robot-centric occupancy grid from static obstacle map
 - `occupancy_grid/ground_truth` (`nav_msgs/OccupancyGrid`) - Full static obstacle map (latched)
 
-### Broadcasted TF Frames
-- `map` → `base_link_ground_truth` (simulation mode only) - Noiseless true robot pose
+### Broadcasted TF Frames (Simulation)
+- `map` → `base_link_ground_truth` - Noiseless true robot pose
 
 
 ## localization.launch.py
 Launches localization
 
 ```
-ros2 launch nav_bringup localization.launch.py [use_enc_odom:=true]
+ros2 launch nav_bringup localization.launch.py mode:=<mode> [course:=<course>]
 ```
 
 ### Parameters
-- `use_enc_odom`: Use encoder odometry integration instead of EKF for local odometry, default `false`
-- `course`: Course profile in `courses/` to load GPS datum from, default `default`
+- `mode`: Operation mode (required)
+- `course`: Course profile in `courses/` to load GPS datum from, default `default` (required for `autonav`, 
+`autonav_sim`)
 
 ### Subscribed Topics
-- `imu/raw` (`sensor_msgs/Imu`) - Raw IMU data
-- `gps/raw` (`sensor_msgs/NavSatFix`) - Raw GPS fix
+- `imu/raw` (`sensor_msgs/Imu`) - Raw IMU data (autonav*, self_drive* only)
+- `gps/raw` (`sensor_msgs/NavSatFix`) - Raw GPS fix (autonav* only)
 - `enc_vel/raw` (`geometry_msgs/TwistWithCovarianceStamped`) - Encoder velocity
 
 ### Published Topics
 - `odom/local` (`nav_msgs/Odometry`) - Local odometry in the odom frame
-- `odom/global` (`nav_msgs/Odometry`) - Global odometry in the map frame
+- `odom/global` (`nav_msgs/Odometry`) - Global odometry in the map frame (autonav* only)
 
 ### Broadcasted TF Frames
 - `odom` → `base_link`
 - `map` → `odom`
 
 ### Services
-- `fromLL` (`robot_localization/FromLL`) - Converts GPS latitude/longitude to a map-frame point
+- `fromLL` (`robot_localization/FromLL`) - Converts GPS latitude/longitude to a map-frame point (autonav* only)
 
 
 ## navigation.launch.py
 Launches the navigation stack.
 
 ```
-ros2 launch nav_bringup navigation.launch.py
+ros2 launch nav_bringup navigation.launch.py mode:=<mode>
 ```
+
+### Parameters
+- `mode`: Operation mode (required)
 
 
 ## teleop.launch.py
@@ -128,7 +157,6 @@ ros2 launch nav_bringup teleop.launch.py controller:=<controller>
 
 ### Parameters
 - `controller`: Controller profile (`xbox` or `ps4`), required
-- `joystick_dev`: Joystick device path, default `/dev/input/js0`
 
 ### Controller Mappings
 For both Xbox and PS4:

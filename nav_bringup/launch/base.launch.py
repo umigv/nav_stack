@@ -3,6 +3,7 @@ from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
 from launch_ros.substitutions import FindPackageShare
+from nav_bringup.launch_utils import MODES
 
 
 def generate_launch_description() -> LaunchDescription:
@@ -11,19 +12,14 @@ def generate_launch_description() -> LaunchDescription:
     return LaunchDescription(
         [
             DeclareLaunchArgument(
-                "simulation",
-                default_value="false",
-                description="Launch sensor simulator instead of real hardware drivers",
-            ),
-            DeclareLaunchArgument(
-                "use_enc_odom",
-                default_value="false",
-                description="Replace ekf_local with encoder odometry integration",
+                "mode",
+                choices=MODES,
+                description="Operation mode, passed through to sensors.launch.py and localization.launch.py",
             ),
             DeclareLaunchArgument(
                 "course",
                 default_value="default",
-                description="Course profile in courses/ to load map and GPS datum from",
+                description="Course profile, passed through to sensors.launch.py and localization.launch.py (required for autonav, autonav_sim, self_drive_sim)",
             ),
             IncludeLaunchDescription(
                 PythonLaunchDescriptionSource(PathJoinSubstitution([bringup_share, "launch", "core.launch.py"])),
@@ -31,7 +27,7 @@ def generate_launch_description() -> LaunchDescription:
             IncludeLaunchDescription(
                 PythonLaunchDescriptionSource(PathJoinSubstitution([bringup_share, "launch", "sensors.launch.py"])),
                 launch_arguments=[
-                    ("simulation", LaunchConfiguration("simulation")),
+                    ("mode", LaunchConfiguration("mode")),
                     ("course", LaunchConfiguration("course")),
                 ],
             ),
@@ -40,7 +36,7 @@ def generate_launch_description() -> LaunchDescription:
                     PathJoinSubstitution([bringup_share, "launch", "localization.launch.py"])
                 ),
                 launch_arguments=[
-                    ("use_enc_odom", LaunchConfiguration("use_enc_odom")),
+                    ("mode", LaunchConfiguration("mode")),
                     ("course", LaunchConfiguration("course")),
                 ],
             ),
