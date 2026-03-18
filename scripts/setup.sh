@@ -35,13 +35,18 @@ if [[ ! -d "$WS_ROOT/src" ]]; then
 fi
 
 log "Initializing git submodules"
-git -C "$REPO_ROOT" submodule update --init --recursive
+submodule_output=$(git -C "$REPO_ROOT" submodule update --init --recursive)
+if [[ -n "$submodule_output" ]]; then
+  log "Submodules changed — clearing build, install, and log directories"
+  rm -rf "$WS_ROOT/build" "$WS_ROOT/install" "$WS_ROOT/log"
+fi
 
 log "Installing Python tooling deps"
 python3 -m pip install -U pip
 python3 -m pip install -e "$REPO_ROOT[tooling]"
 
 log "Installing ROS deps via rosdep"
+sudo apt update
 rosdep update
 rosdep install --from-paths "$REPO_ROOT" --ignore-src -r -y
 
