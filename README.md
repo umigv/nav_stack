@@ -24,7 +24,7 @@ ros2 launch nav_bringup teleop.launch.py controller:=<ps4/xbox>
 ```
 and / or
 ```bash
-ros2 launch nav_bringup navigation.launch.py mode:=<mode>
+ros2 launch nav_bringup navigation.launch.py mode:=<mode> [course:=<course>]
 ```
 
 ### Mode and Course Configuration
