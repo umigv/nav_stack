@@ -28,7 +28,7 @@ ros2 launch nav_bringup navigation.launch.py mode:=<mode> [course:=<course>]
 ```
 
 ### Mode and Course Configuration
-See [nav_bringup/README.md](src/nav_infrastructure_simple/nav_bringup/README.md) for mode and course configuration 
+See [nav_bringup/README.md](nav_bringup/README.md) for mode and course configuration 
 details.
 
 
