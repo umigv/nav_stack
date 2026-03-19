@@ -3,13 +3,13 @@ URDF description for the Marvin robot. Publishes TF transforms for all robot lin
 
 ## Launch
 ```
-ros2 launch marvin_description display.launch.py
+ros2 launch urdf_launch display.launch.py urdf_package:=marvin_description urdf_package_path:=urdf/marvin.xacro
 ```
 
 Opens RViz with the robot model and `joint_state_publisher_gui` for interactive joint control.
 
 ## Xacro Args
-Frame names default to match `nav_bringup/global_config.py`. Override only if changing `global_config.py` as well.
+Frame names default to standard names.
 
 | Arg | Default | Description |
 |---|---|---|
