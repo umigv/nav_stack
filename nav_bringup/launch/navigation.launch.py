@@ -1,5 +1,3 @@
-from typing import assert_never
-
 from launch import LaunchDescription, LaunchDescriptionEntity
 from launch.actions import DeclareLaunchArgument, OpaqueFunction
 from launch.substitutions import LaunchConfiguration
@@ -86,7 +84,7 @@ def launch_setup(context, *args, **kwargs) -> list[LaunchDescriptionEntity]:
         case "nav_test":
             return [occupancy_grid_transform_node, path_tracking_node, path_planning_node]
         case _:
-            assert_never(mode)  # type: ignore[unreachable]
+            raise ValueError(f"Invalid mode: {mode}")
 
 
 def generate_launch_description() -> LaunchDescription:
