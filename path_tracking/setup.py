@@ -24,6 +24,7 @@ setup(
     entry_points={
         "console_scripts": [
             "path_tracking = path_tracking.path_tracking:main",
+            'path_testing_publisher = path_tracking.path_testing_publisher:main',            
         ],
     },
 )
