@@ -94,7 +94,7 @@ def launch_setup(context, *args, **kwargs) -> list[LaunchDescriptionEntity]:
         case "nav_test":
             return []
         case _:
-            raise ValueError(f"Invalid mode: {mode}")
+            assert_never(mode)  # type: ignore[unreachable]
 
 
 def generate_launch_description() -> LaunchDescription:

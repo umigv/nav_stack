@@ -98,7 +98,7 @@ def launch_setup(context, *args, **kwargs) -> list[LaunchDescriptionEntity]:
         case "nav_test":
             return [enc_odom_node, identity_map_odom_node]
         case _:
-            raise ValueError(f"Invalid mode: {mode}")
+            assert_never(mode)  # type: ignore[unreachable]
 
 
 def generate_launch_description() -> LaunchDescription:
