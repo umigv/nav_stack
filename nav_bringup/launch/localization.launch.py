@@ -3,6 +3,7 @@ from launch.actions import DeclareLaunchArgument, OpaqueFunction
 from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
 from nav_bringup.launch_utils import MODES, Mode, bringup_share, format_mode_description, load_frames, load_gps_file
+from typing_extensions import assert_never
 
 
 def launch_setup(context, *args, **kwargs) -> list[LaunchDescriptionEntity]:
@@ -98,7 +99,7 @@ def launch_setup(context, *args, **kwargs) -> list[LaunchDescriptionEntity]:
         case "nav_test":
             return [enc_odom_node, identity_map_odom_node]
         case _:
-            assert_never(mode)  # type: ignore[unreachable]
+            assert_never(mode)
 
 
 def generate_launch_description() -> LaunchDescription:
