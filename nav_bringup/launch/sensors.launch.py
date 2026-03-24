@@ -3,6 +3,7 @@ from launch.actions import DeclareLaunchArgument, OpaqueFunction
 from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
 from nav_bringup.launch_utils import MODES, Mode, bringup_share, format_mode_description, load_frames, load_gps_file
+from typing_extensions import assert_never
 
 
 def launch_setup(context, *args, **kwargs) -> list[LaunchDescriptionEntity]:
@@ -94,7 +95,7 @@ def launch_setup(context, *args, **kwargs) -> list[LaunchDescriptionEntity]:
         case "nav_test":
             return []
         case _:
-            raise ValueError(f"Invalid mode: {mode}")
+            assert_never(mode)
 
 
 def generate_launch_description() -> LaunchDescription:
