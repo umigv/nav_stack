@@ -34,7 +34,10 @@ SERIAL=$(echo "$PROPS" | grep "ID_SERIAL_SHORT=" | cut -d'=' -f2 || true)
 
 if [[ -z "$VENDOR" || -z "$PRODUCT" ]]; then
   echo "ERROR: Could not read idVendor/idProduct from $DEV."
-	@@ -45,9 +41,13 @@ echo "Device:  $DEV"
+  exit 1
+fi
+
+echo "Device:  $DEV"
 echo "Alias:   /dev/$ALIAS"
 echo "Vendor:  $VENDOR"
 echo "Product: $PRODUCT"
