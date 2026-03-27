@@ -115,6 +115,24 @@ Launches localization
 ros2 launch nav_bringup localization.launch.py mode:=<mode> [course:=<course>]
 ```
 
+### Localization Strategy
+Uses the standard `robot_localization` dual-EKF pattern:
+
+**Local EKF (`ekf_local`)** - estimates the `odom` → `base_link` transform
+- Fuses encoder velocity (vx, vy) and IMU yaw rate (wz)
+- Odom origin is where the robot started
+- Drift accumulates over time but is smooth and continuous
+- Optionally replaced by simple encoder odometry integration (enc_odom_publisher)
+
+**Navsat Transform (`navsat_transform`)** - converts GPS fixes into map-frame odometry
+- Receives raw GPS fixes and IMU heading
+- Outputs `odom/gps`: GPS position expressed in the map frame
+
+**Global EKF (`ekf_global`)** - estimates the `map` → `odom` transform
+- Fuses encoder velocity (vx, vy), IMU yaw + yaw rate, and GPS position (x, y from `odom/gps`)
+- Map frame is in ENU where origin is the datum
+- Corrects accumulated local drift by anchoring to GPS
+
 ### Parameters
 - `mode`: Operation mode (required)
 - `course`: Course profile in `courses/` to load GPS datum from, default `default` (required for `autonav`, 
