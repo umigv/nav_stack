@@ -90,11 +90,7 @@ def launch_setup(context, *args, **kwargs) -> list[LaunchDescriptionEntity]:
     match mode:
         case "autonav":
             return [ekf_local_node, navsat_transform_node, ekf_global_node]
-        case "autonav_sim":
-            return [ekf_local_node, navsat_transform_node, ekf_global_node]
         case "self_drive":
-            return [ekf_local_node, identity_map_odom_node]
-        case "self_drive_sim":
             return [ekf_local_node, identity_map_odom_node]
         case "nav_test":
             return [enc_odom_node, identity_map_odom_node]
@@ -111,9 +107,7 @@ def generate_launch_description() -> LaunchDescription:
                 description=format_mode_description(
                     {
                         "autonav": "EKF local + navsat transform + EKF global",
-                        "autonav_sim": "EKF local + navsat transform + EKF global",
                         "self_drive": "EKF local + identity map->odom",
-                        "self_drive_sim": "EKF local + identity map->odom",
                         "nav_test": "enc_odom + identity map->odom",
                     }
                 ),

@@ -4,7 +4,7 @@ from typing import Literal, get_args
 import yaml
 from ament_index_python.packages import get_package_share_directory
 
-Mode = Literal["autonav", "autonav_sim", "self_drive", "self_drive_sim", "nav_test"]
+Mode = Literal["autonav", "self_drive", "nav_test"]
 MODES: list[Mode] = list(get_args(Mode))
 
 

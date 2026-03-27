@@ -17,7 +17,7 @@ You can install all dependencies by running
 ## Running the stack
 Run each of these commands in separate terminals:
 ```bash
-ros2 launch nav_bringup base.launch.py mode:=<mode> [course:=<course>]
+ros2 launch nav_bringup base.launch.py mode:=<mode> [simulation:=true] [course:=<course>]
 ```
 ```bash
 ros2 launch nav_bringup teleop.launch.py controller:=<ps4/xbox>
