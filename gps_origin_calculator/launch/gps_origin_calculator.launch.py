@@ -6,7 +6,7 @@ def generate_launch_description() -> LaunchDescription:
     return LaunchDescription(
         [
             Node(
-                package="localization",
+                package="gps_origin_calculator",
                 executable="gps_origin_calculator",
                 output="screen",
                 remappings=[("gps", "gps/raw")],

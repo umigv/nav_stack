@@ -65,7 +65,7 @@ def launch_setup(context, *args, **kwargs) -> list[LaunchDescriptionEntity]:
     )
 
     enc_odom_node = Node(
-        package="localization",
+        package="enc_odom_publisher",
         executable="enc_odom_publisher",
         name="enc_odom_publisher",
         output="screen",
