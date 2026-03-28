@@ -3,7 +3,7 @@ from pathlib import Path
 
 from setuptools import find_packages, setup
 
-package_name = "localization"
+package_name = "gps_origin_calculator"
 
 setup(
     name=package_name,
@@ -18,13 +18,12 @@ setup(
     zip_safe=True,
     maintainer="Ryan Liao",
     maintainer_email="ryanliao@umich.edu",
-    description="Localization helper nodes",
+    description="GPS origin calculator node",
     license="Apache-2.0",
     tests_require=["pytest"],
     entry_points={
         "console_scripts": [
-            "gps_origin_calculator = localization.gps_origin_calculator:main",
-            "enc_odom_publisher = localization.enc_odom_publisher:main",
+            "gps_origin_calculator = gps_origin_calculator.gps_origin_calculator:main",
         ],
     },
 )
