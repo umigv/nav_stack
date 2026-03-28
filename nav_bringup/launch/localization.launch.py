@@ -84,7 +84,7 @@ def launch_setup(context, *args, **kwargs) -> list[LaunchDescriptionEntity]:
         executable="static_transform_publisher",
         name="map_odom_publisher",
         output="screen",
-        arguments=["0", "0", "0", "0", "0", "0", frames["map_frame"], frames["odom_frame"]],
+        arguments=["--frame-id", frames["map_frame"], "--child-frame-id", frames["odom_frame"]],
     )
 
     match mode:
