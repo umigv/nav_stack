@@ -76,13 +76,7 @@ def launch_setup(context, *args, **kwargs) -> list[LaunchDescriptionEntity]:
     match mode:
         case "autonav":
             return [occupancy_grid_transform_node, path_tracking_node, path_planning_node, autonav_goal_selection_node]
-        case "autonav_sim":
-            return [occupancy_grid_transform_node, path_tracking_node, path_planning_node, autonav_goal_selection_node]
-        case "self_drive":
-            return [occupancy_grid_transform_node, path_tracking_node, path_planning_node]
-        case "self_drive_sim":
-            return [occupancy_grid_transform_node, path_tracking_node, path_planning_node]
-        case "nav_test":
+        case "self_drive" | "nav_test":
             return [occupancy_grid_transform_node, path_tracking_node, path_planning_node]
         case _:
             assert_never(mode)
@@ -97,9 +91,7 @@ def generate_launch_description() -> LaunchDescription:
                 description=format_mode_description(
                     {
                         "autonav": "occupancy grid transform + path planning + path tracking + autonav goal selection",
-                        "autonav_sim": "occupancy grid transform + path planning + path tracking + autonav goal selection",
                         "self_drive": "occupancy grid transform + path planning + path tracking",
-                        "self_drive_sim": "occupancy grid transform + path planning + path tracking",
                         "nav_test": "occupancy grid transform + path planning + path tracking",
                     }
                 ),

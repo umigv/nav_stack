@@ -3,13 +3,14 @@ Launch files and configuration for the navigation stack.
 
 
 ## Modes
-| Mode | Sensors | `odom`→`base_link` | `map`→`odom` | /goal source | `course` required |
-|---|---|---|---|---|---|
-| `autonav` | IMU + GPS | EKF | EKF | autonav_goal_selection | yes |
-| `autonav_sim` | simulated | EKF | EKF | autonav_goal_selection | yes |
-| `self_drive` | IMU | EKF | identity | CV | no |
-| `self_drive_sim` | simulated | EKF | identity | CV | yes |
-| `nav_test` | none | enc_odom | identity | manual | no |
+| Mode | `odom`→`base_link` | `map`→`odom` | /goal source |
+|---|---|---|---|
+| `autonav` | EKF | EKF | autonav_goal_selection |
+| `self_drive` | EKF | identity | CV |
+| `nav_test` | enc_odom | identity | manual |
+
+Pass `simulation:=true` to use simulated sensors instead of hardware. `course` is required for `autonav` and when 
+`simulation:=true`.
 
 
 ### Course Configuration
@@ -23,16 +24,16 @@ course is used when no `course` argument is provided. See `nav_bringup/courses/d
 
 
 ## base.launch.py
-Launches the base stack required for all operation modes: core, sensors, and localization.
+Launches the base stack required for all operation modes: core, hardware/simulation, and localization.
 
 ```
-ros2 launch nav_bringup base.launch.py mode:=<mode> [course:=<course>]
+ros2 launch nav_bringup base.launch.py mode:=<mode> [simulation:=true] [course:=<course>]
 ```
 
 ### Parameters
-- `mode`: Operation mode, passed through to sensors.launch.py and localization.launch.py (required)
-- `course`: Course profile, passed through to sensors.launch.py and localization.launch.py, default `default` (required 
-for `autonav`, `autonav_sim`, `self_drive_sim`)
+- `mode`: Operation mode, passed through to hardware/simulation and localization launch files (required)
+- `simulation`: Use simulation instead of hardware sensors, default `false`
+- `course`: Course profile, default `default` (required for `mode:=autonav` or `simulation:=true`)
 
 
 ## core.launch.py
@@ -76,35 +77,44 @@ See `marvin_description` for the full list of published frames.
 If a higher-priority source stops publishing, control falls back to the next source after 0.5s.
 
 
-## sensors.launch.py
-Launches sensor drivers
+## hardware.launch.py
+Launches hardware drivers
 
 ```
-ros2 launch nav_bringup sensors.launch.py mode:=<mode> [course:=<course>]
+ros2 launch nav_bringup hardware.launch.py mode:=<mode>
 ```
 
 ### Parameters
 - `mode`: Operation mode (required)
-- `course`: Course profile in `courses/` to load map and GPS datum from, default `default` (required for `autonav_sim`, 
-`self_drive_sim`)
 
-### Published Topics (Hardware)
+### Published Topics
 - `imu/raw` (`sensor_msgs/Imu`) - Raw IMU data from VectorNav (`autonav`, `self_drive`)
 - `gps/raw` (`sensor_msgs/NavSatFix`) - Raw GPS fix from GPS receiver (`autonav` only)
 
-### Subscribed Topics (Simulation)
+
+## simulation.launch.py
+Launches simulated sensors. Included by `base.launch.py` when `simulation:=true`.
+
+```
+ros2 launch nav_bringup simulation.launch.py [course:=<course>]
+```
+
+### Parameters
+- `course`: Course profile in `courses/` to load map and GPS datum from, default `default`
+
+### Subscribed Topics
 - `cmd_vel` (`geometry_msgs/Twist`) - Velocity the robot is commanded to move in
 
-### Published Topics (Simulation)
+### Published Topics
 - `imu/raw` (`sensor_msgs/Imu`) - Simulated IMU with Gaussian noise
 - `gps/raw` (`sensor_msgs/NavSatFix`) - Simulated GPS with noise and OU drift
 - `enc_vel/raw` (`geometry_msgs/TwistWithCovarianceStamped`) - Simulated encoder velocity with noise and OU drift
-- `odom/ground_truth` (`nav_msgs/Odometry`) - Noiseless true pose in `map` frame
+- `odom/ground_truth` (`nav_msgs/Odometry`) - Noiseless true pose in `map` frame 
 (`child_frame_id = base_link_ground_truth`)
 - `occupancy_grid/raw` (`nav_msgs/OccupancyGrid`) - Robot-centric occupancy grid from static obstacle map
 - `occupancy_grid/ground_truth` (`nav_msgs/OccupancyGrid`) - Full static obstacle map (latched)
 
-### Broadcasted TF Frames (Simulation)
+### Broadcasted TF Frames
 - `map` → `base_link_ground_truth` - Noiseless true robot pose
 
 
@@ -135,24 +145,23 @@ Uses the standard `robot_localization` dual-EKF pattern:
 
 ### Parameters
 - `mode`: Operation mode (required)
-- `course`: Course profile in `courses/` to load GPS datum from, default `default` (required for `autonav`, 
-`autonav_sim`)
+- `course`: Course profile in `courses/` to load GPS datum from, default `default` (required for `autonav`)
 
 ### Subscribed Topics
-- `imu/raw` (`sensor_msgs/Imu`) - Raw IMU data (autonav*, self_drive* only)
-- `gps/raw` (`sensor_msgs/NavSatFix`) - Raw GPS fix (autonav* only)
+- `imu/raw` (`sensor_msgs/Imu`) - Raw IMU data (autonav, self_drive only)
+- `gps/raw` (`sensor_msgs/NavSatFix`) - Raw GPS fix (autonav only)
 - `enc_vel/raw` (`geometry_msgs/TwistWithCovarianceStamped`) - Encoder velocity
 
 ### Published Topics
 - `odom/local` (`nav_msgs/Odometry`) - Local odometry in the odom frame
-- `odom/global` (`nav_msgs/Odometry`) - Global odometry in the map frame (autonav* only)
+- `odom/global` (`nav_msgs/Odometry`) - Global odometry in the map frame (autonav only)
 
 ### Broadcasted TF Frames
 - `odom` → `base_link`
 - `map` → `odom`
 
 ### Services
-- `fromLL` (`robot_localization/FromLL`) - Converts GPS latitude/longitude to a map-frame point (autonav* only)
+- `fromLL` (`robot_localization/FromLL`) - Converts GPS latitude/longitude to a map-frame point (autonav only)
 
 
 ## navigation.launch.py
@@ -164,20 +173,21 @@ ros2 launch nav_bringup navigation.launch.py mode:=<mode> [course:=<course>]
 
 ### Parameters
 - `mode`: Operation mode (required)
-- `course`: Course profile in `courses/` to load waypoints from, default `default` (required for autonav, autonav_sim)
+- `course`: Course profile in `courses/` to load waypoints from, default `default` (required for `autonav`)
 
 ### Subscribed Topics
-- `goal` (`geometry_msgs/PointStamped`) - Goal for path planning (`self_drive`, `self_drive_sim`, `nav_test` only)
+- `goal` (`geometry_msgs/PointStamped`) - Goal for path planning (`self_drive`, `nav_test` only)
 - `occupancy_grid/raw` (`nav_msgs/OccupancyGrid`) - Raw occupancy grid from CV
 - `odom/local` (`nav_msgs/Odometry`) - Odometry from localization
 
 ### Published Topics
-- `goal` (`geometry_msgs/PointStamped`) - Goal for path planning (`autonav`, `autonav_sim` only)
-- `gps_waypoint` (`geometry_msgs/PointStamped`) - Current GPS waypoint target (`autonav`, `autonav_sim` only)
+- `goal` (`geometry_msgs/PointStamped`) - Goal for path planning (`autonav` only)
+- `gps_waypoint` (`geometry_msgs/PointStamped`) - Current GPS waypoint target (`autonav` only)
 - `nav_cmd_vel` (`geometry_msgs/Twist`) - Velocity command consumed by twist_mux
 
 ### Service Clients
-- `fromLL` (`robot_localization/FromLL`) - Converts GPS coordinates to map-frame points; called at startup by autonav_goal_selection (`autonav`, `autonav_sim` only)
+- `fromLL` (`robot_localization/FromLL`) - Converts GPS coordinates to map-frame points; called at startup by 
+autonav_goal_selection (`autonav` only)
 
 
 ## teleop.launch.py
