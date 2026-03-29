@@ -8,9 +8,10 @@ from nav_utils.world_occupancy_grid import WorldOccupancyGrid
 from rclpy.node import Node
 from std_msgs.msg import Header
 from tf2_ros import Buffer, TransformListener
-
 from .path_planning_config import PathPlanningConfig
 from .path_planning_impl import find_closest_drivable_point, generate_path, interpolate_points, smooth_path
+from alert_system_interfaces.msg import Alert
+from alert_system_interfaces.srv import CreateAlert, ResolveAlert
 
 
 class PathPlanner(Node):
@@ -29,7 +30,27 @@ class PathPlanner(Node):
         self.create_subscription(OccupancyGrid, "occupancy_grid", self.occupancy_grid_callback, 10)
         self.create_subscription(PointStamped, "goal", self.goal_callback, 10)
 
+        self.create_subscription(Alert, "alerts", self.alert_callback, 10)
+        self.create_alert_client = self.create_client(CreateAlert, "create_alert")
+        self.resolve_alert_client = self.create_client(ResolveAlert, "resolve_alert")
+
         self.path_publisher = self.create_publisher(Path, "path", 10)
+
+    def alert_callback(self, msg: Alert): 
+        self.get_logger().warn(f"Received alert: {msg.message}")
+    
+    def create_alert(self, category, severity, source, message):
+        request = CreateAlert.Request()
+        request.category = category
+        request.severity = severity
+        request.source = source
+        request.message = message
+        future = self.create_alert_client.call_async(request)
+    
+    def resolve_alert(self, alert_id):
+        request = ResolveAlert.Request()
+        request.alert_id = alert_id
+        future = self.resolve_alert_client.call_async(request)
 
     def odom_callback(self, msg: Odometry) -> None:
         if msg.header.frame_id != self.config.frame_id:
