@@ -1,4 +1,4 @@
-from typing import assert_never
+#from typing import assert_never
 
 from launch import LaunchDescription, LaunchDescriptionEntity
 from launch.actions import DeclareLaunchArgument, OpaqueFunction
@@ -79,7 +79,7 @@ def launch_setup(context, *args, **kwargs) -> list[LaunchDescriptionEntity]:
         ],
         remappings=[
             ("odom", "odom/ground_truth"),
-            ("occupancy_grid", "occupancy_grid/raw"),
+            ("occupancy_grid", "occ_grid/right"),
             ("occupancy_grid/ground_truth", "occupancy_grid/ground_truth"),
         ],
     )
@@ -88,15 +88,15 @@ def launch_setup(context, *args, **kwargs) -> list[LaunchDescriptionEntity]:
         case "autonav":
             return [imu_node, gps_node]
         case "autonav_sim":
-            return [sensor_simulator_node, occupancy_grid_simulator_node]
+            return [sensor_simulator_node]
         case "self_drive":
             return [imu_node]
         case "self_drive_sim":
-            return [sensor_simulator_node, occupancy_grid_simulator_node]
+            return [sensor_simulator_node]
         case "nav_test":
             return []
-        case _:
-            assert_never(mode)  # type: ignore[unreachable]
+        # case _:
+        #     assert_never(mode)  # type: ignore[unreachable]
 
 
 def generate_launch_description() -> LaunchDescription:

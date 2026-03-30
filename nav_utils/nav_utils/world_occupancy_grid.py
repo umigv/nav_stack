@@ -22,6 +22,8 @@ class CellState:
     value: int  # -1 (unknown) or 0-100 (probability occupied)
 
     UNKNOWN_VALUE: ClassVar[int] = -1
+    #GSTune driveable level
+    #originally: 30
     DRIVABLE_THRESHOLD: ClassVar[int] = 30
 
     def __post_init__(self) -> None:

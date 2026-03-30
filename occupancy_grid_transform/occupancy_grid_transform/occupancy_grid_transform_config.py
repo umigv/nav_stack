@@ -18,10 +18,16 @@ class InflationParams:
         inflation_decay_factor: Decay factor applied to obstacle influence in the falloff region. Values closer to
             1.0 result in slower decay and more conservative paths; values closer to 0.0 decay more aggressively.
     """
+    #GSTune inflation
 
+    #originally: 10
     inflation_radius_cells: int = 10
+
+    #originally: 20
     inflation_falloff_radius_cells: int = 20
-    inflation_decay_factor: float = 0.9
+
+    #originally: 0.9
+    inflation_decay_factor: float = 0.8
 
     def __post_init__(self) -> None:
         if self.inflation_radius_cells < 0:

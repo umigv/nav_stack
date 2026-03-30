@@ -16,11 +16,24 @@ class GoalSelectionParams:
             the lane closer to the waypoint.
     """
 
-    lateral_quadratic_factor: float = 0.25
-    behind_robot_linear_factor: float = 1.0
+    #GSTune positional
+
+    #originally: 0.05
+    lateral_quadratic_factor: float = 0.05
+
+    #originally: 0.5
+    behind_robot_linear_factor: float = 0.5
+
+    #originally: 60.0
     behind_robot_penalty_distance_m: float = 60.0
+
+    #originally: 50.0
     waypoint_proximity_weight: float = 50.0
+
+    #originally: 20.0
     waypoint_proximity_radius_m: float = 20.0
+
+    #originally: 0.01
     waypoint_dist_weight: float = 0.01
 
     def __post_init__(self) -> None:

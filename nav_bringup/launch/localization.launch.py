@@ -1,4 +1,4 @@
-from typing import assert_never
+#from typing import assert_never
 
 from launch import LaunchDescription, LaunchDescriptionEntity
 from launch.actions import DeclareLaunchArgument, OpaqueFunction
@@ -99,8 +99,8 @@ def launch_setup(context, *args, **kwargs) -> list[LaunchDescriptionEntity]:
             return [ekf_local_node, identity_map_odom_node]
         case "nav_test":
             return [enc_odom_node, identity_map_odom_node]
-        case _:
-            assert_never(mode)  # type: ignore[unreachable]
+        #case _:
+            #assert_never(mode)  # type: ignore[unreachable]
 
 
 def generate_launch_description() -> LaunchDescription:

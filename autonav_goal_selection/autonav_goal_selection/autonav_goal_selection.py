@@ -3,11 +3,12 @@ import json
 import nav_utils.config
 import nav_utils.qos
 import rclpy
+import numpy as np
 import tf2_geometry_msgs  # noqa: F401 — registers PointStamped transform
 import tf2_ros
 from geographic_msgs.msg import GeoPoint
 from geometry_msgs.msg import PointStamped
-from nav_msgs.msg import OccupancyGrid, Odometry
+from nav_msgs.msg import OccupancyGrid, MapMetaData, Odometry
 from nav_utils.geometry import Point2d, Pose2d
 from nav_utils.world_occupancy_grid import WorldOccupancyGrid
 from rclpy.node import Node
@@ -15,7 +16,7 @@ from robot_localization.srv import FromLL
 from std_msgs.msg import Header
 
 from .autonav_goal_selection_config import AutonavGoalSelectionConfig
-from .autonav_goal_selection_impl import select_goal
+from .autonav_goal_selection_impl import select_goal_test
 
 
 class AutonavGoalSelection(Node):
@@ -42,6 +43,7 @@ class AutonavGoalSelection(Node):
         self.create_subscription(OccupancyGrid, "occupancy_grid", self.occupancy_grid_callback, 10)
 
         self.goal_publisher = self.create_publisher(PointStamped, "goal", 10)
+        self.gs_publisher = self.create_publisher(OccupancyGrid, "gs_map", 10)
 
         self.gps_waypoint_publisher = self.create_publisher(PointStamped, "gps_waypoint", nav_utils.qos.LATCHED)
 
@@ -128,7 +130,7 @@ class AutonavGoalSelection(Node):
         if waypoint is None:
             return
 
-        goal = select_goal(self.grid, self.robot_pose, waypoint, self.config.goal_selection_params)
+        goal, gs_map = select_goal_test(self.grid, self.robot_pose, waypoint, self.config.goal_selection_params)
         if goal is None:
             self.get_logger().warn("No drivable goal found in occupancy grid")
             return
@@ -142,6 +144,31 @@ class AutonavGoalSelection(Node):
                 point=goal.to_ros(),
             )
         )
+        self.get_logger().info(
+            f"Publishing local goal ({goal.x:.2f}, {goal.y:.2f}) in {self.config.world_frame_id} frame"
+        )
+        if gs_map is None:
+            self.get_logger().warn("No gs_map")
+            return
+        self.get_logger().info(
+            f"Publishing goal selection map"
+        )
+        self.get_logger().info(gs_map)
+        
+        # self.gs_publisher.publish(
+        #     OccupancyGrid(
+        #         header=Header(stamp=self.get_clock().now().to_msg(), frame_id=self.config.world_frame_id),
+        #         info=MapMetaData(
+        #             resolution=0.05,
+        #             width=self.grid._occupancy_grid.info.width,
+        #             height=self.grid._occupancy_grid.info.height,
+        #             origin=self.robot_pose.to_ros()
+        #         ),
+        #         data=gs_map,
+        #     )
+        # )
+
+
 
 
 def main() -> None:
