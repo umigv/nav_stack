@@ -89,6 +89,7 @@ module = [
     "nav_msgs.*",
     "sensor_msgs.*",
     "std_srvs.*",
+    "foxglove_msgs.*",
     "visualization_msgs.*",
 
     "launch",

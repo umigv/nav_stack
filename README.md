@@ -32,8 +32,12 @@ See [nav_bringup/README.md](nav_bringup/README.md) for mode and course configura
 details.
 
 
-## Visualization
-You can either 
-- Install [Foxglove Studio](https://foxglove.dev/download) and open a new Foxglove WebSocket connection at
-`ws://localhost:8765`
-- Run `rviz2` in a new terminal and add the topics you want to visualize
+### Visualization
+Run in a separate terminal:
+```bash
+ros2 launch nav_bringup visualization.launch.py
+```
+This sends robot data to Foxglove. Then open [Foxglove Studio](https://foxglove.dev/download) and connect to 
+`ws://localhost:8765`.
+
+Alternatively, run `rviz2` in a new terminal and add the topics you want to visualize.
