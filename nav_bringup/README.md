@@ -46,10 +46,6 @@ ros2 launch nav_bringup core.launch.py
 ### Robot State Publisher
 Loads `marvin_description/urdf/marvin.xacro` and publishes TF transforms for all robot links.
 
-### Foxglove Bridge
-Foxglove bridge is always started on `ws://localhost:8765`. Connect Foxglove Studio to this address to visualize the 
-robot.
-
 ### Subscribed Topics
 - `teleop_cmd_vel` (`geometry_msgs/Twist`) - Joystick velocity
 - `recovery_cmd_vel` (`geometry_msgs/Twist`) - Recovery velocity
@@ -210,3 +206,24 @@ For both Xbox and PS4:
 ### Published Topics
 - `joy` (`sensor_msgs/Joy`) - Raw joystick input
 - `teleop_cmd_vel` (`geometry_msgs/Twist`) - Joystick velocity command
+
+
+## visualization.launch.py
+Launches visualization tools for Foxglove Studio.
+
+```
+ros2 launch nav_bringup visualization.launch.py
+```
+
+### Foxglove Bridge
+Starts Foxglove bridge on `ws://localhost:8765`.
+
+### Occupancy Grid Voxel Visualization
+Subscribes to `occupancy_grid` and republishes it as a `foxglove_msgs/VoxelGrid` on `occupancy_grid/voxels` for 3D voxel
+visualization in Foxglove Studio.
+
+### Subscribed Topics
+- `occupancy_grid` (`nav_msgs/OccupancyGrid`) - Occupancy grid input
+
+### Published Topics
+- `occupancy_grid/voxels` (`foxglove_msgs/VoxelGrid`) - Voxel representation of the occupancy grid
