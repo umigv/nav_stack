@@ -54,11 +54,11 @@ Loads `marvin_description/urdf/marvin.xacro` and publishes TF transforms for all
 ### Published Topics
 - `robot_description` (`std_msgs/String`) - URDF robot description
 - `cmd_vel` (`geometry_msgs/Twist`) - Multiplexed output velocity
-- `state` (`std_msgs/msg/String`) - State (`normal`, `ramp` or `recovery`)
+- `state` (`std_msgs/msg/String`) - State (`normal`, `no_mans_land` or `recovery`)
 
 ### Services
 - `state/set_recovery` (`std_srvs/SetBool`) - Set whether we are in recovery mode
-- `state/set_ramp` (`std_srvs/SetBool`) - Set whether we are in ramp mode
+- `state/set_no_mans_land` (`std_srvs/SetBool`) - Set whether we are in no mans land mode
 
 ### Broadcasted TF Frames
 See `marvin_description` for the full list of published frames.

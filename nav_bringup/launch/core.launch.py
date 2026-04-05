@@ -46,7 +46,7 @@ def generate_launch_description() -> LaunchDescription:
                 output="screen",
                 remappings=[
                     ("state", "state"),
-                    ("state/set_ramp", "state/set_ramp"),
+                    ("state/set_no_mans_land", "state/set_no_mans_land"),
                     ("state/set_recovery", "state/set_recovery"),
                 ],
             ),
