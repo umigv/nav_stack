@@ -21,7 +21,9 @@ class StateMachine(Node):
 
         self.last_state: State | None = None
 
-        self.set_no_mans_land_service = self.create_service(SetBool, "state/set_no_mans_land", self.set_no_mans_land_callback)
+        self.set_no_mans_land_service = self.create_service(
+            SetBool, "state/set_no_mans_land", self.set_no_mans_land_callback
+        )
         self.no_mans_land_enabled: bool = False
 
         self.set_recovery_service = self.create_service(SetBool, "state/set_recovery", self.set_recovery_callback)
