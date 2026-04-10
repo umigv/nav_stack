@@ -38,6 +38,8 @@ class PathPlanner(Node):
 
         self.path_publisher = self.create_publisher(Path, "path", 10)
 
+        self.active_alert_id: int | None = None
+
     def alert_callback(self, msg: Alert): 
         self.get_logger().warn(f"Received alert: {msg.message}")
     
@@ -80,22 +82,29 @@ class PathPlanner(Node):
             msg = self.tf_buffer.transform(msg, self.config.frame_id)
         except Exception as e:
             self.get_logger().error(f"Failed to transform goal to {self.config.frame_id}: {e}")
+            self.create_alert("path planning", 2, "path planning", f"Failed to transform goal to {self.config.frame_id}: {e}")
             return
 
         start = find_closest_drivable_point(self.grid, self.robot_position, self.config.max_search_radius_m)
         if start is None:
             self.get_logger().warn("No drivable area found near robot")
+            self.create_alert("path planning", 2, "path planning", "No drivable area found near robot")
             return
 
         self.get_logger().info(f"Starting from ({start.x:.2f}, {start.y:.2f})")
         path_points = generate_path(self.grid, start, Point2d.from_ros(msg.point))
         if path_points is None:
             self.get_logger().warn("No path found to goal")
+            self.create_alert("path planning", 2, "path planning", "No path found to goal")
             return
 
         bridge = interpolate_points(self.robot_position, start, self.config.interpolation_resolution_m)
         self.get_logger().info(f"Bridge size: {len(bridge)}; Path size: {len(path_points)}")
         full_path = smooth_path(bridge[:-1] + path_points, self.config.spline_smoothing)
+
+        if self.active_alert_id is not None:
+            self.resolve_alert(self.active_alert_id)
+            self.active_alert_id = None
 
         header = Header(frame_id=self.config.frame_id, stamp=self.get_clock().now().to_msg())
         self.path_publisher.publish(
