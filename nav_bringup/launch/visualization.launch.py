@@ -3,7 +3,7 @@ from launch_ros.actions import Node
 
 
 def generate_launch_description() -> LaunchDescription:
-    return [
+    return LaunchDescription([
         Node(
             package="foxglove_bridge",
             executable="foxglove_bridge",
@@ -25,4 +25,4 @@ def generate_launch_description() -> LaunchDescription:
             executable="foxglove_voxel",
             name="occupancy_grid_voxel_visualization",
         ),
-    ]
+    ])
