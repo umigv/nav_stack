@@ -1,6 +1,3 @@
-from glob import glob
-from pathlib import Path
-
 from setuptools import find_packages, setup
 
 package_name = "gps_origin_calculator"
@@ -12,7 +9,6 @@ setup(
     data_files=[
         ("share/ament_index/resource_index/packages", ["resource/" + package_name]),
         (f"share/{package_name}", ["package.xml"]),
-        (str(Path("share") / package_name / "launch"), glob("launch/*")),
     ],
     install_requires=["setuptools"],
     zip_safe=True,

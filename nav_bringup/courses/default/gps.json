@@ -1,7 +1,8 @@
 {
     "datum": {
         "latitude": 42.294621,
-        "longitude": -83.708112
+        "longitude": -83.708112,
+        "altitude": 270.0
     },
     "waypoints": [
         {"latitude": 42.29478329, "longitude": -83.70810902},
