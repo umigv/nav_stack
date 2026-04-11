@@ -11,7 +11,7 @@ class UbloxDriverConfig:
         gps_frame_id: The TF frame ID to use in published GPS messages.
     """
 
-    serial_port: str = "/dev/ttyACM0"
+    serial_port: str = "/dev/ublox"
     poll_period_s: float = 0.1
     gps_frame_id: str = "gps_link"
 

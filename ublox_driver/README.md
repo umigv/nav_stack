@@ -20,7 +20,7 @@ Covariance is filled using u-blox accuracy fields:
 ## Config Parameters
 | Parameter | Default | Description |
 |---|---|---|
-| `serial_port` | `/dev/ttyACM0` | Serial port device path for the GPS receiver |
+| `serial_port` | `/dev/ublox` | Serial port device path for the GPS receiver |
 | `poll_period_s` | `0.1` | Period in seconds between GPS polls |
 | `gps_frame_id` | `gps_link` | TF frame ID used in published GPS messages |
 
