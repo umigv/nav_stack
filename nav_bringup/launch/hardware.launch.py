@@ -33,7 +33,7 @@ def launch_setup(context, *args, **kwargs) -> list[LaunchDescriptionEntity]:
         output="screen",
         parameters=[
             f"{share}/config/sensors/gps.yaml",
-            {"gps_frame_id": frames["gps_frame"]},
+            {"ublox_frame_id": frames["gps_frame"]},
         ],
         remappings=[
             ("gps", "gps/raw"),

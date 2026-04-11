@@ -8,12 +8,12 @@ class UbloxDriverConfig:
     Attributes:
         serial_port: The serial port device path for the GPS receiver.
         poll_period_s: The period in seconds between GPS polls.
-        gps_frame_id: The TF frame ID to use in published GPS messages.
+        ublox_frame_id: The TF frame ID to use in published GPS messages.
     """
 
     serial_port: str = "/dev/ublox"
     poll_period_s: float = 0.1
-    gps_frame_id: str = "gps_link"
+    ublox_frame_id: str = "gps_link"
 
     def __post_init__(self) -> None:
         if self.poll_period_s <= 0:

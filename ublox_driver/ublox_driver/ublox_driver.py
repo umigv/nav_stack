@@ -63,7 +63,7 @@ class UbloxDriver(Node):
             NavSatFix(
                 header=Header(
                     stamp=self.resolve_timestamp(data),
-                    frame_id=self.config.gps_frame_id,
+                    frame_id=self.config.ublox_frame_id,
                 ),
                 status=NavSatStatus(
                     status=NavSatStatus.STATUS_GBAS_FIX if data.diffSoln else NavSatStatus.STATUS_FIX,

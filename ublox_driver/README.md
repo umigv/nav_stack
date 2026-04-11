@@ -22,7 +22,7 @@ Covariance is filled using u-blox accuracy fields:
 |---|---|---|
 | `serial_port` | `/dev/ublox` | Serial port device path for the GPS receiver |
 | `poll_period_s` | `0.1` | Period in seconds between GPS polls |
-| `gps_frame_id` | `gps_link` | TF frame ID used in published GPS messages |
+| `ublox_frame_id` | `gps_link` | TF frame ID used in published GPS messages |
 
 ## GPS Configurations
 > Note: Message “rate” in `CFG-MSG` is **messages per navigation cycle**.  
