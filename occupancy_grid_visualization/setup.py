@@ -13,7 +13,7 @@ setup(
     install_requires=["setuptools"],
     zip_safe=True,
     maintainer="tutu",
-    maintainer_email="juliwhit@umichh.edu",
+    maintainer_email="juliwhit@umich.edu",
     description="occupancy grid voxel visualizer",
     license="Apache-2.0",
     extras_require={
