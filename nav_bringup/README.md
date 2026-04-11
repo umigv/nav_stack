@@ -25,8 +25,8 @@ course is used when no `course` argument is provided. See `nav_bringup/courses/d
 
 ## gps_origin_initializer.launch.py
 Computes and records the GPS datum for a course. Run this once with the robot stationary at the start position before
-an autonomous run. Starts the GPS driver, collects samples for 60–90 seconds, writes the median lat/lon/alt into the
-course's `gps.json`, then shuts down both nodes automatically.
+an autonomous run. Starts the VectorNav driver, collects samples for 60–90 seconds, writes the median lat/lon/alt into
+the course's `gps.json`, then shuts down both nodes automatically.
 
 ```
 ros2 launch nav_bringup gps_origin_initializer.launch.py [course:=<course>]
@@ -36,7 +36,7 @@ ros2 launch nav_bringup gps_origin_initializer.launch.py [course:=<course>]
 - `course`: Course profile in `courses/` whose `gps.json` will be updated, default `default`
 
 ### Published Topics
-- `gps/raw` (`sensor_msgs/NavSatFix`) - Raw GPS fix from GPS receiver
+- `gps/raw` (`sensor_msgs/NavSatFix`) - Raw GPS fix from VectorNav INS
 
 
 ## base.launch.py
@@ -101,7 +101,9 @@ ros2 launch nav_bringup hardware.launch.py mode:=<mode>
 
 ### Published Topics
 - `imu/raw` (`sensor_msgs/Imu`) - Raw IMU data from VectorNav (`autonav`, `self_drive`)
-- `gps/raw` (`sensor_msgs/NavSatFix`) - Raw GPS fix from GPS receiver (`autonav` only)
+- `gps/raw` (`sensor_msgs/NavSatFix`) - GPS/INS fix from VectorNav (`autonav`, `self_drive`)
+- `ins_vel/raw` (`geometry_msgs/TwistWithCovarianceStamped`) - INS body-frame velocity (`autonav`, `self_drive`)
+- `vectornav/raw/ins_status` (`std_msgs/UInt16`) - INS tracking status bitfield (`autonav`, `self_drive`)
 
 
 ## simulation.launch.py

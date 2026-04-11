@@ -13,16 +13,16 @@ def launch_setup(context, *args, **kwargs) -> list[LaunchDescriptionEntity]:
     share = bringup_share()
 
     gps_driver_node = Node(
-        package="ublox_driver",
-        executable="ublox_driver",
-        name="ublox_driver",
+        package="vectornav_driver",
+        executable="vectornav_driver",
+        name="vectornav_driver",
         output="screen",
         parameters=[
-            f"{share}/config/sensors/gps.yaml",
-            {"ublox_frame_id": frames["gps_frame"]},
+            f"{share}/config/sensors/vectornav.yaml",
+            {"insFrameId": frames["base_frame"]},
         ],
         remappings=[
-            ("ublox/gps", "gps/raw"),
+            ("vectornav/raw/navsatfix", "gps/raw"),
         ],
     )
 
