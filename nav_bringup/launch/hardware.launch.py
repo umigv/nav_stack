@@ -14,7 +14,7 @@ def launch_setup(context, *args, **kwargs) -> list[LaunchDescriptionEntity]:
     vectornav_node = Node(
         package="vectornav_driver",
         executable="vectornav_driver",
-        name="vectornav",
+        name="vectornav_driver",
         output="screen",
         parameters=[
             f"{share}/config/sensors/vectornav.yaml",
