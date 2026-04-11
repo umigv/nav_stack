@@ -36,7 +36,7 @@ def launch_setup(context, *args, **kwargs) -> list[LaunchDescriptionEntity]:
             {"ublox_frame_id": frames["gps_frame"]},
         ],
         remappings=[
-            ("gps", "gps/raw"),
+            ("ublox/gps", "gps/raw"),
         ],
     )
 

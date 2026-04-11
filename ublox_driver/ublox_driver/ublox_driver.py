@@ -21,7 +21,7 @@ class UbloxDriver(Node):
 
         self.config: UbloxDriverConfig = nav_utils.config.load(self, UbloxDriverConfig)
 
-        self.publisher = self.create_publisher(NavSatFix, "gps", 10)
+        self.publisher = self.create_publisher(NavSatFix, "ublox/gps", 10)
 
         self.stream = Serial(self.config.serial_port, 460800, timeout=0.1)
         self.ubx_reader = UBXReader(self.stream, protfilter=UBX_PROTOCOL)
