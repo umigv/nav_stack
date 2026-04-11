@@ -9,17 +9,17 @@ from sensor_msgs.msg import NavSatFix, NavSatStatus
 from serial import Serial
 from std_msgs.msg import Header
 
-from .gps_publisher_config import GpsPublisherConfig
+from .ublox_driver_config import UbloxDriverConfig
 
 UBX_FIX_TYPE_NO_FIX = 0
 UBX_FIX_TYPE_TIME_ONLY = 5
 
 
-class GpsPublisher(Node):
+class UbloxDriver(Node):
     def __init__(self) -> None:
-        super().__init__("gps_publisher")
+        super().__init__("ublox_driver")
 
-        self.config: GpsPublisherConfig = nav_utils.config.load(self, GpsPublisherConfig)
+        self.config: UbloxDriverConfig = nav_utils.config.load(self, UbloxDriverConfig)
 
         self.publisher = self.create_publisher(NavSatFix, "gps", 10)
 
@@ -99,7 +99,7 @@ class GpsPublisher(Node):
 
 def main() -> None:
     rclpy.init()
-    node = GpsPublisher()
+    node = UbloxDriver()
     try:
         rclpy.spin(node)
     finally:

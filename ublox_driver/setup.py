@@ -1,6 +1,6 @@
 from setuptools import find_packages, setup
 
-package_name = "gps_publisher"
+package_name = "ublox_driver"
 
 setup(
     name=package_name,
@@ -18,6 +18,6 @@ setup(
     license="Apache-2.0",
     tests_require=["pytest"],
     entry_points={
-        "console_scripts": ["gps_publisher = gps_publisher.gps_publisher:main"],
+        "console_scripts": ["ublox_driver = ublox_driver.ublox_driver:main"],
     },
 )

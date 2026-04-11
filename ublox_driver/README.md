@@ -1,4 +1,4 @@
-# GPS UBX → NavSatFix Publisher
+# ublox_driver
 This package reads GNSS data in UBX protocol from our **u-blox ZED-F9P** GPS over USB and publishes 
 `sensor_msgs/NavSatFix` messages for use with localization.
 

@@ -27,9 +27,9 @@ def launch_setup(context, *args, **kwargs) -> list[LaunchDescriptionEntity]:
     )
 
     gps_node = Node(
-        package="gps_publisher",
-        executable="gps_publisher",
-        name="gps_publisher",
+        package="ublox_driver",
+        executable="ublox_driver",
+        name="ublox_driver",
         output="screen",
         parameters=[
             f"{share}/config/sensors/gps.yaml",

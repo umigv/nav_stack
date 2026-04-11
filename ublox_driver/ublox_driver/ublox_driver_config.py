@@ -2,8 +2,8 @@ from dataclasses import dataclass
 
 
 @dataclass(frozen=True)
-class GpsPublisherConfig:
-    """Configuration for the GPS publisher node.
+class UbloxDriverConfig:
+    """Configuration for the ublox driver node.
 
     Attributes:
         serial_port: The serial port device path for the GPS receiver.
@@ -17,4 +17,4 @@ class GpsPublisherConfig:
 
     def __post_init__(self) -> None:
         if self.poll_period_s <= 0:
-            raise ValueError("GpsPublisherConfig: poll_period_s must be > 0")
+            raise ValueError("UbloxDriverConfig: poll_period_s must be > 0")
