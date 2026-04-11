@@ -1,3 +1,4 @@
+import json
 import math
 from statistics import median
 
@@ -33,7 +34,15 @@ class GpsOriginCalculator(Node):
 
         self.get_logger().debug(f"Received data: lat={msg.latitude}, lon={msg.longitude}, alt={msg.altitude}")
 
-        horizontal_stdev = math.sqrt(msg.position_covariance[0])
+        if msg.status.status == msg.status.STATUS_NO_FIX:
+            self.get_logger().debug("Dropping GPS msg with no fix")
+            return
+
+        if msg.position_covariance_type == NavSatFix.COVARIANCE_TYPE_UNKNOWN:
+            self.get_logger().debug("Dropping GPS msg with unknown covariance type")
+            return
+
+        horizontal_stdev = math.sqrt(max(msg.position_covariance[0], msg.position_covariance[4]))
         if horizontal_stdev > self.config.max_horizontal_stdev_m:
             self.get_logger().debug(
                 f"Dropping GPS msg with high horizontal stdev: {horizontal_stdev} > {self.config.max_horizontal_stdev_m}"
@@ -64,7 +73,23 @@ class GpsOriginCalculator(Node):
         self.get_logger().info(f"Collected {len(self.samples)} samples:")
         latitude = median(sample.latitude for sample in self.samples)
         longitude = median(sample.longitude for sample in self.samples)
-        self.get_logger().info(f"Origin is lat={latitude:.8f}, lon={longitude:.8f}")
+        altitude = median(sample.altitude for sample in self.samples)
+        self.get_logger().info(f"Origin is lat={latitude:.8f}, lon={longitude:.8f}, alt={altitude:.3f}m")
+
+        if self.config.output_file.name:
+            self._write_origin_to_file(latitude, longitude, altitude)
+
+    def _write_origin_to_file(self, latitude: float, longitude: float, altitude: float) -> None:
+        path = self.config.output_file
+        with path.open() as f:
+            data = json.load(f)
+        data["datum"]["latitude"] = latitude
+        data["datum"]["longitude"] = longitude
+        data["datum"]["altitude"] = altitude
+        with path.open("w") as f:
+            json.dump(data, f, indent=4)
+            f.write("\n")
+        self.get_logger().info(f"Wrote datum to {path}")
 
     def compute_time_elapsed(self) -> float:
         if not self.samples:

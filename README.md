@@ -1,8 +1,9 @@
 # UMARV Navigation Stack 2025-2026
 
 ## Warning: Intellisense
-When building, make sure you include `--symlink-install`. Otherwise, when control clicking a dependency in VSCode, it 
-will take you to a copy of the dependency, instead of the actual source file. For example:
+Always build with `--symlink-install`. Without it, control-clicking a dependency in VSCode will take you to a copy
+instead of the source file, and data files (launch files, config, course JSON) written to the install directory will
+not reflect back to the source tree. For example:
 ```bash
 colcon build --symlink-install
 source install/setup.bash
