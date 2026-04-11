@@ -1,4 +1,4 @@
-# GPS UBX → NavSatFix Publisher
+# ublox_driver
 This package reads GNSS data in UBX protocol from our **u-blox ZED-F9P** GPS over USB and publishes 
 `sensor_msgs/NavSatFix` messages for use with localization.
 
@@ -15,14 +15,14 @@ Covariance is filled using u-blox accuracy fields:
 - `hAcc` / `vAcc` (mm → meters → meters²), published as diagonal covariance.
 
 ## Published Topics
-- `gps` (`sensor_msgs/NavSatFix`) - processed GPS fix messages
+- `ublox/gps` (`sensor_msgs/NavSatFix`) - processed GPS fix messages
 
 ## Config Parameters
 | Parameter | Default | Description |
 |---|---|---|
-| `serial_port` | `/dev/ttyACM0` | Serial port device path for the GPS receiver |
+| `serial_port` | `/dev/ublox` | Serial port device path for the GPS receiver |
 | `poll_period_s` | `0.1` | Period in seconds between GPS polls |
-| `gps_frame_id` | `gps_link` | TF frame ID used in published GPS messages |
+| `ublox_frame_id` | `gps_link` | TF frame ID used in published GPS messages |
 
 ## GPS Configurations
 > Note: Message “rate” in `CFG-MSG` is **messages per navigation cycle**.  
