@@ -11,40 +11,28 @@ def launch_setup(context, *args, **kwargs) -> list[LaunchDescriptionEntity]:
     mode: Mode = LaunchConfiguration("mode").perform(context)
     share = bringup_share()
 
-    imu_node = Node(
-        package="vectornav",
-        executable="vectornav_node",
-        name="vectornav",
+    vectornav_node = Node(
+        package="vectornav_driver",
+        executable="vectornav_driver",
+        name="vectornav_driver",
         output="screen",
         parameters=[
-            f"{share}/config/sensors/imu.yaml",
-            {"frame_id": frames["imu_frame"]},
-            {"map_frame_id": frames["map_frame"]},
+            f"{share}/config/sensors/vectornav.yaml",
+            {"imuFrameId": frames["imu_frame"]},
+            {"insFrameId": frames["base_frame"]},
         ],
         remappings=[
-            ("vectornav/data", "imu/raw"),
-        ],
-    )
-
-    gps_node = Node(
-        package="ublox_driver",
-        executable="ublox_driver",
-        name="ublox_driver",
-        output="screen",
-        parameters=[
-            f"{share}/config/sensors/gps.yaml",
-            {"ublox_frame_id": frames["gps_frame"]},
-        ],
-        remappings=[
-            ("ublox/gps", "gps/raw"),
+            ("vectornav/raw/imu", "imu/raw"),
+            ("vectornav/raw/navsatfix", "gps/raw"),
+            ("vectornav/raw/twist_with_covariance_stamped", "ins_vel/raw"),
         ],
     )
 
     match mode:
         case "autonav":
-            return [imu_node, gps_node]
+            return [vectornav_node]
         case "self_drive":
-            return [imu_node]
+            return [vectornav_node]
         case "nav_test":
             return []
         case _:
