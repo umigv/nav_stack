@@ -35,7 +35,7 @@ def launch_setup(context, *args, **kwargs) -> list[LaunchDescriptionEntity]:
     tf_base_to_imu = Node(
         package="tf2_ros",
         executable="static_transform_publisher",
-        arguments=["--x", "0.0", "--y", "0.0", "--z", "0.0",
+        arguments=["--x", "-0.07303", "--y", "0.0", "--z", "0.6985",
                    "--roll", "0", "--pitch", "0", "--yaw", "0",
                    "--frame-id", frames["base_frame"],
                    "--child-frame-id", frames["imu_frame"]],
@@ -43,7 +43,7 @@ def launch_setup(context, *args, **kwargs) -> list[LaunchDescriptionEntity]:
     tf_imu_to_gnss_a = Node(
         package="tf2_ros",
         executable="static_transform_publisher",
-        arguments=["--x", "0.021", "--y", "-0.294481", "--z", "0.0",
+        arguments=["--x", "0.02699", "--y", "-0.2905", "--z", "0.1746",
                    "--roll", "0", "--pitch", "0", "--yaw", "0",
                    "--frame-id", frames["imu_frame"],
                    "--child-frame-id", frames["gnss_a_frame"]],
@@ -51,7 +51,7 @@ def launch_setup(context, *args, **kwargs) -> list[LaunchDescriptionEntity]:
     tf_gnss_a_to_gnss_b = Node(
         package="tf2_ros",
         executable="static_transform_publisher",
-        arguments=["--x", "-0.518", "--y", "0.585", "--z", "0.0",
+        arguments=["--x", "-0.5239", "--y", "0.5763", "--z", "0.00635",
                    "--roll", "0", "--pitch", "0", "--yaw", "0",
                    "--frame-id", frames["gnss_a_frame"],
                    "--child-frame-id", frames["gnss_b_frame"]],
