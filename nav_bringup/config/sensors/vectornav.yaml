@@ -19,11 +19,3 @@ vectornav_driver:
                            0.0,   0.001, 0.0,
                            0.0,   0.0,   0.001]
 
-    # (VN-200/300 only) Position of GNSS antenna A relative to the IMU, in FLU body frame (meters) [x, y, z]
-    antennaAOffset: [0.021, -0.294481, 0.0]
-
-    # (VN-300 only) Position of GNSS antenna B relative to antenna A, in FLU body frame (meters) [x, y, z]
-    compassBaseline: [-0.518, 0.585, 0.0]
-
-    # (VN-300 only) 1-sigma uncertainty of compassBaseline in each axis (meters) [x, y, z]
-    compassBaselineU: [0.01295, 0.014625, 0.025]

@@ -20,6 +20,8 @@ def launch_setup(context, *args, **kwargs) -> list[LaunchDescriptionEntity]:
             f"{share}/config/sensors/vectornav.yaml",
             {"imuFrameId": frames["imu_frame"]},
             {"insFrameId": frames["base_frame"]},
+            {"gnssAFrameId": frames["gnss_a_frame"]},
+            {"gnssBFrameId": frames["gnss_b_frame"]},
         ],
         remappings=[
             ("vectornav/raw/imu", "imu/raw"),
@@ -28,11 +30,40 @@ def launch_setup(context, *args, **kwargs) -> list[LaunchDescriptionEntity]:
         ],
     )
 
+    # Static transforms for VN-300 sensor geometry (FLU, meters)
+    # TODO: replace base_link -> imu_link with URDF once available
+    tf_base_to_imu = Node(
+        package="tf2_ros",
+        executable="static_transform_publisher",
+        arguments=["--x", "0.0", "--y", "0.0", "--z", "0.0",
+                   "--roll", "0", "--pitch", "0", "--yaw", "0",
+                   "--frame-id", frames["base_frame"],
+                   "--child-frame-id", frames["imu_frame"]],
+    )
+    tf_imu_to_gnss_a = Node(
+        package="tf2_ros",
+        executable="static_transform_publisher",
+        arguments=["--x", "0.021", "--y", "-0.294481", "--z", "0.0",
+                   "--roll", "0", "--pitch", "0", "--yaw", "0",
+                   "--frame-id", frames["imu_frame"],
+                   "--child-frame-id", frames["gnss_a_frame"]],
+    )
+    tf_gnss_a_to_gnss_b = Node(
+        package="tf2_ros",
+        executable="static_transform_publisher",
+        arguments=["--x", "-0.518", "--y", "0.585", "--z", "0.0",
+                   "--roll", "0", "--pitch", "0", "--yaw", "0",
+                   "--frame-id", frames["gnss_a_frame"],
+                   "--child-frame-id", frames["gnss_b_frame"]],
+    )
+
+    sensor_transforms = [tf_base_to_imu, tf_imu_to_gnss_a, tf_gnss_a_to_gnss_b]
+
     match mode:
         case "autonav":
-            return [vectornav_node]
+            return [vectornav_node, *sensor_transforms]
         case "self_drive":
-            return [vectornav_node]
+            return [vectornav_node, *sensor_transforms]
         case "nav_test":
             return []
         case _:

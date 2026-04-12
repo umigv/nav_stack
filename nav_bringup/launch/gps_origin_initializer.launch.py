@@ -19,11 +19,39 @@ def launch_setup(context, *args, **kwargs) -> list[LaunchDescriptionEntity]:
         output="screen",
         parameters=[
             f"{share}/config/sensors/vectornav.yaml",
+            {"imuFrameId": frames["imu_frame"]},
             {"insFrameId": frames["base_frame"]},
+            {"gnssAFrameId": frames["gnss_a_frame"]},
+            {"gnssBFrameId": frames["gnss_b_frame"]},
         ],
         remappings=[
             ("vectornav/raw/navsatfix", "gps/raw"),
         ],
+    )
+
+    tf_base_to_imu = Node(
+        package="tf2_ros",
+        executable="static_transform_publisher",
+        arguments=["--x", "0.0", "--y", "0.0", "--z", "0.0",
+                   "--roll", "0", "--pitch", "0", "--yaw", "0",
+                   "--frame-id", frames["base_frame"],
+                   "--child-frame-id", frames["imu_frame"]],
+    )
+    tf_imu_to_gnss_a = Node(
+        package="tf2_ros",
+        executable="static_transform_publisher",
+        arguments=["--x", "0.021", "--y", "-0.294481", "--z", "0.0",
+                   "--roll", "0", "--pitch", "0", "--yaw", "0",
+                   "--frame-id", frames["imu_frame"],
+                   "--child-frame-id", frames["gnss_a_frame"]],
+    )
+    tf_gnss_a_to_gnss_b = Node(
+        package="tf2_ros",
+        executable="static_transform_publisher",
+        arguments=["--x", "-0.518", "--y", "0.585", "--z", "0.0",
+                   "--roll", "0", "--pitch", "0", "--yaw", "0",
+                   "--frame-id", frames["gnss_a_frame"],
+                   "--child-frame-id", frames["gnss_b_frame"]],
     )
 
     gps_origin_node = Node(
@@ -41,7 +69,8 @@ def launch_setup(context, *args, **kwargs) -> list[LaunchDescriptionEntity]:
         )
     )
 
-    return [gps_driver_node, gps_origin_node, shutdown_on_completion]
+    return [gps_driver_node, gps_origin_node, shutdown_on_completion,
+            tf_base_to_imu, tf_imu_to_gnss_a, tf_gnss_a_to_gnss_b]
 
 
 def generate_launch_description() -> LaunchDescription:
