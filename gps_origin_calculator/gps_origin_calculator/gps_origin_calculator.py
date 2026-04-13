@@ -12,7 +12,7 @@ from .gps_origin_calculator_config import GpsOriginCalculatorConfig
 
 class GpsOriginCalculator(Node):
     def __init__(self) -> None:
-        super().__init__("gps_origin_initializer")
+        super().__init__("gps_origin_calculator")
 
         self.config = nav_utils.config.load(self, GpsOriginCalculatorConfig)
 
@@ -67,7 +67,7 @@ class GpsOriginCalculator(Node):
 
         self.done = True
         self.compute_and_print_origin()
-        rclpy.shutdown()
+        raise SystemExit(0)
 
     def compute_and_print_origin(self) -> None:
         self.get_logger().info(f"Collected {len(self.samples)} samples:")
@@ -77,19 +77,24 @@ class GpsOriginCalculator(Node):
         self.get_logger().info(f"Origin is lat={latitude:.8f}, lon={longitude:.8f}, alt={altitude:.3f}m")
 
         if self.config.output_file.name:
-            self._write_origin_to_file(latitude, longitude, altitude)
+            self.write_origin_to_file(latitude, longitude, altitude)
 
-    def _write_origin_to_file(self, latitude: float, longitude: float, altitude: float) -> None:
-        path = self.config.output_file
-        with path.open() as f:
-            data = json.load(f)
-        data["datum"]["latitude"] = latitude
-        data["datum"]["longitude"] = longitude
-        data["datum"]["altitude"] = altitude
-        with path.open("w") as f:
+    def write_origin_to_file(self, latitude: float, longitude: float, altitude: float) -> None:
+        try:
+            with self.config.output_file.open() as f:
+                data = json.load(f)
+        except (json.JSONDecodeError, OSError) as e:
+            self.get_logger().warn(f"Could not read existing file {self.config.output_file}: {e}. Overwriting.")
+            data = {}
+
+        data["datum"] = {"latitude": latitude, "longitude": longitude, "altitude": altitude}
+
+        self.config.output_file.parent.mkdir(parents=True, exist_ok=True)
+        with self.config.output_file.open("w") as f:
             json.dump(data, f, indent=4)
             f.write("\n")
-        self.get_logger().info(f"Wrote datum to {path}")
+        
+        self.get_logger().info(f"Wrote datum to {self.config.output_file}")
 
     def compute_time_elapsed(self) -> float:
         if not self.samples:
