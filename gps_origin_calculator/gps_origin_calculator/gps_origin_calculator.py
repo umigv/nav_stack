@@ -68,7 +68,7 @@ class GpsOriginCalculator(Node):
         self.done = True
         self.compute_and_print_origin()
 
-        # We don't call rclpy.shutdown() here because it causes a deadlock in humble 
+        # We don't call rclpy.shutdown() here because it causes a deadlock in humble
         # https://github.com/ros2/rclpy/issues/1646
         raise SystemExit(0)
 
@@ -96,7 +96,7 @@ class GpsOriginCalculator(Node):
         with self.config.output_file.open("w") as f:
             json.dump(data, f, indent=4)
             f.write("\n")
-        
+
         self.get_logger().info(f"Wrote datum to {self.config.output_file}")
 
     def compute_time_elapsed(self) -> float:
