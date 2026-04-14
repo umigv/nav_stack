@@ -67,6 +67,9 @@ class GpsOriginCalculator(Node):
 
         self.done = True
         self.compute_and_print_origin()
+
+        # We don't call rclpy.shutdown() here because it causes a deadlock in humble 
+        # https://github.com/ros2/rclpy/issues/1646
         raise SystemExit(0)
 
     def compute_and_print_origin(self) -> None:
