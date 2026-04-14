@@ -8,6 +8,7 @@ urdf/
 │   └── inertia.xacro       # Box, cylinder, and sphere inertia macros
 ├── sensor/
 │   ├── ann_mb.xacro        # u-blox ANN-MB GNSS antenna
+│   ├── calian_tw2712.xacro # Calian TW2712 single-band GNSS antenna
 │   ├── vn300.xacro         # VectorNav VN-300 Rugged Dual GNSS/INS
 │   └── zed2i.xacro         # Stereolabs ZED 2i stereo depth camera
 └── wheel/
@@ -55,11 +56,16 @@ Inertial properties for a constant-density sphere. Params: `mass`, `radius`, `*o
 - **`{name}_base_link`**: ARP (Antenna Reference Point) at bottom center of housing — use this as the mount origin
 - **`{name}_link`**: L1 phase center, 8.9mm above ARP — the GPS measurement reference frame
 
+### `calian_tw2712` — Calian TW2712 Single-Band GNSS Antenna
+- **Dimensions**: 57.0mm diameter × 15.0mm height (cylindrical), 110g (excluding cable)
+- **`{name}_base_link`**: ARP (Antenna Reference Point) at bottom center of housing — use this as the mount origin
+- **`{name}_link`**: L1 phase center (offset from ARP not published; currently set to 0 — update if calibration data becomes available)
+
 ### `vn300` — VectorNav VN-300 Rugged Dual GNSS/INS
 - **Dimensions**: 45 × 44 × 11 mm, 30g
 - **`{name}_base_link`**: Bottom center of housing — use this as the mount origin
 - **`{name}_link`**: Geometric center of housing (IMU measurement frame)
-- Note: GNSS antennas (ports A and B) are modeled separately as `ann_mb` instances
+- Note: GNSS antennas A and B are modeled separately
 
 ### `zed2i` — Stereolabs ZED 2i Stereo Depth Camera
 - **Dimensions**: 175.3 × 30.3 × 43.1 mm, 230g
