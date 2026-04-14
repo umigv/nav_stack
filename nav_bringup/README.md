@@ -23,13 +23,13 @@ Courses can be generated using the [course creation tool](https://github.com/umi
 course is used when no `course` argument is provided. See `nav_bringup/courses/default/` for the expected schema.
 
 
-## gps_origin_initializer.launch.py
+## gps_origin_calculator.launch.py
 Computes and records the GPS datum for a course. Run this once with the robot stationary at the start position before
 an autonomous run. Starts the VectorNav driver, collects samples for 60–90 seconds, writes the median lat/lon/alt into
 the course's `gps.json`, then shuts down both nodes automatically.
 
 ```
-ros2 launch nav_bringup gps_origin_initializer.launch.py [course:=<course>]
+ros2 launch nav_bringup gps_origin_calculator.launch.py [course:=<course>]
 ```
 
 ### Parameters
