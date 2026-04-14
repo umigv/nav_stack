@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+
+<robot name="maverick" xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <!-- Args -->
+    <xacro:arg name="base_frame_id" default="base_link"/>
+    <xacro:arg name="imu_name" default="imu"/>
+    <xacro:arg name="gnss_a_name" default="gnss_a"/>
+    <xacro:arg name="gnss_b_name" default="gnss_b"/>
+
+    <!-- Includes -->
+    <xacro:include filename="$(find maverick_description)/urdf/constants.xacro"/>
+
+    <!-- Base link -->
+    <link name="$(arg base_frame_id)" />
+
+    <!-- Chassis -->
+    <xacro:include filename="$(find common_description)/urdf/physics/inertia.xacro"/>
+
+    <link name="chassis_link">
+        <xacro:box_inertia mass="${chassis_mass_kg}" length="${chassis_length_m}" width="${chassis_width_m}" height="${chassis_height_m}">
+            <origin xyz="0 0 ${chassis_height_m / 2}" rpy="0 0 0" />
+        </xacro:box_inertia>
+
+        <visual>
+            <origin xyz="0 0 ${chassis_height_m / 2}" rpy="0 0 0" />
+            <geometry>
+                <box size="${chassis_length_m} ${chassis_width_m} ${chassis_height_m}" />
+            </geometry>
+        </visual>
+
+        <collision>
+            <origin xyz="0 0 ${chassis_height_m / 2}" rpy="0 0 0" />
+            <geometry>
+                <box size="${chassis_length_m} ${chassis_width_m} ${chassis_height_m}" />
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="chassis_joint" type="fixed">
+        <origin xyz="${base_frame_to_chassis_x_offset_m} 0 ${base_frame_to_chassis_z_offset_m}" rpy="0 0 0" />
+        <parent link="$(arg base_frame_id)" />
+        <child link="chassis_link" />
+    </joint>
+
+
+    <!-- Caster -->
+    <xacro:include filename="$(find common_description)/urdf/wheel/caster.xacro"/>
+    <xacro:caster name="caster" mass="${caster_mass_kg}" radius="${caster_radius_m}">
+        <origin xyz="${base_frame_to_caster_x_offset_m} 0 ${caster_radius_m}" rpy="0 0 0" />
+    </xacro:caster>
+
+
+    <!-- Wheels -->
+    <xacro:include filename="$(find common_description)/urdf/wheel/wheel.xacro"/>
+    <xacro:wheel name="right_wheel" mass="${wheel_mass_kg}" radius="${wheel_radius_m}" width="${wheel_width_m}">
+        <origin xyz="0 -${track_width_m / 2} ${wheel_radius_m}" rpy="0 0 0" />
+    </xacro:wheel>
+    <xacro:wheel name="left_wheel" mass="${wheel_mass_kg}" radius="${wheel_radius_m}" width="${wheel_width_m}">
+        <origin xyz="0 ${track_width_m/2} ${wheel_radius_m}" rpy="0 0 0" />
+    </xacro:wheel>
+
+
+    <!-- IMU -->
+    <xacro:include filename="$(find common_description)/urdf/sensor/vn300.xacro" />
+    <xacro:vn300 name="$(arg imu_name)" parent="$(arg base_frame_id)">
+        <origin xyz="${base_frame_to_imu_x_offset_m} ${base_frame_to_imu_y_offset_m} ${base_frame_to_imu_z_offset_m}" rpy="0 0 0" />
+    </xacro:vn300>
+
+
+    <!-- GNSS -->
+    <xacro:include filename="$(find common_description)/urdf/sensor/calian_tw2712.xacro" />
+
+    <xacro:calian_tw2712 name="$(arg gnss_a_name)" parent="$(arg imu_name)_base_link">
+        <origin xyz="${imu_to_gnss_a_x_offset_m} ${imu_to_gnss_a_y_offset_m} ${imu_to_gnss_a_z_offset_m}" rpy="0 0 0" />
+    </xacro:calian_tw2712>
+
+    <!-- GNSS B -->
+    <xacro:calian_tw2712 name="$(arg gnss_b_name)" parent="$(arg gnss_a_name)_base_link">
+        <origin xyz="${gnss_a_to_gnss_b_x_offset_m} ${gnss_a_to_gnss_b_y_offset_m} ${gnss_a_to_gnss_b_z_offset_m}" rpy="0 0 0" />
+    </xacro:calian_tw2712>
+</robot>
