@@ -1,5 +1,5 @@
 # marvin_description
-URDF description for the Marvin robot. Publishes TF transforms for all robot links via `robot_state_publisher`.
+URDF description for Marvin. Publishes TF transforms for all robot links via `robot_state_publisher`.
 
 ## Launch
 ```
@@ -26,10 +26,10 @@ Frame names default to standard names.
 | `right_wheel_link` | Right drive wheel |
 | `left_wheel_link` | Left drive wheel |
 | `caster_link` | Front caster wheel |
-| `zed_base_link` | Camera mount point (bottom center of ZED 2i) |
-| `zed_link` | Camera body center |
-| `zed_optical_link` | Camera optical frame (Z forward, X right, Y down) |
-| `imu_base_link` | VN-300 mount point (bottom center of housing) |
-| `imu_link` | VN-300 body center (IMU measurement frame) |
-| `gps_base_link` | ANN-MB ARP (Antenna Reference Point) |
-| `gps_link` | ANN-MB L1 phase center (GPS measurement frame) |
+| `{zed_name}_base_link` | Camera mount point (bottom center of ZED 2i) |
+| `{zed_name}_link` | Camera body center |
+| `{zed_name}_optical_link` | Camera optical frame (Z forward, X right, Y down) |
+| `{imu_name}_base_link` | VN-300 mount point (bottom center of housing) |
+| `{imu_name}_link` | VN-300 body center (IMU measurement frame) |
+| `{gps_name}_base_link` | ANN-MB ARP (Antenna Reference Point) |
+| `{gps_name}_link` | ANN-MB L1 phase center (GPS measurement frame) |

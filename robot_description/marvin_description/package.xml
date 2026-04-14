@@ -3,13 +3,11 @@
 <package format="3">
   <name>marvin_description</name>
   <version>0.1.0</version>
-  <description>URDF description for Marvin robot</description>
+  <description>URDF description for Marvin</description>
   <maintainer email="ryanliao@umich.edu">Ryan Liao</maintainer>
   <license>Apache-2.0</license>
 
   <exec_depend>common_description</exec_depend>
-  <exec_depend>robot_state_publisher</exec_depend>
-  <exec_depend>joint_state_publisher_gui</exec_depend>
   <exec_depend>urdf_launch</exec_depend>
   <exec_depend>xacro</exec_depend>
 
