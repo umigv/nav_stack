@@ -19,8 +19,8 @@ class InflationParams:
             1.0 result in slower decay and more conservative paths; values closer to 0.0 decay more aggressively.
     """
 
-    inflation_radius_cells: int = 10
-    inflation_falloff_radius_cells: int = 20
+    inflation_radius_cells: int = 6
+    inflation_falloff_radius_cells: int = 6
     inflation_decay_factor: float = 0.9
 
     def __post_init__(self) -> None:
