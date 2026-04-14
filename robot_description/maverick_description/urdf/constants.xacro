@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="constants">
+    <!-- Chassis Constants -->
+    <xacro:property name="chassis_length_m" value="1.019" />
+    <xacro:property name="chassis_width_m" value="0.616" />
+    <xacro:property name="chassis_height_m" value="0.643" />
+    <xacro:property name="base_frame_to_chassis_x_offset_m" value="-0.302" />
+    <xacro:property name="base_frame_to_chassis_z_offset_m" value="0.12" />
+    <xacro:property name="chassis_mass_kg" value="20" />
+
+    <!-- Wheel Constants -->
+    <xacro:property name="wheel_radius_m" value="0.102" />
+    <xacro:property name="wheel_width_m" value="0.05" />
+    <xacro:property name="wheel_mass_kg" value="1" />
+    <xacro:property name="track_width_m" value="0.711" />
+
+    <!-- Caster Constants -->
+    <xacro:property name="caster_radius_m" value="0.06" />
+    <xacro:property name="caster_mass_kg" value="1" />
+    <xacro:property name="base_frame_to_caster_x_offset_m" value="-0.631" />
+
+    <!-- IMU Constants -->
+    <xacro:property name="base_frame_to_imu_x_offset_m" value="-0.073"/>
+    <xacro:property name="base_frame_to_imu_y_offset_m" value="0.0"/>
+    <xacro:property name="base_frame_to_imu_z_offset_m" value="0.789"/>
+
+    <!-- GNSS A Constants -->
+    <xacro:property name="imu_to_gnss_a_x_offset_m" value="0.0270"/>
+    <xacro:property name="imu_to_gnss_a_y_offset_m" value="-0.291"/>
+    <xacro:property name="imu_to_gnss_a_z_offset_m" value="0.171"/>
+
+    <!-- GNSS B Constants -->
+    <xacro:property name="gnss_a_to_gnss_b_x_offset_m" value="-0.524"/>
+    <xacro:property name="gnss_a_to_gnss_b_y_offset_m" value="0.576"/>
+    <xacro:property name="gnss_a_to_gnss_b_z_offset_m" value="0.006"/>
+</robot>

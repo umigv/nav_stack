@@ -3,7 +3,7 @@ from pathlib import Path
 
 from setuptools import find_packages, setup
 
-package_name = "marvin_description"
+package_name = "maverick_description"
 
 setup(
     name=package_name,
@@ -18,7 +18,7 @@ setup(
     zip_safe=True,
     maintainer="Ryan Liao",
     maintainer_email="ryanliao@umich.edu",
-    description="URDF description for Marvin",
+    description="URDF description for Maverick",
     license="Apache-2.0",
     extras_require={},
     entry_points={
