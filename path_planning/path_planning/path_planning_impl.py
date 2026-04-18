@@ -69,7 +69,7 @@ def generate_path(
             state = grid.state(neighbor)
             if state.is_unknown:
                 local = robot_pose.world_to_local(neighbor)
-                if local.x > params.max_unknown_forward_m or abs(local.y) > params.max_unknown_sideways_m:
+                if not (0 <= local.x <= params.max_unknown_forward_m) or abs(local.y) > params.max_unknown_sideways_m:
                     continue
             elif not state.is_drivable:
                 continue
