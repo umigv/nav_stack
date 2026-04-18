@@ -141,6 +141,17 @@ class Point2d:
         """
         return math.hypot(self.x, self.y)
 
+    def dot(self, other: Point2d) -> float:
+        """Return the dot product of this point with another, treating both as vectors.
+
+        Args:
+            other: The other vector.
+
+        Returns:
+            Scalar dot product.
+        """
+        return self.x * other.x + self.y * other.y
+
     def distance(self, other: Point2d) -> float:
         """Return the Euclidean distance to another point.
 
@@ -151,6 +162,18 @@ class Point2d:
             Distance in meters.
         """
         return math.hypot(self.x - other.x, self.y - other.y)
+
+    def lerp(self, other: Point2d, t: float) -> Point2d:
+        """Linearly interpolate toward another point.
+
+        Args:
+            other: Target point.
+            t: Interpolation parameter. t=0 returns self, t=1 returns other. Not clamped.
+
+        Returns:
+            self + (other - self) * t.
+        """
+        return self + (other - self) * t
 
     def to_ros(self) -> Point:
         """Convert to a ROS Point with z=0.

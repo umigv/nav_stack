@@ -7,6 +7,7 @@ import rclpy
 from geometry_msgs.msg import Twist, Vector3
 from nav_msgs.msg import Odometry, Path
 from nav_utils.geometry import Point2d, Pose2d
+from nav_utils.math import clamp
 from rclpy.node import Node
 
 from .path_tracking_config import PathTrackingConfig
@@ -19,7 +20,7 @@ class PathTracking(Node):
         self.config: PathTrackingConfig = nav_utils.config.load(self, PathTrackingConfig)
 
         self.path_points: list[Point2d] = []
-        self.path_cursor: int = 0
+        self.lookahead_fractional_index: float = 0.0
         self.pose: Pose2d | None = None
         self.current_speed: float = 0.0
 
@@ -52,45 +53,90 @@ class PathTracking(Node):
 
         self.get_logger().info("Received a new path from subscription.")
         self.path_points = [Point2d(x=p.pose.position.x, y=p.pose.position.y) for p in path_msg.poses]
-        self.path_cursor = 0
+        self.lookahead_fractional_index = 0.0
 
     def compute_lookahead_distance(self) -> float:
         lookahead = self.config.base_lookahead_distance_m + self.config.lookahead_speed_gain * self.current_speed
-        return max(self.config.min_lookahead_distance_m, min(lookahead, self.config.max_lookahead_distance_m))
+        return clamp(lookahead, min=self.config.min_lookahead_distance_m, max=self.config.max_lookahead_distance_m)
 
     def find_lookahead_point(self, lookahead_distance: float) -> Point2d | None:
-        # Allows one index backwards due to adaptive lookahead
-        start = self.path_cursor - 1 if self.path_cursor != 0 else 0
-        end = len(self.path_points) - 1
-
         assert self.pose is not None
-        for i in range(start, end):
-            local1 = self.pose.world_to_local(self.path_points[i])
-            local2 = self.pose.world_to_local(self.path_points[i + 1])
+        robot = self.pose.point
+        start_segment = int(self.lookahead_fractional_index)
 
-            if local1.x < -0.05 and local2.x < -0.05:
-                self.path_cursor = i + 1
+        for i in range(start_segment, len(self.path_points) - 1):
+            start = self.path_points[i]
+            end = self.path_points[i + 1]
+            d = end - start
+            f = start - robot
+
+            a = d.dot(d)
+            b = 2.0 * f.dot(d)
+            c = f.dot(f) - lookahead_distance * lookahead_distance
+
+            discriminant = b * b - 4.0 * a * c
+            if discriminant < 0.0:
                 continue
 
-            d1 = local1.mag()
-            d2 = local2.mag()
-            if d1 < lookahead_distance <= d2 and local2.x > 0.0:
-                t = max(0.0, min(1.0, (lookahead_distance - d1) / (d2 - d1)))
-                self.path_cursor = i
-                return local1 + (local2 - local1) * t
+            t2 = (-b + math.sqrt(discriminant)) / (2.0 * a)
+            t1 = (-b - math.sqrt(discriminant)) / (2.0 * a)
+
+            # Check t2 (far intersection) first to prefer the forward-most point.
+            for t in (t2, t1):
+                if 0.0 <= t <= 1.0 and i + t >= self.lookahead_fractional_index:
+                    self.lookahead_fractional_index = i + t
+                    return self.pose.world_to_local(start.lerp(end, t))
 
         return None
 
-    def find_forward_point(self, lookahead_distance: float) -> Point2d | None:
+    def find_projected_lookahead(self, lookahead_distance: float) -> Point2d | None:
         assert self.pose is not None
-        for j in range(self.path_cursor, len(self.path_points)):
-            local = self.pose.world_to_local(self.path_points[j])
-            if local.x > -0.1 and local.mag() >= lookahead_distance:
-                self.path_cursor = j
-                self.get_logger().warn(f"Lookahead intersection not found, chasing forward point at index {j}")
-                return local
+        if len(self.path_points) < 2:
+            return None
 
-        return None
+        def project_robot_onto_path() -> float | None:
+            """Return the fractional index of the closest point on the path to the robot, or None."""
+            assert self.pose is not None
+            robot = self.pose.point
+
+            def projection_onto_segment(i: int) -> tuple[float, float]:
+                start, end = self.path_points[i], self.path_points[i + 1]
+                segment = end - start
+                t = clamp((robot - start).dot(segment) / segment.dot(segment), min=0.0, max=1.0)
+                perpendicular_offset = start.lerp(end, t) - robot
+                return i + t, perpendicular_offset.mag()
+
+            search_range = range(int(self.lookahead_fractional_index), len(self.path_points) - 1)
+            candidates = [projection_onto_segment(i) for i in search_range]
+            return min(candidates, key=lambda p: p[1])[0] if candidates else None
+
+        def walk_along_path(start_fractional_index: float, distance: float) -> tuple[Point2d, float]:
+            """Walk forward along the path by `distance` meters, or to the end if shorter."""
+            segment_index = int(start_fractional_index)
+            segment_t = start_fractional_index - segment_index
+            remaining = distance
+            while segment_index < len(self.path_points) - 1:
+                start, end = self.path_points[segment_index], self.path_points[segment_index + 1]
+                length = start.distance(end)
+                available = length * (1.0 - segment_t)
+                if available >= remaining:
+                    target_t = segment_t + remaining / length
+                    return start.lerp(end, target_t), segment_index + target_t
+                remaining -= available
+                segment_index += 1
+                segment_t = 0.0
+            return self.path_points[-1], float(len(self.path_points) - 1)
+
+        projection_index = project_robot_onto_path()
+        if projection_index is None:
+            return None
+
+        target, _ = walk_along_path(projection_index, lookahead_distance)
+        self.lookahead_fractional_index = projection_index
+        self.get_logger().warn(
+            f"Lookahead miss, projection fallback aiming at fractional index {self.lookahead_fractional_index:.2f}"
+        )
+        return self.pose.world_to_local(target)
 
     def control_loop(self) -> None:
         if self.pose is None or not self.path_points:
@@ -103,7 +149,7 @@ class PathTracking(Node):
             self.cmd_vel_publisher.publish(Twist())
             return
 
-        lookahead_point = self.find_lookahead_point(lookahead_distance) or self.find_forward_point(lookahead_distance)
+        lookahead_point = self.find_lookahead_point(lookahead_distance) or self.find_projected_lookahead(lookahead_distance)
         if lookahead_point is None:
             self.get_logger().warn("No valid lookahead point found - stopping")
             self.cmd_vel_publisher.publish(Twist())
