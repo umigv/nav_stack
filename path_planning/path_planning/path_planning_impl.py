@@ -1,12 +1,11 @@
 import heapq
 import math
-from collections import deque
 from dataclasses import dataclass, field
 
-import numpy as np
-from nav_utils.geometry import Point2d
+from nav_utils.geometry import Point2d, Pose2d
 from nav_utils.world_occupancy_grid import WorldOccupancyGrid
-from scipy.interpolate import splev, splprep
+
+from .path_planning_config import PathPlanningParams
 
 
 @dataclass(order=True)
@@ -17,87 +16,29 @@ class KeyAndCost:
     key: int = field(compare=False)
 
 
-def interpolate_points(start: Point2d, end: Point2d, resolution: float) -> list[Point2d]:
-    """Linearly interpolate between two points at a given resolution.
-
-    Generates evenly spaced points from start to end (inclusive of both).
-
-    Args:
-        start: Starting point.
-        end: Ending point.
-        resolution: Distance between consecutive interpolated points.
-    Returns:
-        List of interpolated points from start to end.
-    """
-    total_distance = start.distance(end)
-
-    if total_distance < 1e-9:
-        return [start]
-
-    num_steps = math.ceil(total_distance / resolution)
-
-    return [start + (end - start) * (i / num_steps) for i in range(num_steps + 1)]
-
-
-def find_closest_drivable_point(
-    grid: WorldOccupancyGrid, robot_position: Point2d, max_search_radius: float
-) -> Point2d | None:
-    """BFS from the robot position to find the nearest drivable cell.
-
-    The robot is in unknown space in the occupancy grid, meaning we don't know if its current location and the location
-    around it is drivable. To account for this, we search for the closest drivable point, starting from the robot.
-
-    Args:
-        grid: World-coordinate occupancy grid.
-        robot_position: Robot position in world coordinates.
-        max_search_radius: Maximum distance (meters) from robot_position to
-            search. Prevents unbounded expansion since the grid returns
-            UNKNOWN for out-of-bounds points.
-    Returns:
-        The nearest drivable point, or None if none exists within the radius.
-    """
-    if grid.state(robot_position).is_drivable:
-        return robot_position
-
-    visited: set[int] = {grid.hash_key(robot_position)}
-    search_container: deque[Point2d] = deque([robot_position])
-
-    while len(search_container) > 0:
-        current = search_container.popleft()
-
-        for neighbor in grid.neighbors_forward(current):
-            neighbor_key = grid.hash_key(neighbor)
-            if neighbor_key in visited:
-                continue
-            visited.add(neighbor_key)
-
-            if neighbor.distance(robot_position) > max_search_radius:
-                continue
-
-            if grid.state(neighbor).is_drivable:
-                return neighbor
-
-            if grid.state(neighbor).is_unknown:
-                search_container.append(neighbor)
-
-    return None
-
-
-def generate_path(grid: WorldOccupancyGrid, start: Point2d, goal: Point2d) -> list[Point2d] | None:
+def generate_path(
+    grid: WorldOccupancyGrid,
+    robot_pose: Pose2d,
+    goal: Point2d,
+    params: PathPlanningParams,
+) -> list[Point2d] | None:
     """Generate a good path for the robot to follow towards the goal using the A* search algorithm.
     https://en.wikipedia.org/wiki/A*_search_algorithm.
 
-    Both start and goal should be drivable cells within the grid. If the goal is unreachable (e.g. blocked by
-    obstacles), the path leads to the closest reachable cell instead.
+    Unknown cells within the asymmetric forward/sideways bounds around the start are treated as traversable, allowing A*
+    to plan directly from the robot's position even when the cells immediately under it are unknown in the grid. If the
+    goal is unreachable (e.g. blocked by obstacles), the path leads to the closest reachable cell instead.
 
     Args:
         grid: World-coordinate occupancy grid.
-        start: Drivable start point in world coordinates.
-        goal: Drivable goal point in world coordinates.
+        robot_pose: Robot pose (position + heading) in world coordinates.
+        goal: Goal point in world coordinates.
+        params: Path planning parameters.
     Returns:
         List of world-coordinate points from start to goal (or closest
         reachable point), or None if no drivable cells are reachable.
     """
+    start = robot_pose.point
     start_key = grid.hash_key(start)
     goal_key = grid.hash_key(goal)
 
@@ -125,7 +66,12 @@ def generate_path(grid: WorldOccupancyGrid, start: Point2d, goal: Point2d) -> li
             break
 
         for neighbor in grid.neighbors8(current_point):
-            if not grid.state(neighbor).is_drivable:
+            state = grid.state(neighbor)
+            if state.is_unknown:
+                local = robot_pose.world_to_local(neighbor)
+                if local.x > params.max_unknown_forward_m or abs(local.y) > params.max_unknown_sideways_m:
+                    continue
+            elif not state.is_drivable:
                 continue
 
             neighbor_key = grid.hash_key(neighbor)
@@ -150,25 +96,58 @@ def generate_path(grid: WorldOccupancyGrid, start: Point2d, goal: Point2d) -> li
     return list(reversed(backtrace))
 
 
-def smooth_path(points: list[Point2d], smoothing: float) -> list[Point2d]:
-    """Fit a B-spline through the path and return a smoother, denser set of points.
+def pull_string(
+    grid: WorldOccupancyGrid,
+    path: list[Point2d],
+    robot_pose: Pose2d,
+    params: PathPlanningParams,
+) -> list[Point2d]:
+    """Remove unnecessary waypoints from a path using the string-pulling algorithm.
+    https://digestingduck.blogspot.com/2010/03/simple-stupid-funnel-algorithm.html
 
-    Falls back to returning the original points if there are too few for spline fitting.
+    From each waypoint, finds the furthest subsequent waypoint reachable in a straight
+    line and skips everything in between. This eliminates the staircase artifacts
+    produced by grid-based A* and reduces sharp heading changes at the start of the path.
 
     Args:
-        points: Input path points.
-        smoothing: Smoothing factor passed to scipy splprep. Higher values smooth more aggressively.
+        grid: World-coordinate occupancy grid.
+        path: Input path from A*.
+        robot_pose: Robot pose used to evaluate unknown-cell traversal bounds.
+        params: Path planning parameters.
     Returns:
-        Smoothed path at 3x the original point density, or the original points if fewer than 4.
+        Pruned path containing only waypoints where direction changes are necessary.
     """
-    if len(points) <= 3:
-        return points
 
-    xs = [p.x for p in points]
-    ys = [p.y for p in points]
+    def line_of_sight(a: Point2d, b: Point2d) -> bool:
+        distance = a.distance(b)
+        if distance < 1e-9:
+            return True
 
-    tck, _ = splprep([xs, ys], s=smoothing, per=0)
-    u_fine = np.linspace(0, 1, 3 * len(points))
-    x_smooth, y_smooth = splev(u_fine, tck)
+        steps = max(2, math.ceil(distance / params.line_of_sight_step_m))
+        for i in range(1, steps):
+            p = a + (b - a) * (i / steps)
+            state = grid.state(p)
+            if state.is_unknown:
+                local = robot_pose.world_to_local(p)
+                if local.x > params.max_unknown_forward_m or abs(local.y) > params.max_unknown_sideways_m:
+                    return False
+            elif not state.is_drivable:
+                return False
 
-    return [Point2d(x=float(x), y=float(y)) for x, y in zip(x_smooth, y_smooth, strict=True)]
+        return True
+
+    if len(path) <= 2:
+        return path
+
+    result = [path[0]]
+    anchor = 0
+
+    while anchor < len(path) - 1:
+        furthest = anchor + 1
+        for i in range(anchor + 2, len(path)):
+            if line_of_sight(path[anchor], path[i]):
+                furthest = i
+        result.append(path[furthest])
+        anchor = furthest
+
+    return result
