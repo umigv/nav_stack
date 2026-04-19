@@ -18,6 +18,7 @@ Supported field types:
 - Primitives: `bool`, `int`, `float`, `str`, `bytes`
 - Arrays: `list[bool]`, `list[int]`, `list[float]`, `list[str]`
 - `pathlib.Path` (declared as a string parameter, coerced to `Path` on load)
+- `typing.Literal[...]` of values sharing one supported primitive type; validated against the allowed set
 
 For example, you can create the following config dataclass:
 ```py
