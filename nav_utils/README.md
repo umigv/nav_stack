@@ -103,6 +103,7 @@ Wraps a yaw angle in radians. Angle is automatically wrapped to `[-π, π]` and 
 | `cos`, `sin` | Cached cosine and sine of the angle |
 | `to_ros()` | Convert to `geometry_msgs/Quaternion` |
 | `from_ros(q)` | Construct from a `geometry_msgs/Quaternion` |
+| `from_vector(vector)` | Construct from a 2D direction vector via `atan2(y, x)` |
 
 ### `Point2d`
 2D point with arithmetic operators and ROS interop.
@@ -115,6 +116,7 @@ Wraps a yaw angle in radians. Angle is automatically wrapped to `[-π, π]` and 
 | `rotate_by(rotation)` | Rotate by a `Rotation2d` |
 | `mag()` | Euclidean magnitude |
 | `dot(other)` | Dot product |
+| `cross(other)` | 2D cross product (scalar): `x·other.y − y·other.x`. Positive when `other` is to the left of `self`. |
 | `lerp(other, t)` | Linearly interpolate toward `other`: `self + (other - self) * t`. `t=0` returns `self`, `t=1` returns `other`. Not clamped. |
 | `distance(other)` | Distance to another `Point2d` |
 | `to_ros()` | Convert to `geometry_msgs/Point` |
