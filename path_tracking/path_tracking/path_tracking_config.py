@@ -19,12 +19,12 @@ class PathTrackingConfig:
     """
 
     max_angular_speed_radps: float = 0.6
-    base_lookahead_distance_m: float = 0.1
-    min_lookahead_distance_m: float = 0.1
-    max_lookahead_distance_m: float = 0.4
-    lookahead_speed_gain: float = 0.55
-    linear_speed_gain: float = 2.0
-    control_period_s: float = 0.1
+    base_lookahead_distance_m: float = 0.8
+    min_lookahead_distance_m: float = 0.8
+    max_lookahead_distance_m: float = 1.5
+    lookahead_speed_gain: float = 0
+    linear_speed_gain: float = 0.5
+    control_period_s: float = 0.01
     base_frame_id: str = "base_link"
     odom_frame_id: str = "odom"
 
@@ -37,8 +37,8 @@ class PathTrackingConfig:
             raise ValueError("PathTrackingConfig: max_lookahead_distance_m must be > 0")
         if self.min_lookahead_distance_m > self.max_lookahead_distance_m:
             raise ValueError("PathTrackingConfig: min_lookahead_distance_m must be <= max_lookahead_distance_m")
-        if self.lookahead_speed_gain <= 0:
-            raise ValueError("PathTrackingConfig: lookahead_speed_gain must be > 0")
+        # if self.lookahead_speed_gain <= 0:
+        #     raise ValueError("PathTrackingConfig: lookahead_speed_gain must be > 0")
         if self.linear_speed_gain <= 0:
             raise ValueError("PathTrackingConfig: linear_speed_gain must be > 0")
         if self.control_period_s <= 0:
