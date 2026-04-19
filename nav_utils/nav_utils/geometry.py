@@ -75,6 +75,18 @@ class Rotation2d:
         return Quaternion(x=0.0, y=0.0, z=math.sin(half), w=math.cos(half))
 
     @classmethod
+    def from_vector(cls, vector: Point2d) -> Rotation2d:
+        """Construct from a 2D direction vector.
+
+        Args:
+            vector: Direction vector. The angle is computed as atan2(y, x).
+
+        Returns:
+            Rotation2d with angle equal to the heading of vector.
+        """
+        return cls(math.atan2(vector.y, vector.x))
+
+    @classmethod
     def from_ros(cls, q: Quaternion) -> Rotation2d:
         """Construct from a ROS quaternion by extracting the yaw component.
 
@@ -166,6 +178,17 @@ class Point2d:
             Scalar dot product.
         """
         return self.x * other.x + self.y * other.y
+
+    def cross(self, other: Point2d) -> float:
+        """Return the 2D cross product (scalar z-component of the 3D cross product).
+
+        Args:
+            other: The other vector.
+
+        Returns:
+            self.x * other.y - self.y * other.x. Positive when other is to the left of self.
+        """
+        return self.x * other.y - self.y * other.x
 
     def lerp(self, other: Point2d, t: float) -> Point2d:
         """Linearly interpolate toward another point.
