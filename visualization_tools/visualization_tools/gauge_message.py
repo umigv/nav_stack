@@ -1,8 +1,7 @@
-import numpy as np
 import rclpy
-from std_msgs.msg import Float64
-from geometry_msgs.msg import TwistWithCovariance, Twist, Vector3, TwistWithCovarianceStamped
+from geometry_msgs.msg import TwistWithCovarianceStamped
 from rclpy.node import Node
+from std_msgs.msg import Float64
 
 
 class LinearSpeed(Node):
@@ -15,16 +14,13 @@ class LinearSpeed(Node):
 
     def publish_linear_speed(self, msg: TwistWithCovarianceStamped) -> None:
 
-        vx = msg.twist.twist.linear.x;
-        vy = msg.twist.twist.linear.y;
-        vz = msg.twist.twist.linear.z;
+        vx = msg.twist.twist.linear.x
+        vy = msg.twist.twist.linear.y
+        vz = msg.twist.twist.linear.z
 
+        speed = (vx**2 + vy**2 + vz**2) ** 0.5
 
-        speed = (vx ** 2 + vy ** 2 + vz ** 2)**0.5; 
-
-        self.linear_speed_publisher.publish(
-            Float64(data=speed)
-        )
+        self.linear_speed_publisher.publish(Float64(data=speed))
 
 
 def main() -> None:
