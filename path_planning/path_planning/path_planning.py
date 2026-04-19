@@ -1,6 +1,8 @@
 import nav_utils.config
 import rclpy
 import tf2_geometry_msgs  # noqa: F401 - registers PointStamped transform support
+from alert_system_interfaces.msg import Alert
+from alert_system_interfaces.srv import CreateAlert, ResolveAlert
 from geometry_msgs.msg import PointStamped, Pose, PoseStamped, Quaternion
 from nav_msgs.msg import OccupancyGrid, Odometry, Path
 from nav_utils.geometry import Point2d
@@ -11,9 +13,6 @@ from tf2_ros import Buffer, TransformListener
 
 from .path_planning_config import PathPlanningConfig
 from .path_planning_impl import find_closest_drivable_point, generate_path, interpolate_points, smooth_path
-
-from alert_system_interfaces.msg import Alert
-from alert_system_interfaces.srv import CreateAlert, ResolveAlert
 
 
 class PathPlanner(Node):
@@ -40,9 +39,9 @@ class PathPlanner(Node):
 
         self.active_alert_id: int | None = None
 
-    def alert_callback(self, msg: Alert): 
+    def alert_callback(self, msg: Alert):
         self.get_logger().warn(f"Received alert: {msg.message}")
-    
+
     def create_alert(self, category, severity, source, message):
         request = CreateAlert.Request()
         request.category = category
@@ -50,7 +49,7 @@ class PathPlanner(Node):
         request.source = source
         request.message = message
         future = self.create_alert_client.call_async(request)
-    
+
     def resolve_alert(self, alert_id):
         request = ResolveAlert.Request()
         request.alert_id = alert_id
@@ -82,7 +81,9 @@ class PathPlanner(Node):
             msg = self.tf_buffer.transform(msg, self.config.frame_id)
         except Exception as e:
             self.get_logger().error(f"Failed to transform goal to {self.config.frame_id}: {e}")
-            self.create_alert("path planning", 2, "path planning", f"Failed to transform goal to {self.config.frame_id}: {e}")
+            self.create_alert(
+                "path planning", 2, "path planning", f"Failed to transform goal to {self.config.frame_id}: {e}"
+            )
             return
 
         start = find_closest_drivable_point(self.grid, self.robot_position, self.config.max_search_radius_m)
