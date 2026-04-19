@@ -9,6 +9,7 @@ from rclpy.node import Node
 
 from .path_tracking_config import PathTrackingConfig
 from .pure_pursuit_controller import PurePursuitController
+from .stanley_controller import StanleyController
 
 
 class PathTracking(Node):
@@ -17,7 +18,13 @@ class PathTracking(Node):
 
         self.config: PathTrackingConfig = nav_utils.config.load(self, PathTrackingConfig)
 
-        self.controller = PurePursuitController(self.config.pure_pursuit, self.get_logger())
+        if self.config.algorithm == "pure_pursuit":
+            self.controller: PurePursuitController | StanleyController = PurePursuitController(
+                self.config.pure_pursuit, self.get_logger()
+            )
+        else:
+            self.controller = StanleyController(self.config.stanley, self.get_logger())
+
         self.pose: Pose2d | None = None
         self.current_speed: float = 0.0
 
