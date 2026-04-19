@@ -22,9 +22,14 @@ def generate_launch_description() -> LaunchDescription:
                 ],
             ),
             Node(
-                package="occupancy_grid_visualization",
+                package="visualization_tools",
                 executable="foxglove_voxel",
                 name="occupancy_grid_voxel_visualization",
+            ),
+            Node(
+                package="visualization_tools",
+                executable="linear_speed",
+                name="linear_speed_visualization",
             ),
         ]
     )
