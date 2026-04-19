@@ -1,6 +1,6 @@
 from setuptools import find_packages, setup
 
-package_name = "occupancy_grid_visualization"
+package_name = "visualization_tools"
 
 setup(
     name=package_name,
@@ -14,7 +14,7 @@ setup(
     zip_safe=True,
     maintainer="tutu",
     maintainer_email="juliwhit@umich.edu",
-    description="occupancy grid voxel visualizer",
+    description="expanded foxglove visualization suite",
     license="Apache-2.0",
     extras_require={
         "test": [
@@ -23,7 +23,8 @@ setup(
     },
     entry_points={
         "console_scripts": [
-            "foxglove_voxel = occupancy_grid_visualization.occupancy_grid_visualizer:main",
+            "foxglove_voxel = visualization_tools.occupancy_grid_visualizer:main",
+            "linear_speed = visualization_tools.gauge_message:main",
         ],
     },
 )
