@@ -16,6 +16,7 @@ Supported field types:
 - Primitives: `bool`, `int`, `float`, `str`, `bytes`
 - Arrays: `list[bool]`, `list[int]`, `list[float]`, `list[str]`
 - `pathlib.Path` (declared as a string parameter, coerced to `Path` on load)
+- `typing.Literal[...]` of values sharing one supported primitive type; validated against the allowed set
 
 For example, you can create the following config dataclass:
 ```py
@@ -63,7 +64,7 @@ import sys
 from collections.abc import Callable
 from dataclasses import MISSING, dataclass, fields, is_dataclass
 from pathlib import Path
-from typing import Any, Generic, TypeVar, cast, get_type_hints
+from typing import Any, Generic, Literal, TypeVar, cast, get_args, get_origin, get_type_hints
 
 from rcl_interfaces.msg import ParameterDescriptor
 from rclpy.node import Node
@@ -98,6 +99,27 @@ _ENTRIES: dict[type, _Entry[Any, Any]] = {
     list[str]: _Entry(list[str], Parameter.Type.STRING_ARRAY, _identity, _identity),
     Path: _Entry(str, Parameter.Type.STRING, Path, str),
 }
+
+
+def _literal_entry(field_type: Any, key: str) -> _Entry[Any, Any]:
+    """Build a per-field entry for a `Literal[...]` whose values share a supported primitive type."""
+    allowed = get_args(field_type)
+    if not allowed:
+        raise TypeError(f"Parameter '{key}' Literal must have at least one value")
+    base_type = type(allowed[0])
+    if not all(type(a) is base_type for a in allowed):
+        raise TypeError(f"Parameter '{key}' Literal values must all be the same type; got {allowed!r}")
+    base = _ENTRIES.get(base_type)
+    if base is None:
+        raise TypeError(f"Parameter '{key}' Literal has unsupported value type {base_type.__name__!r}")
+
+    def deserialize(v: Any) -> Any:
+        field_value = base.deserialize(v)
+        if field_value not in allowed:
+            raise RuntimeError(f"Parameter '{key}' must be one of {list(allowed)!r}, got {field_value!r}")
+        return field_value
+
+    return _Entry(base.raw_type, base.ros_type, deserialize, base.serialize)
 
 
 def load(node: Node, cls: type[T], _prefix: str = "") -> T:
@@ -135,7 +157,7 @@ def load(node: Node, cls: type[T], _prefix: str = "") -> T:
         except (TypeError, AttributeError):
             pass
 
-        entry = _ENTRIES.get(field_type)
+        entry = _literal_entry(field_type, key) if get_origin(field_type) is Literal else _ENTRIES.get(field_type)
 
         if entry is None:
             raise TypeError(
