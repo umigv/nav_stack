@@ -1,15 +1,14 @@
-from __future__ import annotations
-
 import math
 
 import nav_utils.config
 import rclpy
-from geometry_msgs.msg import Twist, Vector3
+from geometry_msgs.msg import Twist
 from nav_msgs.msg import Odometry, Path
-from nav_utils.geometry import Point2d, Pose2d
+from nav_utils.geometry import Path2d, Pose2d
 from rclpy.node import Node
 
 from .path_tracking_config import PathTrackingConfig
+from .pure_pursuit_controller import PurePursuitController
 
 
 class PathTracking(Node):
@@ -18,8 +17,7 @@ class PathTracking(Node):
 
         self.config: PathTrackingConfig = nav_utils.config.load(self, PathTrackingConfig)
 
-        self.path_points: list[Point2d] = []
-        self.path_cursor: int = 0
+        self.controller = PurePursuitController(self.config.pure_pursuit, self.get_logger())
         self.pose: Pose2d | None = None
         self.current_speed: float = 0.0
 
@@ -34,6 +32,7 @@ class PathTracking(Node):
         if msg.header.frame_id != self.config.odom_frame_id:
             self.get_logger().warn(f"Dropping odometry: frame '{msg.header.frame_id}' != '{self.config.odom_frame_id}'")
             return
+
         if msg.child_frame_id != self.config.base_frame_id:
             self.get_logger().warn(
                 f"Dropping odometry: child_frame_id '{msg.child_frame_id}' != '{self.config.base_frame_id}'"
@@ -50,70 +49,23 @@ class PathTracking(Node):
             )
             return
 
+        try:
+            path = Path2d.from_ros(path_msg)
+        except ValueError as e:
+            self.get_logger().warn(f"Dropping path: {e}")
+            return
+
         self.get_logger().info("Received a new path from subscription.")
-        self.path_points = [Point2d(x=p.pose.position.x, y=p.pose.position.y) for p in path_msg.poses]
-        self.path_cursor = 0
-
-    def compute_lookahead_distance(self) -> float:
-        lookahead = self.config.base_lookahead_distance_m + self.config.lookahead_speed_gain * self.current_speed
-        return max(self.config.min_lookahead_distance_m, min(lookahead, self.config.max_lookahead_distance_m))
-
-    def find_lookahead_point(self, lookahead_distance: float) -> Point2d | None:
-        # Allows one index backwards due to adaptive lookahead
-        start = self.path_cursor - 1 if self.path_cursor != 0 else 0
-        end = len(self.path_points) - 1
-
-        assert self.pose is not None
-        for i in range(start, end):
-            local1 = self.pose.world_to_local(self.path_points[i])
-            local2 = self.pose.world_to_local(self.path_points[i + 1])
-
-            if local1.x < -0.05 and local2.x < -0.05:
-                self.path_cursor = i + 1
-                continue
-
-            d1 = local1.mag()
-            d2 = local2.mag()
-            if d1 < lookahead_distance <= d2 and local2.x > 0.0:
-                t = max(0.0, min(1.0, (lookahead_distance - d1) / (d2 - d1)))
-                self.path_cursor = i
-                return local1 + (local2 - local1) * t
-
-        return None
-
-    def find_forward_point(self, lookahead_distance: float) -> Point2d | None:
-        assert self.pose is not None
-        for j in range(self.path_cursor, len(self.path_points)):
-            local = self.pose.world_to_local(self.path_points[j])
-            if local.x > -0.1 and local.mag() >= lookahead_distance:
-                self.path_cursor = j
-                self.get_logger().warn(f"Lookahead intersection not found, chasing forward point at index {j}")
-                return local
-
-        return None
+        self.controller.set_path(path)
 
     def control_loop(self) -> None:
-        if self.pose is None or not self.path_points:
+        if self.pose is None:
             return
 
-        lookahead_distance = self.compute_lookahead_distance()
-        if (self.path_points[-1] - self.pose.point).mag() < lookahead_distance:
-            self.get_logger().info("Reached goal - stopping")
-            self.path_points = []
-            self.cmd_vel_publisher.publish(Twist())
-            return
+        cmd = self.controller.compute_command(self.pose, self.current_speed)
 
-        lookahead_point = self.find_lookahead_point(lookahead_distance) or self.find_forward_point(lookahead_distance)
-        if lookahead_point is None:
-            self.get_logger().warn("No valid lookahead point found - stopping")
-            self.cmd_vel_publisher.publish(Twist())
-            return
-
-        curvature = 2 * lookahead_point.y / (lookahead_point.x**2 + lookahead_point.y**2)
-        linear = lookahead_distance * self.config.linear_speed_gain
-        angular = linear * curvature
-        scale = min(1.0, self.config.max_angular_speed_radps / abs(angular)) if angular != 0.0 else 1.0
-        self.cmd_vel_publisher.publish(Twist(linear=Vector3(x=linear * scale), angular=Vector3(z=angular * scale)))
+        if cmd is not None:
+            self.cmd_vel_publisher.publish(cmd)
 
 
 def main() -> None:

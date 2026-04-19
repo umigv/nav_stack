@@ -13,12 +13,16 @@ Subscribes to a planned path and odometry, and publishes velocity commands using
 ## Config Parameters
 | Parameter | Type | Default | Description |
 |---|---|---|---|
+| `control_period_s` | `float` | `0.01` | Period of the control loop timer (s). |
+| `base_frame_id` | `str` | `"base_link"` | Frame ID of the robot base, used to validate the child frame of incoming odometry. |
+| `odom_frame_id` | `str` | `"odom"` | Frame ID of the odometry frame, used to validate incoming odometry and path messages. |
+
+### `pure_pursuit`
+| Parameter | Type | Default | Description |
+|---|---|---|---|
 | `max_angular_speed_radps` | `float` | `0.6` | Maximum angular velocity command (rad/s). Commands are scaled down to stay within this limit. |
-| `base_lookahead_distance_m` | `float` | `0.1` | Lookahead distance when stationary (m). Added to the speed-dependent term. |
-| `min_lookahead_distance_m` | `float` | `0.1` | Minimum clamped lookahead distance (m). |
-| `max_lookahead_distance_m` | `float` | `0.4` | Maximum clamped lookahead distance (m). |
-| `lookahead_speed_gain` | `float` | `0.55` | Gain applied to current speed when computing adaptive lookahead distance. |
-| `linear_speed_gain` | `float` | `2.0` | Gain applied to lookahead distance to produce the linear velocity command. |
-| `control_period_s` | `float` | `0.1` | Period of the control loop timer (s). |
-| `base_frame_id` | `str` | `base_link` | Frame ID of the robot base, used to validate the child frame of incoming odometry. |
-| `odom_frame_id` | `str` | `odom` | Frame ID of the odometry frame, used to validate incoming odometry and path messages. |
+| `base_lookahead_distance_m` | `float` | `0.8` | Lookahead distance when stationary (m). Added to the speed-dependent term. |
+| `min_lookahead_distance_m` | `float` | `0.8` | Minimum clamped lookahead distance (m). |
+| `max_lookahead_distance_m` | `float` | `1.5` | Maximum clamped lookahead distance (m). |
+| `lookahead_speed_gain` | `float` | `0.0` | Gain applied to current speed when computing adaptive lookahead distance. |
+| `linear_speed_gain` | `float` | `0.5` | Gain applied to lookahead distance to produce the linear velocity command. |
