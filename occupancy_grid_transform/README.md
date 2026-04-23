@@ -22,8 +22,8 @@ The occupancy grid from CV is expected to match the convention of
 After the grid is converted and a border is added, obstacle inflation is applied. For each occupied cell, surrounding
 cells are inflated based on their distance:
 - Cells within `inflation_radius_cells` are set to fully occupied (100)
-- Cells between `inflation_radius_cells` and `inflation_falloff_radius_cells` decay as `100 × decay^(dist - radius)`
-- Cells beyond `inflation_falloff_radius_cells` are unaffected
+- Cells in the next `inflation_falloff_extent_cells` ring decay as `100 × decay^(dist - inflation_radius_cells)`
+- Cells beyond `inflation_radius_cells + inflation_falloff_extent_cells` are unaffected
 
 ## Config Parameters
 | Parameter | Default | Description |
@@ -33,6 +33,6 @@ cells are inflated based on their distance:
 ### Inflation Parameters (`inflation_params`)
 | Parameter | Default | Description |
 |---|---|---|
-| `inflation_radius_cells` | `10` | Radius (cells) of the fully inflated obstacle core |
-| `inflation_falloff_radius_cells` | `20` | Maximum radius (cells) of obstacle influence |
+| `inflation_radius_cells` | `12` | Radius (cells) of the fully inflated obstacle core |
+| `inflation_falloff_extent_cells` | `0` | Extent (cells) of the falloff region applied beyond the hard core |
 | `inflation_decay_factor` | `0.9` | Decay factor in the falloff region (0–1, higher = slower decay) |
