@@ -24,7 +24,7 @@ def test_add_border():
 def test_inflate_grid():
     params = InflationParams(
         inflation_radius_cells=1,
-        inflation_falloff_radius_cells=2,
+        inflation_falloff_extent_cells=1,
         inflation_decay_factor=0.5,
     )
 
