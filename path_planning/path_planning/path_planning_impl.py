@@ -5,7 +5,7 @@ from dataclasses import dataclass, field
 from nav_utils.geometry import Point2d, Pose2d
 from nav_utils.world_occupancy_grid import WorldOccupancyGrid
 
-from .path_planning_config import PathPlanningParams
+from .path_planning_config import PathPlanningConfig
 
 
 @dataclass(order=True)
@@ -20,7 +20,7 @@ def generate_path(
     grid: WorldOccupancyGrid,
     robot_pose: Pose2d,
     goal: Point2d,
-    params: PathPlanningParams,
+    config: PathPlanningConfig,
 ) -> list[Point2d] | None:
     """Generate a good path for the robot to follow towards the goal using the A* search algorithm.
     https://en.wikipedia.org/wiki/A*_search_algorithm.
@@ -33,7 +33,7 @@ def generate_path(
         grid: World-coordinate occupancy grid.
         robot_pose: Robot pose (position + heading) in world coordinates.
         goal: Goal point in world coordinates.
-        params: Path planning parameters.
+        config: Path planning configuration.
     Returns:
         List of world-coordinate points from start to goal (or closest
         reachable point), or None if no drivable cells are reachable.
@@ -69,7 +69,7 @@ def generate_path(
             state = grid.state(neighbor)
             if state.is_unknown:
                 local = robot_pose.world_to_local(neighbor)
-                if not (0 <= local.x <= params.max_unknown_forward_m) or abs(local.y) > params.max_unknown_sideways_m:
+                if not (0 <= local.x <= config.max_unknown_forward_m) or abs(local.y) > config.max_unknown_sideways_m:
                     continue
             elif not state.is_drivable:
                 continue
@@ -100,7 +100,7 @@ def pull_string(
     grid: WorldOccupancyGrid,
     path: list[Point2d],
     robot_pose: Pose2d,
-    params: PathPlanningParams,
+    config: PathPlanningConfig,
 ) -> list[Point2d]:
     """Remove unnecessary waypoints from a path using the string-pulling algorithm.
     https://digestingduck.blogspot.com/2010/03/simple-stupid-funnel-algorithm.html
@@ -113,7 +113,7 @@ def pull_string(
         grid: World-coordinate occupancy grid.
         path: Input path from A*.
         robot_pose: Robot pose used to evaluate unknown-cell traversal bounds.
-        params: Path planning parameters.
+        config: Path planning configuration.
     Returns:
         Pruned path containing only waypoints where direction changes are necessary.
     """
@@ -123,13 +123,13 @@ def pull_string(
         if distance < 1e-9:
             return True
 
-        steps = max(2, math.ceil(distance / params.line_of_sight_step_m))
+        steps = max(2, math.ceil(distance / config.line_of_sight_step_m))
         for i in range(1, steps):
             p = a + (b - a) * (i / steps)
             state = grid.state(p)
             if state.is_unknown:
                 local = robot_pose.world_to_local(p)
-                if not (0 <= local.x <= params.max_unknown_forward_m) or abs(local.y) > params.max_unknown_sideways_m:
+                if not (0 <= local.x <= config.max_unknown_forward_m) or abs(local.y) > config.max_unknown_sideways_m:
                     return False
             elif not state.is_drivable:
                 return False

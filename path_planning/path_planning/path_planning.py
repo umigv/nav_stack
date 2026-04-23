@@ -63,7 +63,7 @@ class PathPlanner(Node):
             self.grid,
             self.robot_pose,
             Point2d.from_ros(msg.point),
-            self.config.path_planning_params,
+            self.config,
         )
 
         if path_points is None:
@@ -74,7 +74,7 @@ class PathPlanner(Node):
             self.grid,
             path_points,
             self.robot_pose,
-            self.config.path_planning_params,
+            self.config,
         )
 
         header = Header(frame_id=self.config.frame_id, stamp=self.get_clock().now().to_msg())
