@@ -3,14 +3,14 @@ import rclpy
 import tf2_geometry_msgs  # noqa: F401 - registers PointStamped transform support
 from geometry_msgs.msg import PointStamped, Pose, PoseStamped, Quaternion
 from nav_msgs.msg import OccupancyGrid, Odometry, Path
-from nav_utils.geometry import Point2d
+from nav_utils.geometry import Point2d, Pose2d
 from nav_utils.world_occupancy_grid import WorldOccupancyGrid
 from rclpy.node import Node
 from std_msgs.msg import Header
 from tf2_ros import Buffer, TransformListener
 
 from .path_planning_config import PathPlanningConfig
-from .path_planning_impl import find_closest_drivable_point, generate_path, interpolate_points, smooth_path
+from .path_planning_impl import generate_path, pull_string
 
 
 class PathPlanner(Node):
@@ -19,7 +19,7 @@ class PathPlanner(Node):
 
         self.config: PathPlanningConfig = nav_utils.config.load(self, PathPlanningConfig)
 
-        self.robot_position: Point2d | None = None
+        self.robot_pose: Pose2d | None = None
         self.grid: WorldOccupancyGrid | None = None
 
         self.tf_buffer = Buffer()
@@ -38,7 +38,7 @@ class PathPlanner(Node):
             )
             return
 
-        self.robot_position = Point2d.from_ros(msg.pose.pose.position)
+        self.robot_pose = Pose2d.from_ros(msg.pose.pose)
 
     def occupancy_grid_callback(self, msg: OccupancyGrid) -> None:
         if msg.header.frame_id != self.config.frame_id:
@@ -50,7 +50,7 @@ class PathPlanner(Node):
         self.grid = WorldOccupancyGrid(msg)
 
     def goal_callback(self, msg: PointStamped) -> None:
-        if self.robot_position is None or self.grid is None:
+        if self.robot_pose is None or self.grid is None:
             return
 
         try:
@@ -59,20 +59,23 @@ class PathPlanner(Node):
             self.get_logger().error(f"Failed to transform goal to {self.config.frame_id}: {e}")
             return
 
-        start = find_closest_drivable_point(self.grid, self.robot_position, self.config.max_search_radius_m)
-        if start is None:
-            self.get_logger().warn("No drivable area found near robot")
-            return
+        path_points = generate_path(
+            self.grid,
+            self.robot_pose,
+            Point2d.from_ros(msg.point),
+            self.config,
+        )
 
-        self.get_logger().info(f"Starting from ({start.x:.2f}, {start.y:.2f})")
-        path_points = generate_path(self.grid, start, Point2d.from_ros(msg.point))
         if path_points is None:
             self.get_logger().warn("No path found to goal")
             return
 
-        bridge = interpolate_points(self.robot_position, start, self.config.interpolation_resolution_m)
-        self.get_logger().info(f"Bridge size: {len(bridge)}; Path size: {len(path_points)}")
-        full_path = smooth_path(bridge[:-1] + path_points, self.config.spline_smoothing)
+        pulled = pull_string(
+            self.grid,
+            path_points,
+            self.robot_pose,
+            self.config,
+        )
 
         header = Header(frame_id=self.config.frame_id, stamp=self.get_clock().now().to_msg())
         self.path_publisher.publish(
@@ -83,7 +86,7 @@ class PathPlanner(Node):
                         header=header,
                         pose=Pose(position=point.to_ros(), orientation=Quaternion(w=1.0)),
                     )
-                    for point in full_path
+                    for point in pulled
                 ],
             )
         )
