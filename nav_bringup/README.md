@@ -122,10 +122,12 @@ ros2 launch nav_bringup simulation.launch.py [course:=<course>]
 - `cmd_vel` (`geometry_msgs/Twist`) - Velocity the robot is commanded to move in
 
 ### Published Topics
-- `imu/raw` (`sensor_msgs/Imu`) - Simulated IMU with Gaussian noise
-- `gps/raw` (`sensor_msgs/NavSatFix`) - Simulated GPS with noise and OU drift
-- `enc_vel/raw` (`geometry_msgs/TwistWithCovarianceStamped`) - Simulated encoder velocity with noise and OU drift
-- `odom/ground_truth` (`nav_msgs/Odometry`) - Noiseless true pose in `map` frame 
+- `imu/raw` (`sensor_msgs/Imu`) - Simulated IMU
+- `gps/raw` (`sensor_msgs/NavSatFix`) - Simulated GPS fix
+- `enc_vel/raw` (`geometry_msgs/TwistWithCovarianceStamped`) - Simulated encoder velocity
+- `ins_vel/raw` (`geometry_msgs/TwistWithCovarianceStamped`) - Simulated INS body frame velocity
+- `odom/global` (`nav_msgs/Odometry`) - Simulated INS odometry in `map` frame
+- `odom/ground_truth` (`nav_msgs/Odometry`) - Noiseless true pose in `map` frame
 (`child_frame_id = base_link_ground_truth`)
 - `occupancy_grid/raw` (`nav_msgs/OccupancyGrid`) - Robot-centric occupancy grid from static obstacle map
 - `occupancy_grid/ground_truth` (`nav_msgs/OccupancyGrid`) - Full static obstacle map (latched)
