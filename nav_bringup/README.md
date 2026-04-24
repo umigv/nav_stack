@@ -60,7 +60,7 @@ ros2 launch nav_bringup core.launch.py
 ```
 
 ### Robot State Publisher
-Loads `marvin_description/urdf/marvin.xacro` and publishes TF transforms for all robot links.
+Loads `maverick_description/urdf/maverick.xacro` and publishes TF transforms for all robot links.
 
 ### Subscribed Topics
 - `teleop_cmd_vel` (`geometry_msgs/Twist`) - Joystick velocity
@@ -77,7 +77,7 @@ Loads `marvin_description/urdf/marvin.xacro` and publishes TF transforms for all
 - `state/set_no_mans_land` (`std_srvs/SetBool`) - Set whether we are in no mans land mode
 
 ### Broadcasted TF Frames
-See `marvin_description` for the full list of published frames.
+See `maverick_description` for the full list of published frames.
 
 ### Velocity Multiplexing
 | Priority | Topic | Source | Timeout |
@@ -93,17 +93,19 @@ If a higher-priority source stops publishing, control falls back to the next sou
 Launches hardware drivers
 
 ```
-ros2 launch nav_bringup hardware.launch.py mode:=<mode>
+ros2 launch nav_bringup hardware.launch.py mode:=<mode> [course:=<course>]
 ```
 
 ### Parameters
 - `mode`: Operation mode (required)
+- `course`: Course profile in `courses/` to load GPS datum from, default `default` (required for `autonav`)
 
 ### Published Topics
 - `imu/raw` (`sensor_msgs/Imu`) - Raw IMU data from VectorNav (`autonav`, `self_drive`)
 - `gps/raw` (`sensor_msgs/NavSatFix`) - GPS/INS fix from VectorNav (`autonav`, `self_drive`)
 - `ins_vel/raw` (`geometry_msgs/TwistWithCovarianceStamped`) - INS body-frame velocity (`autonav`, `self_drive`)
 - `vectornav/raw/ins_status` (`std_msgs/UInt16`) - INS tracking status bitfield (`autonav`, `self_drive`)
+- `odom/global` (`nav_msgs/Odometry`) - INS odometry in map frame (`autonav` only)
 
 
 ## simulation.launch.py
