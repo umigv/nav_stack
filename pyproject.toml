@@ -106,7 +106,8 @@ module = [
     "tf2_geometry_msgs",
 
     "robot_localization.*",
-    "pyproj"
+    "pyproj",
+    "PyKDL",
 ]
 ignore_missing_imports = true
 disable_error_code = ["attr-defined"]
