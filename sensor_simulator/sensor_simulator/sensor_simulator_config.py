@@ -32,59 +32,78 @@ class EncVelConfig:
 
 
 @dataclass(frozen=True)
-class ImuConfig:
-    """IMU sensor configs.
+class Vn300Config:
+    """VN-300 INS configs.
 
-    Measurement model::
-        yaw_meas = true_yaw + imu_yaw_offset + N(0, yaw_noise_std_rad)
-        wz_meas = true_wz + N(0, wz_noise_std_radps)
+    Models the VN-300 as a single sensor: one error state per quantity drives every topic that reports it, matching
+    how the real sensor behaves.
+    - position drift: shared by gps and odom.pose.position
+    - body velocity drift: shared by ins_vel, odom.twist, and imu.angular_velocity
+    - yaw drift: shared by imu.orientation and odom.pose.orientation
 
-    imu_yaw_offset is looked up from the imu_link→base_link TF.
+    Measurement model (per quantity):
+        out = true + drift + N(0, noise_std)
+    where drift is an Ornstein-Uhlenbeck process with the given steady-state std and time constant.
 
     Attributes:
+        imu_frame_id: TF frame ID for the IMU.
+        ins_frame_id: TF frame ID for the INS reference point.
+
+        position_noise_std_m: Per-sample Gaussian noise on horizontal position (m).
+        position_drift_std_m: OU position-drift steady-state std (m). Set to 0 to disable drift.
+        position_drift_time_constant_s: OU mean-reversion time constant for position drift (s).
+
+        vx_noise_std_mps: Per-sample Gaussian noise on body-frame linear velocity x (m/s).
+        wz_noise_std_radps: Per-sample Gaussian noise on body-frame angular velocity z (rad/s).
+        vx_drift_std_mps: OU velocity-drift steady-state std on linear.x (m/s).
+        wz_drift_std_radps: OU drift steady-state std on angular.z (rad/s).
+        vel_drift_time_constant_s: OU mean-reversion time constant for velocity drift (s).
+
         yaw_noise_std_rad: Per-sample Gaussian noise on absolute yaw (rad).
-        wz_noise_std_radps: Per-sample Gaussian noise on angular velocity z (rad/s).
-        initial_yaw_rad: Initial heading of the robot in map frame in true north ENU (rad).
+        yaw_drift_std_rad: OU yaw-drift steady-state std (rad). Set to 0 to disable drift.
+        yaw_drift_time_constant_s: OU mean-reversion time constant for yaw drift (s).
     """
+
+    imu_frame_id: str = "imu_link"
+    ins_frame_id: str = "base_link"
+
+    position_noise_std_m: float = 0.0
+    position_drift_std_m: float = 0.0
+    position_drift_time_constant_s: float = 120.0
+
+    vx_noise_std_mps: float = 0.0
+    wz_noise_std_radps: float = 0.0
+    vx_drift_std_mps: float = 0.0
+    wz_drift_std_radps: float = 0.0
+    vel_drift_time_constant_s: float = 120.0
 
     yaw_noise_std_rad: float = 0.0
-    wz_noise_std_radps: float = 0.0
-    initial_yaw_rad: float = 0.0
-
-
-@dataclass(frozen=True)
-class GpsConfig:
-    """GPS sensor configs.
-
-    Measurement model::
-        x_meas = (gps_x) + dx + N(0, noise_std_m)
-        y_meas = (gps_y) + dy + N(0, noise_std_m)
-
-    gps_{x,y} is the GPS antenna's true position transformed using gps_link→base_link TF. dx, dy are Ornstein-Uhlenbeck
-    position drift in map-frame. GPS drift is bounded (mean-reverting) unlike odom drift, modelling slow-varying
-    correlated errors such as multipath, ionospheric delay, and satellite geometry changes.
-
-    Attributes:
-        origin_latitude_deg: GPS origin latitude in WGS84. Map (0, 0) maps to this point.
-        origin_longitude_deg: GPS origin longitude in WGS84.
-        noise_std_m: Per-sample Gaussian noise on horizontal position (m).
-        drift_std_m: OU position-drift steady-state std (m). Set to 0 to disable drift.
-        drift_time_constant_s: OU mean-reversion time constant for position drift (s).
-    """
-
-    origin_latitude_deg: float
-    origin_longitude_deg: float
-    noise_std_m: float = 0.0
-    drift_std_m: float = 0.0
-    drift_time_constant_s: float = 60.0
+    yaw_drift_std_rad: float = 0.0
+    yaw_drift_time_constant_s: float = 300.0
 
     @property
-    def sigma2(self) -> float:
-        return self.noise_std_m**2 + self.drift_std_m**2
+    def position_sigma2(self) -> float:
+        return self.position_noise_std_m**2 + self.position_drift_std_m**2
+
+    @property
+    def yaw_sigma2(self) -> float:
+        return self.yaw_noise_std_rad**2 + self.yaw_drift_std_rad**2
+
+    @property
+    def vx_sigma2(self) -> float:
+        return self.vx_noise_std_mps**2 + self.vx_drift_std_mps**2
+
+    @property
+    def wz_sigma2(self) -> float:
+        return self.wz_noise_std_radps**2 + self.wz_drift_std_radps**2
 
     def __post_init__(self) -> None:
-        if self.drift_time_constant_s <= 0:
-            raise ValueError("GpsConfig: drift_time_constant_s must be > 0")
+        if self.position_drift_time_constant_s <= 0:
+            raise ValueError("Vn300Config: position_drift_time_constant_s must be > 0")
+        if self.vel_drift_time_constant_s <= 0:
+            raise ValueError("Vn300Config: vel_drift_time_constant_s must be > 0")
+        if self.yaw_drift_time_constant_s <= 0:
+            raise ValueError("Vn300Config: yaw_drift_time_constant_s must be > 0")
 
 
 @dataclass(frozen=True)
@@ -93,38 +112,37 @@ class SensorSimulatorConfig:
 
     Attributes:
         enc_vel: Encoder velocity sensor noise and drift config.
-        imu: IMU sensor noise config.
-        gps: GPS sensor noise and drift config.
+        vn300: VN-300 INS config. Shared error state drives gps, imu, ins_vel, and odom.
+
+        datum: ENU origin as [latitude (deg), longitude (deg), altitude (m)]. Map (0, 0, 0) maps to this point.
+        initial_yaw_rad: Initial heading of the robot in map frame in true north ENU (rad).
+
         map_frame_id: TF frame ID for the map frame.
         base_frame_id: TF frame ID for the robot base frame.
         ground_truth_base_frame_id: TF frame ID for the ground truth robot pose. Use this frame for simulation nodes
             that need the true robot pose rather than the EKF-estimated pose.
-        imu_frame_id: TF frame ID for the IMU.
-        gps_frame_id: TF frame ID for the GPS.
+
         cmd_vel_timeout_s: Seconds without a cmd_vel message before velocity is zeroed (s).
-        high_rate_update_period_s: Publish period for enc_vel/raw and imu/raw (s).
-        low_rate_update_period_s: Publish period for gps/raw (s).
+        update_period_s: Publish period for all sensors.
     """
 
     enc_vel: EncVelConfig
-    imu: ImuConfig
-    gps: GpsConfig
+    vn300: Vn300Config
+
+    datum: list[float]
+    initial_yaw_rad: float = 0.0
 
     map_frame_id: str = "map"
     base_frame_id: str = "base_link"
     ground_truth_base_frame_id: str = "base_link_ground_truth"
-    imu_frame_id: str = "imu_link"
-    gps_frame_id: str = "gps_link"
 
     cmd_vel_timeout_s: float = 0.5
-
-    high_rate_update_period_s: float = 0.01
-    low_rate_update_period_s: float = 0.1
+    update_period_s: float = 0.01
 
     def __post_init__(self) -> None:
+        if len(self.datum) != 3:
+            raise ValueError("SensorSimulatorConfig: datum must be [latitude, longitude, altitude]")
         if self.cmd_vel_timeout_s <= 0:
             raise ValueError("SensorSimulatorConfig: cmd_vel_timeout_s must be > 0")
-        if self.high_rate_update_period_s <= 0:
-            raise ValueError("SensorSimulatorConfig: high_rate_update_period_s must be > 0")
-        if self.low_rate_update_period_s <= 0:
-            raise ValueError("SensorSimulatorConfig: low_rate_update_period_s must be > 0")
+        if self.update_period_s <= 0:
+            raise ValueError("SensorSimulatorConfig: update_period_s must be > 0")
