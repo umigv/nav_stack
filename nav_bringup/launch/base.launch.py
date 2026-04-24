@@ -36,6 +36,7 @@ def generate_launch_description() -> LaunchDescription:
                 condition=UnlessCondition(LaunchConfiguration("simulation")),
                 launch_arguments=[
                     ("mode", LaunchConfiguration("mode")),
+                    ("course", LaunchConfiguration("course")),
                 ],
             ),
             IncludeLaunchDescription(

@@ -9,7 +9,7 @@ from nav_bringup.launch_utils import bringup_share, load_frames
 def generate_launch_description() -> LaunchDescription:
     frames = load_frames()
     twist_mux_params = f"{bringup_share()}/config/core/twist_mux.yaml"
-    urdf = f"{get_package_share_directory('marvin_description')}/urdf/marvin.xacro"
+    urdf = f"{get_package_share_directory('maverick_description')}/urdf/maverick.xacro"
 
     # fmt: off
     robot_description = ParameterValue(
@@ -18,7 +18,8 @@ def generate_launch_description() -> LaunchDescription:
                 "xacro ", urdf,
                 " base_frame_id:=", frames["base_frame"],
                 " imu_name:=", frames["imu_frame"].removesuffix("_link"),
-                " gps_name:=", frames["gps_frame"].removesuffix("_link"),
+                " gnss_a_name:=", frames["gnss_a_frame"].removesuffix("_link"),
+                " gnss_b_name:=", frames["gnss_b_frame"].removesuffix("_link"),
             ]
         ), value_type=str,
     )

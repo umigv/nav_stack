@@ -22,7 +22,7 @@ def launch_setup(context, *args, **kwargs) -> list[LaunchDescriptionEntity]:
             {"base_frame_id": frames["base_frame"]},
             {"ground_truth_base_frame_id": frames["ground_truth_base_frame"]},
             {"imu_frame_id": frames["imu_frame"]},
-            {"gps_frame_id": frames["gps_frame"]},
+            {"gps_frame_id": frames["gnss_a_frame"]},
             {"gps.origin_latitude_deg": gps_file["datum"]["latitude"]},
             {"gps.origin_longitude_deg": gps_file["datum"]["longitude"]},
         ],
