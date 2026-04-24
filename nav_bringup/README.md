@@ -142,42 +142,38 @@ ros2 launch nav_bringup localization.launch.py mode:=<mode> [course:=<course>]
 ```
 
 ### Localization Strategy
-Uses the standard `robot_localization` dual-EKF pattern:
 
-**Local EKF (`ekf_local`)** - estimates the `odom` → `base_link` transform
-- Fuses encoder velocity (vx, vy) and IMU yaw rate (wz)
-- Odom origin is where the robot started
-- Drift accumulates over time but is smooth and continuous
-- Optionally replaced by simple encoder odometry integration (enc_odom_publisher)
+**`autonav`**: `ekf_local` + `map_odom_publisher` + `lat_lon_converter`
+- `odom` → `base_link`: EKF fusing encoder vx and IMU yaw rate
+- `map` → `odom`: computed from VectorNav INS odometry (`odom/global`) and the local TF tree via `T_map_odom = T_map_base * T_odom_base⁻¹`
+- `fromLL` service: converts GPS coordinates to map-frame points using the course datum
 
-**Navsat Transform (`navsat_transform`)** - converts GPS fixes into map-frame odometry
-- Receives raw GPS fixes and IMU heading
-- Outputs `odom/gps`: GPS position expressed in the map frame
+**`self_drive`**: `ekf_local` + identity `map` → `odom`
+- `odom` → `base_link`: EKF fusing encoder vx and IMU yaw rate
+- `map` → `odom`: fixed identity transform (no global correction)
 
-**Global EKF (`ekf_global`)** - estimates the `map` → `odom` transform
-- Fuses encoder velocity (vx, vy), IMU yaw + yaw rate, and GPS position (x, y from `odom/gps`)
-- Map frame is in ENU where origin is the datum
-- Corrects accumulated local drift by anchoring to GPS
+**`nav_test`**: `enc_odom_publisher` + identity `map` → `odom`
+- `odom` → `base_link`: direct encoder velocity integration, no IMU
+- `map` → `odom`: fixed identity transform
 
 ### Parameters
 - `mode`: Operation mode (required)
 - `course`: Course profile in `courses/` to load GPS datum from, default `default` (required for `autonav`)
 
 ### Subscribed Topics
-- `imu/raw` (`sensor_msgs/Imu`) - Raw IMU data (autonav, self_drive only)
-- `gps/raw` (`sensor_msgs/NavSatFix`) - Raw GPS fix (autonav only)
-- `enc_vel/raw` (`geometry_msgs/TwistWithCovarianceStamped`) - Encoder velocity
+- `enc_vel/raw` (`geometry_msgs/TwistWithCovarianceStamped`) - Encoder velocity (`autonav`, `self_drive`, `nav_test`)
+- `imu/raw` (`sensor_msgs/Imu`) - IMU data (`autonav`, `self_drive`)
+- `odom/global` (`nav_msgs/Odometry`) - VectorNav INS odometry in map frame (`autonav`)
 
 ### Published Topics
 - `odom/local` (`nav_msgs/Odometry`) - Local odometry in the odom frame
-- `odom/global` (`nav_msgs/Odometry`) - Global odometry in the map frame (autonav only)
 
 ### Broadcasted TF Frames
 - `odom` → `base_link`
 - `map` → `odom`
 
 ### Services
-- `fromLL` (`robot_localization/FromLL`) - Converts GPS latitude/longitude to a map-frame point (autonav only)
+- `fromLL` (`robot_localization/FromLL`) - Converts GPS latitude/longitude to a map-frame point (`autonav` only)
 
 
 ## navigation.launch.py
