@@ -30,40 +30,6 @@ def launch_setup(context, *args, **kwargs) -> list[LaunchDescriptionEntity]:
         ],
     )
 
-    ekf_global_node = Node(
-        package="robot_localization",
-        executable="ekf_node",
-        name="ekf_global",
-        output="screen",
-        parameters=[
-            localization_params,
-            {"map_frame": frames["map_frame"]},
-            {"odom_frame": frames["odom_frame"]},
-            {"base_link_frame": frames["base_frame"]},
-            {"world_frame": frames["map_frame"]},
-        ],
-        remappings=[
-            ("odometry/filtered", "odom/global"),
-        ],
-    )
-
-    navsat_transform_node = Node(
-        package="robot_localization",
-        executable="navsat_transform_node",
-        name="navsat_transform",
-        output="screen",
-        parameters=[
-            localization_params,
-            {"datum": [gps_file["datum"]["latitude"], gps_file["datum"]["longitude"], 0.0]},
-        ],
-        remappings=[
-            ("imu", "imu/raw"),
-            ("gps/fix", "gps/raw"),
-            ("odometry/filtered", "odom/global"),
-            ("odometry/gps", "odom/gps"),
-        ],
-    )
-
     enc_odom_node = Node(
         package="enc_odom_publisher",
         executable="enc_odom_publisher",
@@ -87,9 +53,34 @@ def launch_setup(context, *args, **kwargs) -> list[LaunchDescriptionEntity]:
         arguments=["--frame-id", frames["map_frame"], "--child-frame-id", frames["odom_frame"]],
     )
 
+    map_odom_publisher_node = Node(
+        package="map_odom_publisher",
+        executable="map_odom_publisher",
+        name="map_odom_publisher",
+        output="screen",
+        parameters=[
+            {"map_frame_id": frames["map_frame"]},
+            {"odom_frame_id": frames["odom_frame"]},
+            {"base_frame_id": frames["base_frame"]},
+        ],
+        remappings=[
+            ("odom", "odom/global"),
+        ],
+    )
+
+    lat_lon_converter_node = Node(
+        package="lat_lon_converter",
+        executable="lat_lon_converter",
+        name="lat_lon_converter",
+        output="screen",
+        parameters=[
+            {"datum": [gps_file["datum"]["latitude"], gps_file["datum"]["longitude"], gps_file["datum"]["altitude"]]},
+        ],
+    )
+
     match mode:
         case "autonav":
-            return [ekf_local_node, navsat_transform_node, ekf_global_node]
+            return [ekf_local_node, map_odom_publisher_node, lat_lon_converter_node]
         case "self_drive":
             return [ekf_local_node, identity_map_odom_node]
         case "nav_test":
@@ -106,7 +97,7 @@ def generate_launch_description() -> LaunchDescription:
                 choices=MODES,
                 description=format_mode_description(
                     {
-                        "autonav": "EKF local + navsat transform + EKF global",
+                        "autonav": "EKF local + map_odom_publisher + lat_lon_converter",
                         "self_drive": "EKF local + identity map->odom",
                         "nav_test": "enc_odom + identity map->odom",
                     }
@@ -115,7 +106,7 @@ def generate_launch_description() -> LaunchDescription:
             DeclareLaunchArgument(
                 "course",
                 default_value="default",
-                description="Course profile in courses/ to load GPS datum from (required for autonav, autonav_sim)",
+                description="Course profile in courses/ to load GPS datum from (required for autonav)",
             ),
             OpaqueFunction(function=launch_setup),
         ]
