@@ -12,12 +12,14 @@ from nav_utils.geometry import Point2d, Pose2d, Rotation2d
 from rclpy.node import Node
 from std_msgs.msg import Header
 
+from .occlusion import apply_occlusion
 from .occupancy_grid_simulator_config import OccupancyGridSimulatorConfig
 
 
 class OccupancyGridSimulator(Node):
     OCCUPIED = 100
     FREE = 0
+    UNKNOWN = -1
 
     def __init__(self) -> None:
         super().__init__("occupancy_grid_simulator")
@@ -100,9 +102,11 @@ class OccupancyGridSimulator(Node):
         if self.robot_pose is None:
             return
 
-        grid = np.full((self.height_cells, self.width_cells), self.FREE, dtype=np.int8)
-
-        if len(self.obstacle_cells) != 0:
+        if len(self.obstacle_cells) == 0:
+            grid = np.full((self.height_cells, self.width_cells), self.FREE, dtype=np.int8)
+        else:
+            # First pass: identify which local grid cells contain world obstacles.
+            obstacle_local = np.zeros((self.height_cells, self.width_cells), dtype=bool)
             for row in range(self.height_cells):
                 for col in range(self.width_cells):
                     local = Point2d(
@@ -113,7 +117,22 @@ class OccupancyGridSimulator(Node):
                     ox = math.floor(world.x / self.resolution_m)
                     oy = math.floor(world.y / self.resolution_m)
                     if (ox, oy) in self.obstacle_cells:
-                        grid[row, col] = self.OCCUPIED
+                        obstacle_local[row, col] = True
+
+            # Robot position in fractional grid (col, row) coordinates.
+            robot_col = -self.config.offset_x_m / self.resolution_m - 0.5
+            robot_row = -self.config.offset_y_m / self.resolution_m - 0.5
+
+            # Second pass: build occupancy values with ray-casting occlusion.
+            # Cells behind an obstacle (from the robot's viewpoint) become UNKNOWN.
+            grid = apply_occlusion(
+                obstacle_local,
+                robot_col=robot_col,
+                robot_row=robot_row,
+                free_val=self.FREE,
+                occupied_val=self.OCCUPIED,
+                unknown_val=self.UNKNOWN,
+            )
 
         self.occupancy_grid_publisher.publish(
             OccupancyGrid(
