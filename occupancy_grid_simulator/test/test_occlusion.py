@@ -68,7 +68,6 @@ def test_bresenham_fractional_start():
 
 FREE = 0
 OCCUPIED = 100
-UNKNOWN = -1
 
 
 def make_obstacles(height: int, width: int, obstacle_rc: list[tuple[int, int]]) -> np.ndarray:
@@ -97,12 +96,12 @@ def test_cell_in_front_of_obstacle_is_free():
     assert grid[2, 1] == FREE
 
 
-def test_cell_directly_behind_obstacle_is_unknown():
+def test_cell_directly_behind_obstacle_is_occupied():
     # Robot at frac col=-0.5, row=2 (middle row).
     # Obstacle at col=2, row=2.  Cell at col=4, row=2 is directly behind it.
     obstacle_local = make_obstacles(5, 5, [(2, 2)])
     grid = apply_occlusion(obstacle_local, robot_col=-0.5, robot_row=2.0)
-    assert grid[2, 4] == UNKNOWN
+    assert grid[2, 4] == OCCUPIED
 
 
 def test_cell_adjacent_to_obstacle_not_behind_it_is_free():
@@ -114,18 +113,18 @@ def test_cell_adjacent_to_obstacle_not_behind_it_is_free():
 
 
 def test_multiple_obstacles_shadow_correct_cells():
-    # Two obstacles in the same row. Cells beyond either should be UNKNOWN.
+    # Two obstacles in the same row. Cells beyond either should be OCCUPIED (occluded).
     obstacle_local = make_obstacles(5, 7, [(2, 1), (2, 3)])
     grid = apply_occlusion(obstacle_local, robot_col=-0.5, robot_row=2.0)
     # Obstacle cells are OCCUPIED
     assert grid[2, 1] == OCCUPIED
     assert grid[2, 3] == OCCUPIED
     # Cell beyond first obstacle (col=2) is occluded by col=1
-    assert grid[2, 2] == UNKNOWN
+    assert grid[2, 2] == OCCUPIED
     # Cell beyond second obstacle (col=4,5,6) is occluded by col=3 (or earlier)
-    assert grid[2, 4] == UNKNOWN
-    assert grid[2, 5] == UNKNOWN
-    assert grid[2, 6] == UNKNOWN
+    assert grid[2, 4] == OCCUPIED
+    assert grid[2, 5] == OCCUPIED
+    assert grid[2, 6] == OCCUPIED
 
 
 def test_returns_int8_array():
@@ -137,10 +136,10 @@ def test_returns_int8_array():
 
 def test_robot_inside_grid_occludes_behind():
     # Robot in the middle of the grid (col=2, row=2) in a 5x5 grid.
-    # Obstacle at (row=2, col=3). Cell at (row=2, col=4) should be occluded.
+    # Obstacle at (row=2, col=3). Cell at (row=2, col=4) should be occluded (OCCUPIED).
     obstacle_local = make_obstacles(5, 5, [(2, 3)])
     grid = apply_occlusion(obstacle_local, robot_col=2.0, robot_row=2.0)
     assert grid[2, 3] == OCCUPIED
-    assert grid[2, 4] == UNKNOWN
+    assert grid[2, 4] == OCCUPIED
     # Cell at (row=2, col=1) is on the other side; not occluded
     assert grid[2, 1] == FREE

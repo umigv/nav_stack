@@ -52,14 +52,14 @@ def apply_occlusion(
     robot_row: float,
     free_val: int = 0,
     occupied_val: int = 100,
-    unknown_val: int = -1,
+    occluded_val: int = 100,
 ) -> np.ndarray:
     """Build an occupancy grid with ray-casting occlusion applied.
 
     For each cell in the grid, a ray is traced from the robot position to the cell
     using Bresenham's line algorithm. If any obstacle lies on the ray before reaching
-    the target cell, the target cell is marked as unknown (occluded). Obstacle cells
-    themselves are always marked as occupied regardless of occlusion.
+    the target cell, the target cell is marked as occluded. Obstacle cells themselves
+    are always marked as occupied regardless of occlusion.
 
     Args:
         obstacle_local: 2-D boolean array (height x width) where True means the cell
@@ -68,10 +68,10 @@ def apply_occlusion(
         robot_row: Robot's row position in fractional grid coordinates.
         free_val: Value assigned to visible free cells (default 0).
         occupied_val: Value assigned to obstacle cells (default 100).
-        unknown_val: Value assigned to occluded cells (default -1).
+        occluded_val: Value assigned to cells occluded behind an obstacle (default 100).
 
     Returns:
-        int8 numpy array (height x width) with free_val / occupied_val / unknown_val.
+        int8 numpy array (height x width) with free_val / occupied_val / occluded_val.
     """
     height, width = obstacle_local.shape
     grid = np.full((height, width), free_val, dtype=np.int8)
@@ -83,7 +83,7 @@ def apply_occlusion(
             else:
                 for c, r in bresenham_cells(robot_col, robot_row, col, row):
                     if 0 <= r < height and 0 <= c < width and obstacle_local[r, c]:
-                        grid[row, col] = unknown_val
+                        grid[row, col] = occluded_val
                         break
 
     return grid

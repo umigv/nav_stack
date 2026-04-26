@@ -19,7 +19,6 @@ from .occupancy_grid_simulator_config import OccupancyGridSimulatorConfig
 class OccupancyGridSimulator(Node):
     OCCUPIED = 100
     FREE = 0
-    UNKNOWN = -1
 
     def __init__(self) -> None:
         super().__init__("occupancy_grid_simulator")
@@ -124,14 +123,14 @@ class OccupancyGridSimulator(Node):
             robot_row = -self.config.offset_y_m / self.resolution_m - 0.5
 
             # Second pass: build occupancy values with ray-casting occlusion.
-            # Cells behind an obstacle (from the robot's viewpoint) become UNKNOWN.
+            # Cells behind an obstacle (from the robot's viewpoint) are marked OCCUPIED.
             grid = apply_occlusion(
                 obstacle_local,
                 robot_col=robot_col,
                 robot_row=robot_row,
                 free_val=self.FREE,
                 occupied_val=self.OCCUPIED,
-                unknown_val=self.UNKNOWN,
+                occluded_val=self.OCCUPIED,
             )
 
         self.occupancy_grid_publisher.publish(
