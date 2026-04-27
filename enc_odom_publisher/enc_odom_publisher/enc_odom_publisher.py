@@ -58,6 +58,7 @@ class EncOdomPublisher(Node):
             if dt <= 0.0 or dt > self.config.max_dt_s:
                 return
 
+            # Use midpoint method for higher numerical accuracy: https://en.wikipedia.org/wiki/Midpoint_method
             linear_vel = msg.twist.twist.linear.x
             angular_vel = msg.twist.twist.angular.z
             mid_rotation = self.rotation + Rotation2d(0.5 * angular_vel * dt)
