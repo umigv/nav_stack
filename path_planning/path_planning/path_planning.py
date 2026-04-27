@@ -53,14 +53,14 @@ class PathPlanner(Node):
         if self.robot_pose is None or self.grid is None:
             return
 
-        # Set timestamp to 0 so tf uses the latest available transform instead of looking up the exact time. Without 
-        # this, a slightly future timestamp would cause tf to throw a "requested time is in the future" error. 
-        # 
-        # The real fix would be adding a timeout to transform() and switching to a MultiThreadedExecutor so tf_listener 
-        # can update while we block, but that introduces thread-safety concerns. Using stamp=0 is acceptable because 5ms 
+        # Set timestamp to 0 so tf uses the latest available transform instead of looking up the exact time. Without
+        # this, a slightly future timestamp would cause tf to throw a "requested time is in the future" error.
+        #
+        # The real fix would be adding a timeout to transform() and switching to a MultiThreadedExecutor so tf_listener
+        # can update while we block, but that introduces thread-safety concerns. Using stamp=0 is acceptable because 5ms
         # of delay corresponds to only ~5mm of position error at 1 m/s.
         msg.header.stamp = rclpy.time.Time().to_msg()
-        
+
         try:
             msg = self.tf_buffer.transform(msg, self.config.frame_id)
         except Exception as e:
