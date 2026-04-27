@@ -33,4 +33,7 @@ ros2 pkg create \
   --license Apache-2.0 \
   "$PKG_NAME"
 
+rm -f "$PKG_NAME/LICENSE"
+rm -rf "$PKG_NAME/test"
+
 echo "==> Package '$PKG_NAME' created successfully"
