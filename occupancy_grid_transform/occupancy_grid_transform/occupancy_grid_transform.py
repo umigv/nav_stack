@@ -26,8 +26,16 @@ class OccupancyGridTransform(Node):
         self.publisher = self.create_publisher(OccupancyGrid, "transformed_occupancy_grid", 10)
 
     def occupancy_grid_callback(self, msg: OccupancyGrid) -> None:
+        # Drop the stamp so tf uses the latest available transform instead of looking up the exact time. If we copied 
+        # msg.header.stamp, a slightly future timestamp would cause tf to throw a "requested time is in the future" 
+        # error. 
+        # 
+        # The real fix would be adding a timeout to transform() and switching to a MultiThreadedExecutor so tf_listener 
+        # can update while we block, but that introduces thread-safety concerns. Using stamp=0 is acceptable because 5ms 
+        # of delay corresponds to only ~5mm of position error at 1 m/s.
+        origin_raw = PoseStamped(header=Header(frame_id=msg.header.frame_id), pose=msg.info.origin)        
+        
         try:
-            origin_raw = PoseStamped(header=Header(frame_id=msg.header.frame_id), pose=msg.info.origin)
             origin_transformed = self.tf_buffer.transform(origin_raw, self.config.frame_id).pose
         except Exception as e:
             self.get_logger().error(f"TF {msg.header.frame_id}->{self.config.frame_id} unavailable, skipping: {e}")
