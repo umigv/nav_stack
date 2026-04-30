@@ -122,11 +122,11 @@ class OccupancyGridSimulator(Node):
                 elif (ox, oy) in self.lane_line_cells:
                     lane_mask[row, col] = True
 
-        # Shadow-cast using only obstacles (lane lines have no height, don't block rays).
+        # Raycast obstacles
         if len(self.obstacle_cells) != 0:
-            self._apply_shadow_casting(grid)
+            self._apply_raycasting(grid)
 
-        # Overlay lane lines after shadow casting so they are never occluded.
+        # Add lane lines in after raycasting to prevent them from occluding obstacles.
         grid[lane_mask] = self.OCCUPIED
 
         self.occupancy_grid_publisher.publish(
@@ -144,7 +144,7 @@ class OccupancyGridSimulator(Node):
             )
         )
 
-    def _apply_shadow_casting(self, grid: np.ndarray) -> None:
+    def _apply_raycasting(self, grid: np.ndarray) -> None:
         """Mark all cells behind obstacles (from the robot's perspective) as OCCUPIED."""
         # Robot is at local (0, 0), which is at fractional grid coordinates:
         r_col = -self.config.offset_x_m / self.resolution_m - 0.5
@@ -187,7 +187,7 @@ class OccupancyGridSimulator(Node):
         t_enter = np.maximum(t_min_x, t_min_y)  # (H, W, N)
         t_exit = np.minimum(t_max_x, t_max_y)   # (H, W, N)
 
-        # Cell is in shadow if any obstacle intersects the ray at t ∈ (0, 1).
+        # Cell is occluded if any obstacle intersects the ray at t ∈ (0, 1).
         blocking = (t_enter < 1.0 - eps) & (t_exit > eps) & (t_enter < t_exit)
         grid[np.any(blocking, axis=2)] = self.OCCUPIED
 
