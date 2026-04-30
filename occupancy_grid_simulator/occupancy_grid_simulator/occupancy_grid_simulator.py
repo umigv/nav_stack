@@ -70,19 +70,19 @@ class OccupancyGridSimulator(Node):
         )
 
     def publish_ground_truth_map(self) -> None:
-        all_cells = self.obstacle_cells | self.lane_line_cells
-        if not all_cells:
+        non_drivable_cells = self.obstacle_cells | self.lane_line_cells
+        if not non_drivable_cells:
             return
 
-        min_x = min(x for x, _ in all_cells)
-        min_y = min(y for _, y in all_cells)
-        max_x = max(x for x, _ in all_cells)
-        max_y = max(y for _, y in all_cells)
+        min_x = min(x for x, _ in non_drivable_cells)
+        min_y = min(y for _, y in non_drivable_cells)
+        max_x = max(x for x, _ in non_drivable_cells)
+        max_y = max(y for _, y in non_drivable_cells)
         map_width_cells = max_x - min_x + 1
         map_height_cells = max_y - min_y + 1
 
         static_map = np.full((map_height_cells, map_width_cells), self.FREE, dtype=np.int8)
-        for x, y in all_cells:
+        for x, y in non_drivable_cells:
             static_map[y - min_y, x - min_x] = self.OCCUPIED
 
         self.ground_truth_publisher.publish(
@@ -100,7 +100,7 @@ class OccupancyGridSimulator(Node):
 
     def _build_cell_maps(self, robot_pose: Pose2d) -> tuple[np.ndarray, np.ndarray]:
         """Returns (obstacle_grid, lane_mask) by mapping local cells to world coordinates."""
-        grid = np.full((self.height_cells, self.width_cells), self.FREE, dtype=np.int8)
+        grid_with_obstacles = np.full((self.height_cells, self.width_cells), self.FREE, dtype=np.int8)
         lane_mask = np.zeros((self.height_cells, self.width_cells), dtype=bool)
         for row in range(self.height_cells):
             for col in range(self.width_cells):
@@ -112,10 +112,10 @@ class OccupancyGridSimulator(Node):
                 ox = math.floor(world.x / self.resolution_m)
                 oy = math.floor(world.y / self.resolution_m)
                 if (ox, oy) in self.obstacle_cells:
-                    grid[row, col] = self.OCCUPIED
+                    grid_with_obstacles[row, col] = self.OCCUPIED
                 elif (ox, oy) in self.lane_line_cells:
                     lane_mask[row, col] = True
-        return grid, lane_mask
+        return grid_with_obstacles, lane_mask
 
     def publish_occupancy_grid(self) -> None:
         if self.robot_pose is None:
