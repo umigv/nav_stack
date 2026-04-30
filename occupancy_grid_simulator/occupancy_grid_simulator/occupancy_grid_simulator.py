@@ -100,13 +100,9 @@ class OccupancyGridSimulator(Node):
             )
         )
 
-    def publish_occupancy_grid(self) -> None:
-        if self.robot_pose is None:
-            return
-
+    def _build_cell_maps(self, robot_pose: Pose2d) -> tuple[np.ndarray, np.ndarray]:
+        """Returns (obstacle_grid, lane_mask) by mapping local cells to world coordinates."""
         grid = np.full((self.height_cells, self.width_cells), self.FREE, dtype=np.int8)
-
-        # Collect which local cells map to obstacles and lane lines (world lookup).
         lane_mask = np.zeros((self.height_cells, self.width_cells), dtype=bool)
         for row in range(self.height_cells):
             for col in range(self.width_cells):
@@ -114,19 +110,24 @@ class OccupancyGridSimulator(Node):
                     x=self.config.offset_x_m + (col + 0.5) * self.resolution_m,
                     y=self.config.offset_y_m + (row + 0.5) * self.resolution_m,
                 )
-                world = self.robot_pose.local_to_world(local)
+                world = robot_pose.local_to_world(local)
                 ox = math.floor(world.x / self.resolution_m)
                 oy = math.floor(world.y / self.resolution_m)
                 if (ox, oy) in self.obstacle_cells:
                     grid[row, col] = self.OCCUPIED
                 elif (ox, oy) in self.lane_line_cells:
                     lane_mask[row, col] = True
+        return grid, lane_mask
 
-        # Raycast obstacles
-        if len(self.obstacle_cells) != 0:
+    def publish_occupancy_grid(self) -> None:
+        if self.robot_pose is None:
+            return
+
+        grid, lane_mask = self._build_cell_maps(self.robot_pose)
+        if self.obstacle_cells:
             self._apply_raycasting(grid)
 
-        # Add lane lines in after raycasting to prevent them from occluding obstacles.
+        # Add lane lines on top of obstacles (if any) so they are visible in the occupancy grid.
         grid[lane_mask] = self.OCCUPIED
 
         self.occupancy_grid_publisher.publish(
