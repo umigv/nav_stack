@@ -62,25 +62,29 @@ class OccupancyGridSimulator(Node):
         self.width_cells: int = math.ceil(self.config.width_m / self.resolution_m)
         self.height_cells: int = math.ceil(self.config.height_m / self.resolution_m)
         self.obstacle_cells: frozenset[tuple[int, int]] = frozenset((x, y) for x, y in data["obstacles"])
+        self.lane_line_cells: frozenset[tuple[int, int]] = frozenset(
+            (x, y) for x, y in data.get("lane_lines", [])
+        )
 
         self.get_logger().info(
-            f"Loaded {len(self.obstacle_cells)} obstacles at {self.resolution_m} m/cell "
-            f"({self.width_cells}x{self.height_cells} grid)"
+            f"Loaded {len(self.obstacle_cells)} obstacles, {len(self.lane_line_cells)} lane line cells "
+            f"at {self.resolution_m} m/cell ({self.width_cells}x{self.height_cells} grid)"
         )
 
     def publish_ground_truth_map(self) -> None:
-        if not self.obstacle_cells:
+        all_cells = self.obstacle_cells | self.lane_line_cells
+        if not all_cells:
             return
 
-        min_x = min(x for x, _ in self.obstacle_cells)
-        min_y = min(y for _, y in self.obstacle_cells)
-        max_x = max(x for x, _ in self.obstacle_cells)
-        max_y = max(y for _, y in self.obstacle_cells)
+        min_x = min(x for x, _ in all_cells)
+        min_y = min(y for _, y in all_cells)
+        max_x = max(x for x, _ in all_cells)
+        max_y = max(y for _, y in all_cells)
         map_width_cells = max_x - min_x + 1
         map_height_cells = max_y - min_y + 1
 
         static_map = np.full((map_height_cells, map_width_cells), self.FREE, dtype=np.int8)
-        for x, y in self.obstacle_cells:
+        for x, y in all_cells:
             static_map[y - min_y, x - min_x] = self.OCCUPIED
 
         self.ground_truth_publisher.publish(
@@ -102,18 +106,28 @@ class OccupancyGridSimulator(Node):
 
         grid = np.full((self.height_cells, self.width_cells), self.FREE, dtype=np.int8)
 
+        # Collect which local cells map to obstacles and lane lines (world lookup).
+        lane_mask = np.zeros((self.height_cells, self.width_cells), dtype=bool)
+        for row in range(self.height_cells):
+            for col in range(self.width_cells):
+                local = Point2d(
+                    x=self.config.offset_x_m + (col + 0.5) * self.resolution_m,
+                    y=self.config.offset_y_m + (row + 0.5) * self.resolution_m,
+                )
+                world = self.robot_pose.local_to_world(local)
+                ox = math.floor(world.x / self.resolution_m)
+                oy = math.floor(world.y / self.resolution_m)
+                if (ox, oy) in self.obstacle_cells:
+                    grid[row, col] = self.OCCUPIED
+                elif (ox, oy) in self.lane_line_cells:
+                    lane_mask[row, col] = True
+
+        # Shadow-cast using only obstacles (lane lines have no height, don't block rays).
         if len(self.obstacle_cells) != 0:
-            for row in range(self.height_cells):
-                for col in range(self.width_cells):
-                    local = Point2d(
-                        x=self.config.offset_x_m + (col + 0.5) * self.resolution_m,
-                        y=self.config.offset_y_m + (row + 0.5) * self.resolution_m,
-                    )
-                    world = self.robot_pose.local_to_world(local)
-                    ox = math.floor(world.x / self.resolution_m)
-                    oy = math.floor(world.y / self.resolution_m)
-                    if (ox, oy) in self.obstacle_cells:
-                        grid[row, col] = self.OCCUPIED
+            self._apply_shadow_casting(grid)
+
+        # Overlay lane lines after shadow casting so they are never occluded.
+        grid[lane_mask] = self.OCCUPIED
 
         self.occupancy_grid_publisher.publish(
             OccupancyGrid(
@@ -129,6 +143,53 @@ class OccupancyGridSimulator(Node):
                 data=grid.flatten().tolist(),
             )
         )
+
+    def _apply_shadow_casting(self, grid: np.ndarray) -> None:
+        """Mark all cells behind obstacles (from the robot's perspective) as OCCUPIED."""
+        # Robot is at local (0, 0), which is at fractional grid coordinates:
+        r_col = -self.config.offset_x_m / self.resolution_m - 0.5
+        r_row = -self.config.offset_y_m / self.resolution_m - 0.5
+
+        obs_rows, obs_cols = np.where(grid == self.OCCUPIED)
+        if len(obs_rows) == 0:
+            return
+
+        # Ray direction from robot to each cell center.
+        # dx shape: (1, W, 1), dy shape: (H, 1, 1) — broadcast together to (H, W, N).
+        col_idx = np.arange(self.width_cells)
+        row_idx = np.arange(self.height_cells)
+        dx = col_idx[np.newaxis, :, np.newaxis] + 0.5 - r_col  # (1, W, 1)
+        dy = row_idx[:, np.newaxis, np.newaxis] + 0.5 - r_row  # (H, 1, 1)
+
+        # Obstacle grid positions: (1, 1, N)
+        oc = obs_cols[np.newaxis, np.newaxis, :].astype(np.float64)
+        or_ = obs_rows[np.newaxis, np.newaxis, :].astype(np.float64)
+
+        # For each (target cell, obstacle) pair, find the t-interval on the ray
+        # [0=robot, 1=target center] where the ray passes through the obstacle AABB.
+        eps = 1e-12
+        safe_dx = np.where(np.abs(dx) > eps, dx, 1.0)
+        safe_dy = np.where(np.abs(dy) > eps, dy, 1.0)
+
+        tx_a = (oc - r_col) / safe_dx
+        tx_b = (oc + 1.0 - r_col) / safe_dx
+        ty_a = (or_ - r_row) / safe_dy
+        ty_b = (or_ + 1.0 - r_row) / safe_dy
+
+        x_in_range = (r_col >= oc) & (r_col < oc + 1.0)
+        y_in_range = (r_row >= or_) & (r_row < or_ + 1.0)
+
+        t_min_x = np.where(np.abs(dx) > eps, np.minimum(tx_a, tx_b), np.where(x_in_range, -np.inf, np.inf))
+        t_max_x = np.where(np.abs(dx) > eps, np.maximum(tx_a, tx_b), np.where(x_in_range, np.inf, -np.inf))
+        t_min_y = np.where(np.abs(dy) > eps, np.minimum(ty_a, ty_b), np.where(y_in_range, -np.inf, np.inf))
+        t_max_y = np.where(np.abs(dy) > eps, np.maximum(ty_a, ty_b), np.where(y_in_range, np.inf, -np.inf))
+
+        t_enter = np.maximum(t_min_x, t_min_y)  # (H, W, N)
+        t_exit = np.minimum(t_max_x, t_max_y)   # (H, W, N)
+
+        # Cell is in shadow if any obstacle intersects the ray at t ∈ (0, 1).
+        blocking = (t_enter < 1.0 - eps) & (t_exit > eps) & (t_enter < t_exit)
+        grid[np.any(blocking, axis=2)] = self.OCCUPIED
 
 
 def main() -> None:
