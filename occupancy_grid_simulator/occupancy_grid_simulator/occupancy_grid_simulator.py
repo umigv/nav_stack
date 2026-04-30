@@ -62,9 +62,7 @@ class OccupancyGridSimulator(Node):
         self.width_cells: int = math.ceil(self.config.width_m / self.resolution_m)
         self.height_cells: int = math.ceil(self.config.height_m / self.resolution_m)
         self.obstacle_cells: frozenset[tuple[int, int]] = frozenset((x, y) for x, y in data["obstacles"])
-        self.lane_line_cells: frozenset[tuple[int, int]] = frozenset(
-            (x, y) for x, y in data.get("lane_lines", [])
-        )
+        self.lane_line_cells: frozenset[tuple[int, int]] = frozenset((x, y) for x, y in data.get("lane_lines", []))
 
         self.get_logger().info(
             f"Loaded {len(self.obstacle_cells)} obstacles, {len(self.lane_line_cells)} lane line cells "
@@ -186,7 +184,7 @@ class OccupancyGridSimulator(Node):
         t_max_y = np.where(np.abs(dy) > eps, np.maximum(ty_a, ty_b), np.where(y_in_range, np.inf, -np.inf))
 
         t_enter = np.maximum(t_min_x, t_min_y)  # (H, W, N)
-        t_exit = np.minimum(t_max_x, t_max_y)   # (H, W, N)
+        t_exit = np.minimum(t_max_x, t_max_y)  # (H, W, N)
 
         # Cell is occluded if any obstacle intersects the ray at t ∈ (0, 1).
         blocking = (t_enter < 1.0 - eps) & (t_exit > eps) & (t_enter < t_exit)
