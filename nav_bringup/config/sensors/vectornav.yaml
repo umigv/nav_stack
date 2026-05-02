@@ -15,6 +15,6 @@ vectornav_driver:
                             0.0, 0.0, 0.01]
 
     # 3x3 row-major covariance matrix for angular velocity (rad/s)^2, in FLU body frame
-    angularVelCovariance: [0.001, 0.0, 0.0,
-                           0.0, 0.001, 0.0,
-                           0.0, 0.0, 0.001]
+    angularVelCovariance: [1e-5, 0.0, 0.0,
+                           0.0, 1e-5, 0.0,
+                           0.0, 0.0, 1e-5]
