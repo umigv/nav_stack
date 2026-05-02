@@ -2,11 +2,11 @@ from datetime import datetime, timezone
 
 import nav_utils.config
 import rclpy
+import serial
 from builtin_interfaces.msg import Time
 from pyubx2 import UBX_PROTOCOL, UBXMessage, UBXReader
 from rclpy.node import Node
 from sensor_msgs.msg import NavSatFix, NavSatStatus
-from serial import Serial
 from std_msgs.msg import Header
 
 from .ublox_driver_config import UbloxDriverConfig
@@ -23,8 +23,20 @@ class UbloxDriver(Node):
 
         self.publisher = self.create_publisher(NavSatFix, "ublox/gps", 10)
 
-        self.stream = Serial(self.config.serial_port, 460800, timeout=0.1)
-        self.ubx_reader = UBXReader(self.stream, protfilter=UBX_PROTOCOL)
+        self.serial: serial.Serial | None = None
+
+        try:
+            self.serial = serial.Serial(
+                str(self.config.serial_port), baudrate=self.config.baud_rate, timeout=self.config.poll_period_s
+            )
+            self.get_logger().info(f"Connected to {self.config.serial_port}")
+        except serial.SerialException as e:
+            self.get_logger().error(f"Failed to connect to {self.config.serial_port}: {e}")
+            # We don't call rclpy.shutdown() here because it causes a deadlock in humble
+            # https://github.com/ros2/rclpy/issues/1646
+            raise SystemExit(1) from None
+
+        self.ubx_reader = UBXReader(self.serial, protfilter=UBX_PROTOCOL)
 
         self.create_timer(self.config.poll_period_s, self.poll)
 
@@ -95,6 +107,11 @@ class UbloxDriver(Node):
             return Time(sec=int(seconds) - 1, nanosec=int(data.nano) + 1_000_000_000)
 
         return Time(sec=int(seconds), nanosec=int(data.nano))
+
+    def destroy_node(self) -> None:
+        if self.serial is not None and self.serial.is_open:
+            self.serial.close()
+        super().destroy_node()
 
 
 def main() -> None:
