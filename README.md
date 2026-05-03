@@ -1,5 +1,8 @@
 # UMARV Navigation Stack 2025-2026
 
+> [!WARNING]
+> This repo is now archived. All new development moves to the [maverick monorepo](https://github.com/umigv/maverick)
+
 ## Warning: Intellisense
 Always build with `--symlink-install`. Without it, control-clicking a dependency in VSCode will take you to a copy
 instead of the source file, and data files (launch files, config, course JSON) written to the install directory will
